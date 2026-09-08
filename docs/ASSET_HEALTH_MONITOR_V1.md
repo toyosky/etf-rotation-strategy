@@ -127,12 +127,11 @@ Workflow: `.github/workflows/asset-health.yml`
 - Unit tests run before the database job.
 - The Markdown report is appended to the GitHub Actions Step Summary.
 
-Required repository secrets:
+The Supabase project URL is non-secret and is committed directly in the workflow. Only one repository secret is required:
 
-- `SUPABASE_URL`
 - `SUPABASE_SECRET_KEY` — preferred new `sb_secret_...` backend key.
 
-The legacy `SUPABASE_SERVICE_ROLE_KEY` is accepted by the Python script as a fallback, but new deployments should use `SUPABASE_SECRET_KEY`.
+The legacy `SUPABASE_SERVICE_ROLE_KEY` is accepted by the Python script as a fallback for local/manual execution, but new GitHub Actions deployments should use `SUPABASE_SECRET_KEY`.
 
 ## Change-control rule
 
