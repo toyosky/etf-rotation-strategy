@@ -13,3 +13,9 @@
 - 最终结论：保留 / 放弃 / 继续观察
 
 当前 `main` 分支中的 `strategy/main.py` 只保存已经认可的正式逻辑，实验信号不要直接混入正式代码。
+
+## Asset Health Monitor
+
+`asset_health.py` 是独立于交易逻辑的候选资产健康监控器。它只诊断历史 Top1 状态的后续延续性，不自动修改 ETF 池，也不生成交易指令。
+
+V1 方法与冻结规则见 `docs/ASSET_HEALTH_MONITOR_V1.md`；Supabase 表结构见 `research/sql/asset_health_snapshots.sql`。
