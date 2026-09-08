@@ -40,13 +40,13 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s research -p 'test_*.py'
 
-      - name: Run Asset Health Monitor
+      - name: Run Asset Health Monitor for ACTIVE universe
         env:
           SUPABASE_URL: https://rmdfnksgqvewijegnqon.supabase.co
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           ASSET_HEALTH_STRATEGY_VERSION: FROZEN_C2@20260903T_fixed_window_v2
         run: |
-          python research/asset_health.py \
+          python research/asset_health_active.py \
             --summary-path asset-health-summary.md \
             --json-path asset-health-summary.json
           cat asset-health-summary.md >> "$GITHUB_STEP_SUMMARY"
