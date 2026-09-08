@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Asset Health Monitor
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_URL: https://rmdfnksgqvewijegnqon.supabase.co
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           ASSET_HEALTH_STRATEGY_VERSION: FROZEN_C2@20260903T_fixed_window_v2
         run: |
