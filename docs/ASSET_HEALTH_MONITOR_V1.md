@@ -127,11 +127,29 @@ Workflow: `.github/workflows/asset-health.yml`
 - Unit tests run before the database job.
 - The Markdown report is appended to the GitHub Actions Step Summary.
 
-The Supabase project URL is non-secret and is committed directly in the workflow. Only one repository secret is required:
+The Supabase project URL is non-secret and is committed directly in the workflow. Repository secrets:
 
 - `SUPABASE_SECRET_KEY` — preferred new `sb_secret_...` backend key.
+- `PUSHPLUS_TOKEN` — PushPlus user/message token used only by the notification step.
 
 The legacy `SUPABASE_SERVICE_ROLE_KEY` is accepted by the Python script as a fallback for local/manual execution, but new GitHub Actions deployments should use `SUPABASE_SECRET_KEY`.
+
+## PushPlus notification policy
+
+`research/pushplus_notify.py` runs after the current Asset Health snapshot is written. It compares the current snapshot date with the previous **distinct** snapshot date.
+
+To keep noise low, it sends a message only when a health state meaningfully changes:
+
+- `HEALTHY` / `INSUFFICIENT_DATA` -> `WATCH` or `WARNING`;
+- `WATCH` -> `WARNING`;
+- `WARNING` -> `WATCH`;
+- `WATCH` / `WARNING` -> `HEALTHY` or `INSUFFICIENT_DATA`.
+
+Unchanged states do not notify. `INSUFFICIENT_DATA` -> `HEALTHY` is also silent because it usually means evidence matured rather than a deterioration/recovery event.
+
+PushPlus delivery uses the official HTTPS JSON endpoint with Markdown content and up to three attempts. If a meaningful change exists and delivery fails after all retries, the workflow step fails so the same change can be retried on another run.
+
+For manual verification, `workflow_dispatch` exposes `pushplus_test`. When set to `true`, the workflow sends one test message showing the current WATCH/WARNING assets even if no status changed. A test run does not alter the classification logic.
 
 ## Change-control rule
 
