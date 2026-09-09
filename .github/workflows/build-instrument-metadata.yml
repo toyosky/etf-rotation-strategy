@@ -1,0 +1,45 @@
+name: Build Instrument Metadata
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research/build_instrument_metadata.py'
+      - 'research/requirements-instrument-metadata.txt'
+      - '.github/workflows/build-instrument-metadata.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/requirements-instrument-metadata.txt
+      - run: python -m pip install --requirement research/requirements-instrument-metadata.txt
+      - name: Build and persist metadata
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: |
+          python research/build_instrument_metadata.py \
+            --snapshot-date 2026-09-09 \
+            --summary-path instrument-metadata-summary.json \
+            --csv-path instrument-metadata-current.csv \
+            --review-path instrument-metadata-review.csv
+      - name: Show summary
+        run: |
+          cat instrument-metadata-summary.json
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat instrument-metadata-summary.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: instrument-metadata-${{ github.run_id }}
+          path: |
+            instrument-metadata-summary.json
+            instrument-metadata-current.csv
+            instrument-metadata-review.csv
+          retention-days: 30
