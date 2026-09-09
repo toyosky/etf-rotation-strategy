@@ -7,33 +7,110 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  audit:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Show Node and npm versions
-        run: |
-          node --version
-          npm --version
-      - name: Compare adjustment modes
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: python -m pip install pandas sqlalchemy psycopg2-binary
+      - name: Fetch WeStock qfq and hfq
         shell: bash
         run: |
           set -euo pipefail
-          for fq in bfq qfq hfq; do
-            echo "===== FQ=$fq ====="
-            npx -y westock-data-skillhub@1.0.5 kline sh510300,sz161226,sh501018 \
-              --start 2026-09-08 --end 2026-09-08 --period day --fq "$fq" --raw \
-              | tee "westock-$fq.json"
+          CODES="sh518880,sz159985,sz159825,sz161226,sh513100,sz159915,sh511220,sz159509,sh513290,sz159529,sz159981,sh501018,sh513920,sh511380,sz164824,sz160416,sz160723,sz161128,sz161129,sz161130,sz161725,sz162411,sz162719,sh501025"
+          for fq in qfq hfq; do
+            npx -y westock-data-skillhub@1.0.5 kline "$CODES" \
+              --start 2026-05-01 --end 2026-09-08 --period day --fq "$fq" --raw \
+              > "westock-$fq.json"
           done
-      - name: Upload raw outputs
+      - name: Compare daily returns with Supabase
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/compare.py <<'PY'
+          import json, os
+          import numpy as np
+          import pandas as pd
+          from sqlalchemy import create_engine, text
+
+          symbols = [
+              '518880','159985','159825','161226','513100','159915','511220','159509',
+              '513290','159529','159981','501018','513920','511380','164824','160416',
+              '160723','161128','161129','161130','161725','162411','162719','501025'
+          ]
+          raw = os.environ['ETF_DAILY_BARS_DATABASE_URL']
+          if raw.startswith('postgres://'):
+              raw = 'postgresql://' + raw[len('postgres://'):]
+          if raw.startswith('postgresql://'):
+              raw = 'postgresql+psycopg2://' + raw[len('postgresql://'):]
+          engine = create_engine(raw, pool_pre_ping=True)
+          q = text('''
+              select symbol, date, close
+              from public.daily_bars
+              where symbol = any(:symbols)
+                and date between :d1 and :d2
+              order by symbol, date
+          ''')
+          db = pd.read_sql(q, engine, params={'symbols': symbols, 'd1':'2026-05-01', 'd2':'2026-09-08'}, parse_dates=['date'])
+          db['ret_db'] = db.groupby('symbol')['close'].pct_change()
+
+          rows = []
+          for fq in ['qfq','hfq']:
+              with open(f'westock-{fq}.json', encoding='utf-8') as f:
+                  data = json.load(f)
+              w = pd.DataFrame(data)
+              if w.empty:
+                  continue
+              w['symbol'] = w['symbol'].str.replace(r'^(sh|sz)', '', regex=True)
+              w['date'] = pd.to_datetime(w['date'])
+              w = w.sort_values(['symbol','date'])
+              w['ret_w'] = w.groupby('symbol')['last'].pct_change()
+              m = db.merge(w[['symbol','date','ret_w']], on=['symbol','date'], how='inner')
+              for sym, g in m.groupby('symbol'):
+                  z = g[['ret_db','ret_w']].dropna()
+                  if len(z) < 5:
+                      continue
+                  diff = (z.ret_w-z.ret_db).abs()
+                  rows.append({
+                      'symbol':sym,'fq':fq,'n':len(z),
+                      'corr':float(z.ret_db.corr(z.ret_w)),
+                      'median_abs_ret_diff_bp':float(diff.median()*10000),
+                      'p95_abs_ret_diff_bp':float(diff.quantile(.95)*10000),
+                      'max_abs_ret_diff_bp':float(diff.max()*10000),
+                  })
+          out = pd.DataFrame(rows).sort_values(['symbol','fq'])
+          print(out.to_string(index=False))
+          out.to_csv('westock-continuity-audit.csv', index=False)
+
+          print('\n=== aggregate ===')
+          if not out.empty:
+              print(out.groupby('fq').agg(
+                  symbols=('symbol','nunique'),
+                  median_corr=('corr','median'),
+                  median_of_median_diff_bp=('median_abs_ret_diff_bp','median'),
+                  median_p95_diff_bp=('p95_abs_ret_diff_bp','median'),
+                  worst_max_diff_bp=('max_abs_ret_diff_bp','max'),
+              ).to_string())
+          PY
+          python /tmp/compare.py | tee westock-continuity-summary.txt
+      - name: Upload audit
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: westock-fq-compare-${{ github.run_id }}
-          path: westock-*.json
+          name: westock-continuity-audit-${{ github.run_id }}
+          path: |
+            westock-continuity-audit.csv
+            westock-continuity-summary.txt
+            westock-qfq.json
+            westock-hfq.json
           if-no-files-found: warn
           retention-days: 7
