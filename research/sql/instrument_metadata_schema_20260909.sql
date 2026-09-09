@@ -26,6 +26,8 @@ create table if not exists public.instrument_metadata (
   data_start_date date,
   data_end_date date,
   bars_count integer,
+  current_exchange_listed boolean,
+  has_daily_bars boolean not null default false,
   label_scope text not null default 'CURRENT_SNAPSHOT',
   historical_safe boolean not null default false,
   valid_from date not null,
@@ -41,6 +43,9 @@ create table if not exists public.instrument_metadata (
   constraint instrument_metadata_validity_chk check(valid_to is null or valid_to >= valid_from),
   constraint instrument_metadata_confidence_chk check(confidence is null or (confidence >= 0 and confidence <= 1))
 );
+
+alter table public.instrument_metadata add column if not exists current_exchange_listed boolean;
+alter table public.instrument_metadata add column if not exists has_daily_bars boolean not null default false;
 
 create index if not exists instrument_metadata_symbol_idx on public.instrument_metadata(symbol);
 create index if not exists instrument_metadata_risk_bucket_idx on public.instrument_metadata(risk_bucket);
