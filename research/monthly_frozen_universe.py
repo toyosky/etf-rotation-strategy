@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
 """Monthly frozen-universe research for full-market ETF OLS.
 
-Purpose
--------
-Test the slow-frequency universe idea *in isolation*:
-- before each calendar month, use only the prior 126 trading days;
-- among point-in-time universe-eligible ETFs, estimate recent OLS-trend
-  persistence as average observed run length of raw OLS-positive states;
-- freeze the top K ETFs for the whole next month;
-- inside that frozen universe, keep the original daily OLS ranking unchanged.
+Research question
+-----------------
+Can a slow-frequency point-in-time screen choose ETFs that are *suitable for
+OLS rotation*, freeze that universe for the next month, and then let the
+original daily OLS ranking operate unchanged inside it?
+
+Two slow metrics are tested:
+1. persistence126: average observed run length of raw OLS-positive states in
+   the prior 126 trading days.  This is intentionally retained as a diagnostic;
+   it can over-reward cash-like instruments that drift upward very smoothly.
+2. trendability126: persistence126 * median(slope * R2) on raw-positive days.
+   This approximates the typical model-implied log-price excursion of a trend:
+   it must both last and move enough to be economically tradable.
+
+The trendability metric is additionally tested with monthly point-in-time
+correlation deduplication at 0.95 and 0.90, using only the prior 120 daily
+returns.  These are robustness points, not optimized thresholds.
 
 No H4 health filter, maturity veto, V1, VP, or volume execution overlay is used
-here.  This isolates whether monthly universe construction itself adds value.
-
-The top-K breadths 20/40/80 are robustness points, not optimized parameters.
+here.  The daily selector remains raw OLS Score among trend-eligible ETFs in the
+frozen monthly universe.  This isolates the universe-construction layer.
 """
 
 from __future__ import annotations
@@ -37,20 +45,44 @@ from walk_forward_candidate_pool import (
 )
 
 LOOKBACK = 126
+CORR_LOOKBACK = 120
 BREADTHS = (20, 40, 80)
+DEDUP_THRESHOLDS = (0.95, 0.90)
+
+
+def _greedy_dedup(
+    ranked_symbols: list[str],
+    corr: pd.DataFrame,
+    k: int,
+    threshold: float,
+) -> list[str]:
+    """Keep highest-ranked symbols while avoiding near-duplicates."""
+    kept: list[str] = []
+    for sym in ranked_symbols:
+        duplicate = False
+        for rep in kept:
+            c = corr.at[sym, rep] if sym in corr.index and rep in corr.columns else np.nan
+            if pd.notna(c) and float(c) >= threshold:
+                duplicate = True
+                break
+        if not duplicate:
+            kept.append(sym)
+            if len(kept) >= k:
+                break
+    return kept
 
 
 def monthly_frozen_pools(
     bars: pd.DataFrame,
     features: pd.DataFrame,
-) -> tuple[dict[int, dict[pd.Timestamp, set[str]]], pd.DataFrame]:
+) -> tuple[dict[str, dict[pd.Timestamp, set[str]]], pd.DataFrame]:
     """Build next-month frozen universes using only information before month start."""
     calendar = pd.Index(sorted(pd.to_datetime(bars["date"].unique())))
     months = pd.Series(calendar, index=calendar).groupby(calendar.to_period("M"))
 
     state = features[[
         "date", "symbol", "universe_eligible", "annual", "r2", "score",
-        "avg_amount60",
+        "slope", "avg_amount60",
     ]].copy()
     state["symbol"] = state["symbol"].astype(str)
     state["raw_positive"] = (
@@ -59,9 +91,21 @@ def monthly_frozen_pools(
         & (state["r2"] > 0)
         & (state["score"] > 0)
     )
+    state["linear_strength"] = np.where(
+        state["raw_positive"],
+        state["slope"].astype(float) * state["r2"].astype(float),
+        np.nan,
+    )
 
     raw_wide = state.pivot(index="date", columns="symbol", values="raw_positive").reindex(calendar)
-    pools: dict[int, dict[pd.Timestamp, set[str]]] = {k: {} for k in BREADTHS}
+    strength_wide = state.pivot(index="date", columns="symbol", values="linear_strength").reindex(calendar)
+    close = bars.pivot(index="date", columns="symbol", values="close").reindex(calendar)
+    ret = close.pct_change(fill_method=None)
+
+    pool_names = [f"persistence_top{k}" for k in BREADTHS]
+    pool_names += [f"trendability_top{k}" for k in BREADTHS]
+    pool_names += [f"trendability_top40_dedup{int(t*100)}" for t in DEDUP_THRESHOLDS]
+    pools: dict[str, dict[pd.Timestamp, set[str]]] = {name: {} for name in pool_names}
     audit_rows: list[dict] = []
 
     for period, dates_series in months:
@@ -86,42 +130,76 @@ def monthly_frozen_pools(
 
         x = raw_wide.loc[hist_dates, eligible].fillna(False).astype(bool)
         pos_days = x.sum(axis=0).astype(float)
-        # Count positive-state runs observed inside the trailing window.  If the
-        # first window day is already positive, that visible run counts as one.
         starts = x & (~x.shift(1, fill_value=False))
         runs = starts.sum(axis=0).astype(float)
         avg_run = pos_days / runs.replace(0.0, np.nan)
         pos_ratio = pos_days / float(len(hist_dates))
+        median_strength = strength_wide.loc[hist_dates, eligible].median(axis=0, skipna=True)
 
         rank = pd.DataFrame({
             "symbol": eligible,
             "persistence126": [float(avg_run.get(s, np.nan)) for s in eligible],
             "positive_ratio126": [float(pos_ratio.get(s, 0.0)) for s in eligible],
+            "median_linear_strength126": [float(median_strength.get(s, np.nan)) for s in eligible],
         }).merge(prev, on="symbol", how="left")
 
-        # ETFs with no observed positive OLS state get persistence 0 and sort last.
         rank["persistence126"] = rank["persistence126"].fillna(0.0)
-        rank = rank.sort_values(
+        rank["median_linear_strength126"] = rank["median_linear_strength126"].fillna(0.0)
+        rank["trendability126"] = rank["persistence126"] * rank["median_linear_strength126"]
+
+        persistence_rank = rank.sort_values(
             ["persistence126", "positive_ratio126", "avg_amount60", "symbol"],
             ascending=[False, False, False, True],
         ).reset_index(drop=True)
-        rank["rank"] = np.arange(1, len(rank) + 1)
+        persistence_rank["persistence_rank"] = np.arange(1, len(persistence_rank) + 1)
+
+        trend_rank = rank.sort_values(
+            ["trendability126", "positive_ratio126", "avg_amount60", "symbol"],
+            ascending=[False, False, False, True],
+        ).reset_index(drop=True)
+        trend_rank["trendability_rank"] = np.arange(1, len(trend_rank) + 1)
 
         for k in BREADTHS:
-            chosen = set(rank.head(k)["symbol"].astype(str))
+            pchosen = set(persistence_rank.head(k)["symbol"].astype(str))
+            tchosen = set(trend_rank.head(k)["symbol"].astype(str))
             for d in month_dates:
-                pools[k][pd.Timestamp(d)] = chosen
+                pools[f"persistence_top{k}"][pd.Timestamp(d)] = pchosen
+                pools[f"trendability_top{k}"][pd.Timestamp(d)] = tchosen
 
-        for row in rank.head(max(BREADTHS)).itertuples(index=False):
+        corr_start = max(0, first_pos - CORR_LOOKBACK)
+        corr_dates = calendar[corr_start:first_pos]
+        corr = ret.loc[corr_dates, eligible].corr(min_periods=60) if len(corr_dates) >= 60 else pd.DataFrame()
+        ranked_symbols = trend_rank["symbol"].astype(str).tolist()
+        for threshold in DEDUP_THRESHOLDS:
+            if corr.empty:
+                chosen_list = ranked_symbols[:40]
+            else:
+                chosen_list = _greedy_dedup(ranked_symbols, corr, 40, threshold)
+            chosen = set(chosen_list)
+            name = f"trendability_top40_dedup{int(threshold*100)}"
+            for d in month_dates:
+                pools[name][pd.Timestamp(d)] = chosen
+
+        audit = trend_rank.merge(
+            persistence_rank[["symbol", "persistence_rank"]], on="symbol", how="left"
+        )
+        dedup95 = set(_greedy_dedup(ranked_symbols, corr, 40, 0.95)) if not corr.empty else set(ranked_symbols[:40])
+        dedup90 = set(_greedy_dedup(ranked_symbols, corr, 40, 0.90)) if not corr.empty else set(ranked_symbols[:40])
+        for row in audit.head(max(BREADTHS)).itertuples(index=False):
             audit_rows.append({
                 "month": str(period),
                 "prev_date": prev_date,
                 "symbol": str(row.symbol),
-                "rank": int(row.rank),
+                "trendability_rank": int(row.trendability_rank),
+                "persistence_rank": int(row.persistence_rank),
                 "persistence126": float(row.persistence126),
+                "median_linear_strength126": float(row.median_linear_strength126),
+                "trendability126": float(row.trendability126),
                 "positive_ratio126": float(row.positive_ratio126),
                 "avg_amount60": float(row.avg_amount60),
                 "eligible_count": int(len(rank)),
+                "dedup95_top40": str(row.symbol) in dedup95,
+                "dedup90_top40": str(row.symbol) in dedup90,
             })
 
     return pools, pd.DataFrame(audit_rows)
@@ -160,8 +238,7 @@ def build_targets_from_mask(
 
 
 def build_baseline_targets(features: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
-    allowed = pd.Series(True, index=features.index, dtype=bool)
-    return build_targets_from_mask(features, allowed)
+    return build_targets_from_mask(features, pd.Series(True, index=features.index, dtype=bool))
 
 
 def main() -> None:
@@ -182,9 +259,10 @@ def main() -> None:
         "design": {
             "monthly_freeze": True,
             "lookback_trading_days": LOOKBACK,
-            "selection_metric": "average observed run length of raw OLS-positive state",
+            "persistence_metric": "average observed run length of raw OLS-positive state",
+            "trendability_metric": "persistence126 * median(slope * r2) on raw-positive days",
             "breadths": list(BREADTHS),
-            "ranking_tiebreakers": ["positive_ratio126", "avg_amount60"],
+            "dedup_thresholds": list(DEDUP_THRESHOLDS),
             "daily_ranking": "unchanged raw OLS score among trend_eligible ETFs in frozen pool",
             "extra_health_or_maturity_filter": False,
             "backtest_start": str(BACKTEST_START.date()),
@@ -193,7 +271,6 @@ def main() -> None:
         "pool_audit": {},
     }
 
-    # Same-engine references.
     for label, ff in [
         ("full_market_baseline", features),
         ("fixed15_baseline", features.loc[features["symbol"].astype(str).isin(FIXED15)].copy()),
@@ -202,21 +279,36 @@ def main() -> None:
         pnl = backtest_open_to_open(bars, targets)
         summary["variants"][label] = summarize_variant(label, pnl, targets, counts)
 
-    for k in BREADTHS:
-        allowed = frozen_mask(features, pools[k])
+    test_names = [f"persistence_top{k}" for k in BREADTHS]
+    test_names += [f"trendability_top{k}" for k in BREADTHS]
+    test_names += [f"trendability_top40_dedup{int(t*100)}" for t in DEDUP_THRESHOLDS]
+
+    for name in test_names:
+        allowed = frozen_mask(features, pools[name])
         targets, counts = build_targets_from_mask(features, allowed)
         pnl = backtest_open_to_open(bars, targets)
-        label = f"monthly_persistence_top{k}"
+        label = f"monthly_{name}"
         result = summarize_variant(label, pnl, targets, counts)
-        result["monthly_breadth"] = k
+        result["monthly_pool"] = name
         summary["variants"][label] = result
 
-        a = audit.loc[audit["rank"] <= k]
-        summary["pool_audit"][str(k)] = {
+    # Compact audit focused on the economically meaningful trendability ranks.
+    for k in BREADTHS:
+        a = audit.loc[audit["trendability_rank"] <= k]
+        summary["pool_audit"][f"trendability_top{k}"] = {
             "months": int(a["month"].nunique()) if len(a) else 0,
             "mean_eligible_count": float(a.groupby("month")["eligible_count"].first().mean()) if len(a) else 0.0,
             "mean_selected_count": float(a.groupby("month").size().mean()) if len(a) else 0.0,
-            "median_selected_persistence": float(a["persistence126"].median()) if len(a) else 0.0,
+            "median_persistence126": float(a["persistence126"].median()) if len(a) else 0.0,
+            "median_linear_strength126": float(a["median_linear_strength126"].median()) if len(a) else 0.0,
+            "median_trendability126": float(a["trendability126"].median()) if len(a) else 0.0,
+        }
+    for threshold in DEDUP_THRESHOLDS:
+        col = f"dedup{int(threshold*100)}_top40"
+        a = audit.loc[audit[col]]
+        summary["pool_audit"][col] = {
+            "months": int(a["month"].nunique()) if len(a) else 0,
+            "mean_selected_count": float(a.groupby("month").size().mean()) if len(a) else 0.0,
         }
 
     Path(args.summary_path).write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
