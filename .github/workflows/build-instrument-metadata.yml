@@ -8,6 +8,7 @@ on:
       - 'research/build_instrument_metadata_static.py'
       - 'research/build_instrument_metadata_universe_v2.py'
       - 'research/build_instrument_metadata_universe_v3.py'
+      - 'research/build_instrument_metadata_universe_v4.py'
       - 'research/requirements-instrument-metadata.txt'
       - '.github/workflows/build-instrument-metadata.yml'
 
@@ -27,7 +28,7 @@ jobs:
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: |
-          python research/build_instrument_metadata_universe_v3.py \
+          python research/build_instrument_metadata_universe_v4.py \
             --summary-path instrument-metadata-summary.json \
             --csv-path instrument-metadata-current.csv \
             --review-path instrument-metadata-review.csv
