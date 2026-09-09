@@ -19,19 +19,21 @@ jobs:
         run: |
           node --version
           npm --version
-      - name: Test ETF and LOF kline raw JSON
+      - name: Compare adjustment modes
         shell: bash
         run: |
           set -euo pipefail
-          npx -y westock-data-skillhub@1.0.5 kline sh510300,sz161226,sh501018 --period day --limit 5 --raw | tee westock-kline-raw.json
-          echo '--- RAW OUTPUT START ---'
-          cat westock-kline-raw.json
-          echo '--- RAW OUTPUT END ---'
-      - name: Upload raw output
+          for fq in bfq qfq hfq; do
+            echo "===== FQ=$fq ====="
+            npx -y westock-data-skillhub@1.0.5 kline sh510300,sz161226,sh501018 \
+              --start 2026-09-08 --end 2026-09-08 --period day --fq "$fq" --raw \
+              | tee "westock-$fq.json"
+          done
+      - name: Upload raw outputs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: westock-kline-raw-${{ github.run_id }}
-          path: westock-kline-raw.json
+          name: westock-fq-compare-${{ github.run_id }}
+          path: westock-*.json
           if-no-files-found: warn
           retention-days: 7
