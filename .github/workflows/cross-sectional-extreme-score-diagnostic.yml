@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'research/cross_sectional_extreme_score_diagnostic.py'
+      - 'research/requirements-full-market-ols.txt'
       - '.github/workflows/cross-sectional-extreme-score-diagnostic.yml'
   workflow_dispatch:
 
