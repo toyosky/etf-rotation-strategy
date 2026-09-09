@@ -1,0 +1,37 @@
+name: Test WeStock Kline
+
+on:
+  push:
+    paths:
+      - '.github/workflows/test-westock-kline.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Show Node and npm versions
+        run: |
+          node --version
+          npm --version
+      - name: Test ETF and LOF kline raw JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx -y westock-data-skillhub@1.0.5 kline sh510300,sz161226,sh501018 --period day --limit 5 --raw | tee westock-kline-raw.json
+          echo '--- RAW OUTPUT START ---'
+          cat westock-kline-raw.json
+          echo '--- RAW OUTPUT END ---'
+      - name: Upload raw output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: westock-kline-raw-${{ github.run_id }}
+          path: westock-kline-raw.json
+          if-no-files-found: warn
+          retention-days: 7
