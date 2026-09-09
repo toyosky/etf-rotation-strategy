@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 """Walk-forward candidate-pool research for the full-market ETF OLS strategy.
 
-Design goals
+Architecture
 ------------
-1. No future information in admission thresholds.
-2. Admission is decided only when a new OLS-positive episode starts, then frozen
-   for the life of that raw OLS episode.
-3. Thresholds are natural expanding historical quintiles (20% / 80%), not
-   optimized numeric cutoffs.
-4. OLS score remains the ranking variable *after* admission filters.
-5. Daily research backtest uses signal at close(t), execution at open(t+1), and
-   open(t+1)->open(t+2) return. Frozen side cost = 5 bp commission + 1 bp
-   slippage = 6 bp per buy/sell side.
+A. Episode-start health admission is frozen for the raw OLS-positive episode.
+B. Maturity is a *daily* veto, because an episode can begin healthy and become
+   overextended later.
+C. All thresholds are expanding historical quintiles based only on strictly
+   earlier raw OLS episode starts. No optimized fixed numeric cutoffs.
+D. After filtering, raw OLS score remains the ranking variable.
+E. Signal at close(t), execute at open(t+1), mark open(t+1)->open(t+2).
 
-This is a structural research engine, not a reproduction of the production
-minute-level C2/V1 execution logic.
+This is a structural daily research engine, not a minute-level reproduction of
+production C2/V1 execution logic.
 """
 
 from __future__ import annotations
@@ -38,24 +36,34 @@ MIN_PRIOR_EPISODES = 200
 
 HEALTH_FEATURES = ["slope_delta", "current_resid", "ret5", "dist_high20"]
 MATURITY_FEATURES = ["score", "slope"]
+
 VARIANTS = [
     "baseline",
     "h1_slope_delta",
     "h2_plus_resid",
     "h4_health",
-    "h4m_health_maturity",
+    "h4m_static_start_maturity",
+    "h1_dynamic_score80",
+    "h2_dynamic_score80",
+    "h4_dynamic_score80",
+    "h4_dynamic_score_slope80",
 ]
+
+ADMISSION_PASS_COLUMNS = {
+    "h1_slope_delta": "pass_h1_slope_delta",
+    "h2_plus_resid": "pass_h2_plus_resid",
+    "h4_health": "pass_h4_health",
+    "h4m_static_start_maturity": "pass_h4m_static_start_maturity",
+}
 
 
 def attach_raw_episode_ids(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Attach raw OLS episode start date to every trend-eligible daily row."""
     parts: list[pd.DataFrame] = []
     for _, g in features.groupby("symbol", sort=False):
         g = g.sort_values("date").copy()
         trend = g["trend_eligible"].fillna(False).astype(bool)
         start = trend & (~trend.shift(1, fill_value=False))
-        ep_start = g["date"].where(start).ffill().where(trend)
-        g["episode_start_date"] = ep_start
+        g["episode_start_date"] = g["date"].where(start).ffill().where(trend)
         parts.append(g)
 
     f = pd.concat(parts, ignore_index=True).sort_values(["symbol", "date"]).reset_index(drop=True)
@@ -73,17 +81,7 @@ def attach_raw_episode_ids(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
     return f, starts
 
 
-def _prior_date_expanding_quantile(
-    starts: pd.DataFrame,
-    feature: str,
-    q: float,
-) -> pd.Series:
-    """Expanding quantile using only episodes with start_date < current date.
-
-    Pandas expanding quantile is row based. We evaluate it immediately before
-    the first row of each date and broadcast that value to every start on the
-    date, so same-day starts never enter one another's calibration history.
-    """
+def _prior_date_expanding_quantile(starts: pd.DataFrame, feature: str, q: float) -> pd.Series:
     raw = starts[feature].astype(float).expanding(min_periods=MIN_PRIOR_EPISODES).quantile(q).shift(1)
     first_mask = ~starts["start_date"].duplicated()
     date_map = dict(zip(starts.loc[first_mask, "start_date"], raw.loc[first_mask]))
@@ -93,7 +91,6 @@ def _prior_date_expanding_quantile(
 def add_walk_forward_admission(starts: pd.DataFrame) -> pd.DataFrame:
     s = starts.copy().sort_values(["start_date", "symbol"]).reset_index(drop=True)
 
-    # Number of strictly earlier episode starts available at each date.
     date_counts = s.groupby("start_date", sort=True).size()
     prior_counts = date_counts.cumsum().shift(1, fill_value=0)
     s["prior_episode_count"] = s["start_date"].map(prior_counts).astype(int)
@@ -114,7 +111,7 @@ def add_walk_forward_admission(starts: pd.DataFrame) -> pd.DataFrame:
         & (s["ret5"] >= s["ret5_q20"])
         & (s["dist_high20"] >= s["dist_high20_q20"])
     )
-    s["pass_h4m_health_maturity"] = (
+    s["pass_h4m_static_start_maturity"] = (
         s["pass_h4_health"]
         & (s["score"] <= s["score_q80"])
         & (s["slope"] <= s["slope_q80"])
@@ -122,39 +119,77 @@ def add_walk_forward_admission(starts: pd.DataFrame) -> pd.DataFrame:
     return s
 
 
-def merge_admission(features: pd.DataFrame, starts: pd.DataFrame) -> pd.DataFrame:
+def merge_episode_admission(features: pd.DataFrame, starts: pd.DataFrame) -> pd.DataFrame:
     cols = [
         "symbol", "start_date", "prior_episode_count",
         "pass_h1_slope_delta", "pass_h2_plus_resid", "pass_h4_health",
-        "pass_h4m_health_maturity",
+        "pass_h4m_static_start_maturity",
     ]
     q = starts[cols].rename(columns={"start_date": "episode_start_date"})
     f = features.merge(q, on=["symbol", "episode_start_date"], how="left", validate="many_to_one")
     for col in [c for c in cols if c.startswith("pass_")]:
-        f[col] = f[col].fillna(False).astype(bool)
+        f[col] = f[col].astype("boolean").fillna(False).astype(bool)
     return f
+
+
+def attach_daily_maturity_thresholds(features: pd.DataFrame, starts: pd.DataFrame) -> pd.DataFrame:
+    first = starts.loc[
+        ~starts["start_date"].duplicated(),
+        ["start_date", "score_q80", "slope_q80"],
+    ].copy()
+    first = first.rename(columns={
+        "start_date": "date",
+        "score_q80": "daily_score_q80",
+        "slope_q80": "daily_slope_q80",
+    }).set_index("date")
+
+    calendar = pd.Index(sorted(pd.to_datetime(features["date"].unique())), name="date")
+    daily = first.reindex(calendar).ffill().reset_index()
+    return features.merge(daily, on="date", how="left", validate="many_to_one")
 
 
 def candidate_mask(f: pd.DataFrame, variant: str) -> pd.Series:
     base = f["trend_eligible"].fillna(False).astype(bool)
     if variant == "baseline":
         return base
-    return base & f[f"pass_{variant}"].fillna(False).astype(bool)
+    if variant in ADMISSION_PASS_COLUMNS:
+        return base & f[ADMISSION_PASS_COLUMNS[variant]].fillna(False).astype(bool)
+
+    if variant.startswith("h1_dynamic"):
+        health = f["pass_h1_slope_delta"].fillna(False).astype(bool)
+    elif variant.startswith("h2_dynamic"):
+        health = f["pass_h2_plus_resid"].fillna(False).astype(bool)
+    elif variant.startswith("h4_dynamic"):
+        health = f["pass_h4_health"].fillna(False).astype(bool)
+    else:
+        raise ValueError(f"Unknown variant: {variant}")
+
+    score_ok = f["daily_score_q80"].notna() & (f["score"] <= f["daily_score_q80"])
+    mask = base & health & score_ok
+    if variant == "h4_dynamic_score_slope80":
+        slope_ok = f["daily_slope_q80"].notna() & (f["slope"] <= f["daily_slope_q80"])
+        mask = mask & slope_ok
+    return mask
 
 
-def build_daily_targets(
-    f: pd.DataFrame,
-    variant: str,
-) -> tuple[pd.Series, pd.Series]:
+def build_daily_targets(f: pd.DataFrame, variant: str) -> tuple[pd.Series, pd.Series]:
+    all_dates = pd.Index(
+        sorted(pd.to_datetime(f.loc[f["date"] >= SIGNAL_WARMUP_START, "date"].unique())),
+        name="date",
+    )
     mask = candidate_mask(f, variant) & (f["date"] >= SIGNAL_WARMUP_START)
     d = f.loc[mask, ["date", "symbol", "score"]].copy()
-    counts = d.groupby("date").size().astype(int)
+    counts = d.groupby("date").size().reindex(all_dates, fill_value=0).astype(int)
     if d.empty:
         return pd.Series(dtype=object), counts
     idx = d.groupby("date", sort=True)["score"].idxmax()
-    picks = d.loc[idx, ["date", "symbol"]].sort_values("date")
-    targets = picks.set_index("date")["symbol"]
+    targets = d.loc[idx, ["date", "symbol"]].sort_values("date").set_index("date")["symbol"]
     return targets, counts
+
+
+def _cagr(total: float, first_date: pd.Timestamp, last_date: pd.Timestamp) -> float:
+    days = max(1, int((last_date - first_date).days))
+    return float((1.0 + total) ** (365.25 / days) - 1.0) if total > -1 else -1.0
 
 
 def _period_metrics(pnl: pd.DataFrame, start: str, end: str | None = None) -> dict:
@@ -163,17 +198,22 @@ def _period_metrics(pnl: pd.DataFrame, start: str, end: str | None = None) -> di
         s = s.loc[s["date"] <= pd.Timestamp(end)].copy()
     if s.empty:
         return {}
-    equity = (1.0 + s["net_ret"]).cumprod()
-    peak = equity.cummax()
-    dd = equity / peak - 1.0
-    total = float(equity.iloc[-1] - 1.0)
-    days = max(1, int((s["date"].iloc[-1] - s["date"].iloc[0]).days))
-    cagr = float((1.0 + total) ** (365.25 / days) - 1.0) if total > -1 else -1.0
+
+    net_equity = (1.0 + s["net_ret"]).cumprod()
+    gross_equity = (1.0 + s["gross_ret"]).cumprod()
+    net_dd = net_equity / net_equity.cummax() - 1.0
+    gross_dd = gross_equity / gross_equity.cummax() - 1.0
+    net_total = float(net_equity.iloc[-1] - 1.0)
+    gross_total = float(gross_equity.iloc[-1] - 1.0)
+
     return {
         "trading_days": int(len(s)),
-        "total_return": total,
-        "cagr": cagr,
-        "max_drawdown": float(dd.min()),
+        "total_return": net_total,
+        "gross_total_return": gross_total,
+        "cagr": _cagr(net_total, s["date"].iloc[0], s["date"].iloc[-1]),
+        "gross_cagr": _cagr(gross_total, s["date"].iloc[0], s["date"].iloc[-1]),
+        "max_drawdown": float(net_dd.min()),
+        "gross_max_drawdown": float(gross_dd.min()),
         "switch_events": int(s["switch_event"].sum()),
         "turnover_sides": int(s["turnover_sides"].sum()),
         "invested_ratio": float(s["invested"].mean()),
@@ -181,10 +221,7 @@ def _period_metrics(pnl: pd.DataFrame, start: str, end: str | None = None) -> di
     }
 
 
-def backtest_open_to_open(
-    bars: pd.DataFrame,
-    targets: pd.Series,
-) -> pd.DataFrame:
+def backtest_open_to_open(bars: pd.DataFrame, targets: pd.Series) -> pd.DataFrame:
     calendar = pd.Index(sorted(pd.to_datetime(bars["date"].unique())))
     open_wide = bars.pivot(index="date", columns="symbol", values="open").reindex(calendar)
     target_map = targets.to_dict()
@@ -202,17 +239,11 @@ def backtest_open_to_open(
         target = str(target) if target is not None and not pd.isna(target) else None
 
         if target == prev_target:
-            sides = 0
-            switch_event = 0
-        elif prev_target is None and target is not None:
-            sides = 1
-            switch_event = 1
-        elif prev_target is not None and target is None:
-            sides = 1
-            switch_event = 1
+            sides, switch_event = 0, 0
+        elif prev_target is None or target is None:
+            sides, switch_event = 1, 1
         else:
-            sides = 2
-            switch_event = 1
+            sides, switch_event = 2, 1
 
         gross = 0.0
         missing_quote = False
@@ -246,12 +277,7 @@ def backtest_open_to_open(
     return pd.DataFrame(rows)
 
 
-def summarize_variant(
-    variant: str,
-    pnl: pd.DataFrame,
-    targets: pd.Series,
-    counts: pd.Series,
-) -> dict:
+def summarize_variant(variant: str, pnl: pd.DataFrame, targets: pd.Series, counts: pd.Series) -> dict:
     eval_pnl = pnl.loc[pnl["date"] >= BACKTEST_START].copy()
     eval_counts = counts.loc[counts.index >= BACKTEST_START]
     eval_targets = targets.loc[targets.index >= BACKTEST_START]
@@ -260,11 +286,12 @@ def summarize_variant(
     for year in range(2021, 2027):
         sub = eval_pnl.loc[eval_pnl["date"].dt.year == year]
         if not sub.empty:
-            yearly[str(year)] = float((1.0 + sub["net_ret"]).prod() - 1.0)
+            yearly[str(year)] = {
+                "net": float((1.0 + sub["net_ret"]).prod() - 1.0),
+                "gross": float((1.0 + sub["gross_ret"]).prod() - 1.0),
+            }
 
-    top_symbols = (
-        eval_targets.value_counts().head(10).rename_axis("symbol").reset_index(name="signal_days")
-    )
+    top_symbols = eval_targets.value_counts().head(10).rename_axis("symbol").reset_index(name="signal_days")
     return {
         "variant": variant,
         "full_2021_2026": _period_metrics(eval_pnl, "2021-01-01"),
@@ -274,7 +301,7 @@ def summarize_variant(
         "candidate_count_mean": float(eval_counts.mean()) if len(eval_counts) else 0.0,
         "candidate_count_median": float(eval_counts.median()) if len(eval_counts) else 0.0,
         "candidate_count_p10": float(eval_counts.quantile(0.10)) if len(eval_counts) else 0.0,
-        "candidate_empty_signal_days": int((eval_counts.reindex(eval_pnl["signal_date"].unique(), fill_value=0) == 0).sum()),
+        "candidate_empty_signal_days": int((eval_counts == 0).sum()),
         "top_symbols": top_symbols.to_dict(orient="records"),
     }
 
@@ -285,8 +312,7 @@ def admission_summary(starts: pd.DataFrame) -> dict:
         "episodes_2021plus": int(len(s)),
         "prior_episode_count_at_2021_start": int(s["prior_episode_count"].iloc[0]) if len(s) else 0,
     }
-    for variant in VARIANTS[1:]:
-        col = f"pass_{variant}"
+    for variant, col in ADMISSION_PASS_COLUMNS.items():
         out[variant] = {
             "admitted": int(s[col].sum()),
             "admission_rate": float(s[col].mean()),
@@ -310,15 +336,15 @@ def main() -> None:
     features = build_features(bars)
     features, starts = attach_raw_episode_ids(features)
     starts = add_walk_forward_admission(starts)
-    features = merge_admission(features, starts)
+    features = merge_episode_admission(features, starts)
+    features = attach_daily_maturity_thresholds(features, starts)
 
     summary = {
         "design": {
             "backtest_start": str(BACKTEST_START.date()),
             "threshold_history": "all strictly prior raw OLS episode starts (expanding)",
-            "health_floor": "historical 20th percentile",
-            "maturity_ceiling": "historical 80th percentile",
-            "admission_frozen_for_episode": True,
+            "health_floor": "historical 20th percentile at episode start; frozen for episode",
+            "dynamic_maturity_ceiling": "daily current score/slope vs prior-history episode-start 80th percentile",
             "signal_execution": "close(t) signal -> open(t+1) execution -> open(t+2) mark",
             "side_cost": SIDE_COST,
             "min_prior_episodes": MIN_PRIOR_EPISODES,
@@ -348,7 +374,7 @@ def main() -> None:
         "slope_delta_q20", "current_resid_q20", "ret5_q20", "dist_high20_q20",
         "score_q80", "slope_q80",
         "pass_h1_slope_delta", "pass_h2_plus_resid", "pass_h4_health",
-        "pass_h4m_health_maturity",
+        "pass_h4m_static_start_maturity",
     ]
     starts.loc[starts["start_date"] >= BACKTEST_START, episode_cols].to_csv(args.episodes_path, index=False)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
