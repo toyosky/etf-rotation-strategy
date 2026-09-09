@@ -6,6 +6,7 @@ on:
     paths:
       - 'research/build_instrument_metadata.py'
       - 'research/build_instrument_metadata_static.py'
+      - 'research/build_instrument_metadata_universe_v2.py'
       - 'research/requirements-instrument-metadata.txt'
       - '.github/workflows/build-instrument-metadata.yml'
 
@@ -25,8 +26,7 @@ jobs:
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: |
-          python research/build_instrument_metadata_static.py \
-            --snapshot-date 2026-09-09 \
+          python research/build_instrument_metadata_universe_v2.py \
             --summary-path instrument-metadata-summary.json \
             --csv-path instrument-metadata-current.csv \
             --review-path instrument-metadata-review.csv
