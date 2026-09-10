@@ -1,5 +1,6 @@
 name: Build Instrument Metadata
 
+# Rebuild metadata after Tencent daily_bars refresh.
 on:
   workflow_dispatch:
   push:
