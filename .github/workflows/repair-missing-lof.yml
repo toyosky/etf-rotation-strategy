@@ -1,0 +1,115 @@
+name: Repair Missing Tencent LOF Bars
+
+on:
+  push:
+    paths:
+      - '.github/workflows/repair-missing-lof.yml'
+  workflow_dispatch:
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: python -m pip install pandas sqlalchemy psycopg2-binary
+      - name: Fetch missing LOF history from WeStock
+        shell: bash
+        run: |
+          set -euo pipefail
+          CODES="sz160723,sz161128,sz161129,sz161130,sz162411,sz164824,sh501018,sh501025"
+          : > lof-part1.json
+          : > lof-part2.json
+          npx -y westock-data-skillhub@1.0.5 kline "$CODES" \
+            --start 2012-01-01 --end 2020-12-31 --period day --fq qfq --raw > lof-part1.json
+          npx -y westock-data-skillhub@1.0.5 kline "$CODES" \
+            --start 2021-01-01 --end 2026-09-09 --period day --fq qfq --raw > lof-part2.json
+      - name: Validate and upsert
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/repair_lof.py <<'PY'
+          import json, os
+          import pandas as pd
+          from sqlalchemy import create_engine, text
+
+          wanted = ['160723','161128','161129','161130','162411','164824','501018','501025']
+          frames=[]
+          for fn in ['lof-part1.json','lof-part2.json']:
+              with open(fn, encoding='utf-8') as f:
+                  data=json.load(f)
+              if data:
+                  frames.append(pd.DataFrame(data))
+          if not frames:
+              raise RuntimeError('WeStock returned no LOF rows')
+          df=pd.concat(frames, ignore_index=True)
+          df['symbol']=df['symbol'].str.replace(r'^(sh|sz)','',regex=True)
+          df['date']=pd.to_datetime(df['date']).dt.date
+          df=df[df['symbol'].isin(wanted)].copy()
+          counts=df.groupby('symbol').size().to_dict()
+          missing=[s for s in wanted if counts.get(s,0) < 200]
+          print('row counts:', counts)
+          if missing:
+              raise RuntimeError(f'insufficient history for: {missing}')
+          for c in ['open','high','low','last','volume','amount']:
+              df[c]=pd.to_numeric(df[c], errors='coerce')
+          if df[['open','high','low','last']].isna().any().any():
+              raise RuntimeError('null/non-numeric OHLC found')
+          # WeStock volume is in lots; normalize to shares like the existing table.
+          df['volume']=df['volume']*100.0
+          df=df.sort_values(['symbol','date']).drop_duplicates(['symbol','date'], keep='last')
+
+          raw=os.environ['ETF_DAILY_BARS_DATABASE_URL']
+          if raw.startswith('postgres://'):
+              raw='postgresql://'+raw[len('postgres://'):]
+          if raw.startswith('postgresql://'):
+              raw='postgresql+psycopg2://'+raw[len('postgresql://'):]
+          engine=create_engine(raw, pool_pre_ping=True)
+          stmt=text('''
+            insert into public.daily_bars
+            (symbol,date,open,high,low,close,volume,amount,source,adjustment,price_scale_factor,source_file,instrument_type)
+            values
+            (:symbol,:date,:open,:high,:low,:close,:volume,:amount,'tencent_westockdata','qfq',1.0,:source_file,'LOF')
+            on conflict (symbol,date) do update set
+              open=excluded.open, high=excluded.high, low=excluded.low, close=excluded.close,
+              volume=excluded.volume, amount=excluded.amount, source=excluded.source,
+              adjustment=excluded.adjustment, price_scale_factor=excluded.price_scale_factor,
+              source_file=excluded.source_file, instrument_type=excluded.instrument_type
+          ''')
+          rows=[]
+          for r in df.itertuples(index=False):
+              rows.append(dict(symbol=r.symbol,date=r.date,open=float(r.open),high=float(r.high),low=float(r.low),
+                               close=float(r.last),volume=None if pd.isna(r.volume) else float(r.volume),
+                               amount=None if pd.isna(r.amount) else float(r.amount),
+                               source_file=f'westock_repair/{r.symbol}.json'))
+          with engine.begin() as conn:
+              for i in range(0,len(rows),1000):
+                  conn.execute(stmt, rows[i:i+1000])
+          print(f'upserted {len(rows)} rows')
+          PY
+          python /tmp/repair_lof.py
+      - name: Verify repaired symbols
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, pandas as pd
+          from sqlalchemy import create_engine, text
+          raw=os.environ['ETF_DAILY_BARS_DATABASE_URL']
+          if raw.startswith('postgres://'): raw='postgresql://'+raw[len('postgres://'):]
+          if raw.startswith('postgresql://'): raw='postgresql+psycopg2://'+raw[len('postgresql://'):]
+          e=create_engine(raw)
+          q=text("""select symbol,count(*) bars,min(date) min_date,max(date) max_date
+                    from public.daily_bars
+                    where symbol in ('160723','161128','161129','161130','162411','164824','501018','501025')
+                    group by symbol order by symbol""")
+          print(pd.read_sql(q,e).to_string(index=False))
+          PY
