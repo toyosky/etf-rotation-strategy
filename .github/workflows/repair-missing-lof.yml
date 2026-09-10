@@ -27,12 +27,10 @@ jobs:
         run: |
           set -euo pipefail
           CODES="sz160723,sz161128,sz161129,sz161130,sz162411,sz164824,sh501018,sh501025"
-          : > lof-part1.json
-          : > lof-part2.json
           npx -y westock-data-skillhub@1.0.5 kline "$CODES" \
-            --start 2012-01-01 --end 2020-12-31 --period day --fq qfq --raw > lof-part1.json
+            --start 2012-01-01 --end 2020-12-31 --period day --fq bfq --raw > lof-part1.json
           npx -y westock-data-skillhub@1.0.5 kline "$CODES" \
-            --start 2021-01-01 --end 2026-09-09 --period day --fq qfq --raw > lof-part2.json
+            --start 2021-01-01 --end 2026-09-09 --period day --fq bfq --raw > lof-part2.json
       - name: Validate and upsert
         shell: bash
         run: |
@@ -50,7 +48,7 @@ jobs:
               if data:
                   frames.append(pd.DataFrame(data))
           if not frames:
-              raise RuntimeError('WeStock returned no LOF rows')
+              raise RuntimeError('WeStock bfq returned no LOF rows')
           df=pd.concat(frames, ignore_index=True)
           df['symbol']=df['symbol'].str.replace(r'^(sh|sz)','',regex=True)
           df['date']=pd.to_datetime(df['date']).dt.date
@@ -59,12 +57,11 @@ jobs:
           missing=[s for s in wanted if counts.get(s,0) < 200]
           print('row counts:', counts)
           if missing:
-              raise RuntimeError(f'insufficient history for: {missing}')
+              raise RuntimeError(f'insufficient bfq history for: {missing}')
           for c in ['open','high','low','last','volume','amount']:
               df[c]=pd.to_numeric(df[c], errors='coerce')
           if df[['open','high','low','last']].isna().any().any():
               raise RuntimeError('null/non-numeric OHLC found')
-          # WeStock volume is in lots; normalize to shares like the existing table.
           df['volume']=df['volume']*100.0
           df=df.sort_values(['symbol','date']).drop_duplicates(['symbol','date'], keep='last')
 
@@ -78,7 +75,7 @@ jobs:
             insert into public.daily_bars
             (symbol,date,open,high,low,close,volume,amount,source,adjustment,price_scale_factor,source_file,instrument_type)
             values
-            (:symbol,:date,:open,:high,:low,:close,:volume,:amount,'tencent_westockdata','qfq',1.0,:source_file,'LOF')
+            (:symbol,:date,:open,:high,:low,:close,:volume,:amount,'tencent_westockdata','none',1.0,:source_file,'LOF')
             on conflict (symbol,date) do update set
               open=excluded.open, high=excluded.high, low=excluded.low, close=excluded.close,
               volume=excluded.volume, amount=excluded.amount, source=excluded.source,
@@ -90,7 +87,7 @@ jobs:
               rows.append(dict(symbol=r.symbol,date=r.date,open=float(r.open),high=float(r.high),low=float(r.low),
                                close=float(r.last),volume=None if pd.isna(r.volume) else float(r.volume),
                                amount=None if pd.isna(r.amount) else float(r.amount),
-                               source_file=f'westock_repair/{r.symbol}.json'))
+                               source_file=f'westock_repair_bfq/{r.symbol}.json'))
           with engine.begin() as conn:
               for i in range(0,len(rows),1000):
                   conn.execute(stmt, rows[i:i+1000])
@@ -107,7 +104,8 @@ jobs:
           if raw.startswith('postgres://'): raw='postgresql://'+raw[len('postgres://'):]
           if raw.startswith('postgresql://'): raw='postgresql+psycopg2://'+raw[len('postgresql://'):]
           e=create_engine(raw)
-          q=text("""select symbol,count(*) bars,min(date) min_date,max(date) max_date
+          q=text("""select symbol,count(*) bars,min(date) min_date,max(date) max_date,
+                           min(adjustment) adjustment,min(source) source
                     from public.daily_bars
                     where symbol in ('160723','161128','161129','161130','162411','164824','501018','501025')
                     group by symbol order by symbol""")
