@@ -18,8 +18,6 @@ def db_url(raw: str) -> str:
     return raw
 
 SQL = r"""
--- Gold-miner equity ETFs are equity exposure to the CSI Shanghai-Shenzhen-Hong Kong
--- Gold Industry Stock Index family, not spot-gold commodity exposure.
 update public.instrument_metadata
 set asset_class='EQUITY', region_primary='CN', region_tags=array['CN','HK']::text[],
     exposure_level1='CHINA_HK_EQUITY', exposure_level2='CHINA_HK_GOLD_MINERS',
@@ -29,7 +27,6 @@ set asset_class='EQUITY', region_primary='CN', region_tags=array['CN','HK']::tex
     metadata_source='verified gold-miner equity index exposure; taxonomy v2', updated_at=now()
 where valid_to is null and has_daily_bars and name like '%黄金股ETF%';
 
--- Huaan S&P Global Oil LOF is a global oil-company equity-index QDII.
 update public.instrument_metadata
 set asset_class='EQUITY', region_primary='GLOBAL', region_tags=array['GLOBAL','US','EU']::text[],
     exposure_level1='GLOBAL_EQUITY', exposure_level2='GLOBAL_OIL_GAS_EQUITY',
@@ -39,7 +36,6 @@ set asset_class='EQUITY', region_primary='GLOBAL', region_tags=array['GLOBAL','U
     metadata_source='verified Huaan S&P Global Oil equity-index QDII; taxonomy v2', updated_at=now()
 where valid_to is null and symbol='160416';
 
--- S&P US sector products.
 update public.instrument_metadata
 set asset_class='EQUITY', region_primary='US', region_tags=array['US']::text[], exposure_level1='US_EQUITY',
     exposure_level2='US_OIL_GAS_EQUITY', underlying_key='SP_OIL_GAS_EXPLORATION_PRODUCTION_SELECT',
@@ -56,7 +52,6 @@ set asset_class='EQUITY', region_primary='US', region_tags=array['US']::text[], 
     metadata_source='verified S&P Biotechnology Select Industry exposure', updated_at=now()
 where valid_to is null and symbol='159502';
 
--- S&P China A-share dividend remains domestic China equity.
 update public.instrument_metadata
 set asset_class='EQUITY', region_primary='CN', region_tags=array['CN']::text[], exposure_level1='CHINA_EQUITY',
     exposure_level2='CHINA_DIVIDEND', underlying_key='SP_CHINA_A_SHARE_DIVIDEND_OPPORTUNITIES', risk_bucket='CHINA_DIVIDEND',
@@ -65,7 +60,6 @@ set asset_class='EQUITY', region_primary='CN', region_tags=array['CN']::text[], 
     metadata_source='verified S&P China A-Share Dividend Opportunities exposure', updated_at=now()
 where valid_to is null and symbol='562060';
 
--- Standardize cash-management and physical-gold de-duplication identities.
 update public.instrument_metadata
 set asset_class='CASHLIKE', region_primary='CN', region_tags=array['CN']::text[],
     exposure_level1='CHINA_CASH_MANAGEMENT', exposure_level2='CHINA_CASHLIKE',
@@ -79,7 +73,6 @@ set underlying_key='GOLD_SPOT', risk_bucket='PRECIOUS_METALS_GOLD', exposure_lev
 where valid_to is null and has_daily_bars and asset_class='COMMODITY'
   and risk_bucket='PRECIOUS_METALS_GOLD' and name not like '%黄金股ETF%';
 
--- Hong Kong sector/theme refinement.
 update public.instrument_metadata
 set exposure_level2='HK_INNOVATIVE_DRUG', underlying_key='HK_INNOVATIVE_DRUG', risk_bucket='HK_HEALTHCARE', style_sector='HEALTHCARE', classification_method='AUTO_NAME_V2', updated_at=now()
 where valid_to is null and has_daily_bars and region_primary='HK' and name like '%创新药%';
@@ -108,7 +101,6 @@ update public.instrument_metadata
 set exposure_level2='HK_INTERNET', underlying_key='HK_INTERNET', risk_bucket='HK_TECH', style_sector='TECHNOLOGY', classification_method='AUTO_NAME_V2', updated_at=now()
 where valid_to is null and has_daily_bars and region_primary='HK' and name like '%互联网%';
 
--- Hong Kong broad-index identities explicit in fund names.
 update public.instrument_metadata
 set exposure_level2='HK_H_SHARE', underlying_key='HANG_SENG_CHINA_ENTERPRISES', risk_bucket='HK_H_SHARE', style_sector='BROAD', classification_method='AUTO_NAME_V2', updated_at=now()
 where valid_to is null and has_daily_bars and region_primary='HK' and (name like '%恒生中国企业%' or name like '%恒生国企%');
@@ -122,7 +114,6 @@ update public.instrument_metadata
 set exposure_level2='HANG_SENG_INDEX', underlying_key='HANG_SENG_INDEX', risk_bucket='HK_BROAD', style_sector='BROAD', classification_method='AUTO_NAME_V2', updated_at=now()
 where valid_to is null and has_daily_bars and region_primary='HK' and (name like '%恒生指数%' or name like '%恒指港股通%' or name in ('恒生ETF华夏','恒生ETF易方达','恒生ETF鹏华'));
 
--- Two verified HK broad/SOE edge cases.
 update public.instrument_metadata
 set exposure_level2='HK_CONNECT_50', underlying_key='HANG_SENG_STOCK_CONNECT_50', risk_bucket='HK_BROAD', style_sector='BROAD', classification_method='MANUAL_VERIFIED_V2', confidence=0.99, updated_at=now()
 where valid_to is null and symbol='159109';
@@ -130,7 +121,6 @@ update public.instrument_metadata
 set exposure_level2='HK_SOE', underlying_key='CSI_HK_MAINLAND_SOE', risk_bucket='HK_SOE', style_sector='SOE', classification_method='MANUAL_VERIFIED_V2', confidence=0.99, updated_at=now()
 where valid_to is null and symbol='159519';
 
--- Explicit Japan names in current universe are Nikkei-225 family products.
 update public.instrument_metadata
 set exposure_level2='JAPAN_NIKKEI225', underlying_key='NIKKEI225', risk_bucket='JAPAN_EQUITY', style_sector='BROAD', classification_method='AUTO_NAME_V2', updated_at=now()
 where valid_to is null and has_daily_bars and region_primary='JP' and name like '%日经%';
@@ -145,7 +135,7 @@ def main() -> None:
         raise SystemExit('Missing ETF_DAILY_BARS_DATABASE_URL')
     engine = create_engine(db_url(a.database_url), pool_pre_ping=True)
     with engine.begin() as conn:
-        conn.exec_driver_sql(SQL)
+        conn.execute(text(SQL))
         row = conn.execute(text("""
             select count(*) as with_bars,
                    count(*) filter(where needs_review) as needs_review,
