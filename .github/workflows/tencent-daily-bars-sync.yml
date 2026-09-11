@@ -1,0 +1,66 @@
+name: Tencent HFQ Daily Bars Sync
+
+on:
+  schedule:
+    # 15:30 UTC = 23:30 Asia/Shanghai. Runs every calendar day.
+    - cron: "30 15 * * *"
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: Calendar days to refetch and upsert
+        required: false
+        default: "14"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tencent-hfq-daily-bars-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      LOOKBACK_DAYS: ${{ inputs.lookback_days || '14' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: automation/requirements-tencent-daily.txt
+      - name: Install pinned Python dependency
+        run: python -m pip install --requirement automation/requirements-tencent-daily.txt
+      - name: Run unit checks
+        run: python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
+      - name: Fetch Tencent HFQ bars and upsert Supabase
+        run: |
+          python automation/tencent_daily_sync.py \
+            --lookback-days "$LOOKBACK_DAYS" \
+            --summary tencent-daily-sync-summary.json
+      - name: Publish run summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f tencent-daily-sync-summary.json ]; then
+            echo '## Tencent HFQ daily sync' >> "$GITHUB_STEP_SUMMARY"
+            cat tencent-daily-sync-summary.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload run summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tencent-daily-sync-${{ github.run_id }}
+          path: tencent-daily-sync-summary.json
+          if-no-files-found: warn
+          retention-days: 30

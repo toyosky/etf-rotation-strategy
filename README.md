@@ -11,6 +11,9 @@
 
 正式代码位于：`strategy/main.py`
 
+腾讯后复权 ETF/LOF 日线由 GitHub Actions 每天增量更新到 Supabase。部署、
+校验和手动补跑说明见 [Tencent HFQ daily-bar sync](docs/TENCENT_DAILY_BARS_SYNC.md)。
+
 ## 目录
 
 ```text
