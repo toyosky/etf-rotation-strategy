@@ -18,6 +18,7 @@ on:
       - "research/marginal_universe_value/model_retention_stage8_robustness.py"
       - "research/marginal_universe_value/model_retention_stage9_second_removal_oracle.py"
       - "research/marginal_universe_value/model_retention_stage10_dynamic_second.py"
+      - "research/marginal_universe_value/build_retention_stage11_conditional_second_labels.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -84,6 +85,11 @@ jobs:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: python research/marginal_universe_value/model_retention_stage10_dynamic_second.py
 
+      - name: Stage 11 conditional second-order label diagnostics
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: python research/marginal_universe_value/build_retention_stage11_conditional_second_labels.py
+
       - name: Show summary
         if: always()
         run: |
@@ -96,7 +102,8 @@ jobs:
             muv-retention-stage7-report.json \
             muv-retention-stage8-report.json \
             muv-retention-stage9-report.json \
-            muv-retention-stage10-report.json; do
+            muv-retention-stage10-report.json \
+            muv-retention-stage11-report.json; do
             if [ -f "$f" ]; then
               echo "## $f" >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -107,7 +114,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-v1_4-stage10-${{ github.run_id }}
+          name: muv-retention-v1_4-stage11-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
@@ -128,5 +135,8 @@ jobs:
             muv-retention-stage9-second-removal-oracle.csv
             muv-retention-stage10-report.json
             muv-retention-stage10-dynamic-second.csv
+            muv-retention-stage11-report.json
+            muv-retention-stage11-conditional-second.parquet
+            muv-retention-stage11-stage7-slice.csv
           if-no-files-found: ignore
           retention-days: 30
