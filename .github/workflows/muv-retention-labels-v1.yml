@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "research/marginal_universe_value/build_retention_labels_v1.py"
+      - "research/marginal_universe_value/build_retention_labels_v1_1.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
           SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
           SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
           SUPABASE_STORAGE_BUCKET: etf-research-archive
-        run: python research/marginal_universe_value/build_retention_labels_v1.py
+        run: python research/marginal_universe_value/build_retention_labels_v1_1.py
 
       - name: Show summary
         if: always()
