@@ -60,6 +60,8 @@ Model: L2 LogisticRegression, C=1.0, no hyperparameter search.
 
 A pairwise-only weighted model is reported as an ablation, not selected post hoc.
 
+Minimum model support is frozen at 20 historical active rows with both target classes present. If this condition is not met, no safety prediction is produced for that month.
+
 ## Past-only regret coverage calibration
 
 The safety score is not thresholded at 0.5.
@@ -77,6 +79,8 @@ Sensitivity targets, all reported: 80% and 95%.
 Interpretation:
 
 > the protected set is calibrated to contain roughly the historical score region responsible for 90% of cumulative opportunity-loss mass.
+
+Calibration requires at least 8 earlier OOS positive-RV active events. If there are fewer than 8, the policy takes no action. This is a support constraint, not a tuned return threshold.
 
 No current/future outcome is used to set the current month's cutoff.
 
