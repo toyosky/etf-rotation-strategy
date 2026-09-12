@@ -9,10 +9,8 @@ on:
       - "research/marginal_universe_value/build_retention_labels_v1_1.py"
       - "research/marginal_universe_value/build_retention_labels_v1_2.py"
       - "research/marginal_universe_value/build_retention_labels_v1_3.py"
-      - "research/marginal_universe_value/analyze_retention_stage1.py"
-      - "research/marginal_universe_value/analyze_retention_stage1_v1_2.py"
-      - "research/marginal_universe_value/model_retention_stage2_walkforward.py"
       - "research/marginal_universe_value/model_retention_stage3_pairwise_sign.py"
+      - "research/marginal_universe_value/model_retention_stage4_regime_robustness.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -54,6 +52,9 @@ jobs:
       - name: Stage 3 pairwise sign walk-forward
         run: python research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
 
+      - name: Stage 4 regime robustness
+        run: python research/marginal_universe_value/model_retention_stage4_regime_robustness.py
+
       - name: Show summary
         if: always()
         run: |
@@ -64,6 +65,10 @@ jobs:
           if [ -f muv-retention-stage3-report.json ]; then
             echo '## Stage 3 pairwise walk-forward' >> "$GITHUB_STEP_SUMMARY"
             cat muv-retention-stage3-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f muv-retention-stage4-report.json ]; then
+            echo '## Stage 4 regime robustness' >> "$GITHUB_STEP_SUMMARY"
+            cat muv-retention-stage4-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload run outputs
@@ -76,5 +81,7 @@ jobs:
             muv-retention-labels-v1.parquet
             muv-retention-stage3-report.json
             muv-retention-stage3-predictions.csv
+            muv-retention-stage4-report.json
+            muv-retention-stage4-predictions.csv
           if-no-files-found: ignore
           retention-days: 30
