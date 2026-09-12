@@ -13,6 +13,23 @@
 
 固定 15 池及现有 OLS 逻辑作为 benchmark，不因全历史表现好坏直接删改资产。
 
+## 当前进行中的正式研究
+
+### Post-OLS Remaining Trend Life V1
+
+核心问题：ETF 在被 OLS 识别为趋势以后，什么样的 ETF / 什么样的当时状态拥有更长、且仍具经济价值的剩余趋势寿命？
+
+入口：`research/post_ols_life/README.md`
+
+当前文件：
+
+- `research/post_ols_life/README.md`：冻结研究定义、detection contracts、labels、feature set、反过拟合约束与数据 lineage。
+- `research/post_ols_life/BASELINE_RAW_START_20260912.md`：正式 V1 运行前的 raw-start baseline 与初步机制发现。
+- `research/post_ols_life/build_study_v1.py`：V1 事件构建、60 日标签、分期诊断、Parquet/Storage 归档脚本。
+- `.github/workflows/post-ols-life-v1.yml`：研究运行入口。
+
+本研究的事件级大数据不写入 PostgreSQL；输出到 Supabase Storage：`etf-research-archive/post_ols_life/v1/`。
+
 ## 新研究目录约定
 
 后续新增脚本优先按主题进入子目录：
@@ -23,6 +40,7 @@ research/
   universe/       候选池、去重、月度冻结池、Walk-Forward
   ols/            OLS episode、Top1 寿命和排序诊断
   execution/      V1、切换、分钟级执行
+  post_ols_life/  当前剩余趋势寿命主研究
   archive/        已终止且不再被 workflow 引用的历史实验
 ```
 
