@@ -13,6 +13,7 @@ on:
       - "research/marginal_universe_value/model_retention_stage3_pairwise_sign.py"
       - "research/marginal_universe_value/model_retention_stage4_regime_robustness.py"
       - "research/marginal_universe_value/model_retention_stage5_regime_diagnostics.py"
+      - "research/marginal_universe_value/model_retention_stage6_policy_walkforward.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -60,6 +61,9 @@ jobs:
       - name: Stage 5 regime diagnostics
         run: python research/marginal_universe_value/model_retention_stage5_regime_diagnostics.py
 
+      - name: Stage 6 one-step retention policy walk-forward
+        run: python research/marginal_universe_value/model_retention_stage6_policy_walkforward.py
+
       - name: Show summary
         if: always()
         run: |
@@ -79,12 +83,16 @@ jobs:
             echo '## Stage 5 regime diagnostics' >> "$GITHUB_STEP_SUMMARY"
             cat muv-retention-stage5-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f muv-retention-stage6-report.json ]; then
+            echo '## Stage 6 retention policy' >> "$GITHUB_STEP_SUMMARY"
+            cat muv-retention-stage6-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Upload run outputs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-v1_4-${{ github.run_id }}
+          name: muv-retention-v1_4-stage6-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
@@ -95,5 +103,7 @@ jobs:
             muv-retention-stage5-report.json
             muv-retention-stage5-monthly-regimes.csv
             muv-retention-stage5-terciles.csv
+            muv-retention-stage6-report.json
+            muv-retention-stage6-monthly-policy.csv
           if-no-files-found: ignore
           retention-days: 30
