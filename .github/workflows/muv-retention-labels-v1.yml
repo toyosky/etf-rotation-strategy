@@ -16,6 +16,7 @@ on:
       - "research/marginal_universe_value/model_retention_stage6_policy_walkforward.py"
       - "research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py"
       - "research/marginal_universe_value/model_retention_stage8_robustness.py"
+      - "research/marginal_universe_value/model_retention_stage9_second_removal_oracle.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -72,6 +73,11 @@ jobs:
       - name: Stage 8 fixed-policy robustness diagnostics
         run: python research/marginal_universe_value/model_retention_stage8_robustness.py
 
+      - name: Stage 9 second-removal Oracle headroom audit
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: python research/marginal_universe_value/model_retention_stage9_second_removal_oracle.py
+
       - name: Show summary
         if: always()
         run: |
@@ -82,7 +88,8 @@ jobs:
             muv-retention-stage5-report.json \
             muv-retention-stage6-report.json \
             muv-retention-stage7-report.json \
-            muv-retention-stage8-report.json; do
+            muv-retention-stage8-report.json \
+            muv-retention-stage9-report.json; do
             if [ -f "$f" ]; then
               echo "## $f" >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -93,7 +100,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-v1_4-stage8-${{ github.run_id }}
+          name: muv-retention-v1_4-stage9-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
@@ -110,5 +117,7 @@ jobs:
             muv-retention-stage7-monthly-policy.csv
             muv-retention-stage7-safety-predictions.csv
             muv-retention-stage8-report.json
+            muv-retention-stage9-report.json
+            muv-retention-stage9-second-removal-oracle.csv
           if-no-files-found: ignore
           retention-days: 30
