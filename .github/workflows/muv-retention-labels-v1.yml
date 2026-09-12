@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - "research/requirements-full-market-ols.txt"
       - "research/marginal_universe_value/build_retention_labels_v1.py"
       - "research/marginal_universe_value/build_retention_labels_v1_1.py"
       - "research/marginal_universe_value/build_retention_labels_v1_2.py"
       - "research/marginal_universe_value/analyze_retention_stage1.py"
       - "research/marginal_universe_value/analyze_retention_stage1_v1_2.py"
+      - "research/marginal_universe_value/model_retention_stage2_walkforward.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -50,6 +52,9 @@ jobs:
       - name: Analyze retention Stage 1 V1.2
         run: python research/marginal_universe_value/analyze_retention_stage1_v1_2.py
 
+      - name: Stage 2 expanding walk-forward
+        run: python research/marginal_universe_value/model_retention_stage2_walkforward.py
+
       - name: Show summary
         if: always()
         run: |
@@ -60,6 +65,10 @@ jobs:
           if [ -f muv-retention-stage1-v1_2-report.json ]; then
             echo '## Stage 1 V1.2 report' >> "$GITHUB_STEP_SUMMARY"
             cat muv-retention-stage1-v1_2-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f muv-retention-stage2-report.json ]; then
+            echo '## Stage 2 walk-forward report' >> "$GITHUB_STEP_SUMMARY"
+            cat muv-retention-stage2-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload run outputs
@@ -73,5 +82,7 @@ jobs:
             muv-retention-stage1-v1_2-report.json
             muv-retention-stage1-v1_2-features.csv
             muv-retention-stage1-v1_2-symbols.csv
+            muv-retention-stage2-report.json
+            muv-retention-stage2-predictions.csv
           if-no-files-found: ignore
           retention-days: 30
