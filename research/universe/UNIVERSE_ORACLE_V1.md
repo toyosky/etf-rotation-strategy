@@ -115,6 +115,45 @@
 
 如果 `add_both` 反而恶化，则说明 Universe 不是越大越好，候选质量/竞争结构本身很重要。
 
+## Stage B — constrained replacement grid
+
+Stage A 的单一 Fwd20-Oracle 组合只能说明“一种替换选择”的结果，无法判断 Universe 效应是否普遍。Stage B 因此在查看组合回测结果之前固定候选集合，并**枚举所有合格组合**。
+
+候选集合不按组合回测收益筛选：
+
+### Nasdaq replacement set
+
+所有满足基础候选约束、且结构标签与 `513100` 相同：
+
+- `US / US_EQUITY / US_NASDAQ100`
+
+的非 Fixed15 ETF 全部进入集合。
+
+### Consumer fallback set
+
+由于 `US_CONSUMER` 没有合格同桶替代，fallback 集合使用：
+
+- `US / US_EQUITY`
+- risk bucket 不属于删除 159529 后剩余 Fixed15 已经覆盖的桶
+
+所有符合基础候选约束的 ETF 全部进入集合。
+
+Stage B 分别枚举：
+
+- 每个 Nasdaq 单替换；
+- 每个 Consumer-fallback 单替换；
+- 所有 Nasdaq × fallback 双替换组合；
+- 所有 Nasdaq × fallback “只新增、不删除”组合。
+
+重点不是最优组合，而是分布：
+
+- 有多少比例的组合优于 Fixed15；
+- 组合收益中位数是否优于 Fixed15；
+- 最大回撤、Top1 tenure、switches 是否整体改善；
+- `add` 是否普遍恶化，从而支持“更多候选 ≠ 更好 Universe”。
+
+只有当改善具有**组合层面的广泛性**，而不是仅靠极少数最优组合，才认为“主动寻找替代品”具有较强机制证据。
+
 ## Anti-overfitting guardrail
 
 本实验允许后视，只因为它是上限/机制测试。
@@ -126,3 +165,4 @@
 ## Research log
 
 - 2026-09-12：冻结 Universe Oracle V1 设计、坏标的、替代约束、消融 variants 和解释规则。
+- 2026-09-12：Stage A 单一 Oracle 结果显示替换具有明显截面相互作用；因此在不追加坏标的的前提下冻结 Stage B constrained grid，用组合分布而非最优组合判断 Universe 效应。
