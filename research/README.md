@@ -6,7 +6,7 @@
 
 研究优先级按层次推进：
 
-1. `Universe / asset class`：哪些资产大类和 ETF 更适合 OLS 趋势轮动。
+1. `Universe / MUV`：研究哪些 ETF 应获得 OLS 竞争资格，以及它们进入/退出 Universe 后的边际组合价值。
 2. `OLS`：在冻结 benchmark 上验证趋势识别和剩余趋势寿命。
 3. `Takeover / V1`：研究 Top1 接管、score 变化和成交额确认。
 4. `Execution`：最后处理分钟级买卖时点、滑点、QDII/LOF 溢价等。
@@ -14,6 +14,21 @@
 固定 15 池及现有 OLS 逻辑作为 benchmark，不因全历史表现好坏直接删改资产。
 
 ## 当前进行中的正式研究
+
+### Marginal Universe Value (MUV)
+
+核心问题：一个 ETF 是否应该获得 OLS Universe 的竞争资格，能否被形式化为一个可估计的 counterfactual 数学经济问题？
+
+入口：`research/marginal_universe_value/README.md`
+
+核心对象：
+
+- `Retention Value`：现有成员保留 vs 删除，对下一期策略产生的边际价值。
+- `Admission Value`：外部 challenger 加入 vs 不加入，对下一期策略产生的边际价值。
+- V1 先保存多维 counterfactual labels，不提前用人为权重压成单一 utility。
+- 目标是最终形成 monthly past-only `retention + admission` gate，而不是固定 Top-K 或固定池宽。
+
+本项目是当前 Universe 研究的长期数学建模主线。
 
 ### Post-OLS Remaining Trend Life V1
 
@@ -36,12 +51,13 @@
 
 ```text
 research/
-  asset_class/    资产大类筛选、类内状态和趋势生存分析
-  universe/       候选池、去重、月度冻结池、Walk-Forward
-  ols/            OLS episode、Top1 寿命和排序诊断
-  execution/      V1、切换、分钟级执行
-  post_ols_life/  当前剩余趋势寿命主研究
-  archive/        已终止且不再被 workflow 引用的历史实验
+  asset_class/              资产大类筛选、类内状态和趋势生存分析
+  universe/                 候选池、Oracle、池宽、去重、月度冻结池、Walk-Forward
+  marginal_universe_value/  MUV counterfactual target、retention/admission 建模
+  ols/                      OLS episode、Top1 寿命和排序诊断
+  execution/                V1、切换、分钟级执行
+  post_ols_life/            剩余趋势寿命研究
+  archive/                  已终止且不再被 workflow 引用的历史实验
 ```
 
 目前已有大量历史脚本仍位于 `research/` 根目录，因为现有 GitHub Actions 直接引用这些路径。为避免破坏复现性，暂不强制搬迁；只有在确认 workflow 引用同步更新后才归档。
