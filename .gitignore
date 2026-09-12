@@ -4,3 +4,19 @@ __pycache__/
 .env.*
 *.log
 .DS_Store
+
+# Local research outputs / large artifacts
+*.parquet
+*.feather
+*.arrow
+*.duckdb
+*.sqlite
+*.db
+artifacts/
+outputs/
+.tmp/
+tmp/
+
+# Local credentials / service files
+*.pem
+*.key
