@@ -116,7 +116,7 @@ def normalize(payload: Any, requested: list[str], types: dict[str, str], run_dat
             raise ValueError(f"Invalid OHLC ordering for {symbol} {bar_date}")
         output[(symbol, bar_date)] = (
             symbol, bar_date, open_, high, low, close, volume_lots * 100.0, amount,
-            SOURCE, ADJUSTMENT, 1.0, f"github-actions/tencent-hfq/{run_date.isoformat()}", types[symbol],
+            types[symbol], run_date,
         )
     return list(output.values())
 
@@ -147,14 +147,12 @@ def database_url() -> str:
 def upsert(conn: Any, bars: list[tuple[Any, ...]]) -> None:
     sql = """
         INSERT INTO public.daily_bars
-          (symbol,date,open,high,low,close,volume,amount,source,adjustment,
-           price_scale_factor,source_file,instrument_type)
+          (symbol,date,open,high,low,close,volume,amount,instrument_type,ingested_on)
         VALUES %s
         ON CONFLICT (symbol,date) DO UPDATE SET
           open=EXCLUDED.open, high=EXCLUDED.high, low=EXCLUDED.low, close=EXCLUDED.close,
-          volume=EXCLUDED.volume, amount=EXCLUDED.amount, source=EXCLUDED.source,
-          adjustment=EXCLUDED.adjustment, price_scale_factor=EXCLUDED.price_scale_factor,
-          source_file=EXCLUDED.source_file, instrument_type=EXCLUDED.instrument_type
+          volume=EXCLUDED.volume, amount=EXCLUDED.amount,
+          instrument_type=EXCLUDED.instrument_type, ingested_on=EXCLUDED.ingested_on
     """
     with conn.cursor() as cursor:
         execute_values(cursor, sql, bars, page_size=2000)
@@ -200,6 +198,7 @@ def main() -> None:
         "status": "PASS", "as_of": args.as_of.isoformat(), "fetch_start": start.isoformat(),
         "universe_symbols": len(universe), "upsert_rows": len(bars), "updated_symbols": len(counts),
         "no_rows_in_window": sorted(set(missing)), "source": SOURCE, "adjustment": ADJUSTMENT,
+        "storage_schema": "compact_v1",
     }
     args.summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))
