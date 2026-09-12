@@ -15,6 +15,7 @@ on:
       - "research/marginal_universe_value/model_retention_stage5_regime_diagnostics.py"
       - "research/marginal_universe_value/model_retention_stage6_policy_walkforward.py"
       - "research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py"
+      - "research/marginal_universe_value/model_retention_stage8_robustness.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -68,39 +69,31 @@ jobs:
       - name: Stage 7 asymmetric retention safety walk-forward
         run: python research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py
 
+      - name: Stage 8 fixed-policy robustness diagnostics
+        run: python research/marginal_universe_value/model_retention_stage8_robustness.py
+
       - name: Show summary
         if: always()
         run: |
-          if [ -f muv-retention-v1-summary.json ]; then
-            echo '## Label build V1.4' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-v1-summary.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage3-report.json ]; then
-            echo '## Stage 3 pairwise walk-forward' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage3-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage4-report.json ]; then
-            echo '## Stage 4 regime robustness' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage4-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage5-report.json ]; then
-            echo '## Stage 5 regime diagnostics' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage5-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage6-report.json ]; then
-            echo '## Stage 6 retention policy' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage6-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage7-report.json ]; then
-            echo '## Stage 7 asymmetric safety policy' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage7-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
+          for f in \
+            muv-retention-v1-summary.json \
+            muv-retention-stage3-report.json \
+            muv-retention-stage4-report.json \
+            muv-retention-stage5-report.json \
+            muv-retention-stage6-report.json \
+            muv-retention-stage7-report.json \
+            muv-retention-stage8-report.json; do
+            if [ -f "$f" ]; then
+              echo "## $f" >> "$GITHUB_STEP_SUMMARY"
+              cat "$f" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
 
       - name: Upload run outputs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-v1_4-stage7-${{ github.run_id }}
+          name: muv-retention-v1_4-stage8-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
@@ -116,5 +109,6 @@ jobs:
             muv-retention-stage7-report.json
             muv-retention-stage7-monthly-policy.csv
             muv-retention-stage7-safety-predictions.csv
+            muv-retention-stage8-report.json
           if-no-files-found: ignore
           retention-days: 30
