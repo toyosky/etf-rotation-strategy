@@ -75,16 +75,19 @@ jobs:
             exit 0
           fi
 
-          RUN_URL="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          TITLE="ETF日线同步失败"
-          CONTENT="Tencent HFQ Daily Bars Sync 失败。仓库: ${GITHUB_REPOSITORY}；时间(UTC): $(date -u '+%Y-%m-%d %H:%M:%S')；Run: ${RUN_URL}"
-
           python - <<'PY'
-          import json, os
+          import json
+          import os
+          from datetime import datetime, timezone
+
+          repo = os.environ.get("GITHUB_REPOSITORY", "unknown")
+          run_id = os.environ.get("GITHUB_RUN_ID", "unknown")
+          run_url = f"https://github.com/{repo}/actions/runs/{run_id}"
+          when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
           payload = {
               "token": os.environ["PUSHPLUS_TOKEN"],
               "title": "ETF日线同步失败",
-              "content": os.environ["CONTENT"],
+              "content": f"Tencent HFQ Daily Bars Sync 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
               "template": "txt",
           }
           with open("pushplus-failure.json", "w", encoding="utf-8") as f:
@@ -96,5 +99,3 @@ jobs:
             -H 'Content-Type: application/json' \
             --data-binary @pushplus-failure.json \
             https://www.pushplus.plus/send
-        env:
-          CONTENT: Tencent HFQ Daily Bars Sync 失败。仓库=${{ github.repository }}；Run=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
