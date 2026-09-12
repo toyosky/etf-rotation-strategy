@@ -126,6 +126,23 @@ Supabase Storage / etf-research-archive
 
 GitHub 只保存代码、研究定义与最终复盘 Markdown；大型事件级和中间结果保存在 Supabase Storage 的 Parquet 中。
 
+## Fixed15 vs market rank-tenure diagnostic
+
+为区分“底层趋势寿命”和“Top1 排名寿命”，另建：
+
+`research/post_ols_life/fixed15_vs_market_rank_v1.py`
+
+固定定义：
+
+- Fixed15：完整 15 只，不施加全市场流动性/上市期 universe gate，只使用同一 OLS 正趋势条件 + D2；
+- Market：使用冻结的 point-in-time `trend_eligible`；
+- 两侧每天按同一 `score` 排 Top1；
+- 分别统计 2021–2024、2025–2026 的 Top1 run length；
+- 同时记录 candidate count、Top1/Top2 relative score gap、leader change rate；
+- 仅把紧凑摘要写入 PostgreSQL `research`，不持久化日频大矩阵。
+
+该诊断直接检验：此前 Fixed15 Top1 tenure 缩短究竟是固定池特有问题，还是市场整体截面竞争变化。
+
 ## Versioning
 
 - `v1`：多 detection contract + 60 日剩余寿命诊断；不拟合模型。
@@ -141,3 +158,4 @@ GitHub 只保存代码、研究定义与最终复盘 Markdown；大型事件级�
 ## Research log
 
 - 2026-09-12：冻结 V1 研究问题、detection contracts、labels、feature set、反过拟合约束与存储路径。开始 Stage 1。
+- 2026-09-12：完成 raw-start baseline，并发现全市场 raw OLS episode 在 2025–2026 并未缩短；新增 Fixed15 vs full-market rank-tenure diagnostic，以定位 Top1 寿命缩短发生在哪一层。
