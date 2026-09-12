@@ -8,9 +8,11 @@ on:
       - "research/marginal_universe_value/build_retention_labels_v1.py"
       - "research/marginal_universe_value/build_retention_labels_v1_1.py"
       - "research/marginal_universe_value/build_retention_labels_v1_2.py"
+      - "research/marginal_universe_value/build_retention_labels_v1_3.py"
       - "research/marginal_universe_value/analyze_retention_stage1.py"
       - "research/marginal_universe_value/analyze_retention_stage1_v1_2.py"
       - "research/marginal_universe_value/model_retention_stage2_walkforward.py"
+      - "research/marginal_universe_value/model_retention_stage3_pairwise_sign.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -39,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --requirement research/requirements-full-market-ols.txt
 
-      - name: Build retention V1.2 path labels
+      - name: Build retention V1.3 pairwise labels
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
           SUPABASE_STORAGE_S3_ENDPOINT: https://gsyziuzezmmnvgdoazkg.storage.supabase.co/storage/v1/s3
@@ -47,42 +49,32 @@ jobs:
           SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
           SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
           SUPABASE_STORAGE_BUCKET: etf-research-archive
-        run: python research/marginal_universe_value/build_retention_labels_v1_2.py
+        run: python research/marginal_universe_value/build_retention_labels_v1_3.py
 
-      - name: Analyze retention Stage 1 V1.2
-        run: python research/marginal_universe_value/analyze_retention_stage1_v1_2.py
-
-      - name: Stage 2 expanding walk-forward
-        run: python research/marginal_universe_value/model_retention_stage2_walkforward.py
+      - name: Stage 3 pairwise sign walk-forward
+        run: python research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
 
       - name: Show summary
         if: always()
         run: |
           if [ -f muv-retention-v1-summary.json ]; then
-            echo '## Label build' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Label build V1.3' >> "$GITHUB_STEP_SUMMARY"
             cat muv-retention-v1-summary.json >> "$GITHUB_STEP_SUMMARY"
           fi
-          if [ -f muv-retention-stage1-v1_2-report.json ]; then
-            echo '## Stage 1 V1.2 report' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage1-v1_2-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f muv-retention-stage2-report.json ]; then
-            echo '## Stage 2 walk-forward report' >> "$GITHUB_STEP_SUMMARY"
-            cat muv-retention-stage2-report.json >> "$GITHUB_STEP_SUMMARY"
+          if [ -f muv-retention-stage3-report.json ]; then
+            echo '## Stage 3 pairwise walk-forward' >> "$GITHUB_STEP_SUMMARY"
+            cat muv-retention-stage3-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload run outputs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-labels-v1-${{ github.run_id }}
+          name: muv-retention-v1_3-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
-            muv-retention-stage1-v1_2-report.json
-            muv-retention-stage1-v1_2-features.csv
-            muv-retention-stage1-v1_2-symbols.csv
-            muv-retention-stage2-report.json
-            muv-retention-stage2-predictions.csv
+            muv-retention-stage3-report.json
+            muv-retention-stage3-predictions.csv
           if-no-files-found: ignore
           retention-days: 30
