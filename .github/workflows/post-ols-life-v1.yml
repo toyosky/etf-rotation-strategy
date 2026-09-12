@@ -1,0 +1,71 @@
+name: Post-OLS Remaining Life V1
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research/post_ols_life/**'
+      - '.github/workflows/post-ols-life-v1.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post-ols-life-v1
+  cancel-in-progress: false
+
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+
+      - name: Install dependencies
+        run: python -m pip install --requirement research/requirements-full-market-ols.txt
+
+      - name: Build and archive V1 study
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          SUPABASE_STORAGE_S3_ENDPOINT: https://gsyziuzezmmnvgdoazkg.storage.supabase.co/storage/v1/s3
+          SUPABASE_STORAGE_S3_REGION: ap-southeast-1
+          SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
+          SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
+          SUPABASE_STORAGE_BUCKET: etf-research-archive
+        run: |
+          python research/post_ols_life/build_study_v1.py \
+            --summary-path post-ols-life-summary.json
+
+      - name: Publish report to job summary
+        if: always()
+        run: |
+          if [ -f post-ols-life-output/report_v1.md ]; then
+            cat post-ols-life-output/report_v1.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f post-ols-life-summary.json ]; then
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Run manifest' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat post-ols-life-summary.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload compact run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-ols-life-v1-${{ github.run_id }}
+          path: |
+            post-ols-life-summary.json
+            post-ols-life-output/report_v1.md
+            post-ols-life-output/summary_v1.json
+          if-no-files-found: warn
+          retention-days: 30
