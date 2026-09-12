@@ -52,27 +52,12 @@ jobs:
         if: always()
         run: |
           if [ -f muv-retention-v1-summary.json ]; then
-            cat muv-retention-v1-summary.json
             echo '## Label build' >> "$GITHUB_STEP_SUMMARY"
-            echo '```json' >> "$GITHUB_STEP_SUMMARY"
             cat muv-retention-v1-summary.json >> "$GITHUB_STEP_SUMMARY"
-            echo '```' >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f muv-retention-stage1-report.json ]; then
-            echo '## Stage 1 descriptive economics' >> "$GITHUB_STEP_SUMMARY"
-            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import json
-          r=json.load(open('muv-retention-stage1-report.json', encoding='utf-8'))
-          print('```json')
-          print(json.dumps({
-              'dataset': r['dataset'],
-              'target_decomposition': r['target_decomposition'],
-              'feature_group_summary': r['feature_group_summary'],
-              'top_stable_impact_features': r['top_stable_impact_features'][:8],
-              'top_stable_conditional_value_features': r['top_stable_conditional_value_features'][:8],
-          }, ensure_ascii=False, indent=2))
-          print('```')
-          PY
+            echo '## Stage 1 report' >> "$GITHUB_STEP_SUMMARY"
+            cat muv-retention-stage1-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload run outputs
