@@ -191,8 +191,8 @@ experiments:
     name: competition_nuisance_audit
     parent_stage: stage20
     label_version: v1.6
-    status: planned
-    decision: continue
+    status: completed
+    decision: branch
     hypothesis: "A persistent competition-nuisance phenotype exists: some ETFs add Top1 switching without adding marginal return, and this structure shows cross-era persistence."
     target_scope: retention
     model_role: competition_structure_mechanism_audit
@@ -201,17 +201,38 @@ experiments:
       - research/marginal_universe_value/model_retention_stage21_competition_nuisance.py
     workflow: .github/workflows/muv-retention-stage21.yml
     design_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_AUDIT_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_FINDINGS_20260913.md
     primary_outputs:
       - muv-retention-stage21-report.json
       - muv-retention-stage21-symbol-era.csv
-    notes: "No predictive model or deletion policy. Tests whether a weaker structural target is real and stable enough to justify later prospective identification."
+    last_verified_run_id: 34742072152
+    last_verified_run_status: success
+    notes: "Competition nuisance is economically non-trivial (70.67% of extra-switch rows are nuisance), but nuisance identity is weakly persistent: structural flag agreement 35.71%, return Spearman -0.389, only 159981 and 164824 are structural nuisance in both eras. Do not tune nuisance cutoffs; branch to opportunity coverage."
+
+  - stage_id: stage22
+    name: opportunity_coverage_audit
+    parent_stage: stage21
+    label_version: full_market_point_in_time_v1
+    status: planned
+    decision: continue
+    hypothesis: "Fixed15 materially under-covers point-in-time qualified ETF trends that subsequently deliver strong 20-day continuation, with a coverage gap that is directionally stable across eras and not dependent on Cluster90 representation."
+    target_scope: coverage
+    model_role: opportunity_set_mechanism_audit
+    scripts:
+      - research/marginal_universe_value/model_stage22_opportunity_coverage.py
+    workflow: .github/workflows/muv-stage22-opportunity-coverage.yml
+    design_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_AUDIT_DESIGN_20260913.md
+    primary_outputs:
+      - muv-stage22-opportunity-coverage-report.json
+      - muv-stage22-opportunity-coverage-months.csv
+    notes: "No predictive model or policy backtest. Compare Fixed15 with both all point-in-time trend-eligible ETFs and frozen Cluster90 representatives so the conclusion cannot depend solely on Cluster90."
 
 next_experiment:
-  stage_id: stage22
+  stage_id: stage23
   status: planned
-  parent_stage: stage21
-  branch_condition: "Choose only after Stage21 measures nuisance prevalence and cross-era persistence."
-  option_a: "prospective_nuisance_risk_identification_with_asymmetric_false_removal_control"
-  option_b: "opportunity_coverage_audit"
-  option_c: "admission_gate_or_qualification_transition_audit"
-  anti_overfit_rule: "If Stage21 nuisance structure is weak or unstable, do not tune nuisance cutoffs or select favorable ETF subsets on the same history; branch to coverage/admission."
+  parent_stage: stage22
+  branch_condition: "Choose only after Stage22 tests whether a stable coverage gap exists overall and in both eras."
+  option_a: "conservative_admission_gate_or_qualification_transition_audit"
+  option_b: "accept_mostly_fixed_universe_and_revisit_retention_or_competition_structure"
+  option_c: "coverage_gap_regime_audit_without_threshold_tuning"
+  anti_overfit_rule: "Do not tune eligibility thresholds, asset classes, or ETF subsets on Stage22 outcomes. If coverage is regime-dependent, record that and use a conservative regime/coverage audit rather than claiming universal admission value."
