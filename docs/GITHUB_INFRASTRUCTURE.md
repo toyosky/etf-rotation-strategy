@@ -5,140 +5,160 @@ This repository uses GitHub as the orchestration and reproducibility layer for E
 ## 1. Responsibility split
 
 ### Git repository
-Stores:
-- strategy source code
-- research source code
-- workflow definitions
-- compact JSON/CSV summaries
-- specifications and experiment notes
-
-Does not store secrets or frequently-mutated large datasets directly.
+Stores strategy/research source code, workflow definitions, compact summaries, specifications and experiment notes. Secrets and frequently-mutated large datasets do not belong in normal Git history.
 
 ### Git LFS
-Use for intentionally versioned cold snapshots only, for example:
-- frozen Parquet input snapshots
-- reproducibility datasets for milestone experiments
-- model bundles that must be tied to a commit/tag
-
-LFS-tracked extensions are defined in `.gitattributes`.
+Use only for intentionally versioned cold snapshots such as frozen Parquet inputs, reproducibility checkpoints and model bundles tied to a commit/tag. LFS-tracked extensions are defined in `.gitattributes`.
 
 Recommended convention:
 
 ```text
-data/
-  snapshots/
-    YYYY-MM-DD/
-      daily_bars_hfq.parquet
-      universe.parquet
-      manifest.json
+data/snapshots/YYYY-MM-DD/
+  daily_bars_hfq.parquet
+  universe.parquet
+  manifest.json
 ```
 
-A snapshot should include a manifest with source, as-of time, row count, symbol count, adjustment convention and checksum.
+A snapshot manifest should record source, as-of time, row count, symbol count, adjustment convention and checksum.
 
 ### Supabase PostgreSQL
-Use for hot/queryable data:
-- daily bars
-- instrument metadata
-- data quality status
-- compact model/research summaries
+Use for hot/queryable facts: daily bars, instrument metadata, data-quality status and compact model/research summaries.
 
 ### Supabase Storage
-Use for larger research objects that should remain remotely accessible but do not need Git history:
-- full feature matrices
-- walk-forward details
-- parameter grids
-- correlation matrices
-- large intermediate Parquet outputs
+Use for large durable research objects that do not need Git history: feature matrices, walk-forward details, parameter grids, correlation matrices and large intermediate Parquet outputs.
 
 ### GitHub Actions cache
-Use for recomputable expensive intermediates. Cache is an acceleration layer, never the system of record.
+Use for expensive but reproducible intermediates. Cache is acceleration only, never the system of record.
 
-Rules:
-- cache keys must encode data freshness and code identity
-- never restore an old market-data cache across an incompatible as-of date
-- outputs needed for audit must still be uploaded as artifacts or persisted elsewhere
+MUV retention-label caches encode:
+- label schema/version
+- operating system
+- market-data freshness bucket
+- hash of the label-construction code chain
 
-Current implementation:
-- Stage18 MUV retention labels are cached for same-day reruns
-- Python dependency cache remains enabled through `actions/setup-python`
+The freshness bucket separates runs before and after 16:00 UTC so a post-market-data-sync run does not normally reuse a pre-sync label cache.
 
 ### GitHub Actions artifacts
-Use for per-run audit outputs:
-- reports
-- diagnostics
-- small CSV extracts
-- model evaluation output
-
-Artifacts are temporary run evidence, not permanent storage.
+Use for per-run audit evidence: reports, diagnostics, CSV extracts and evaluation outputs. Artifacts are temporary evidence, not permanent storage.
 
 ### Codespaces
-Use for interactive research/debugging with the same Python 3.12 environment as Actions.
-
-The environment is defined in `.devcontainer/devcontainer.json` and installs `research/requirements-full-market-ols.txt` automatically.
+Use for interactive research/debugging with the same Python 3.12 research environment as Actions. Environment definition: `.devcontainer/devcontainer.json`.
 
 ### GitHub Releases
-Use only for frozen strategy milestones.
-
-Tag convention:
+Use only for frozen strategy milestones. Tag convention:
 
 ```text
 strategy-vMAJOR.MINOR.PATCH
 ```
 
-Pushing such a tag triggers `.github/workflows/release-strategy.yml`, which creates a release bundle containing strategy code, strategy specification, README and a machine-readable manifest.
+Such tags trigger `.github/workflows/release-strategy.yml` and create a reproducibility bundle.
 
-## 2. Research output contract
+## 2. Governed MUV workflow architecture
 
-Every milestone research stage should ideally produce:
+MUV workflows from Stage13 onward use shared local Composite Actions.
+
+```text
+checkout
+  -> .github/actions/muv-bootstrap
+       -> Python 3.12
+       -> pip cache
+       -> dependency install
+       -> label cache restore
+       -> label build on cache miss
+       -> output validation
+  -> stage-specific model commands
+  -> .github/actions/muv-publish
+       -> GitHub Step Summary
+       -> run artifact
+```
+
+Shared actions:
+- `.github/actions/muv-bootstrap/action.yml`
+- `.github/actions/muv-publish/action.yml`
+
+A stage workflow should contain only:
+1. trigger/path dependencies
+2. label version and builder
+3. stage-specific model commands
+4. report/artifact file declaration
+
+Do not copy Python setup, dependency installation, cache implementation or upload boilerplate into new MUV stage workflows.
+
+### Label version contract
+
+A stage must explicitly declare the label schema it consumes.
+
+Current lineage:
+- Stage13–16 -> V1.4
+- Stage17 -> V1.5
+- Stage18 -> V1.6
+
+A model stage may not silently switch label versions. A label schema change is an experimental change and must be visible in the workflow and research design note.
+
+### Stage19+ template
+
+```yaml
+- uses: actions/checkout@v4
+
+- name: Prepare MUV labels
+  uses: ./.github/actions/muv-bootstrap
+  env:
+    ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+  with:
+    label-version: vX.Y
+    builder: research/marginal_universe_value/build_retention_labels_vX_Y.py
+
+- name: Stage N model
+  run: python research/marginal_universe_value/model_retention_stageN.py
+
+- name: Publish Stage N
+  if: always()
+  uses: ./.github/actions/muv-publish
+  with:
+    report-file: muv-retention-stageN-report.json
+    artifact-name: muv-retention-stageN-${{ github.run_id }}
+    paths: |
+      muv-retention-v1-summary.json
+      muv-retention-labels-v1.parquet
+      muv-retention-stageN-report.json
+```
+
+## 3. Research output contract
+
+Every milestone stage should ideally produce:
 
 ```text
 <experiment>-report.json
 <experiment>-summary.csv
-<experiment>-details.parquet   # only when needed
+<experiment>-details.parquet   # when needed
 ```
 
-The report should include at least:
-- experiment/stage ID
-- git commit SHA when available
-- data as-of timestamp
-- sample window
-- universe definition
-- key parameters
-- primary metrics
-- conclusion/status
+Reports should include experiment/stage ID, Git commit SHA when available, data as-of timestamp, sample window, universe definition, key parameters, primary metrics and conclusion/status.
 
-Recommended status values:
-- exploratory
-- rejected
-- provisional
-- validated
-- frozen
+Recommended status values: exploratory, rejected, provisional, validated, frozen.
 
-## 3. Data lifecycle
-
-Preferred flow:
+## 4. Data lifecycle
 
 ```text
 Public/source data
   -> ingestion Action
   -> Supabase hot store
   -> research Action / Codespace
-  -> Actions cache for expensive recomputable intermediates
+  -> Actions cache for expensive reproducible intermediates
   -> artifact for run audit
   -> Supabase Storage for large durable research outputs
   -> Git LFS only for intentionally frozen reproducibility snapshots
   -> Release when strategy logic is formally frozen
 ```
 
-## 4. MUV-specific policy
+## 5. MUV-specific policy
 
-For Marginal Universe Value research:
+- Label datasets are derived data, not source-of-truth market data.
+- Compatible reruns should reuse cache rather than re-query and rebuild unnecessarily.
+- Label-code changes invalidate cache automatically.
+- Model reports remain GitHub artifacts unless deliberately promoted.
+- A dataset enters Git LFS only when selected as a reproducibility checkpoint.
+- Only validated admission/retention logic may be promoted into `strategy/`.
+- Older experimental stages remain reproducible; governance refactoring must not change model semantics.
 
-- label datasets are treated as derived data
-- same-day reruns may reuse cache
-- any change to label-construction scripts must invalidate cache
-- model reports remain normal GitHub artifacts unless promoted
-- a dataset is committed through LFS only when it is selected as a reproducibility checkpoint
-- only validated admission/retention logic is eligible for promotion into `strategy/`
-
-This keeps exploratory iteration cheap while preserving reproducibility at decision points.
+This separation keeps exploratory iteration cheap while preserving auditability and reproducibility at decision points.
