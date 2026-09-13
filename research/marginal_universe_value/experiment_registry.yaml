@@ -64,25 +64,54 @@ experiments:
     last_verified_run_status: success
     notes: "Side evidence only. Overall state AP/Recall improved modestly, but 2023-24 improved and 2025-26 deteriorated on both primary metrics. Do not tune/rescue. Broad future-return opportunity label is not the downstream Universe-value objective."
   - stage_id: stage26
-    name: variable_size_set_value_oracle_audit
+    name: variable_size_set_value_local_oracle_audit
     parent_stage: stage25
     label_version: set_value_next20_fixed_ols_v2
-    status: planned
+    status: completed
     decision: continue
-    hypothesis: "Under the frozen daily OLS selector, the future set-value landscape contains a nontrivial variable-size local optimum: a forward-add oracle reaches positive value through a finite sequence of additions, while the resulting size, marginal gains, switching and composition expose a repeatable coverage-versus-competition trade-off."
+    hypothesis: "Under the frozen daily OLS selector, the future set-value landscape contains a nontrivial variable-size local optimum whose natural stopping size exposes the coverage-versus-competition trade-off."
     target_scope: universe_set_value
-    model_role: counterfactual_oracle_structure_audit
+    model_role: counterfactual_local_oracle_structure_audit
     scripts: [research/marginal_universe_value/audit_stage26_variable_size_set_value_oracle.py]
     workflow: .github/workflows/muv-stage26-variable-size-set-value-oracle.yml
     design_doc: research/marginal_universe_value/STAGE26_VARIABLE_SIZE_SET_VALUE_ORACLE_AUDIT_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE26_VARIABLE_SIZE_SET_VALUE_ORACLE_AUDIT_FINDINGS_20260913.md
     primary_outputs: [muv-stage26-set-value-oracle-report.json, muv-stage26-set-value-oracle-months.csv, muv-stage26-set-value-oracle-steps.csv]
-    notes: "Mainline reset: Fix15 is diagnostic only. Oracle uses future information solely for structural diagnosis/labels, never for executable selection. Universe size is endogenous; no fixed K search."
+    last_verified_run_id: 34750235471
+    last_verified_run_status: success
+    notes: "Frozen local evidence: 44 months; greedy add/remove local optimum size 1-7, median 3; fewer switches and longer Top1 tenure than full market; composition highly unstable. Oracle is future-aware diagnostic only."
+  - stage_id: stage26c
+    name: exact_certification_audit
+    parent_stage: stage26
+    label_version: downstream_ols_set_value_month_v1
+    status: completed
+    decision: branch
+    hypothesis: "The first global MILP artifact contains enough certified-optimal months to support exact structural claims."
+    target_scope: universe_set_value
+    model_role: solver_certification_audit
+    workflow: .github/workflows/muv-stage26c-exact-certification.yml
+    last_verified_run_id: 34764219880
+    last_verified_run_status: success
+    notes: "Audit only: original MILP semantics were month-interval, not the frozen next20 label. Certified exact coverage was sparse and absent in 2025-26; these results cannot be used for aligned exact-vs-greedy claims."
+  - stage_id: stage26d
+    name: aligned_exact_bound_audit
+    parent_stage: stage26c
+    label_version: set_value_next20_fixed_ols_v2
+    status: planned
+    decision: continue
+    hypothesis: "After mechanically aligning the global MILP to the already-frozen next-20-signal-day set-value semantics, certified exact months and solver bounds can calibrate the gap between the greedy/local oracle and the global optimum without retuning the research design."
+    target_scope: universe_set_value
+    model_role: global_optimality_calibration
+    scripts: [research/marginal_universe_value/run_stage26d_aligned_exact_bound.py]
+    workflow: .github/workflows/muv-stage26d-aligned-exact-bound.yml
+    design_doc: research/marginal_universe_value/STAGE26D_ALIGNED_EXACT_BOUND_AUDIT_DESIGN_20260913.md
+    primary_outputs: [muv-stage26d-aligned-exact-bound-report.json, muv-stage26d-aligned-exact-bound-months.csv, muv-stage26d-aligned-exact-bound-labels.csv]
+    notes: "Pre-registered mechanical semantic repair only. Fixed 120s/month solver budget; nonzero primary status is incumbent only. No result-driven time-budget rescue."
 next_experiment:
   stage_id: stage27
   status: hold
-  parent_stage: stage26
-  branch_condition: "Choose only after Stage26 establishes whether the set-value/size landscape has enough structure to justify a point-in-time generator."
-  option_a: walk_forward_low_dof_set_generator
-  option_b: relation_state_identifiability_audit
-  option_c: weaken_to_structural_coverage_minus_nuisance_policy
-  anti_overfit_rule: "Do not fit a predictive subset generator until Stage26 freezes the counterfactual semantics and shows that local set value and endogenous size are meaningful rather than oracle noise."
+  parent_stage: stage26d
+  branch_condition: "Proceed only after Stage26D provides semantics-aligned certified exact/bound calibration against the frozen greedy/local oracle."
+  option_a: approximate_submodular_greedy_geometry
+  option_b: interaction_relational_geometry
+  anti_overfit_rule: "Do not fit a predictive generator in Stage27. First establish diminishing returns, pairwise interaction strength, natural zero-crossing of marginal value, and empty-forward/full-backward/global calibration under frozen set_value_next20_fixed_ols_v2 semantics."
