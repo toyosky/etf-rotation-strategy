@@ -19,6 +19,7 @@ on:
       - "research/marginal_universe_value/model_retention_stage9_second_removal_oracle.py"
       - "research/marginal_universe_value/model_retention_stage10_dynamic_second.py"
       - "research/marginal_universe_value/build_retention_stage11_conditional_second_labels.py"
+      - "research/marginal_universe_value/model_retention_stage12_tail_winner_guard.py"
       - ".github/workflows/muv-retention-labels-v1.yml"
 
 permissions:
@@ -90,6 +91,9 @@ jobs:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: python research/marginal_universe_value/build_retention_stage11_conditional_second_labels.py
 
+      - name: Stage 12 direct tail-winner guard
+        run: python research/marginal_universe_value/model_retention_stage12_tail_winner_guard.py
+
       - name: Show summary
         if: always()
         run: |
@@ -103,7 +107,8 @@ jobs:
             muv-retention-stage8-report.json \
             muv-retention-stage9-report.json \
             muv-retention-stage10-report.json \
-            muv-retention-stage11-report.json; do
+            muv-retention-stage11-report.json \
+            muv-retention-stage12-report.json; do
             if [ -f "$f" ]; then
               echo "## $f" >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -114,7 +119,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: muv-retention-v1_4-stage11-${{ github.run_id }}
+          name: muv-retention-v1_4-stage12-${{ github.run_id }}
           path: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
@@ -138,5 +143,9 @@ jobs:
             muv-retention-stage11-report.json
             muv-retention-stage11-conditional-second.parquet
             muv-retention-stage11-stage7-slice.csv
+            muv-retention-stage12-report.json
+            muv-retention-stage12-tail-predictions.csv
+            muv-retention-stage12-stage7-guard.csv
+            muv-retention-stage12-stage10-guard.csv
           if-no-files-found: ignore
           retention-days: 30
