@@ -10,6 +10,7 @@ on:
       - "research/walk_forward_candidate_pool.py"
       - "research/marginal_universe_value/model_stage26_set_value_oracle.py"
       - "research/marginal_universe_value/run_stage26_set_value_oracle_compressed.py"
+      - "research/marginal_universe_value/run_stage26_set_value_oracle_certified.py"
       - "research/marginal_universe_value/STAGE26_SET_VALUE_ORACLE_STRUCTURE_AUDIT_DESIGN_20260913.md"
       - "research/marginal_universe_value/experiment_registry.yaml"
       - ".github/actions/muv-publish/action.yml"
@@ -25,7 +26,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 180
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -44,11 +45,12 @@ jobs:
         run: |
           python -m py_compile research/marginal_universe_value/model_stage26_set_value_oracle.py
           python -m py_compile research/marginal_universe_value/run_stage26_set_value_oracle_compressed.py
+          python -m py_compile research/marginal_universe_value/run_stage26_set_value_oracle_certified.py
 
       - name: Run Stage26 set-value oracle structure audit
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-        run: python research/marginal_universe_value/run_stage26_set_value_oracle_compressed.py
+        run: python research/marginal_universe_value/run_stage26_set_value_oracle_certified.py
 
       - name: Publish Stage26 outputs
         if: always()
