@@ -1,0 +1,53 @@
+name: Universe Size Stage1 Robustness
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/universe-size-stage1-robustness.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  robustness:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: alt-seed
+            seed: 20260915
+            corr: 0.95
+          - label: corr-090
+            seed: 20260914
+            corr: 0.90
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+      - run: python -m pip install --requirement research/requirements-full-market-ols.txt
+      - run: |
+          python -m py_compile research/universe_size_then_composition/stage1_oracle_size_mc.py
+          python -m py_compile research/universe_size_then_composition/stage1_oracle_size_mc_safe.py
+      - name: Run frozen robustness batch
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: |
+          python research/universe_size_then_composition/stage1_oracle_size_mc_safe.py \
+            --samples-per-k 180 \
+            --nested-paths 36 \
+            --seed ${{ matrix.seed }} \
+            --corr-threshold ${{ matrix.corr }} \
+            --output-dir stage1-${{ matrix.label }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: universe-size-stage1-${{ matrix.label }}-${{ github.run_id }}
+          path: stage1-${{ matrix.label }}/
+          if-no-files-found: warn
+          retention-days: 30
