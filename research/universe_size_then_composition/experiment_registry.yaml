@@ -13,7 +13,9 @@ frozen_downstream_rule:
 stages:
   - id: new_stage_1
     name: oracle_universe_size_monte_carlo
-    status: robustness_in_progress
+    status: frozen
+    decision: branch_to_stage2_mechanism
+    findings_doc: research/universe_size_then_composition/STAGE1_FINDINGS_20260914.md
     objective: >-
       Determine whether reducing or increasing Universe size K has a general effect on
       one-month Frozen OLS value, and whether a stable favorable K range exists.
@@ -39,14 +41,12 @@ stages:
       key_evidence:
         overall_month_spearman_k_return_negative_share: 0.5735
         overall_month_spearman_below_minus_half_share: 0.5147
-        era_2021_24_k30_minus_k3_mean: -0.01386
-        era_2021_24_month_bootstrap_95pct: [-0.02319, -0.00424]
-        era_2025_26_k30_minus_k3_mean: 0.01165
-        era_2025_26_month_bootstrap_95pct: [-0.01648, 0.03934]
-        interpretation: >-
-          Strong era reversal: larger K is robustly harmful in 2021-24, while 2025-26
-          point estimate reverses positive but remains statistically uncertain at month level.
-          Do not freeze an optimal K or move to Stage2 yet.
+        era_2021_24_mean_month_spearman: -0.8757
+        era_2021_24_k30_minus_k3_mean: -0.013862
+        era_2021_24_month_bootstrap_95pct: [-0.02309, -0.00442]
+        era_2025_26_mean_month_spearman: 0.0817
+        era_2025_26_k30_minus_k3_mean: 0.011655
+        era_2025_26_month_bootstrap_95pct: [-0.01559, 0.03958]
       mechanism_direction:
         k_up_switches_up: true
         k_up_observed_top1_tenure_down: true
@@ -58,53 +58,63 @@ stages:
         representative stats include zero-count calendar buckets. Recomputed from
         monthly_parent_pool_snapshots: 68 nonempty months, mean parent size about 218.29,
         median 240, min 65, max 383. Raw MC outputs remain usable; no rerun is required.
-      analysis_script: research/universe_size_then_composition/analyze_stage1_first_batch.py
-      analysis_workflow: .github/workflows/universe-size-stage1-analysis.yml
     robustness_batch_20260914:
-      status: planned_to_running
-      allowed_checks_only:
-        - alternative_seed_same_primary_design
-        - corr_threshold_0_90_predeclared_sensitivity
-        - month_cluster_bootstrap
-      branch_rule: >-
-        If era reversal survives seed convergence and corr=0.90, treat K effect as
-        regime-dependent and investigate mechanism before defining any stable K range.
-        If reversal disappears, diagnose Monte Carlo or representative-pool sensitivity.
-    required_outputs:
-      - monthly_parent_pool_snapshots
-      - sampled_universe_detail
-      - monthly_k_distribution
-      - nested_15_to_3_deltas
-      - top1_admission_events
-      - return_mean
-      - return_median
-      - return_p25
-      - return_p75
-      - return_p90
-      - top_decile_probability
-      - max_drawdown_distribution
-      - switching_distribution
-      - observed_top1_tenure_distribution
-      - winner_coverage
-      - dormant_member_share
-      - pairwise_correlation_mean
-      - effective_n
-    completion_rule: >-
-      Freeze Stage 1 only after the first-batch era reversal is checked against the
-      predeclared alternative-seed Monte Carlo and corr_threshold=0.90 sensitivity,
-      with month-cluster robustness recorded. Do not select a precise K from this history.
+      source_run_id: 34775534691
+      status: completed_success
+      arms:
+        - name: alt_seed
+          seed: 20260915
+          corr_threshold: 0.95
+          era_2021_24_k30_minus_k3_mean: -0.013501
+          era_2021_24_bootstrap_95pct: [-0.02329, -0.00350]
+          era_2025_26_k30_minus_k3_mean: 0.012836
+          era_2025_26_bootstrap_95pct: [-0.02145, 0.04650]
+        - name: corr_090
+          seed: 20260914
+          corr_threshold: 0.90
+          era_2021_24_k30_minus_k3_mean: -0.014080
+          era_2021_24_bootstrap_95pct: [-0.02335, -0.00448]
+          era_2025_26_k30_minus_k3_mean: 0.013632
+          era_2025_26_bootstrap_95pct: [-0.01990, 0.04694]
+      convergence:
+        base_alt_seed_month_k_return_mean_corr: 0.99888
+        base_alt_seed_month_shape_sign_agreement: 0.92647
+        base_corr090_month_k_return_mean_corr: 0.99721
+        base_corr090_month_shape_sign_agreement: 0.95588
+      interpretation: >-
+        Both predeclared robustness arms preserve the era reversal. The effect is not
+        explained by one Monte Carlo seed or the 0.95 correlation-dedup threshold.
+    frozen_conclusion: >-
+      Universe size effect is regime-dependent. The geometry of increasing K is stable:
+      winner coverage and competition/switching rise while observed Top1 tenure falls.
+      The economic payoff reverses across eras. Stage1 does not support a universal exact K
+      or global K range and must not be reused to pick one from the same history.
 
   - id: new_stage_2
     name: size_mechanism_remaining_trend_life
-    status: hold_until_stage1_robustness
+    status: registered_ready_to_run
     dependency: new_stage_1
+    design_doc: research/universe_size_then_composition/STAGE2_TREND_EPISODE_REMAINING_LIFE_DESIGN_20260914.md
+    script: research/universe_size_then_composition/stage2_remaining_trend_life.py
+    objective: >-
+      Test whether larger K changes first-Top1 admission timing within each ETF's own
+      intrinsic trend episode, reducing true remaining trend life/return, while small K
+      incurs the opposing winner-coverage cost.
     key_definition: >-
-      Remaining trend life is the ETF's own residual trend-episode life after first OLS
-      Top1 admission, not consecutive observed Top1 tenure inside a Universe.
+      Remaining trend life is the ETF's own residual intrinsic trend-episode life after
+      its first Top1 admission in a sampled Universe/month, not consecutive observed Top1 tenure.
+    frozen_episode_state: stage1_pool_score_nonnull
+    effective_inference_unit: month
+    primary_event_source: stage1_primary_same_k_mc_run_34772895471
+    no_k_selection: true
+    branch_rule: >-
+      If late-admission/remaining-life structure is stable and helps explain Stage1 jointly
+      with winner coverage, Stage3 may study low-DoF conditional K state/range. If not,
+      reject this lifetime mechanism without redefining it.
 
   - id: new_stage_3
-    name: stable_k_range
-    status: queued
+    name: stable_or_conditional_k_range
+    status: hold_until_stage2
     dependency: new_stage_2
 
   - id: new_stage_4
