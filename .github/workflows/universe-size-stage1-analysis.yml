@@ -1,0 +1,35 @@
+name: Universe Size Stage1 First Batch Analysis
+
+on:
+  push:
+    paths:
+      - "research/universe_size_then_composition/analyze_stage1_first_batch.py"
+      - ".github/workflows/universe-size-stage1-analysis.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+      - run: python -m pip install --requirement research/requirements-full-market-ols.txt
+      - name: Download frozen Stage1 repair artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 34772895471 -n universe-size-stage1-repair-34772895471 -D stage1_input
+      - name: Analyze first batch
+        run: python research/universe_size_then_composition/analyze_stage1_first_batch.py --input-dir stage1_input --output-dir stage1_analysis
+      - uses: actions/upload-artifact@v4
+        with:
+          name: universe-size-stage1-analysis-${{ github.run_id }}
+          path: stage1_analysis/
