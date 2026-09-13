@@ -1,259 +1,54 @@
 schema_version: 1
 project: marginal_universe_value
 updated_at: 2026-09-13
-
-status_values:
-  - planned
-  - running
-  - completed
-  - rejected
-  - provisional
-  - validated
-  - frozen
-
-decision_values:
-  - continue
-  - branch
-  - hold
-  - reject
-  - promote
-
+status_values: [planned, running, completed, rejected, provisional, validated, frozen]
+decision_values: [continue, branch, hold, reject, promote]
 experiments:
-  - stage_id: stage13
-    name: bootstrap_uncertainty
-    parent_stage: stage7
-    label_version: v1.4
-    status: completed
-    decision: continue
-    hypothesis: "Month-cluster bootstrap uncertainty may distinguish robust retention signals from unstable point estimates."
-    target_scope: retention
-    model_role: uncertainty_audit
-    scripts:
-      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
-      - research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py
-      - research/marginal_universe_value/model_retention_stage13_bootstrap_uncertainty.py
-    workflow: .github/workflows/muv-retention-stage13.yml
-    primary_outputs:
-      - muv-retention-stage13-report.json
-      - muv-retention-stage13-bootstrap-predictions.csv
-      - muv-retention-stage13-stage7-veto.csv
-      - muv-retention-stage13-ucb-policy.csv
-    notes: "Historical diagnostic stage retained for lineage; do not treat its thresholds as frozen production rules."
-
-  - stage_id: stage14
-    name: residual_stress
-    parent_stage: stage13
-    label_version: v1.4
-    status: completed
-    decision: continue
-    hypothesis: "Distribution-free residual stress can reveal whether apparent retention value is fragile to unexplained cross-sectional residual variation."
-    target_scope: retention
-    model_role: robustness_audit
-    scripts:
-      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
-      - research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py
-      - research/marginal_universe_value/model_retention_stage13_bootstrap_uncertainty.py
-      - research/marginal_universe_value/model_retention_stage14_residual_stress.py
-    workflow: .github/workflows/muv-retention-stage14.yml
-    primary_outputs:
-      - muv-retention-stage14-report.json
-      - muv-retention-stage14-residual-stress.csv
-      - muv-retention-stage14-stage7-veto.csv
-    notes: "Robustness branch; no direct strategy promotion."
-
-  - stage_id: stage15
-    name: hurdle_identifiability
-    parent_stage: stage3
-    label_version: v1.4
-    status: completed
-    decision: continue
-    hypothesis: "The positive/negative retention hurdle must be identifiable before optimizing a policy threshold."
-    target_scope: retention
-    model_role: identifiability_audit
-    scripts:
-      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
-      - research/marginal_universe_value/model_retention_stage15_hurdle_identifiability.py
-    workflow: .github/workflows/muv-retention-stage15.yml
-    primary_outputs:
-      - muv-retention-stage15-report.json
-      - muv-retention-stage15-quintiles.csv
-      - muv-retention-stage15-monthly-ranks.csv
-    notes: "Tests whether ranking/sign structure is sufficiently stable to justify a gate."
-
-  - stage_id: stage16
-    name: activity_conditional_sign
-    parent_stage: stage15
-    label_version: v1.4
-    status: completed
-    decision: branch
-    hypothesis: "Retention sign may become more predictable when conditioned on whether an ETF is actually active in the OLS competition path."
-    target_scope: retention
-    model_role: conditional_sign_audit
-    scripts:
-      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
-      - research/marginal_universe_value/model_retention_stage16_activity_conditional_sign.py
-    workflow: .github/workflows/muv-retention-stage16.yml
-    primary_outputs:
-      - muv-retention-stage16-report.json
-      - muv-retention-stage16-activity-curve.csv
-      - muv-retention-stage16-period-curve.csv
-    notes: "Motivated the later move from ETF-only state toward path/competition state."
-
-  - stage_id: stage17
-    name: local_relational
-    parent_stage: stage16
-    label_version: v1.5
-    status: completed
-    decision: continue
-    hypothesis: "A local relational representation against the incumbent and nearest OLS alternatives may explain MUV better than isolated ETF state."
-    target_scope: retention
-    model_role: state_representation_audit
-    scripts:
-      - research/marginal_universe_value/build_retention_labels_v1_5.py
-      - research/marginal_universe_value/model_retention_stage17_local_relational.py
-    workflow: .github/workflows/muv-retention-stage17.yml
-    design_doc: research/marginal_universe_value/STAGE17_LOCAL_UNIVERSE_RELATIONAL_DESIGN_20260913.md
-    primary_outputs:
-      - muv-retention-stage17-report.json
-      - muv-retention-stage17-predictions.csv
-    notes: "First explicit local competition-state branch."
-
-  - stage_id: stage18
-    name: explicit_displacement
-    parent_stage: stage17
-    label_version: v1.6
-    status: completed
-    decision: branch
-    hypothesis: "If realized remove-one replacements are usually contained in the point-in-time local competing set and direct displacement days explain most monthly MUV, the next model should estimate pairwise transition value rather than add more ETF sign features."
-    target_scope: retention
-    model_role: mechanism_audit
-    scripts:
-      - research/marginal_universe_value/build_retention_labels_v1_6.py
-      - research/marginal_universe_value/model_retention_stage18_displacement_audit.py
-    workflow: .github/workflows/muv-retention-stage18.yml
-    design_doc: research/marginal_universe_value/STAGE18_EXPLICIT_PATH_DISPLACEMENT_DESIGN_20260913.md
-    primary_outputs:
-      - muv-retention-stage18-report.json
-      - muv-retention-stage18-active.csv
-    last_verified_run_id: 34737974501
-    last_verified_run_status: success
-    notes: "Direct displacement explains nearly all MUV, but static local-set replacement coverage is weak; branch to dynamic replacement-state representation before transition-value modeling."
-
-  - stage_id: stage19
-    name: dynamic_replacement_reachability
-    parent_stage: stage18
-    label_version: v1.6
-    status: completed
-    decision: reject
-    hypothesis: "Recent point-in-time i-j OLS competition trajectories can rank the next-month realized dominant non-cash replacement more reliably than static month-end score rank."
-    target_scope: retention
-    model_role: replacement_identity_audit
-    scripts:
-      - research/marginal_universe_value/build_retention_labels_v1_6.py
-      - research/marginal_universe_value/build_stage19_replacement_pairs.py
-      - research/marginal_universe_value/model_retention_stage19_replacement_reachability.py
-    workflow: .github/workflows/muv-retention-stage19.yml
-    design_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_DESIGN_20260913.md
-    findings_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_FINDINGS_20260913.md
-    primary_outputs:
-      - muv-retention-stage19-report.json
-      - muv-retention-stage19-event-ranks.csv
-      - muv-retention-stage19-pairs.parquet
-    last_verified_run_id: 34738722836
-    last_verified_run_status: success
-    notes: "Rejected by predeclared rule. Dynamic pairwise trajectory ranking deteriorated Hit@3 and MRR overall and in both eras. A material share of realized replacements had no current static rank, motivating an emergence/admission mechanism audit."
-
-  - stage_id: stage20
-    name: replacement_emergence_audit
-    parent_stage: stage19
-    label_version: v1.6
-    status: completed
-    decision: branch
-    hypothesis: "A material share of realized dominant replacements emerge from outside the currently qualified set; prior intermittent qualification/top3 visibility can distinguish recent emergence from fully dormant candidates."
-    target_scope: retention
-    model_role: emergence_mechanism_audit
-    scripts:
-      - research/marginal_universe_value/build_retention_labels_v1_6.py
-      - research/marginal_universe_value/build_stage19_replacement_pairs.py
-      - research/marginal_universe_value/model_retention_stage19_replacement_reachability.py
-      - research/marginal_universe_value/model_retention_stage20_replacement_emergence.py
-    workflow: .github/workflows/muv-retention-stage20.yml
-    design_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_AUDIT_DESIGN_20260913.md
-    findings_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_FINDINGS_20260913.md
-    primary_outputs:
-      - muv-retention-stage20-report.json
-      - muv-retention-stage20-targets.csv
-    last_verified_run_id: 34740735444
-    last_verified_run_status: success
-    notes: "Most realized replacements were already qualified at month-end (76.35%); only 8.11% were fully dormant over the prior 20 days. Static score among qualified replacements was already materially useful (Hit@3 73.45%, MRR 0.623). Branch away from exact replacement prediction toward weaker competition-structure optimization; keep admission/emergence as a secondary branch."
-
-  - stage_id: stage21
-    name: competition_nuisance_audit
-    parent_stage: stage20
-    label_version: v1.6
-    status: completed
-    decision: branch
-    hypothesis: "A persistent competition-nuisance phenotype exists: some ETFs add Top1 switching without adding marginal return, and this structure shows cross-era persistence."
-    target_scope: retention
-    model_role: competition_structure_mechanism_audit
-    scripts:
-      - research/marginal_universe_value/build_retention_labels_v1_6.py
-      - research/marginal_universe_value/model_retention_stage21_competition_nuisance.py
-    workflow: .github/workflows/muv-retention-stage21.yml
-    design_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_AUDIT_DESIGN_20260913.md
-    findings_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_FINDINGS_20260913.md
-    primary_outputs:
-      - muv-retention-stage21-report.json
-      - muv-retention-stage21-symbol-era.csv
-    last_verified_run_id: 34742072152
-    last_verified_run_status: success
-    notes: "Competition nuisance is economically non-trivial (70.67% of extra-switch rows are nuisance), but nuisance identity is weakly persistent: structural flag agreement 35.71%, return Spearman -0.389, only 159981 and 164824 are structural nuisance in both eras. Do not tune nuisance cutoffs; branch to opportunity coverage."
-
-  - stage_id: stage22
-    name: opportunity_coverage_audit
-    parent_stage: stage21
-    label_version: full_market_point_in_time_v1
-    status: completed
-    decision: branch
-    hypothesis: "Fixed15 materially under-covers point-in-time qualified ETF trends that subsequently deliver strong 20-day continuation, with a coverage gap that is directionally stable across eras and not dependent on Cluster90 representation."
-    target_scope: coverage
-    model_role: opportunity_set_mechanism_audit
-    scripts:
-      - research/marginal_universe_value/model_stage22_opportunity_coverage.py
-    workflow: .github/workflows/muv-stage22-opportunity-coverage.yml
-    design_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_AUDIT_DESIGN_20260913.md
-    findings_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_FINDINGS_20260913.md
-    primary_outputs:
-      - muv-stage22-opportunity-coverage-report.json
-      - muv-stage22-opportunity-coverage-months.csv
-    last_verified_run_id: 34744172137
-    last_verified_run_status: success
-    notes: "Stable structural coverage gap supported overall and in both eras, but naive full-market and Cluster90 OLS score Top1 both underperform Fixed15. Branch to an admission bridge audit rather than directly expanding the competitive universe."
-
+  - {stage_id: stage13, name: bootstrap_uncertainty, parent_stage: stage7, label_version: v1.4, status: completed, decision: continue, target_scope: retention, model_role: uncertainty_audit, workflow: .github/workflows/muv-retention-stage13.yml}
+  - {stage_id: stage14, name: residual_stress, parent_stage: stage13, label_version: v1.4, status: completed, decision: continue, target_scope: retention, model_role: robustness_audit, workflow: .github/workflows/muv-retention-stage14.yml}
+  - {stage_id: stage15, name: hurdle_identifiability, parent_stage: stage3, label_version: v1.4, status: completed, decision: continue, target_scope: retention, model_role: identifiability_audit, workflow: .github/workflows/muv-retention-stage15.yml}
+  - {stage_id: stage16, name: activity_conditional_sign, parent_stage: stage15, label_version: v1.4, status: completed, decision: branch, target_scope: retention, model_role: conditional_sign_audit, workflow: .github/workflows/muv-retention-stage16.yml}
+  - {stage_id: stage17, name: local_relational, parent_stage: stage16, label_version: v1.5, status: completed, decision: continue, target_scope: retention, model_role: state_representation_audit, workflow: .github/workflows/muv-retention-stage17.yml}
+  - {stage_id: stage18, name: explicit_displacement, parent_stage: stage17, label_version: v1.6, status: completed, decision: branch, target_scope: retention, model_role: mechanism_audit, workflow: .github/workflows/muv-retention-stage18.yml, last_verified_run_id: 34737974501}
+  - {stage_id: stage19, name: dynamic_replacement_reachability, parent_stage: stage18, label_version: v1.6, status: completed, decision: reject, target_scope: retention, model_role: replacement_identity_audit, workflow: .github/workflows/muv-retention-stage19.yml, last_verified_run_id: 34738722836, findings_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_FINDINGS_20260913.md}
+  - {stage_id: stage20, name: replacement_emergence_audit, parent_stage: stage19, label_version: v1.6, status: completed, decision: branch, target_scope: retention, model_role: emergence_mechanism_audit, workflow: .github/workflows/muv-retention-stage20.yml, last_verified_run_id: 34740735444, findings_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_FINDINGS_20260913.md}
+  - {stage_id: stage21, name: competition_nuisance_audit, parent_stage: stage20, label_version: v1.6, status: completed, decision: branch, target_scope: retention, model_role: competition_structure_mechanism_audit, workflow: .github/workflows/muv-retention-stage21.yml, last_verified_run_id: 34742072152, findings_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_FINDINGS_20260913.md}
+  - {stage_id: stage22, name: opportunity_coverage_audit, parent_stage: stage21, label_version: full_market_point_in_time_v1, status: completed, decision: branch, target_scope: coverage, model_role: opportunity_set_mechanism_audit, workflow: .github/workflows/muv-stage22-opportunity-coverage.yml, last_verified_run_id: 34744172137, findings_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_FINDINGS_20260913.md}
   - stage_id: stage23
     name: coverage_to_score_bridge_audit
     parent_stage: stage22
     label_version: full_market_point_in_time_v1
-    status: planned
-    decision: continue
-    hypothesis: "Missed full-market oracle-best outsiders are often already near the top of the point-in-time OLS score ordering, allowing a conservative admission shortlist without exposing the entire market to OLS competition."
+    status: completed
+    decision: reject
+    hypothesis: "Missed full-market oracle-best outsiders are often already near the top of the point-in-time OLS score ordering."
     target_scope: admission
     model_role: admission_bridge_mechanism_audit
-    scripts:
-      - research/marginal_universe_value/model_stage23_coverage_to_score_bridge.py
     workflow: .github/workflows/muv-stage23-coverage-to-score-bridge.yml
     design_doc: research/marginal_universe_value/STAGE23_COVERAGE_TO_SCORE_BRIDGE_DESIGN_20260913.md
-    primary_outputs:
-      - muv-stage23-coverage-to-score-bridge-report.json
-      - muv-stage23-coverage-to-score-bridge-events.csv
-    notes: "No model fit or policy backtest. Tests whether existing OLS score can narrow missed outside opportunities to a small point-in-time shortlist before any dynamic-universe policy is considered."
-
+    findings_doc: research/marginal_universe_value/STAGE23_COVERAGE_TO_SCORE_BRIDGE_FINDINGS_20260913.md
+    last_verified_run_id: 34746462867
+    last_verified_run_status: success
+    notes: "Rejected: Top10 capture 27.27% overall; median score-rank percentile 29.85%. No TopK tuning."
+  - stage_id: stage24
+    name: admission_worthiness_state_audit
+    parent_stage: stage23
+    label_version: full_market_point_in_time_v1
+    status: planned
+    decision: continue
+    hypothesis: "A small fixed point-in-time trend-health state can rank outside-Fixed15 ETFs that expand the contemporaneous Fixed15 20-day opportunity frontier better than raw OLS score alone."
+    target_scope: admission
+    model_role: low_dof_admission_state_audit
+    scripts: [research/marginal_universe_value/model_stage24_admission_worthiness.py]
+    workflow: .github/workflows/muv-stage24-admission-worthiness.yml
+    design_doc: research/marginal_universe_value/STAGE24_ADMISSION_WORTHINESS_STATE_AUDIT_DESIGN_20260913.md
+    primary_outputs: [muv-stage24-admission-worthiness-report.json, muv-stage24-admission-worthiness-months.csv]
+    notes: "Weaker than unique-winner prediction; fixed six-feature state; strict expanding OOS; no feature/hyperparameter/TopK search."
 next_experiment:
-  stage_id: stage24
+  stage_id: stage25
   status: planned
-  parent_stage: stage23
-  branch_condition: "Choose only after Stage23 applies its frozen Top10 / rank-percentile support rule overall and in both eras."
-  option_a: "conservative_admission_shortlist_audit_without_policy_backtest"
-  option_b: "new_low_dof_admission_state_representation_audit"
-  option_c: "fixed_feature_nonlinear_capacity_benchmark_for_admission"
-  anti_overfit_rule: "Do not tune Stage23 score cutoffs, forward horizon, ETF subsets, or asset classes. If the score bridge fails, treat that as evidence against current score-state admission rather than searching for a better cutoff on the same history."
+  parent_stage: stage24
+  branch_condition: "Choose only after frozen Hit@5/MRR checks overall and in both eras."
+  option_a: conservative_admission_shortlist_mechanism_audit
+  option_b: fixed_feature_nonlinear_capacity_benchmark_for_admission
+  option_c: non_predictive_coverage_diversity_mechanism
+  anti_overfit_rule: "If Stage24 fails, do not add hand-picked features or tune shortlist size on this OOS history."
