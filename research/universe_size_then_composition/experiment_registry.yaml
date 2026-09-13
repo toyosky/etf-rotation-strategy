@@ -82,10 +82,14 @@ stages:
 
   - id: new_stage_3
     name: conditional_size_direction_identifiability
-    status: registered_running
+    status: frozen
+    decision: reject_low_dof_point_in_time_identifiability
     dependency: new_stage_2
     design_doc: research/universe_size_then_composition/STAGE3_CONDITIONAL_SIZE_DIRECTION_DESIGN_20260914.md
+    findings_doc: research/universe_size_then_composition/STAGE3_FINDINGS_20260914.md
     script: research/universe_size_then_composition/stage3_conditional_size_direction.py
+    source_run_id: 34780943967
+    source_artifact: universe-size-stage3-34780943967
     target: sign_of_stage1_K30_minus_K3_mean_return_contrast
     objective: >-
       Test whether exactly five point-in-time coverage/competition/redundancy features can identify whether larger K is beneficial next month, using strict expanding OOS and no exact-K selection.
@@ -93,12 +97,35 @@ stages:
     model: fixed_logistic_l2_C1_standardized_train_only
     min_train_months: 24
     baselines: [expanding_majority, previous_month_sign]
-    no_k_selection: true
+    oos_evidence:
+      months: 44
+      model_auc: 0.4625
+      model_balanced_accuracy: 0.420833
+      model_sign_accuracy: 0.454545
+      majority_sign_accuracy: 0.545455
+      previous_sign_accuracy: 0.477273
+      later_era_model_auc: 0.454545
+    frozen_conclusion: >-
+      The frozen five-feature point-in-time state does not identify next-month size direction in expanding OOS. Do not rescue via feature search or model-capacity escalation on the same history.
+
+  - id: new_stage_3b
+    name: conservative_size_fallback_audit
+    status: registered_running
+    decision: pending
+    dependency: new_stage_3
+    design_doc: research/universe_size_then_composition/STAGE3B_CONSERVATIVE_SIZE_FALLBACK_DESIGN_20260914.md
+    script: research/universe_size_then_composition/stage3b_conservative_size_fallback.py
+    workflow: .github/workflows/universe-size-stage3b.yml
+    anchor_k: 15
+    min_train_months: 24
+    purpose: >-
+      Test whether a strict history-only expanding best-K rule has stable paired value over the pre-existing K=15 anchor, and construct a one-standard-error training range without point-in-time feature modeling.
+    no_full_sample_k_selection: true
 
   - id: new_stage_4
     name: composition_oracle_within_frozen_k_range
-    status: hold_until_stage3
-    dependency: new_stage_3
+    status: hold_until_stage3b
+    dependency: new_stage_3b
 
   - id: new_stage_5
     name: walk_forward_executable_composition
