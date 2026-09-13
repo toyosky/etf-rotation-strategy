@@ -1,0 +1,38 @@
+name: MUV publish
+
+description: Shared report summary and artifact upload for MUV research stages.
+
+inputs:
+  report-file:
+    description: Primary JSON report to append to the GitHub step summary.
+    required: true
+  artifact-name:
+    description: Artifact name.
+    required: true
+  paths:
+    description: Multiline artifact paths.
+    required: true
+  retention-days:
+    description: Artifact retention in days.
+    required: false
+    default: "30"
+
+runs:
+  using: composite
+  steps:
+    - name: Append report to step summary
+      shell: bash
+      run: |
+        if [ -f "${{ inputs.report-file }}" ]; then
+          cat "${{ inputs.report-file }}" >> "$GITHUB_STEP_SUMMARY"
+        else
+          echo "Report not found: ${{ inputs.report-file }}" >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+    - name: Upload research outputs
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ${{ inputs.paths }}
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.retention-days }}
