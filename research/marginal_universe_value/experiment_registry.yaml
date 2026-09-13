@@ -143,8 +143,8 @@ experiments:
     name: dynamic_replacement_reachability
     parent_stage: stage18
     label_version: v1.6
-    status: planned
-    decision: continue
+    status: completed
+    decision: reject
     hypothesis: "Recent point-in-time i-j OLS competition trajectories can rank the next-month realized dominant non-cash replacement more reliably than static month-end score rank."
     target_scope: retention
     model_role: replacement_identity_audit
@@ -154,17 +154,42 @@ experiments:
       - research/marginal_universe_value/model_retention_stage19_replacement_reachability.py
     workflow: .github/workflows/muv-retention-stage19.yml
     design_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_FINDINGS_20260913.md
     primary_outputs:
       - muv-retention-stage19-report.json
       - muv-retention-stage19-event-ranks.csv
       - muv-retention-stage19-pairs.parquet
-    notes: "No MUV sign/value model and no policy backtest. First test whether replacement identity itself becomes prospectively identifiable from dynamic pairwise state."
+    last_verified_run_id: 34738722836
+    last_verified_run_status: success
+    notes: "Rejected by predeclared rule. Dynamic pairwise trajectory ranking deteriorated Hit@3 and MRR overall and in both eras. A material share of realized replacements had no current static rank, motivating an emergence/admission mechanism audit."
+
+  - stage_id: stage20
+    name: replacement_emergence_audit
+    parent_stage: stage19
+    label_version: v1.6
+    status: planned
+    decision: continue
+    hypothesis: "A material share of realized dominant replacements emerge from outside the currently qualified set; prior intermittent qualification/top3 visibility can distinguish recent emergence from fully dormant candidates."
+    target_scope: retention
+    model_role: emergence_mechanism_audit
+    scripts:
+      - research/marginal_universe_value/build_retention_labels_v1_6.py
+      - research/marginal_universe_value/build_stage19_replacement_pairs.py
+      - research/marginal_universe_value/model_retention_stage19_replacement_reachability.py
+      - research/marginal_universe_value/model_retention_stage20_replacement_emergence.py
+    workflow: .github/workflows/muv-retention-stage20.yml
+    design_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_AUDIT_DESIGN_20260913.md
+    primary_outputs:
+      - muv-retention-stage20-report.json
+      - muv-retention-stage20-targets.csv
+    notes: "No new model. Separates ranking among currently qualified replacements from emergence/admission into competition."
 
 next_experiment:
-  stage_id: stage20
+  stage_id: stage21
   status: planned
-  parent_stage: stage19
-  branch_condition: "Choose only after Stage19 OOS Hit@3/MRR stability audit."
-  option_a: "pairwise_transition_value_conditional_on_reachability"
-  option_b: "reconsider_retention_and_shift_to_admission_or_new_path_state"
-  anti_overfit_rule: "Do not tune Stage19 feature subsets or horizons on the same OOS history. Require non-deterioration overall and in both time regimes."
+  parent_stage: stage20
+  branch_condition: "Choose only after Stage20 quantifies qualified-now, emergent-recent, and dormant-20 replacement shares by era."
+  option_a: "qualification_or_admission_transition_model"
+  option_b: "known_competitor_ranking_reconsideration"
+  option_c: "broader_state_representation_for_dormant_emergence"
+  anti_overfit_rule: "Do not tune Stage19 feature subsets/horizons or Stage20 occurrence categories. Choose the next mechanism from the frozen Stage20 decomposition."
