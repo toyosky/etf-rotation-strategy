@@ -33,22 +33,39 @@ experiments:
     name: admission_worthiness_state_audit
     parent_stage: stage23
     label_version: full_market_point_in_time_v1
-    status: planned
-    decision: continue
+    status: completed
+    decision: branch
     hypothesis: "A small fixed point-in-time trend-health state can rank outside-Fixed15 ETFs that expand the contemporaneous Fixed15 20-day opportunity frontier better than raw OLS score alone."
     target_scope: admission
     model_role: low_dof_admission_state_audit
     scripts: [research/marginal_universe_value/model_stage24_admission_worthiness.py]
     workflow: .github/workflows/muv-stage24-admission-worthiness.yml
     design_doc: research/marginal_universe_value/STAGE24_ADMISSION_WORTHINESS_STATE_AUDIT_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE24_ADMISSION_WORTHINESS_STATE_AUDIT_FINDINGS_20260913.md
     primary_outputs: [muv-stage24-admission-worthiness-report.json, muv-stage24-admission-worthiness-months.csv]
-    notes: "Weaker than unique-winner prediction; fixed six-feature state; strict expanding OOS; no feature/hyperparameter/TopK search."
+    last_verified_run_id: 34749515375
+    last_verified_run_status: success
+    notes: "Frozen support rule passed: Hit@5 unchanged overall and both eras; MRR improved overall and both eras. Gain is modest, so no TopK tuning or model-capacity escalation; branch to no-Fixed15 DOU identifiability audit."
+  - stage_id: stage25
+    name: dynamic_opportunity_universe_identifiability
+    parent_stage: stage24
+    label_version: full_market_opportunity_top20_v1
+    status: planned
+    decision: continue
+    hypothesis: "Without referencing Fixed15, the same small point-in-time trend-health state can identify a broad set of full-market ETFs that will fall in the top 20% of next-20-day returns better than raw OLS score alone."
+    target_scope: coverage
+    model_role: dynamic_opportunity_universe_identifiability_audit
+    scripts: [research/marginal_universe_value/model_stage25_dynamic_opportunity_universe.py]
+    workflow: .github/workflows/muv-stage25-dynamic-opportunity-universe.yml
+    design_doc: research/marginal_universe_value/STAGE25_DYNAMIC_OPPORTUNITY_UNIVERSE_IDENTIFIABILITY_DESIGN_20260913.md
+    primary_outputs: [muv-stage25-dou-report.json, muv-stage25-dou-months.csv]
+    notes: "No Fixed15-relative target; broad top-20% future opportunity label; same six features; strict monthly expanding OOS; no feature/hyperparameter/TopK/threshold search."
 next_experiment:
-  stage_id: stage25
+  stage_id: stage26
   status: planned
-  parent_stage: stage24
-  branch_condition: "Choose only after frozen Hit@5/MRR checks overall and in both eras."
-  option_a: conservative_admission_shortlist_mechanism_audit
-  option_b: fixed_feature_nonlinear_capacity_benchmark_for_admission
+  parent_stage: stage25
+  branch_condition: "Choose only after frozen AP/Recall@20% checks overall and in both eras."
+  option_a: prior-calibrated_variable_size_dou_policy
+  option_b: fixed_feature_nonlinear_capacity_benchmark_for_dou
   option_c: non_predictive_coverage_diversity_mechanism
-  anti_overfit_rule: "If Stage24 fails, do not add hand-picked features or tune shortlist size on this OOS history."
+  anti_overfit_rule: "If Stage25 fails, do not add hand-picked features, change the horizon, or tune selection fractions on this OOS history."
