@@ -167,8 +167,8 @@ experiments:
     name: replacement_emergence_audit
     parent_stage: stage19
     label_version: v1.6
-    status: planned
-    decision: continue
+    status: completed
+    decision: branch
     hypothesis: "A material share of realized dominant replacements emerge from outside the currently qualified set; prior intermittent qualification/top3 visibility can distinguish recent emergence from fully dormant candidates."
     target_scope: retention
     model_role: emergence_mechanism_audit
@@ -179,17 +179,39 @@ experiments:
       - research/marginal_universe_value/model_retention_stage20_replacement_emergence.py
     workflow: .github/workflows/muv-retention-stage20.yml
     design_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_AUDIT_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE20_REPLACEMENT_EMERGENCE_FINDINGS_20260913.md
     primary_outputs:
       - muv-retention-stage20-report.json
       - muv-retention-stage20-targets.csv
-    notes: "No new model. Separates ranking among currently qualified replacements from emergence/admission into competition."
+    last_verified_run_id: 34740735444
+    last_verified_run_status: success
+    notes: "Most realized replacements were already qualified at month-end (76.35%); only 8.11% were fully dormant over the prior 20 days. Static score among qualified replacements was already materially useful (Hit@3 73.45%, MRR 0.623). Branch away from exact replacement prediction toward weaker competition-structure optimization; keep admission/emergence as a secondary branch."
+
+  - stage_id: stage21
+    name: competition_nuisance_audit
+    parent_stage: stage20
+    label_version: v1.6
+    status: planned
+    decision: continue
+    hypothesis: "A persistent competition-nuisance phenotype exists: some ETFs add Top1 switching without adding marginal return, and this structure shows cross-era persistence."
+    target_scope: retention
+    model_role: competition_structure_mechanism_audit
+    scripts:
+      - research/marginal_universe_value/build_retention_labels_v1_6.py
+      - research/marginal_universe_value/model_retention_stage21_competition_nuisance.py
+    workflow: .github/workflows/muv-retention-stage21.yml
+    design_doc: research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_AUDIT_DESIGN_20260913.md
+    primary_outputs:
+      - muv-retention-stage21-report.json
+      - muv-retention-stage21-symbol-era.csv
+    notes: "No predictive model or deletion policy. Tests whether a weaker structural target is real and stable enough to justify later prospective identification."
 
 next_experiment:
-  stage_id: stage21
+  stage_id: stage22
   status: planned
-  parent_stage: stage20
-  branch_condition: "Choose only after Stage20 quantifies qualified-now, emergent-recent, and dormant-20 replacement shares by era."
-  option_a: "qualification_or_admission_transition_model"
-  option_b: "known_competitor_ranking_reconsideration"
-  option_c: "broader_state_representation_for_dormant_emergence"
-  anti_overfit_rule: "Do not tune Stage19 feature subsets/horizons or Stage20 occurrence categories. Choose the next mechanism from the frozen Stage20 decomposition."
+  parent_stage: stage21
+  branch_condition: "Choose only after Stage21 measures nuisance prevalence and cross-era persistence."
+  option_a: "prospective_nuisance_risk_identification_with_asymmetric_false_removal_control"
+  option_b: "opportunity_coverage_audit"
+  option_c: "admission_gate_or_qualification_transition_audit"
+  anti_overfit_rule: "If Stage21 nuisance structure is weak or unstable, do not tune nuisance cutoffs or select favorable ETF subsets on the same history; branch to coverage/admission."
