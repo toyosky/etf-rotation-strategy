@@ -13,43 +13,60 @@ frozen_downstream_rule:
 stages:
   - id: new_stage_1
     name: oracle_universe_size_monte_carlo
-    status: started
+    status: running_first_long_batch
     objective: >-
       Determine whether reducing or increasing Universe size K has a general effect on
       one-month Frozen OLS value, and whether a stable favorable K range exists.
     primary_design:
       parent_pool: monthly_point_in_time_representative_etfs
+      representative_rule: prior_day_eligibility_plus_120d_corr_liquidity_first_dedup
+      primary_corr_threshold: 0.95
+      predeclared_sensitivity_corr_threshold: 0.90
       k_range: 3..30_subject_to_monthly_availability
       sampling: independent_same_k_random_universes
-      nested_deletion_paths: secondary_only
-      fixed_rng_seed: true
+      nested_deletion_paths: secondary_random_15_to_3
+      cash_signal_forced: 511220
+      fixed_rng_seed: 20260914
       evaluate_by_month: true
       oracle_usage: mechanism_diagnosis_only
+    operational_batch_20260914:
+      runner: research/universe_size_then_composition/stage1_oracle_size_mc.py
+      workflow: .github/workflows/universe-size-stage1.yml
+      samples_per_k_per_month: 180
+      nested_15_to_3_paths_per_month: 36
+      expected_artifact: universe-size-stage1-<run_id>
+      after_artifact: >-
+        Inspect full K distributions and nested paired deletion deltas before changing
+        any threshold or definition. Then run predeclared seed-convergence and 0.90
+        representative-pool sensitivity as warranted.
     required_outputs:
+      - monthly_parent_pool_snapshots
+      - sampled_universe_detail
+      - monthly_k_distribution
+      - nested_15_to_3_deltas
+      - top1_admission_events
       - return_mean
       - return_median
       - return_p25
       - return_p75
       - return_p90
-      - return_worst_quantile
       - top_decile_probability
       - max_drawdown_distribution
       - switching_distribution
       - observed_top1_tenure_distribution
-    mechanism_features_to_capture:
+      - winner_coverage
+      - dormant_member_share
       - pairwise_correlation_mean
+      - effective_n
+    mechanism_features_to_add_or_deepen_after_first_batch:
       - pairwise_correlation_median
       - pairwise_correlation_high_quantile
       - first_pc_share
-      - effective_n
       - asset_class_breadth
       - region_breadth
       - score_distribution
       - strong_trend_count
-      - top1_switching_rate
       - rank_turnover
-      - winner_coverage
-      - dormant_member_share
     completion_rule: >-
       Freeze Stage 1 only after cross-month K-by-return distributions are produced with
       reproducible code/config/input version/random seeds and basic robustness checks.
