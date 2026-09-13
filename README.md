@@ -17,6 +17,7 @@ docs/          规则、架构、数据管线与版本说明
 ```
 
 详细边界见 [`docs/REPOSITORY_ARCHITECTURE.md`](docs/REPOSITORY_ARCHITECTURE.md)。
+GitHub 基础设施、Codespaces、缓存、LFS 与 Release 规范见 [`docs/GITHUB_INFRASTRUCTURE.md`](docs/GITHUB_INFRASTRUCTURE.md)。
 
 ## 正式策略
 
@@ -58,6 +59,8 @@ PostgreSQL 只长期保存核心事实表、元数据、质量状态和轻量研
 
 大型研究中间产物，例如全市场特征矩阵、Walk-Forward 明细、相关性矩阵和参数扫描结果，优先保存为 Parquet 到 Supabase Storage，避免挤占 PostgreSQL 免费数据库额度。
 
+对于需要和某个策略版本永久绑定的冷数据快照，可使用 Git LFS；常规大数据不要直接提交进普通 Git 历史。
+
 ## Research
 
 研究入口：[`research/README.md`](research/README.md)。
@@ -69,6 +72,14 @@ PostgreSQL 只长期保存核心事实表、元数据、质量状态和轻量研
 3. 月度 past-only 候选池与 Walk-Forward。
 4. 再验证 V1 / score takeover 等 timing 层。
 5. 最后再回到分钟级执行优化。
+
+## GitHub 研究环境
+
+- Codespaces：`.devcontainer/devcontainer.json` 固定 Python 3.12，并自动安装研究依赖。
+- Actions dependency cache：Python 依赖由 `actions/setup-python` 缓存。
+- Research cache：昂贵但可重建的中间数据通过 `actions/cache` 加速；例如 MUV Stage18 同日重跑复用 V1.6 标签。
+- Git LFS：用于少量需要永久版本化的大型冷快照，规则见 `.gitattributes`。
+- Releases：推送 `strategy-v*` tag 后，由 `.github/workflows/release-strategy.yml` 生成正式策略冻结包。
 
 ## 安全
 
@@ -87,3 +98,4 @@ PostgreSQL 只长期保存核心事实表、元数据、质量状态和轻量研
 - 正式策略变更必须独立 commit，并更新文档。
 - 实验性逻辑优先留在 `research/`。
 - Commit message 应说明实质变化，避免只有 `update`。
+- 正式冻结版本使用 `strategy-vMAJOR.MINOR.PATCH` tag + GitHub Release。
