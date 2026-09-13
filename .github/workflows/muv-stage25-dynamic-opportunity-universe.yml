@@ -1,0 +1,53 @@
+name: MUV Stage25 Dynamic Opportunity Universe Identifiability
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/requirements-full-market-ols.txt"
+      - "research/full_market_ols_storage.py"
+      - "research/marginal_universe_value/model_stage25_dynamic_opportunity_universe.py"
+      - "research/marginal_universe_value/STAGE25_DYNAMIC_OPPORTUNITY_UNIVERSE_IDENTIFIABILITY_DESIGN_20260913.md"
+      - "research/marginal_universe_value/experiment_registry.yaml"
+      - ".github/actions/muv-publish/action.yml"
+      - ".github/workflows/muv-stage25-dynamic-opportunity-universe.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: muv-stage25-dynamic-opportunity-universe
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+
+      - name: Install dependencies
+        run: python -m pip install --requirement research/requirements-full-market-ols.txt
+
+      - name: Run Stage25 dynamic opportunity universe identifiability audit
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: python research/marginal_universe_value/model_stage25_dynamic_opportunity_universe.py
+
+      - name: Publish Stage25 outputs
+        if: always()
+        uses: ./.github/actions/muv-publish
+        with:
+          report-file: muv-stage25-dou-report.json
+          artifact-name: muv-stage25-dou-${{ github.run_id }}
+          paths: |
+            muv-stage25-dou-report.json
+            muv-stage25-dou-months.csv
