@@ -16,39 +16,10 @@ stages:
     status: frozen
     decision: branch_to_stage2_mechanism
     findings_doc: research/universe_size_then_composition/STAGE1_FINDINGS_20260914.md
-    objective: Determine whether Universe size K has a general effect on one-month Frozen OLS value and whether a stable favorable K range exists.
-    primary_design:
-      parent_pool: monthly_point_in_time_representative_etfs
-      representative_rule: prior_day_eligibility_plus_120d_corr_liquidity_first_dedup
-      primary_corr_threshold: 0.95
-      predeclared_sensitivity_corr_threshold: 0.90
-      k_range: 3..30_subject_to_monthly_availability
-      sampling: independent_same_k_random_universes
-      nested_deletion_paths: secondary_random_15_to_3
-      cash_signal_forced: 511220
-      fixed_rng_seed: 20260914
-      evaluate_by_month: true
-      oracle_usage: mechanism_diagnosis_only
-    first_batch_20260914:
-      source_run_id: 34772895471
-      status: completed_success
-      samples_per_k_per_month: 180
-      nested_15_to_3_paths_per_month: 36
-      months: 68
-      sampled_universes: 374544
-      era_2021_24_k30_minus_k3_mean: -0.013862
-      era_2021_24_month_bootstrap_95pct: [-0.02309, -0.00442]
-      era_2025_26_k30_minus_k3_mean: 0.011655
-      era_2025_26_month_bootstrap_95pct: [-0.01559, 0.03958]
-    robustness_batch_20260914:
-      source_run_id: 34775534691
-      status: completed_success
-      alt_seed_2021_24_k30_minus_k3: -0.013501
-      alt_seed_2025_26_k30_minus_k3: 0.012836
-      corr090_2021_24_k30_minus_k3: -0.014080
-      corr090_2025_26_k30_minus_k3: 0.013632
-      base_alt_seed_month_k_return_mean_corr: 0.99888
-      base_corr090_month_k_return_mean_corr: 0.99721
+    primary_corr_threshold: 0.95
+    k_range: 3..30_subject_to_monthly_availability
+    source_run_id: 34772895471
+    robustness_run_id: 34775534691
     frozen_conclusion: >-
       Universe size effect is regime-dependent. K up raises winner coverage and competition/switching while observed Top1 tenure falls. The economic payoff reverses across eras. No universal exact K or global K range is supported.
 
@@ -56,80 +27,58 @@ stages:
     name: size_mechanism_remaining_trend_life
     status: frozen
     decision: reject_strong_lifetime_return_mechanism
-    dependency: new_stage_1
-    design_doc: research/universe_size_then_composition/STAGE2_TREND_EPISODE_REMAINING_LIFE_DESIGN_20260914.md
-    findings_doc: research/universe_size_then_composition/STAGE2_FINDINGS_20260914.md
-    script: research/universe_size_then_composition/stage2_remaining_trend_life.py
     source_run_id: 34778676590
-    source_artifact: universe-size-stage2-34778676590
-    objective: Test whether larger K delays first-Top1 admission within each ETF intrinsic trend episode, reducing true remaining trend life/return, while small K incurs opposing winner-coverage cost.
-    key_definition: Remaining trend life is the ETF own residual intrinsic trend-episode life after first Top1 admission, not observed Top1 tenure.
-    frozen_episode_state: stage1_pool_score_nonnull
-    effective_inference_unit: month
-    key_evidence:
-      era_2021_24_k30_minus_k3_trend_age_ratio: 0.144951
-      era_2025_26_k30_minus_k3_trend_age_ratio: 0.124863
-      era_2021_24_k30_minus_k3_remaining_days: -4.734375
-      era_2025_26_k30_minus_k3_remaining_days: -3.9875
-      era_2021_24_k30_minus_k3_remaining_return: 0.002608
-      era_2025_26_k30_minus_k3_remaining_return: 0.017445
-      era_2021_24_age_ratio_remaining_days_mean_month_spearman: -0.5726
-      era_2025_26_age_ratio_remaining_days_mean_month_spearman: -0.7461
-      era_2021_24_age_ratio_remaining_return_mean_month_spearman: 0.0199
-      era_2025_26_age_ratio_remaining_return_mean_month_spearman: 0.1162
+    findings_doc: research/universe_size_then_composition/STAGE2_FINDINGS_20260914.md
     frozen_conclusion: >-
-      Larger K robustly shifts first admission later in normalized intrinsic trend age and reduces remaining active days, but does not create a stable remaining-return penalty. The strong chain K up -> later -> shorter -> lower return is rejected without redefining lifetime. Proceed using weaker coverage-versus-competition conditional state.
+      Larger K robustly shifts first admission later in normalized intrinsic trend age and reduces remaining active days, but does not create a stable remaining-return penalty. Do not redefine lifetime.
 
   - id: new_stage_3
     name: conditional_size_direction_identifiability
     status: frozen
     decision: reject_low_dof_point_in_time_identifiability
-    dependency: new_stage_2
-    design_doc: research/universe_size_then_composition/STAGE3_CONDITIONAL_SIZE_DIRECTION_DESIGN_20260914.md
-    findings_doc: research/universe_size_then_composition/STAGE3_FINDINGS_20260914.md
-    script: research/universe_size_then_composition/stage3_conditional_size_direction.py
     source_run_id: 34780943967
-    source_artifact: universe-size-stage3-34780943967
-    target: sign_of_stage1_K30_minus_K3_mean_return_contrast
-    objective: >-
-      Test whether exactly five point-in-time coverage/competition/redundancy features can identify whether larger K is beneficial next month, using strict expanding OOS and no exact-K selection.
-    primary_features: [active_share_t, score_iqr_t, prior20_switch_rate_t, prior20_top1_tenure_t, mean_pairwise_corr120_t]
-    model: fixed_logistic_l2_C1_standardized_train_only
-    min_train_months: 24
-    baselines: [expanding_majority, previous_month_sign]
-    oos_evidence:
-      months: 44
-      model_auc: 0.4625
-      model_balanced_accuracy: 0.420833
-      model_sign_accuracy: 0.454545
-      majority_sign_accuracy: 0.545455
-      previous_sign_accuracy: 0.477273
-      later_era_model_auc: 0.454545
+    findings_doc: research/universe_size_then_composition/STAGE3_FINDINGS_20260914.md
     frozen_conclusion: >-
       The frozen five-feature point-in-time state does not identify next-month size direction in expanding OOS. Do not rescue via feature search or model-capacity escalation on the same history.
 
   - id: new_stage_3b
     name: conservative_size_fallback_audit
-    status: registered_running
-    decision: pending
+    status: frozen
+    decision: conservative_anchor_k15
     dependency: new_stage_3
+    source_run_id: 34783843851
+    source_artifact: universe-size-stage3b-34783843851
     design_doc: research/universe_size_then_composition/STAGE3B_CONSERVATIVE_SIZE_FALLBACK_DESIGN_20260914.md
-    script: research/universe_size_then_composition/stage3b_conservative_size_fallback.py
-    workflow: .github/workflows/universe-size-stage3b.yml
+    findings_doc: research/universe_size_then_composition/STAGE3B_FINDINGS_20260914.md
     anchor_k: 15
-    min_train_months: 24
-    purpose: >-
-      Test whether a strict history-only expanding best-K rule has stable paired value over the pre-existing K=15 anchor, and construct a one-standard-error training range without point-in-time feature modeling.
-    no_full_sample_k_selection: true
+    evidence:
+      oos_months: 44
+      train_best_minus_k15_mean: -0.00124923
+      paired_bootstrap_95pct: [-0.0110445, 0.0077947]
+      era_2023_24_delta: 0.00706405
+      era_2025_26_delta: -0.0112252
+      train_best_k_median: 3
+      train_best_k_changes: 3
+      one_se_range_width_median: 8
+      later_era_one_se_range_width_mean: 19.2
+    frozen_conclusion: >-
+      History-only expanding best-K does not stably outperform the pre-existing K15 anchor and reverses sign across eras. Stop treating dynamic size as an independently learnable layer. K15 is an engineering anchor only, not an optimal-K claim.
 
   - id: new_stage_4
-    name: composition_oracle_within_frozen_k_range
-    status: hold_until_stage3b
+    name: fixed_k15_composition_structure_audit
+    status: registered_running
+    decision: pending
     dependency: new_stage_3b
+    anchor_k: 15
+    design_doc: research/universe_size_then_composition/STAGE4_FIXED_K15_COMPOSITION_STRUCTURE_DESIGN_20260914.md
+    script: research/universe_size_then_composition/stage4_fixed_k15_composition_structure.py
+    workflow: .github/workflows/universe-size-stage4.yml
+    objective: >-
+      Before fitting any member selector, quantify whether composition at fixed K15 has material downstream value headroom and whether randomized member inclusion effects show enough cross-sample and adjacent-month stability to justify Stage5 identifiability modeling.
 
   - id: new_stage_5
     name: walk_forward_executable_composition
-    status: queued
+    status: hold_until_stage4
     dependency: new_stage_4
 
 anti_overfit_rules:
@@ -137,5 +86,6 @@ anti_overfit_rules:
   - do_not_change_trend_episode_definition_to_improve_results
   - do_not_change_parent_pool_or_windows_after_seeing_k_results_without_new_frozen_stage
   - do_not_feature_search_stage3_after_outcome_inspection
-  - prefer_range_and_mechanism_over_single_best_k
-  - member_selection_modeling_starts_only_after_k_range_is_frozen
+  - k15_after_stage3b_is_engineering_anchor_not_optimal_k_claim
+  - stage4_uses_only_existing_stage1_k15_randomization_before_member_modeling
+  - member_selection_modeling_starts_only_after_stage4_structure_audit
