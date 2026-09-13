@@ -1,0 +1,85 @@
+research_line: universe_size_then_composition
+started_at: 2026-09-14
+status: active
+previous_lineage:
+  path: research/marginal_universe_value/
+  status: frozen_historical_evidence
+  rule: do_not_continue_old_stage_numbers
+
+frozen_downstream_rule:
+  name: original_ols_rotation
+  note: downstream OLS logic must remain unchanged during size/composition mechanism research
+
+stages:
+  - id: new_stage_1
+    name: oracle_universe_size_monte_carlo
+    status: started
+    objective: >-
+      Determine whether reducing or increasing Universe size K has a general effect on
+      one-month Frozen OLS value, and whether a stable favorable K range exists.
+    primary_design:
+      parent_pool: monthly_point_in_time_representative_etfs
+      k_range: 3..30_subject_to_monthly_availability
+      sampling: independent_same_k_random_universes
+      nested_deletion_paths: secondary_only
+      fixed_rng_seed: true
+      evaluate_by_month: true
+      oracle_usage: mechanism_diagnosis_only
+    required_outputs:
+      - return_mean
+      - return_median
+      - return_p25
+      - return_p75
+      - return_p90
+      - return_worst_quantile
+      - top_decile_probability
+      - max_drawdown_distribution
+      - switching_distribution
+      - observed_top1_tenure_distribution
+    mechanism_features_to_capture:
+      - pairwise_correlation_mean
+      - pairwise_correlation_median
+      - pairwise_correlation_high_quantile
+      - first_pc_share
+      - effective_n
+      - asset_class_breadth
+      - region_breadth
+      - score_distribution
+      - strong_trend_count
+      - top1_switching_rate
+      - rank_turnover
+      - winner_coverage
+      - dormant_member_share
+    completion_rule: >-
+      Freeze Stage 1 only after cross-month K-by-return distributions are produced with
+      reproducible code/config/input version/random seeds and basic robustness checks.
+
+  - id: new_stage_2
+    name: size_mechanism_remaining_trend_life
+    status: queued
+    dependency: new_stage_1
+    key_definition: >-
+      Remaining trend life is the ETF's own residual trend-episode life after first OLS
+      Top1 admission, not consecutive observed Top1 tenure inside a Universe.
+
+  - id: new_stage_3
+    name: stable_k_range
+    status: queued
+    dependency: new_stage_2
+
+  - id: new_stage_4
+    name: composition_oracle_within_frozen_k_range
+    status: queued
+    dependency: new_stage_3
+
+  - id: new_stage_5
+    name: walk_forward_executable_composition
+    status: queued
+    dependency: new_stage_4
+
+anti_overfit_rules:
+  - do_not_pick_a_precise_k_from_full_sample_and_reuse_same_history_as_oos
+  - do_not_change_trend_episode_definition_to_improve_results
+  - do_not_change_parent_pool_or_windows_after_seeing_k_results_without_new_frozen_stage
+  - prefer_range_and_mechanism_over_single_best_k
+  - member_selection_modeling_starts_only_after_k_range_is_frozen
