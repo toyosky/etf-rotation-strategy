@@ -213,8 +213,8 @@ experiments:
     name: opportunity_coverage_audit
     parent_stage: stage21
     label_version: full_market_point_in_time_v1
-    status: planned
-    decision: continue
+    status: completed
+    decision: branch
     hypothesis: "Fixed15 materially under-covers point-in-time qualified ETF trends that subsequently deliver strong 20-day continuation, with a coverage gap that is directionally stable across eras and not dependent on Cluster90 representation."
     target_scope: coverage
     model_role: opportunity_set_mechanism_audit
@@ -222,17 +222,38 @@ experiments:
       - research/marginal_universe_value/model_stage22_opportunity_coverage.py
     workflow: .github/workflows/muv-stage22-opportunity-coverage.yml
     design_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_AUDIT_DESIGN_20260913.md
+    findings_doc: research/marginal_universe_value/STAGE22_OPPORTUNITY_COVERAGE_FINDINGS_20260913.md
     primary_outputs:
       - muv-stage22-opportunity-coverage-report.json
       - muv-stage22-opportunity-coverage-months.csv
-    notes: "No predictive model or policy backtest. Compare Fixed15 with both all point-in-time trend-eligible ETFs and frozen Cluster90 representatives so the conclusion cannot depend solely on Cluster90."
+    last_verified_run_id: 34744172137
+    last_verified_run_status: success
+    notes: "Stable structural coverage gap supported overall and in both eras, but naive full-market and Cluster90 OLS score Top1 both underperform Fixed15. Branch to an admission bridge audit rather than directly expanding the competitive universe."
+
+  - stage_id: stage23
+    name: coverage_to_score_bridge_audit
+    parent_stage: stage22
+    label_version: full_market_point_in_time_v1
+    status: planned
+    decision: continue
+    hypothesis: "Missed full-market oracle-best outsiders are often already near the top of the point-in-time OLS score ordering, allowing a conservative admission shortlist without exposing the entire market to OLS competition."
+    target_scope: admission
+    model_role: admission_bridge_mechanism_audit
+    scripts:
+      - research/marginal_universe_value/model_stage23_coverage_to_score_bridge.py
+    workflow: .github/workflows/muv-stage23-coverage-to-score-bridge.yml
+    design_doc: research/marginal_universe_value/STAGE23_COVERAGE_TO_SCORE_BRIDGE_DESIGN_20260913.md
+    primary_outputs:
+      - muv-stage23-coverage-to-score-bridge-report.json
+      - muv-stage23-coverage-to-score-bridge-events.csv
+    notes: "No model fit or policy backtest. Tests whether existing OLS score can narrow missed outside opportunities to a small point-in-time shortlist before any dynamic-universe policy is considered."
 
 next_experiment:
-  stage_id: stage23
+  stage_id: stage24
   status: planned
-  parent_stage: stage22
-  branch_condition: "Choose only after Stage22 tests whether a stable coverage gap exists overall and in both eras."
-  option_a: "conservative_admission_gate_or_qualification_transition_audit"
-  option_b: "accept_mostly_fixed_universe_and_revisit_retention_or_competition_structure"
-  option_c: "coverage_gap_regime_audit_without_threshold_tuning"
-  anti_overfit_rule: "Do not tune eligibility thresholds, asset classes, or ETF subsets on Stage22 outcomes. If coverage is regime-dependent, record that and use a conservative regime/coverage audit rather than claiming universal admission value."
+  parent_stage: stage23
+  branch_condition: "Choose only after Stage23 applies its frozen Top10 / rank-percentile support rule overall and in both eras."
+  option_a: "conservative_admission_shortlist_audit_without_policy_backtest"
+  option_b: "new_low_dof_admission_state_representation_audit"
+  option_c: "fixed_feature_nonlinear_capacity_benchmark_for_admission"
+  anti_overfit_rule: "Do not tune Stage23 score cutoffs, forward horizon, ETF subsets, or asset classes. If the score bridge fails, treat that as evidence against current score-state admission rather than searching for a better cutoff on the same history."
