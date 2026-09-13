@@ -1,0 +1,149 @@
+schema_version: 1
+project: marginal_universe_value
+updated_at: 2026-09-13
+
+status_values:
+  - planned
+  - running
+  - completed
+  - rejected
+  - provisional
+  - validated
+  - frozen
+
+decision_values:
+  - continue
+  - branch
+  - hold
+  - reject
+  - promote
+
+experiments:
+  - stage_id: stage13
+    name: bootstrap_uncertainty
+    parent_stage: stage7
+    label_version: v1.4
+    status: completed
+    decision: continue
+    hypothesis: "Month-cluster bootstrap uncertainty may distinguish robust retention signals from unstable point estimates."
+    target_scope: retention
+    model_role: uncertainty_audit
+    scripts:
+      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
+      - research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py
+      - research/marginal_universe_value/model_retention_stage13_bootstrap_uncertainty.py
+    workflow: .github/workflows/muv-retention-stage13.yml
+    primary_outputs:
+      - muv-retention-stage13-report.json
+      - muv-retention-stage13-bootstrap-predictions.csv
+      - muv-retention-stage13-stage7-veto.csv
+      - muv-retention-stage13-ucb-policy.csv
+    notes: "Historical diagnostic stage retained for lineage; do not treat its thresholds as frozen production rules."
+
+  - stage_id: stage14
+    name: residual_stress
+    parent_stage: stage13
+    label_version: v1.4
+    status: completed
+    decision: continue
+    hypothesis: "Distribution-free residual stress can reveal whether apparent retention value is fragile to unexplained cross-sectional residual variation."
+    target_scope: retention
+    model_role: robustness_audit
+    scripts:
+      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
+      - research/marginal_universe_value/model_retention_stage7_asymmetric_safety.py
+      - research/marginal_universe_value/model_retention_stage13_bootstrap_uncertainty.py
+      - research/marginal_universe_value/model_retention_stage14_residual_stress.py
+    workflow: .github/workflows/muv-retention-stage14.yml
+    primary_outputs:
+      - muv-retention-stage14-report.json
+      - muv-retention-stage14-residual-stress.csv
+      - muv-retention-stage14-stage7-veto.csv
+    notes: "Robustness branch; no direct strategy promotion."
+
+  - stage_id: stage15
+    name: hurdle_identifiability
+    parent_stage: stage3
+    label_version: v1.4
+    status: completed
+    decision: continue
+    hypothesis: "The positive/negative retention hurdle must be identifiable before optimizing a policy threshold."
+    target_scope: retention
+    model_role: identifiability_audit
+    scripts:
+      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
+      - research/marginal_universe_value/model_retention_stage15_hurdle_identifiability.py
+    workflow: .github/workflows/muv-retention-stage15.yml
+    primary_outputs:
+      - muv-retention-stage15-report.json
+      - muv-retention-stage15-quintiles.csv
+      - muv-retention-stage15-monthly-ranks.csv
+    notes: "Tests whether ranking/sign structure is sufficiently stable to justify a gate."
+
+  - stage_id: stage16
+    name: activity_conditional_sign
+    parent_stage: stage15
+    label_version: v1.4
+    status: completed
+    decision: branch
+    hypothesis: "Retention sign may become more predictable when conditioned on whether an ETF is actually active in the OLS competition path."
+    target_scope: retention
+    model_role: conditional_sign_audit
+    scripts:
+      - research/marginal_universe_value/model_retention_stage3_pairwise_sign.py
+      - research/marginal_universe_value/model_retention_stage16_activity_conditional_sign.py
+    workflow: .github/workflows/muv-retention-stage16.yml
+    primary_outputs:
+      - muv-retention-stage16-report.json
+      - muv-retention-stage16-activity-curve.csv
+      - muv-retention-stage16-period-curve.csv
+    notes: "Motivated the later move from ETF-only state toward path/competition state."
+
+  - stage_id: stage17
+    name: local_relational
+    parent_stage: stage16
+    label_version: v1.5
+    status: completed
+    decision: continue
+    hypothesis: "A local relational representation against the incumbent and nearest OLS alternatives may explain MUV better than isolated ETF state."
+    target_scope: retention
+    model_role: state_representation_audit
+    scripts:
+      - research/marginal_universe_value/build_retention_labels_v1_5.py
+      - research/marginal_universe_value/model_retention_stage17_local_relational.py
+    workflow: .github/workflows/muv-retention-stage17.yml
+    design_doc: research/marginal_universe_value/STAGE17_LOCAL_UNIVERSE_RELATIONAL_DESIGN_20260913.md
+    primary_outputs:
+      - muv-retention-stage17-report.json
+      - muv-retention-stage17-predictions.csv
+    notes: "First explicit local competition-state branch."
+
+  - stage_id: stage18
+    name: explicit_displacement
+    parent_stage: stage17
+    label_version: v1.6
+    status: completed
+    decision: hold
+    hypothesis: "If realized remove-one replacements are usually contained in the point-in-time local competing set and direct displacement days explain most monthly MUV, the next model should estimate pairwise transition value rather than add more ETF sign features."
+    target_scope: retention
+    model_role: mechanism_audit
+    scripts:
+      - research/marginal_universe_value/build_retention_labels_v1_6.py
+      - research/marginal_universe_value/model_retention_stage18_displacement_audit.py
+    workflow: .github/workflows/muv-retention-stage18.yml
+    design_doc: research/marginal_universe_value/STAGE18_EXPLICIT_PATH_DISPLACEMENT_DESIGN_20260913.md
+    primary_outputs:
+      - muv-retention-stage18-report.json
+      - muv-retention-stage18-active.csv
+    last_verified_run_id: 34737974501
+    last_verified_run_status: success
+    notes: "Mechanism checkpoint. Review the Stage18 report before choosing pairwise transition-value modeling versus a broader state representation."
+
+next_experiment:
+  stage_id: stage19
+  status: planned
+  parent_stage: stage18
+  branch_condition: "Choose only after reading Stage18 coverage and direct-vs-spillover decomposition."
+  option_a: "pairwise_transition_value_model"
+  option_b: "expanded_state_representation"
+  anti_overfit_rule: "Do not choose the branch by whichever gives the better full-sample backtest. Use the pre-declared Stage18 interpretation rule."
