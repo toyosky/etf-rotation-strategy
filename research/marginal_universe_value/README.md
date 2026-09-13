@@ -2,7 +2,10 @@
 
 ## Project status
 
-**Status: initiated / research design stage**
+**Status: active mechanism research / retention branch through Stage18**
+
+研究谱系：[`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md)  
+机器可读实验注册表：[`experiment_registry.yaml`](experiment_registry.yaml)
 
 本项目单独研究一个问题：
 
@@ -369,3 +372,4 @@ MUV 项目的角色是把这些发现统一成一个**Universe 决策目标函�
 ## Research log
 
 - 2026-09-12：正式立项 Marginal Universe Value (MUV)。冻结核心经济对象、retention/admission counterfactual 定义、V1 多维 labels、研究阶段和反过拟合约束。
+- 2026-09-13：Retention 主线推进至 Stage18；引入实验注册表与研究谱系，Stage19 分支必须由 Stage18 预声明机制判据决定，不允许按全样本回测优劣事后选路。
