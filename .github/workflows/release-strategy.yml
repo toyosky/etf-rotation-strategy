@@ -1,0 +1,77 @@
+name: Freeze Strategy Release
+
+on:
+  push:
+    tags:
+      - "strategy-v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing strategy-v* tag to release"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve tag
+        id: tag
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "value=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out frozen ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.value }}
+          fetch-depth: 0
+          lfs: true
+
+      - name: Validate release tag
+        shell: bash
+        run: |
+          case "${{ steps.tag.outputs.value }}" in
+            strategy-v*) ;;
+            *) echo "Tag must start with strategy-v"; exit 1 ;;
+          esac
+
+      - name: Build release bundle
+        shell: bash
+        run: |
+          mkdir -p dist
+          python - <<'PY'
+          import json, os, subprocess
+          manifest = {
+              "tag": os.environ["RELEASE_TAG"],
+              "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "strategy_id": "SEVEN_STAR_F1_CASH_DEFENSE_FROZEN_V1",
+              "bundle": ["strategy", "docs/strategy-spec.md", "README.md"],
+          }
+          with open("dist/release-manifest.json", "w", encoding="utf-8") as f:
+              json.dump(manifest, f, ensure_ascii=False, indent=2)
+          PY
+          tar -czf "dist/etf-rotation-${{ steps.tag.outputs.value }}.tar.gz" strategy docs/strategy-spec.md README.md
+        env:
+          RELEASE_TAG: ${{ steps.tag.outputs.value }}
+
+      - name: Create GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${{ steps.tag.outputs.value }}" >/dev/null 2>&1; then
+            gh release upload "${{ steps.tag.outputs.value }}" dist/* --clobber
+          else
+            gh release create "${{ steps.tag.outputs.value }}" dist/* \
+              --title "Strategy ${{ steps.tag.outputs.value }}" \
+              --generate-notes \
+              --verify-tag
+          fi
