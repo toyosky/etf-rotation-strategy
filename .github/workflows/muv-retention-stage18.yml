@@ -5,15 +5,11 @@ on:
   push:
     paths:
       - "research/requirements-full-market-ols.txt"
-      - "research/marginal_universe_value/build_retention_labels_v1.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_1.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_2.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_3.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_4.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_5.py"
-      - "research/marginal_universe_value/build_retention_labels_v1_6.py"
+      - "research/marginal_universe_value/build_retention_labels_v1*.py"
       - "research/marginal_universe_value/model_retention_stage18_displacement_audit.py"
       - "research/marginal_universe_value/STAGE18_EXPLICIT_PATH_DISPLACEMENT_DESIGN_20260913.md"
+      - ".github/actions/muv-bootstrap/action.yml"
+      - ".github/actions/muv-publish/action.yml"
       - ".github/workflows/muv-retention-stage18.yml"
 
 permissions:
@@ -32,64 +28,25 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: research/requirements-full-market-ols.txt
-
-      - name: Install dependencies
-        run: python -m pip install --requirement research/requirements-full-market-ols.txt
-
-      - name: Build daily cache key
-        id: cache-key
-        shell: bash
-        run: echo "day=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
-
-      - name: Restore Stage18 label cache
-        id: label-cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            muv-retention-v1-summary.json
-            muv-retention-labels-v1.parquet
-          key: >-
-            muv-retention-v1.6-${{ runner.os }}-${{ steps.cache-key.outputs.day }}-${{ hashFiles(
-            'research/marginal_universe_value/build_retention_labels_v1.py',
-            'research/marginal_universe_value/build_retention_labels_v1_1.py',
-            'research/marginal_universe_value/build_retention_labels_v1_2.py',
-            'research/marginal_universe_value/build_retention_labels_v1_3.py',
-            'research/marginal_universe_value/build_retention_labels_v1_4.py',
-            'research/marginal_universe_value/build_retention_labels_v1_5.py',
-            'research/marginal_universe_value/build_retention_labels_v1_6.py'
-            ) }}
-
-      - name: Build V1.6 displacement labels
-        if: steps.label-cache.outputs.cache-hit != 'true'
+      - name: Prepare V1.6 MUV labels
+        uses: ./.github/actions/muv-bootstrap
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-        run: python research/marginal_universe_value/build_retention_labels_v1_6.py --skip-upload
+        with:
+          label-version: v1.6
+          builder: research/marginal_universe_value/build_retention_labels_v1_6.py
 
       - name: Stage 18 explicit displacement audit
         run: python research/marginal_universe_value/model_retention_stage18_displacement_audit.py
 
-      - name: Show Stage18 report
+      - name: Publish Stage18 outputs
         if: always()
-        run: |
-          if [ -f muv-retention-stage18-report.json ]; then
-            cat muv-retention-stage18-report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Upload Stage18 outputs
-        if: always()
-        uses: actions/upload-artifact@v4
+        uses: ./.github/actions/muv-publish
         with:
-          name: muv-retention-stage18-${{ github.run_id }}
-          path: |
+          report-file: muv-retention-stage18-report.json
+          artifact-name: muv-retention-stage18-${{ github.run_id }}
+          paths: |
             muv-retention-v1-summary.json
             muv-retention-labels-v1.parquet
             muv-retention-stage18-report.json
             muv-retention-stage18-active.csv
-          if-no-files-found: ignore
-          retention-days: 30
