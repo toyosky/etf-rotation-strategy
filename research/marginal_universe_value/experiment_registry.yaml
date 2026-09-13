@@ -123,7 +123,7 @@ experiments:
     parent_stage: stage17
     label_version: v1.6
     status: completed
-    decision: hold
+    decision: branch
     hypothesis: "If realized remove-one replacements are usually contained in the point-in-time local competing set and direct displacement days explain most monthly MUV, the next model should estimate pairwise transition value rather than add more ETF sign features."
     target_scope: retention
     model_role: mechanism_audit
@@ -137,13 +137,34 @@ experiments:
       - muv-retention-stage18-active.csv
     last_verified_run_id: 34737974501
     last_verified_run_status: success
-    notes: "Mechanism checkpoint. Review the Stage18 report before choosing pairwise transition-value modeling versus a broader state representation."
+    notes: "Direct displacement explains nearly all MUV, but static local-set replacement coverage is weak; branch to dynamic replacement-state representation before transition-value modeling."
+
+  - stage_id: stage19
+    name: dynamic_replacement_reachability
+    parent_stage: stage18
+    label_version: v1.6
+    status: planned
+    decision: continue
+    hypothesis: "Recent point-in-time i-j OLS competition trajectories can rank the next-month realized dominant non-cash replacement more reliably than static month-end score rank."
+    target_scope: retention
+    model_role: replacement_identity_audit
+    scripts:
+      - research/marginal_universe_value/build_retention_labels_v1_6.py
+      - research/marginal_universe_value/build_stage19_replacement_pairs.py
+      - research/marginal_universe_value/model_retention_stage19_replacement_reachability.py
+    workflow: .github/workflows/muv-retention-stage19.yml
+    design_doc: research/marginal_universe_value/STAGE19_DYNAMIC_REPLACEMENT_REACHABILITY_DESIGN_20260913.md
+    primary_outputs:
+      - muv-retention-stage19-report.json
+      - muv-retention-stage19-event-ranks.csv
+      - muv-retention-stage19-pairs.parquet
+    notes: "No MUV sign/value model and no policy backtest. First test whether replacement identity itself becomes prospectively identifiable from dynamic pairwise state."
 
 next_experiment:
-  stage_id: stage19
+  stage_id: stage20
   status: planned
-  parent_stage: stage18
-  branch_condition: "Choose only after reading Stage18 coverage and direct-vs-spillover decomposition."
-  option_a: "pairwise_transition_value_model"
-  option_b: "expanded_state_representation"
-  anti_overfit_rule: "Do not choose the branch by whichever gives the better full-sample backtest. Use the pre-declared Stage18 interpretation rule."
+  parent_stage: stage19
+  branch_condition: "Choose only after Stage19 OOS Hit@3/MRR stability audit."
+  option_a: "pairwise_transition_value_conditional_on_reachability"
+  option_b: "reconsider_retention_and_shift_to_admission_or_new_path_state"
+  anti_overfit_rule: "Do not tune Stage19 feature subsets or horizons on the same OOS history. Require non-deterioration overall and in both time regimes."
