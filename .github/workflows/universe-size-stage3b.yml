@@ -30,7 +30,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh run download 34772895471 -n universe-size-stage1-repair-34772895471 -D stage1-artifact
       - name: Run frozen Stage3B audit
-        run: python research/universe_size_then_composition/stage3b_conservative_size_fallback.py --stage1-dir stage1-artifact/stage1-size-mc-output --output-dir stage3b-output
+        run: python research/universe_size_then_composition/stage3b_conservative_size_fallback.py --stage1-dir stage1-artifact --output-dir stage3b-output
       - name: Upload Stage3B artifact
         uses: actions/upload-artifact@v4
         with:
