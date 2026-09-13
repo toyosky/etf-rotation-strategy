@@ -1,0 +1,95 @@
+name: Universe Size Stage1 Monte Carlo
+
+on:
+  workflow_dispatch:
+    inputs:
+      samples_per_k:
+        description: Independent same-K samples per month/K
+        required: false
+        default: "180"
+      nested_paths:
+        description: Random nested 15-to-3 deletion paths per month
+        required: false
+        default: "36"
+      seed:
+        description: Frozen Monte Carlo seed
+        required: false
+        default: "20260914"
+      corr_threshold:
+        description: Point-in-time representative ETF dedup threshold
+        required: false
+        default: "0.95"
+  push:
+    paths:
+      - "research/universe_size_then_composition/stage1_oracle_size_mc.py"
+      - "research/universe_size_then_composition/experiment_registry.yaml"
+      - ".github/workflows/universe-size-stage1.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: universe-size-stage1
+  cancel-in-progress: false
+
+jobs:
+  stage1-long-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+
+      - name: Install dependencies
+        run: python -m pip install --requirement research/requirements-full-market-ols.txt
+
+      - name: Compile Stage1 runner
+        run: python -m py_compile research/universe_size_then_composition/stage1_oracle_size_mc.py
+
+      - name: Run full-history Stage1 batch
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          SAMPLES_PER_K: ${{ inputs.samples_per_k || '180' }}
+          NESTED_PATHS: ${{ inputs.nested_paths || '36' }}
+          MC_SEED: ${{ inputs.seed || '20260914' }}
+          CORR_THRESHOLD: ${{ inputs.corr_threshold || '0.95' }}
+        run: |
+          python research/universe_size_then_composition/stage1_oracle_size_mc.py \
+            --samples-per-k "$SAMPLES_PER_K" \
+            --nested-paths "$NESTED_PATHS" \
+            --seed "$MC_SEED" \
+            --corr-threshold "$CORR_THRESHOLD" \
+            --output-dir stage1-size-mc-output
+
+      - name: Show compact summary
+        if: always()
+        run: |
+          if [ -f stage1-size-mc-output/stage1_summary.json ]; then
+            cat stage1-size-mc-output/stage1_summary.json
+            echo '## Stage1 summary' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat stage1-size-mc-output/stage1_summary.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f stage1-size-mc-output/monthly_k_distribution.csv ]; then
+            echo '## Monthly x K preview' >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            head -40 stage1-size-mc-output/monthly_k_distribution.csv >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload Stage1 evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universe-size-stage1-${{ github.run_id }}
+          path: stage1-size-mc-output/
+          if-no-files-found: warn
+          retention-days: 30
