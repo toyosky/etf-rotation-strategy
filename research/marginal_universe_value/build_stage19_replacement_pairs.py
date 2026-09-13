@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import math
+import os
 from pathlib import Path
 
 import numpy as np
@@ -90,14 +91,18 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--labels", default=str(LABELS))
     ap.add_argument("--output", default=str(OUT))
+    ap.add_argument("--database-url", default=os.getenv("ETF_DAILY_BARS_DATABASE_URL"))
     args = ap.parse_args()
+
+    if not args.database_url:
+        raise RuntimeError("ETF_DAILY_BARS_DATABASE_URL is required")
 
     labels = pd.read_parquet(args.labels)
     labels["asof_date"] = pd.to_datetime(labels["asof_date"])
     labels["label_month"] = labels["label_month"].astype(str)
     active = labels[pd.to_numeric(labels["disp_direct_days"], errors="coerce").fillna(0) > 0].copy()
 
-    engine = create_engine(v1._db_url())
+    engine = create_engine(v1._db_url(args.database_url), pool_pre_ping=True)
     bars = v1.load_fixed15_bars(engine)
     features = v1.build_features(bars)
     _, score, rank, _, _, _, _ = v1.prepare_wides(bars, features)
