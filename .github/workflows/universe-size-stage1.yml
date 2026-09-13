@@ -35,7 +35,8 @@ concurrency:
 jobs:
   stage1-long-batch:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    # Mechanical runtime envelope only. Frozen research design/MC counts are unchanged.
+    timeout-minutes: 360
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
