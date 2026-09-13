@@ -1,0 +1,36 @@
+name: MUV Stage26C Exact Certification Audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/marginal_universe_value/audit_stage26c_exact_certification.py"
+      - "research/marginal_universe_value/STAGE26C_EXACT_CERTIFICATION_AUDIT_DESIGN_20260913.md"
+      - "research/marginal_universe_value/experiment_registry.yaml"
+      - ".github/workflows/muv-stage26c-exact-certification.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas
+      - name: Download frozen Stage26 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 34755327797 -n muv-stage26-set-value-oracle-34755327797 -D stage26_artifact
+      - name: Run certification audit
+        run: python research/marginal_universe_value/audit_stage26c_exact_certification.py --months stage26_artifact/muv-stage26-set-value-oracle-months.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: muv-stage26c-exact-certification-${{ github.run_id }}
+          path: |
+            muv-stage26c-exact-certification-report.json
+            muv-stage26c-certified-months.csv
