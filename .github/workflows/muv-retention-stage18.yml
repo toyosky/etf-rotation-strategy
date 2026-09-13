@@ -42,7 +42,31 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --requirement research/requirements-full-market-ols.txt
 
+      - name: Build daily cache key
+        id: cache-key
+        shell: bash
+        run: echo "day=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore Stage18 label cache
+        id: label-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            muv-retention-v1-summary.json
+            muv-retention-labels-v1.parquet
+          key: >-
+            muv-retention-v1.6-${{ runner.os }}-${{ steps.cache-key.outputs.day }}-${{ hashFiles(
+            'research/marginal_universe_value/build_retention_labels_v1.py',
+            'research/marginal_universe_value/build_retention_labels_v1_1.py',
+            'research/marginal_universe_value/build_retention_labels_v1_2.py',
+            'research/marginal_universe_value/build_retention_labels_v1_3.py',
+            'research/marginal_universe_value/build_retention_labels_v1_4.py',
+            'research/marginal_universe_value/build_retention_labels_v1_5.py',
+            'research/marginal_universe_value/build_retention_labels_v1_6.py'
+            ) }}
+
       - name: Build V1.6 displacement labels
+        if: steps.label-cache.outputs.cache-hit != 'true'
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: python research/marginal_universe_value/build_retention_labels_v1_6.py --skip-upload
