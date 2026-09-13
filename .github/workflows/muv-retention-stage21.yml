@@ -1,0 +1,53 @@
+name: MUV Retention Stage21 Competition Nuisance Audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/requirements-full-market-ols.txt"
+      - "research/marginal_universe_value/build_retention_labels_v1*.py"
+      - "research/marginal_universe_value/model_retention_stage21_competition_nuisance.py"
+      - "research/marginal_universe_value/STAGE21_COMPETITION_NUISANCE_AUDIT_DESIGN_20260913.md"
+      - "research/marginal_universe_value/experiment_registry.yaml"
+      - ".github/actions/muv-bootstrap/action.yml"
+      - ".github/actions/muv-publish/action.yml"
+      - ".github/workflows/muv-retention-stage21.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: muv-retention-stage21
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare V1.6 MUV labels
+        uses: ./.github/actions/muv-bootstrap
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        with:
+          label-version: v1.6
+          builder: research/marginal_universe_value/build_retention_labels_v1_6.py
+
+      - name: Stage21 competition nuisance audit
+        run: python research/marginal_universe_value/model_retention_stage21_competition_nuisance.py
+
+      - name: Publish Stage21 outputs
+        if: always()
+        uses: ./.github/actions/muv-publish
+        with:
+          report-file: muv-retention-stage21-report.json
+          artifact-name: muv-retention-stage21-${{ github.run_id }}
+          paths: |
+            muv-retention-v1-summary.json
+            muv-retention-labels-v1.parquet
+            muv-retention-stage21-report.json
+            muv-retention-stage21-symbol-era.csv
