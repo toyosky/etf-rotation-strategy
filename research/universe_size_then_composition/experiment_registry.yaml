@@ -13,7 +13,7 @@ frozen_downstream_rule:
 stages:
   - id: new_stage_1
     name: oracle_universe_size_monte_carlo
-    status: running_first_long_batch
+    status: robustness_in_progress
     objective: >-
       Determine whether reducing or increasing Universe size K has a general effect on
       one-month Frozen OLS value, and whether a stable favorable K range exists.
@@ -29,16 +29,47 @@ stages:
       fixed_rng_seed: 20260914
       evaluate_by_month: true
       oracle_usage: mechanism_diagnosis_only
-    operational_batch_20260914:
-      runner: research/universe_size_then_composition/stage1_oracle_size_mc.py
-      workflow: .github/workflows/universe-size-stage1.yml
+    first_batch_20260914:
+      source_run_id: 34772895471
+      status: completed_success
       samples_per_k_per_month: 180
       nested_15_to_3_paths_per_month: 36
-      expected_artifact: universe-size-stage1-<run_id>
-      after_artifact: >-
-        Inspect full K distributions and nested paired deletion deltas before changing
-        any threshold or definition. Then run predeclared seed-convergence and 0.90
-        representative-pool sensitivity as warranted.
+      months: 68
+      sampled_universes: 374544
+      key_evidence:
+        overall_month_spearman_k_return_negative_share: 0.5735
+        overall_month_spearman_below_minus_half_share: 0.5147
+        era_2021_24_k30_minus_k3_mean: -0.01386
+        era_2021_24_month_bootstrap_95pct: [-0.02319, -0.00424]
+        era_2025_26_k30_minus_k3_mean: 0.01165
+        era_2025_26_month_bootstrap_95pct: [-0.01648, 0.03934]
+        interpretation: >-
+          Strong era reversal: larger K is robustly harmful in 2021-24, while 2025-26
+          point estimate reverses positive but remains statistically uncertain at month level.
+          Do not freeze an optimal K or move to Stage2 yet.
+      mechanism_direction:
+        k_up_switches_up: true
+        k_up_observed_top1_tenure_down: true
+        k_up_winner_coverage_up: true
+        k_up_dormant_share_up: true
+        k_up_effective_n_up_slowly: true
+      data_quality_note: >-
+        stage1_summary.json representative_pool_stats are invalid because the upstream
+        representative stats include zero-count calendar buckets. Recomputed from
+        monthly_parent_pool_snapshots: 68 nonempty months, mean parent size about 218.29,
+        median 240, min 65, max 383. Raw MC outputs remain usable; no rerun is required.
+      analysis_script: research/universe_size_then_composition/analyze_stage1_first_batch.py
+      analysis_workflow: .github/workflows/universe-size-stage1-analysis.yml
+    robustness_batch_20260914:
+      status: planned_to_running
+      allowed_checks_only:
+        - alternative_seed_same_primary_design
+        - corr_threshold_0_90_predeclared_sensitivity
+        - month_cluster_bootstrap
+      branch_rule: >-
+        If era reversal survives seed convergence and corr=0.90, treat K effect as
+        regime-dependent and investigate mechanism before defining any stable K range.
+        If reversal disappears, diagnose Monte Carlo or representative-pool sensitivity.
     required_outputs:
       - monthly_parent_pool_snapshots
       - sampled_universe_detail
@@ -58,22 +89,14 @@ stages:
       - dormant_member_share
       - pairwise_correlation_mean
       - effective_n
-    mechanism_features_to_add_or_deepen_after_first_batch:
-      - pairwise_correlation_median
-      - pairwise_correlation_high_quantile
-      - first_pc_share
-      - asset_class_breadth
-      - region_breadth
-      - score_distribution
-      - strong_trend_count
-      - rank_turnover
     completion_rule: >-
-      Freeze Stage 1 only after cross-month K-by-return distributions are produced with
-      reproducible code/config/input version/random seeds and basic robustness checks.
+      Freeze Stage 1 only after the first-batch era reversal is checked against the
+      predeclared alternative-seed Monte Carlo and corr_threshold=0.90 sensitivity,
+      with month-cluster robustness recorded. Do not select a precise K from this history.
 
   - id: new_stage_2
     name: size_mechanism_remaining_trend_life
-    status: queued
+    status: hold_until_stage1_robustness
     dependency: new_stage_1
     key_definition: >-
       Remaining trend life is the ETF's own residual trend-episode life after first OLS
