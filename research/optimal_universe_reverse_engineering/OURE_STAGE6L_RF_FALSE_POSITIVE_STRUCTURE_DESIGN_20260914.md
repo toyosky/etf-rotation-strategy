@@ -78,7 +78,7 @@ For each feature and target block:
 - compute paired good-minus-bad difference across matched pairs;
 - scale by the RF-high feature standard deviation in that block to obtain standardized matched effect.
 
-A feature is `stable_internal_trait` only if across B02..B09:
+A feature is `stable_internal_trait` in the full B02..B09 audit only if:
 - finite effect in >= 6 blocks;
 - the same nonzero sign in >= 6 of 8 blocks;
 - median absolute standardized effect >= 0.15.
@@ -93,8 +93,10 @@ Only if Stage-1 gate passes.
 
 ### Chronological feature selection
 For each test block from B05 onward:
-- use only earlier target blocks B02..B(test-1) to recompute the same stability rule;
-- retain only features satisfying the rule using historical blocks available then, with minimum 3 historical blocks;
+- use only earlier target blocks B02..B(test-1);
+- minimum 3 historical target blocks is required;
+- a feature survives if its matched effect is finite in at least 75% of those historical blocks, the same nonzero sign appears in at least `ceil(0.75*n_history)` blocks, and median absolute standardized effect >= 0.15;
+- this is the chronological proportional analogue of the full-history 6-of-8 rule;
 - if fewer than 2 features survive, emit a neutral score for that test block; no fallback tuning.
 
 ### Model
