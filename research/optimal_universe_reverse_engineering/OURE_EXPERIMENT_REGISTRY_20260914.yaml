@@ -79,6 +79,14 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6_FINDINGS_20260914.md
     notes: "Preregistered regime gate passed 2/3. Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust 3/6/12 rank correlation flips -0.087 to +0.353. Single historical winner percentile remains unreliable. Later era has broader OLS eligibility and faster leader turnover but much larger Top1-Top2 score gap. Fix15 raw return is stronger later (+604.8% vs +49.5% linked completed periods) despite shorter leader tenure and higher switch rate."
 
+  - stage: 6B
+    status: frozen_explanatory_layer1
+    decision: fix15_2022_2024_good_sets_are_persistence_controlled_competition
+    run_id: 34848320084
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6B_2022_2024_GOOD_UNIVERSE_TRAITS_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6B_FINDINGS_20260914.md
+    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure (corr +0.638), lower switch rate (-0.632), fewer <=2d leaders, lower pair trend overlap and fewer simultaneous eligible competitors. Exact K7 champion +267.9%. Persistence signature largely disappears in 2025-26. Full-market external replication still required before generalizing."
+
 next_gate:
-  direction: "pre-register low-dimensional X<=t market-state proxies for next-half Universe-rank transfer persistence"
-  constraints: "Use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure (optionally one simple composite with fixed signs). Predict next-half rank-transfer quality, not return. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
+  direction: "continue Stage7 X<=t market-state identification; separately externally replicate Stage6B 2022-24 persistence signature before treating it as a general market mechanism"
+  constraints: "Stage6B member identities are hindsight descriptions only. For Stage7 use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
