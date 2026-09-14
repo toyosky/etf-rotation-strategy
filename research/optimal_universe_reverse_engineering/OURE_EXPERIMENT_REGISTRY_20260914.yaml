@@ -69,7 +69,7 @@ stages:
     run_id: 34845528263
     design: research/optimal_universe_reverse_engineering/OURE_STAGE5_HISTORY_TRANSFER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE5_FINDINGS_20260914.md
-    notes: "Past-6M winner standalone persistence gate failed (4/9 completed periods beat same-K random median). Frozen 3/6/12M robust rule improved linked forward growth and hit rate, passing the aggregate robustness increment; however all historical-transfer rules were weak in 2022-24 and strong in 2025-26. Mechanism-assisted rule had higher realized return but failed the preregistered future-relay-quality gate."
+    notes: "Past-6M Winner standalone failed; frozen 3/6/12M robust history provided aggregate transfer increment but was weak in 2022-24 and strong in 2025-26; historical relay assistance failed its future-mechanism gate."
 
   - stage: 6
     status: frozen
@@ -77,7 +77,7 @@ stages:
     run_id: 34847008430
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6_TRANSFER_REGIME_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6_FINDINGS_20260914.md
-    notes: "Preregistered regime gate passed 2/3. Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust 3/6/12 rank correlation flips -0.087 to +0.353. Single historical winner percentile remains unreliable. Later era has broader OLS eligibility and faster leader turnover but much larger Top1-Top2 score gap. Fix15 raw return is stronger later (+604.8% vs +49.5% linked completed periods) despite shorter leader tenure and higher switch rate."
+    notes: "Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust rank -0.087 to +0.353. Later era has broader eligibility, larger Top1-Top2 gap, faster switching and shorter tenure."
 
   - stage: 6B
     status: frozen_explanatory_layer1
@@ -85,7 +85,7 @@ stages:
     run_id: 34848320084
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6B_2022_2024_GOOD_UNIVERSE_TRAITS_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6B_FINDINGS_20260914.md
-    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure (corr +0.638), lower switch rate (-0.632), fewer <=2d leaders, lower pair trend overlap and fewer simultaneous eligible competitors. Exact K7 champion +267.9%. Persistence signature largely disappears in 2025-26."
+    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure, lower switch rate and fewer short leaders; later full-market Stage6C showed that this does not imply a general small-K law."
 
   - stage: 6C
     status: frozen
@@ -93,8 +93,16 @@ stages:
     run_id: 34849477779
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FULLMARKET_2022_2024_K_FRONTIER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FINDINGS_20260914.md
-    notes: "Full-market 2022-start-eligible pool (265 risk ETFs), no Fix15 identity rule. Strong heuristic frontier rejects a general small-K law: searched returns K5 +456%, K10 +692%, K15 +722%, K20 +854%, K25 +889%, K30 +899% best, K40 +829%, K50 +874%, K60 +849%. Interpret as broad K20-K30 high plateau, not magical exact K30. K30 elite vs random K30 has lower switch rate, longer tenure, fewer short runs and much higher productive-switch/counterfactual gain, but lower pair-overlap / lower simultaneous-eligibility / higher coverage-efficiency directions from Fix15 do not replicate. Nominal K is not the state variable; controlled effective competition and replacement quality remain central."
+    notes: "Full-market 2022-start-eligible pool (265 risk ETFs), no Fix15 identity rule. Strong heuristic frontier rejects a general small-K law: broad K20-K30 high plateau with searched K30 about +899%. K30 elite vs random K30 has lower switch rate, longer tenure, fewer short runs and much higher productive-switch/counterfactual gain."
+
+  - stage: 6D
+    status: frozen_failed_primary_gate
+    decision: member_marginal_value_not_lowdim_identifiable
+    run_id: 34852348851
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6D_FIXED_K30_MEMBER_MARGINAL_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6D_FINDINGS_20260914.md
+    notes: "With K fixed at 30, two eras choose sharply different members (champion Jaccard 0.0909), but preregistered X<=t member-marginal gate fails. Prior new-coverage is saturated/constant zero at K29; replacement-gain mean is near zero/inconsistent; productive-challenge share is negatively associated with future marginal value. The strongest stable secondary signal is raw prior challenge share: median context Spearman -0.332 in 2022-24 and -0.404 in 2025-26, so frequent historical challengers are a robust conditional-admission warning. This is only conditional on a strong hindsight-derived K29 core and is not a from-scratch K30 constructor."
 
 next_gate:
-  direction: "continue Stage7 X<=t market-state identification using effective competition / replacement-quality proxies; do not impose a small-K prior"
-  constraints: "Use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure; may add already-frozen historical replacement-quality measures only if preregistered before outcome inspection. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
+  direction: "separate core-set formation from 30th-member admission; preserve Stage6D challenge-intensity veto as a frozen conditional hypothesis while continuing strict X<=t state/core construction work"
+  constraints: "Do not tune Stage6D weights/windows or add high-capacity member predictors. No small-K prior and no Fix15 identity. If challenge-share is used next, preregister it as an admission/redundancy veto, not a complete ranking model. Core-set formation must be designed separately using only X<=t information, with frozen downstream OLS."
