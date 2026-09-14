@@ -9,7 +9,11 @@ K=15
 
 def sp(a,b):
     x=pd.DataFrame({'a':a,'b':b}).dropna()
-    return float(x.a.corr(x.b,method='spearman')) if len(x)>=3 else np.nan
+    if len(x)<3:
+        return np.nan
+    ra=x.a.rank(method='average')
+    rb=x.b.rank(method='average')
+    return float(ra.corr(rb,method='pearson'))
 
 def inclusion(df):
     rows=[]
