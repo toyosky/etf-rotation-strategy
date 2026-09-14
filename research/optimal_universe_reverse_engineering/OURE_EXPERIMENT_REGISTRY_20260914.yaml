@@ -158,6 +158,14 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6K_ADJACENT_126_TRANSFER_FINDINGS_20260914.md
     notes: "Strict non-overlapping 126->126 transfer. Previous-block RF: median IC +0.1092, 7/8 positive, median top-decile lift +0.00487, but median predicted-Top50 actual percentile only 0.5300 versus frozen >0.60 gate. Simple current past126 rank has similar median IC +0.1187 and Top50 0.5302; expanding-history RF is negative. Broad rank persistence exists, but top-tail mapping is not deployable and RF has no robust incremental edge over the simple baseline."
 
+  - stage: 6L
+    status: frozen_partial_pass_model_fail
+    decision: stable_internal_structure_but_second_layer_not_oos_supported
+    run_id: 34869360796
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6L_RF_FALSE_POSITIVE_STRUCTURE_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6L_RF_FALSE_POSITIVE_STRUCTURE_FINDINGS_20260914.md
+    notes: "Matched audit inside previous-block-RF top20% passes structural gate: 12/47 new internal features across four families are stable. True RF-high winners have broadly stronger member singleton harvestability and eligibility participation, somewhat more distributed leader participation, and higher p90 pair return correlation. Leave-one-out robustness does not survive the full gate. Conditional chronological Ridge residual layer fails all four OOS gates: median residual IC -0.0611, only 1/5 positive, median Top50 percentile 0.4627, median Top50 gain vs RF -0.0659. Internal good/bad structure exists ex post, but the frozen low-complexity second layer cannot identify it prospectively."
+
 next_gate:
-  direction: "This OURE dynamic-K30 historical-learning branch is frozen at Stage6K. Stage6I establishes contemporaneous future126 value-surface structure; Stage6K shows only weak adjacent broad-ranking transfer and fails the preregistered top-tail gate under strict label availability. Current historical data do not identify a deployable X<=t high-value K30 constructor."
-  constraints: "Do not tune Stage6K RF/features/horizon/Top50 gate, do not revive calendar Stage6J as OOS evidence, do not authorize RF-guided combinatorial search, and do not increase model capacity on this same history. Resume only with a genuinely new hypothesis or genuinely new forward data under a new preregistration."
+  direction: "Stage6L one-shot task is complete and frozen. The coarse-RF -> internal-quality decomposition is partially validated at the mechanism level, but no deployable second-stage selector is established. The scheduled research task must remain stopped."
+  constraints: "Do not tune Stage6L matching threshold, feature set, Ridge alpha, chronology, or gates on the same history; do not escalate to CEM/GA/swap search from this result. Resume only under a genuinely new algorithmic hypothesis or genuinely new forward data with a new preregistration."
