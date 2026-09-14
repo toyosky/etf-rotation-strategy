@@ -41,13 +41,22 @@ stages:
     notes: "Large-K top25 separates coherently from controls on productive replacement / coverage efficiency. Small-K top25 does not form a clean persistence class; two-discrete-state hypothesis not validated."
 
   - stage: 4D
-    status: preregistered_running
-    decision: holdout_relay_replication
+    status: frozen
+    decision: relay_internal_cross_universe_replication_pass
+    run_id: 34837591862
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE4D_FINDINGS_20260914.md
     design: research/optimal_universe_reverse_engineering/OURE_STAGE4D_RELAY_HOLDOUT_REPLICATION_DESIGN_20260914.md
-    script: research/optimal_universe_reverse_engineering/oure_stage4d_relay_holdout_replication.py
-    workflow: .github/workflows/oure-stage4d-relay-holdout.yml
-    gate: "full >=5/6 frozen directions; 2021-24 >=4/6; 2025-26 >=4/5 non-switch directions; productive-switch share and counterfactual-gain mean mandatory positive in every era"
+    notes: "Stage3B ranks 26..100 versus new same-K controls: all 6 frozen directions match in full, 2021-24 and 2025-26; productive-switch share and counterfactual-gain mean mandatory conditions pass in every era. Relay is now Stage3B-internal cross-Universe repeatable, not yet externally generalized."
+
+  - stage: 4E
+    status: preregistered_running
+    decision: external_relay_signature_replication
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE4E_EXTERNAL_RELAY_REPLICATION_DESIGN_20260914.md
+    script: research/optimal_universe_reverse_engineering/oure_stage4e_external_relay_replication.py
+    workflow: .github/workflows/oure-stage4e-external-relay.yml
+    external_source: "Stage3C strict exposure-disjoint run 34828750914; elite ranks 1..25; exact-K lexicographic random controls"
+    gate: "same frozen Stage4D gate: full >=5/6; 2021-24 >=4/6; 2025-26 >=4/5 non-switch; productive-switch share and counterfactual-gain mean positive in every era"
 
 next_gate:
-  if_stage4d_passes: "freeze relay mechanism; next test the same low-dimensional signature in a different search construction/member family before any X<=t proxy model"
-  if_stage4d_fails: "freeze relay as discovery-specific; abandon discrete architecture story and move to continuous Effective Competition / Opportunity Coverage description"
+  if_stage4e_passes: "freeze relay as cross-construction/cross-member-family replicated; next preregister low-dimensional X<=t proxies for Opportunity Coverage and Replacement Quality before any strict walk-forward Universe construction"
+  if_stage4e_fails: "freeze relay as construction-dependent; do not tune signature; abandon discrete relay-class claim and use continuous Effective Competition / Opportunity Coverage / Replacement Quality description"
