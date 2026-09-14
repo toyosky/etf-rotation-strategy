@@ -27,6 +27,7 @@ jobs:
         run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage5_history_transfer.py
       - name: Run Stage5 history transfer
         env:
+          PYTHONPATH: research
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: >-
           python research/optimal_universe_reverse_engineering/oure_stage5_history_transfer.py
