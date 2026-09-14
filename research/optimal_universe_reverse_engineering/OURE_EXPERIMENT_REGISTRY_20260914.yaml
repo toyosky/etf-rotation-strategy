@@ -127,10 +127,12 @@ stages:
     notes: "Whole-K30 continuous-value RF grouped by mutation family. 2022-24 median fold Spearman +0.0129 and no stable learnability. 2025-26 median +0.3326, 4/5 positive folds and positive top-decile lift, but predicted-Top50 actual percentile 0.6366 missed frozen >0.65 gate. Cross-era transfer weak (+0.0839/+0.1167). Do not change RF, threshold, features or era endpoints."
 
   - stage: 6H
-    status: registered_running
-    decision: point_in_time_transfer_state_gate
+    status: frozen_failed
+    decision: low_dof_state_gate_failed
+    run_id: 34861108018
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_DESIGN_20260914.md
-    notes: "No model. Trailing126 X<=t state gate uses eligible fraction, Top1-Top2 gap, leader switch rate and leader tenure versus strictly-expanding decision-state medians; transfer_on requires 3-of-4 later-regime-direction votes. Primary target is frozen Stage6 robust-score -> next-half-year library-rank Spearman. No tuning after outcome inspection."
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_FINDINGS_20260914.md
+    notes: "Frozen trailing126 4-variable expanding-median 3-of-4 transfer-state vote failed: robust transfer sign accuracy 50%; transfer-on median future robust Spearman +0.0487 versus transfer-off +0.2219, on-minus-off -0.1732. Do not tune the state variables, thresholds, lookback or vote rule."
 
   - stage: 6I
     status: frozen
@@ -141,5 +143,5 @@ stages:
     notes: "Changing only Y horizon to the next 126 sessions reverses the apparent 2022-24 RF failure: six 2022-24 half-years all have positive period median IC; median +0.3799 versus Stage6G long-horizon +0.0129, improvement +0.3670, so preregistered horizon diagnostic passes 3/3. Strict strong-learnable periods are 2022H1,H2,2023H1,2024H2 and 2026H1. Common-horizon 2025-26 median IC +0.3481. The natural target is dynamic ~half-year K30 reconstruction, not a multi-year static Universe; top-tail reliability remains time-varying."
 
 next_gate:
-  direction: "finish Stage6H state gate, then integrate it with Stage6I: treat 126-session K30 value ranking as the candidate surrogate horizon; do not revive multi-year RF targets"
-  constraints: "Do not tune RF parameters/features on Stage6I outcomes. Before any RF-guided combinatorial optimizer, preregister search mechanics and OOD/model-exploitation safeguards, and evaluate on genuinely later unseen periods. Stage6I same-period GroupKFold demonstrates within-period learnability, not chronological deployability."
+  direction: "Stage6I establishes a learnable same-period 126-session set-value surface, but Stage6E chronological transfer and Stage6H state-gate both fail. Next research must target mapping transfer itself: how to estimate the current period's K30 value surface without future labels, rather than tuning RF or market-state thresholds."
+  constraints: "Do not tune Stage6I RF parameters/features, revive multi-year targets, or rescue Stage6H. Any next method must be preregistered, use X<=t only, preserve K30 and frozen downstream OLS, and be evaluated chronologically. RF-guided combinatorial search is not yet authorized because same-period GroupKFold does not establish deployable surface transfer."
