@@ -69,8 +69,16 @@ stages:
     run_id: 34845528263
     design: research/optimal_universe_reverse_engineering/OURE_STAGE5_HISTORY_TRANSFER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE5_FINDINGS_20260914.md
-    notes: "Past-6M winner standalone persistence gate failed (4/9 completed periods beat same-K random median). Frozen 3/6/12M robust rule improved linked forward growth and hit rate, passing the aggregate robustness increment; however all historical-transfer rules were weak in 2022-24 and strong in 2025-26. Mechanism-assisted rule had higher realized return but failed the preregistered future-relay-quality gate, so no predictive relay claim is promoted."
+    notes: "Past-6M winner standalone persistence gate failed (4/9 completed periods beat same-K random median). Frozen 3/6/12M robust rule improved linked forward growth and hit rate, passing the aggregate robustness increment; however all historical-transfer rules were weak in 2022-24 and strong in 2025-26. Mechanism-assisted rule had higher realized return but failed the preregistered future-relay-quality gate."
+
+  - stage: 6
+    status: frozen
+    decision: transfer_rank_persistence_regime_shift_pass
+    run_id: 34847008430
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6_TRANSFER_REGIME_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6_FINDINGS_20260914.md
+    notes: "Preregistered regime gate passed 2/3. Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust 3/6/12 rank correlation flips -0.087 to +0.353. Single historical winner percentile remains unreliable. Later era has broader OLS eligibility and faster leader turnover but much larger Top1-Top2 score gap. Fix15 raw return is stronger later (+604.8% vs +49.5% linked completed periods) despite shorter leader tenure and higher switch rate."
 
 next_gate:
-  direction: "identify a low-dimensional X<=t state variable for when historical Universe set-value transfer is likely to work"
-  constraints: "Keep Stage5 3/6/12 windows and rule definitions frozen. Do not tune them to rescue 2022-24. Test regime/state identification before any production Universe rule. Broad exposure diversification remains guardrail only; no feature search or high-capacity model."
+  direction: "pre-register low-dimensional X<=t market-state proxies for next-half Universe-rank transfer persistence"
+  constraints: "Use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure (optionally one simple composite with fixed signs). Predict next-half rank-transfer quality, not return. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
