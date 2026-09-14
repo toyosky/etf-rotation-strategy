@@ -61,7 +61,7 @@ stages:
     run_id: 34844096850
     design: research/optimal_universe_reverse_engineering/OURE_STAGE4F_DOMAIN_COMPLEMENTARITY_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE4F_FINDINGS_20260914.md
-    notes: "Primary risk-bucket gate failed in both constructions (1/3 directions each); cross-risk-bucket leader transitions were not higher. Broad exposure_level1 diversification and lower same-domain Top1/Top2 crowding are secondary patterns only and cannot replace dynamic coverage/replacement-quality mechanism."
+    notes: "Primary risk-bucket gate failed in both constructions (1/3 directions each); broad exposure diversification is secondary only."
 
   - stage: 5
     status: frozen
@@ -69,7 +69,7 @@ stages:
     run_id: 34845528263
     design: research/optimal_universe_reverse_engineering/OURE_STAGE5_HISTORY_TRANSFER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE5_FINDINGS_20260914.md
-    notes: "Past6M Winner standalone failed; frozen 3/6/12M robust history provided aggregate transfer increment but was weak in 2022-24 and strong in 2025-26; historical relay assistance failed its future-mechanism gate."
+    notes: "Past6M Winner standalone failed; frozen 3/6/12M robust history provided aggregate transfer increment but was weak in 2022-24 and strong in 2025-26."
 
   - stage: 6
     status: frozen
@@ -77,7 +77,7 @@ stages:
     run_id: 34847008430
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6_TRANSFER_REGIME_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6_FINDINGS_20260914.md
-    notes: "Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust rank -0.087 to +0.353. Later era has broader eligibility, larger Top1-Top2 gap, faster switching and shorter tenure."
+    notes: "Median past6M->future Universe-rank Spearman flips -0.209 (2022-24) to +0.409 (2025-26); robust rank -0.087 to +0.353."
 
   - stage: 6B
     status: frozen_explanatory_layer1
@@ -85,7 +85,6 @@ stages:
     run_id: 34848320084
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6B_2022_2024_GOOD_UNIVERSE_TRAITS_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6B_FINDINGS_20260914.md
-    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure, lower switch rate and fewer short leaders; later full-market Stage6C showed that this does not imply a general small-K law."
 
   - stage: 6C
     status: frozen
@@ -93,7 +92,7 @@ stages:
     run_id: 34849477779
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FULLMARKET_2022_2024_K_FRONTIER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FINDINGS_20260914.md
-    notes: "Full-market 2022-start-eligible pool (265 risk ETFs), no Fix15 identity rule. Strong heuristic frontier rejects a general small-K law: broad K20-K30 high plateau with searched K30 about +899%. K30 elite vs random K30 has lower switch rate, longer tenure, fewer short runs and much higher productive-switch/counterfactual gain."
+    notes: "Full-market 2022-24 strong heuristic frontier rejects a general small-K law: K20-K30 is a high plateau; searched K30 about +899%."
 
   - stage: 6D
     status: frozen_failed_primary_gate
@@ -101,7 +100,7 @@ stages:
     run_id: 34852348851
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6D_FIXED_K30_MEMBER_MARGINAL_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6D_FINDINGS_20260914.md
-    notes: "With K fixed at 30, two eras choose sharply different members (champion Jaccard 0.0909), but preregistered X<=t member-marginal gate fails. Prior new-coverage is saturated/constant zero at K29; replacement-gain mean is near zero/inconsistent; productive-challenge share is negatively associated with future marginal value. The strongest stable secondary signal is raw prior challenge share: median context Spearman -0.332 in 2022-24 and -0.404 in 2025-26, so frequent historical challengers are a robust conditional-admission warning. This is only conditional on a strong hindsight-derived K29 core and is not a from-scratch K30 constructor."
+    notes: "Preregistered member-marginal gate fails. Stable secondary: prior challenge share is negatively associated with future marginal set value, but only as a conditional admission warning."
 
   - stage: 6E
     status: frozen_failed_primary_gate_not_promoted
@@ -109,7 +108,7 @@ stages:
     run_id: 34854353654
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6E_RF_K30_RANK_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6E_FINDINGS_20260914.md
-    notes: "Direct RF set-ranking experiment completed but all preregistered OOS gates failed: median rank IC -0.0257, positive IC share 50%, predicted-Top50 median actual percentile 0.471. Model-capacity escalation is prohibited."
+    notes: "Direct chronological RF set ranking fails: median rank IC -0.0257; no model-capacity escalation."
 
   - stage: 6F
     status: frozen_failed
@@ -117,14 +116,14 @@ stages:
     run_id: 34854924714
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6F_CORE_PLUS_CHALLENGE_VETO_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6F_FINDINGS_20260914.md
-    notes: "Core C state-gated linked return was higher (+441.3%) but preregistered period-level core gate failed: Core C beat both A and B in 0% of periods. Challenge veto also failed: improvement rate 22.2%, mean log delta -0.00139. Do not tune the core gate or veto."
+    notes: "State-gated core and conditional challenge veto both fail preregistered period-level gates."
 
   - stage: 6G
     status: frozen_formal_nonpass_with_signal
     decision: era_specific_rf_surrogate_signal_but_gate_not_passed
     run_id: 34860161276
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6G_RF_SURROGATE_VALUE_FINDINGS_20260914.md
-    notes: "Whole-K30 continuous-value RF grouped by mutation family. 2022-24 median fold Spearman +0.0129 and no stable learnability. 2025-26 median +0.3326, 4/5 positive folds and positive top-decile lift, but predicted-Top50 actual percentile 0.6366 missed frozen >0.65 gate. Cross-era transfer weak (+0.0839/+0.1167). Do not change RF, threshold, features or era endpoints."
+    notes: "Whole-K30 continuous-value grouped CV: 2022-24 weak, 2025-26 signal but one frozen gate missed; cross-era transfer weak."
 
   - stage: 6H
     status: frozen_failed
@@ -132,7 +131,7 @@ stages:
     run_id: 34861108018
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_FINDINGS_20260914.md
-    notes: "Frozen trailing126 4-variable expanding-median 3-of-4 transfer-state vote failed: robust transfer sign accuracy 50%; transfer-on median future robust Spearman +0.0487 versus transfer-off +0.2219, on-minus-off -0.1732. Do not tune the state variables, thresholds, lookback or vote rule."
+    notes: "Frozen trailing126 four-variable 3-of-4 transfer-state vote cannot identify when historical ranking transfers."
 
   - stage: 6I
     status: frozen
@@ -140,16 +139,25 @@ stages:
     run_id: 34862274663
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6I_HALF_YEAR_RF_HORIZON_DIAGNOSTIC_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6I_HALF_YEAR_RF_HORIZON_FINDINGS_20260914.md
-    notes: "Changing only Y horizon to the next 126 sessions reverses the apparent 2022-24 RF failure: six 2022-24 half-years all have positive period median IC; median +0.3799 versus Stage6G long-horizon +0.0129, improvement +0.3670, so preregistered horizon diagnostic passes 3/3. Strict strong-learnable periods are 2022H1,H2,2023H1,2024H2 and 2026H1. Common-horizon 2025-26 median IC +0.3481. The natural target is dynamic ~half-year K30 reconstruction, not a multi-year static Universe; top-tail reliability remains time-varying."
+    notes: "With Y unified to future126, same-period family-GroupKFold K30 value surfaces are often learnable: 2022-24 median period IC +0.3799 and 2025-26 +0.3481. Same-period CV is a learnability diagnostic, not mapping-transfer evidence."
 
   - stage: 6J
-    status: frozen_formal_nonpass_with_signal
-    decision: chronological_mapping_transfer_not_supported_primary_rule
+    status: frozen_invalid_timing_confounded
+    decision: calendar_halfyear_transfer_not_strict_xlet
     run_id: 34863742504
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6J_CHRONOLOGICAL_MAPPING_TRANSFER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6J_FINDINGS_20260914.md
-    notes: "Primary last-3 RF rank ensemble formally fails only the frozen top-tail gate: median period IC +0.1088, 6/6 positive, early/late block medians positive, but predicted-Top50 actual percentile 0.4602 < 0.55. Diagnostic previous-period RF is stronger (median IC +0.1959, 6/6 positive) and unanimous last-3 directional score is also stronger (median IC +0.1802, 5/6 positive, Top50 percentile 0.5856), suggesting mapping drift and transferable local directional components. Diagnostics cannot rescue or be retroactively promoted."
+    correction: research/optimal_universe_reverse_engineering/OURE_STAGE6J_TIMING_CORRECTION_20260914.md
+    notes: "Calendar Jan/Jul boundaries do not guarantee the prior future126 label is fully realized at the next decision date. Numerical results are exploratory mapping-drift diagnostics only, not strict X<=t evidence. The calendar-H2 prospective derivative was invalidated and its executable lock removed."
+
+  - stage: 6K
+    status: frozen_failed
+    decision: adjacent_mapping_transfer_not_supported
+    run_id: 34865276309
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6K_ADJACENT_126_TRANSFER_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6K_ADJACENT_126_TRANSFER_FINDINGS_20260914.md
+    notes: "Strict non-overlapping 126->126 transfer. Previous-block RF: median IC +0.1092, 7/8 positive, median top-decile lift +0.00487, but median predicted-Top50 actual percentile only 0.5300 versus frozen >0.60 gate. Simple current past126 rank has similar median IC +0.1187 and Top50 0.5302; expanding-history RF is negative. Broad rank persistence exists, but top-tail mapping is not deployable and RF has no robust incremental edge over the simple baseline."
 
 next_gate:
-  direction: "Stage6I supports a same-period 126-session K30 value surface. Stage6J shows broad chronological transfer signal but the preregistered multi-period nonlinear ensemble fails top-tail reliability; recent mapping and unanimous directional components look stronger only as diagnostics. No untouched complete post-2026H1 126-session label remains, so a clean confirmatory promotion requires genuinely later data."
-  constraints: "Do not retune Stage6J weights/RF/features/horizon/Top50 gate or retroactively promote R1/R3. RF-guided combinatorial search remains unauthorized. Freeze one low-DoF transfer rule before a genuinely later 126-session outcome is available and evaluate it clean-forward; if that also fails, conclude current history is insufficient for dynamic K30 construction without increasing model capacity."
+  direction: "This OURE dynamic-K30 historical-learning branch is frozen at Stage6K. Stage6I establishes contemporaneous future126 value-surface structure; Stage6K shows only weak adjacent broad-ranking transfer and fails the preregistered top-tail gate under strict label availability. Current historical data do not identify a deployable X<=t high-value K30 constructor."
+  constraints: "Do not tune Stage6K RF/features/horizon/Top50 gate, do not revive calendar Stage6J as OOS evidence, do not authorize RF-guided combinatorial search, and do not increase model capacity on this same history. Resume only with a genuinely new hypothesis or genuinely new forward data under a new preregistration."
