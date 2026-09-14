@@ -1,0 +1,39 @@
+name: OURE Stage1 Fix15 Exhaustive Reverse Engineering
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage1_fix15_exhaustive.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE1_FIX15_EXHAUSTIVE_DESIGN_20260914.md"
+      - ".github/workflows/oure-stage1-fix15-exhaustive.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r research/requirements-full-market-ols.txt
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage1_fix15_exhaustive.py
+      - name: Run exhaustive Fix15 subset audit
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: >-
+          python research/optimal_universe_reverse_engineering/oure_stage1_fix15_exhaustive.py
+          --output-dir oure-stage1-output
+      - name: Upload OURE Stage1 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage1-fix15-${{ github.run_id }}
+          path: oure-stage1-output/
+          retention-days: 90
