@@ -1,0 +1,36 @@
+name: OURE Stage6L RF False Positive Audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage6l_rf_false_positive_structural_audit.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE6L_RF_FALSE_POSITIVE_STRUCTURAL_AUDIT_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage6l-rf-false-positive-audit.yml"
+
+jobs:
+  run-stage6l:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy pandas scipy scikit-learn sqlalchemy psycopg2-binary
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage6l_rf_false_positive_structural_audit.py
+      - name: Run Stage6L audit
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage6l_rf_false_positive_structural_audit.py \
+            --output-dir oure-stage6l-output
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage6l-rf-false-positive-audit-${{ github.run_id }}
+          path: oure-stage6l-output/
+          if-no-files-found: warn
