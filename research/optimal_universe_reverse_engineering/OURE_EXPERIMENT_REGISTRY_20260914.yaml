@@ -46,17 +46,23 @@ stages:
     run_id: 34837591862
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE4D_FINDINGS_20260914.md
     design: research/optimal_universe_reverse_engineering/OURE_STAGE4D_RELAY_HOLDOUT_REPLICATION_DESIGN_20260914.md
-    notes: "Stage3B ranks 26..100 versus new same-K controls: all 6 frozen directions match in full, 2021-24 and 2025-26; productive-switch share and counterfactual-gain mean mandatory conditions pass in every era. Relay is now Stage3B-internal cross-Universe repeatable, not yet externally generalized."
+    notes: "Stage3B ranks 26..100 versus new same-K controls: all 6 frozen directions match in full, 2021-24 and 2025-26; productive-switch share and counterfactual-gain mean mandatory conditions pass in every era."
 
   - stage: 4E
-    status: preregistered_running
-    decision: external_relay_signature_replication
+    status: frozen
+    decision: relay_external_cross_construction_replication_pass
+    run_id: 34840275651
     design: research/optimal_universe_reverse_engineering/OURE_STAGE4E_EXTERNAL_RELAY_REPLICATION_DESIGN_20260914.md
-    script: research/optimal_universe_reverse_engineering/oure_stage4e_external_relay_replication.py
-    workflow: .github/workflows/oure-stage4e-external-relay.yml
-    external_source: "Stage3C strict exposure-disjoint run 34828750914; elite ranks 1..25; exact-K lexicographic random controls"
-    gate: "same frozen Stage4D gate: full >=5/6; 2021-24 >=4/6; 2025-26 >=4/5 non-switch; productive-switch share and counterfactual-gain mean positive in every era"
+    notes: "Stage3C strict exposure-disjoint external sample passed the frozen relay gate: full 6/6, 2021-24 5/6, 2025-26 5/6; productive-switch share and counterfactual-gain mean mandatory conditions passed in every era. Relay is cross-construction / cross-member-family replicated."
+
+  - stage: 4F
+    status: frozen_failed
+    decision: domain_complementarity_not_established
+    run_id: 34844096850
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE4F_DOMAIN_COMPLEMENTARITY_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE4F_FINDINGS_20260914.md
+    notes: "Primary risk-bucket gate failed in both constructions (1/3 directions each); cross-risk-bucket leader transitions were not higher. Broad exposure_level1 diversification and lower same-domain Top1/Top2 crowding are secondary patterns only and cannot replace dynamic coverage/replacement-quality mechanism."
 
 next_gate:
-  if_stage4e_passes: "freeze relay as cross-construction/cross-member-family replicated; next preregister low-dimensional X<=t proxies for Opportunity Coverage and Replacement Quality before any strict walk-forward Universe construction"
-  if_stage4e_fails: "freeze relay as construction-dependent; do not tune signature; abandon discrete relay-class claim and use continuous Effective Competition / Opportunity Coverage / Replacement Quality description"
+  direction: "low-dimensional X<=t proxy preregistration for Opportunity Coverage / Replacement Quality"
+  constraints: "Broad economic-exposure diversification may be used only as a simple structural prior/guardrail. Do not treat industry/domain labels as the primary relay mechanism. No feature search or post-result threshold tuning."
