@@ -142,6 +142,14 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6I_HALF_YEAR_RF_HORIZON_FINDINGS_20260914.md
     notes: "Changing only Y horizon to the next 126 sessions reverses the apparent 2022-24 RF failure: six 2022-24 half-years all have positive period median IC; median +0.3799 versus Stage6G long-horizon +0.0129, improvement +0.3670, so preregistered horizon diagnostic passes 3/3. Strict strong-learnable periods are 2022H1,H2,2023H1,2024H2 and 2026H1. Common-horizon 2025-26 median IC +0.3481. The natural target is dynamic ~half-year K30 reconstruction, not a multi-year static Universe; top-tail reliability remains time-varying."
 
+  - stage: 6J
+    status: frozen_formal_nonpass_with_signal
+    decision: chronological_mapping_transfer_not_supported_primary_rule
+    run_id: 34863742504
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6J_CHRONOLOGICAL_MAPPING_TRANSFER_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6J_FINDINGS_20260914.md
+    notes: "Primary last-3 RF rank ensemble formally fails only the frozen top-tail gate: median period IC +0.1088, 6/6 positive, early/late block medians positive, but predicted-Top50 actual percentile 0.4602 < 0.55. Diagnostic previous-period RF is stronger (median IC +0.1959, 6/6 positive) and unanimous last-3 directional score is also stronger (median IC +0.1802, 5/6 positive, Top50 percentile 0.5856), suggesting mapping drift and transferable local directional components. Diagnostics cannot rescue or be retroactively promoted."
+
 next_gate:
-  direction: "Stage6I establishes a learnable same-period 126-session set-value surface, but Stage6E chronological transfer and Stage6H state-gate both fail. Next research must target mapping transfer itself: how to estimate the current period's K30 value surface without future labels, rather than tuning RF or market-state thresholds."
-  constraints: "Do not tune Stage6I RF parameters/features, revive multi-year targets, or rescue Stage6H. Any next method must be preregistered, use X<=t only, preserve K30 and frozen downstream OLS, and be evaluated chronologically. RF-guided combinatorial search is not yet authorized because same-period GroupKFold does not establish deployable surface transfer."
+  direction: "Stage6I supports a same-period 126-session K30 value surface. Stage6J shows broad chronological transfer signal but the preregistered multi-period nonlinear ensemble fails top-tail reliability; recent mapping and unanimous directional components look stronger only as diagnostics. No untouched complete post-2026H1 126-session label remains, so a clean confirmatory promotion requires genuinely later data."
+  constraints: "Do not retune Stage6J weights/RF/features/horizon/Top50 gate or retroactively promote R1/R3. RF-guided combinatorial search remains unauthorized. Freeze one low-DoF transfer rule before a genuinely later 126-session outcome is available and evaluate it clean-forward; if that also fails, conclude current history is insufficient for dynamic K30 construction without increasing model capacity."
