@@ -132,6 +132,14 @@ stages:
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_DESIGN_20260914.md
     notes: "No model. Trailing126 X<=t state gate uses eligible fraction, Top1-Top2 gap, leader switch rate and leader tenure versus strictly-expanding decision-state medians; transfer_on requires 3-of-4 later-regime-direction votes. Primary target is frozen Stage6 robust-score -> next-half-year library-rank Spearman. No tuning after outcome inspection."
 
+  - stage: 6I
+    status: frozen
+    decision: strong_horizon_mismatch_support
+    run_id: 34862274663
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6I_HALF_YEAR_RF_HORIZON_DIAGNOSTIC_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6I_HALF_YEAR_RF_HORIZON_FINDINGS_20260914.md
+    notes: "Changing only Y horizon to the next 126 sessions reverses the apparent 2022-24 RF failure: six 2022-24 half-years all have positive period median IC; median +0.3799 versus Stage6G long-horizon +0.0129, improvement +0.3670, so preregistered horizon diagnostic passes 3/3. Strict strong-learnable periods are 2022H1,H2,2023H1,2024H2 and 2026H1. Common-horizon 2025-26 median IC +0.3481. The natural target is dynamic ~half-year K30 reconstruction, not a multi-year static Universe; top-tail reliability remains time-varying."
+
 next_gate:
-  direction: "complete Stage6H X<=t market-state gate before any state-conditioned surrogate/search"
-  constraints: "Do not tune the four variables, 126-session lookback, expanding-median thresholds, or 3-of-4 vote rule. If Stage6H fails, freeze current low-DoF state identifiability as insufficient and do not increase model complexity. If it passes, only then preregister a state-conditioned RF surrogate/search, with the search algorithm frozen before evaluation and final judgment deferred to genuinely later unseen data."
+  direction: "finish Stage6H state gate, then integrate it with Stage6I: treat 126-session K30 value ranking as the candidate surrogate horizon; do not revive multi-year RF targets"
+  constraints: "Do not tune RF parameters/features on Stage6I outcomes. Before any RF-guided combinatorial optimizer, preregister search mechanics and OOD/model-exploitation safeguards, and evaluate on genuinely later unseen periods. Stage6I same-period GroupKFold demonstrates within-period learnability, not chronological deployability."
