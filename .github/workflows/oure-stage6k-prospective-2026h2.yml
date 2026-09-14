@@ -4,54 +4,43 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "research/optimal_universe_reverse_engineering/oure_stage6k_prospective_2026h2_directional_transfer.py"
-      - "research/optimal_universe_reverse_engineering/OURE_STAGE6K_PROSPECTIVE_2026H2_DIRECTIONAL_TRANSFER_DESIGN_20260914.md"
       - ".github/workflows/oure-stage6k-prospective-2026h2.yml"
 
 permissions:
   contents: write
+  actions: read
 
 jobs:
-  lock:
+  persist-original-lock:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install dependencies
-        run: pip install numpy pandas sqlalchemy psycopg2-binary scikit-learn boto3
-      - name: Syntax check
-        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage6k_prospective_2026h2_directional_transfer.py
-      - name: Lock Stage6K predictions
+      - name: Download original Stage6K artifact from first successful lock run
         env:
-          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-          PYTHONPATH: research
+          GH_TOKEN: ${{ github.token }}
         run: |
-          python research/optimal_universe_reverse_engineering/oure_stage6k_prospective_2026h2_directional_transfer.py \
-            --output-dir oure-stage6k-output
+          mkdir -p /tmp/stage6k-original
+          gh api -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/actions/artifacts/10356995074/zip \
+            > /tmp/stage6k-original.zip
+          unzip -q /tmp/stage6k-original.zip -d /tmp/stage6k-original
       - name: Verify original prediction commitment
         run: |
-          echo "398b7c7eea1d0f42029706460e07aa2361d8f41c72e5c3df130c0759eb51732c  oure-stage6k-output/stage6k_2026H2_locked_predictions.csv" | sha256sum -c -
-      - name: Persist immutable lock snapshot
+          echo "398b7c7eea1d0f42029706460e07aa2361d8f41c72e5c3df130c0759eb51732c  /tmp/stage6k-original/stage6k_2026H2_locked_predictions.csv" | sha256sum -c -
+      - name: Persist immutable original snapshot
         run: |
           mkdir -p research/optimal_universe_reverse_engineering/locks
-          gzip -9 -n -c oure-stage6k-output/stage6k_2026H2_locked_predictions.csv > research/optimal_universe_reverse_engineering/locks/stage6k_2026H2_locked_predictions.csv.gz
-          cp oure-stage6k-output/oure_stage6k_prediction_lock.json research/optimal_universe_reverse_engineering/locks/oure_stage6k_2026H2_prediction_lock.json
-          cp oure-stage6k-output/stage6k_2026H2_feature_sign_lock.csv research/optimal_universe_reverse_engineering/locks/stage6k_2026H2_feature_sign_lock.csv
+          gzip -9 -n -c /tmp/stage6k-original/stage6k_2026H2_locked_predictions.csv > research/optimal_universe_reverse_engineering/locks/stage6k_2026H2_locked_predictions.csv.gz
+          cp /tmp/stage6k-original/oure_stage6k_prediction_lock.json research/optimal_universe_reverse_engineering/locks/oure_stage6k_2026H2_prediction_lock.json
+          cp /tmp/stage6k-original/stage6k_2026H2_feature_sign_lock.csv research/optimal_universe_reverse_engineering/locks/stage6k_2026H2_feature_sign_lock.csv
+          printf '%s\n' 'original_artifact_id=10356995074' 'original_run_id=34864518145' 'original_csv_sha256=398b7c7eea1d0f42029706460e07aa2361d8f41c72e5c3df130c0759eb51732c' > research/optimal_universe_reverse_engineering/locks/STAGE6K_2026H2_COMMITMENT.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/optimal_universe_reverse_engineering/locks/
           if git diff --cached --quiet; then
-            echo "lock snapshot already persisted"
+            echo "original lock snapshot already persisted"
           else
-            git commit -m "research: persist immutable Stage6K 2026H2 prediction lock"
+            git commit -m "research: persist immutable Stage6K original prediction lock"
             git push
           fi
-      - name: Upload Stage6K lock artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: oure-stage6k-prospective-2026h2-${{ github.run_id }}
-          path: oure-stage6k-output
-          retention-days: 90
