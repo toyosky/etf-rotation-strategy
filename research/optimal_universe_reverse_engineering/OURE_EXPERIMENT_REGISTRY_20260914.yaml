@@ -1,0 +1,53 @@
+project: optimal_universe_reverse_engineering
+updated_at: 2026-09-14
+principle: "discover structure -> freeze -> cross-Universe/cross-era replication -> only then X<=t construction"
+
+stages:
+  - stage: 1
+    status: frozen
+    decision: fix15_exhaustive_k7_champion
+    notes: "Fix15 exhaustive champion is cash + 6 risk assets; strong persistence example; 159825 is a stable negative contributor."
+
+  - stage: 2
+    status: frozen
+    decision: nominal_k_not_sufficient
+    notes: "Effective competition and opportunity coverage are more informative mechanism candidates than nominal K alone."
+
+  - stage: 3
+    status: frozen_failed
+    decision: taxonomy_leakage
+
+  - stage: 3B
+    status: frozen_explanatory_only
+    decision: large_k_elite_interpretation_sample
+    notes: "Strict exposure-disjoint search still has taxonomy omissions and hits the K30 cap; use for mechanism explanation, not final oracle replication."
+
+  - stage: 4
+    status: frozen
+    decision: persistence_champion_and_relay_champion_decomposition
+
+  - stage: 4B
+    status: frozen
+    decision: distributed_relay_not_shallow_redundancy
+    run_id: 34830273878
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE4B_FINDINGS_20260914.md
+    notes: "Exact delete-1/2/3: 4525 subsets, zero improvements. Deep greedy pruning loses substantial value; no claim of global minimum cardinality."
+
+  - stage: 4C
+    status: frozen
+    decision: partial_support_relay_only
+    run_id: 34830882472
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE4C_FINDINGS_20260914.md
+    notes: "Large-K top25 separates coherently from controls on productive replacement / coverage efficiency. Small-K top25 does not form a clean persistence class; two-discrete-state hypothesis not validated."
+
+  - stage: 4D
+    status: preregistered_running
+    decision: holdout_relay_replication
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE4D_RELAY_HOLDOUT_REPLICATION_DESIGN_20260914.md
+    script: research/optimal_universe_reverse_engineering/oure_stage4d_relay_holdout_replication.py
+    workflow: .github/workflows/oure-stage4d-relay-holdout.yml
+    gate: "full >=5/6 frozen directions; 2021-24 >=4/6; 2025-26 >=4/5 non-switch directions; productive-switch share and counterfactual-gain mean mandatory positive in every era"
+
+next_gate:
+  if_stage4d_passes: "freeze relay mechanism; next test the same low-dimensional signature in a different search construction/member family before any X<=t proxy model"
+  if_stage4d_fails: "freeze relay as discovery-specific; abandon discrete architecture story and move to continuous Effective Competition / Opportunity Coverage description"
