@@ -109,14 +109,29 @@ stages:
     run_id: 34854353654
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6E_RF_K30_RANK_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6E_FINDINGS_20260914.md
-    notes: "Direct RF set-ranking experiment completed but all preregistered OOS gates failed: median rank IC -0.0257, positive IC share 50%, predicted-Top50 median actual percentile 0.471. Current mainline prohibits model-capacity escalation; this negative result is frozen and does not alter Stage6F definitions."
+    notes: "Direct RF set-ranking experiment completed but all preregistered OOS gates failed: median rank IC -0.0257, positive IC share 50%, predicted-Top50 median actual percentile 0.471. Model-capacity escalation is prohibited."
 
   - stage: 6F
-    status: registered_running
-    decision: fixed_k30_core_plus_conditional_challenge_veto
+    status: frozen_failed
+    decision: core_and_veto_primary_gates_failed
+    run_id: 34854924714
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6F_CORE_PLUS_CHALLENGE_VETO_DESIGN_20260914.md
-    notes: "Strict X<=t two-layer audit. Core layer compares current-score K29, Stage5 robust-3/6/12 top20 membership-consensus K29, and a Stage6-state-gated choice between them. Admission layer then tests the frozen Stage6D 126-session prior_challenge_share only as a median-relative veto for member 30. K remains 30; downstream OLS frozen; no model or feature search."
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6F_FINDINGS_20260914.md
+    notes: "Core C state-gated linked return was higher (+441.3%) but preregistered period-level core gate failed: Core C beat both A and B in 0% of periods. Challenge veto also failed: improvement rate 22.2%, mean log delta -0.00139. Do not tune the core gate or veto."
+
+  - stage: 6G
+    status: frozen_formal_nonpass_with_signal
+    decision: era_specific_rf_surrogate_signal_but_gate_not_passed
+    run_id: 34860161276
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6G_RF_SURROGATE_VALUE_FINDINGS_20260914.md
+    notes: "Whole-K30 continuous-value RF grouped by mutation family. 2022-24 median fold Spearman +0.0129 and no stable learnability. 2025-26 median +0.3326, 4/5 positive folds and positive top-decile lift, but predicted-Top50 actual percentile 0.6366 missed frozen >0.65 gate. Cross-era transfer weak (+0.0839/+0.1167). Do not change RF, threshold, features or era endpoints."
+
+  - stage: 6H
+    status: registered_running
+    decision: point_in_time_transfer_state_gate
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6H_POINT_IN_TIME_STATE_GATE_DESIGN_20260914.md
+    notes: "No model. Trailing126 X<=t state gate uses eligible fraction, Top1-Top2 gap, leader switch rate and leader tenure versus strictly-expanding decision-state medians; transfer_on requires 3-of-4 later-regime-direction votes. Primary target is frozen Stage6 robust-score -> next-half-year library-rank Spearman. No tuning after outcome inspection."
 
 next_gate:
-  direction: "complete Stage6F strict walk-forward: first judge from-scratch K29 core formation, then independently judge Stage6D challenge-share veto on the frozen primary core"
-  constraints: "Do not tune Stage5 windows/top20, Stage6 state variables, Stage6D 126-session challenge window, veto threshold, weights, or fallback after outcomes. If Stage6F core or veto gates fail, freeze the relevant negative result and do not escalate model capacity."
+  direction: "complete Stage6H X<=t market-state gate before any state-conditioned surrogate/search"
+  constraints: "Do not tune the four variables, 126-session lookback, expanding-median thresholds, or 3-of-4 vote rule. If Stage6H fails, freeze current low-DoF state identifiability as insufficient and do not increase model complexity. If it passes, only then preregister a state-conditioned RF surrogate/search, with the search algorithm frozen before evaluation and final judgment deferred to genuinely later unseen data."
