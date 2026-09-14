@@ -69,7 +69,7 @@ stages:
     run_id: 34845528263
     design: research/optimal_universe_reverse_engineering/OURE_STAGE5_HISTORY_TRANSFER_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE5_FINDINGS_20260914.md
-    notes: "Past-6M Winner standalone failed; frozen 3/6/12M robust history provided aggregate transfer increment but was weak in 2022-24 and strong in 2025-26; historical relay assistance failed its future-mechanism gate."
+    notes: "Past6M Winner standalone failed; frozen 3/6/12M robust history provided aggregate transfer increment but was weak in 2022-24 and strong in 2025-26; historical relay assistance failed its future-mechanism gate."
 
   - stage: 6
     status: frozen
@@ -103,6 +103,14 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6D_FINDINGS_20260914.md
     notes: "With K fixed at 30, two eras choose sharply different members (champion Jaccard 0.0909), but preregistered X<=t member-marginal gate fails. Prior new-coverage is saturated/constant zero at K29; replacement-gain mean is near zero/inconsistent; productive-challenge share is negatively associated with future marginal value. The strongest stable secondary signal is raw prior challenge share: median context Spearman -0.332 in 2022-24 and -0.404 in 2025-26, so frequent historical challengers are a robust conditional-admission warning. This is only conditional on a strong hindsight-derived K29 core and is not a from-scratch K30 constructor."
 
+  - stage: 6E
+    status: frozen_failed_primary_gate
+    decision: rf_k30_set_rank_not_stably_oos_identifiable
+    run_id: 34854353654
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6E_RF_K30_RANK_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6E_FINDINGS_20260914.md
+    notes: "User-directed direct whole-K30 random-forest test. About 522-544 past-generated, Jaccard-deduped K30 Universes per decision; 19 frozen trailing-126 set features; future 126 within-period rank label; strictly expanding chronological OOS; fixed RF 500 trees, depth5, min leaf20, sqrt features. All preregistered gates fail: median OOS rank IC -0.0257, positive IC share 50%, predicted-Top50 median actual percentile 0.471, era median IC -0.078 (2022-24) and +0.027 (2025-26). Individual periods vary from +0.280 to -0.360. Do not tune RF/features/windows to rescue. Mean pair trend Jaccard is the largest impurity importance but cannot be promoted because OOS model fails."
+
 next_gate:
-  direction: "separate core-set formation from 30th-member admission; preserve Stage6D challenge-intensity veto as a frozen conditional hypothesis while continuing strict X<=t state/core construction work"
-  constraints: "Do not tune Stage6D weights/windows or add high-capacity member predictors. No small-K prior and no Fix15 identity. If challenge-share is used next, preregister it as an admission/redundancy veto, not a complete ranking model. Core-set formation must be designed separately using only X<=t information, with frozen downstream OLS."
+  direction: "test state-conditional K30 identification rather than one stationary mapping; first identify X<=t market state / historical-transfer regime, then condition any K30 ranking rule on that state"
+  constraints: "Stage6E RF configuration is frozen failed and must not be tuned to rescue. K≈30 remains engineering anchor only. Any next model must preregister the state split/gating before testing K30 ranking, avoid member identity leakage, keep chronological OOS, and retain frozen downstream OLS."
