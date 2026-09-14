@@ -85,8 +85,16 @@ stages:
     run_id: 34848320084
     design: research/optimal_universe_reverse_engineering/OURE_STAGE6B_2022_2024_GOOD_UNIVERSE_TRAITS_DESIGN_20260914.md
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6B_FINDINGS_20260914.md
-    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure (corr +0.638), lower switch rate (-0.632), fewer <=2d leaders, lower pair trend overlap and fewer simultaneous eligible competitors. Exact K7 champion +267.9%. Persistence signature largely disappears in 2025-26. Full-market external replication still required before generalizing."
+    notes: "Exact Fix15 lattice only. 2022-24 within-K good sets strongly have longer Top1 tenure (corr +0.638), lower switch rate (-0.632), fewer <=2d leaders, lower pair trend overlap and fewer simultaneous eligible competitors. Exact K7 champion +267.9%. Persistence signature largely disappears in 2025-26."
+
+  - stage: 6C
+    status: frozen
+    decision: fullmarket_2022_2024_large_k_frontier_reappears
+    run_id: 34849477779
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FULLMARKET_2022_2024_K_FRONTIER_DESIGN_20260914.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6C_FINDINGS_20260914.md
+    notes: "Full-market 2022-start-eligible pool (265 risk ETFs), no Fix15 identity rule. Strong heuristic frontier rejects a general small-K law: searched returns K5 +456%, K10 +692%, K15 +722%, K20 +854%, K25 +889%, K30 +899% best, K40 +829%, K50 +874%, K60 +849%. Interpret as broad K20-K30 high plateau, not magical exact K30. K30 elite vs random K30 has lower switch rate, longer tenure, fewer short runs and much higher productive-switch/counterfactual gain, but lower pair-overlap / lower simultaneous-eligibility / higher coverage-efficiency directions from Fix15 do not replicate. Nominal K is not the state variable; controlled effective competition and replacement quality remain central."
 
 next_gate:
-  direction: "continue Stage7 X<=t market-state identification; separately externally replicate Stage6B 2022-24 persistence signature before treating it as a general market mechanism"
-  constraints: "Stage6B member identities are hindsight descriptions only. For Stage7 use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
+  direction: "continue Stage7 X<=t market-state identification using effective competition / replacement-quality proxies; do not impose a small-K prior"
+  constraints: "Use only frozen past-window state candidates: OLS eligible breadth/fraction, Top1-Top2 score gap, leader switch rate, leader tenure; may add already-frozen historical replacement-quality measures only if preregistered before outcome inspection. No feature search, threshold tuning, or high-capacity model. Stage5 3/6/12 rule remains frozen."
