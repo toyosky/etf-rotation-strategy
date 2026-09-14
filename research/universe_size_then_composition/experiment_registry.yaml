@@ -1,6 +1,6 @@
 research_line: universe_size_then_composition
 started_at: 2026-09-14
-status: active
+status: frozen_completed
 previous_lineage:
   path: research/marginal_universe_value/
   status: frozen_historical_evidence
@@ -87,13 +87,30 @@ stages:
 
   - id: new_stage_5
     name: conservative_fixed_k15_executable_composition_audit
-    status: registered
-    decision: pending
+    status: frozen
+    decision: reject_adaptive_low_dof_composition_on_same_history
     dependency: new_stage_4
     anchor_k: 15
+    source_run_id: 34792039084
+    source_artifact: universe-size-stage5-34792039084
     design_doc: research/universe_size_then_composition/STAGE5_CONSERVATIVE_K15_EXECUTABLE_DESIGN_20260914.md
-    objective: >-
-      Test whether a very small set of pre-registered X<=t/simple-history K15 composition rules captures any stable OOS value over random same-K, with Fix15 and full-market retained only as external benchmarks. No learned high-capacity member model is allowed.
+    findings_doc: research/universe_size_then_composition/STAGE5_FINDINGS_20260914.md
+    evidence:
+      current_score_minus_random_mean: 0.00971967
+      current_score_bootstrap_95pct: [-0.0114404, 0.0321706]
+      lagged_inclusion_minus_random_mean: 0.0123540
+      lagged_inclusion_bootstrap_95pct: [-0.0133005, 0.0422180]
+      era_2021_24_current_score_delta: -0.00696029
+      era_2021_24_lagged_inclusion_delta: -0.00861217
+      era_2025_26_current_score_delta: 0.0497516
+      era_2025_26_lagged_inclusion_delta: 0.0616244
+      fix15_minus_random_mean: 0.0414559
+      fix15_bootstrap_95pct: [0.0113417, 0.0760741]
+    frozen_conclusion: >-
+      The large fixed-K15 composition headroom is not stably captured by either current score ranking or one-month-lagged inclusion contrast. Low-DoF adaptive composition is not supported on this history. Do not escalate model capacity or continue historical search.
+
+final_conclusion: >-
+  The adaptive Universe-size-to-composition research line does not identify a stable executable adaptive rule from X<=t on the frozen history. Size effects are regime-dependent and not predictably directional with the tested low-DoF state; history-only best-K adds no stable value; composition headroom is large but symbol-level value is weakly reproducible and non-persistent; two conservative executable composition rules fail to stably beat random same-K. The robust fallback is K15 as an engineering anchor plus a pre-existing frozen structural member scheme such as Fix15 and the frozen downstream OLS. This is not an optimality claim. Any renewed learning should wait for genuinely new forward observations.
 
 anti_overfit_rules:
   - do_not_pick_a_precise_k_from_full_sample_and_reuse_same_history_as_oos
@@ -106,3 +123,4 @@ anti_overfit_rules:
   - stage4_future_inclusion_contrast_is_not_an_executable_member_score
   - stage5_must_remain_conservative_simple_same_k_after_stage4_identifiability_bottleneck
   - no_high_capacity_member_model_rescue_on_same_history
+  - future_relearning_requires_genuinely_new_forward_data
