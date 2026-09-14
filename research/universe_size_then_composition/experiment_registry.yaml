@@ -66,20 +66,34 @@ stages:
 
   - id: new_stage_4
     name: fixed_k15_composition_structure_audit
-    status: registered_running
-    decision: pending
+    status: frozen
+    decision: composition_identifiability_bottleneck
     dependency: new_stage_3b
     anchor_k: 15
+    source_run_id: 34791802474
+    source_artifact: universe-size-stage4-34791802474
     design_doc: research/universe_size_then_composition/STAGE4_FIXED_K15_COMPOSITION_STRUCTURE_DESIGN_20260914.md
-    script: research/universe_size_then_composition/stage4_fixed_k15_composition_structure.py
-    workflow: .github/workflows/universe-size-stage4.yml
-    objective: >-
-      Before fitting any member selector, quantify whether composition at fixed K15 has material downstream value headroom and whether randomized member inclusion effects show enough cross-sample and adjacent-month stability to justify Stage5 identifiability modeling.
+    findings_doc: research/universe_size_then_composition/STAGE4_FINDINGS_20260914.md
+    evidence:
+      months: 68
+      sampled_k15_universes: 12240
+      era_2021_24_p90_minus_mean: 0.0668985
+      era_2025_26_p90_minus_mean: 0.1042482
+      overall_split_half_spearman_median: 0.1138501
+      era_2021_24_adjacent_spearman_median: 0.0006967
+      era_2025_26_adjacent_spearman_median: 0.0158535
+    frozen_conclusion: >-
+      Fixed-K15 composition has large hindsight value dispersion, but randomized single-symbol inclusion contrasts are weakly reproducible within month and essentially non-persistent across adjacent months. Composition value exists, but symbol-level identifiability is the bottleneck. Do not escalate member-model capacity.
 
   - id: new_stage_5
-    name: walk_forward_executable_composition
-    status: hold_until_stage4
+    name: conservative_fixed_k15_executable_composition_audit
+    status: registered
+    decision: pending
     dependency: new_stage_4
+    anchor_k: 15
+    design_doc: research/universe_size_then_composition/STAGE5_CONSERVATIVE_K15_EXECUTABLE_DESIGN_20260914.md
+    objective: >-
+      Test whether a very small set of pre-registered X<=t/simple-history K15 composition rules captures any stable OOS value over random same-K, with Fix15 and full-market retained only as external benchmarks. No learned high-capacity member model is allowed.
 
 anti_overfit_rules:
   - do_not_pick_a_precise_k_from_full_sample_and_reuse_same_history_as_oos
@@ -88,4 +102,7 @@ anti_overfit_rules:
   - do_not_feature_search_stage3_after_outcome_inspection
   - k15_after_stage3b_is_engineering_anchor_not_optimal_k_claim
   - stage4_uses_only_existing_stage1_k15_randomization_before_member_modeling
-  - member_selection_modeling_starts_only_after_stage4_structure_audit
+  - stage4_support_thresholds_3_and_5_are_frozen
+  - stage4_future_inclusion_contrast_is_not_an_executable_member_score
+  - stage5_must_remain_conservative_simple_same_k_after_stage4_identifiability_bottleneck
+  - no_high_capacity_member_model_rescue_on_same_history
