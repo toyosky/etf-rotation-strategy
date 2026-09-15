@@ -1,0 +1,30 @@
+name: OURE Stage8E Economic Inventory
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage8e_economic_inventory.py"
+      - ".github/workflows/oure-stage8e-economic-inventory.yml"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install pandas sqlalchemy psycopg2-binary numpy scikit-learn boto3 pyarrow
+      - name: Run inventory
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          PYTHONPATH: research
+        run: python research/optimal_universe_reverse_engineering/oure_stage8e_economic_inventory.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8e-economic-inventory-${{ github.run_id }}
+          path: oure-stage8e-inventory/
+          retention-days: 30
