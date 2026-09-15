@@ -1,0 +1,1 @@
+Stage7D is a mechanism-only diagnostic. Deployment baseline remains Stage7C/A: 3x126-session robustness history -> Robust30 -> 126-session Universe hold -> frozen downstream OLS Top1. No deployment changes are authorized by Stage7D alone.
