@@ -1,0 +1,38 @@
+name: OURE Stage7C Horizon History Decomposition
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage7c_horizon_history_decomposition.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE7C_HORIZON_HISTORY_DECOMPOSITION_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage7c-horizon-history-decomposition.yml"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy pandas sqlalchemy psycopg2-binary scikit-learn boto3
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage7c_horizon_history_decomposition.py
+      - name: Run Stage7C
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          PYTHONPATH: research
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage7c_horizon_history_decomposition.py \
+            --output-dir oure-stage7c-output
+      - name: Upload Stage7C artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage7c-horizon-history-decomposition-${{ github.run_id }}
+          path: oure-stage7c-output/
+          if-no-files-found: warn
+          retention-days: 90
