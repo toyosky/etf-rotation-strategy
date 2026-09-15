@@ -181,6 +181,15 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6N_XGBOOST_SECOND_LAYER_FINDINGS_20260915.md
     notes: "Frozen nonlinear test on B05..B09. XGBoost residual improves residual median IC versus Ridge (-0.0905 -> +0.0553) but fails all secondary gates; pairwise ranker has strong isolated B07 (+0.375 IC, Top50 0.655) yet aggregate median IC -0.0344, only 2/5 positive, Top50 0.4878 and negative top-decile lift, so all primary gates fail. Model misspecification contributes somewhat, but added nonlinear capacity alone does not solve chronological transfer. The preregistered simple past126 set-log-growth baseline is strongest inside RF-high: median IC +0.1459, 4/5 positive, Top50 0.5588, top-decile lift +0.0524; treat this as a new cascade hypothesis, not a promoted strategy."
 
+
+  - stage: 6O
+    status: frozen_partial_pass_predictive_fail
+    decision: member_traits_exist_but_admission_not_oos_supported
+    run_id: 34914650531
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6O_RF_HIGH_WINNER_MEMBER_AUDIT_DESIGN_20260915.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6O_RF_HIGH_WINNER_MEMBER_AUDIT_FINDINGS_20260915.md
+    notes: "Inside previous-block-RF top20% K30s, member-level conditional future value has repeatable past-only structure: 6/21 traits across A/B/C/D pass the frozen stability gate. Future-useful members are more often eligible, less ubiquitous in RF-high, embedded in weaker trailing126 set contexts, somewhat further below recent highs, and not necessarily strong singleton past winners. However the strict chronological member RF fails all five predictive gates: median IC +0.0713, 3/5 positive, top10 actual percentile 0.4284, median top10 conditional-marginal lift -0.0230. Member mechanism exists, but prospective admission is not established."
+
 next_gate:
-  direction: "Stage6N is frozen. Ridge misspecification is not the whole story: nonlinear XGBoost recovers some residual signal but does not provide stable chronological top-tail discrimination. The clearest new hypothesis is a deliberately simple two-stage cascade: first-layer RF as coarse plausibility filter, then current past126 set strength as the RF-high reranker."
-  constraints: "Do not tune Stage6N XGBoost parameters/features/windows on this history and do not authorize CEM/GA/swap search. If the RF-filter -> past126-rerank hypothesis is pursued, preregister it as a separate stage with fixed RF-high threshold and ranking rule, and compare against past126 alone plus RF alone under strict chronological evaluation."
+  direction: "Stage6O is frozen. The member-level unit of analysis is more informative: future-useful members inside RF-high sets show a repeated qualified-but-underrepresented / less-historically-exhausted challenger pattern, but the frozen chronological member RF does not identify the next top admissions."
+  constraints: "Do not tune Stage6O RF-high cutoff, minimum appearance count, winner/loser cutoffs, member features, RF hyperparameters, or top10 rule on this history. A continuation must be a genuinely new admission hypothesis or new forward data, not post-hoc rescue."
