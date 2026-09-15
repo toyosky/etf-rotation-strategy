@@ -1,0 +1,1 @@
+This stage audits the mechanism behind the frozen 3x126-session Robust30 history. It is not a parameter-search stage.
