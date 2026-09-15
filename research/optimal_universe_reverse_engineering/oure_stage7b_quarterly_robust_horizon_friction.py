@@ -21,7 +21,7 @@ import optimal_universe_reverse_engineering.oure_stage6f_rf_surrogate_value as s
 from full_market_ols_storage import _db_url, build_features, load_daily_bars
 from universe_size_then_composition.stage1_oracle_size_mc import build_wides
 
-SEED = 20260915
+SEED = 20260914
 TRAIN_BLOCKS = 3
 K = 30
 COSTS = [0.0006, 0.0012, 0.0020]
@@ -81,7 +81,7 @@ def select_horizon(h: int, cal, score, gross, close, meta, start0: int, common_s
         fut_dates = pd.DatetimeIndex(cal[pos:pos+h])
         recent_ev = s6c.Eval(score, gross, recent_dates, common)
         future_ev = s6c.Eval(score, gross, fut_dates, common)
-        rng = np.random.default_rng(SEED + h * 100000 + bno * 1009)
+        rng = np.random.default_rng(SEED + bno * 1009)
         combo_family, _, _ = s6g.build_family_library(recent_ev, common, rng)
         combos = list(combo_family.keys())
 
