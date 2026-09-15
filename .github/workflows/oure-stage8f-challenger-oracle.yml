@@ -1,0 +1,33 @@
+name: OURE Stage8F Challenger Oracle
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8f_challenger_oracle.py'
+      - '.github/workflows/oure-stage8f-challenger-oracle.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -q numpy pandas sqlalchemy psycopg2-binary boto3
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8f_challenger_oracle.py
+      - name: Run Stage8F
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: python research/optimal_universe_reverse_engineering/oure_stage8f_challenger_oracle.py --output-dir oure-stage8f-output
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8f-challenger-oracle-${{ github.run_id }}
+          path: oure-stage8f-output/
+          retention-days: 90
