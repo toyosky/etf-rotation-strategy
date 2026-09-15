@@ -27,6 +27,10 @@ K = 30
 COSTS = [0.0006, 0.0012, 0.0020]
 
 
+def bp_label(c: float) -> int:
+    return int(round(c * 10000))
+
+
 def rank_pct(x: pd.Series) -> pd.Series:
     return s6g.rank_pct(pd.Series(x, dtype=float))
 
@@ -157,7 +161,6 @@ def build_chained_path(h: int, sels: pd.DataFrame, payloads, cal, score, gross):
     if sels.empty:
         raise RuntimeError(f"H{h}: no selections")
     sels = sels.sort_values("decision_pos").reset_index(drop=True)
-    payload_map = {p: (hh, m, c) for p, hh, m, c in payloads}
     daily_rows = []
     boundary_rows = []
     prev_target = None
@@ -203,8 +206,9 @@ def build_chained_path(h: int, sels: pd.DataFrame, payloads, cal, score, gross):
                 g = 0.0
             row = {"horizon": h, "date": str(pd.Timestamp(d).date()), "target": sym, "gross": g, "sides": sides}
             for c in COSTS:
+                b = bp_label(c)
                 net = (1.0 + g) * (1.0 - c * sides) - 1.0
-                row[f"log_net_{int(c*10000)}bp"] = float(np.log1p(net))
+                row[f"log_net_{b}bp"] = float(np.log1p(net))
             daily_rows.append(row)
 
             if sym is None:
@@ -241,7 +245,7 @@ def build_chained_path(h: int, sels: pd.DataFrame, payloads, cal, score, gross):
         "previous_held_removed_share": float(bounds["previous_held_removed"].mean()) if len(bounds) else np.nan,
     }
     for c in COSTS:
-        b = int(c * 10000)
+        b = bp_label(c)
         lg = float(daily[f"log_net_{b}bp"].sum())
         summary[f"total_return_{b}bp"] = float(np.exp(lg) - 1.0)
 
@@ -257,7 +261,7 @@ def paired_126(daily: pd.DataFrame):
             continue
         rec = {"pair126": int(p), "start_date": g["date"].iloc[0], "end_date": g["date"].iloc[-1]}
         for c in COSTS:
-            b = int(c * 10000)
+            b = bp_label(c)
             rec[f"return_{b}bp"] = float(np.exp(g[f"log_net_{b}bp"].sum()) - 1.0)
         rows.append(rec)
     return pd.DataFrame(rows)
@@ -281,7 +285,6 @@ def main():
     meta["symbol"] = meta["symbol"].astype(str)
 
     start0 = int(cal.searchsorted(pd.Timestamp("2022-01-01"), side="left"))
-    # Exact Stage7A common path: H126 target B04 starts after 3*126 sessions; B09 ends after 9*126.
     common_start = start0 + 3 * 126
     common_end = start0 + 9 * 126
     if common_end > len(cal) - 2:
@@ -343,7 +346,7 @@ def main():
     pc = pd.DataFrame(paired_compare)
     pc.to_csv(out / "stage7b_paired126_comparison.csv", index=False)
 
-    h63_ahead_all_costs = all(float(p63[f"total_return_{b}bp"]) > float(p126[f"total_return_{b}bp"]) for b in (6,12,20))
+    h63_ahead_all_costs = all(float(p63[f"total_return_{b}bp"]) > float(p126[f"total_return_{b}bp"]) for b in (6, 12, 20))
     worst126_h126 = float(pair126["return_6bp"].min())
     worst126_h63 = float(pair63["return_6bp"].min())
     if h63_ahead_all_costs and worst126_h63 >= worst126_h126 - 0.05:
@@ -360,7 +363,7 @@ def main():
         "common_start": str(pd.Timestamp(cal[common_start]).date()),
         "common_end": str(pd.Timestamp(cal[common_end-1]).date()),
         "cross_section": diag,
-        "paths": {str(int(r["horizon"])): {k: (int(v) if isinstance(v, (np.integer,)) else float(v) if isinstance(v, (np.floating,)) else v) for k,v in r.items() if k != "horizon"} for _, r in paths.iterrows()},
+        "paths": {str(int(r["horizon"])): {k: (int(v) if isinstance(v, (np.integer,)) else float(v) if isinstance(v, (np.floating,)) else v) for k, v in r.items() if k != "horizon"} for _, r in paths.iterrows()},
         "paired126": {
             "h126_worst_6bp": worst126_h126,
             "h63_worst_6bp": worst126_h63,
