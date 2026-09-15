@@ -1,5 +1,5 @@
 project: optimal_universe_reverse_engineering
-updated_at: 2026-09-14
+updated_at: 2026-09-15
 principle: "discover structure -> freeze -> cross-Universe/cross-era replication -> only then X<=t construction"
 
 stages:
@@ -166,6 +166,21 @@ stages:
     findings: research/optimal_universe_reverse_engineering/OURE_STAGE6L_RF_FALSE_POSITIVE_STRUCTURE_FINDINGS_20260914.md
     notes: "Matched audit inside previous-block-RF top20% passes structural gate: 12/47 new internal features across four families are stable. True RF-high winners have broadly stronger member singleton harvestability and eligibility participation, somewhat more distributed leader participation, and higher p90 pair return correlation. Leave-one-out robustness does not survive the full gate. Conditional chronological Ridge residual layer fails all four OOS gates: median residual IC -0.0611, only 1/5 positive, median Top50 percentile 0.4627, median Top50 gain vs RF -0.0659. Internal good/bad structure exists ex post, but the frozen low-complexity second layer cannot identify it prospectively."
 
+  - stage: 6M
+    status: frozen_diagnostic
+    decision: sample_size_not_primary_explanation
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6M_SECOND_LAYER_SAMPLE_SIZE_DIAGNOSTIC_DESIGN_20260915.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6M_SECOND_LAYER_SAMPLE_SIZE_DIAGNOSTIC_FINDINGS_20260915.md
+    notes: "Holding common targets B06..B09 fixed, increasing historical Ridge training blocks from N=1 to N=4 does not produce a monotone learning curve. On the 12 stable traits median residual IC is -0.024,+0.107,-0.007,-0.076; only one of four preregistered sample-size gates passes. This weakens pure sample-scarcity as the primary explanation and is more consistent with mapping drift/stale-history contamination, without proving more genuinely new future blocks would not help."
+
+  - stage: 6N
+    status: frozen_failed_primary_and_secondary
+    decision: xgboost_second_layer_not_supported
+    run_id: 34911172587
+    design: research/optimal_universe_reverse_engineering/OURE_STAGE6N_XGBOOST_SECOND_LAYER_DESIGN_20260915.md
+    findings: research/optimal_universe_reverse_engineering/OURE_STAGE6N_XGBOOST_SECOND_LAYER_FINDINGS_20260915.md
+    notes: "Frozen nonlinear test on B05..B09. XGBoost residual improves residual median IC versus Ridge (-0.0905 -> +0.0553) but fails all secondary gates; pairwise ranker has strong isolated B07 (+0.375 IC, Top50 0.655) yet aggregate median IC -0.0344, only 2/5 positive, Top50 0.4878 and negative top-decile lift, so all primary gates fail. Model misspecification contributes somewhat, but added nonlinear capacity alone does not solve chronological transfer. The preregistered simple past126 set-log-growth baseline is strongest inside RF-high: median IC +0.1459, 4/5 positive, Top50 0.5588, top-decile lift +0.0524; treat this as a new cascade hypothesis, not a promoted strategy."
+
 next_gate:
-  direction: "Stage6L one-shot task is complete and frozen. The coarse-RF -> internal-quality decomposition is partially validated at the mechanism level, but no deployable second-stage selector is established. The scheduled research task must remain stopped."
-  constraints: "Do not tune Stage6L matching threshold, feature set, Ridge alpha, chronology, or gates on the same history; do not escalate to CEM/GA/swap search from this result. Resume only under a genuinely new algorithmic hypothesis or genuinely new forward data with a new preregistration."
+  direction: "Stage6N is frozen. Ridge misspecification is not the whole story: nonlinear XGBoost recovers some residual signal but does not provide stable chronological top-tail discrimination. The clearest new hypothesis is a deliberately simple two-stage cascade: first-layer RF as coarse plausibility filter, then current past126 set strength as the RF-high reranker."
+  constraints: "Do not tune Stage6N XGBoost parameters/features/windows on this history and do not authorize CEM/GA/swap search. If the RF-filter -> past126-rerank hypothesis is pursued, preregister it as a separate stage with fixed RF-high threshold and ranking rule, and compare against past126 alone plus RF alone under strict chronological evaluation."
