@@ -1,0 +1,35 @@
+name: OURE Stage8E Economic Coverage
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage8e_economic_coverage.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE8E_ECONOMIC_COVERAGE_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage8e-economic-coverage.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy pandas sqlalchemy psycopg2-binary scikit-learn boto3 pyarrow
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8e_economic_coverage.py
+      - name: Run Stage8E
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          PYTHONPATH: research
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage8e_economic_coverage.py \
+            --output-dir oure-stage8e-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8e-economic-coverage-${{ github.run_id }}
+          path: oure-stage8e-output/
+          retention-days: 90
