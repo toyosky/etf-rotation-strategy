@@ -1,0 +1,36 @@
+name: OURE Stage8C Marginal Opportunity Capture
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage8c_marginal_opportunity_capture.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE8C_MARGINAL_OPPORTUNITY_CAPTURE_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage8c-marginal-opportunity-capture.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy pandas sqlalchemy psycopg2-binary scikit-learn boto3 pyarrow
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8c_marginal_opportunity_capture.py
+      - name: Run Stage8C
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          PYTHONPATH: research
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage8c_marginal_opportunity_capture.py \
+            --output-dir oure-stage8c-output
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8c-marginal-opportunity-capture-${{ github.run_id }}
+          path: oure-stage8c-output/
+          retention-days: 90
