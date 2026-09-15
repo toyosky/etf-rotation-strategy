@@ -6,6 +6,7 @@ on:
     branches: [ main ]
     paths:
       - 'research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit.py'
+      - 'research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit_fast.py'
       - '.github/workflows/oure-stage8l-within-exposure-carrier-audit.yml'
 
 jobs:
@@ -20,11 +21,13 @@ jobs:
       - name: Install dependencies
         run: pip install -q numpy pandas sqlalchemy psycopg2-binary boto3 scikit-learn
       - name: Syntax check
-        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit.py
+        run: |
+          python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit.py
+          python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit_fast.py
       - name: Run Stage8L
         env:
           ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-        run: python research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit.py --output-dir oure-stage8l-output
+        run: python research/optimal_universe_reverse_engineering/oure_stage8l_within_exposure_carrier_audit_fast.py --output-dir oure-stage8l-output
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
