@@ -1,0 +1,35 @@
+name: OURE Stage7B Quarterly Robust Horizon Friction
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage7b_quarterly_robust_horizon_friction.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE7B_QUARTERLY_ROBUST_HORIZON_FRICTION_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage7b-quarterly-robust-horizon-friction.yml"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage7b_quarterly_robust_horizon_friction.py
+      - name: Run Stage7B
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage7b_quarterly_robust_horizon_friction.py \
+            --output-dir oure-stage7b-output
+      - name: Upload Stage7B artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage7b-quarterly-robust-horizon-friction-${{ github.run_id }}
+          path: oure-stage7b-output/
+          retention-days: 90
