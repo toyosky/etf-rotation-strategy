@@ -1,0 +1,56 @@
+name: OURE Stage7F Forward Monitor
+
+on:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage7f_forward_monitor.py"
+      - "research/optimal_universe_reverse_engineering/OURE_STAGE7F_FORWARD_DEPLOYMENT_DESIGN_20260915.md"
+      - ".github/workflows/oure-stage7f-forward-monitor.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "30 9 * * 1-5"
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy pandas sqlalchemy psycopg2-binary scikit-learn boto3
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage7f_forward_monitor.py
+      - name: Run Stage7F
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+          PYTHONPATH: research
+        run: |
+          python research/optimal_universe_reverse_engineering/oure_stage7f_forward_monitor.py \
+            --output-dir oure-stage7f-output
+      - name: Persist deterministic forward state
+        run: |
+          mkdir -p research/optimal_universe_reverse_engineering/forward_monitor
+          cp oure-stage7f-output/stage7f_current_universe.csv research/optimal_universe_reverse_engineering/forward_monitor/
+          cp oure-stage7f-output/stage7f_snapshot.json research/optimal_universe_reverse_engineering/forward_monitor/
+          cp oure-stage7f-output/stage7f_forward_daily.csv research/optimal_universe_reverse_engineering/forward_monitor/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/optimal_universe_reverse_engineering/forward_monitor
+          if git diff --cached --quiet; then
+            echo "No forward-state changes"
+          else
+            git commit -m "research: update Stage7F forward monitor state"
+            git push
+          fi
+      - name: Upload Stage7F artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage7f-forward-monitor-${{ github.run_id }}
+          path: oure-stage7f-output/
+          retention-days: 90
