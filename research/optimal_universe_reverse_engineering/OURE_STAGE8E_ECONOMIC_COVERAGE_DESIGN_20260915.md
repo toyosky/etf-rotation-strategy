@@ -21,17 +21,17 @@ China equity:
 4. CN_TECH_DIGITAL — semiconductor/software/AI/IT/communications/digital/cyber/electronics/internet/TMT.
 5. CN_HEALTHCARE — healthcare/pharma/TCM/vaccine/biotech.
 6. CN_CONSUMER — consumer/brands/tourism/automotive.
-7. CN_FINANCIALS — banks/securities/insurance/broad financials.
-8. CN_INDUSTRIAL_DEFENSE — advanced manufacturing/defense/aerospace/machinery/robotics/infrastructure/transport/power-grid.
+7. CN_FINANCIALS — banks/securities/insurance/broad financials/real-estate financial beta.
+8. CN_INDUSTRIAL_DEFENSE — advanced manufacturing/defense/aerospace/machinery/robotics/infrastructure/transport/power-grid/new-energy industrials.
 9. CN_RESOURCES_ENERGY — mining/materials/rare-metals/energy/oil-gas/chemical/petrochemical/resources.
-10. CN_VALUE_DEFENSIVE — dividend/value/SOE/utilities and defensive factor equity.
+10. CN_VALUE_DEFENSIVE — dividend/value/SOE/utilities and defensive/fundamental factor equity.
 
 Offshore China / Hong Kong:
 11. HK_OFFSHORE_BROAD_VALUE — HK broad/H-share/dividend/SOE.
-12. HK_OFFSHORE_GROWTH — HK tech/healthcare/consumer/new-economy plus offshore-China internet.
+12. HK_OFFSHORE_GROWTH — HK tech/healthcare/consumer/new-economy plus offshore-China internet/education.
 
 US:
-13. US_BROAD — S&P 500/Dow/large-cap broad.
+13. US_BROAD — S&P 500/Dow/large-cap broad and broad consumer beta.
 14. US_GROWTH_TECH — Nasdaq 100 / US technology.
 15. US_BIOTECH — US biotechnology.
 
@@ -39,18 +39,19 @@ Other foreign equity:
 16. JAPAN — Japan equity.
 17. EUROPE — Germany/France equity.
 18. EMERGING_EX_CHINA — India/Brazil/Saudi/Asia diversified.
+19. GLOBAL_RESOURCE_EQUITY — listed commodity-producer equity exposure such as global/US oil-gas producers and gold miners; kept separate from direct commodity futures/spot products because of equity beta and operating leverage.
 
 Direct commodities:
-19. GOLD — physical/spot gold products, not gold miners.
-20. SILVER — direct silver.
-21. CRUDE_OIL — direct crude-oil commodity exposure.
-22. AGRICULTURE — direct agricultural commodity exposure (currently soymeal).
-23. INDUSTRIAL_COMMODITY — direct industrial/energy-chemical commodity exposure distinct from crude oil.
+20. GOLD — physical/spot gold products, not gold miners.
+21. SILVER — direct silver.
+22. CRUDE_OIL — direct crude-oil commodity exposure.
+23. AGRICULTURE — direct agricultural commodity exposure (currently soymeal).
+24. INDUSTRIAL_COMMODITY — direct industrial/energy-chemical commodity exposure distinct from crude oil.
 
 Fixed income:
-24. GOV_DURATION — sovereign/local-government/policy-bank duration exposure.
-25. CREDIT — corporate/credit/short-credit/tech-innovation credit exposure.
-26. CONVERTIBLE — convertible bonds, retained separately because of equity convexity.
+25. GOV_DURATION — sovereign/local-government/policy-bank duration exposure.
+26. CREDIT — corporate/credit/short-credit/tech-innovation credit exposure.
+27. CONVERTIBLE — convertible bonds, retained separately because of equity convexity.
 
 Cash proxy remains the frozen OLS cash comparator and does not consume a risky slot.
 
