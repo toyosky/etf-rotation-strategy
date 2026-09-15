@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: pip install -q numpy pandas sqlalchemy psycopg2-binary boto3
+        run: pip install -q numpy pandas sqlalchemy psycopg2-binary boto3 scikit-learn
       - name: Syntax check
         run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8f_challenger_oracle.py
       - name: Run Stage8F
