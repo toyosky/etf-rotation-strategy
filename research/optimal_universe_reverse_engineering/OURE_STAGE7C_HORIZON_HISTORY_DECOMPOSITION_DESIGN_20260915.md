@@ -25,25 +25,28 @@ Construct four preregistered variants by crossing robustness-estimation history 
 
 - A — H126 / Hist126 (baseline): 3 completed 126-session history blocks; hold selected Universe 126 sessions.
 - B — H63 / Hist63 (Stage7B quarterly): 3 completed 63-session history blocks; hold selected Universe 63 sessions.
-- C — H63 / Hist126: use the same 3 completed 126-session robustness history blocks as the baseline, but refresh/hold the selected Universe every 63 sessions.
-- D — H126 / Hist63: use only the most recent 3 completed 63-session robustness history blocks, but hold the selected Universe for 126 sessions.
+- C — H63 / Hist126: every 63-session decision date, use the immediately preceding contiguous 3x126 sessions, split into three completed 126-session blocks; hold selected Universe 63 sessions.
+- D — H126 / Hist63: every 126-session decision date, use the immediately preceding contiguous 3x63 sessions, split into three completed 63-session blocks; hold selected Universe 126 sessions.
+
+This rolling-block definition ensures that each decision uses all information available through t while preserving the intended historical depth. No partial future block is used.
 
 Interpretation:
-- A vs C primarily tests whether shorter refresh/target horizon helps or hurts when long robustness history is preserved.
-- A vs D primarily tests whether shortening robustness history hurts when the 126-session holding horizon is preserved.
-- B vs C isolates the effect of long vs short robustness history at the 63-session holding horizon.
-- B vs D is secondary because both dimensions differ.
+- A vs C tests 126-session vs 63-session holding/refresh horizon while keeping 378-session robustness history.
+- D vs B tests the same holding/refresh contrast while keeping 189-session robustness history.
+- A vs D tests 378-session vs 189-session robustness history while keeping the 126-session holding horizon.
+- C vs B tests the same history-depth contrast while keeping the 63-session holding horizon.
 
 ## Leakage and timing rules
 1. For every decision date t, all features, candidate-set scores, member statistics, and robustness statistics must use information available at or before t.
 2. Future block return is used only for evaluation.
-3. Candidate-library generation must reproduce the frozen Stage7A seed semantics. No horizon-specific seed offsets may be introduced.
-4. When a 63-session refresh occurs inside a 126-session historical block grid, the long-history variant may only use fully completed 126-session blocks available by that refresh date; no partial future block is allowed.
+3. Candidate-library generation must reproduce the frozen Stage7A/7B seed semantics for each holding grid. No extra horizon-specific seed offset may be introduced.
+4. Historical blocks are contiguous, immediately precede t, and are fully completed at t.
 5. Candidate family and robust scoring formula are frozen. No threshold or weighting changes are permitted inside Stage7C.
 6. Downstream OLS Top1 rules and transaction-cost accounting are frozen to Stage7B semantics.
+7. The two corner variants A and B must reproduce the authoritative Stage7B H126 and H63 results within a fixed implementation tolerance before C or D may be interpreted.
 
 ## Primary common-calendar comparison
-Use the maximal common calendar for which all four variants have valid predictions under the strict completed-block rules.
+Use the same frozen 756-session calendar as Stage7B whenever data availability permits: the interval beginning after 3x126 sessions from the 2022-01-01 anchor and ending after the next 6x126 sessions.
 
 Primary outcomes:
 1. Continuous-position path total return at 6bp per side.
@@ -65,20 +68,33 @@ For each variant report:
 - frequency that Universe refresh changes the current OLS target;
 - frequency that the previously held ETF is removed at refresh.
 
+## Frozen factor-effect calculation
+To avoid interpreting the four terminal paths post hoc, the causal verdict is based on an additive 2x2 decomposition of terminal log wealth.
+
+For each frozen transaction-cost level c in {6bp, 12bp, 20bp}, let L_A(c), L_B(c), L_C(c), and L_D(c) be terminal log wealth of variants A-D.
+
+Define:
+
+- history-depth effect E_hist(c) = 0.5 * [(L_A - L_D) + (L_C - L_B)]
+- holding-horizon effect E_hold(c) = 0.5 * [(L_A - L_C) + (L_D - L_B)]
+- interaction I(c) = (L_A - L_D) - (L_C - L_B)
+
+Positive E_hist means the longer 378-session robustness history helps on average. Positive E_hold means the 126-session holding/refresh horizon helps on average.
+
+The frozen verdict rule is:
+
+- `history_depth_dominant`: E_hist > 0 at all three cost levels and either E_hold is not > 0 at all three levels, or median(E_hist) >= 1.5 * median(E_hold).
+- `holding_horizon_dominant`: E_hold > 0 at all three cost levels and either E_hist is not > 0 at all three levels, or median(E_hold) >= 1.5 * median(E_hist).
+- `mixed`: both E_hist and E_hold are > 0 at all three cost levels, but neither median effect is at least 1.5x the other.
+- `unresolved`: all remaining cases, including sign instability across transaction-cost levels.
+
+Cross-sectional Spearman and Top-tail diagnostics are confirmatory diagnostics only; they do not override the frozen path-based verdict.
+
 ## Primary causal reading
-The following interpretation is preregistered:
-
-### History-window explanation supported
-If C (H63 / Hist126) materially recovers the baseline ranking quality and performance relative to B (H63 / Hist63), while D (H126 / Hist63) materially degrades relative to A, then the dominant explanation is insufficient robustness-history depth / regime coverage.
-
-### Holding-horizon explanation supported
-If C remains materially weaker than A despite preserving long history, while D remains close to A despite short robustness history, then the dominant explanation is the shorter 63-session target/refresh horizon itself.
-
-### Mixed explanation
-If C partially recovers B but remains clearly below A, and D is also clearly below A, then both robustness-history depth and holding horizon matter.
-
-### No clean decomposition
-If differences are small, inconsistent across cost levels, or dominated by one or two periods, freeze the conclusion as unresolved rather than tuning a rescue specification.
+- A history-depth-dominant verdict supports the hypothesis that Stage7B H63 failed mainly because 189 sessions do not provide enough robustness-history depth / regime coverage.
+- A holding-horizon-dominant verdict supports the hypothesis that a 63-session target/refresh horizon is itself too noisy even when long history is preserved.
+- A mixed verdict means both mechanisms materially contribute.
+- An unresolved verdict means Stage7C does not cleanly separate them and no rescue tuning is allowed inside this stage.
 
 ## Guardrails against overfitting
 - No intermediate horizons (84, 90, 100, etc.) are allowed in this stage.
