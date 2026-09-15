@@ -141,13 +141,14 @@ def score_stats(score: pd.DataFrame, past_dates: pd.DatetimeIndex, symbol: str) 
     finite = vals[np.isfinite(vals)]
     recent = s.iloc[-21:].to_numpy(dtype=float)
     prior = s.iloc[-42:-21].to_numpy(dtype=float)
+    rm = finite_mean(recent)
+    pm = finite_mean(prior)
     return {
         "elig_participation126": float(np.mean(np.isfinite(vals))),
         "score_last": float(vals[-1]) if len(vals) and np.isfinite(vals[-1]) else np.nan,
         "score_mean126": finite_mean(finite),
         "score_p90_126": finite_quantile(finite, 0.90),
-        "score_recent_minus_prior21": finite_mean(recent) - finite_mean(prior)
-        if np.isfinite(finite_mean(recent)) and np.isfinite(finite_mean(prior)) else np.nan,
+        "score_recent_minus_prior21": rm - pm if np.isfinite(rm) and np.isfinite(pm) else np.nan,
     }
 
 
@@ -175,12 +176,13 @@ def member_rows_for_block(
     decision_date: pd.Timestamp,
     cal: pd.DatetimeIndex,
     close: pd.DataFrame,
+    gross: pd.DataFrame,
     score: pd.DataFrame,
     pool: list[str],
 ) -> pd.DataFrame:
     d = int(cal.get_indexer([decision_date])[0])
     past_dates = pd.DatetimeIndex(cal[d - LOOKBACK:d])
-    ev = s6c.Eval(score, close / close.shift(1), past_dates, pool)
+    ev = s6c.Eval(score, gross, past_dates, pool)
 
     members_lists = [tuple(str(x).split(",")) for x in high["members"]]
     all_members = sorted(set(s for m in members_lists for s in m))
@@ -191,11 +193,11 @@ def member_rows_for_block(
     is_good = high["future_log_growth"].to_numpy(dtype=float) >= qgood
     is_bad = high["future_log_growth"].to_numpy(dtype=float) <= qbad
 
-    # Past return-correlation matrix for co-member context.
     ret_hist = close.loc[past_dates, all_members].astype(float).pct_change().replace([np.inf, -np.inf], np.nan)
     corr = ret_hist.corr(min_periods=40)
 
     rows = []
+    member_array = np.array(members_lists, dtype=object)
     for sym in all_members:
         present = np.array([sym in m for m in members_lists], dtype=bool)
         cnt = int(present.sum())
@@ -212,7 +214,6 @@ def member_rows_for_block(
         r63, v63, md63, dh63 = price_stats(close, cal, d, sym, 63)
         r126, v126, md126, _ = price_stats(close, cal, d, sym, 126)
 
-        # Singleton OLS value using the exact frozen evaluator semantics.
         try:
             singleton = float(ev.evaluate({sym})["log_growth"])
         except Exception:
@@ -223,7 +224,7 @@ def member_rows_for_block(
         mean_past_set = finite_mean(hp["past126_log_growth"].to_numpy(dtype=float)) if "past126_log_growth" in hp.columns else np.nan
 
         co_counts = {}
-        for m in np.array(members_lists, dtype=object)[present]:
+        for m in member_array[present]:
             for other in m:
                 if other != sym:
                     co_counts[other] = co_counts.get(other, 0) + 1
@@ -346,7 +347,6 @@ def main() -> None:
     """), eng)
     meta["symbol"] = meta["symbol"].astype(str)
 
-    # Regenerate strict Stage6K blocks exactly.
     start0 = int(cal.searchsorted(pd.Timestamp("2022-01-01"), side="left"))
     rng = np.random.default_rng(SEED)
     frames = []
@@ -381,7 +381,7 @@ def main() -> None:
         decision_date = pd.Timestamp(high["decision_date"].iloc[0])
         d = int(cal.get_indexer([decision_date])[0])
         pool = s5.available_pool(close, meta, cal, d)
-        mdf = member_rows_for_block(high, decision_date, cal, close, score, pool)
+        mdf = member_rows_for_block(high, decision_date, cal, close, gross, score, pool)
         mdf["target_block"] = target_b
         mdf["decision_date"] = str(decision_date.date())
         member_frames.append(mdf)
@@ -396,7 +396,6 @@ def main() -> None:
     effects, stable = stable_effects(members, target_blocks)
     effects.to_csv(out / "stage6o_member_feature_effects.csv", index=False)
 
-    # Descriptive per-block top/bottom member identities for audit only.
     desc_rows = []
     for b in target_blocks:
         g = members[members["target_block"] == b].copy()
@@ -413,7 +412,6 @@ def main() -> None:
                 })
     pd.DataFrame(desc_rows).to_csv(out / "stage6o_member_extremes.csv", index=False)
 
-    # Stage 2 chronological prediction.
     metric_rows = []
     pred_rows = []
     test_blocks = [b for b in ["B05", "B06", "B07", "B08", "B09"] if b in target_blocks]
