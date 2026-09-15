@@ -1,0 +1,1 @@
+Frozen comparator: Stage7B authoritative run 34921530265, decision halfyear_preferred. Stage7C must reproduce the H126 baseline before any new variant is considered valid.
