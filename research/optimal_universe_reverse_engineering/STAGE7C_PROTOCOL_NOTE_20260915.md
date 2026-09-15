@@ -1,0 +1,1 @@
+Stage7C implementation must preserve Stage7A/Stage7B candidate-library seed semantics exactly. The Stage7B invalidated first run demonstrated that seed drift can invalidate horizon comparisons. Any Stage7C run that fails exact baseline reproduction is invalid and must not be interpreted.
