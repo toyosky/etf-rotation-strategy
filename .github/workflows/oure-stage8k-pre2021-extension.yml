@@ -1,0 +1,33 @@
+name: OURE Stage8K Pre-2021 Extension
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8k_pre2021_extension.py'
+      - '.github/workflows/oure-stage8k-pre2021-extension.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -q numpy pandas sqlalchemy psycopg2-binary boto3 scikit-learn
+      - name: Syntax check
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8k_pre2021_extension.py
+      - name: Run Stage8K
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: python research/optimal_universe_reverse_engineering/oure_stage8k_pre2021_extension.py --output-dir oure-stage8k-output
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8k-pre2021-extension-${{ github.run_id }}
+          path: oure-stage8k-output/
+          retention-days: 90
