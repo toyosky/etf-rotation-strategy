@@ -24,19 +24,17 @@ COST = 0.0006
 HORIZONS = (5, 10, 20)
 PCT_LOOKBACK = 252
 PCT_MIN_HISTORY = 60
-
 FEATURES = (
     "risk_churn20",
     "recent5_risk_episode_mean",
     "breadth",
-    "median_excess_score",
+    "median_signed_strength",
 )
-
 BAD_RULES = {
     "warn_high_churn": ("risk_churn20_pct252", ">=", 80.0),
     "warn_short_life": ("recent5_risk_episode_mean_pct252", "<=", 20.0),
     "warn_low_breadth": ("breadth_pct252", "<=", 20.0),
-    "warn_weak_score": ("median_excess_score_pct252", "<=", 20.0),
+    "warn_weak_strength": ("median_signed_strength_pct252", "<=", 20.0),
 }
 
 
@@ -46,12 +44,10 @@ def prior_percentile(s: pd.Series, lookback: int = PCT_LOOKBACK, min_hist: int =
     for i, cur in enumerate(x):
         if not np.isfinite(cur):
             continue
-        j0 = max(0, i - lookback)
-        hist = x[j0:i]
+        hist = x[max(0, i - lookback):i]
         hist = hist[np.isfinite(hist)]
-        if len(hist) < min_hist:
-            continue
-        out[i] = 100.0 * float(np.mean(hist <= cur))
+        if len(hist) >= min_hist:
+            out[i] = 100.0 * float(np.mean(hist <= cur))
     return pd.Series(out, index=s.index, dtype=float)
 
 
@@ -63,18 +59,23 @@ def recent_episode_mean(raw_targets: pd.Series, n_recent: int = 5) -> pd.Series:
     run_len = 0
     for i, cur in enumerate(vals):
         if i == 0:
-            prev = cur
-            run_len = 1
+            prev, run_len = cur, 1
         elif cur == prev:
             run_len += 1
         else:
             if prev is not None:
                 completed.append(int(run_len))
-            prev = cur
-            run_len = 1
+            prev, run_len = cur, 1
         if len(completed) >= n_recent:
             out[i] = float(np.mean(completed[-n_recent:]))
     return pd.Series(out, index=raw_targets.index, dtype=float)
+
+
+def pivot_feature(feat: pd.DataFrame, cal: pd.DatetimeIndex, symbols: list[str], col: str) -> pd.DataFrame:
+    z = feat[["date", "symbol", col]].copy()
+    z["date"] = pd.to_datetime(z["date"])
+    z["symbol"] = z["symbol"].astype(str).str.zfill(6)
+    return z.pivot(index="date", columns="symbol", values=col).reindex(index=cal, columns=symbols)
 
 
 def forward_mdd(r: np.ndarray) -> float:
@@ -92,11 +93,10 @@ def add_forward_labels(z: pd.DataFrame) -> pd.DataFrame:
         fr = np.full(len(out), np.nan, dtype=float)
         fm = np.full(len(out), np.nan, dtype=float)
         for i in range(len(out)):
-            if i + h > len(out):
-                continue
-            w = r[i:i+h]
-            fr[i] = float(np.prod(1.0 + w) - 1.0)
-            fm[i] = forward_mdd(w)
+            if i + h <= len(out):
+                w = r[i:i+h]
+                fr[i] = float(np.prod(1.0 + w) - 1.0)
+                fm[i] = forward_mdd(w)
         out[f"fwd_return_{h}"] = fr
         out[f"fwd_mdd_{h}"] = fm
     return out
@@ -106,18 +106,14 @@ def agg_outcome(g: pd.DataFrame, h: int) -> dict:
     r = pd.to_numeric(g[f"fwd_return_{h}"], errors="coerce")
     m = pd.to_numeric(g[f"fwd_mdd_{h}"], errors="coerce")
     ok = r.notna() & m.notna()
-    r = r[ok]; m = m[ok]
+    r, m = r[ok], m[ok]
     if len(r) == 0:
         return {"n": 0, "mean_return": np.nan, "median_return": np.nan, "win_rate": np.nan,
                 "q10_return": np.nan, "mean_fwd_mdd": np.nan, "median_fwd_mdd": np.nan}
     return {
-        "n": int(len(r)),
-        "mean_return": float(r.mean()),
-        "median_return": float(r.median()),
-        "win_rate": float((r > 0).mean()),
-        "q10_return": float(r.quantile(0.10)),
-        "mean_fwd_mdd": float(m.mean()),
-        "median_fwd_mdd": float(m.median()),
+        "n": int(len(r)), "mean_return": float(r.mean()), "median_return": float(r.median()),
+        "win_rate": float((r > 0).mean()), "q10_return": float(r.quantile(0.10)),
+        "mean_fwd_mdd": float(m.mean()), "median_fwd_mdd": float(m.median()),
     }
 
 
@@ -142,10 +138,7 @@ def build_extremes(z: pd.DataFrame) -> pd.DataFrame:
         g0 = z.loc[z[pcol].notna()].copy()
         if g0.empty:
             continue
-        if op == ">=":
-            g0["warning"] = g0[pcol] >= threshold
-        else:
-            g0["warning"] = g0[pcol] <= threshold
+        g0["warning"] = (g0[pcol] >= threshold) if op == ">=" else (g0[pcol] <= threshold)
         for h in HORIZONS:
             for state, g in g0.groupby("warning"):
                 rows.append({"warning_name": warn, "feature_pct": pcol, "threshold": threshold,
@@ -192,10 +185,7 @@ def build_nonoverlap(z: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
     g0 = g0.iloc[::20].copy()
     g0["bad_ge2"] = g0["bad_count"] >= 2
-    rows = []
-    for state, g in g0.groupby("bad_ge2"):
-        rows.append({"bad_ge2": bool(state), **agg_outcome(g, 20)})
-    return pd.DataFrame(rows)
+    return pd.DataFrame([{"bad_ge2": bool(state), **agg_outcome(g, 20)} for state, g in g0.groupby("bad_ge2")])
 
 
 def summarize_window(g: pd.DataFrame, name: str) -> dict:
@@ -209,15 +199,15 @@ def summarize_window(g: pd.DataFrame, name: str) -> dict:
         "risk_churn20_mean": float(g["risk_churn20"].mean()),
         "recent5_life_mean": float(g["recent5_risk_episode_mean"].mean()),
         "breadth_mean": float(g["breadth"].mean()),
-        "median_excess_score_mean": float(g["median_excess_score"].mean()),
+        "median_signed_strength_mean": float(g["median_signed_strength"].mean()),
         "churn_pct_mean": float(g["risk_churn20_pct252"].mean()),
         "life_pct_mean": float(g["recent5_risk_episode_mean_pct252"].mean()),
         "breadth_pct_mean": float(g["breadth_pct252"].mean()),
-        "strength_pct_mean": float(g["median_excess_score_pct252"].mean()),
+        "strength_pct_mean": float(g["median_signed_strength_pct252"].mean()),
         "high_churn_rate": float(g["warn_high_churn"].mean()),
         "short_life_rate": float(g["warn_short_life"].mean()),
         "low_breadth_rate": float(g["warn_low_breadth"].mean()),
-        "weak_score_rate": float(g["warn_weak_score"].mean()),
+        "weak_strength_rate": float(g["warn_weak_strength"].mean()),
         "bad_count_mean": float(g["bad_count"].mean()),
         "bad_count_ge2_rate": float((g["bad_count"] >= 2).mean()),
     })
@@ -232,8 +222,7 @@ def build_event_windows(z: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         "Y2021": (pd.Timestamp("2021-01-01"), pd.Timestamp("2021-12-31")),
         "Y2025": (pd.Timestamp("2025-01-01"), pd.Timestamp("2025-12-31")),
     }
-    rows = []
-    parts = []
+    rows, parts = [], []
     for name, (lo, hi) in defs.items():
         g = z.loc[(z["execution_date"] >= lo) & (z["execution_date"] <= hi)].copy()
         rows.append(summarize_window(g, name))
@@ -254,18 +243,18 @@ def build_annual_warning(z: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for y, g in z.groupby(z["execution_date"].dt.year):
         rows.append({
-            "year": int(y),
-            "sessions": int(len(g)),
+            "year": int(y), "sessions": int(len(g)),
             "strategy_return": float(np.prod(1.0 + g["v1_net_ret"].to_numpy(float)) - 1.0),
             "high_churn_rate": float(g["warn_high_churn"].mean()),
             "short_life_rate": float(g["warn_short_life"].mean()),
             "low_breadth_rate": float(g["warn_low_breadth"].mean()),
-            "weak_score_rate": float(g["warn_weak_score"].mean()),
+            "weak_strength_rate": float(g["warn_weak_strength"].mean()),
             "bad_count_mean": float(g["bad_count"].mean()),
             "bad_count_ge2_rate": float((g["bad_count"] >= 2).mean()),
             "risk_churn20_mean": float(g["risk_churn20"].mean()),
             "recent5_life_mean": float(g["recent5_risk_episode_mean"].mean()),
             "breadth_mean": float(g["breadth"].mean()),
+            "median_signed_strength_mean": float(g["median_signed_strength"].mean()),
         })
     return pd.DataFrame(rows)
 
@@ -277,8 +266,7 @@ def main() -> None:
     args = ap.parse_args()
     if not args.database_url:
         raise SystemExit("Missing ETF_DAILY_BARS_DATABASE_URL")
-    out = Path(args.output_dir)
-    out.mkdir(parents=True, exist_ok=True)
+    out = Path(args.output_dir); out.mkdir(parents=True, exist_ok=True)
 
     eng = create_engine(_db_url(args.database_url), pool_pre_ping=True)
     bars = load_daily_bars(eng)
@@ -294,12 +282,16 @@ def main() -> None:
     if not cash_ok.any():
         raise RuntimeError("cash comparator never becomes valid")
     first_signal = pd.Timestamp(score.index[cash_ok][0])
-    start_i = int(cal.get_loc(first_signal))
-    last_i = len(cal) - 3
+    start_i = int(cal.get_loc(first_signal)); last_i = len(cal) - 3
 
     raw = s8m.build_raw_targets(cal, score, s8m.MAIN_MEMBERS, start_i, last_i)
-    raw_score = s8m.raw_score_wide(feat, cal, list(score.columns.astype(str)))
+    symbols = list(score.columns.astype(str))
+    raw_score = s8m.raw_score_wide(feat, cal, symbols)
+    annual_w = pivot_feature(feat, cal, symbols, "annual")
+    raw_r2_w = pivot_feature(feat, cal, symbols, "r2")
+    signed_strength_w = annual_w * raw_r2_w
     raw_delta = raw_score.diff()
+
     needed = set(raw["target"].dropna().astype(str).unique())
     profiles_df = v1lib.build_needed_profiles(bars, needed)
     profiles = profiles_df.set_index(["date", "symbol"])["resistance_pct252"].to_dict()
@@ -314,7 +306,7 @@ def main() -> None:
 
     raw_state = z["raw_target"].where(z["raw_target"].notna(), "__CASH__").astype(str)
     prev = raw_state.shift(1)
-    risk_switch = (raw_state != prev) & (raw_state != "__CASH__") & (prev.notna()) & (prev != "__CASH__")
+    risk_switch = (raw_state != prev) & (raw_state != "__CASH__") & prev.notna() & (prev != "__CASH__")
     total_switch = (raw_state != prev) & prev.notna()
     z["risk_switch"] = risk_switch.astype(int)
     z["total_state_switch"] = total_switch.astype(int)
@@ -322,29 +314,27 @@ def main() -> None:
     z["total_churn20"] = z["total_state_switch"].rolling(20, min_periods=20).sum()
     z["recent5_risk_episode_mean"] = recent_episode_mean(z["raw_target"], 5)
 
-    breadth = []
-    medex = []
-    finite_n = []
-    positive_n = []
+    breadth, strength, ready_n, positive_n = [], [], [], []
+    risk_syms = [s for s in s8m.MAIN_RISK if s in raw_score.columns and s in score.columns]
     for r in z.itertuples(index=False):
         d = pd.Timestamp(r.signal_date)
-        cv = score.at[d, s8m.CASH] if s8m.CASH in score.columns else np.nan
-        if pd.isna(cv) or not np.isfinite(cv):
-            breadth.append(np.nan); medex.append(np.nan); finite_n.append(0); positive_n.append(0); continue
-        syms = [s for s in s8m.MAIN_RISK if s in score.columns]
-        vals = score.loc[d, syms].astype(float)
-        vals = vals[np.isfinite(vals)]
-        finite_n.append(int(len(vals)))
-        if vals.empty:
-            breadth.append(np.nan); medex.append(np.nan); positive_n.append(0); continue
-        pos = vals > float(cv)
+        rawvals = raw_score.loc[d, risk_syms].astype(float)
+        rawvals = rawvals[np.isfinite(rawvals)]
+        available = list(rawvals.index.astype(str))
+        ready_n.append(int(len(available)))
+        if not available:
+            breadth.append(np.nan); strength.append(np.nan); positive_n.append(0); continue
+        poolvals = score.loc[d, available].astype(float)
+        pos = np.isfinite(poolvals.to_numpy(float))
         positive_n.append(int(pos.sum()))
         breadth.append(float(pos.mean()))
-        medex.append(float(np.median(vals.to_numpy(float) - float(cv))))
-    z["finite_risk_n"] = finite_n
-    z["positive_risk_n"] = positive_n
+        svals = signed_strength_w.loc[d, available].astype(float)
+        svals = svals[np.isfinite(svals)]
+        strength.append(float(np.median(svals.to_numpy(float))) if len(svals) else np.nan)
+    z["ols_ready_risk_n"] = ready_n
+    z["positive_trend_risk_n"] = positive_n
     z["breadth"] = breadth
-    z["median_excess_score"] = medex
+    z["median_signed_strength"] = strength
 
     for f in FEATURES:
         z[f + "_pct252"] = prior_percentile(z[f])
@@ -352,11 +342,10 @@ def main() -> None:
     z["warn_high_churn"] = z["risk_churn20_pct252"] >= 80.0
     z["warn_short_life"] = z["recent5_risk_episode_mean_pct252"] <= 20.0
     z["warn_low_breadth"] = z["breadth_pct252"] <= 20.0
-    z["warn_weak_score"] = z["median_excess_score_pct252"] <= 20.0
+    z["warn_weak_strength"] = z["median_signed_strength_pct252"] <= 20.0
     pcols = [f + "_pct252" for f in FEATURES]
     all_ready = z[pcols].notna().all(axis=1)
     z["bad_count"] = np.where(all_ready, z[list(BAD_RULES.keys())].sum(axis=1).astype(float), np.nan)
-
     z = add_forward_labels(z)
 
     quint = build_quintiles(z)
@@ -378,14 +367,11 @@ def main() -> None:
     annual.to_csv(out / "stage8n_annual_warning_rates.csv", index=False)
 
     summary = {
-        "study": "OURE Stage8N internal regime diagnostic",
+        "study": "OURE Stage8N internal regime diagnostic corrected",
         "status": "completed",
-        "first_signal": str(first_signal.date()),
-        "last_signal": str(z["signal_date"].max().date()),
-        "sessions": int(len(z)),
-        "fully_ready_sessions": int(all_ready.sum()),
-        "features": list(FEATURES),
-        "bad_rules": BAD_RULES,
+        "first_signal": str(first_signal.date()), "last_signal": str(z["signal_date"].max().date()),
+        "sessions": int(len(z)), "fully_ready_sessions": int(all_ready.sum()),
+        "features": list(FEATURES), "bad_rules": BAD_RULES,
         "event_windows": windows.to_dict(orient="records"),
         "nonoverlap20": nonov.to_dict(orient="records"),
     }
