@@ -1,0 +1,36 @@
+name: OURE Stage8S Breadth Divergence Validation
+
+on:
+  push:
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8s_breadth_divergence_validation.py'
+      - '.github/workflows/oure-stage8s-breadth-divergence-validation.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: stage8s-breadth-divergence-validation-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - name: Compile
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8s_breadth_divergence_validation.py
+      - name: Run Stage8S
+        run: python research/optimal_universe_reverse_engineering/oure_stage8s_breadth_divergence_validation.py
+      - name: Publish summary
+        run: cat "$OUTPUT_DIR/stage8s_summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8s-breadth-divergence-validation-${{ github.run_id }}
+          path: stage8s-breadth-divergence-validation-output/
+          retention-days: 30
