@@ -1,0 +1,46 @@
+name: OURE Stage8Q Map Comparator Robustness
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8q_map_comparator_robustness.py'
+      - '.github/workflows/oure-stage8q-map-comparator.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: stage8q-map-comparator-output
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - name: Compile audit
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8q_map_comparator_robustness.py
+      - name: Run audit
+        run: python research/optimal_universe_reverse_engineering/oure_stage8q_map_comparator_robustness.py
+      - name: Publish summary
+        run: |
+          if [ -f "$OUTPUT_DIR/stage8q_summary.md" ]; then
+            cat "$OUTPUT_DIR/stage8q_summary.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8q-map-comparator-${{ github.run_id }}
+          path: stage8q-map-comparator-output/
+          retention-days: 30
