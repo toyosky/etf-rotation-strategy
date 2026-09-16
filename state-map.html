@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080d18" />
+  <title>ETF Rotation Research · State Map</title>
+  <link rel="stylesheet" href="./site.css" />
+  <link rel="stylesheet" href="./state-map.css" />
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="topbar">
+    <a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a>
+    <nav>
+      <a href="./index.html">Universe</a>
+      <span>Strategy</span>
+      <a class="active" href="./state-map.html">State Map</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero state-hero">
+      <div class="eyebrow">LIVE REGIME MAP · DAILY CLOSE</div>
+      <h1>二维市场状态图<br><em>Breadth × Leadership Gap</em></h1>
+      <p class="lede">横轴看“当前有多少资产真正具备 OLS 竞争资格”，纵轴看“Top1 相对 Top2 的领先是否清晰”。它不替代买卖规则，而是解释同一套 OLS 为什么在不同阶段呈现不同的换仓与收益特征。</p>
+
+      <div id="latestCards" class="state-cards loading">
+        <div><small>最新状态</small><strong id="latestRegime">读取中…</strong><span id="latestDate">—</span></div>
+        <div><small>机会广度</small><strong id="latestBreadth">—</strong><span id="latestBreadthCount">—</span></div>
+        <div><small>领导清晰度</small><strong id="latestGapPct">—</strong><span id="latestGapRaw">—</span></div>
+        <div><small>当前竞争</small><strong id="latestTop1">—</strong><span id="latestTop2">—</span></div>
+      </div>
+      <div class="method-note">每日收盘后自动更新 · FixV2 13 个风险资产 + 511220 现金比较器 · 26 日加权 OLS</div>
+    </section>
+
+    <section class="section state-main">
+      <div class="section-head">
+        <div><span class="kicker">LIVE POSITION</span><h2>最近状态正在往哪里移动</h2></div>
+        <p>主图显示最近 20 个交易日轨迹。越靠右代表有效机会越多；越靠上代表 Top1 领先越明显。</p>
+      </div>
+      <div class="map-card">
+        <div class="quadrant-label q-nw"><b>狭窄主线</b><span>低广度 · 高清晰</span></div>
+        <div class="quadrant-label q-ne"><b>趋势扩散</b><span>高广度 · 高清晰</span></div>
+        <div class="quadrant-label q-sw"><b>防守 / 空窗</b><span>低广度 · 低清晰</span></div>
+        <div class="quadrant-label q-se"><b>拥挤轮动</b><span>高广度 · 低清晰</span></div>
+        <svg id="stateMap" viewBox="0 0 1000 620" role="img" aria-label="二维市场状态散点轨迹"></svg>
+        <div id="mapTooltip" class="map-tooltip"></div>
+      </div>
+      <div class="axis-notes"><span>← 有效机会少</span><b>Breadth</b><span>有效机会多 →</span></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="kicker">RECENT PATH</span><h2>两个维度分别发生了什么</h2></div>
+        <p>分开看时间序列，可以判断状态变化主要来自“机会数量收缩”，还是“Top1 竞争重新变得拥挤”。</p>
+      </div>
+      <div class="mini-grid">
+        <article class="mini-card"><div class="mini-title"><b>Breadth</b><span>有效资产 / 13</span></div><svg id="breadthLine" viewBox="0 0 760 260"></svg></article>
+        <article class="mini-card"><div class="mini-title"><b>Leadership Gap</b><span>过去 252 日分位</span></div><svg id="gapLine" viewBox="0 0 760 260"></svg></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="kicker">INTERPRETATION</span>
+      <h2>四个区域不是交易指令，而是竞争环境</h2>
+      <div class="regime-grid">
+        <article><i class="r-dot expansion"></i><h3>趋势扩散</h3><p>候选多且龙头清晰。OLS 有较多可选机会，同时 Top1 不容易被微小分差频繁替代。</p></article>
+        <article><i class="r-dot crowding"></i><h3>拥挤轮动</h3><p>候选很多，但 Top1 / Top2 接近。这里最容易发生快速换帅，V1 一类竞争过滤更有解释意义。</p></article>
+        <article><i class="r-dot narrow"></i><h3>狭窄主线</h3><p>市场整体机会少，但某个资产明显领先。组合收益往往更依赖少数极端机会通道。</p></article>
+        <article><i class="r-dot defensive"></i><h3>防守 / 空窗</h3><p>有效机会少且领导不清晰。不是“必跌”，而是 OLS 竞争环境缺乏宽度和稳定领导者。</p></article>
+      </div>
+    </section>
+
+    <section class="section definition-box">
+      <span class="kicker">FROZEN V1 DEFINITION</span>
+      <h2>这张图目前怎么计算</h2>
+      <div class="definition-grid">
+        <div><b>横轴 Breadth</b><p>13 个风险资产中，Score > 511220 cash Score 的资产占比。50% 作为第一版高/低广度分界。</p></div>
+        <div><b>纵轴 Leadership Gap</b><p>Top1 Score - Top2 Score，再转换成过去 252 个交易日的历史分位。50% 分位作为高/低清晰度分界。</p></div>
+        <div><b>OLS Score</b><p>与研究主线一致：26 日加权 log-price OLS，半衰期 10，年化 250，Score = annual × R²，仅保留正趋势。</p></div>
+        <div><b>更新链路</b><p>腾讯后复权日线 → Supabase daily_bars → GitHub Action → state JSON → Vercel 自动部署。</p></div>
+      </div>
+      <p class="caveat">注意：象限阈值目前是解释型冻结版本，还没有用未来收益反向调参。后续若验证某些区域与 Top1 寿命、换手或策略收益存在稳定关系，再升级为经过验证的 regime 模型。</p>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State</span></div>
+    <div class="footer-note">研究展示，不构成投资建议。状态图用于解释策略环境，不单独生成交易指令。</div>
+  </footer>
+  <script src="./state-map.js"></script>
+</body>
+</html>
