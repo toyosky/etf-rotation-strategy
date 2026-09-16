@@ -12,7 +12,7 @@ on:
         default: "14"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: tencent-hfq-daily-bars-sync
@@ -30,6 +30,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
@@ -49,6 +51,20 @@ jobs:
           python automation/tencent_daily_sync.py \
             --lookback-days "$LOOKBACK_DAYS" \
             --summary tencent-daily-sync-summary.json
+      - name: Rebuild market state map data
+        run: python automation/build_state_map.py
+      - name: Commit refreshed state map JSON
+        shell: bash
+        run: |
+          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json; then
+            echo "State map data unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/state-map-latest.json data/state-map-history.json
+          git commit -m "data: refresh daily market state map"
+          git push origin HEAD:main
       - name: Publish run summary
         if: always()
         shell: bash
@@ -57,12 +73,19 @@ jobs:
             echo '## Tencent HFQ daily sync' >> "$GITHUB_STEP_SUMMARY"
             cat tencent-daily-sync-summary.json >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f data/state-map-latest.json ]; then
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Market state map' >> "$GITHUB_STEP_SUMMARY"
+            cat data/state-map-latest.json >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Upload run summary
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: tencent-daily-sync-${{ github.run_id }}
-          path: tencent-daily-sync-summary.json
+          path: |
+            tencent-daily-sync-summary.json
+            data/state-map-latest.json
           if-no-files-found: warn
           retention-days: 30
       - name: Notify PushPlus on failure
@@ -86,8 +109,8 @@ jobs:
           when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
           payload = {
               "token": os.environ["PUSHPLUS_TOKEN"],
-              "title": "ETF日线同步失败",
-              "content": f"Tencent HFQ Daily Bars Sync 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
+              "title": "ETF日线/状态图同步失败",
+              "content": f"Tencent HFQ Daily Bars Sync / State Map 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
               "template": "txt",
           }
           with open("pushplus-failure.json", "w", encoding="utf-8") as f:
