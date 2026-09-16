@@ -1,0 +1,33 @@
+name: OURE Stage8S Cross Region Router
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8s_cross_region_router.py'
+      - '.github/workflows/oure-stage8s-cross-region-router.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: stage8s-cross-region-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8s_cross_region_router.py
+      - run: python research/optimal_universe_reverse_engineering/oure_stage8s_cross_region_router.py
+      - if: always()
+        run: if [ -f "$OUTPUT_DIR/stage8s_summary.md" ]; then cat "$OUTPUT_DIR/stage8s_summary.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8s-cross-region-${{ github.run_id }}
+          path: stage8s-cross-region-output/
+          retention-days: 30
