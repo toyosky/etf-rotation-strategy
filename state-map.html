@@ -50,6 +50,26 @@
       <div class="axis-notes"><span>← 有效机会少</span><b>Breadth</b><span>有效机会多 →</span></div>
     </section>
 
+    <section class="section path-analysis-section">
+      <div class="section-head">
+        <div><span class="kicker">PATH INTERPRETATION</span><h2>最近 20 日状态解读</h2></div>
+        <p>自动比较窗口前后各 5 日均值，降低单日波动干扰。这里是状态解释，不直接生成交易指令。</p>
+      </div>
+      <article id="pathAnalysis" class="path-analysis loading">
+        <div class="path-analysis-head">
+          <div><small>状态迁移</small><strong id="pathDirection">计算中…</strong></div>
+          <span id="pathStrength" class="path-badge">—</span>
+        </div>
+        <div class="path-deltas">
+          <div><small>Δ Breadth</small><b id="pathBreadthDelta">—</b><span id="pathBreadthRange">—</span></div>
+          <div><small>Δ Leadership</small><b id="pathGapDelta">—</b><span id="pathGapRange">—</span></div>
+        </div>
+        <p id="pathSummary" class="path-summary">正在根据最近轨迹生成解释…</p>
+        <div id="pathImplication" class="path-implication">—</div>
+        <p class="path-caveat">判定只使用 Breadth 与 Leadership Gap 的历史轨迹。方向阈值为 5 个百分点；若某一维变化不足，则记为“基本稳定”。尚未用未来收益拟合这些文字结论。</p>
+      </article>
+    </section>
+
     <section class="section">
       <div class="section-head">
         <div><span class="kicker">RECENT PATH</span><h2>两个维度分别发生了什么</h2></div>
