@@ -77,6 +77,8 @@ def fixed_strategy_labels(cal, score, gross, feat, bars):
 
 
 def build_map_panel(cal, score, feat, strategy_labels):
+    # IMPORTANT: the website map uses raw 26-day OLS scores, not pool_score.
+    # Therefore no recent_drop3/trend-eligibility mask is allowed here.
     raw_score = s8m.raw_score_wide(feat, cal, list(score.columns.astype(str)))
     rows = []
     for d in cal:
@@ -85,7 +87,7 @@ def build_map_panel(cal, score, feat, strategy_labels):
         available = vals[np.isfinite(vals)].index.astype(str).tolist()
         if len(available) < 2:
             continue
-        ranked_vals = score.loc[d, available].astype(float)
+        ranked_vals = raw_score.loc[d, available].astype(float)
         ranked_vals = ranked_vals[np.isfinite(ranked_vals)].sort_values(ascending=False)
         if len(ranked_vals) < 2:
             continue
@@ -93,7 +95,7 @@ def build_map_panel(cal, score, feat, strategy_labels):
         gap_raw = max(float(ranked_vals.iloc[0] - ranked_vals.iloc[1]), 0.0)
         rec = {"signal_date": d, "ready_n": len(available), "top1": top1, "top2": top2, "gap_raw": gap_raw}
         for c in COMPARATORS:
-            cv = score.at[d, c] if c in score.columns else np.nan
+            cv = raw_score.at[d, c] if c in raw_score.columns else np.nan
             if pd.isna(cv) or not np.isfinite(cv):
                 rec[f"breadth_{c}"] = np.nan
                 rec[f"breadth_count_{c}"] = np.nan
@@ -101,7 +103,7 @@ def build_map_panel(cal, score, feat, strategy_labels):
             else:
                 count = int(sum(float(ranked_vals.get(s, -np.inf)) > float(cv) for s in available))
                 rec[f"breadth_count_{c}"] = count
-                rec[f"breadth_{c}"] = 100.0 * count / len(RISK)  # website denominator is fixed 13
+                rec[f"breadth_{c}"] = 100.0 * count / len(RISK)
                 rec[f"comparator_score_{c}"] = float(cv)
         rows.append(rec)
     z = pd.DataFrame(rows)
@@ -184,7 +186,8 @@ def main():
     bars = load_daily_bars(eng); bars["symbol"] = bars["symbol"].astype(str).str.zfill(6); bars["date"] = pd.to_datetime(bars["date"])
     feat = build_features(bars); feat["symbol"] = feat["symbol"].astype(str).str.zfill(6); feat["date"] = pd.to_datetime(feat["date"])
     cal, score, r2, slope, close, op, gross, ret = build_wides(bars, feat); cal = pd.DatetimeIndex(cal)
-    missing = [s for s in list(RISK) + list(COMPARATORS) if s not in score.columns]
+    raw_score = s8m.raw_score_wide(feat, cal, list(score.columns.astype(str)))
+    missing = [s for s in list(RISK) + list(COMPARATORS) if s not in raw_score.columns]
     if missing:
         raise RuntimeError(f"missing symbols: {missing}")
     labels = fixed_strategy_labels(cal, score, gross, feat, bars)
@@ -208,7 +211,6 @@ def main():
 
     latest = latest_rows(z); latest.to_csv(out / "stage8q_latest_states.csv", index=False)
 
-    # Common windows must begin only when both baseline and candidate comparator are valid.
     common_rows = []
     for c in COMPARATORS:
         g = z.dropna(subset=[f"breadth_{BASELINE}", f"breadth_{c}", f"quadrant_{BASELINE}", f"quadrant_{c}"]).copy()
@@ -230,8 +232,8 @@ def main():
                                 "defensive_void_rate_candidate": float((x[f"quadrant_{c}"]=="DEFENSIVE_VOID").mean())})
     event = pd.DataFrame(common_rows); event.to_csv(out / "stage8q_event_windows.csv", index=False)
 
-    summary = {"study":"OURE Stage8Q map comparator robustness", "baseline":BASELINE,
-               "definition":"breadth = fixed-13 share of risky OLS scores above comparator OLS score; quadrant threshold breadth=50%, gap percentile=50%",
+    summary = {"study":"OURE Stage8Q map comparator robustness (website raw-score definition)", "baseline":BASELINE,
+               "definition":"breadth = fixed-13 share of raw risky OLS scores above raw comparator OLS score; quadrant threshold breadth=50%, gap percentile=50%",
                "comparators":COMPARATORS,
                "latest":latest.to_dict(orient="records"),
                "post2023_agreement":agreement[agreement.window=="POST2023"].to_dict(orient="records"),
@@ -239,7 +241,7 @@ def main():
     (out / "stage8q_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
 
     md = ["# Stage8Q — Market Regime Map Comparator Robustness", "",
-          "Baseline: 511220. Breadth is the fixed-13 share of risky OLS scores above the comparator OLS score.", "",
+          "Baseline: 511220. Uses the website's raw 26-day OLS map definition (no recent_drop3 eligibility mask).", "",
           "## Post-2023 agreement versus 511220", "",
           agreement[agreement.window=="POST2023"].to_markdown(index=False), "",
           "## Latest states", "", latest.to_markdown(index=False), "",
