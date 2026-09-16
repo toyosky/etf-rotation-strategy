@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080d18" />
+  <title>ETF Rotation Research · Universe</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a>
+    <nav>
+      <a class="active" href="#universe">Universe</a>
+      <span>Strategy</span>
+      <span>State Map</span>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow">RESEARCH FREEZE · 2026-09-16</div>
+      <h1>从 Fix15 到 FixV2：<br><em>不是找更多 ETF，而是让每个资产暴露更有效。</em></h1>
+      <p class="lede">当前阶段的 Universe 设计已经从“全市场扩大候选池”，推进到“保留稀缺经济暴露 + 删除结构性拖累 + 在同一暴露内选择更适合 OLS 的交易载体”。</p>
+      <div class="hero-metrics">
+        <div><b>13</b><span>风险资产</span></div>
+        <div><b>1</b><span>现金比较器</span></div>
+        <div><b>44.90×</b><span>V1 期末财富</span></div>
+        <div><b>40.34%</b><span>历史 CAGR</span></div>
+      </div>
+      <div class="method-note">严格真实上市可得性 · 6bp / side · 2015-01-26 → 2026-09-15 · 无上市前代理 / 回填</div>
+    </section>
+
+    <section id="universe" class="section">
+      <div class="section-head">
+        <div>
+          <span class="kicker">CURRENT UNIVERSE</span>
+          <h2>FixV2 当前标的池</h2>
+        </div>
+        <div class="legend"><i class="dot core"></i>正式风险资产 <i class="dot cash"></i>现金</div>
+      </div>
+      <div id="assetGrid" class="asset-grid"></div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <span class="kicker">DESIGN PRINCIPLE</span>
+        <h2>我们最后优化的不是“ETF 数量”，而是三层结构</h2>
+        <div class="principle-flow">
+          <div><small>01</small><b>经济暴露</b><p>先判断一个资产类别是否值得长期保留竞争资格。</p></div>
+          <div class="arrow">→</div>
+          <div><small>02</small><b>交易载体</b><p>在相同暴露内部，选择更适合 OLS 的 ETF / LOF。</p></div>
+          <div class="arrow">→</div>
+          <div><small>03</small><b>竞争成本</b><p>控制池规模，避免 Top1 竞争过快、寿命缩短和无效换仓。</p></div>
+        </div>
+      </div>
+      <aside class="quote-card">
+        <span>核心转变</span>
+        <blockquote>Universe 不再回答“历史上谁涨得最好”，而是回答：<strong>哪些不同来源的趋势机会，值得长期拥有进入 OLS 竞赛的资格？</strong></blockquote>
+      </aside>
+    </section>
+
+    <section class="section">
+      <span class="kicker">EVOLUTION</span>
+      <h2>标的池是怎样一步步走到 FixV2 的</h2>
+      <div class="timeline">
+        <article>
+          <time>Stage 0</time><div><h3>Fix15：人工经济暴露池</h3><p>最初的优势来自少量、低相关、跨资产的机会源。后续研究反复证明，单纯扩大 Universe 并不会自动提高 OLS 组合价值。</p><span class="tag">基线</span></div>
+        </article>
+        <article>
+          <time>Stage 7</time><div><h3>Robust30 / Opportunity30：全市场扩池失败</h3><p>Robust30 全周期累计约 +73.48%，显著低于同口径 Fix15 的 +902.79%；Opportunity30 提升到 +263.6%，仍不能取代 Fix15。结论转向：机会覆盖很重要，但竞争成本同样真实。</p><span class="tag warn">否定“大池必优”</span></div>
+        </article>
+        <article>
+          <time>Asset Health</time><div><h3>159825 农业退出正式池</h3><p>农业暴露的历史 Top1 后续质量持续偏弱，因此从 ACTIVE 退役；不是因为某一段行情不好，而是长期组合边际价值不足。</p><span class="tag remove">删除 159825</span></div>
+        </article>
+        <article>
+          <time>Stage 8J</time><div><h3>修复港股红利暴露</h3><p>原 513920 被 513530 港股通红利 ETF 替代。这里不是追逐历史涨幅，而是修复这一经济角色在 OLS 竞争中的实现方式。</p><span class="tag replace">513920 → 513530</span></div>
+        </article>
+        <article>
+          <time>Stage 8L</time><div><h3>同暴露 Carrier Audit</h3><p>首次把“资产暴露”和“具体 ETF”彻底拆开。黄金与创业板都发现了更强的同暴露载体，并通过预注册的稳健优势门槛。</p><div class="chips"><span>518880 → 159934</span><span>159915 → 159957</span></div></div>
+        </article>
+        <article>
+          <time>Stage 8M</time><div><h3>组合验证：FixV2 冻结</h3><p>把此前已经独立冻结的修复组合到一起，再进行长周期审计。159981 能源化工虽然近年边际变弱，但长期仍贡献正收益，因此保留。</p><span class="tag good">FixV2 frozen</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section data-section">
+      <div class="section-head">
+        <div><span class="kicker">EVIDENCE</span><h2>Carrier 替换不是主观选择</h2></div>
+        <p>Matched-availability：只有当新旧 ETF 都真实可交易且已有足够 OLS 历史时才开始比较。</p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card featured">
+          <div class="card-top"><span>GOLD_SPOT</span><b>强证据</b></div>
+          <h3>518880 → 159934</h3>
+          <p>易方达黄金 ETF 在两个冻结基池中均实现累计收益优势，同时 MDD 略有改善。</p>
+          <dl><div><dt>Base A 增量</dt><dd>+452.99pp</dd></div><div><dt>Base B 增量</dt><dd>+434.82pp</dd></div><div><dt>126日区块</dt><dd>20 胜 / 16 负 / 10 平</dd></div><div><dt>Log wealth 优势</dt><dd>+0.1002</dd></div></dl>
+        </article>
+        <article class="evidence-card featured">
+          <div class="card-top"><span>CHINEXT_STANDARD</span><b>最强证据</b></div>
+          <h3>159915 → 159957</h3>
+          <p>华夏创业板 ETF 在可比期内形成 Stage8L 最强的平均 matched log-wealth 优势。</p>
+          <dl><div><dt>Base A 增量</dt><dd>+1041.40pp</dd></div><div><dt>Base B 增量</dt><dd>+1072.35pp</dd></div><div><dt>126日区块</dt><dd>20 胜 / 12 负 / 2 平</dd></div><div><dt>Log wealth 优势</dt><dd>+0.3023</dd></div></dl>
+        </article>
+        <article class="evidence-card muted-card">
+          <div class="card-top"><span>NASDAQ100</span><b>候选，不晋级</b></div>
+          <h3>513100 → 159660 ?</h3>
+          <p>历史门槛通过，但样本从 2023 年才开始，而且 QDII 二级市场价格受溢价/折价影响。没有 premium-adjusted 审计前，不替换。</p>
+        </article>
+        <article class="evidence-card muted-card">
+          <div class="card-top"><span>US BIOTECH</span><b>保留原标的</b></div>
+          <h3>继续使用 513290</h3>
+          <p>159502 在两个基池中累计增量均为负，MDD 也更差。现有候选不足以推翻 513290。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="kicker">BACKTEST</span><h2>FixV2：V1 是过滤器，不是收益来源</h2></div>
+        <p>V1 只在“阻力位 ≥75% 且新 Top1 的 ScoreDelta ≤0”时 veto 纯排名切换。</p>
+      </div>
+      <div class="stats-row">
+        <div><small>累计收益</small><strong>+4390.08%</strong><span>RAW +4074.96%</span></div>
+        <div><small>最大回撤</small><strong>-38.59%</strong><span>与 RAW 相同</span></div>
+        <div><small>Sharpe</small><strong>1.162</strong><span>RAW 1.142</span></div>
+        <div><small>换仓次数</small><strong>408</strong><span>RAW 414</span></div>
+      </div>
+      <div class="chart-grid">
+        <div class="chart-card"><div class="chart-title"><b>年度收益</b><span>FixV2 + V1 · 6bp/side</span></div><div id="annualChart" class="bar-chart"></div></div>
+        <div class="chart-card"><div class="chart-title"><b>净对数财富贡献</b><span>长期收益来源并不平均</span></div><div id="contribChart" class="bar-chart horizontal"></div></div>
+      </div>
+    </section>
+
+    <section class="section conclusion">
+      <span class="kicker">WHAT WE LEARNED</span>
+      <h2>Universe 优化得到的不是“历史最强 ETF 列表”</h2>
+      <div class="lesson-grid">
+        <div><b>01</b><h3>小池有结构性价值</h3><p>更少的竞争者能延长 Top1 生命周期，也让极端机会资产真正进入组合。</p></div>
+        <div><b>02</b><h3>休眠资产不能只看近期</h3><p>159981 在部分近期窗口显弱，但长期仍是正贡献，并曾成为 2021 年最大收益来源。</p></div>
+        <div><b>03</b><h3>载体也会改变 OLS 结果</h3><p>同一经济暴露下，ETF 的微观价格路径不同，会改变 OLS 排名、换仓时点与最终财富路径。</p></div>
+        <div><b>04</b><h3>替换必须独立冻结</h3><p>先证明单个替换的边际价值，再进行组合验证，避免把多个最优单项直接拼接成过拟合结果。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State</span></div>
+    <div class="footer-note">研究展示，不构成投资建议。历史回测不代表未来表现。</div>
+  </footer>
+  <script src="./site.js"></script>
+</body>
+</html>
