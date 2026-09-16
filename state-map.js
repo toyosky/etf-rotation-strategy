@@ -19,8 +19,10 @@ const NAMES={
 const svgNS='http://www.w3.org/2000/svg';
 function el(tag,attrs={}){const x=document.createElementNS(svgNS,tag);Object.entries(attrs).forEach(([k,v])=>x.setAttribute(k,v));return x}
 function pct(v){return `${Number(v).toFixed(1)}%`}
+function signedPct(v){const n=Number(v);return `${n>0?'+':''}${n.toFixed(1)}pp`}
 function fmtScore(v){return Number(v).toFixed(3)}
 function name(code){return `${code} ${NAMES[code]||''}`.trim()}
+function mean(rows,key){return rows.reduce((s,r)=>s+Number(r[key]||0),0)/Math.max(rows.length,1)}
 
 async function loadData(){
   const stamp=Date.now();
@@ -42,6 +44,79 @@ function renderCards(s){
   document.getElementById('latestTop1').textContent=name(s.top1);
   document.getElementById('latestTop2').textContent=`Top2 ${name(s.top2)} · 差 ${fmtScore(s.gap_raw)}`;
   document.getElementById('latestCards').classList.remove('loading');
+}
+
+function renderPathAnalysis(history){
+  const rows=history.slice(-20);
+  const box=document.getElementById('pathAnalysis');
+  if(rows.length<10){
+    document.getElementById('pathDirection').textContent='历史样本不足';
+    document.getElementById('pathSummary').textContent='至少需要 10 个交易日数据，才能稳定比较窗口两端状态。';
+    box.classList.remove('loading');
+    return;
+  }
+
+  const edge=Math.min(5,Math.floor(rows.length/2));
+  const startRows=rows.slice(0,edge), endRows=rows.slice(-edge);
+  const b0=mean(startRows,'breadth_pct'), b1=mean(endRows,'breadth_pct');
+  const g0=mean(startRows,'gap_percentile'), g1=mean(endRows,'gap_percentile');
+  const db=b1-b0, dg=g1-g0;
+  const threshold=5;
+  const sx=db>threshold?'right':db<-threshold?'left':'flat';
+  const sy=dg>threshold?'up':dg<-threshold?'down':'flat';
+  const latest=rows.at(-1);
+
+  let title='状态大体稳定', summary='', implication='';
+  if(sx==='right'&&sy==='up'){
+    title='向右上：机会扩散 + 领导强化';
+    summary='有效机会数量与 Top1 领先清晰度同时改善，市场结构正朝更有利于趋势竞争的方向移动。';
+    implication='对 OLS 而言，这通常代表候选面变宽且领先者更容易拉开差距；可作为“竞争环境改善”的参考，但仍需由原策略规则决定持仓。';
+  }else if(sx==='left'&&sy==='up'){
+    title='向左上：机会收缩 + 领导强化';
+    summary='有效机会在减少，但剩余资产中的领先者反而更清晰，市场更接近“少数主线集中”的结构。';
+    implication='这类环境未必差，关键在于是否存在持续的强 Top1；组合会更依赖少数资产，分散度下降，应更关注主线寿命而非单看 Breadth。';
+  }else if(sx==='right'&&sy==='down'){
+    title='向右下：机会扩散 + 领导弱化';
+    summary='更多资产进入竞争区，但 Top1 与 Top2 的优势差正在缩小，机会变多的同时排名竞争也更拥挤。';
+    implication='对 OLS 而言，选择空间扩大但换帅风险上升；这更像“广泛轮动”而非单一趋势强化，V1 等竞争过滤的解释价值会提高。';
+  }else if(sx==='left'&&sy==='down'){
+    title='向左下：机会收缩 + 领导弱化';
+    summary='有效机会数量与 Top1 领先清晰度同时恶化，市场正在从“可选机会”与“领导稳定性”两个方向收缩。';
+    implication='这是对 Top1 轮动相对不友好的迁移方向之一：可竞争资产变少，同时剩余资产之间也缺乏明显领先者。它不等于市场必跌，但意味着 OLS 信号的结构性支撑正在减弱。';
+  }else if(sx==='left'){
+    title='向左：机会明显收缩';
+    summary='Breadth 明显下降，而 Leadership Gap 没有出现同等级别的方向变化。';
+    implication='当前主要变化来自“能参与竞争的资产变少”。需要继续观察剩余少数资产能否形成更清晰领导，否则容易进一步滑向防守 / 空窗状态。';
+  }else if(sx==='right'){
+    title='向右：机会明显扩散';
+    summary='Breadth 明显改善，而 Leadership Gap 暂未同步形成强方向。';
+    implication='候选机会正在增多，但尚不能仅据此判断 OLS 环境已经全面改善；下一步要看 Top1 是否开始稳定拉开差距。';
+  }else if(sy==='up'){
+    title='向上：领导清晰度提升';
+    summary='Top1 相对 Top2 的优势正在扩大，而 Breadth 整体变化有限。';
+    implication='这更像竞争结构改善而非机会面扩张。若当前仍处低 Breadth，可能演化为“狭窄主线”；若 Breadth 已高，则更接近趋势扩散。';
+  }else if(sy==='down'){
+    title='向下：领导清晰度下降';
+    summary='Top1 与 Top2 的竞争正在重新变得接近，而有效机会数量整体变化不大。';
+    implication='主要风险来自排名拥挤和潜在换帅，而不是机会数量本身。需要更关注 Score 差、Top1 寿命和 V1 过滤是否同步恶化。';
+  }else{
+    summary='最近 20 日窗口两端的 Breadth 与 Leadership Gap 变化都不足 5 个百分点，暂未形成明确迁移方向。';
+    implication='当前更适合把注意力放在所在象限本身，而不是对短期轨迹做过度解释。';
+  }
+
+  const dist=Math.hypot(db,dg);
+  const strength=dist>=35?'迁移强':dist>=18?'迁移中等':dist>=8?'迁移轻微':'基本稳定';
+
+  document.getElementById('pathDirection').textContent=title;
+  document.getElementById('pathDirection').style.color=COLORS[latest.quadrant]||'#edf3ff';
+  document.getElementById('pathStrength').textContent=strength;
+  document.getElementById('pathBreadthDelta').textContent=signedPct(db);
+  document.getElementById('pathGapDelta').textContent=signedPct(dg);
+  document.getElementById('pathBreadthRange').textContent=`前5日均值 ${pct(b0)} → 后5日均值 ${pct(b1)}`;
+  document.getElementById('pathGapRange').textContent=`前5日均值 ${pct(g0)} → 后5日均值 ${pct(g1)}`;
+  document.getElementById('pathSummary').textContent=`当前位于「${LABELS[latest.quadrant]||latest.quadrant}」。${summary}`;
+  document.getElementById('pathImplication').textContent=implication;
+  box.classList.remove('loading');
 }
 
 function renderMap(history){
@@ -115,6 +190,7 @@ function renderLine(svgId,history,key,threshold=50,valueLabel=v=>pct(v)){
 loadData().then(({latest,history})=>{
   renderCards(latest);
   renderMap(history);
+  renderPathAnalysis(history);
   renderLine('breadthLine',history,'breadth_pct');
   renderLine('gapLine',history,'gap_percentile');
 }).catch(err=>{
