@@ -1,7 +1,7 @@
 # OURE Stage8N — Internal Trend-Regime Diagnostic
 
 Date: 2026-09-16
-Status: preregistered before outputs are computed
+Status: preregistered diagnostic; breadth/strength definition corrected before authoritative rerun
 
 ## Purpose
 Test whether the frozen FixV2 OLS system contains point-in-time internal state information that predicts when its own future V1 strategy returns deteriorate. This stage is diagnostic only: it does NOT create, tune, or promote a regime trading rule.
@@ -17,10 +17,17 @@ Use the Stage8M main universe and frozen V1-75 implementation unchanged:
 - cash comparator 511220
 - V1: ResistancePct252 >= 75% AND raw ScoreDelta_new <= 0, pure rank switches only
 - primary execution cost 6 bp per side
-- strict real-listing / finite-score availability; no pre-listing proxies
+- strict real-listing / finite-OLS availability; no pre-listing proxies
+
+## Definition correction before authoritative run
+The first implementation attempted to define breadth/strength relative to the `511220` pool score. Inspection showed that `build_wides()` intentionally masks an asset's pool score to NaN whenever its trend is not positive or D2 fails. Therefore a NaN `511220` score is a strategy-state condition, not missing market data, and cannot serve as a continuously defined cross-sectional denominator.
+
+That first four-feature output is invalid and must not be used for inference. No outcome-driven threshold tuning is made. Churn, recent-life, 20/80 percentile rules, horizons and labels remain unchanged.
+
+The corrected breadth/strength definitions below use the frozen risk universe itself and are fully point-in-time.
 
 ## Point-in-time internal features
-All features use only information available on the signal date and only currently OLS-ready members of the frozen universe.
+All features use only information available on the signal date and only members with an actual historical OLS estimate by that date.
 
 1. `risk_churn20`
    - Number of raw OLS Top1 changes over the latest 20 signal sessions where both old and new states are non-cash risk assets.
@@ -32,21 +39,23 @@ All features use only information available on the signal date and only currentl
    - A low value represents recently short-lived trends.
 
 3. `breadth`
-   - Fraction of currently finite-score risk members whose score exceeds the cash comparator score.
-   - Dynamic denominator uses only members actually available at that historical date.
+   - Numerator: number of historically OLS-ready frozen risk members whose current pool score is finite, i.e. positive OLS trend and D2 pass under the same engine used by the strategy.
+   - Denominator: number of frozen risk members with a finite unmasked 26-day OLS score on that date.
+   - This directly measures the share of the strategy's own available opportunity set that currently has a tradable positive trend.
 
-4. `median_excess_score`
-   - Cross-sectional median of `score_i - score_cash` across currently finite-score risk members.
+4. `median_signed_strength`
+   - Cross-sectional median of `annual_i * r2_i` across historically OLS-ready frozen risk members.
+   - Unlike the pool score, this preserves the sign of the OLS trend and remains defined when trends are negative.
    - Continuous companion to breadth.
 
-For each feature, also compute a point-in-time percentile versus up to the strictly prior 252 observations, minimum 60 historical observations. No full-sample percentile is allowed.
+For each feature, compute a point-in-time percentile versus up to the strictly prior 252 observations, minimum 60 historical observations. No full-sample percentile is allowed.
 
 ## Frozen extreme-state definitions
-These thresholds are defined before seeing outputs and are NOT trading thresholds:
+These thresholds were defined before the authoritative outputs and are NOT trading thresholds:
 - high churn warning: `risk_churn20_pct252 >= 80`
 - short-life warning: `recent5_risk_episode_mean_pct252 <= 20`
 - low-breadth warning: `breadth_pct252 <= 20`
-- weak-score warning: `median_excess_score_pct252 <= 20`
+- weak-strength warning: `median_signed_strength_pct252 <= 20`
 
 `bad_count` = number of these four warnings active when all four point-in-time percentiles are available.
 
