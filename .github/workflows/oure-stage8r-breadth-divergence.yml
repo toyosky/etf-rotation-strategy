@@ -1,0 +1,40 @@
+name: OURE Stage8R Breadth Divergence
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/optimal_universe_reverse_engineering/oure_stage8r_breadth_divergence.py"
+      - ".github/workflows/oure-stage8r-breadth-divergence.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: stage8r-breadth-divergence-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - name: Compile
+        run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8r_breadth_divergence.py
+      - name: Run Stage8R
+        run: python research/optimal_universe_reverse_engineering/oure_stage8r_breadth_divergence.py
+      - name: Publish summary
+        run: cat "$OUTPUT_DIR/stage8r_summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8r-breadth-divergence-${{ github.run_id }}
+          path: stage8r-breadth-divergence-output/
+          retention-days: 30
