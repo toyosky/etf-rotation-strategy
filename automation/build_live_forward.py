@@ -21,8 +21,8 @@ import optimal_universe_reverse_engineering.oure_stage8za_prevoid_incumbent_full
 START=pd.Timestamp('2026-09-14')
 COST=0.0006
 OUT=ROOT/'data'/'live-forward.json'
-CASH='511220'; CARRIER='513500'
-NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier'}
+CASH='511220'; CARRIER='513500'; BENCHMARK='510300'
+NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
 BACKTEST_REFERENCE={
   'period':'2015-01-26 → 2026-09-15',
   'baseline':{'cagr':0.4453,'mdd':-0.3130,'sharpe':1.249,'switches':298},
@@ -88,6 +88,22 @@ def intraday_mtm(path, latest_d, op, close, official_nav):
       'mtm_total_return':float(official_nav*(1.0+net_ret)-1.0)
     }
 
+def build_benchmark(bars: pd.DataFrame, latest_d: pd.Timestamp):
+    q=bars[(bars['symbol']==BENCHMARK)&(bars['date']>=START)&(bars['date']<=latest_d)].sort_values('date').copy()
+    if q.empty:
+        return {'symbol':BENCHMARK,'name':'沪深300','available':False,'series':[],'mark_to_market':None}
+    base=float(q.iloc[0]['close'])
+    if not np.isfinite(base) or base<=0:
+        return {'symbol':BENCHMARK,'name':'沪深300','available':False,'series':[],'mark_to_market':None}
+    q['nav']=q['close'].astype(float)/base
+    q['period_return']=q['close'].astype(float).pct_change().fillna(0.0)
+    q['drawdown']=q['nav']/q['nav'].cummax()-1.0
+    rows=[]
+    for r in q.itertuples(index=False):
+        rows.append({'date':pd.Timestamp(r.date).strftime('%Y-%m-%d'),'nav':float(r.nav),'daily_return':float(r.period_return),'drawdown':float(r.drawdown),'status':'close'})
+    last=q.iloc[-1]
+    return {'symbol':BENCHMARK,'name':'沪深300','available':True,'pricing':'510300 沪深300ETF 后复权收盘价，起点归一化为 1','series':rows,'mark_to_market':{'valuation_date':pd.Timestamp(last['date']).strftime('%Y-%m-%d'),'nav':float(last['nav']),'total_return':float(last['nav']-1.0)}}
+
 def main():
     db=os.getenv('ETF_DAILY_BARS_DATABASE_URL')
     if not db: raise SystemExit('Missing ETF_DAILY_BARS_DATABASE_URL')
@@ -131,7 +147,7 @@ def main():
     target=None if pd.isna(lr.target) else str(lr.target)
     latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':latest_d.strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
 
-    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'series':series,'events':events,'notes':['Forward model tracking, not broker-confirmed fills.','Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Original V1 and Freeze→Cash remain shadow controls.']}
+    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'series':series,'events':events,'benchmark':build_benchmark(bars,latest_d),'notes':['Forward model tracking, not broker-confirmed fills.','Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.']}
     OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps({'latest':latest,'summary':summaries,'mark_to_market':mark_to_market},ensure_ascii=False,indent=2))
+    print(json.dumps({'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'benchmark':payload['benchmark']},ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
