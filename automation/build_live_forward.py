@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json, os, sys
+from pathlib import Path
+import numpy as np
+import pandas as pd
+from sqlalchemy import create_engine
+
+ROOT=Path(__file__).resolve().parents[1]
+RESEARCH=ROOT/'research'
+if str(RESEARCH) not in sys.path: sys.path.insert(0,str(RESEARCH))
+
+import cluster90_resistance_score_v1_test as v1lib
+from full_market_ols_storage import _db_url, build_features, load_daily_bars
+from universe_size_then_composition.stage1_oracle_size_mc import build_wides
+import optimal_universe_reverse_engineering.oure_stage8m_fixv2_v1_long_horizon as s8m
+import optimal_universe_reverse_engineering.oure_stage8q_map_comparator_robustness as s8q
+import optimal_universe_reverse_engineering.oure_stage8za_prevoid_incumbent_full_backtest as s8za
+
+START=pd.Timestamp('2026-09-14')
+COST=0.0006
+OUT=ROOT/'data'/'live-forward.json'
+CASH='511220'; CARRIER='513500'
+NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier'}
+
+def clean(v):
+    if isinstance(v,(np.floating,float)):
+        return None if not np.isfinite(v) else float(v)
+    if isinstance(v,(np.integer,int)): return int(v)
+    if isinstance(v,pd.Timestamp): return v.strftime('%Y-%m-%d')
+    return v
+
+def raw_all(cal,score):
+    rows=[]; prev=None
+    for i,d in enumerate(cal):
+        d=pd.Timestamp(d); cur=s8m.choose_target(score,d,s8m.MAIN_MEMBERS)
+        rows.append({'signal_pos':i,'signal_date':d,'execution_date':pd.Timestamp(cal[min(i+1,len(cal)-1)]),'return_end_date':pd.Timestamp(cal[min(i+2,len(cal)-1)]),'target':cur,'sides':s8m.side_count(prev,cur)})
+        prev=cur
+    return pd.DataFrame(rows)
+
+def score(raw,d,s):
+    try:
+        x=raw.at[pd.Timestamp(d),s]
+        return None if pd.isna(x) or not np.isfinite(x) else float(x)
+    except Exception:return None
+
+def variants(v1,map_panel,raw_score,feat_idx):
+    return {
+      'baseline':s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'PREVOID_DEEPEN_INVALID_ROUTE',1),
+      'original':s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'BASE',1),
+      'freeze_cash':s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'PREVOID_FREEZE_INVALID_CASH',1),
+    }
+
+def main():
+    db=os.getenv('ETF_DAILY_BARS_DATABASE_URL')
+    if not db: raise SystemExit('Missing ETF_DAILY_BARS_DATABASE_URL')
+    eng=create_engine(_db_url(db),pool_pre_ping=True)
+    bars=load_daily_bars(eng); bars['symbol']=bars['symbol'].astype(str).str.zfill(6); bars['date']=pd.to_datetime(bars['date'])
+    feat=build_features(bars); feat['symbol']=feat['symbol'].astype(str).str.zfill(6); feat['date']=pd.to_datetime(feat['date'])
+    feat_idx=feat.set_index(['date','symbol']).sort_index()
+    cal,score_w,r2,slope,close,op,gross,ret=build_wides(bars,feat); cal=pd.DatetimeIndex(cal)
+    raw_score=s8m.raw_score_wide(feat,cal,list(score_w.columns.astype(str))); raw_delta=raw_score.diff()
+    raw=raw_all(cal,score_w)
+    profiles=v1lib.build_needed_profiles(bars,set(s8m.MAIN_RISK)); pmap=profiles.set_index(['date','symbol'])['resistance_pct252'].to_dict()
+    v1,_=s8m.build_v1_targets(raw,score_w,raw_delta,pmap,s8m.MAIN_MEMBERS,s8m.MAIN_THRESHOLD)
+    labels=s8q.fixed_strategy_labels(cal,score_w,gross,feat,bars); mp=s8q.build_map_panel(cal,score_w,feat,labels)
+    vs=variants(v1,mp,raw_score,feat_idx)
+
+    # Only signal rows with two subsequent bars have fully observable model returns.
+    completed_signal_max=pd.Timestamp(cal[-3]) if len(cal)>=3 else pd.Timestamp.min
+    series={}; summaries={}; events={}
+    for key,p in vs.items():
+        q=s8m.attach_returns(p,gross,COST)
+        q=q[(q.signal_date>=START)&(q.signal_date<=completed_signal_max)].copy()
+        eq=(1+q.net_ret).cumprod() if len(q) else pd.Series(dtype=float)
+        peak=np.maximum.accumulate(eq.to_numpy()) if len(q) else np.array([])
+        dd=eq.to_numpy()/peak-1 if len(q) else np.array([])
+        series[key]=[{'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':r.execution_date.strftime('%Y-%m-%d'),'target':None if pd.isna(r.target) else str(r.target),'target_name':NAMES.get(str(r.target),'') if pd.notna(r.target) else '现金','daily_return':float(r.net_ret),'nav':float(eq.iloc[i]),'drawdown':float(dd[i])} for i,r in enumerate(q.itertuples(index=False))]
+        targets=q.target.where(q.target.notna(),'__CASH__').astype(str).tolist()
+        switches=sum(a!=b for a,b in zip(targets[1:],targets[:-1]))
+        summaries[key]={'total_return':float(eq.iloc[-1]-1) if len(eq) else 0.0,'mdd':float(dd.min()) if len(dd) else 0.0,'sessions':int(len(q)),'switches':int(switches),'turnover_sides':int(q.sides.sum()) if len(q) else 0}
+        pf=p[p.signal_date>=START].copy(); ev=[]; prev=None
+        for r in pf.itertuples(index=False):
+            t=None if pd.isna(r.target) else str(r.target)
+            if t!=prev:
+                ev.append({'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':r.execution_date.strftime('%Y-%m-%d') if r.execution_date<=cal[-1] else 'next trading day','from':prev,'to':t,'to_name':NAMES.get(t,'现金') if t else '现金','decision':getattr(r,'route_decision','BASE')})
+            prev=t
+        events[key]=ev
+
+    latest_d=pd.Timestamp(cal[-1]); base=vs['baseline']; lr=base[base.signal_date==latest_d].iloc[-1] if (base.signal_date==latest_d).any() else base.iloc[-1]
+    mp2=mp.copy(); mp2['signal_date']=pd.to_datetime(mp2['signal_date']); mrow=mp2[mp2.signal_date==latest_d].iloc[-1] if (mp2.signal_date==latest_d).any() else mp2.iloc[-1]
+    target=None if pd.isna(lr.target) else str(lr.target)
+    latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':pd.Timestamp(cal[-1]).strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
+
+    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; return measured to following trading-day open','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'latest':latest,'summary':summaries,'series':series,'events':events,'notes':['Forward model tracking, not broker-confirmed fills.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Original V1 and Freeze→Cash remain shadow controls.']}
+    OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps({'latest':latest,'summary':summaries},ensure_ascii=False,indent=2))
+if __name__=='__main__': main()
