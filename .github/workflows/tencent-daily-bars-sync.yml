@@ -26,6 +26,7 @@ jobs:
       ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
       PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
       LOOKBACK_DAYS: ${{ inputs.lookback_days || '14' }}
+      PYTHONPATH: research
 
     steps:
       - name: Check out repository
@@ -43,7 +44,9 @@ jobs:
           cache: pip
           cache-dependency-path: automation/requirements-tencent-daily.txt
       - name: Install pinned Python dependency
-        run: python -m pip install --requirement automation/requirements-tencent-daily.txt
+        run: |
+          python -m pip install --requirement automation/requirements-tencent-daily.txt
+          python -m pip install tabulate scipy
       - name: Run unit checks
         run: python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
       - name: Fetch Tencent HFQ bars and upsert Supabase
@@ -53,17 +56,19 @@ jobs:
             --summary tencent-daily-sync-summary.json
       - name: Rebuild market state map data
         run: python automation/build_state_map.py
-      - name: Commit refreshed state map JSON
+      - name: Rebuild frozen strategy live tracker
+        run: python automation/build_live_forward.py
+      - name: Commit refreshed site data
         shell: bash
         run: |
-          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json; then
-            echo "State map data unchanged."
+          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json; then
+            echo "Site data unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state-map-latest.json data/state-map-history.json
-          git commit -m "data: refresh daily market state map"
+          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json
+          git commit -m "data: refresh daily market state and live strategy"
           git push origin HEAD:main
       - name: Publish run summary
         if: always()
@@ -78,6 +83,17 @@ jobs:
             echo '## Market state map' >> "$GITHUB_STEP_SUMMARY"
             cat data/state-map-latest.json >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f data/live-forward.json ]; then
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Live forward strategy' >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+import json
+x=json.load(open('data/live-forward.json',encoding='utf-8'))
+print('```json')
+print(json.dumps({'latest':x['latest'],'summary':x['summary']},ensure_ascii=False,indent=2))
+print('```')
+PY
+          fi
       - name: Upload run summary
         if: always()
         uses: actions/upload-artifact@v7
@@ -86,6 +102,7 @@ jobs:
           path: |
             tencent-daily-sync-summary.json
             data/state-map-latest.json
+            data/live-forward.json
           if-no-files-found: warn
           retention-days: 30
       - name: Notify PushPlus on failure
@@ -109,8 +126,8 @@ jobs:
           when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
           payload = {
               "token": os.environ["PUSHPLUS_TOKEN"],
-              "title": "ETF日线/状态图同步失败",
-              "content": f"Tencent HFQ Daily Bars Sync / State Map 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
+              "title": "ETF日线/状态图/Live同步失败",
+              "content": f"Tencent HFQ Daily Bars Sync / State Map / Live 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
               "template": "txt",
           }
           with open("pushplus-failure.json", "w", encoding="utf-8") as f:
