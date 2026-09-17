@@ -48,12 +48,14 @@ def main():
 
     built={}
     for name,(mode,n) in variants.items():
-        if mode=='BASE': p=v1.copy(); p['route_decision']='BASE'
-        elif mode=='FREEZE': p=s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'FREEZE_INVALID_CASH')
-        else: p=s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'DEEPEN_INVALID_CARRIER',deep_required=n)
+        if mode=='BASE':
+            p=v1.copy(); p['route_decision']='BASE'
+        elif mode=='FREEZE':
+            p=s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'PREVOID_FREEZE_INVALID_CASH')
+        else:
+            p=s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'PREVOID_DEEPEN_INVALID_ROUTE',streak_need=n)
         built[name]=s8m.attach_returns(p,gross,COST)
 
-    # Fixed subperiods and rolling OOS-like evaluation windows. No parameter selection inside future windows.
     windows=[
       ('2015_2022','2015-01-01','2022-12-31'),
       ('2023_2026','2023-01-01','2026-12-31'),
@@ -69,14 +71,12 @@ def main():
     sub=pd.DataFrame(rows)
     sub.to_csv(out/'stage8zb_subperiods.csv',index=False)
 
-    # Expanding-origin annual pseudo-OOS: mechanism fixed, only report each later year's realized performance.
     annual_rows=[]
     for name,q in built.items():
         for y in range(2016,2027):
             st=year_block(q,f'{y}-01-01',f'{y}-12-31'); annual_rows.append({'variant':name,'year':y,**st})
     annual=pd.DataFrame(annual_rows); annual.to_csv(out/'stage8zb_annual_oos.csv',index=False)
 
-    # Relative deltas vs ORIGINAL_V1 per window.
     rel=[]
     base=sub[sub.variant=='ORIGINAL_V1'].set_index('window')
     for name in [x for x in variants if x!='ORIGINAL_V1']:
