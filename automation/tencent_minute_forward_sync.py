@@ -14,7 +14,8 @@ from psycopg2.extras import execute_values
 
 START=date(2026,9,14)
 SH=ZoneInfo('Asia/Shanghai')
-SOURCE='tencent_mkline_m1'
+SOURCE_M1='tencent_mkline_m1'
+SOURCE_5D='tencent_day_query_1m_snapshot'
 SYMBOLS=(
  '159934','159985','161226','513100','159957','159509','513290','159529',
  '159981','501018','513530','511380','164824','511220','513500'
@@ -48,8 +49,58 @@ def parse_mkline(symbol:str,count:int=1200):
         except Exception:
             continue
         if min(o,c,h,l)<=0 or h<max(o,c,l) or l>min(o,c,h): continue
-        out.append((symbol,ts,1,o,h,l,c,vol,SOURCE))
+        out.append((symbol,ts,1,o,h,l,c,vol,SOURCE_M1))
     return out, len(arr)
+
+def _walk_day_packets(x):
+    if isinstance(x,dict):
+        d=x.get('date')
+        arr=x.get('data')
+        if d and isinstance(arr,list) and arr and isinstance(arr[0],str):
+            yield str(d),arr
+        for v in x.values():
+            yield from _walk_day_packets(v)
+    elif isinstance(x,list):
+        for v in x:
+            yield from _walk_day_packets(v)
+
+def parse_five_day_timeline(symbol:str):
+    code=txcode(symbol)
+    url='https://web.ifzq.gtimg.cn/appstock/app/day/query?'+urllib.parse.urlencode({'code':code})
+    obj=get_json(url)
+    node=((obj.get('data') or {}).get(code) or {})
+    out=[]; packet_days=[]
+    seen=set()
+    for dstr,arr in _walk_day_packets(node):
+        digits=''.join(ch for ch in dstr if ch.isdigit())[:8]
+        if len(digits)!=8: continue
+        try: d=datetime.strptime(digits,'%Y%m%d').date()
+        except Exception: continue
+        if d<START: continue
+        packet_days.append(d.isoformat())
+        prev_cum=None
+        for item in arr:
+            p=str(item).split()
+            if len(p)<2: continue
+            hhmm=p[0].replace(':','')[:4]
+            if len(hhmm)!=4 or not hhmm.isdigit(): continue
+            try:
+                ts=datetime.combine(d,datetime.strptime(hhmm,'%H%M').time())
+                px=float(p[1])
+                cum=float(p[2]) if len(p)>2 else 0.0
+            except Exception:
+                continue
+            if px<=0: continue
+            if prev_cum is None:
+                delta=max(cum,0.0)
+            else:
+                delta=max(cum-prev_cum,0.0)
+            prev_cum=cum
+            key=(symbol,ts,1)
+            if key in seen: continue
+            seen.add(key)
+            out.append((symbol,ts,1,px,px,px,px,int(round(delta*100)),SOURCE_5D))
+    return out,sorted(set(packet_days))
 
 def database_url():
     v=os.environ.get('ETF_DAILY_BARS_DATABASE_URL','').strip()
@@ -69,12 +120,19 @@ def upsert(conn,rows):
         execute_values(cur,sql,rows,page_size=2000)
 
 def main():
-    all_rows=[]; raw_counts={}; errors={}
+    all_rows=[]; raw_counts={}; fallback_days={}; errors={}
     for s in SYMBOLS:
         try:
-            rows,n=parse_mkline(s)
-            raw_counts[s]=n; all_rows.extend(rows)
-            print(f'{s}: raw={n} kept={len(rows)}',flush=True)
+            m1,n=parse_mkline(s)
+            raw_counts[s]=n
+            m1_dates={r[1].date() for r in m1}
+            fallback=[]
+            if START not in m1_dates:
+                fallback,days=parse_five_day_timeline(s)
+                fallback_days[s]=days
+            # fallback first, canonical m1 last so overlapping timestamps prefer OHLC K-lines
+            all_rows.extend(fallback); all_rows.extend(m1)
+            print(f'{s}: raw_m1={n} kept_m1={len(m1)} fallback={len(fallback)} days={fallback_days.get(s,[])}',flush=True)
         except Exception as e:
             errors[s]=repr(e)
         time.sleep(.08)
@@ -88,7 +146,7 @@ def main():
             span=cur.fetchone()
             cur.execute("select trade_date,count(*),count(distinct symbol) from public.minute_bars where trade_date >= %s group by trade_date order by trade_date",(START,))
             daily=cur.fetchall()
-    summary={'status':'PASS','tracking_start':START.isoformat(),'run_at':datetime.now(SH).isoformat(),'rows_upserted':len(all_rows),'raw_counts':raw_counts,'errors':errors,'stored_span':[str(span[0]),str(span[1])],'stored_rows':span[2],'stored_symbols':span[3],'by_date':[{'date':str(d),'rows':n,'symbols':k} for d,n,k in daily]}
+    summary={'status':'PASS','tracking_start':START.isoformat(),'run_at':datetime.now(SH).isoformat(),'rows_upserted':len(all_rows),'raw_counts':raw_counts,'fallback_days':fallback_days,'errors':errors,'stored_span':[str(span[0]),str(span[1])],'stored_rows':span[2],'stored_symbols':span[3],'by_date':[{'date':str(d),'rows':n,'symbols':k} for d,n,k in daily]}
     open('tencent-minute-forward-summary.json','w',encoding='utf-8').write(json.dumps(summary,ensure_ascii=False,indent=2))
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 
