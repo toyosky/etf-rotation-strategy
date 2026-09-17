@@ -1,0 +1,156 @@
+{
+  "tracking_start": "2026-09-14",
+  "settled_through": "2026-09-16",
+  "cost_per_side": 0.0006,
+  "execution_rules": {
+    "09:31_drop_ratio": 0.97,
+    "sell": "14:00 minute close",
+    "buy": "14:05 minute close",
+    "14:05_drawdown": -0.02
+  },
+  "variants": {
+    "baseline": {
+      "label": "Frozen Baseline v1",
+      "series": [
+        {
+          "date": "2026-09-14",
+          "nav": 0.9828634604754009,
+          "return": -0.017136539524599148,
+          "holding": "159981",
+          "status": "settled",
+          "note": "inherited_start"
+        },
+        {
+          "date": "2026-09-15",
+          "nav": 0.9878385848535103,
+          "return": 0.005061867266591635,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-09-16",
+          "nav": 1.0066334991708128,
+          "return": 0.019026301063234552,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-09-17",
+          "nav": 0.982863460475401,
+          "return": -0.023613399231191656,
+          "holding": "159981",
+          "status": "mark_to_market",
+          "note": "partial_day"
+        }
+      ],
+      "trades": [],
+      "settled_return": 0.0066334991708127955,
+      "latest_nav": 0.982863460475401,
+      "latest_holding": "159981"
+    },
+    "original": {
+      "label": "Original V1",
+      "series": [
+        {
+          "date": "2026-09-14",
+          "nav": 0.9828634604754009,
+          "return": -0.017136539524599148,
+          "holding": "159981",
+          "status": "settled",
+          "note": "inherited_start"
+        },
+        {
+          "date": "2026-09-15",
+          "nav": 0.9750336685455283,
+          "return": -0.007966306862283168,
+          "holding": "501018",
+          "status": "settled",
+          "note": "switch"
+        },
+        {
+          "date": "2026-09-16",
+          "nav": 0.9672367283169134,
+          "return": -0.007996585636110054,
+          "holding": "159981",
+          "status": "settled",
+          "note": "switch"
+        },
+        {
+          "date": "2026-09-17",
+          "nav": 0.9443969813000945,
+          "return": -0.023613399231191656,
+          "holding": "159981",
+          "status": "mark_to_market",
+          "note": "partial_day"
+        }
+      ],
+      "trades": [
+        {
+          "date": "2026-09-15",
+          "from": "159981",
+          "desired": "501018",
+          "actual": "501018",
+          "sell_1400": 1.771,
+          "buy_1405": 2.106,
+          "blocked": null
+        },
+        {
+          "date": "2026-09-16",
+          "from": "501018",
+          "desired": "159981",
+          "actual": "159981",
+          "sell_1400": 2.088,
+          "buy_1405": 1.823,
+          "blocked": null
+        }
+      ],
+      "settled_return": -0.03276327168308657,
+      "latest_nav": 0.9443969813000945,
+      "latest_holding": "159981"
+    },
+    "freeze_cash": {
+      "label": "Freeze → Cash",
+      "series": [
+        {
+          "date": "2026-09-14",
+          "nav": 0.9828634604754009,
+          "return": -0.017136539524599148,
+          "holding": "159981",
+          "status": "settled",
+          "note": "inherited_start"
+        },
+        {
+          "date": "2026-09-15",
+          "nav": 0.9878385848535103,
+          "return": 0.005061867266591635,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-09-16",
+          "nav": 1.0066334991708128,
+          "return": 0.019026301063234552,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-09-17",
+          "nav": 0.982863460475401,
+          "return": -0.023613399231191656,
+          "holding": "159981",
+          "status": "mark_to_market",
+          "note": "partial_day"
+        }
+      ],
+      "trades": [],
+      "settled_return": 0.0066334991708127955,
+      "latest_nav": 0.982863460475401,
+      "latest_holding": "159981"
+    }
+  },
+  "note": "Minute forward execution model. Tencent five-day timeline is used only to bridge the 2026-09-14 start; canonical m1 is used when available. No data before 2026-09-14."
+}
