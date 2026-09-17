@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import date, datetime, time
+from datetime import date, time
 from pathlib import Path
 
 import psycopg2
@@ -64,18 +64,14 @@ def main():
             desired=tm[d]
             is_complete=d in complete
             if idx==0:
+                # 2026-09-14 is the forward signal anchor. Do not backfill that day's
+                # already-realized intraday move into forward performance. We inherit the
+                # strategy state at the 15:00 close and set NAV=1.0 there.
                 holding=desired
-                startp=px(d,holding,time(9,31)) if holding else None
-                endp=px(d,holding,time(15,0)) if holding and is_complete else (last_px(d,holding) if holding else None)
-                if holding and startp and endp:
-                    r=endp/startp-1
-                    nav*=1+r
-                else:r=0.0
-                series.append({'date':d.isoformat(),'nav':nav,'return':r,'holding':holding,'status':'settled' if is_complete else 'mark_to_market','note':'inherited_start'})
-                if is_complete and holding: prev_close=px(d,holding,time(15,0))
+                prev_close=px(d,holding,time(15,0)) if holding and is_complete else None
+                series.append({'date':d.isoformat(),'nav':1.0,'return':0.0,'holding':holding,'status':'anchor','note':'signal_anchor_at_close'})
                 continue
             if not is_complete:
-                # latest partial-day mark-to-market from prior close with no irreversible execution booking
                 mtm=nav
                 if holding and prev_close:
                     lp=last_px(d,holding)
@@ -112,8 +108,9 @@ def main():
                 trades.append({'date':d.isoformat(),'from':old,'desired':desired,'actual':holding,'sell_1400':sellp,'buy_1405':px(d,desired,time(14,5)) if desired else None,'blocked':blocked})
                 series.append({'date':d.isoformat(),'nav':nav,'return':nav/before-1,'holding':holding,'status':'settled','note':'switch' if not blocked else blocked})
             prev_close=px(d,holding,time(15,0)) if holding else None
-        results[key]={'label':LABELS[key],'series':series,'trades':trades,'settled_return':next((x['nav'] for x in reversed(series) if x['status']=='settled'),1.0)-1,'latest_nav':series[-1]['nav'] if series else 1.0,'latest_holding':holding}
-    payload={'tracking_start':START.isoformat(),'settled_through':settled_through.isoformat() if settled_through else None,'cost_per_side':COST,'execution_rules':{'09:31_drop_ratio':DROP_FILTER,'sell':'14:00 minute close','buy':'14:05 minute close','14:05_drawdown':DRAWDOWN_FILTER},'variants':results,'note':'Minute forward execution model. Tencent five-day timeline is used only to bridge the 2026-09-14 start; canonical m1 is used when available. No data before 2026-09-14.'}
+        settled_nav=next((x['nav'] for x in reversed(series) if x['status'] in ('settled','anchor')),1.0)
+        results[key]={'label':LABELS[key],'series':series,'trades':trades,'settled_return':settled_nav-1,'latest_nav':series[-1]['nav'] if series else 1.0,'latest_holding':holding}
+    payload={'tracking_start':START.isoformat(),'performance_anchor':'2026-09-14 15:00 close','settled_through':settled_through.isoformat() if settled_through else None,'cost_per_side':COST,'execution_rules':{'09:31_drop_ratio':DROP_FILTER,'sell':'14:00 minute close','buy':'14:05 minute close','14:05_drawdown':DRAWDOWN_FILTER},'variants':results,'note':'Minute forward execution model. 2026-09-14 is the signal anchor and NAV is fixed at 1.0 at that close; no 2026-09-14 intraday return is backfilled. Tencent five-day timeline is used only to bridge the 2026-09-14 start; canonical m1 is used when available. No data before 2026-09-14.'}
     OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'settled_through':payload['settled_through'],'returns':{k:v['settled_return'] for k,v in results.items()},'holdings':{k:v['latest_holding'] for k,v in results.items()}},ensure_ascii=False,indent=2))
 
