@@ -1,0 +1,53 @@
+name: Live Forward Strategy Tracker
+
+on:
+  push:
+    paths:
+      - 'automation/build_live_forward.py'
+      - '.github/workflows/live-forward-tracker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - run: python -m py_compile automation/build_live_forward.py
+      - run: python automation/build_live_forward.py
+      - name: Commit refreshed live tracker JSON
+        shell: bash
+        run: |
+          if git diff --quiet -- data/live-forward.json; then
+            echo "Live tracker unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live-forward.json
+          git commit -m "data: refresh live forward tracker"
+          git push origin HEAD:main
+      - name: Publish summary
+        if: always()
+        run: |
+          if [ -f data/live-forward.json ]; then
+            echo '## Live forward tracker' >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+import json
+x=json.load(open('data/live-forward.json',encoding='utf-8'))
+print('```json')
+print(json.dumps({'latest':x['latest'],'summary':x['summary']},ensure_ascii=False,indent=2))
+print('```')
+PY
+          fi
