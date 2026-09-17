@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080d18" />
+  <title>ETF Rotation Research · Strategy</title>
+  <link rel="stylesheet" href="./site.css" />
+  <style>
+    .freeze-badge{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:7px 11px;border:1px solid rgba(84,214,165,.35);border-radius:999px;color:var(--green);background:rgba(84,214,165,.055);font-size:11px;font-weight:700}.strategy-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}.strategy-flow article{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(13,21,36,.76);min-height:160px}.strategy-flow small{color:var(--cyan);font-weight:800}.strategy-flow h3{font-size:16px;margin:14px 0 6px}.strategy-flow p{font-size:12px;color:var(--muted);margin:0}.rule-box{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rule-box article{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(13,21,36,.72)}.rule-box h3{margin:0 0 10px;font-size:18px}.rule-box p,.rule-box li{color:var(--muted);font-size:13px}.rule-box ul{padding-left:18px;margin:10px 0 0}.evidence-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}.evidence-table th,.evidence-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:right}.evidence-table th:first-child,.evidence-table td:first-child{text-align:left}.evidence-table th{color:#71839e;font-size:11px}.evidence-table .good{color:var(--green);font-weight:700}.evidence-table .muted{color:var(--muted)}.lock-card{padding:22px;border:1px solid rgba(233,191,103,.32);border-radius:18px;background:linear-gradient(145deg,rgba(47,39,24,.28),rgba(13,21,36,.75))}.lock-card h3{margin-top:0;color:var(--gold)}.lock-card p,.lock-card li{color:var(--muted);font-size:13px}.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.live-grid article{padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(13,21,36,.72)}.live-grid b{display:block;color:var(--cyan);font-size:12px}.live-grid h3{font-size:16px;margin:10px 0 6px}.live-grid p{font-size:12px;color:var(--muted);margin:0}.baseline-tag{color:var(--green)!important}.counterexample{border-left:2px solid var(--red);padding:16px 18px;background:rgba(255,122,138,.045);color:#aebbd0;font-size:13px;line-height:1.8}.counterexample b{color:#f0d8dc}.mini-note{font-size:11px;color:#667994;margin-top:12px}@media(max-width:900px){.strategy-flow{grid-template-columns:1fr 1fr}.rule-box{grid-template-columns:1fr}.live-grid{grid-template-columns:1fr}}@media(max-width:620px){.strategy-flow{grid-template-columns:1fr}.evidence-table{font-size:11px}.evidence-table th,.evidence-table td{padding:9px 5px}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="topbar">
+    <a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a>
+    <nav>
+      <a href="./index.html">Universe</a>
+      <a class="active" href="./strategy.html">Strategy</a>
+      <a href="./state-map.html">State Map</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">FROZEN WORKING BASELINE · 2026-09-17</div>
+      <h1>Void Route Baseline v1<br><em>进入 Void 不卖；只有继续恶化且原仓失效，才换池。</em></h1>
+      <p class="lede">当前策略把 DEFENSIVE_VOID 从“自动防守信号”重新定义为“竞争冻结状态”。进入 Void 时停止追逐新的 Top1，冻结进入前真实持仓；只有市场结构继续恶化且 incumbent 自身不再优于 511220，才允许切换到健康的美国宽基 Carrier，否则转 511220。</p>
+      <div class="freeze-badge">● 已冻结 · 后续只接受真实交易 / 新增 OOS 证据</div>
+      <div class="hero-metrics">
+        <div><b>44.53%</b><span>历史 CAGR · Deepen1</span></div>
+        <div><b>-31.30%</b><span>历史 MDD</span></div>
+        <div><b>1.249</b><span>Sharpe</span></div>
+        <div><b>298</b><span>换仓次数</span></div>
+      </div>
+      <div class="method-note">FixV2 + V1(75) · 26 日加权 log-price OLS · half-life 10 · 6bp / side · 基准冻结日 2026-09-17</div>
+    </section>
+
+    <section class="section">
+      <span class="kicker">STATE MACHINE</span>
+      <h2>正式冻结的执行路径</h2>
+      <div class="strategy-flow">
+        <article><small>01</small><h3>正常状态</h3><p>继续运行冻结的 FixV2 + V1 横截面 OLS 竞争逻辑。</p></article>
+        <article><small>02</small><h3>首次进入 Void</h3><p>不接受当天新 Top1。冻结前一信号日实际持有的 incumbent。</p></article>
+        <article><small>03</small><h3>观察而不换帅</h3><p>Void 内暂停普通 Top1 切换。只检查 incumbent 与状态是否继续恶化。</p></article>
+        <article><small>04</small><h3>双重确认</h3><p>Breadth 与 Gap 均低于 Void 进入日，同时 incumbent Score ≤ 511220 Score。</p></article>
+        <article><small>05</small><h3>换池</h3><p>513500 上市满 365 日且 Score > 511220 → 513500；否则 → 511220。持有到 Void 退出。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><span class="kicker">FROZEN RULES</span><h2>哪些东西现在不再动</h2></div><p>冻结的目的不是证明历史最优，而是从今天开始积累真正的新证据。</p></div>
+      <div class="rule-box">
+        <article>
+          <h3>固定参数</h3>
+          <ul>
+            <li>Void deepening：Breadth 与 Leadership Gap percentile 同时低于 episode 进入值。</li>
+            <li>冻结基准使用 <b>N=1</b>；N=2/3 只保留为历史稳健性邻域，不再回头选优。</li>
+            <li>Incumbent invalidation：其 raw OLS Score ≤ 511220 raw OLS Score。</li>
+            <li>美国 Carrier：513500；仅在上市 ≥365 日且 Score > 511220 时使用。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>禁止的历史调参</h3>
+          <ul>
+            <li>不因为 2023–2024 表现略差而改等待天数。</li>
+            <li>不因为某个过去年份更好而把 513500 替换成日本、欧洲或行业 ETF。</li>
+            <li>不再用同一段历史新增地区/行业 selector 来修复局部回测。</li>
+            <li>未来若修改规则，必须新建版本，不回写 Baseline v1。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section data-section">
+      <div class="section-head"><div><span class="kicker">BACKTEST EVIDENCE</span><h2>冻结不是因为它每一段都赢</h2></div><p>接受反例，反而是控制过拟合的一部分。</p></div>
+      <table class="evidence-table">
+        <thead><tr><th>窗口</th><th>Original V1 CAGR</th><th>Deepen1 CAGR</th><th>Original MDD</th><th>Deepen1 MDD</th></tr></thead>
+        <tbody>
+          <tr><td>2015–2022</td><td>21.13%</td><td class="good">23.23%</td><td>-33.41%</td><td class="good">-31.30%</td></tr>
+          <tr><td>2023–2026*</td><td>93.78%</td><td class="good">103.78%</td><td>-38.59%</td><td class="good">-28.54%</td></tr>
+          <tr><td>2023–2024</td><td class="good">43.79%</td><td>40.44%</td><td>-28.12%</td><td class="good">-21.56%</td></tr>
+          <tr><td>全区间</td><td>40.58%</td><td class="good">44.53%</td><td>-38.59%</td><td class="good">-31.30%</td></tr>
+        </tbody>
+      </table>
+      <div class="counterexample"><b>保留反例：</b>2023–2024 Deepen1 的 CAGR 比原始 V1 低约 3.35 个百分点，但 MDD 改善约 6.56 个百分点。这个窗口不会被继续“修掉”；它将作为未来真实验证时必须正视的历史弱点。</div>
+      <p class="mini-note">* 2026 为截至当前数据日期的部分年度。历史结果只用于冻结前证据，不代表未来表现。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><span class="kicker">FORWARD VALIDATION</span><h2>从现在起，用真实交易 / 新增样本验证</h2></div><p>验证重点从“继续优化历史曲线”切换为“记录每一次真实决策，并和影子策略同步比较”。</p></div>
+      <div class="live-grid">
+        <article><b class="baseline-tag">LIVE BASELINE</b><h3>Frozen Baseline v1</h3><p>实际观察路径：Void 冻结 incumbent → Deepen1 + invalidation → 513500 / 511220。</p></article>
+        <article><b>SHADOW A</b><h3>Original V1</h3><p>保留不处理 Void 的原始 V1 作为影子对照，持续测量冻结机制的真实增量。</p></article>
+        <article><b>SHADOW B</b><h3>Freeze → Cash</h3><p>冻结 incumbent，但失效后只去 511220，用来隔离 US Carrier 在未来样本中的真实贡献。</p></article>
+      </div>
+      <div class="lock-card" style="margin-top:18px">
+        <h3>前瞻验证纪律</h3>
+        <p>从 2026-09-17 起，每次真实或模拟执行都应保存：信号时点、实际成交时点、State Map 坐标、pre-Void incumbent、511220/513500 raw OLS Score、实际成交价与滑点、可获得时的 QDII 溢价/折价，以及后续 PnL / drawdown。</p>
+        <p>任何未来改动都必须创建新版本。Baseline v1 本身不再因为少数亏损交易或某段新增样本而被回写。</p>
+      </div>
+    </section>
+
+    <section class="section conclusion">
+      <span class="kicker">CURRENT INTERPRETATION</span>
+      <h2>Void 的第一含义，是停止竞争，而不是立刻防守</h2>
+      <div class="lesson-grid">
+        <div><b>01</b><h3>先冻结</h3><p>进入 Void 不等于当前趋势已经坏掉，所以不立即卖 incumbent。</p></div>
+        <div><b>02</b><h3>再确认</h3><p>只有状态继续恶化且 incumbent 自身跌破现金 hurdle，才允许离开。</p></div>
+        <div><b>03</b><h3>Carrier 是基准</h3><p>失效后优先使用满足独立 OLS hurdle 的 513500；否则 511220。</p></div>
+        <div><b>04</b><h3>未来证据优先</h3><p>后续版本升级优先依据冻结后的真实交易和 OOS 结果，而不是继续挖掘同一历史样本。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State</span></div>
+    <div class="footer-note">研究展示，不构成投资建议。Frozen Baseline v1 自 2026-09-17 起进入前瞻验证阶段。</div>
+  </footer>
+</body>
+</html>
