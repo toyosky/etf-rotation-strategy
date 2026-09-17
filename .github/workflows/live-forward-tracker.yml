@@ -40,14 +40,9 @@ jobs:
           git push origin HEAD:main
       - name: Publish summary
         if: always()
+        shell: bash
         run: |
+          echo '## Live forward tracker' >> "$GITHUB_STEP_SUMMARY"
           if [ -f data/live-forward.json ]; then
-            echo '## Live forward tracker' >> "$GITHUB_STEP_SUMMARY"
-            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-import json
-x=json.load(open('data/live-forward.json',encoding='utf-8'))
-print('```json')
-print(json.dumps({'latest':x['latest'],'summary':x['summary']},ensure_ascii=False,indent=2))
-print('```')
-PY
+            python -c "import json; x=json.load(open('data/live-forward.json',encoding='utf-8')); print(json.dumps({'latest':x['latest'],'summary':x['summary']},ensure_ascii=False,indent=2))" >> "$GITHUB_STEP_SUMMARY"
           fi
