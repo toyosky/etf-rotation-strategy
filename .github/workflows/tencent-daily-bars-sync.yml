@@ -1,6 +1,12 @@
 name: Tencent HFQ Daily Bars Sync
 
 on:
+  push:
+    paths:
+      - 'automation/tencent_daily_sync.py'
+      - 'automation/tencent_daily_universe.csv'
+      - 'automation/test_tencent_daily_sync.py'
+      - '.github/workflows/tencent-daily-bars-sync.yml'
   schedule:
     # 15:30 UTC = 23:30 Asia/Shanghai. Runs every calendar day.
     - cron: "30 15 * * *"
