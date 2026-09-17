@@ -28,3 +28,13 @@ const contrib=[
 ];
 const maxAbs=Math.max(...contrib.map(x=>Math.abs(x[1])));
 document.getElementById('contribChart').innerHTML=contrib.map(([n,v])=>`<div class="hrow"><label>${n}</label><div class="htrack"><div class="hfill ${v<0?'neg':''}" style="width:${Math.abs(v)/maxAbs*100}%"></div></div><span>${v>0?'+':''}${v.toFixed(1)}%</span></div>`).join('');
+
+// Keep navigation consistent across static pages.
+document.querySelectorAll('nav span').forEach(node=>{
+  if(node.textContent.trim()==='Strategy'){
+    const a=document.createElement('a');
+    a.href='./strategy.html';
+    a.textContent='Strategy';
+    node.replaceWith(a);
+  }
+});
