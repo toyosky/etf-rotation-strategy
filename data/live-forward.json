@@ -5,6 +5,27 @@
   "cost_per_side": 0.0006,
   "execution_model": "signal at close; execute next trading-day open; return measured to following trading-day open",
   "generated_from_market_data_through": "2026-09-16",
+  "backtest_reference": {
+    "period": "2015-01-26 → 2026-09-15",
+    "baseline": {
+      "cagr": 0.4453,
+      "mdd": -0.313,
+      "sharpe": 1.249,
+      "switches": 298
+    },
+    "original": {
+      "cagr": 0.4058,
+      "mdd": -0.3859,
+      "sharpe": 1.167,
+      "switches": 408
+    },
+    "freeze_cash": {
+      "cagr": 0.4443,
+      "mdd": -0.322,
+      "sharpe": 1.257,
+      "switches": 319
+    }
+  },
   "latest": {
     "date": "2026-09-16",
     "target": "159981",
@@ -14,7 +35,7 @@
     "breadth_pct": 30.76923076923077,
     "gap_percentile": 14.285714285714286,
     "target_score": 7.123222560485866,
-    "cash_score": 1.4352767320493073e-05,
+    "cash_score": 1.4352767320451165e-05,
     "carrier_score": 0.0,
     "completed_through": "2026-09-16",
     "performance_signal_through": "2026-09-14"
@@ -107,7 +128,7 @@
       },
       {
         "signal_date": "2026-09-16",
-        "execution_date": "2026-09-16",
+        "execution_date": "next trading day",
         "from": "501018",
         "to": "159981",
         "to_name": "能源化工",
@@ -127,6 +148,7 @@
   },
   "notes": [
     "Forward model tracking, not broker-confirmed fills.",
+    "Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.",
     "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
     "Original V1 and Freeze→Cash remain shadow controls."
   ]
