@@ -38,3 +38,7 @@ document.querySelectorAll('nav span').forEach(node=>{
     node.replaceWith(a);
   }
 });
+const nav=document.querySelector('.topbar nav');
+if(nav && !nav.querySelector('a[href="./live.html"]')){
+  const a=document.createElement('a');a.href='./live.html';a.textContent='Live';nav.appendChild(a);
+}
