@@ -6,6 +6,9 @@ on:
       - 'automation/tencent_daily_sync.py'
       - 'automation/tencent_daily_universe.csv'
       - 'automation/test_tencent_daily_sync.py'
+      - 'automation/requirements-tencent-daily.txt'
+      - 'automation/build_state_map.py'
+      - 'automation/build_live_forward.py'
       - '.github/workflows/tencent-daily-bars-sync.yml'
   schedule:
     # 15:30 UTC = 23:30 Asia/Shanghai. Runs every calendar day.
@@ -49,7 +52,7 @@ jobs:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: automation/requirements-tencent-daily.txt
-      - name: Install pinned Python dependency
+      - name: Install Python dependencies
         run: |
           python -m pip install --requirement automation/requirements-tencent-daily.txt
           python -m pip install tabulate scipy
