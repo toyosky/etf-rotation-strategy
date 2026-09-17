@@ -1,0 +1,133 @@
+{
+  "version": "Void Route Baseline v1",
+  "tracking_start": "2026-09-14",
+  "pricing": "Tencent HFQ daily bars",
+  "cost_per_side": 0.0006,
+  "execution_model": "signal at close; execute next trading-day open; return measured to following trading-day open",
+  "generated_from_market_data_through": "2026-09-16",
+  "latest": {
+    "date": "2026-09-16",
+    "target": "159981",
+    "target_name": "能源化工",
+    "decision": "VOID_WAIT_DEEPEN",
+    "quadrant": "DEFENSIVE_VOID",
+    "breadth_pct": 30.76923076923077,
+    "gap_percentile": 14.285714285714286,
+    "target_score": 7.123222560485866,
+    "cash_score": 1.4352767320493073e-05,
+    "carrier_score": 0.0,
+    "completed_through": "2026-09-16",
+    "performance_signal_through": "2026-09-14"
+  },
+  "summary": {
+    "baseline": {
+      "total_return": 0.0208098987626546,
+      "mdd": 0.0,
+      "sessions": 1,
+      "switches": 0,
+      "turnover_sides": 0
+    },
+    "original": {
+      "total_return": 0.0208098987626546,
+      "mdd": 0.0,
+      "sessions": 1,
+      "switches": 0,
+      "turnover_sides": 0
+    },
+    "freeze_cash": {
+      "total_return": 0.0208098987626546,
+      "mdd": 0.0,
+      "sessions": 1,
+      "switches": 0,
+      "turnover_sides": 0
+    }
+  },
+  "series": {
+    "baseline": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": 0.0208098987626546,
+        "nav": 1.0208098987626546,
+        "drawdown": 0.0
+      }
+    ],
+    "original": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": 0.0208098987626546,
+        "nav": 1.0208098987626546,
+        "drawdown": 0.0
+      }
+    ],
+    "freeze_cash": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": 0.0208098987626546,
+        "nav": 1.0208098987626546,
+        "drawdown": 0.0
+      }
+    ]
+  },
+  "events": {
+    "baseline": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "from": null,
+        "to": "159981",
+        "to_name": "能源化工",
+        "decision": "VOID_ENTER_FREEZE_PREV"
+      }
+    ],
+    "original": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "from": null,
+        "to": "159981",
+        "to_name": "能源化工",
+        "decision": "BASE"
+      },
+      {
+        "signal_date": "2026-09-15",
+        "execution_date": "2026-09-16",
+        "from": "159981",
+        "to": "501018",
+        "to_name": "原油",
+        "decision": "BASE"
+      },
+      {
+        "signal_date": "2026-09-16",
+        "execution_date": "2026-09-16",
+        "from": "501018",
+        "to": "159981",
+        "to_name": "能源化工",
+        "decision": "BASE"
+      }
+    ],
+    "freeze_cash": [
+      {
+        "signal_date": "2026-09-14",
+        "execution_date": "2026-09-15",
+        "from": null,
+        "to": "159981",
+        "to_name": "能源化工",
+        "decision": "VOID_ENTER_FREEZE_PREV"
+      }
+    ]
+  },
+  "notes": [
+    "Forward model tracking, not broker-confirmed fills.",
+    "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
+    "Original V1 and Freeze→Cash remain shadow controls."
+  ]
+}
