@@ -33,7 +33,6 @@ jobs:
     timeout-minutes: 45
     env:
       ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-      PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
       LOOKBACK_DAYS: ${{ inputs.lookback_days || '14' }}
       PYTHONPATH: research
 
@@ -108,37 +107,3 @@ jobs:
             data/live-forward.json
           if-no-files-found: warn
           retention-days: 30
-      - name: Notify PushPlus on failure
-        if: failure()
-        continue-on-error: true
-        shell: bash
-        run: |
-          if [ -z "$PUSHPLUS_TOKEN" ]; then
-            echo "PUSHPLUS_TOKEN is not configured; skipping PushPlus alert."
-            exit 0
-          fi
-
-          python - <<'PY'
-          import json
-          import os
-          from datetime import datetime, timezone
-
-          repo = os.environ.get("GITHUB_REPOSITORY", "unknown")
-          run_id = os.environ.get("GITHUB_RUN_ID", "unknown")
-          run_url = f"https://github.com/{repo}/actions/runs/{run_id}"
-          when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-          payload = {
-              "token": os.environ["PUSHPLUS_TOKEN"],
-              "title": "ETF日线/状态图/Live同步失败",
-              "content": f"Tencent HFQ Daily Bars Sync / State Map / Live 失败。仓库: {repo}；时间: {when}；Run: {run_url}",
-              "template": "txt",
-          }
-          with open("pushplus-failure.json", "w", encoding="utf-8") as f:
-              json.dump(payload, f, ensure_ascii=False)
-          PY
-
-          curl --fail-with-body --silent --show-error \
-            --retry 3 --retry-delay 2 \
-            -H 'Content-Type: application/json' \
-            --data-binary @pushplus-failure.json \
-            https://www.pushplus.plus/send
