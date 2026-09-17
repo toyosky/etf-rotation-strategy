@@ -23,6 +23,12 @@ COST=0.0006
 OUT=ROOT/'data'/'live-forward.json'
 CASH='511220'; CARRIER='513500'
 NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier'}
+BACKTEST_REFERENCE={
+  'period':'2015-01-26 → 2026-09-15',
+  'baseline':{'cagr':0.4453,'mdd':-0.3130,'sharpe':1.249,'switches':298},
+  'original':{'cagr':0.4058,'mdd':-0.3859,'sharpe':1.167,'switches':408},
+  'freeze_cash':{'cagr':0.4443,'mdd':-0.3220,'sharpe':1.257,'switches':319}
+}
 
 def clean(v):
     if isinstance(v,(np.floating,float)):
@@ -35,7 +41,9 @@ def raw_all(cal,score):
     rows=[]; prev=None
     for i,d in enumerate(cal):
         d=pd.Timestamp(d); cur=s8m.choose_target(score,d,s8m.MAIN_MEMBERS)
-        rows.append({'signal_pos':i,'signal_date':d,'execution_date':pd.Timestamp(cal[min(i+1,len(cal)-1)]),'return_end_date':pd.Timestamp(cal[min(i+2,len(cal)-1)]),'target':cur,'sides':s8m.side_count(prev,cur)})
+        ex=pd.Timestamp(cal[i+1]) if i+1<len(cal) else pd.NaT
+        end=pd.Timestamp(cal[i+2]) if i+2<len(cal) else pd.NaT
+        rows.append({'signal_pos':i,'signal_date':d,'execution_date':ex,'return_end_date':end,'target':cur,'sides':s8m.side_count(prev,cur)})
         prev=cur
     return pd.DataFrame(rows)
 
@@ -52,6 +60,9 @@ def variants(v1,map_panel,raw_score,feat_idx):
       'freeze_cash':s8za.build_prevoid_variant(v1,map_panel,raw_score,feat_idx,'PREVOID_FREEZE_INVALID_CASH',1),
     }
 
+def fmt_exec(v,last):
+    return v.strftime('%Y-%m-%d') if pd.notna(v) and pd.Timestamp(v)<=last else 'next trading day'
+
 def main():
     db=os.getenv('ETF_DAILY_BARS_DATABASE_URL')
     if not db: raise SystemExit('Missing ETF_DAILY_BARS_DATABASE_URL')
@@ -67,7 +78,6 @@ def main():
     labels=s8q.fixed_strategy_labels(cal,score_w,gross,feat,bars); mp=s8q.build_map_panel(cal,score_w,feat,labels)
     vs=variants(v1,mp,raw_score,feat_idx)
 
-    # Only signal rows with two subsequent bars have fully observable model returns.
     completed_signal_max=pd.Timestamp(cal[-3]) if len(cal)>=3 else pd.Timestamp.min
     series={}; summaries={}; events={}
     for key,p in vs.items():
@@ -84,16 +94,16 @@ def main():
         for r in pf.itertuples(index=False):
             t=None if pd.isna(r.target) else str(r.target)
             if t!=prev:
-                ev.append({'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':r.execution_date.strftime('%Y-%m-%d') if r.execution_date<=cal[-1] else 'next trading day','from':prev,'to':t,'to_name':NAMES.get(t,'现金') if t else '现金','decision':getattr(r,'route_decision','BASE')})
+                ev.append({'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':fmt_exec(r.execution_date,pd.Timestamp(cal[-1])),'from':prev,'to':t,'to_name':NAMES.get(t,'现金') if t else '现金','decision':getattr(r,'route_decision','BASE')})
             prev=t
         events[key]=ev
 
     latest_d=pd.Timestamp(cal[-1]); base=vs['baseline']; lr=base[base.signal_date==latest_d].iloc[-1] if (base.signal_date==latest_d).any() else base.iloc[-1]
     mp2=mp.copy(); mp2['signal_date']=pd.to_datetime(mp2['signal_date']); mrow=mp2[mp2.signal_date==latest_d].iloc[-1] if (mp2.signal_date==latest_d).any() else mp2.iloc[-1]
     target=None if pd.isna(lr.target) else str(lr.target)
-    latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':pd.Timestamp(cal[-1]).strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
+    latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':latest_d.strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
 
-    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; return measured to following trading-day open','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'latest':latest,'summary':summaries,'series':series,'events':events,'notes':['Forward model tracking, not broker-confirmed fills.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Original V1 and Freeze→Cash remain shadow controls.']}
+    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; return measured to following trading-day open','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'series':series,'events':events,'notes':['Forward model tracking, not broker-confirmed fills.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Original V1 and Freeze→Cash remain shadow controls.']}
     OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'latest':latest,'summary':summaries},ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
