@@ -1,0 +1,31 @@
+name: OURE Stage8ZB WalkForward Robustness
+
+on:
+  push:
+    paths:
+      - 'research/optimal_universe_reverse_engineering/oure_stage8zb_walkforward_robustness.py'
+      - '.github/workflows/oure-stage8zb-walkforward.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: stage8zb-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - run: python -m py_compile research/optimal_universe_reverse_engineering/oure_stage8zb_walkforward_robustness.py
+      - run: python research/optimal_universe_reverse_engineering/oure_stage8zb_walkforward_robustness.py
+      - run: |
+          if [ -f "$OUTPUT_DIR/stage8zb_summary.md" ]; then cat "$OUTPUT_DIR/stage8zb_summary.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oure-stage8zb-${{ github.run_id }}
+          path: stage8zb-output/
+          retention-days: 30
