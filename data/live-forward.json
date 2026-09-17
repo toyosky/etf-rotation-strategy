@@ -34,8 +34,8 @@
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 30.76923076923077,
     "gap_percentile": 24.603174603174605,
-    "target_score": 5.592092446705089,
-    "cash_score": 0.00012914138969462253,
+    "target_score": 5.592092446705191,
+    "cash_score": 0.0001291413896949384,
     "carrier_score": 0.0,
     "completed_through": "2026-09-17",
     "performance_signal_through": "2026-09-15"
@@ -238,11 +238,17 @@
       }
     ]
   },
+  "benchmark": {
+    "symbol": "510300",
+    "name": "沪深300",
+    "available": false,
+    "series": [],
+    "mark_to_market": null
+  },
   "notes": [
     "Forward model tracking, not broker-confirmed fills.",
     "Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.",
     "Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.",
-    "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
-    "Original V1 and Freeze→Cash remain shadow controls."
+    "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220."
   ]
 }
