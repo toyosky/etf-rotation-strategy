@@ -34,8 +34,8 @@
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 30.76923076923077,
     "gap_percentile": 24.603174603174605,
-    "target_score": 5.592092446705191,
-    "cash_score": 0.0001291413896949384,
+    "target_score": 5.592092446705089,
+    "cash_score": 0.00012914138969462253,
     "carrier_score": 0.0,
     "completed_through": "2026-09-17",
     "performance_signal_through": "2026-09-15"
@@ -241,9 +241,43 @@
   "benchmark": {
     "symbol": "510300",
     "name": "沪深300",
-    "available": false,
-    "series": [],
-    "mark_to_market": null
+    "available": true,
+    "pricing": "510300 沪深300ETF 后复权收盘价，起点归一化为 1",
+    "series": [
+      {
+        "date": "2026-09-14",
+        "nav": 1.0,
+        "daily_return": 0.0,
+        "drawdown": 0.0,
+        "status": "close"
+      },
+      {
+        "date": "2026-09-15",
+        "nav": 0.9945409429280396,
+        "daily_return": -0.0054590570719603715,
+        "drawdown": -0.0054590570719603715,
+        "status": "close"
+      },
+      {
+        "date": "2026-09-16",
+        "nav": 0.9995037220843671,
+        "daily_return": 0.004990019960079639,
+        "drawdown": -0.0004962779156328923,
+        "status": "close"
+      },
+      {
+        "date": "2026-09-17",
+        "nav": 0.9965260545905706,
+        "daily_return": -0.002979145978152853,
+        "drawdown": -0.0034739454094293576,
+        "status": "close"
+      }
+    ],
+    "mark_to_market": {
+      "valuation_date": "2026-09-17",
+      "nav": 0.9965260545905706,
+      "total_return": -0.0034739454094293576
+    }
   },
   "notes": [
     "Forward model tracking, not broker-confirmed fills.",
