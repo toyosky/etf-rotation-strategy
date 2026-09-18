@@ -11,8 +11,8 @@ on:
       - 'automation/build_live_forward.py'
       - '.github/workflows/tencent-daily-bars-sync.yml'
   schedule:
-    # 15:30 UTC = 23:30 Asia/Shanghai. Runs every calendar day.
-    - cron: "30 15 * * *"
+    # 07:30 UTC = 15:30 Asia/Shanghai. Runs every calendar day.
+    - cron: "30 7 * * *"
   workflow_dispatch:
     inputs:
       lookback_days:
