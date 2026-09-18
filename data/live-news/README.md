@@ -1,13 +1,15 @@
 # Live News Shock Archive
 
-Purpose: prospectively archive structured news-shock observations for the ETF rotation strategy.
+Purpose: prospectively archive text-based news-shock observations for the ETF rotation strategy.
 
 Storage policy:
-- Keep structured daily audit records in normal Git as JSONL/CSV so they remain diffable, searchable, and easy to consume in research scripts.
-- Do not store full copyrighted news article bodies. Store source metadata, URLs, timestamps, short factual summaries, and extracted market-impact fields.
-- Use Git LFS only for genuinely large binary evidence when needed (for example screenshots or exported market snapshots). Most daily records should not require LFS.
+- Store text only. Do not archive screenshots, images, PDFs, HTML snapshots, or other binary evidence.
+- Keep structured daily audit records in normal Git as JSONL so they remain diffable, searchable, and easy to consume in research scripts.
+- Preserve source metadata, URL, publication time, a short source excerpt when useful, factual extraction, and the model's analysis.
+- Do not copy full copyrighted news articles. Retain only the minimum excerpt needed to preserve the contemporaneous evidence, plus an independent factual summary and analysis.
+- Git LFS is not required for this archive unless the policy changes later.
 
-Suggested path:
+Path:
 - data/live-news/YYYY-MM.jsonl
 
 Recommended fields per record:
@@ -28,7 +30,10 @@ Recommended fields per record:
 - source_name
 - source_url
 - source_published_at
+- source_title
+- source_excerpt
 - factual_summary
+- analysis
 - shock_direction: positive | negative | mixed | none
 - shock_severity: 0-3
 - existing_gap_filter_triggered
@@ -38,7 +43,8 @@ Recommended fields per record:
 - notes
 
 Research discipline:
-1. Archive what was knowable at the time; do not rewrite old records using later information.
-2. News is an observation layer, not a discretionary override of the frozen live strategy.
-3. Parameter changes require later OOS aggregation and explicit validation.
-4. Preserve negative examples and false alarms, not only successful warnings.
+1. Archive only what was knowable at the time; do not rewrite old records using later information.
+2. Separate source text, factual extraction, and analysis so later review can distinguish evidence from interpretation.
+3. News is an observation layer, not a discretionary override of the frozen live strategy.
+4. Parameter changes require later OOS aggregation and explicit validation.
+5. Preserve negative examples and false alarms, not only successful warnings.
