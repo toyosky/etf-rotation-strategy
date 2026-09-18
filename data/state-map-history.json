@@ -1,19 +1,5 @@
 [
   {
-    "date": "2025-09-04",
-    "breadth_count": 5,
-    "breadth_total": 13,
-    "breadth_pct": 38.5,
-    "cash_score": 0.0,
-    "top1": "159957",
-    "top1_score": 7.795302,
-    "top2": "161226",
-    "top2_score": 1.210516,
-    "gap_raw": 6.584787,
-    "gap_percentile": 85.7,
-    "quadrant": "NARROW_LEADERSHIP"
-  },
-  {
     "date": "2025-09-05",
     "breadth_count": 4,
     "breadth_total": 13,
@@ -3525,6 +3511,20 @@
     "top2_score": 4.853429,
     "gap_raw": 0.738663,
     "gap_percentile": 24.6,
+    "quadrant": "DEFENSIVE_VOID"
+  },
+  {
+    "date": "2026-09-18",
+    "breadth_count": 5,
+    "breadth_total": 13,
+    "breadth_pct": 38.5,
+    "cash_score": 0.00036,
+    "top1": "159981",
+    "top1_score": 3.462686,
+    "top2": "501018",
+    "top2_score": 3.026935,
+    "gap_raw": 0.435751,
+    "gap_percentile": 19.4,
     "quadrant": "DEFENSIVE_VOID",
     "updated_by": "github_action",
     "definition": "breadth=share(score>cash_score); leadership=rolling252 percentile(top1_score-top2_score)"
