@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#080d18"/>
+  <title>ETF Rotation Research · News</title>
+  <link rel="stylesheet" href="./site.css"/>
+  <style>
+    .news-hero{padding-bottom:38px}.news-hero .lede{max-width:760px}
+    .news-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:22px 0 10px}
+    .news-toolbar select,.news-toolbar button{appearance:none;border:1px solid var(--line);background:rgba(13,21,36,.82);color:#d9e6f5;border-radius:10px;padding:10px 12px;font:inherit;font-size:12px}
+    .news-toolbar button{cursor:pointer}.news-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+    .news-summary>div{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(13,21,36,.7)}
+    .news-summary small{display:block;color:var(--muted);font-size:10px}.news-summary strong{display:block;margin-top:5px;font-size:18px}
+    .timeline{position:relative;margin-top:18px}.timeline:before{content:"";position:absolute;left:18px;top:0;bottom:0;width:1px;background:var(--line)}
+    .day{position:relative;padding-left:48px;margin:0 0 18px}.day:before{content:"";position:absolute;left:13px;top:23px;width:11px;height:11px;border-radius:50%;background:#4cc9f0;box-shadow:0 0 0 5px rgba(76,201,240,.08)}
+    .day.risk-negative:before{background:#ff7a8a}.day.risk-positive:before{background:#54d6a5}.day.risk-none:before{background:#71839e}
+    .day-card{border:1px solid var(--line);border-radius:16px;background:rgba(13,21,36,.74);overflow:hidden}
+    .day-head{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+    .day-date{font-size:18px;font-weight:800}.day-target{font-size:12px;color:#91a8c3;margin-top:3px}
+    .risk-pill{height:max-content;padding:5px 8px;border-radius:999px;border:1px solid #324763;font-size:10px;color:#91a8c3;white-space:nowrap}
+    .risk-pill.negative{color:#ff9aa6;border-color:rgba(255,122,138,.3);background:rgba(255,122,138,.06)}
+    .risk-pill.positive{color:#74e0b5;border-color:rgba(84,214,165,.3);background:rgba(84,214,165,.06)}
+    .day-body{padding:16px 18px}.analysis{font-size:13px;line-height:1.8;color:#b8c7db;margin:0 0 14px}
+    .news-items{display:grid;gap:9px}.news-item{padding:12px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(8,13,24,.42)}
+    .news-item-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.news-item b{font-size:12px}.news-item time{font-size:10px;color:#6f819d;white-space:nowrap}
+    .news-item p{font-size:11px;line-height:1.65;color:#8697ad;margin:7px 0 0}.news-item a{color:#7bd9f5;text-decoration:none}.empty{padding:40px 16px;text-align:center;color:#71839e}
+    .meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.meta-row span{font-size:9px;padding:4px 7px;border-radius:999px;border:1px solid rgba(255,255,255,.07);color:#7d90aa}
+    @media(max-width:720px){.news-summary{grid-template-columns:1fr 1fr}.day{padding-left:34px}.timeline:before{left:10px}.day:before{left:5px}.day-head{padding:14px}.day-body{padding:14px}.news-item-top{display:block}.news-item time{display:block;margin-top:4px}.topbar nav{gap:8px;overflow-x:auto;white-space:nowrap}}
+  </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<header class="topbar">
+  <a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a>
+  <nav>
+    <a href="./index.html">Universe</a>
+    <a href="./strategy.html">Strategy</a>
+    <a href="./state-map.html">State Map</a>
+    <a href="./live.html">Live</a>
+    <a class="active" href="./news.html">News</a>
+  </nav>
+</header>
+<main>
+  <section class="hero news-hero">
+    <div class="eyebrow">PRE-EXECUTION ARCHIVE · 13:30 CUT-OFF</div>
+    <h1>下单前新闻日线</h1>
+    <p class="lede">按交易日保存最终执行目标在 signal_timestamp → 13:30 之间可获得的新闻、底层资产走势与风险分析。这里只展示当时可知信息，用于后续 OOS 查询和验证。</p>
+    <div class="news-summary">
+      <div><small>已归档交易日</small><strong id="dayCount">—</strong></div>
+      <div><small>当前显示目标</small><strong id="latestTarget">—</strong></div>
+      <div><small>最新风险方向</small><strong id="latestRisk">—</strong></div>
+      <div><small>信息截止规则</small><strong>13:30</strong></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><span class="kicker">DAILY ARCHIVE</span><h2>按日期查询</h2></div></div>
+    <div class="news-toolbar">
+      <select id="monthFilter" aria-label="选择月份"></select>
+      <select id="targetFilter" aria-label="选择目标"><option value="">全部目标</option></select>
+      <button id="resetFilter" type="button">重置</button>
+    </div>
+    <div id="newsTimeline" class="timeline"><div class="empty">正在读取新闻档案…</div></div>
+  </section>
+</main>
+<footer><div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State · Live · News</span></div><div class="footer-note">仅展示历史归档，不构成投资建议。新闻时间戳严格受 13:30 截止约束。</div></footer>
+<script src="./news.js" defer></script>
+</body>
+</html>
