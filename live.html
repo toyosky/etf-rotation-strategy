@@ -10,7 +10,7 @@
 </style>
 </head>
 <body><div class="grid-bg"></div>
-<header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a><nav><a href="./index.html">Universe</a><a href="./strategy.html">Strategy</a><a href="./state-map.html">State Map</a><a class="active" href="./live.html">Live</a></nav></header>
+<header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a><nav><a href="./index.html">Universe</a><a href="./strategy.html">Strategy</a><a href="./state-map.html">State Map</a><a class="active" href="./live.html">Live</a><a href="./news.html">News</a></nav></header>
 <main>
 <section class="hero live-hero"><div class="eyebrow">FORWARD TRACKING · START 2026-09-14</div><h1>冻结策略实盘跟踪</h1><p class="lede">使用腾讯后复权日线和冻结的 Void Route Baseline v1，每日收盘后自动更新市场状态、策略信号、模型净值、换仓与回撤。</p><div class="live-badge">● Frozen Baseline v1 · Forward validation</div><div class="live-cards"><div><small>Baseline 收盘盯市收益</small><strong id="totalReturn">—</strong><span id="perfThrough">—</span></div><div><small>已结算最大回撤</small><strong id="mdd">—</strong><span>开盘 → 下一交易日开盘</span></div><div><small>当前模型持仓</small><strong id="currentTarget">—</strong><span id="currentDecision">—</span></div><div><small>已结算换仓次数</small><strong id="switches">—</strong><span id="turnover">—</span></div></div><div id="sourceNote" class="method-note">读取中…</div></section>
 
@@ -29,4 +29,4 @@
 <article><small>08 · 防守路由</small><h3>513500 或 511220</h3><p>当 Deepen1 + incumbent invalidation 同时成立：若 513500 已上市满 365 日且其 Score > 511220，则路由到 513500；否则进入 511220。Void 退出后恢复常规 V1 竞争。</p></article>
 <article><small>09 · 成交与记账</small><h3>次日开盘执行，单边计 6bp</h3><p>收盘生成信号，下一交易日开盘执行。正式策略净值按开盘 → 下一交易日开盘结算；最新执行日会额外使用收盘价做临时盯市，但临时值不会改写正式净值历史。</p></article>
 </div><p class="data-note">Live 页面展示的是冻结模型的前瞻跟踪结果，不是券商真实成交回报。若未来接入实盘成交价，应单独增加“实际账户净值”，而不是覆盖当前模型序列。</p></section>
-</main><footer><div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State · Live</span></div><div class="footer-note">腾讯后复权日线 · Frozen Baseline v1 自 2026-09-14 起前瞻跟踪</div></footer><script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js" defer></script><script src="./live.js" defer></script></body></html>
+</main><footer><div><b>OLS Rotation Research</b><span>Universe · Strategy · Market State · Live · News</span></div><div class="footer-note">腾讯后复权日线 · Frozen Baseline v1 自 2026-09-14 起前瞻跟踪</div></footer><script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js" defer></script><script src="./live.js" defer></script></body></html>
