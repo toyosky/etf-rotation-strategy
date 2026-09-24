@@ -4,7 +4,7 @@
   "pricing": "Tencent HFQ daily bars",
   "cost_per_side": 0.0006,
   "execution_model": "signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close",
-  "generated_from_market_data_through": "2026-09-23",
+  "generated_from_market_data_through": "2026-09-24",
   "backtest_reference": {
     "period": "2015-01-26 → 2026-09-15",
     "baseline": {
@@ -27,93 +27,93 @@
     }
   },
   "latest": {
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "target": "159981",
     "target_name": "能源化工",
     "decision": "VOID_WAIT_DEEPEN",
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 30.76923076923077,
-    "gap_percentile": 29.761904761904763,
-    "target_score": 0.3481238637374873,
-    "cash_score": 0.0033268252771544546,
-    "carrier_score": 0.015279885334391273,
-    "completed_through": "2026-09-23",
-    "performance_signal_through": "2026-09-21"
+    "gap_percentile": 40.476190476190474,
+    "target_score": 0.2756015853735733,
+    "cash_score": 0.006073359199221058,
+    "carrier_score": 0.007903516958677553,
+    "completed_through": "2026-09-24",
+    "performance_signal_through": "2026-09-22"
   },
   "summary": {
     "baseline": {
-      "total_return": -0.036557930258717675,
-      "mdd": -0.056198347107437985,
-      "sessions": 6,
+      "total_return": -0.03712035995500573,
+      "mdd": -0.0567493112947659,
+      "sessions": 7,
       "switches": 0,
       "turnover_sides": 0
     },
     "original": {
-      "total_return": -0.06331283262247,
-      "mdd": -0.08240783272878871,
-      "sessions": 6,
+      "total_return": -0.06385964357832385,
+      "mdd": -0.08294349657424782,
+      "sessions": 7,
       "switches": 2,
       "turnover_sides": 4
     },
     "freeze_cash": {
-      "total_return": -0.036557930258717675,
-      "mdd": -0.056198347107437985,
-      "sessions": 6,
+      "total_return": -0.03712035995500573,
+      "mdd": -0.0567493112947659,
+      "sessions": 7,
       "switches": 0,
       "turnover_sides": 0
     }
   },
   "mark_to_market": {
     "baseline": {
-      "valuation_date": "2026-09-23",
+      "valuation_date": "2026-09-24",
       "available": true,
-      "signal_date": "2026-09-22",
-      "execution_date": "2026-09-23",
+      "signal_date": "2026-09-23",
+      "execution_date": "2026-09-24",
       "target": "159981",
       "target_name": "能源化工",
       "decision": "VOID_WAIT_DEEPEN",
       "sides": 0,
-      "open": 1.713,
-      "close": 1.678,
-      "gross_return": -0.020431990659661503,
-      "provisional_return": -0.020431990659661503,
-      "official_nav": 0.9634420697412823,
-      "mtm_nav": 0.9437570303712035,
-      "mtm_total_return": -0.05624296962879649
+      "open": 1.712,
+      "close": 1.749,
+      "gross_return": 0.0216121495327104,
+      "provisional_return": 0.0216121495327104,
+      "official_nav": 0.9628796400449943,
+      "mtm_nav": 0.9836895388076491,
+      "mtm_total_return": -0.01631046119235091
     },
     "original": {
-      "valuation_date": "2026-09-23",
+      "valuation_date": "2026-09-24",
       "available": true,
-      "signal_date": "2026-09-22",
-      "execution_date": "2026-09-23",
-      "target": "159981",
-      "target_name": "能源化工",
+      "signal_date": "2026-09-23",
+      "execution_date": "2026-09-24",
+      "target": "159509",
+      "target_name": "纳指科技",
       "decision": "BASE",
-      "sides": 0,
-      "open": 1.713,
-      "close": 1.678,
-      "gross_return": -0.020431990659661503,
-      "provisional_return": -0.020431990659661503,
-      "official_nav": 0.93668716737753,
-      "mtm_nav": 0.9175487839226475,
-      "mtm_total_return": -0.08245121607735251
+      "sides": 2,
+      "open": 3.055,
+      "close": 3.073,
+      "gross_return": 0.005891980360065441,
+      "provisional_return": 0.004684909983633467,
+      "official_nav": 0.9361403564216761,
+      "mtm_nav": 0.9405260897235582,
+      "mtm_total_return": -0.05947391027644178
     },
     "freeze_cash": {
-      "valuation_date": "2026-09-23",
+      "valuation_date": "2026-09-24",
       "available": true,
-      "signal_date": "2026-09-22",
-      "execution_date": "2026-09-23",
+      "signal_date": "2026-09-23",
+      "execution_date": "2026-09-24",
       "target": "159981",
       "target_name": "能源化工",
       "decision": "VOID_FREEZE_VALID",
       "sides": 0,
-      "open": 1.713,
-      "close": 1.678,
-      "gross_return": -0.020431990659661503,
-      "provisional_return": -0.020431990659661503,
-      "official_nav": 0.9634420697412823,
-      "mtm_nav": 0.9437570303712035,
-      "mtm_total_return": -0.05624296962879649
+      "open": 1.712,
+      "close": 1.749,
+      "gross_return": 0.0216121495327104,
+      "provisional_return": 0.0216121495327104,
+      "official_nav": 0.9628796400449943,
+      "mtm_nav": 0.9836895388076491,
+      "mtm_total_return": -0.01631046119235091
     }
   },
   "series": {
@@ -183,6 +183,17 @@
         "nav": 0.9634420697412823,
         "drawdown": -0.056198347107437985,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-09-22",
+        "execution_date": "2026-09-23",
+        "valuation_date": "2026-09-24",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": -0.0005837711617047159,
+        "nav": 0.9628796400449943,
+        "drawdown": -0.0567493112947659,
+        "status": "settled"
       }
     ],
     "original": [
@@ -250,6 +261,17 @@
         "daily_return": -0.002329644729178848,
         "nav": 0.93668716737753,
         "drawdown": -0.08240783272878871,
+        "status": "settled"
+      },
+      {
+        "signal_date": "2026-09-22",
+        "execution_date": "2026-09-23",
+        "valuation_date": "2026-09-24",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": -0.0005837711617047159,
+        "nav": 0.9361403564216761,
+        "drawdown": -0.08294349657424782,
         "status": "settled"
       }
     ],
@@ -319,6 +341,17 @@
         "nav": 0.9634420697412823,
         "drawdown": -0.056198347107437985,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-09-22",
+        "execution_date": "2026-09-23",
+        "valuation_date": "2026-09-24",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": -0.0005837711617047159,
+        "nav": 0.9628796400449943,
+        "drawdown": -0.0567493112947659,
+        "status": "settled"
       }
     ]
   },
@@ -360,7 +393,7 @@
       },
       {
         "signal_date": "2026-09-23",
-        "execution_date": "next trading day",
+        "execution_date": "2026-09-24",
         "from": "159981",
         "to": "159509",
         "to_name": "纳指科技",
@@ -439,12 +472,19 @@
         "daily_return": -0.004416094210009769,
         "drawdown": -0.00441609421000988,
         "status": "close"
+      },
+      {
+        "date": "2026-09-24",
+        "nav": 0.9930521091811413,
+        "daily_return": -0.013799901429275563,
+        "drawdown": -0.018155053974484914,
+        "status": "close"
       }
     ],
     "mark_to_market": {
-      "valuation_date": "2026-09-23",
-      "nav": 1.0069478908188585,
-      "total_return": 0.006947890818858493
+      "valuation_date": "2026-09-24",
+      "nav": 0.9930521091811413,
+      "total_return": -0.006947890818858715
     }
   },
   "notes": [
