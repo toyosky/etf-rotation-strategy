@@ -23,7 +23,7 @@ function riskOf(r){
 }
 function riskLabel(r){
   const raw=String(r.risk_direction_current||r.shock_direction||r.risk_direction||'none');
-  const map={negative:'负面',negative_strengthened:'负面增强',positive:'正面',positive_strengthened:'正面增强',mixed:'混合',none:'无明显方向'};
+  const map={negative:'负面',negative_strengthened:'负面增强',strong_negative:'强负面',positive:'正面',positive_strengthened:'正面增强',strong_positive:'强正面',mixed:'混合',none:'无明显方向'};
   return map[raw]||raw;
 }
 function normalize(r){
@@ -35,16 +35,16 @@ function normalize(r){
     cutoff:r.information_cutoff||r.review_timestamp||'',
     risk:riskOf(r),
     riskLabel:riskLabel(r),
-    analysis:r.analysis||r.notes||'暂无分析。',
+    analysis:r.composite_observation||r.analysis||r.underlying_market_observation||r.underlying_intraday_summary||r.notes||'暂无分析。',
     noNew:Boolean(r.no_new_information),
     hypothesis:r.hypothesis_tag||'',
-    sources:Array.isArray(r.sources)?r.sources:[],
+    sources:Array.isArray(r.new_information)&&r.new_information.length?r.new_information:(Array.isArray(r.sources)?r.sources:[]),
     bullets:Array.isArray(r.new_information_summary)?r.new_information_summary:[],
     raw:r
   };
 }
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function sourceTitle(s){return s.source_title||s.headline||s.source_name||'来源'}
+function sourceTitle(s){return s.source_title||s.headline||s.source_name||s.source||'来源'}
 function sourceSummary(s){return s.factual_summary||s.summary||s.source_excerpt||''}
 function sourceTime(s){return s.source_published_at||s.published_at||''}
 function renderSource(s){
