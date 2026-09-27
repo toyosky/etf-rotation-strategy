@@ -34,9 +34,9 @@
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 30.76923076923077,
     "gap_percentile": 40.476190476190474,
-    "target_score": 0.2756015853735733,
-    "cash_score": 0.006073359199221058,
-    "carrier_score": 0.007903516958677553,
+    "target_score": 0.2756015853735723,
+    "cash_score": 0.006073359199228275,
+    "carrier_score": 0.007903516958680716,
     "completed_through": "2026-09-24",
     "performance_signal_through": "2026-09-22"
   },
