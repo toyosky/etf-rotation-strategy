@@ -1407,9 +1407,25 @@ def resolve_void_target(context, signal_date, rows, base_target, holdings, snaps
             g.void_note = "State Map暂不可用；不新启Void"
         g.last_output_target = target
         return target
-    is_void = snapshot.get("quadrant") == "DEFENSIVE_VOID"
+    map_is_void = snapshot.get("quadrant") == "DEFENSIVE_VOID"
     breadth = finite_number(snapshot.get("breadth_pct"))
     gap_pct = finite_number(snapshot.get("gap_percentile"))
+    raw_leader = snapshot.get("top1")
+    exit_blocked_by_premium = (
+        g.void_in_void
+        and not map_is_void
+        and raw_leader is not None
+        and raw_leader in g.premium_blacklist
+    )
+    # State Map继续反映raw市场结构；但如果本次Void退出由不可执行的高溢价raw leader主导，
+    # 执行层不允许可执行Top2自动继位，继续沿用既有Void incumbent/route。
+    is_void = map_is_void or exit_blocked_by_premium
+    if exit_blocked_by_premium:
+        log.info(
+            "DEFENSIVE_VOID退出被溢价阻止：raw leader=%s处于溢价黑名单；"
+            "State Map=%s，继续沿用Void目标"
+            % (display(raw_leader), snapshot.get("quadrant"))
+        )
     if not is_void:
         if g.void_in_void:
             log.info("DEFENSIVE_VOID退出：恢复后台V1目标%s" % display(base_target))
@@ -1443,8 +1459,16 @@ def resolve_void_target(context, signal_date, rows, base_target, holdings, snaps
         return target
     if g.void_routed:
         target = g.void_route_target
-        g.void_decision = "VOID_HOLD_ROUTED"
-        g.void_note = "Void尚未退出：继续保持已冻结route target=%s" % display(target)
+        if exit_blocked_by_premium:
+            g.void_decision = "VOID_EXIT_BLOCKED_PREMIUM_HOLD_ROUTED"
+            g.void_note = (
+                "State Map已离开Void，但raw leader=%s因溢价不可执行；"
+                "阻止恢复V1，继续已冻结route target=%s"
+                % (display(raw_leader), display(target))
+            )
+        else:
+            g.void_decision = "VOID_HOLD_ROUTED"
+            g.void_note = "Void尚未退出：继续保持已冻结route target=%s" % display(target)
         g.last_output_target = target
         return target
     entry_b = finite_number(g.void_entry_breadth)
@@ -1465,7 +1489,14 @@ def resolve_void_target(context, signal_date, rows, base_target, holdings, snaps
     )
     if incumbent_valid or not deepened:
         target = incumbent
-        if deepened:
+        if exit_blocked_by_premium:
+            g.void_decision = "VOID_EXIT_BLOCKED_PREMIUM"
+            g.void_note = (
+                "State Map已离开Void，但raw leader=%s因溢价不可执行；"
+                "不允许可执行Top2继位，继续Void incumbent=%s"
+                % (display(raw_leader), display(incumbent))
+            )
+        elif deepened:
             g.void_decision = "VOID_FREEZE_VALID"
             g.void_note = (
                 "Void已深化，但incumbent仍有效：%s raw %.6f > 511220 %.6f，继续冻结"
