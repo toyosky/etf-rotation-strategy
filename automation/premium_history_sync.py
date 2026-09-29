@@ -16,12 +16,15 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import os
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import akshare as ak
 import pandas as pd
+import requests
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import MetaData, Table
@@ -73,29 +76,79 @@ def _col(df: pd.DataFrame, names: list[str]) -> str | None:
 
 
 def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
-    try:
-        df = ak.fund_etf_fund_info_em(
-            fund=symbol,
-            start_date=start_date,
-            end_date=end_date,
-        )
-    except Exception:
-        df = pd.DataFrame()
+    """Fetch unit-NAV history directly from Eastmoney with bounded retries/timeouts.
 
-    if df is None or df.empty:
-        # Fallback covers products that Eastmoney exposes through the general fund endpoint.
-        try:
-            df = ak.fund_open_fund_info_em(
-                symbol=symbol,
-                indicator="单位净值走势",
-                period="成立来",
-            )
-        except Exception:
-            df = pd.DataFrame()
+    AKShare's fund_etf_fund_info_em currently paginates at 20 rows per request
+    without an explicit timeout. That is unnecessarily slow for multi-year,
+    multi-symbol backfills and makes CI more vulnerable to transient Eastmoney
+    throttling. This uses the same public Eastmoney endpoint with larger pages.
+    """
+    url = "https://api.fund.eastmoney.com/f10/lsjz"
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
+        ),
+        "Referer": f"https://fundf10.eastmoney.com/jjjz_{symbol}.html",
+    }
+    page_size = 200
+    params = {
+        "fundCode": symbol,
+        "pageIndex": 1,
+        "pageSize": page_size,
+        "startDate": f"{start_date[:4]}-{start_date[4:6]}-{start_date[6:]}",
+        "endDate": f"{end_date[:4]}-{end_date[4:6]}-{end_date[6:]}",
+    }
 
-    if df is None or df.empty:
+    session = requests.Session()
+
+    def get_page(page: int) -> dict:
+        last_exc: Exception | None = None
+        for attempt in range(3):
+            try:
+                params["pageIndex"] = page
+                params["_"] = int(time.time() * 1000)
+                resp = session.get(url, params=params, headers=headers, timeout=15)
+                resp.raise_for_status()
+                data = resp.json()
+                if not isinstance(data, dict):
+                    raise ValueError("Eastmoney NAV response is not a JSON object")
+                return data
+            except Exception as exc:
+                last_exc = exc
+                if attempt < 2:
+                    time.sleep(1.5 * (attempt + 1))
+        assert last_exc is not None
+        raise last_exc
+
+    first = get_page(1)
+    total = int(first.get("TotalCount") or 0)
+    data_block = first.get("Data") or {}
+    first_rows = data_block.get("LSJZList") or []
+    if total <= 0 or not first_rows:
         return pd.DataFrame()
 
+    pages = max(1, math.ceil(total / page_size))
+    rows = list(first_rows)
+    for page in range(2, pages + 1):
+        data = get_page(page)
+        block = data.get("Data") or {}
+        rows.extend(block.get("LSJZList") or [])
+        time.sleep(0.15)
+
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return pd.DataFrame()
+
+    rename = {
+        "FSRQ": "净值日期",
+        "DWJZ": "单位净值",
+        "LJJZ": "累计净值",
+        "JZZZL": "日增长率",
+        "SGZT": "申购状态",
+        "SHZT": "赎回状态",
+    }
+    df = df.rename(columns=rename)
     date_col = _col(df, ["净值日期", "日期"])
     nav_col = _col(df, ["单位净值"])
     if not date_col or not nav_col:
@@ -121,7 +174,6 @@ def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
     out = out.dropna(subset=["nav_date", "unit_nav"])
     out = out[out["unit_nav"] > 0]
     return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
-
 
 def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, end_date: str) -> pd.DataFrame:
     if instrument_type == "LOF":
@@ -253,7 +305,7 @@ def latest_summary(engine) -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", choices=["auto", "backfill", "preopen"], default="auto")
-    ap.add_argument("--start-date", default="20000101")
+    ap.add_argument("--start-date", default="20210101")
     ap.add_argument("--lookback-days", type=int, default=45)
     ap.add_argument("--summary", default="premium-history-sync-summary.json")
     args = ap.parse_args()
