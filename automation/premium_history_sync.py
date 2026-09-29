@@ -40,7 +40,7 @@ MONITOR_SYMBOLS = {
     "159529", "159981", "501018", "513530", "511380", "164824", "513500",
 }
 
-PACKAGE = "westock-data-skillhub@1.0.5"
+PACKAGE = "westock-data-skillhub@1.0.3"
 
 
 def tencent_code(symbol: str) -> str:
