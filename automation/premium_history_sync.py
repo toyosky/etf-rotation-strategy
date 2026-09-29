@@ -26,7 +26,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import MetaData, Table
 
-DB_ENV = "ETF_DAILY_BARS_DATABASE_URL"
+# Workflow trigger/version: v1\nDB_ENV = "ETF_DAILY_BARS_DATABASE_URL"
 TABLE = "fund_premium_history"
 UNIVERSE_PATH = Path(__file__).with_name("tencent_daily_universe.csv")
 
