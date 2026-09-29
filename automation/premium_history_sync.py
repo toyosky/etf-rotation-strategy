@@ -22,7 +22,6 @@ import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-import akshare as ak
 import pandas as pd
 import requests
 from sqlalchemy import create_engine, text
@@ -176,28 +175,56 @@ def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
     return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
 
 def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, end_date: str) -> pd.DataFrame:
-    if instrument_type == "LOF":
-        df = ak.fund_lof_hist_em(
-            symbol=symbol, period="daily", start_date=start_date, end_date=end_date, adjust=""
+    """Fetch same-day unadjusted exchange closes directly from Eastmoney."""
+    url = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+    market_id = 1 if symbol.startswith(("5", "6")) else 0
+    params = {
+        "secid": f"{market_id}.{symbol}",
+        "fields1": "f1,f2,f3,f4,f5,f6",
+        "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
+        "klt": "101",
+        "fqt": "0",
+        "beg": start_date,
+        "end": end_date,
+        "ut": "7eea3edcaed734bea9cbfc24409ed989",
+    }
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
         )
-    else:
-        df = ak.fund_etf_hist_em(
-            symbol=symbol, period="daily", start_date=start_date, end_date=end_date, adjust=""
-        )
-    if df is None or df.empty:
-        return pd.DataFrame()
-    date_col = _col(df, ["日期"])
-    close_col = _col(df, ["收盘"])
-    if not date_col or not close_col:
-        return pd.DataFrame()
-    out = pd.DataFrame({
-        "nav_date": pd.to_datetime(df[date_col], errors="coerce").dt.date,
-        "market_close": pd.to_numeric(df[close_col], errors="coerce"),
-    })
-    out = out.dropna(subset=["nav_date", "market_close"])
-    out = out[out["market_close"] > 0]
-    return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
+    }
 
+    last_exc: Exception | None = None
+    for attempt in range(3):
+        try:
+            resp = requests.get(url, params=params, headers=headers, timeout=15)
+            resp.raise_for_status()
+            payload = resp.json()
+            data = payload.get("data") if isinstance(payload, dict) else None
+            klines = (data or {}).get("klines") or []
+            if not klines:
+                return pd.DataFrame()
+            rows = []
+            for line in klines:
+                parts = str(line).split(",")
+                if len(parts) < 3:
+                    continue
+                rows.append({"nav_date": parts[0], "market_close": parts[2]})
+            out = pd.DataFrame(rows)
+            if out.empty:
+                return out
+            out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
+            out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
+            out = out.dropna(subset=["nav_date", "market_close"])
+            out = out[out["market_close"] > 0]
+            return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
+        except Exception as exc:
+            last_exc = exc
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    assert last_exc is not None
+    raise last_exc
 
 def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str) -> list[dict]:
     symbol = meta["symbol"]
@@ -226,8 +253,8 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
             "nav_daily_growth_pct": None if pd.isna(x.get("nav_daily_growth_pct")) else float(x["nav_daily_growth_pct"]),
             "subscription_status": None if pd.isna(x.get("subscription_status")) else str(x.get("subscription_status")),
             "redemption_status": None if pd.isna(x.get("redemption_status")) else str(x.get("redemption_status")),
-            "source_nav": "eastmoney_akshare",
-            "source_price": "eastmoney_akshare_unadjusted",
+            "source_nav": "eastmoney_direct",
+            "source_price": "eastmoney_direct_unadjusted",
             "first_seen_at": now if live_observation else None,
             "first_seen_phase": "preopen" if live_observation else None,
             "pit_safe": live_observation,
