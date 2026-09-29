@@ -16,14 +16,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import math
 import os
+import shutil
+import subprocess
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import pandas as pd
-import requests
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import MetaData, Table
@@ -39,6 +39,65 @@ MONITOR_SYMBOLS = {
     "159934", "159985", "161226", "513100", "159957", "159509", "513290",
     "159529", "159981", "501018", "513530", "511380", "164824", "513500",
 }
+
+PACKAGE = "westock-data-skillhub@1.0.5"
+
+
+def tencent_code(symbol: str) -> str:
+    return ("sh" if symbol.startswith(("5", "6")) else "sz") + symbol
+
+
+def run_westock(args: list[str], attempts: int = 3):
+    npx = shutil.which("npx")
+    if not npx:
+        raise RuntimeError("npx is unavailable")
+    cmd = [npx, "-y", PACKAGE, *args, "--raw"]
+    last_error = ""
+    for attempt in range(attempts):
+        try:
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, encoding="utf-8",
+                errors="replace", timeout=180
+            )
+        except subprocess.TimeoutExpired as exc:
+            last_error = f"timeout: {exc}"
+        else:
+            if result.returncode == 0 and result.stdout.strip():
+                try:
+                    payload = json.loads(result.stdout)
+                except json.JSONDecodeError as exc:
+                    last_error = f"invalid JSON: {exc}; stdout={result.stdout[-500:]}"
+                else:
+                    if not (isinstance(payload, dict) and payload.get("success") is False):
+                        return payload
+                    last_error = str(payload.get("error") or payload)
+            else:
+                last_error = (result.stderr or result.stdout or "westock failed")[-1000:]
+        if attempt + 1 < attempts:
+            time.sleep(min(2 ** attempt, 5))
+    raise RuntimeError(last_error or "westockdata request failed")
+
+
+def payload_rows(payload) -> list[dict]:
+    if isinstance(payload, list):
+        return [x for x in payload if isinstance(x, dict)]
+    if isinstance(payload, dict):
+        for key in ("data", "items", "list", "rows", "result"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [x for x in value if isinstance(x, dict)]
+            if isinstance(value, dict):
+                nested = payload_rows(value)
+                if nested:
+                    return nested
+    return []
+
+
+def first_value(row: dict, keys: tuple[str, ...]):
+    for key in keys:
+        if key in row and row[key] not in (None, ""):
+            return row[key]
+    return None
 
 
 def db_url() -> str:
@@ -75,156 +134,66 @@ def _col(df: pd.DataFrame, names: list[str]) -> str | None:
 
 
 def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
-    """Fetch unit-NAV history directly from Eastmoney with bounded retries/timeouts.
-
-    AKShare's fund_etf_fund_info_em currently paginates at 20 rows per request
-    without an explicit timeout. That is unnecessarily slow for multi-year,
-    multi-symbol backfills and makes CI more vulnerable to transient Eastmoney
-    throttling. This uses the same public Eastmoney endpoint with larger pages.
-    """
-    url = "https://api.fund.eastmoney.com/f10/lsjz"
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
-        ),
-        "Referer": f"https://fundf10.eastmoney.com/jjjz_{symbol}.html",
-    }
-    page_size = 200
-    params = {
-        "fundCode": symbol,
-        "pageIndex": 1,
-        "pageSize": page_size,
-        "startDate": f"{start_date[:4]}-{start_date[4:6]}-{start_date[6:]}",
-        "endDate": f"{end_date[:4]}-{end_date[4:6]}-{end_date[6:]}",
-    }
-
-    session = requests.Session()
-
-    def get_page(page: int) -> dict:
-        last_exc: Exception | None = None
-        for attempt in range(3):
-            try:
-                params["pageIndex"] = page
-                params["_"] = int(time.time() * 1000)
-                resp = session.get(url, params=params, headers=headers, timeout=15)
-                resp.raise_for_status()
-                data = resp.json()
-                if not isinstance(data, dict):
-                    raise ValueError("Eastmoney NAV response is not a JSON object")
-                return data
-            except Exception as exc:
-                last_exc = exc
-                if attempt < 2:
-                    time.sleep(1.5 * (attempt + 1))
-        assert last_exc is not None
-        raise last_exc
-
-    first = get_page(1)
-    total = int(first.get("TotalCount") or 0)
-    data_block = first.get("Data") or {}
-    first_rows = data_block.get("LSJZList") or []
-    if total <= 0 or not first_rows:
+    payload = run_westock([
+        "etf-nav", tencent_code(symbol),
+        "--start", pd.to_datetime(start_date).date().isoformat(),
+        "--end", pd.to_datetime(end_date).date().isoformat(),
+    ])
+    rows = payload_rows(payload)
+    if not rows:
         return pd.DataFrame()
 
-    pages = max(1, math.ceil(total / page_size))
-    rows = list(first_rows)
-    for page in range(2, pages + 1):
-        data = get_page(page)
-        block = data.get("Data") or {}
-        rows.extend(block.get("LSJZList") or [])
-        time.sleep(0.15)
-
-    df = pd.DataFrame(rows)
-    if df.empty:
-        return pd.DataFrame()
-
-    rename = {
-        "FSRQ": "净值日期",
-        "DWJZ": "单位净值",
-        "LJJZ": "累计净值",
-        "JZZZL": "日增长率",
-        "SGZT": "申购状态",
-        "SHZT": "赎回状态",
-    }
-    df = df.rename(columns=rename)
-    date_col = _col(df, ["净值日期", "日期"])
-    nav_col = _col(df, ["单位净值"])
-    if not date_col or not nav_col:
-        return pd.DataFrame()
-
-    out = pd.DataFrame()
-    out["nav_date"] = pd.to_datetime(df[date_col], errors="coerce").dt.date
-    out["unit_nav"] = pd.to_numeric(df[nav_col], errors="coerce")
-
-    cum_col = _col(df, ["累计净值"])
-    growth_col = _col(df, ["日增长率"])
-    sub_col = _col(df, ["申购状态"])
-    red_col = _col(df, ["赎回状态"])
-
-    out["cumulative_nav"] = pd.to_numeric(df[cum_col], errors="coerce") if cum_col else None
-    out["nav_daily_growth_pct"] = pd.to_numeric(df[growth_col], errors="coerce") if growth_col else None
-    out["subscription_status"] = df[sub_col].astype(str) if sub_col else None
-    out["redemption_status"] = df[red_col].astype(str) if red_col else None
-
-    start = pd.to_datetime(start_date).date()
-    end = pd.to_datetime(end_date).date()
-    out = out[(out["nav_date"] >= start) & (out["nav_date"] <= end)]
+    out_rows = []
+    for row in rows:
+        nav_date = first_value(row, ("date", "navDate", "tradeDate", "day", "净值日期", "日期"))
+        unit_nav = first_value(row, ("nav", "unitNav", "unit_nav", "unitNetValue", "netValue", "单位净值"))
+        cumulative_nav = first_value(row, ("accNav", "cumulativeNav", "cumulative_nav", "totalNav", "累计净值"))
+        growth = first_value(row, ("growthPct", "navGrowthPct", "dailyGrowthPct", "日增长率"))
+        if nav_date is None or unit_nav is None:
+            continue
+        out_rows.append({
+            "nav_date": nav_date,
+            "unit_nav": unit_nav,
+            "cumulative_nav": cumulative_nav,
+            "nav_daily_growth_pct": growth,
+            "subscription_status": None,
+            "redemption_status": None,
+        })
+    out = pd.DataFrame(out_rows)
+    if out.empty:
+        raise ValueError(f"Tencent etf-nav schema unsupported for {symbol}; sample={rows[:2]}")
+    out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
+    out["unit_nav"] = pd.to_numeric(out["unit_nav"], errors="coerce")
+    out["cumulative_nav"] = pd.to_numeric(out["cumulative_nav"], errors="coerce")
+    out["nav_daily_growth_pct"] = pd.to_numeric(out["nav_daily_growth_pct"], errors="coerce")
     out = out.dropna(subset=["nav_date", "unit_nav"])
     out = out[out["unit_nav"] > 0]
     return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
 
 def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, end_date: str) -> pd.DataFrame:
-    """Fetch same-day unadjusted exchange closes directly from Eastmoney."""
-    url = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
-    market_id = 1 if symbol.startswith(("5", "6")) else 0
-    params = {
-        "secid": f"{market_id}.{symbol}",
-        "fields1": "f1,f2,f3,f4,f5,f6",
-        "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
-        "klt": "101",
-        "fqt": "0",
-        "beg": start_date,
-        "end": end_date,
-        "ut": "7eea3edcaed734bea9cbfc24409ed989",
-    }
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
-        )
-    }
-
-    last_exc: Exception | None = None
-    for attempt in range(3):
-        try:
-            resp = requests.get(url, params=params, headers=headers, timeout=15)
-            resp.raise_for_status()
-            payload = resp.json()
-            data = payload.get("data") if isinstance(payload, dict) else None
-            klines = (data or {}).get("klines") or []
-            if not klines:
-                return pd.DataFrame()
-            rows = []
-            for line in klines:
-                parts = str(line).split(",")
-                if len(parts) < 3:
-                    continue
-                rows.append({"nav_date": parts[0], "market_close": parts[2]})
-            out = pd.DataFrame(rows)
-            if out.empty:
-                return out
-            out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
-            out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
-            out = out.dropna(subset=["nav_date", "market_close"])
-            out = out[out["market_close"] > 0]
-            return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
-        except Exception as exc:
-            last_exc = exc
-            if attempt < 2:
-                time.sleep(1.5 * (attempt + 1))
-    assert last_exc is not None
-    raise last_exc
+    payload = run_westock([
+        "kline", tencent_code(symbol),
+        "--period", "day",
+        "--start", pd.to_datetime(start_date).date().isoformat(),
+        "--end", pd.to_datetime(end_date).date().isoformat(),
+        "--fq", "bfq",
+    ])
+    rows = payload_rows(payload)
+    out_rows = []
+    for row in rows:
+        bar_date = first_value(row, ("date", "tradeDate", "day", "日期"))
+        close = first_value(row, ("last", "close", "closePrice", "收盘"))
+        if bar_date is None or close is None:
+            continue
+        out_rows.append({"nav_date": bar_date, "market_close": close})
+    out = pd.DataFrame(out_rows)
+    if out.empty:
+        raise ValueError(f"Tencent bfq kline schema unsupported for {symbol}; sample={rows[:2]}")
+    out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
+    out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
+    out = out.dropna(subset=["nav_date", "market_close"])
+    out = out[out["market_close"] > 0]
+    return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
 
 def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str) -> list[dict]:
     symbol = meta["symbol"]
@@ -253,8 +222,8 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
             "nav_daily_growth_pct": None if pd.isna(x.get("nav_daily_growth_pct")) else float(x["nav_daily_growth_pct"]),
             "subscription_status": None if pd.isna(x.get("subscription_status")) else str(x.get("subscription_status")),
             "redemption_status": None if pd.isna(x.get("redemption_status")) else str(x.get("redemption_status")),
-            "source_nav": "eastmoney_direct",
-            "source_price": "eastmoney_direct_unadjusted",
+            "source_nav": "tencent_westock_etf_nav",
+            "source_price": "tencent_westock_bfq",
             "first_seen_at": now if live_observation else None,
             "first_seen_phase": "preopen" if live_observation else None,
             "pit_safe": live_observation,
