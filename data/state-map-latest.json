@@ -1,16 +1,16 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "breadth_count": 4,
   "breadth_total": 13,
   "breadth_pct": 30.8,
-  "cash_score": 0.008642,
+  "cash_score": 0.010724,
   "top1": "159509",
-  "top1_score": 2.436053,
+  "top1_score": 3.20609,
   "top2": "513100",
-  "top2_score": 0.662837,
-  "gap_raw": 1.773216,
-  "gap_percentile": 45.6,
-  "quadrant": "DEFENSIVE_VOID",
+  "top2_score": 0.783367,
+  "gap_raw": 2.422722,
+  "gap_percentile": 51.6,
+  "quadrant": "NARROW_LEADERSHIP",
   "updated_by": "github_action",
   "definition": "breadth=share(score>cash_score); leadership=rolling252 percentile(top1_score-top2_score)"
 }
