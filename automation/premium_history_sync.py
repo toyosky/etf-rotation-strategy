@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -24,6 +25,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import pandas as pd
+import requests
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import MetaData, Table
@@ -40,18 +42,21 @@ MONITOR_SYMBOLS = {
     "159529", "159981", "501018", "513530", "511380", "164824", "513500",
 }
 
-PACKAGE = "westock-data-skillhub@1.0.3"
+TENCENT_KLINE_PACKAGE = "westock-data-skillhub@1.0.5"
+TENCENT_NAV_PACKAGE = "westock-data-skillhub@1.0.3"
 
 
 def tencent_code(symbol: str) -> str:
     return ("sh" if symbol.startswith(("5", "6")) else "sz") + symbol
 
 
-def run_westock(args: list[str], attempts: int = 3):
+def run_westock(package: str, args: list[str], raw: bool = False, attempts: int = 3) -> str:
     npx = shutil.which("npx")
     if not npx:
         raise RuntimeError("npx is unavailable")
-    cmd = [npx, "-y", PACKAGE, *args, "--raw"]
+    cmd = [npx, "-y", package, *args]
+    if raw:
+        cmd.append("--raw")
     last_error = ""
     for attempt in range(attempts):
         try:
@@ -63,41 +68,50 @@ def run_westock(args: list[str], attempts: int = 3):
             last_error = f"timeout: {exc}"
         else:
             if result.returncode == 0 and result.stdout.strip():
-                try:
-                    payload = json.loads(result.stdout)
-                except json.JSONDecodeError as exc:
-                    last_error = f"invalid JSON: {exc}; stdout={result.stdout[-500:]}"
-                else:
-                    if not (isinstance(payload, dict) and payload.get("success") is False):
-                        return payload
-                    last_error = str(payload.get("error") or payload)
-            else:
-                last_error = (result.stderr or result.stdout or "westock failed")[-1000:]
+                return result.stdout
+            last_error = (result.stderr or result.stdout or "westock failed")[-1200:]
         if attempt + 1 < attempts:
             time.sleep(min(2 ** attempt, 5))
     raise RuntimeError(last_error or "westockdata request failed")
 
 
-def payload_rows(payload) -> list[dict]:
-    if isinstance(payload, list):
-        return [x for x in payload if isinstance(x, dict)]
-    if isinstance(payload, dict):
-        for key in ("data", "items", "list", "rows", "result"):
-            value = payload.get(key)
-            if isinstance(value, list):
-                return [x for x in value if isinstance(x, dict)]
-            if isinstance(value, dict):
-                nested = payload_rows(value)
-                if nested:
-                    return nested
-    return []
+def tencent_nav_fallback(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+    """Best-effort fallback for ETFs supported by Tencent's etf-nav command."""
+    try:
+        output = run_westock(
+            TENCENT_NAV_PACKAGE,
+            [
+                "etf-nav", tencent_code(symbol),
+                "--start", pd.to_datetime(start_date).date().isoformat(),
+                "--end", pd.to_datetime(end_date).date().isoformat(),
+            ],
+            raw=False,
+            attempts=2,
+        )
+    except Exception:
+        return pd.DataFrame()
 
-
-def first_value(row: dict, keys: tuple[str, ...]):
-    for key in keys:
-        if key in row and row[key] not in (None, ""):
-            return row[key]
-    return None
+    rows = []
+    for line in output.splitlines():
+        line = line.strip()
+        if not (line.startswith("|") and line.endswith("|")):
+            continue
+        parts = [x.strip() for x in line.strip("|").split("|")]
+        if len(parts) < 2:
+            continue
+        dt = pd.to_datetime(parts[0], errors="coerce")
+        nav = pd.to_numeric(parts[1], errors="coerce")
+        if pd.isna(dt) or pd.isna(nav) or float(nav) <= 0:
+            continue
+        rows.append({
+            "nav_date": dt.date(),
+            "unit_nav": float(nav),
+            "cumulative_nav": None,
+            "nav_daily_growth_pct": None,
+            "subscription_status": None,
+            "redemption_status": None,
+        })
+    return pd.DataFrame(rows).sort_values("nav_date").drop_duplicates("nav_date", keep="last") if rows else pd.DataFrame()
 
 
 def db_url() -> str:
@@ -134,61 +148,144 @@ def _col(df: pd.DataFrame, names: list[str]) -> str | None:
 
 
 def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
-    payload = run_westock([
-        "etf-nav", tencent_code(symbol),
-        "--start", pd.to_datetime(start_date).date().isoformat(),
-        "--end", pd.to_datetime(end_date).date().isoformat(),
-    ])
-    rows = payload_rows(payload)
-    if not rows:
+    """Fetch unit-NAV history directly from Eastmoney with bounded retries/timeouts.
+
+    AKShare's fund_etf_fund_info_em currently paginates at 20 rows per request
+    without an explicit timeout. That is unnecessarily slow for multi-year,
+    multi-symbol backfills and makes CI more vulnerable to transient Eastmoney
+    throttling. This uses the same public Eastmoney endpoint with larger pages.
+    """
+    url = "https://api.fund.eastmoney.com/f10/lsjz"
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
+        ),
+        "Referer": f"https://fundf10.eastmoney.com/jjjz_{symbol}.html",
+    }
+    page_size = 200
+    params = {
+        "fundCode": symbol,
+        "pageIndex": 1,
+        "pageSize": page_size,
+        "startDate": f"{start_date[:4]}-{start_date[4:6]}-{start_date[6:]}",
+        "endDate": f"{end_date[:4]}-{end_date[4:6]}-{end_date[6:]}",
+    }
+
+    session = requests.Session()
+
+    def get_page(page: int) -> dict:
+        last_exc: Exception | None = None
+        for attempt in range(5):
+            try:
+                params["pageIndex"] = page
+                params["_"] = int(time.time() * 1000)
+                resp = session.get(url, params=params, headers=headers, timeout=15)
+                resp.raise_for_status()
+                data = resp.json()
+                if not isinstance(data, dict):
+                    raise ValueError("Eastmoney NAV response is not a JSON object")
+                return data
+            except Exception as exc:
+                last_exc = exc
+                if attempt < 4:
+                    time.sleep(min(2.0 * (attempt + 1), 8.0))
+        assert last_exc is not None
+        raise last_exc
+
+    try:
+        first = get_page(1)
+    except Exception:
+        fallback = tencent_nav_fallback(symbol, start_date, end_date)
+        if not fallback.empty:
+            return fallback
+        raise
+    total = int(first.get("TotalCount") or 0)
+    data_block = first.get("Data") or {}
+    first_rows = data_block.get("LSJZList") or []
+    if total <= 0 or not first_rows:
         return pd.DataFrame()
 
-    out_rows = []
-    for row in rows:
-        nav_date = first_value(row, ("date", "navDate", "tradeDate", "day", "净值日期", "日期"))
-        unit_nav = first_value(row, ("nav", "unitNav", "unit_nav", "unitNetValue", "netValue", "单位净值"))
-        cumulative_nav = first_value(row, ("accNav", "cumulativeNav", "cumulative_nav", "totalNav", "累计净值"))
-        growth = first_value(row, ("growthPct", "navGrowthPct", "dailyGrowthPct", "日增长率"))
-        if nav_date is None or unit_nav is None:
-            continue
-        out_rows.append({
-            "nav_date": nav_date,
-            "unit_nav": unit_nav,
-            "cumulative_nav": cumulative_nav,
-            "nav_daily_growth_pct": growth,
-            "subscription_status": None,
-            "redemption_status": None,
-        })
-    out = pd.DataFrame(out_rows)
-    if out.empty:
-        raise ValueError(f"Tencent etf-nav schema unsupported for {symbol}; sample={rows[:2]}")
-    out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
-    out["unit_nav"] = pd.to_numeric(out["unit_nav"], errors="coerce")
-    out["cumulative_nav"] = pd.to_numeric(out["cumulative_nav"], errors="coerce")
-    out["nav_daily_growth_pct"] = pd.to_numeric(out["nav_daily_growth_pct"], errors="coerce")
+    pages = max(1, math.ceil(total / page_size))
+    rows = list(first_rows)
+    for page in range(2, pages + 1):
+        data = get_page(page)
+        block = data.get("Data") or {}
+        rows.extend(block.get("LSJZList") or [])
+        time.sleep(0.15)
+
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return pd.DataFrame()
+
+    rename = {
+        "FSRQ": "净值日期",
+        "DWJZ": "单位净值",
+        "LJJZ": "累计净值",
+        "JZZZL": "日增长率",
+        "SGZT": "申购状态",
+        "SHZT": "赎回状态",
+    }
+    df = df.rename(columns=rename)
+    date_col = _col(df, ["净值日期", "日期"])
+    nav_col = _col(df, ["单位净值"])
+    if not date_col or not nav_col:
+        return pd.DataFrame()
+
+    out = pd.DataFrame()
+    out["nav_date"] = pd.to_datetime(df[date_col], errors="coerce").dt.date
+    out["unit_nav"] = pd.to_numeric(df[nav_col], errors="coerce")
+
+    cum_col = _col(df, ["累计净值"])
+    growth_col = _col(df, ["日增长率"])
+    sub_col = _col(df, ["申购状态"])
+    red_col = _col(df, ["赎回状态"])
+
+    out["cumulative_nav"] = pd.to_numeric(df[cum_col], errors="coerce") if cum_col else None
+    out["nav_daily_growth_pct"] = pd.to_numeric(df[growth_col], errors="coerce") if growth_col else None
+    out["subscription_status"] = df[sub_col].astype(str) if sub_col else None
+    out["redemption_status"] = df[red_col].astype(str) if red_col else None
+
+    start = pd.to_datetime(start_date).date()
+    end = pd.to_datetime(end_date).date()
+    out = out[(out["nav_date"] >= start) & (out["nav_date"] <= end)]
     out = out.dropna(subset=["nav_date", "unit_nav"])
     out = out[out["unit_nav"] > 0]
     return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
 
 def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, end_date: str) -> pd.DataFrame:
-    payload = run_westock([
-        "kline", tencent_code(symbol),
-        "--period", "day",
-        "--start", pd.to_datetime(start_date).date().isoformat(),
-        "--end", pd.to_datetime(end_date).date().isoformat(),
-        "--fq", "bfq",
-    ])
-    rows = payload_rows(payload)
-    out_rows = []
-    for row in rows:
-        bar_date = first_value(row, ("date", "tradeDate", "day", "日期"))
-        close = first_value(row, ("last", "close", "closePrice", "收盘"))
+    """Fetch unadjusted daily closes from the already-proven Tencent westock pipeline."""
+    output = run_westock(
+        TENCENT_KLINE_PACKAGE,
+        [
+            "kline", tencent_code(symbol),
+            "--period", "day",
+            "--start", pd.to_datetime(start_date).date().isoformat(),
+            "--end", pd.to_datetime(end_date).date().isoformat(),
+            "--fq", "bfq",
+        ],
+        raw=True,
+        attempts=4,
+    )
+    try:
+        payload = json.loads(output)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Tencent BFQ returned invalid JSON: {exc}; tail={output[-600:]}") from exc
+    raw_rows = payload.get("data", []) if isinstance(payload, dict) else payload
+    if not isinstance(raw_rows, list):
+        return pd.DataFrame()
+    rows = []
+    for row in raw_rows:
+        if not isinstance(row, dict):
+            continue
+        bar_date = row.get("date")
+        close = row.get("last", row.get("close"))
         if bar_date is None or close is None:
             continue
-        out_rows.append({"nav_date": bar_date, "market_close": close})
-    out = pd.DataFrame(out_rows)
+        rows.append({"nav_date": bar_date, "market_close": close})
+    out = pd.DataFrame(rows)
     if out.empty:
-        raise ValueError(f"Tencent bfq kline schema unsupported for {symbol}; sample={rows[:2]}")
+        return out
     out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
     out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
     out = out.dropna(subset=["nav_date", "market_close"])
@@ -222,7 +319,7 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
             "nav_daily_growth_pct": None if pd.isna(x.get("nav_daily_growth_pct")) else float(x["nav_daily_growth_pct"]),
             "subscription_status": None if pd.isna(x.get("subscription_status")) else str(x.get("subscription_status")),
             "redemption_status": None if pd.isna(x.get("redemption_status")) else str(x.get("redemption_status")),
-            "source_nav": "tencent_westock_etf_nav",
+            "source_nav": "eastmoney_direct_or_tencent_fallback",
             "source_price": "tencent_westock_bfq",
             "first_seen_at": now if live_observation else None,
             "first_seen_phase": "preopen" if live_observation else None,
@@ -269,12 +366,25 @@ def upsert_rows(engine, rows: list[dict]) -> int:
     )
     with engine.begin() as conn:
         result = conn.execute(stmt)
-    return int(result.rowcount or 0)
+    return len(rows)
 
 
 def table_count(engine) -> int:
     with engine.connect() as conn:
         return int(conn.execute(text(f"select count(*) from public.{TABLE}")).scalar_one())
+
+
+def coverage_summary(engine) -> dict:
+    with engine.connect() as conn:
+        rows = conn.execute(text(f"""
+            select symbol, count(*) as n, min(nav_date) as min_date, max(nav_date) as max_date
+            from public.{TABLE}
+            where symbol = any(:symbols)
+            group by symbol
+        """), {"symbols": sorted(MONITOR_SYMBOLS)}).mappings().all()
+    by_symbol = {str(r["symbol"]): dict(r) for r in rows}
+    missing = sorted(MONITOR_SYMBOLS - set(by_symbol))
+    return {"by_symbol": by_symbol, "missing_symbols": missing}
 
 
 def latest_summary(engine) -> list[dict]:
@@ -308,9 +418,15 @@ def main() -> int:
 
     engine = create_engine(db_url(), pool_pre_ping=True)
     existing = table_count(engine)
+    coverage_before = coverage_summary(engine)
     mode = args.mode
     if mode == "auto":
-        mode = "backfill" if existing == 0 else "preopen"
+        oldest = [
+            r.get("min_date") for r in coverage_before["by_symbol"].values()
+            if r.get("min_date") is not None
+        ]
+        shallow_history = (not oldest) or min(oldest) > pd.to_datetime(args.start_date).date()
+        mode = "backfill" if coverage_before["missing_symbols"] or shallow_history else "preopen"
 
     today = datetime.now(timezone.utc).date()
     if mode == "backfill":
@@ -337,6 +453,8 @@ def main() -> int:
         "mode": mode,
         "range": [start_date, end_date],
         "existing_before": existing,
+        "coverage_before": coverage_before,
+        "coverage_after": coverage_summary(engine),
         "upserted": total,
         "symbols": per_symbol,
         "errors": errors,
@@ -344,7 +462,7 @@ def main() -> int:
     }
     Path(args.summary).write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2, default=str))
-    return 1 if errors and len(errors) == len(MONITOR_SYMBOLS) else 0
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":
