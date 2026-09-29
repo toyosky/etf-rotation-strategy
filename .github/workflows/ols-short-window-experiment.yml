@@ -1,6 +1,10 @@
 name: OLS Short Window Experiment
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'research/post_ols_life/ols_short_window_experiment.py'
+      - '.github/workflows/ols-short-window-experiment.yml'
 permissions:
   contents: read
 jobs:
