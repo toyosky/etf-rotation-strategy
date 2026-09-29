@@ -295,12 +295,18 @@ def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, e
 def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str) -> list[dict]:
     symbol = meta["symbol"]
     nav = fetch_nav(symbol, start_date, end_date)
+    if nav.empty:
+        raise RuntimeError(f"No NAV rows returned for {symbol}")
     px = fetch_unadjusted_price(symbol, meta["instrument_type"], start_date, end_date)
-    if nav.empty or px.empty:
-        return []
+    if px.empty:
+        raise RuntimeError(f"No BFQ price rows returned for {symbol}; nav_rows={len(nav)}")
     merged = nav.merge(px, on="nav_date", how="inner")
     if merged.empty:
-        return []
+        raise RuntimeError(
+            f"NAV/price date intersection empty for {symbol}; "
+            f"nav={nav['nav_date'].min()}..{nav['nav_date'].max()} ({len(nav)}), "
+            f"px={px['nav_date'].min()}..{px['nav_date'].max()} ({len(px)})"
+        )
 
     now = datetime.now(timezone.utc)
     live_observation = phase == "preopen"
