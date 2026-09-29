@@ -1,4 +1,6 @@
 const START_MONTH='2026-09';
+const SUPABASE_URL='https://gsyziuzezmmnvgdoazkg.supabase.co';
+const SUPABASE_KEY='sb_publishable_8jFjtjpds8Bn6dwV5bPSOg_DMX8NfcZ';
 
 function monthRange(start){
   const out=[]; const [sy,sm]=start.split('-').map(Number); const now=new Date();
@@ -7,13 +9,27 @@ function monthRange(start){
   while(y<ey || (y===ey && m<=em)){ out.push(`${y}-${String(m).padStart(2,'0')}`); m++; if(m===13){m=1;y++;} }
   return out.reverse();
 }
+function nextMonth(month){
+  let [y,m]=month.split('-').map(Number); m++; if(m===13){m=1;y++;}
+  return `${y}-${String(m).padStart(2,'0')}`;
+}
+async function loadMonthFromSupabase(month){
+  const start=`${month}-01`, end=`${nextMonth(month)}-01`;
+  const url=`${SUPABASE_URL}/rest/v1/live_news_audits?select=payload&audit_date=gte.${start}&audit_date=lt.${end}&order=audit_date.desc`;
+  const r=await fetch(url,{headers:{apikey:SUPABASE_KEY},cache:'no-store'});
+  if(!r.ok) throw new Error(`Supabase ${r.status}`);
+  const rows=await r.json();
+  return rows.map(x=>x.payload).filter(Boolean);
+}
+async function loadMonthFromGitHub(month){
+  const r=await fetch(`./data/live-news/${month}.jsonl?ts=${Date.now()}`,{cache:'no-store'});
+  if(!r.ok) return [];
+  const text=await r.text();
+  return text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).map(line=>{try{return JSON.parse(line)}catch{return null}}).filter(Boolean);
+}
 async function loadMonth(month){
-  try{
-    const r=await fetch(`./data/live-news/${month}.jsonl?ts=${Date.now()}`,{cache:'no-store'});
-    if(!r.ok) return [];
-    const text=await r.text();
-    return text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).map(line=>{try{return JSON.parse(line)}catch{return null}}).filter(Boolean);
-  }catch{return []}
+  try{return await loadMonthFromSupabase(month)}
+  catch(err){console.warn('Supabase live-news unavailable; falling back to repository JSONL.',err); try{return await loadMonthFromGitHub(month)}catch{return []}}
 }
 function riskOf(r){
   const raw=String(r.risk_direction_current||r.shock_direction||r.risk_direction||'none').toLowerCase();
