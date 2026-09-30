@@ -48,7 +48,7 @@ jobs:
       - name: Commit trigger snapshot
         shell: bash
         run: |
-          if git diff --quiet -- data/fundamental-audit-trigger.json; then
+          if [ -z "$(git status --porcelain -- data/fundamental-audit-trigger.json)" ]; then
             echo "Fundamental-audit trigger unchanged."
             exit 0
           fi
