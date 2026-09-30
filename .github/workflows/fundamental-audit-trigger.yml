@@ -5,8 +5,13 @@ on:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
+  workflow_run:
+    workflows:
+      - 'Tencent HFQ Daily Bars Sync'
+    types:
+      - completed
   schedule:
-    # 08:20 UTC = 16:20 Asia/Shanghai, after the 15:30 Tencent daily-bars sync.
+    # Fallback only. Primary trigger is completion of Tencent HFQ Daily Bars Sync.
     - cron: "20 8 * * *"
   workflow_dispatch:
 
@@ -19,6 +24,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
