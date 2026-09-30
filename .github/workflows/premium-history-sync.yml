@@ -1,14 +1,9 @@
 name: Premium History Sync
 
 on:
-  push:
-    paths:
-      - 'automation/premium_history_sync.py'
-      - 'automation/requirements-premium-history.txt'
-      - '.github/workflows/premium-history-sync.yml'
-  schedule:
-    # 01:20 UTC = 09:20 Asia/Shanghai. Capture NAV availability before the A-share open.
-    - cron: "20 1 * * *"
+  # Temporarily paused: automatic premium-history sync is disabled until
+  # a reliable unadjusted-price source is available. Keep manual dispatch
+  # for diagnostics/backfill only.
   workflow_dispatch:
     inputs:
       mode:
