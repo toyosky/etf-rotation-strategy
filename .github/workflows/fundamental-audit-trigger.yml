@@ -1,0 +1,89 @@
+name: Fundamental Audit Trigger
+
+on:
+  push:
+    paths:
+      - 'automation/build_fundamental_audit_trigger.py'
+      - '.github/workflows/fundamental-audit-trigger.yml'
+  schedule:
+    # 08:20 UTC = 16:20 Asia/Shanghai, after the 15:30 Tencent daily-bars sync.
+    - cron: "20 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fundamental-audit-trigger
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: python -m pip install numpy pandas sqlalchemy psycopg2-binary
+
+      - name: Compile trigger builder
+        run: python -m py_compile automation/build_fundamental_audit_trigger.py
+
+      - name: Build fundamental-audit trigger
+        run: python automation/build_fundamental_audit_trigger.py
+
+      - name: Commit trigger snapshot
+        shell: bash
+        run: |
+          if git diff --quiet -- data/fundamental-audit-trigger.json; then
+            echo "Fundamental-audit trigger unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fundamental-audit-trigger.json
+          git commit -m "data: refresh fundamental audit trigger"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Publish summary
+        if: always()
+        shell: bash
+        run: |
+          echo '## Fundamental audit trigger' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f data/fundamental-audit-trigger.json ]; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          x=json.load(open('data/fundamental-audit-trigger.json',encoding='utf-8'))
+          print(json.dumps({
+              'market_data_date': x.get('market_data_date'),
+              'current_holding': x.get('current_holding'),
+              'next_strategy_target': x.get('next_strategy_target'),
+              'audit_required': x.get('audit_required'),
+              'qualified_candidates': x.get('qualified_candidates'),
+              'trend_watch': x.get('trend_watch'),
+          },ensure_ascii=False,indent=2))
+          PY
+          fi
+
+      - name: Upload trigger artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: fundamental-audit-trigger-${{ github.run_id }}
+          path: data/fundamental-audit-trigger.json
+          if-no-files-found: warn
+          retention-days: 30
