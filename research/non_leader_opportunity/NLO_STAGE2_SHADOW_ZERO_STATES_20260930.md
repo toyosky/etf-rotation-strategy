@@ -1,7 +1,9 @@
 # Non-Leader Opportunity Study — Stage 2
 
 Date: 2026-09-30  
-Status: completed exploratory decomposition; diagnostic only; no live-rule change.
+Status: exploratory decomposition; zero-state threshold conclusions superseded by continuous raw-score correction; no live-rule change.
+
+> **Methodology correction (2026-09-30):** The `ZERO_DEEP_OVERSOLD / ZERO_NEAR_EXIT / ZERO_MIDDLE` split below is exploratory only and must not be treated as a validated state model. The production score masks negative raw OLS strength to zero for eligibility, while the underlying continuous value is `raw_score = annualized * R²` and can be negative. Subsequent analysis should use that continuous raw score directly and avoid thresholding the masked zero region unless independently validated out-of-sample.
 
 ## 1. Shadow leaders: Top2–5 are not harmless ranking noise
 
