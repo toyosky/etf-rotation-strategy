@@ -24,7 +24,7 @@ jobs:
       - name: Install data packages
         run: python -m pip install --disable-pip-version-check pandas numpy yfinance
 
-      - name: Download and convert global ETF history to CNY
+      - name: Download global ETF and 511220 history
         shell: bash
         run: |
           python - <<'PY'
@@ -32,7 +32,7 @@ jobs:
           import pandas as pd
           import yfinance as yf
 
-          tickers = ['SPY','DAX','EWJ','EWZ','GLD','CNY=X']
+          tickers = ['SPY','DAX','EWJ','EWZ','GLD','CNY=X','511220.SS']
           frames = {}
           for t in tickers:
               last = None
@@ -48,7 +48,8 @@ jobs:
                       )
                       if isinstance(x.columns, pd.MultiIndex):
                           x.columns = x.columns.get_level_values(0)
-                      if len(x) < 500:
+                      min_rows = 500
+                      if len(x) < min_rows:
                           raise RuntimeError(f'{t}: only {len(x)} rows')
                       x = x[['Open','Close']].copy()
                       x.index = pd.to_datetime(x.index).tz_localize(None)
@@ -68,21 +69,25 @@ jobs:
               z=pd.DataFrame({
                   'date':x.index,
                   'symbol':t,
-                  'open_usd':x['Open'].astype(float),
-                  'close_usd':x['Close'].astype(float),
-                  'usdcny_open':x['fx_open'].astype(float),
-                  'usdcny_close':x['fx_close'].astype(float),
+                  'open':x['Open'].astype(float)*x['fx_open'].astype(float),
+                  'close':x['Close'].astype(float)*x['fx_close'].astype(float),
               })
-              z['open_cny']=z['open_usd']*z['usdcny_open']
-              z['close_cny']=z['close_usd']*z['usdcny_close']
               out.append(z.reset_index(drop=True))
+          c=frames['511220.SS'].dropna().copy()
+          z=pd.DataFrame({
+              'date':c.index,
+              'symbol':'511220',
+              'open':c['Open'].astype(float),
+              'close':c['Close'].astype(float),
+          })
+          out.append(z.reset_index(drop=True))
           result=pd.concat(out,ignore_index=True).sort_values(['date','symbol'])
-          result.to_csv('base-global-rmb-daily.csv',index=False)
+          result.to_csv('base-assets-rmb-daily.csv',index=False)
           print(result.groupby('symbol').agg(rows=('date','size'),start=('date','min'),end=('date','max')))
           PY
 
       - uses: actions/upload-artifact@v4
         with:
           name: combined-base-history-${{ github.run_id }}
-          path: base-global-rmb-daily.csv
+          path: base-assets-rmb-daily.csv
           retention-days: 3
