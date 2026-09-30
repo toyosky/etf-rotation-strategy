@@ -1,108 +1,88 @@
-name: Tencent HFQ Daily Bars Sync
+name: One-off Global Base History
 
 on:
   push:
+    branches:
+      - research/combined-base-ols-20260930
     paths:
-      - 'automation/tencent_daily_sync.py'
-      - 'automation/tencent_daily_universe.csv'
-      - 'automation/test_tencent_daily_sync.py'
-      - 'automation/requirements-tencent-daily.txt'
-      - 'automation/build_state_map.py'
-      - 'automation/build_live_forward.py'
       - '.github/workflows/tencent-daily-bars-sync.yml'
-  schedule:
-    # 07:30 UTC = 15:30 Asia/Shanghai. GitHub cron is best-effort and may be delayed.
-    - cron: "30 7 * * *"
-  workflow_dispatch:
-    inputs:
-      lookback_days:
-        description: Calendar days to refetch and upsert
-        required: false
-        default: "14"
 
 permissions:
-  contents: write
-
-concurrency:
-  group: tencent-hfq-daily-bars-sync
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  sync:
+  research:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
-    env:
-      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-      LOOKBACK_DAYS: ${{ inputs.lookback_days || '14' }}
-      PYTHONPATH: research
-
+    timeout-minutes: 20
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "20"
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-          cache: pip
-          cache-dependency-path: automation/requirements-tencent-daily.txt
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --requirement automation/requirements-tencent-daily.txt
-          python -m pip install tabulate scipy
-      - name: Run unit checks
-        run: python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
-      - name: Fetch Tencent HFQ bars and upsert Supabase
-        run: |
-          python automation/tencent_daily_sync.py             --lookback-days "$LOOKBACK_DAYS"             --summary tencent-daily-sync-summary.json
-      - name: Rebuild market state map data
-        run: python automation/build_state_map.py
-      - name: Rebuild frozen strategy live tracker
-        run: python automation/build_live_forward.py
-      - name: Commit refreshed site data
+          python-version: '3.12'
+
+      - name: Install data packages
+        run: python -m pip install --disable-pip-version-check pandas numpy yfinance
+
+      - name: Download and convert global ETF history to CNY
         shell: bash
         run: |
-          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json; then
-            echo "Site data unchanged."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json
-          git commit -m "data: refresh daily market state and live strategy"
-          git pull --rebase origin main
-          git push origin HEAD:main
-      - name: Publish run summary
-        if: always()
-        shell: bash
-        run: |
-          if [ -f tencent-daily-sync-summary.json ]; then
-            echo '## Tencent HFQ daily sync' >> "$GITHUB_STEP_SUMMARY"
-            cat tencent-daily-sync-summary.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f data/state-map-latest.json ]; then
-            echo '' >> "$GITHUB_STEP_SUMMARY"
-            echo '## Market state map' >> "$GITHUB_STEP_SUMMARY"
-            cat data/state-map-latest.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f data/live-forward.json ]; then
-            echo '' >> "$GITHUB_STEP_SUMMARY"
-            echo '## Live forward strategy' >> "$GITHUB_STEP_SUMMARY"
-            python -c "import json; x=json.load(open('data/live-forward.json',encoding='utf-8')); print(json.dumps({'latest':x['latest'],'summary':x['summary']},ensure_ascii=False,indent=2))" >> "$GITHUB_STEP_SUMMARY"
-          fi
-      - name: Upload run summary
-        if: always()
-        uses: actions/upload-artifact@v7
+          python - <<'PY'
+          import time
+          import pandas as pd
+          import yfinance as yf
+
+          tickers = ['SPY','DAX','EWJ','EWZ','GLD','CNY=X']
+          frames = {}
+          for t in tickers:
+              last = None
+              for attempt in range(4):
+                  try:
+                      x = yf.download(
+                          t,
+                          start='2020-08-01',
+                          end='2026-10-01',
+                          auto_adjust=True,
+                          progress=False,
+                          threads=False,
+                      )
+                      if isinstance(x.columns, pd.MultiIndex):
+                          x.columns = x.columns.get_level_values(0)
+                      if len(x) < 500:
+                          raise RuntimeError(f'{t}: only {len(x)} rows')
+                      x = x[['Open','Close']].copy()
+                      x.index = pd.to_datetime(x.index).tz_localize(None)
+                      frames[t] = x
+                      print(t, len(x), x.index.min(), x.index.max())
+                      break
+                  except Exception as e:
+                      last=e
+                      time.sleep(2**attempt)
+              else:
+                  raise RuntimeError(f'failed {t}: {last}')
+
+          fx = frames['CNY=X'].rename(columns={'Open':'fx_open','Close':'fx_close'})
+          out=[]
+          for t in ['SPY','DAX','EWJ','EWZ','GLD']:
+              x=frames[t].join(fx,how='inner').dropna()
+              z=pd.DataFrame({
+                  'date':x.index,
+                  'symbol':t,
+                  'open_usd':x['Open'].astype(float),
+                  'close_usd':x['Close'].astype(float),
+                  'usdcny_open':x['fx_open'].astype(float),
+                  'usdcny_close':x['fx_close'].astype(float),
+              })
+              z['open_cny']=z['open_usd']*z['usdcny_open']
+              z['close_cny']=z['close_usd']*z['usdcny_close']
+              out.append(z.reset_index(drop=True))
+          result=pd.concat(out,ignore_index=True).sort_values(['date','symbol'])
+          result.to_csv('base-global-rmb-daily.csv',index=False)
+          print(result.groupby('symbol').agg(rows=('date','size'),start=('date','min'),end=('date','max')))
+          PY
+
+      - uses: actions/upload-artifact@v4
         with:
-          name: tencent-daily-sync-${{ github.run_id }}
-          path: |
-            tencent-daily-sync-summary.json
-            data/state-map-latest.json
-            data/live-forward.json
-          if-no-files-found: warn
-          retention-days: 30
+          name: combined-base-history-${{ github.run_id }}
+          path: base-global-rmb-daily.csv
+          retention-days: 3
