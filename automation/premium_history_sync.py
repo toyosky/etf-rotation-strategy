@@ -253,44 +253,114 @@ def fetch_nav(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
     out = out[out["unit_nav"] > 0]
     return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
 
+def fetch_eastmoney_unadjusted_price(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+    """Fallback: fetch unadjusted daily closes directly from Eastmoney."""
+    secid = ("1." if symbol.startswith(("5", "6")) else "0.") + symbol
+    url = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+    params = {
+        "secid": secid,
+        "klt": "101",
+        "fqt": "0",
+        "beg": pd.to_datetime(start_date).strftime("%Y%m%d"),
+        "end": pd.to_datetime(end_date).strftime("%Y%m%d"),
+        "fields1": "f1,f2,f3,f4,f5,f6",
+        "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
+    }
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
+        ),
+        "Referer": "https://quote.eastmoney.com/",
+    }
+    last_exc: Exception | None = None
+    for attempt in range(5):
+        try:
+            resp = requests.get(url, params=params, headers=headers, timeout=15)
+            resp.raise_for_status()
+            payload = resp.json()
+            data = payload.get("data") if isinstance(payload, dict) else None
+            klines = (data or {}).get("klines") or []
+            rows = []
+            for line in klines:
+                parts = str(line).split(",")
+                if len(parts) < 3:
+                    continue
+                rows.append({"nav_date": parts[0], "market_close": parts[2]})
+            out = pd.DataFrame(rows)
+            if out.empty:
+                raise RuntimeError(f"Eastmoney BFQ returned no rows for {symbol}")
+            out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
+            out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
+            out = out.dropna(subset=["nav_date", "market_close"])
+            out = out[out["market_close"] > 0]
+            out = out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
+            if out.empty:
+                raise RuntimeError(f"Eastmoney BFQ normalized to no rows for {symbol}")
+            out.attrs["source_price"] = "eastmoney_push2his_bfq"
+            return out
+        except Exception as exc:
+            last_exc = exc
+            if attempt < 4:
+                time.sleep(min(2.0 * (attempt + 1), 8.0))
+    assert last_exc is not None
+    raise last_exc
+
+
 def fetch_unadjusted_price(symbol: str, instrument_type: str, start_date: str, end_date: str) -> pd.DataFrame:
-    """Fetch unadjusted daily closes from the already-proven Tencent westock pipeline."""
-    output = run_westock(
-        TENCENT_KLINE_PACKAGE,
-        [
-            "kline", tencent_code(symbol),
-            "--period", "day",
-            "--start", pd.to_datetime(start_date).date().isoformat(),
-            "--end", pd.to_datetime(end_date).date().isoformat(),
-            "--fq", "bfq",
-        ],
-        raw=True,
-        attempts=4,
-    )
+    """Fetch unadjusted daily closes, preferring Tencent with Eastmoney fallback."""
+    tencent_error: Exception | None = None
     try:
-        payload = json.loads(output)
-    except json.JSONDecodeError as exc:
-        raise RuntimeError(f"Tencent BFQ returned invalid JSON: {exc}; tail={output[-600:]}") from exc
-    raw_rows = payload.get("data", []) if isinstance(payload, dict) else payload
-    if not isinstance(raw_rows, list):
-        return pd.DataFrame()
-    rows = []
-    for row in raw_rows:
-        if not isinstance(row, dict):
-            continue
-        bar_date = row.get("date")
-        close = row.get("last", row.get("close"))
-        if bar_date is None or close is None:
-            continue
-        rows.append({"nav_date": bar_date, "market_close": close})
-    out = pd.DataFrame(rows)
-    if out.empty:
-        return out
-    out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
-    out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
-    out = out.dropna(subset=["nav_date", "market_close"])
-    out = out[out["market_close"] > 0]
-    return out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
+        output = run_westock(
+            TENCENT_KLINE_PACKAGE,
+            [
+                "kline", tencent_code(symbol),
+                "--period", "day",
+                "--start", pd.to_datetime(start_date).date().isoformat(),
+                "--end", pd.to_datetime(end_date).date().isoformat(),
+                "--fq", "bfq",
+            ],
+            raw=True,
+            attempts=4,
+        )
+        try:
+            payload = json.loads(output)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"Tencent BFQ returned invalid JSON: {exc}; tail={output[-600:]}") from exc
+        raw_rows = payload.get("data", []) if isinstance(payload, dict) else payload
+        if not isinstance(raw_rows, list):
+            raw_rows = []
+        rows = []
+        for row in raw_rows:
+            if not isinstance(row, dict):
+                continue
+            bar_date = row.get("date")
+            close = row.get("last", row.get("close"))
+            if bar_date is None or close is None:
+                continue
+            rows.append({"nav_date": bar_date, "market_close": close})
+        out = pd.DataFrame(rows)
+        if not out.empty:
+            out["nav_date"] = pd.to_datetime(out["nav_date"], errors="coerce").dt.date
+            out["market_close"] = pd.to_numeric(out["market_close"], errors="coerce")
+            out = out.dropna(subset=["nav_date", "market_close"])
+            out = out[out["market_close"] > 0]
+            out = out.sort_values("nav_date").drop_duplicates("nav_date", keep="last")
+        if not out.empty:
+            out.attrs["source_price"] = "tencent_westock_bfq"
+            return out
+        tencent_error = RuntimeError(f"Tencent BFQ returned no usable rows for {symbol}")
+    except Exception as exc:
+        tencent_error = exc
+
+    try:
+        return fetch_eastmoney_unadjusted_price(symbol, start_date, end_date)
+    except Exception as eastmoney_error:
+        raise RuntimeError(
+            f"Both BFQ sources failed for {symbol}; "
+            f"Tencent={type(tencent_error).__name__}: {tencent_error}; "
+            f"Eastmoney={type(eastmoney_error).__name__}: {eastmoney_error}"
+        ) from eastmoney_error
 
 def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str) -> list[dict]:
     symbol = meta["symbol"]
@@ -300,6 +370,7 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
     px = fetch_unadjusted_price(symbol, meta["instrument_type"], start_date, end_date)
     if px.empty:
         raise RuntimeError(f"No BFQ price rows returned for {symbol}; nav_rows={len(nav)}")
+    price_source = px.attrs.get("source_price", "unknown_bfq")
     merged = nav.merge(px, on="nav_date", how="inner")
     if merged.empty:
         raise RuntimeError(
@@ -326,7 +397,7 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
             "subscription_status": None if pd.isna(x.get("subscription_status")) else str(x.get("subscription_status")),
             "redemption_status": None if pd.isna(x.get("redemption_status")) else str(x.get("redemption_status")),
             "source_nav": "eastmoney_direct_or_tencent_fallback",
-            "source_price": "tencent_westock_bfq",
+            "source_price": price_source,
             "first_seen_at": now if live_observation else None,
             "first_seen_phase": "preopen" if live_observation else None,
             "pit_safe": live_observation,
