@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "description": "Point-in-time execution decisions confirmed outside the raw daily replay. These records override only the production baseline execution path; model candidates remain preserved for audit.",
+  "baseline": [
+    {
+      "signal_date": "2026-09-29",
+      "execution_date": "2026-09-30",
+      "model_target": "159509",
+      "model_target_name": "纳指科技",
+      "final_target": "159981",
+      "final_target_name": "能源化工",
+      "decision": "VOID_EXIT_BLOCKED_PREMIUM",
+      "filter": "PREMIUM15",
+      "premium_pct": 0.3001,
+      "premium_limit": 0.15,
+      "source": "manual_confirmed_execution_audit",
+      "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981."
+    }
+  ]
+}
