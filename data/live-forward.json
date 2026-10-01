@@ -44,8 +44,8 @@
     "breadth_pct": 38.46153846153846,
     "gap_percentile": 55.55555555555556,
     "target_score": 4.158635401214843,
-    "cash_score": 0.014922349051915302,
-    "carrier_score": 0.0033903118250288395,
+    "cash_score": 0.01492234905190985,
+    "carrier_score": 0.003390311825027372,
     "completed_through": "2026-09-30",
     "performance_signal_through": "2026-09-28"
   },
