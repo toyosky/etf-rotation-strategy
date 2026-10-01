@@ -1,0 +1,48 @@
+name: Base Design Audit
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research/base_design_audit.py'
+      - '.github/workflows/base-design-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: base-design-audit-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - run: python -m py_compile research/base_design_audit.py
+      - run: python research/base_design_audit.py
+      - run: cat "$OUTPUT_DIR/summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: base-design-audit-${{ github.run_id }}
+          path: base-design-audit-output/
+          retention-days: 30
+      - name: Persist concise results
+        run: |
+          mkdir -p research/results/base_design_audit
+          cp "$OUTPUT_DIR/summary.md" research/results/base_design_audit/latest_summary.md
+          cp "$OUTPUT_DIR/base_design_summary.csv" research/results/base_design_audit/latest_summary.csv
+          cp "$OUTPUT_DIR/base_only_summary.csv" research/results/base_design_audit/latest_base_only.csv
+          cp "$OUTPUT_DIR/base_design_void.csv" research/results/base_design_audit/latest_void.csv
+          cp "$OUTPUT_DIR/base_design_annual.csv" research/results/base_design_audit/latest_annual.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/base_design_audit/
+          git diff --cached --quiet || git commit -m "results: update base design audit"
+          git pull --rebase
+          git push
