@@ -1,0 +1,31 @@
+name: Base Plus OLS Allocation Backtest
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research/base_plus_ols_allocation_backtest.py'
+      - '.github/workflows/base-plus-ols-allocation.yml'
+  workflow_dispatch:
+
+jobs:
+  backtest:
+    runs-on: ubuntu-24.04
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONPATH: research
+      OUTPUT_DIR: base-plus-ols-output
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 tabulate scipy
+      - run: python -m py_compile research/base_plus_ols_allocation_backtest.py
+      - run: python research/base_plus_ols_allocation_backtest.py
+      - run: if [ -f "$OUTPUT_DIR/summary.md" ]; then cat "$OUTPUT_DIR/summary.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: base-plus-ols-${{ github.run_id }}
+          path: base-plus-ols-output/
+          retention-days: 30
