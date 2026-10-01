@@ -30,6 +30,15 @@
     "date": "2026-09-30",
     "target": "159509",
     "target_name": "纳指科技",
+    "model_target": "159509",
+    "model_target_name": "纳指科技",
+    "holding_target": "159981",
+    "holding_target_name": "能源化工",
+    "execution_status": "PENDING_PREMIUM_CHECK",
+    "execution_note": "159509 纳指科技 是收盘候选；下一交易日开盘前必须通过 Premium15。当前持仓仍为 159981 能源化工",
+    "execution_filter": null,
+    "premium_pct": null,
+    "premium_limit": null,
     "decision": "BASE",
     "quadrant": "NARROW_LEADERSHIP",
     "breadth_pct": 38.46153846153846,
@@ -69,17 +78,17 @@
       "available": true,
       "signal_date": "2026-09-29",
       "execution_date": "2026-09-30",
-      "target": "159509",
-      "target_name": "纳指科技",
-      "decision": "BASE",
-      "sides": 2,
-      "open": 3.145,
-      "close": 3.194,
-      "gross_return": 0.015580286168521473,
-      "provisional_return": 0.014361589825119259,
+      "target": "159981",
+      "target_name": "能源化工",
+      "decision": "VOID_EXIT_BLOCKED_PREMIUM",
+      "sides": 0,
+      "open": 1.783,
+      "close": 1.772,
+      "gross_return": -0.006169377453729585,
+      "provisional_return": -0.006169377453729585,
       "official_nav": 1.0028121484814398,
-      "mtm_nav": 1.0172141252295768,
-      "mtm_total_return": 0.01721412522957677
+      "mtm_nav": 0.9966254218222723,
+      "mtm_total_return": -0.003374578177727683
     },
     "original": {
       "valuation_date": "2026-09-30",
@@ -468,6 +477,21 @@
         "signal_date": "2026-09-29",
         "execution_date": "2026-09-30",
         "from": "159981",
+        "to": "159981",
+        "to_name": "能源化工",
+        "model_to": "159509",
+        "model_to_name": "纳指科技",
+        "decision": "VOID_EXIT_BLOCKED_PREMIUM",
+        "execution_filter": "PREMIUM15",
+        "premium_pct": 0.3001,
+        "premium_limit": 0.15,
+        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981.",
+        "audit_only": true
+      },
+      {
+        "signal_date": "2026-09-30",
+        "execution_date": "next trading day",
+        "from": "159981",
         "to": "159509",
         "to_name": "纳指科技",
         "decision": "BASE"
@@ -525,6 +549,26 @@
         "decision": "BASE"
       }
     ]
+  },
+  "execution_audit": {
+    "baseline": [
+      {
+        "signal_date": "2026-09-29",
+        "execution_date": "2026-09-30",
+        "model_target": "159509",
+        "model_target_name": "纳指科技",
+        "final_target": "159981",
+        "final_target_name": "能源化工",
+        "decision": "VOID_EXIT_BLOCKED_PREMIUM",
+        "filter": "PREMIUM15",
+        "premium_pct": 0.3001,
+        "premium_limit": 0.15,
+        "source": "manual_confirmed_execution_audit",
+        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981."
+      }
+    ],
+    "original": [],
+    "freeze_cash": []
   },
   "benchmark": {
     "symbol": "510300",
@@ -627,6 +671,7 @@
     "Forward model tracking, not broker-confirmed fills.",
     "Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.",
     "Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.",
-    "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220."
+    "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
+    "Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium15 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills."
   ]
 }
