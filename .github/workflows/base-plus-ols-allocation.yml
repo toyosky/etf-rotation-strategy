@@ -8,6 +8,9 @@ on:
       - '.github/workflows/base-plus-ols-allocation.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   backtest:
     runs-on: ubuntu-24.04
@@ -29,3 +32,15 @@ jobs:
           name: base-plus-ols-${{ github.run_id }}
           path: base-plus-ols-output/
           retention-days: 30
+      - name: Persist concise results
+        run: |
+          mkdir -p research/results/base_plus_ols
+          cp "$OUTPUT_DIR/summary.md" research/results/base_plus_ols/latest_summary.md
+          cp "$OUTPUT_DIR/allocation_summary.csv" research/results/base_plus_ols/latest_allocation_summary.csv
+          cp "$OUTPUT_DIR/allocation_annual.csv" research/results/base_plus_ols/latest_annual.csv
+          cp "$OUTPUT_DIR/allocation_void.csv" research/results/base_plus_ols/latest_void.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/base_plus_ols/
+          git diff --cached --quiet || git commit -m "results: update base plus OLS backtest"
+          git push
