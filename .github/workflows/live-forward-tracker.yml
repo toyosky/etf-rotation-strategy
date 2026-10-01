@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'automation/build_live_forward.py'
+      - 'data/execution-overrides.json'
       - '.github/workflows/live-forward-tracker.yml'
   workflow_dispatch:
 
