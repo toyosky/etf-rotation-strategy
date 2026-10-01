@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "registered_at": "2026-10-01",
+  "strategy_id": "OLS70_BASE30_SP500_GOLD_IV60",
+  "status": "registered_pending_live_start",
+  "live_start_date": "2026-10-08",
+  "initial_capital_cny": 20000,
+  "account_allocation": {
+    "ols_target_weight": 0.7,
+    "base_target_weight": 0.3,
+    "rebalance_check": "monthly_first_trading_day",
+    "ols_band_lower": 0.65,
+    "ols_band_upper": 0.75,
+    "action": "rebalance_to_70_30_only_if_outside_band"
+  },
+  "ols_sleeve": {
+    "engine": "Stage8ZA PREVOID_DEEPEN1_INVALID_ROUTE",
+    "target_capital_cny": 14000,
+    "state_continuity": "carry_forward_existing_OLS_state; do_not_reset_on_live_start",
+    "execution_constraints": [
+      "respect_existing_premium_veto",
+      "do_not_fall_through_to_top2_when_premium_blocks_top1",
+      "respect_news_fundamental_audit"
+    ]
+  },
+  "base_sleeve": {
+    "target_capital_cny": 6000,
+    "assets": [
+      {
+        "symbol": "513500",
+        "name": "标普500ETF博时"
+      },
+      {
+        "symbol": "159934",
+        "name": "黄金ETF易方达"
+      }
+    ],
+    "weighting": "inverse_volatility",
+    "volatility_lookback_trading_days": 60,
+    "rebalance_frequency": "monthly",
+    "signal_timing": "month_end_close",
+    "execution_timing": "next_month_first_trading_day",
+    "bond_sleeve": null,
+    "note": "511220 remains an OLS/Void defensive asset, not a permanent base holding."
+  },
+  "execution_price_policy": {
+    "research_series": "HFQ adjusted prices may be used for returns, volatility, OLS and backtests",
+    "live_sizing": "must use real unadjusted executable market price/quote",
+    "prohibition": "never use HFQ adjusted price to calculate live order quantity"
+  },
+  "oct_2026_base_signal": {
+    "signal_date": "2026-09-30",
+    "weight_513500": 0.5357,
+    "weight_159934": 0.4643,
+    "weight_source": "60-trading-day inverse volatility using HFQ returns",
+    "order_quantity_status": "recalculate_on_2026-10-08_with_real_unadjusted_prices"
+  },
+  "research_reference": {
+    "base_design_audit": "research/results/base_design_audit/latest_summary.md",
+    "allocation_backtest": "research/results/base_plus_ols/latest_summary.md"
+  }
+}
