@@ -20,7 +20,7 @@ import optimal_universe_reverse_engineering.oure_stage8za_prevoid_incumbent_full
 
 COST = 0.0006
 CASH = "511220"
-BASE_RISK = ["513500", "513030", "518880"]
+BASE_RISK = ["513500", "159934"]
 VOL_LOOKBACK = 60
 BASE_CASH_WEIGHT = 0.30
 BASE_RISK_WEIGHT = 0.70
@@ -278,7 +278,7 @@ def main():
         "# OLS + Base Allocation Backtest",
         "",
         "Frozen OLS: Stage8ZA PREVOID_DEEPEN1_INVALID_ROUTE, 26d weighted log-price OLS, half-life 10, 6bp/side.",
-        "Base: 30% 511220 + 70% inverse-vol(60d) across 513500/513030/518880.",
+        "Base: 30% 511220 + 70% inverse-vol(60d) across 513500/159934 (S&P 500 / Gold).",
         "Base weights computed at month-end close for next-month execution. Total-account allocation checked monthly; rebalance only outside target OLS +/-5pct band.",
         "",
         "## Full summary",
