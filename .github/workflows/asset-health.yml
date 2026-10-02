@@ -12,7 +12,7 @@ on:
         type: boolean
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: asset-health-monitor
@@ -40,29 +40,41 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s research -p 'test_*.py'
 
-      - name: Run Asset Health Monitor for ACTIVE universe
+      - name: Run Asset Health Monitor for current ACTIVE universe
         env:
-          SUPABASE_URL: https://rmdfnksgqvewijegnqon.supabase.co
-          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
-          ASSET_HEALTH_STRATEGY_VERSION: FROZEN_C2@20260903T_fixed_window_v2
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
         run: |
-          python research/asset_health_active.py \
+          python research/asset_health_repo.py \
             --summary-path asset-health-summary.md \
             --json-path asset-health-summary.json
           cat asset-health-summary.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Notify meaningful status changes
         env:
-          SUPABASE_URL: https://rmdfnksgqvewijegnqon.supabase.co
-          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-          ASSET_HEALTH_STRATEGY_VERSION: FROZEN_C2@20260903T_fixed_window_v2
         run: |
           EXTRA_ARGS=()
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.pushplus_test }}" == "true" ]]; then
             EXTRA_ARGS+=(--test)
           fi
-          python research/pushplus_notify.py "${EXTRA_ARGS[@]}"
+          python research/pushplus_notify_file.py \
+            --current asset-health-summary.json \
+            --previous data/asset-health-latest.json \
+            "${EXTRA_ARGS[@]}"
+
+      - name: Persist latest health snapshot
+        run: |
+          mkdir -p data
+          cp asset-health-summary.json data/asset-health-latest.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/asset-health-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: update Asset Health snapshot [skip ci]"
+            git push
+          else
+            echo "Asset Health snapshot unchanged."
+          fi
 
       - name: Upload diagnostic output
         uses: actions/upload-artifact@v4
