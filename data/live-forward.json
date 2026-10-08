@@ -35,7 +35,7 @@
     "holding_target": "159981",
     "holding_target_name": "能源化工",
     "execution_status": "PENDING_PREMIUM_CHECK",
-    "execution_note": "159509 纳指科技 是收盘候选；下一交易日开盘前必须通过 Premium15。当前持仓仍为 159981 能源化工",
+    "execution_note": "159509 纳指科技 是收盘候选；下一交易日开盘前必须通过 Premium10，且净值配对可用。当前持仓仍为 159981 能源化工",
     "execution_filter": null,
     "premium_pct": null,
     "premium_limit": null,
