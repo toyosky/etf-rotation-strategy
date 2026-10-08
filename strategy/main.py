@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""FixV2 + V1(75) + Void Route Baseline v1 + S1日内执行 + 15%溢价执行保护。
+"""FixV2 + V1(75) + Void Route Baseline v1 + S1日内执行 + 10%溢价执行保护。
 
 这是2026-09-17冻结后的聚宽执行版。核心研究逻辑与GitHub冻结基线保持一致：
 
@@ -21,13 +21,13 @@
 - Deepen1：Void内 Breadth 与 Gap Percentile 同时低于该次Void进入日水平，即记1次深化；
 - frozen incumbent只有在 raw score <= 511220 raw score（或raw score不可用）时才算失效；
 - 只有“Deepen1 + incumbent失效”同时成立才允许路由：
-    * 513500上市满365日、raw score > 511220，且未被15%溢价执行保护阻断 -> 513500；
+    * 513500上市满365日、raw score > 511220，且未被10%溢价执行保护阻断 -> 513500；
     * 否则 -> 511220；
 - 一旦路由，在本次Void结束前保持route target；Void退出后恢复正常V1。
 
 四、执行层保留原实盘约束
 - T日收盘冻结评分；T+1开盘前补处理单位净值并形成最终目标；
-- 15%溢价状态机继续作为“执行保护”，511220不参与溢价过滤；
+- 10%溢价状态机继续作为“执行保护”，511220不参与溢价过滤；
 - 09:31检查跳空/旧仓急跌，14:00卖出，14:05检查日内高点回撤后买入；
 - 普通现金状态为真正空仓；Void失效后的511220路由则实际持有511220。
 
@@ -45,7 +45,7 @@ import requests
 from jqdata import *
 
 
-STRATEGY_ID = "FIXV2_V1_75_VOID_ROUTE_BASELINE_V1_INTRADAY_S1_PREMIUM15"
+STRATEGY_ID = "FIXV2_V1_75_VOID_ROUTE_BASELINE_V1_INTRADAY_S1_PREMIUM10"
 PUSHPLUS_TOKEN = ""
 PUSHPLUS_URL = "https://www.pushplus.plus/send"
 PUSHPLUS_SEND_IN_BACKTEST = False
@@ -111,10 +111,12 @@ VOID_DEEPEN_STREAK_REQUIRED = 1
 CARRIER_MIN_LISTING_DAYS = 365
 
 # 开盘前补处理最近已发布的单位净值；净值必须和同日未复权收盘价配对。
-PREMIUM_LIMIT = 0.15
+PREMIUM_LIMIT = 0.10
 PREMIUM_RECOVERY_DAYS = 2
 PREMIUM_NAV_LOOKBACK_TRADE_DAYS = 15
 PREMIUM_STATE_VERSION = 3
+# 新买入必须有信号日的同日净值/收盘配对；不把滞后数据当作实时溢价。
+PREMIUM_MAX_ENTRY_LAG = 0
 RANK_LOG_TOP_N = 3
 PREMIUM_MONITOR_POOL = list(RISK_POOL) + [US_CARRIER_SYMBOL]
 
@@ -155,6 +157,12 @@ def after_code_changed(context):
     ensure_state()
     unschedule_all()
     register_schedules()
+    if context.current_dt.strftime("%H:%M") < "14:00":
+        finalize_next_day_plan_before_open(context)
+        if context.current_dt.strftime("%H:%M") >= "09:31":
+            check_gap_at_0931(context)
+    else:
+        log.info("14:00后热更新：保留已执行计划，次交易日使用新规则")
 
 
 def register_schedules():
@@ -175,6 +183,7 @@ def reset_premium_state():
     g.premium_recovery_streak = {}
     g.premium_last_processed_date = {}
     g.premium_state_version = PREMIUM_STATE_VERSION
+    g.premium_policy_signature = premium_policy_signature()
 
 
 def reset_state():
@@ -311,6 +320,44 @@ def ensure_state():
         for key, value in premium_defaults.items():
             if not hasattr(g, key):
                 setattr(g, key, value)
+
+    ensure_premium_policy()
+
+
+def premium_policy_signature():
+    return (float(PREMIUM_LIMIT), int(PREMIUM_RECOVERY_DAYS), int(PREMIUM_MAX_ENTRY_LAG))
+
+
+def ensure_premium_policy():
+    """重评已配对快照；同一净值日不能因热更新重复累计恢复天数。"""
+    signature = premium_policy_signature()
+    if getattr(g, "premium_policy_signature", None) == signature:
+        return
+    for symbol, snapshot in g.premium_snapshot.items():
+        premium = finite_number(snapshot.get("premium"))
+        if premium is not None and premium > PREMIUM_LIMIT + 1e-12:
+            g.premium_blacklist.add(symbol)
+        # 已剔除资产仍需两个新的确认日，参数放宽不立即放行。
+        g.premium_recovery_streak[symbol] = 0
+        snapshot["blocked"] = symbol in g.premium_blacklist
+        snapshot["recovery_streak"] = 0
+    g.premium_policy_signature = signature
+    log.info("溢价参数变更：已按%.0f%%重评历史快照；恢复计数重置，净值日期不重复累计" % premium_limit_pct())
+
+
+def premium_entry_block_reason(symbol):
+    if symbol is None or symbol == CASH_SIGNAL_SYMBOL:
+        return None
+    if symbol in g.premium_blacklist:
+        return "确认溢价超过阈值或尚未完成恢复"
+    snapshot = g.premium_snapshot.get(symbol)
+    status = g.premium_nav_status.get(symbol, {})
+    if not snapshot or status.get("no_nav", True):
+        return "净值配对不可用，禁止新买入"
+    lag = status.get("lag_trade_days")
+    if lag is None or lag > PREMIUM_MAX_ENTRY_LAG or status.get("close_missing_date"):
+        return "净值滞后或收盘未配对，禁止新买入"
+    return None
 
 
 def normalize_date(value):
@@ -495,12 +542,12 @@ def apply_premium_observation(symbol, nav_date, close, nav):
     limit_pct = premium_limit_pct()
     action = None
 
-    if premium > PREMIUM_LIMIT:
+    if premium > PREMIUM_LIMIT + 1e-12:
         g.premium_blacklist.add(symbol)
         g.premium_recovery_streak[symbol] = 0
         if not was_blocked:
             action = "加入黑名单"
-    elif was_blocked and premium < PREMIUM_LIMIT:
+    elif was_blocked and premium < PREMIUM_LIMIT - 1e-12:
         new_streak = old_streak + 1
         if new_streak >= PREMIUM_RECOVERY_DAYS:
             g.premium_blacklist.discard(symbol)
@@ -551,14 +598,14 @@ def premium_status_text(symbol):
     snapshot = g.premium_snapshot.get(symbol)
     status = g.premium_nav_status.get(symbol, {})
     if not snapshot:
-        state = "剔除" if symbol in g.premium_blacklist else "正常"
+        state = "剔除" if symbol in g.premium_blacklist else "待确认，禁止新买入"
         return "最近回看窗口内暂无可用净值，维持%s" % state
     nav_date = snapshot.get("date")
     lag = status.get("lag_trade_days")
     lag_text = ""
     if lag is not None and lag > 0:
         lag_text = "，滞后%d个交易日" % lag
-    state = "剔除" if snapshot.get("blocked") else "正常"
+    state = "剔除" if snapshot.get("blocked") else ("待确认，禁止新买入" if premium_entry_block_reason(symbol) else "历史配对通过（非实时溢价）")
     streak = int(snapshot.get("recovery_streak", 0))
     streak_text = ""
     if snapshot.get("blocked") and streak > 0:
@@ -573,6 +620,7 @@ def premium_status_text(symbol):
 
 
 def refresh_premium_blacklist_for_date(signal_date):
+    ensure_premium_policy()
     trade_dates = recent_trade_dates(signal_date, PREMIUM_NAV_LOOKBACK_TRADE_DAYS)
     g.premium_nav_pending = set()
     g.premium_nav_status = {}
@@ -719,7 +767,7 @@ def sorted_eligible_rows(rows):
 
 
 def sorted_executable_rows(rows):
-    return [row for row in sorted_eligible_rows(rows) if row.get("symbol") not in g.premium_blacklist]
+    return [row for row in sorted_eligible_rows(rows) if not premium_entry_block_reason(row.get("symbol"))]
 
 
 def sorted_high_score_ineligible_rows(rows):
@@ -1541,7 +1589,7 @@ def resolve_void_target(context, signal_date, rows, base_target, holdings, snaps
         if carrier_raw is None or cash_raw is None or not (carrier_raw > cash_raw):
             carrier_reason.append("513500 raw score未战胜511220")
         if US_CARRIER_SYMBOL in g.premium_blacklist:
-            carrier_reason.append("513500触发15%溢价执行保护")
+            carrier_reason.append("513500触发10%溢价执行保护")
         g.void_note = "Deepen1 + incumbent失效：转511220；Carrier未通过：%s" % ("；".join(carrier_reason) or "未知原因")
     g.last_output_target = target
     return target
@@ -1615,6 +1663,9 @@ def finalize_next_day_plan_before_open(context):
     g.pending_signal_date = signal_date
     refresh_premium_blacklist_for_date(signal_date)
     holdings = managed_holdings(context)
+    if not g.void_in_void:
+        g.v1_current_target = holdings[0] if len(holdings) == 1 and holdings[0] in RISK_POOL else None
+        g.v1_initialized = True
     challenger, challenger_row, cash_pool_score = choose_fixv2_challenger(rows)
     base_target = resolve_v1_target(context, signal_date, rows, challenger, holdings)
     snapshot = getattr(g, "pending_map_snapshot", None)
@@ -1626,6 +1677,10 @@ def finalize_next_day_plan_before_open(context):
             log.warning("开盘前State Map重建失败%s：%s" % (signal_date, exc))
     g.pending_map_snapshot = snapshot
     target = resolve_void_target(context, signal_date, rows, base_target, holdings, snapshot)
+    if target not in holdings:
+        reason = premium_entry_block_reason(target)
+        if reason:
+            target = execution_veto_fallback(context, reason)
     if challenger is not None:
         ranked_symbol = challenger
     else:
@@ -1710,6 +1765,65 @@ def finalize_next_day_plan_before_open(context):
     )
 
 
+
+def execution_incumbent_valid(symbol, rows):
+    if symbol == CASH_SIGNAL_SYMBOL:
+        return True
+    if symbol in g.premium_blacklist:
+        return False
+    if symbol == US_CARRIER_SYMBOL:
+        raw = raw_score_on_date(symbol, g.pending_signal_date)
+        cash = raw_score_from_row(rows, CASH_SIGNAL_SYMBOL)
+        return raw is not None and cash is not None and raw > cash
+    return v1_incumbent_valid(rows, symbol)
+
+
+def execution_veto_fallback(context, reason):
+    """只保留实际持有且仍有效的旧仓；不凭虚拟V1目标假定已成交。"""
+    holdings = managed_holdings(context)
+    target = CASH_SIGNAL_SYMBOL if g.void_in_void and g.void_routed else None
+    if len(holdings) == 1 and execution_incumbent_valid(holdings[0], g.pending_rows):
+        symbol = holdings[0]
+        close = actual_daily_close_on_date(symbol, g.pending_signal_date)
+        price, error = current_price(symbol)
+        # 旧仓独立急跌保护优先；停牌时保留既有有效仓位，不制造卖出成功。
+        if not (close and price and price / close < NEXT_DAY_PRICE_FLOOR):
+            target = symbol
+    g.v1_current_target = target if target in RISK_POOL else None
+    g.v1_initialized = True
+    g.v1_decision = "EXECUTION_VETO_HOLD" if target in holdings else "EXECUTION_VETO_DEFENSIVE"
+    g.v1_note = "%s；执行目标=%s" % (reason, display(target))
+    g.last_output_target = target
+    g.last_output_initialized = True
+    if g.void_in_void and g.void_routed:
+        g.void_route_target = target
+    log.warning(g.v1_note)
+    return target
+
+
+def entry_preflight_reason(context, target, check_drawdown=False):
+    reason = premium_entry_block_reason(target)
+    if reason:
+        return reason
+    price, error = current_price(target)
+    if price is None:
+        return error or "目标不可交易"
+    try:
+        item = get_current_data()[target]
+        limit = finite_number(getattr(item, "high_limit", None))
+        if limit is not None and price >= limit:
+            return "目标涨停，无法可靠买入"
+    except Exception as exc:
+        return "目标交易状态读取失败：%s" % exc
+    if check_drawdown:
+        high = today_high(target, context, price)
+        if high is None:
+            return "分钟高点不可用"
+        if 1.0 - price / high >= INTRADAY_HIGH_DRAWDOWN_LIMIT:
+            return "卖出前目标日内高点回撤已超限"
+    return None
+
+
 def check_gap_at_0931(context):
     if g.pending_signal_date is None:
         return
@@ -1734,6 +1848,12 @@ def check_gap_at_0931(context):
         log.info(g.entry_reason)
         return
     g.entry_checked = True
+    reason = entry_preflight_reason(context, target)
+    if reason:
+        g.entry_blocked = True
+        g.entry_reason = reason
+        log.warning(reason)
+        return
     close = g.pending_target_actual_close
     if close:
         price, error = current_price(target)
@@ -1760,8 +1880,19 @@ def execute_sells_at_1400(context):
         return
     if target is not None and not g.entry_checked:
         g.entry_blocked = True
-        g.entry_reason = "09:31检查缺失，保守转现金"
-    effective_target = None if target is None or g.entry_blocked else target
+        g.entry_reason = "09:31检查缺失"
+    if target is not None and not g.entry_blocked:
+        reason = entry_preflight_reason(context, target, check_drawdown=True)
+        if reason:
+            g.entry_blocked = True
+            g.entry_reason = reason
+    effective_target = target
+    if target is not None and g.entry_blocked:
+        effective_target = execution_veto_fallback(context, g.entry_reason or "候选受阻")
+        g.pending_target = effective_target
+        if holdings_match_target(holdings, effective_target):
+            clear_pending()
+            return
     for symbol in holdings:
         if symbol != effective_target:
             order, error = safe_target_value(symbol, 0)
@@ -1800,13 +1931,18 @@ def execute_buy_at_1405(context):
         return
     blockers = [symbol for symbol in managed_holdings(context) if symbol != target]
     if blockers:
-        log.warning("14:05取消买入，旧仓未清：%s" % blockers)
+        execution_veto_fallback(context, "14:05旧仓未清：%s" % blockers)
+        clear_pending()
+        return
+    reason = entry_preflight_reason(context, target)
+    if reason:
+        execution_veto_fallback(context, "14:05取消买入：%s" % reason)
         clear_pending()
         return
     price, error = current_price(target)
     high = today_high(target, context, price) if price else None
     if high is None:
-        log.warning("14:05取消买入，分钟高点或现价不可用：%s" % (error or "无高点"))
+        execution_veto_fallback(context, "14:05分钟高点或现价不可用：%s" % (error or "无高点"))
         clear_pending()
         return
     drawdown = 1.0 - price / high
@@ -1815,11 +1951,12 @@ def execute_buy_at_1405(context):
             "14:05取消买入%s：日内高点回撤%.2f%% >= %.2f%%"
             % (display(target), drawdown * 100, INTRADAY_HIGH_DRAWDOWN_LIMIT * 100)
         )
+        execution_veto_fallback(context, "14:05回撤超限")
         clear_pending()
         return
     order, order_error = safe_target_value(target, context.portfolio.total_value)
     if order_error:
-        log.warning("14:05买入%s失败：%s" % (display(target), order_error))
+        execution_veto_fallback(context, "14:05买入%s失败：%s" % (display(target), order_error))
     else:
         log.info("14:05提交买入%s；日内回撤%.2f%%；Void=%s" % (display(target), drawdown * 100, g.void_decision))
     clear_pending()
@@ -1836,3 +1973,4 @@ def clear_pending():
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+

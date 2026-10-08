@@ -23,7 +23,7 @@ COST=0.0006
 OUT=ROOT/'data'/'live-forward.json'
 EXECUTION_OVERRIDES=ROOT/'data'/'execution-overrides.json'
 CASH='511220'; CARRIER='513500'; BENCHMARK='510300'
-PREMIUM_LIMIT=0.15
+PREMIUM_LIMIT=0.10
 PREMIUM_SENSITIVE={'159934','159985','161226','513100','159957','159509','513290','159529','159981','501018','513530','511380','164824','513500'}
 NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
 BACKTEST_REFERENCE={
@@ -223,10 +223,11 @@ def main():
     execution_note=getattr(lr,'execution_note',None)
     if latest_d==pd.Timestamp(lr.signal_date) and target!=holding_target and target in PREMIUM_SENSITIVE and execution_status=='MODEL':
         execution_status='PENDING_PREMIUM_CHECK'
-        execution_note=f'{target} {NAMES.get(target,"")} 是收盘候选；下一交易日开盘前必须通过 Premium15。当前持仓仍为 {holding_target or "现金"} {holding_name if holding_target else ""}'.strip()
+        execution_note=f'{target} {NAMES.get(target,"")} 是收盘候选；下一交易日开盘前必须通过 Premium{PREMIUM_LIMIT * 100:.0f}，且净值配对可用。当前持仓仍为 {holding_target or "现金"} {holding_name if holding_target else ""}'.strip()
     latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','model_target':model_target,'model_target_name':NAMES.get(model_target,'现金') if model_target else '现金','holding_target':holding_target,'holding_target_name':holding_name,'execution_status':execution_status,'execution_note':execution_note,'execution_filter':getattr(lr,'execution_filter',None),'premium_pct':clean(getattr(lr,'premium_pct',np.nan)),'premium_limit':clean(getattr(lr,'premium_limit',np.nan)),'decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':latest_d.strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
 
     payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'series':series,'events':events,'execution_audit':execution_audit,'benchmark':build_benchmark(bars,latest_d),'notes':['Forward model tracking, not broker-confirmed fills.','Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium15 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills.']}
     OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'benchmark':payload['benchmark']},ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
+
