@@ -164,11 +164,24 @@ def main() -> None:
         raise ValueError("Invalid lookback/batch/worker setting")
     universe = load_universe(args.universe)
     start = args.as_of - timedelta(days=args.lookback_days)
-    batches = [universe[i:i + args.batch_size] for i in range(0, len(universe), args.batch_size)]
+    # First-time symbols get full backfill; existing symbols get rolling refresh.
+    with psycopg2.connect(database_url(), connect_timeout=30) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT DISTINCT symbol FROM public.daily_bars WHERE symbol = ANY(%s)",
+                           ([row["symbol"] for row in universe],))
+            present = {row[0] for row in cursor.fetchall()}
+    bootstrap = [row for row in universe if row["symbol"] not in present]
+    routine = [row for row in universe if row["symbol"] in present]
+    batches = [(routine[i:i + args.batch_size], start)
+               for i in range(0, len(routine), args.batch_size)]
+    bootstrap_start = args.as_of - timedelta(days=1095)
+    batches.extend((bootstrap[i:i + args.batch_size], bootstrap_start)
+                   for i in range(0, len(bootstrap), args.batch_size))
+    print(f"bootstrap symbols: {[row['symbol'] for row in bootstrap]}", flush=True)
     bars: list[tuple[Any, ...]] = []
     missing: list[str] = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(fetch_batch, batch, start, args.as_of, args.max_attempts) for batch in batches]
+        futures = [pool.submit(fetch_batch, batch, window_start, args.as_of, args.max_attempts) for batch, window_start in batches]
         for done, future in enumerate(as_completed(futures), 1):
             fetched, absent = future.result()
             bars.extend(fetched)
@@ -198,7 +211,7 @@ def main() -> None:
         "status": "PASS", "as_of": args.as_of.isoformat(), "fetch_start": start.isoformat(),
         "universe_symbols": len(universe), "upsert_rows": len(bars), "updated_symbols": len(counts),
         "no_rows_in_window": sorted(set(missing)), "source": SOURCE, "adjustment": ADJUSTMENT,
-        "storage_schema": "compact_v1",
+        "storage_schema": "compact_v1", "bootstrap_symbols": [row["symbol"] for row in bootstrap],
     }
     args.summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))
