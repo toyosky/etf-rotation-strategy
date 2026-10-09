@@ -43,9 +43,9 @@
     "quadrant": "NARROW_LEADERSHIP",
     "breadth_pct": 38.46153846153846,
     "gap_percentile": 64.28571428571429,
-    "target_score": 7.276326370815385,
-    "cash_score": 0.017935470368647448,
-    "carrier_score": 0.040138410918860605,
+    "target_score": 7.289630475022554,
+    "cash_score": 0.017935470368641387,
+    "carrier_score": 0.041175154436341024,
     "completed_through": "2026-10-09",
     "performance_signal_through": "2026-09-30"
   },
@@ -83,12 +83,12 @@
       "decision": "BASE",
       "sides": 0,
       "open": 3.251,
-      "close": 3.303,
-      "gross_return": 0.015995078437403887,
-      "provisional_return": 0.015995078437403887,
+      "close": 3.304,
+      "gross_return": 0.016302676099661628,
+      "provisional_return": 0.016302676099661628,
       "official_nav": 1.0396942113162908,
-      "mtm_nav": 1.0563242017772096,
-      "mtm_total_return": 0.05632420177720965
+      "mtm_nav": 1.0566440092860734,
+      "mtm_total_return": 0.05664400928607338
     },
     "original": {
       "valuation_date": "2026-10-09",
@@ -100,12 +100,12 @@
       "decision": "BASE",
       "sides": 0,
       "open": 3.251,
-      "close": 3.303,
-      "gross_return": 0.015995078437403887,
-      "provisional_return": 0.015995078437403887,
+      "close": 3.304,
+      "gross_return": 0.016302676099661628,
+      "provisional_return": 0.016302676099661628,
       "official_nav": 0.9950049846050399,
-      "mtm_nav": 1.0109201673794055,
-      "mtm_total_return": 0.010920167379405488
+      "mtm_nav": 1.0112262285866047,
+      "mtm_total_return": 0.011226228586604714
     },
     "freeze_cash": {
       "valuation_date": "2026-10-09",
@@ -117,12 +117,12 @@
       "decision": "BASE",
       "sides": 0,
       "open": 3.251,
-      "close": 3.303,
-      "gross_return": 0.015995078437403887,
-      "provisional_return": 0.015995078437403887,
+      "close": 3.304,
+      "gross_return": 0.016302676099661628,
+      "provisional_return": 0.016302676099661628,
       "official_nav": 1.0353672890173307,
-      "mtm_nav": 1.051928070016685,
-      "mtm_total_return": 0.05192807001668509
+      "mtm_nav": 1.052246546574365,
+      "mtm_total_return": 0.052246546574364894
     }
   },
   "series": {
@@ -735,16 +735,16 @@
       },
       {
         "date": "2026-10-09",
-        "nav": 0.9677419354838709,
-        "daily_return": -0.002557544757033292,
-        "drawdown": -0.04317958783120712,
+        "nav": 0.9667493796526053,
+        "daily_return": -0.003580562659846631,
+        "drawdown": -0.044160942100098244,
         "status": "close"
       }
     ],
     "mark_to_market": {
       "valuation_date": "2026-10-09",
-      "nav": 0.9677419354838709,
-      "total_return": -0.032258064516129115
+      "nav": 0.9667493796526053,
+      "total_return": -0.03325062034739468
     }
   },
   "notes": [
