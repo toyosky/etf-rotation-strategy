@@ -20,13 +20,13 @@ reported unchanged on 2025-2026 validation.
 from __future__ import annotations
 import json, math, os, sys
 from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
+
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine, text
 from automation.build_fundamental_audit_trigger import calc_ols, db_url, RISK_POOL
-
-ROOT=Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path: sys.path.insert(0,str(ROOT))
 OUT=ROOT/"data/rebuild-pyramiding-backtest.json"
 COST=0.0006
 MAX_H=20
