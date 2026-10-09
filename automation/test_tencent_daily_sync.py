@@ -11,15 +11,17 @@ CORE15 = {
     "513530", "511380", "164824", "511220", "513500",
 }
 BENCHMARKS = {"510300"}
+RESEARCH_ONLY = {"520870", "159100"}
 
 
 class TencentDailySyncTests(unittest.TestCase):
-    def test_repository_universe_keeps_frozen_core15_plus_non_competing_benchmark(self):
+    def test_repository_universe_keeps_frozen_core15_plus_non_competing_extras(self):
         rows = load_universe(Path(__file__).with_name("tencent_daily_universe.csv"))
         symbols = {row["symbol"] for row in rows}
-        self.assertEqual(CORE15, symbols - BENCHMARKS)
+        self.assertEqual(CORE15, symbols - BENCHMARKS - RESEARCH_ONLY)
         self.assertEqual(BENCHMARKS, symbols & BENCHMARKS)
-        self.assertEqual(len(rows), len(CORE15) + len(BENCHMARKS))
+        self.assertEqual(RESEARCH_ONLY, symbols & RESEARCH_ONLY)
+        self.assertEqual(len(rows), len(CORE15) + len(BENCHMARKS) + len(RESEARCH_ONLY))
 
     def test_single_symbol_response_gets_symbol_volume_type_and_ingest_date(self):
         payload = [{"date": "2026-09-10", "open": 1, "high": 1.2, "low": 0.9, "last": 1.1, "volume": 12, "amount": 1300}]
