@@ -13,6 +13,8 @@ on:
   schedule:
     # 07:30 UTC = 15:30 Asia/Shanghai. GitHub cron is best-effort and may be delayed.
     - cron: "30 7 * * *"
+    # Recovery pass at 16:15 CST if first run failed or provider published late.
+    - cron: "15 8 * * *"
   workflow_dispatch:
     inputs:
       lookback_days:
@@ -59,7 +61,18 @@ jobs:
         run: python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
       - name: Fetch Tencent HFQ bars and upsert Supabase
         run: |
-          python automation/tencent_daily_sync.py             --lookback-days "$LOOKBACK_DAYS"             --summary tencent-daily-sync-summary.json
+          for attempt in 1 2 3; do
+            if python automation/tencent_daily_sync.py --lookback-days "$LOOKBACK_DAYS" --summary tencent-daily-sync-summary.json; then
+              echo "Daily sync succeeded (attempt $attempt)."
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::Daily sync failed (attempt $attempt/3); retrying after 120 seconds."
+              sleep 120
+            fi
+          done
+          echo "::error::Daily sync failed after three attempts."
+          exit 1
       - name: Rebuild market state map data
         run: python automation/build_state_map.py
       - name: Rebuild frozen strategy live tracker
