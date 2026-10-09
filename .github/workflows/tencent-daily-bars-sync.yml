@@ -87,13 +87,13 @@ jobs:
       - name: Commit refreshed site data
         shell: bash
         run: |
-          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json data/rebuild-pyramiding-backtest.json data/rebuild-pyramiding-backtest.json; then
+          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json data/rebuild-pyramiding-backtest.json; then
             echo "Site data unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json
+          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json data/rebuild-pyramiding-backtest.json
           git commit -m "data: refresh daily market state and live strategy"
           git pull --rebase origin main
           git push origin HEAD:main
