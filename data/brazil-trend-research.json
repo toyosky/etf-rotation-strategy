@@ -8,16 +8,16 @@
       "bars": 218,
       "first_date": "2025-11-13",
       "last_date": "2026-10-09",
-      "latest_annual": 1.7829357561963302,
-      "latest_r2": 0.18728748598873035
+      "latest_annual": 1.8351275718917166,
+      "latest_r2": 0.18820157798089088
     },
     {
       "symbol": "159100",
       "bars": 218,
       "first_date": "2025-11-13",
       "last_date": "2026-10-09",
-      "latest_annual": 1.9498154071793814,
-      "latest_r2": 0.20972498385413074
+      "latest_annual": 2.104039423032586,
+      "latest_r2": 0.21134893917247333
     }
   ],
   "events": [
@@ -273,8 +273,8 @@
       "next_open_to_5d_close_return": 0.008635578583765069,
       "future_10d_close_return": -0.009442060085837034,
       "next_open_to_10d_close_return": -0.003454231433506094,
-      "future_20d_close_return": 0.1321888412017167,
-      "next_open_to_20d_close_return": 0.13903281519861843
+      "future_20d_close_return": 0.1356223175965665,
+      "next_open_to_20d_close_return": 0.14248704663212441
     },
     {
       "symbol": "520870",
@@ -314,12 +314,12 @@
       "symbol": "520870",
       "date": "2026-10-09",
       "stage": "REBUILDING_QUALIFIED",
-      "annual": 1.7829357561963302,
-      "r2": 0.18728748598873035,
-      "score": 0.3339215554574265,
+      "annual": 1.8351275718917166,
+      "r2": 0.18820157798089088,
+      "score": 0.34537390482626185,
       "shadow_top1": false,
       "best_other": "159509",
-      "best_other_score": 7.289630475022554,
+      "best_other_score": 7.8217109199633965,
       "future_5d_close_return": null,
       "next_open_to_5d_close_return": null,
       "future_10d_close_return": null,
@@ -579,8 +579,8 @@
       "next_open_to_5d_close_return": 0.009482758620689813,
       "future_10d_close_return": -0.010291595197255532,
       "next_open_to_10d_close_return": -0.005172413793103403,
-      "future_20d_close_return": 0.1312178387650087,
-      "next_open_to_20d_close_return": 0.13706896551724146
+      "future_20d_close_return": 0.14065180102915975,
+      "next_open_to_20d_close_return": 0.14655172413793127
     },
     {
       "symbol": "159100",
@@ -620,12 +620,12 @@
       "symbol": "159100",
       "date": "2026-10-09",
       "stage": "REBUILDING_QUALIFIED",
-      "annual": 1.9498154071793814,
-      "r2": 0.20972498385413074,
-      "score": 0.4089250047892311,
+      "annual": 2.104039423032586,
+      "r2": 0.21134893917247333,
+      "score": 0.44468650003499993,
       "shadow_top1": false,
       "best_other": "159509",
-      "best_other_score": 7.289630475022554,
+      "best_other_score": 7.8217109199633965,
       "future_5d_close_return": null,
       "next_open_to_5d_close_return": null,
       "future_10d_close_return": null,
