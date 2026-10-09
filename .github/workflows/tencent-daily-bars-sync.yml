@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'automation/tencent_daily_sync.py'
+      - 'automation/backtest_brazil_rebuild.py'
+      - 'automation/build_fundamental_audit_trigger.py'
       - 'automation/tencent_daily_universe.csv'
       - 'automation/test_tencent_daily_sync.py'
       - 'automation/requirements-tencent-daily.txt'
@@ -73,6 +75,8 @@ jobs:
           done
           echo "::error::Daily sync failed after three attempts."
           exit 1
+      - name: Backtest Brazil ETF OLS and R2 rebuild signals
+        run: python -m automation.backtest_brazil_rebuild
       - name: Rebuild market state map data
         run: python automation/build_state_map.py
       - name: Rebuild frozen strategy live tracker
@@ -80,13 +84,13 @@ jobs:
       - name: Commit refreshed site data
         shell: bash
         run: |
-          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json; then
+          if git diff --quiet -- data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json; then
             echo "Site data unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json
+          git add data/state-map-latest.json data/state-map-history.json data/live-forward.json data/brazil-trend-research.json
           git commit -m "data: refresh daily market state and live strategy"
           git pull --rebase origin main
           git push origin HEAD:main
@@ -117,5 +121,6 @@ jobs:
             tencent-daily-sync-summary.json
             data/state-map-latest.json
             data/live-forward.json
+            data/brazil-trend-research.json
           if-no-files-found: warn
           retention-days: 30
