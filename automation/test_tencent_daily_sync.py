@@ -12,6 +12,7 @@ CORE15 = {
 }
 BENCHMARKS = {"510300"}
 RESEARCH_ONLY = {"520870", "159100"}
+# Research-only carriers must never expand the frozen production core.
 
 
 class TencentDailySyncTests(unittest.TestCase):
