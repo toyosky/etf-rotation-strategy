@@ -52,10 +52,20 @@ def main() -> None:
     for row in new_rows:
         r2 = row.get("r2")
         r2_text = f"{r2:.3f}" if isinstance(r2, (int, float)) else "未知"
-        lines.append(
-            f"- **{row.get('symbol')} {row.get('name', '')}**：R²={r2_text}；"
-            f"annual翻正日={row.get('cross_date')}"
+        age = row.get("cross_age_sessions")
+        age_text = f"{age}个交易日" if isinstance(age, int) else "未知"
+        freshness = (
+            "较早期确认" if age == 1
+            else "延后确认，注意追高风险" if isinstance(age, int) and age >= 2
+            else "时间信息不足"
         )
+        lines.extend([
+            f"- **{row.get('symbol')} {row.get('name', '')}**",
+            f"  - 趋势起点（annual 首次翻正）：{row.get('cross_date') or '未知'}",
+            f"  - 本次合格信号日期：{date}",
+            f"  - 距趋势起点：{age_text}（{freshness}）",
+            f"  - R²：{r2_text}",
+        ])
     lines.extend(["", "请自行进一步审计基本面、宏观事件、溢价和买入风险。"])
     payload = json.dumps({
         "token": token,
