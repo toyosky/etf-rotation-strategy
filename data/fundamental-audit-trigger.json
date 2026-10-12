@@ -8,15 +8,15 @@
     "note": "Research trigger only. It does not alter production ranking or execute trades."
   },
   "current_holding": {
-    "symbol": "159509",
-    "name": "纳指科技",
+    "symbol": "159981",
+    "name": "能源化工",
     "source": "data/live-forward.json baseline holding/mark-to-market"
   },
   "next_strategy_target": {
-    "symbol": "159509",
-    "name": "纳指科技",
+    "symbol": "159981",
+    "name": "能源化工",
     "signal_date": "2026-10-09",
-    "decision": "BASE"
+    "decision": "PREMIUM_UNVERIFIED_KEEP_INCUMBENT"
   },
   "audit_required": true,
   "qualified_candidates": [
