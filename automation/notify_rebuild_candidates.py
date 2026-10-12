@@ -23,6 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--previous", required=True)
     parser.add_argument("--current", required=True)
+    parser.add_argument("--test", action="store_true", help="Send an explicitly labelled test notification")
     args = parser.parse_args()
 
     previous = json.loads(Path(args.previous).read_text(encoding="utf-8"))
@@ -32,7 +33,7 @@ def main() -> None:
         row for row in current.get("qualified_candidates", [])
         if (str(row.get("symbol")), str(row.get("cross_date"))) in new_keys
     ]
-    if not new_rows:
+    if not new_rows and not args.test:
         print("No new qualified rebuild episodes; no PushPlus notification.")
         return
 
@@ -42,9 +43,10 @@ def main() -> None:
 
     date = current.get("market_data_date", "unknown")
     lines = [
-        "# ETF 趋势重建候选",
+        "# PushPlus 链路测试" if args.test else "# ETF 趋势重建候选",
         "",
         f"信号日期：{date}",
+        "此消息仅用于测试通知通道，不代表新增交易信号。" if args.test else "",
         "",
         "以下标的达到 REBUILDING_QUALIFIED；仅提示候选，尚未进行基本面/新闻审计，不构成买入建议。",
         "",
@@ -69,7 +71,7 @@ def main() -> None:
     lines.extend(["", "请自行进一步审计基本面、宏观事件、溢价和买入风险。"])
     payload = json.dumps({
         "token": token,
-        "title": f"ETF 重建候选 {date}（{len(new_rows)}只）",
+        "title": f"【测试】ETF 重建 PushPlus {date}" if args.test else f"ETF 重建候选 {date}（{len(new_rows)}只）",
         "content": "\n".join(lines),
         "template": "markdown",
     }, ensure_ascii=False).encode("utf-8")
@@ -84,7 +86,7 @@ def main() -> None:
                 body = json.loads(resp.read().decode("utf-8"))
             if int(body.get("code", 0)) != 200:
                 raise RuntimeError(f"PushPlus API rejection code={body.get('code')}; msg={body.get('msg')}")
-            print(f"PushPlus sent for {len(new_rows)} qualified rebuild episodes.")
+            print(f"PushPlus sent: test={args.test}; candidates={len(new_rows)}.")
             return
         except Exception as exc:
             if attempt == 2:
