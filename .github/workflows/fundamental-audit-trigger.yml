@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
+      - 'automation/notify_rebuild_candidates.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
   workflow_run:
     workflows:
@@ -58,7 +59,12 @@ jobs:
         shell: bash
         run: |
           git show HEAD:data/fundamental-audit-trigger.json > /tmp/previous-fundamental-audit-trigger.json 2>/dev/null || echo '{}' > /tmp/previous-fundamental-audit-trigger.json
+          EXTRA_ARGS=()
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            EXTRA_ARGS+=(--test)
+          fi
           python automation/notify_rebuild_candidates.py \
+            "${EXTRA_ARGS[@]}" \
             --previous /tmp/previous-fundamental-audit-trigger.json \
             --current data/fundamental-audit-trigger.json
 
