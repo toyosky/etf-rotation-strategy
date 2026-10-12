@@ -8,6 +8,7 @@ on:
   workflow_run:
     workflows:
       - 'Tencent HFQ Daily Bars Sync'
+      - 'Live Forward Strategy Tracker'
     types:
       - completed
   schedule:
