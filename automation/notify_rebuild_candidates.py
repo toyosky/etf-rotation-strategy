@@ -33,25 +33,43 @@ def main() -> None:
         row for row in current.get("qualified_candidates", [])
         if (str(row.get("symbol")), str(row.get("cross_date"))) in new_keys
     ]
-    if not new_rows and not args.test:
-        print("No new qualified rebuild episodes; no PushPlus notification.")
-        return
 
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
     if not token:
         raise SystemExit("New qualified rebuild candidates exist but PUSHPLUS_TOKEN is missing")
 
     date = current.get("market_data_date", "unknown")
+    if not args.test and previous.get("market_data_date") == date:
+        print("Duplicate market date; skip daily message.")
+        return
+    target = current.get("next_strategy_target") or {}
+    if not args.test and (date == "unknown" or target.get("signal_date") != date):
+        raise SystemExit("Stale next-day target or market data; refusing daily notification.")
+    symbol = target.get("symbol")
+    target_label = f"{symbol} {target.get('name') or ''}" if symbol else "现金/无目标"
+    qualified = [r for r in current.get("qualified_candidates", []) if r.get("stage") == "REBUILDING_QUALIFIED"]
+
     lines = [
-        "# PushPlus 链路测试" if args.test else "# ETF 趋势重建候选",
+        "# ETF 收盘策略日报【测试】" if args.test else "# ETF 收盘策略日报",
         "",
-        f"信号日期：{date}",
-        "此消息仅用于测试通知通道，不代表新增交易信号。" if args.test else "",
+        f"数据日期：{date}",
+        "测试消息，不代表新增信号。" if args.test else "",
         "",
-        "以下标的达到 REBUILDING_QUALIFIED；仅提示候选，尚未进行基本面/新闻审计，不构成买入建议。",
+        "## 下一交易日目标",
+        f"- **{target_label}**",
+        f"- 决策：{target.get('decision') or '未提供'}",
+        "- 目标为收盘后的策略信号，不代表成交；执行前仍需复核溢价及风险。",
+        "",
+        "## 趋势重建候选",
+        f"- 当日合格：{len(qualified)} 只",
+        f"- 当日新增：{len(new_rows)} 只",
         "",
     ]
-    for row in new_rows:
+    if not qualified:
+        lines.append("无重建合格候选。")
+    else:
+        lines.append("以下候选尚未完成基本面审计：")
+    for row in qualified:
         r2 = row.get("r2")
         r2_text = f"{r2:.3f}" if isinstance(r2, (int, float)) else "未知"
         age = row.get("cross_age_sessions")
@@ -71,7 +89,7 @@ def main() -> None:
     lines.extend(["", "请自行进一步审计基本面、宏观事件、溢价和买入风险。"])
     payload = json.dumps({
         "token": token,
-        "title": f"【测试】ETF 重建 PushPlus {date}" if args.test else f"ETF 重建候选 {date}（{len(new_rows)}只）",
+        "title": f"【测试】ETF 收盘日报 {date}" if args.test else f"ETF 收盘日报 {date}｜目标 {symbol or '现金'}｜重建 {len(qualified)}",
         "content": "\n".join(lines),
         "template": "markdown",
     }, ensure_ascii=False).encode("utf-8")
