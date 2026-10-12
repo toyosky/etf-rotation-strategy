@@ -53,18 +53,13 @@ jobs:
       - name: Build fundamental-audit trigger
         run: python automation/build_fundamental_audit_trigger.py
 
-      - name: Notify new rebuild candidates via PushPlus
+      - name: Send daily close report via PushPlus
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         shell: bash
         run: |
           git show HEAD:data/fundamental-audit-trigger.json > /tmp/previous-fundamental-audit-trigger.json 2>/dev/null || echo '{}' > /tmp/previous-fundamental-audit-trigger.json
-          EXTRA_ARGS=()
-          if [[ "${{ github.event_name }}" == "push" ]]; then
-            EXTRA_ARGS+=(--test)
-          fi
           python automation/notify_rebuild_candidates.py \
-            "${EXTRA_ARGS[@]}" \
             --previous /tmp/previous-fundamental-audit-trigger.json \
             --current data/fundamental-audit-trigger.json
 
