@@ -39,7 +39,7 @@ def main() -> None:
         raise SystemExit("New qualified rebuild candidates exist but PUSHPLUS_TOKEN is missing")
 
     date = current.get("market_data_date", "unknown")
-    if not args.test and previous.get("market_data_date") == date:
+    if not args.test and previous.get("market_data_date") == date and (previous.get("next_strategy_target") or {}).get("signal_date") == date:
         print("Duplicate market date; skip daily message.")
         return
     target = current.get("next_strategy_target") or {}
