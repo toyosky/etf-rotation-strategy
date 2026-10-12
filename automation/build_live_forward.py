@@ -23,7 +23,7 @@ COST=0.0006
 OUT=ROOT/'data'/'live-forward.json'
 EXECUTION_OVERRIDES=ROOT/'data'/'execution-overrides.json'
 CASH='511220'; CARRIER='513500'; BENCHMARK='510300'
-PREMIUM_LIMIT=0.10
+PREMIUM_LIMIT=0.15
 PREMIUM_SENSITIVE={'159934','159985','161226','513100','159957','159509','513290','159529','159981','501018','513530','511380','164824','513500'}
 NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
 BACKTEST_REFERENCE={
@@ -102,9 +102,28 @@ def apply_execution_overrides(path,key,overrides):
         q.at[idx,'premium_limit']=item.get('premium_limit',PREMIUM_LIMIT)
         q.at[idx,'execution_status']='CONFIRMED_OVERRIDE'
         audit.append(dict(item))
+    # Once an execution decision has been confirmed, later switches must not be
+    # treated as filled without an independently confirmed execution record.
+    # A missing premium quote is NOT evidence that the premium is acceptable.
+    confirmed_dates={pd.Timestamp(item['signal_date']) for item in (overrides.get(key) or [])}
+    anchored=False
     prev=None
     for idx in q.sort_values('signal_date').index:
+        date=pd.Timestamp(q.at[idx,'signal_date'])
         cur=None if pd.isna(q.at[idx,'target']) else str(q.at[idx,'target'])
+        if date in confirmed_dates:
+            anchored=True
+        elif anchored and cur != prev and cur in PREMIUM_SENSITIVE:
+            q.at[idx,'target']=prev
+            q.at[idx,'route_decision']='PREMIUM_UNVERIFIED_KEEP_INCUMBENT'
+            q.at[idx,'execution_filter']='PREMIUM_UNVERIFIED'
+            q.at[idx,'execution_note']=(
+                f'Unconfirmed switch to {cur}; no date-specific premium clearance or '
+                f'broker fill. Keep prior holding {prev or "cash"}.'
+            )
+            q.at[idx,'premium_limit']=PREMIUM_LIMIT
+            q.at[idx,'execution_status']='UNVERIFIED_HOLD'
+            cur=prev
         q.at[idx,'sides']=s8m.side_count(prev,cur)
         prev=cur
     return q,audit
