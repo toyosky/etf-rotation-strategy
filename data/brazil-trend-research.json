@@ -5,19 +5,19 @@
   "carriers": [
     {
       "symbol": "520870",
-      "bars": 219,
+      "bars": 220,
       "first_date": "2025-11-13",
-      "last_date": "2026-10-12",
-      "latest_annual": 4.706403946941984,
-      "latest_r2": 0.3182379357581303
+      "last_date": "2026-10-13",
+      "latest_annual": 7.480426344767109,
+      "latest_r2": 0.41909774639460506
     },
     {
       "symbol": "159100",
-      "bars": 219,
+      "bars": 220,
       "first_date": "2025-11-13",
-      "last_date": "2026-10-12",
-      "latest_annual": 5.094470010611552,
-      "latest_r2": 0.3384187371826163
+      "last_date": "2026-10-13",
+      "latest_annual": 7.894457807617837,
+      "latest_r2": 0.4372689214528539
     }
   ],
   "events": [
@@ -345,6 +345,23 @@
       "next_open_to_20d_close_return": null
     },
     {
+      "symbol": "520870",
+      "date": "2026-10-13",
+      "stage": "REBUILDING_QUALIFIED",
+      "annual": 7.480426344767109,
+      "r2": 0.41909774639460506,
+      "score": 3.135029823162728,
+      "shadow_top1": false,
+      "best_other": "159509",
+      "best_other_score": 5.1884111849036625,
+      "future_5d_close_return": null,
+      "next_open_to_5d_close_return": null,
+      "future_10d_close_return": null,
+      "next_open_to_10d_close_return": null,
+      "future_20d_close_return": null,
+      "next_open_to_20d_close_return": null
+    },
+    {
       "symbol": "159100",
       "date": "2026-01-07",
       "stage": "CROSS_DETECTED",
@@ -660,6 +677,23 @@
       "shadow_top1": false,
       "best_other": "159509",
       "best_other_score": 6.534784052590311,
+      "future_5d_close_return": null,
+      "next_open_to_5d_close_return": null,
+      "future_10d_close_return": null,
+      "next_open_to_10d_close_return": null,
+      "future_20d_close_return": null,
+      "next_open_to_20d_close_return": null
+    },
+    {
+      "symbol": "159100",
+      "date": "2026-10-13",
+      "stage": "REBUILDING_QUALIFIED",
+      "annual": 7.894457807617837,
+      "r2": 0.4372689214528539,
+      "score": 3.452001050992113,
+      "shadow_top1": false,
+      "best_other": "159509",
+      "best_other_score": 5.1884111849036625,
       "future_5d_close_return": null,
       "next_open_to_5d_close_return": null,
       "future_10d_close_return": null,
