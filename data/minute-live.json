@@ -1,7 +1,7 @@
 {
   "tracking_start": "2026-09-14",
   "performance_anchor": "2026-09-14 15:00 close",
-  "settled_through": "2026-10-15",
+  "settled_through": "2026-10-16",
   "cost_per_side": 0.0006,
   "execution_rules": {
     "09:31_drop_ratio": 0.97,
@@ -156,11 +156,19 @@
           "holding": "159981",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-10-16",
+          "nav": 1.0326209223847023,
+          "return": 0.002730748225013624,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [],
-      "settled_return": 0.02980877390326242,
-      "latest_nav": 1.0298087739032624,
+      "settled_return": 0.03262092238470227,
+      "latest_nav": 1.0326209223847023,
       "latest_holding": "159981"
     },
     "original": {
@@ -304,9 +312,17 @@
         },
         {
           "date": "2026-10-15",
-          "nav": 0.9231550659625887,
-          "return": -0.032513547311379676,
-          "holding": "513100",
+          "nav": 0.923574018382419,
+          "return": -0.03207447612447745,
+          "holding": "159981",
+          "status": "settled",
+          "note": "switch"
+        },
+        {
+          "date": "2026-10-16",
+          "nav": 0.9260960664937855,
+          "return": 0.002730748225013624,
+          "holding": "159981",
           "status": "settled",
           "note": "hold"
         }
@@ -347,11 +363,20 @@
           "sell_1400": 3.251,
           "buy_1405": 2.401,
           "blocked": null
+        },
+        {
+          "date": "2026-10-15",
+          "from": "513100",
+          "desired": "159981",
+          "actual": "159981",
+          "sell_1400": 2.335,
+          "buy_1405": 1.839,
+          "blocked": null
         }
       ],
-      "settled_return": -0.07684493403741133,
-      "latest_nav": 0.9231550659625887,
-      "latest_holding": "513100"
+      "settled_return": -0.07390393350621449,
+      "latest_nav": 0.9260960664937855,
+      "latest_holding": "159981"
     },
     "freeze_cash": {
       "label": "Freeze → Cash",
@@ -494,9 +519,17 @@
         },
         {
           "date": "2026-10-15",
-          "nav": 1.01119359396322,
-          "return": -0.03251354731137979,
-          "holding": "513100",
+          "nav": 1.011652500617939,
+          "return": -0.03207447612447745,
+          "holding": "159981",
+          "status": "settled",
+          "note": "switch"
+        },
+        {
+          "date": "2026-10-16",
+          "nav": 1.0144150688883322,
+          "return": 0.002730748225013624,
+          "holding": "159981",
           "status": "settled",
           "note": "hold"
         }
@@ -519,11 +552,20 @@
           "sell_1400": 3.251,
           "buy_1405": 2.401,
           "blocked": null
+        },
+        {
+          "date": "2026-10-15",
+          "from": "513100",
+          "desired": "159981",
+          "actual": "159981",
+          "sell_1400": 2.335,
+          "buy_1405": 1.839,
+          "blocked": null
         }
       ],
-      "settled_return": 0.01119359396321995,
-      "latest_nav": 1.01119359396322,
-      "latest_holding": "513100"
+      "settled_return": 0.014415068888332216,
+      "latest_nav": 1.0144150688883322,
+      "latest_holding": "159981"
     }
   },
   "note": "Minute forward execution model. 2026-09-14 is the signal anchor and NAV is fixed at 1.0 at that close; no 2026-09-14 intraday return is backfilled. Tencent five-day timeline is used only to bridge the 2026-09-14 start; canonical m1 is used when available. No data before 2026-09-14."
