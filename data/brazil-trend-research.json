@@ -5,19 +5,19 @@
   "carriers": [
     {
       "symbol": "520870",
-      "bars": 222,
+      "bars": 223,
       "first_date": "2025-11-13",
-      "last_date": "2026-10-15",
-      "latest_annual": 9.625834427531489,
-      "latest_r2": 0.5364393523791979
+      "last_date": "2026-10-16",
+      "latest_annual": 8.137023739990271,
+      "latest_r2": 0.5293266285740943
     },
     {
       "symbol": "159100",
-      "bars": 222,
+      "bars": 223,
       "first_date": "2025-11-13",
-      "last_date": "2026-10-15",
-      "latest_annual": 9.708401061298332,
-      "latest_r2": 0.5471701685909232
+      "last_date": "2026-10-16",
+      "latest_annual": 8.020681916579056,
+      "latest_r2": 0.5327740953868025
     }
   ],
   "events": [
@@ -320,8 +320,8 @@
       "shadow_top1": false,
       "best_other": "159509",
       "best_other_score": 7.821710919962858,
-      "future_5d_close_return": null,
-      "next_open_to_5d_close_return": null,
+      "future_5d_close_return": -0.024187452758881345,
+      "next_open_to_5d_close_return": -0.046528803545051844,
       "future_10d_close_return": null,
       "next_open_to_10d_close_return": null,
       "future_20d_close_return": null,
@@ -660,8 +660,8 @@
       "shadow_top1": false,
       "best_other": "159509",
       "best_other_score": 7.821710919962858,
-      "future_5d_close_return": null,
-      "next_open_to_5d_close_return": null,
+      "future_5d_close_return": -0.03233082706766932,
+      "next_open_to_5d_close_return": -0.05714285714285716,
       "future_10d_close_return": null,
       "next_open_to_10d_close_return": null,
       "future_20d_close_return": null,
