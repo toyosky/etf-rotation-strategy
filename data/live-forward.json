@@ -43,9 +43,9 @@
     "quadrant": "NARROW_LEADERSHIP",
     "breadth_pct": 38.46153846153846,
     "gap_percentile": 52.38095238095238,
-    "target_score": 0.6481474883739362,
-    "cash_score": 0.02830963879226982,
-    "carrier_score": 0.006092567345415116,
+    "target_score": 0.6481474883739218,
+    "cash_score": 0.028309638792262407,
+    "carrier_score": 0.00609256734541408,
     "completed_through": "2026-10-16",
     "performance_signal_through": "2026-10-14"
   },
