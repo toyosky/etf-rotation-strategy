@@ -100,13 +100,22 @@ def harmonize(old, recent, counts):
         if archived.empty:
             # For an absent symbol in the archive, query Tencent from its first feasible
             # listing year. Do not backfill by cloning a proxy.
-            historical = normalize(run_westock([code],date(2015,1,1),
-                date.today(),3),[code],{sym:"ETF"},date.today())
+            # Tencent restricts a single kline response to about 250 bars.
+            # Explicitly page from the actual 2021 listing date rather than
+            # assuming a long window returns complete history.
+            start = date(2021, 4, 8) if sym == "516550" else date(2015, 1, 1)
+            historical = []
+            while start <= date.today():
+                end = min(start+timedelta(days=149), date.today())
+                historical.extend(normalize(
+                    run_westock([code], start, end, 3),
+                    [code], {sym:"ETF"}, date.today()))
+                start = end+timedelta(days=1)
             columns = ["symbol","date","open","high","low","close","volume",
                        "amount","instrument_type","ingested_on"]
             archived = pd.DataFrame(historical,columns=columns)
-            if len(archived)<200:
-                raise RuntimeError(f"{sym}: insufficient verified full history")
+            if len(archived)<800:
+                raise RuntimeError(f"{sym}: historical paging incomplete ({len(archived)} bars)")
             fresh = fresh.iloc[0:0].copy()
             seam_note = "full Tencent HFQ history, no archive available"
         else:
@@ -142,6 +151,8 @@ def harmonize(old, recent, counts):
             raise RuntimeError(f"{sym}: stale data {g.date.max()}")
         if len(g)<200:
             raise RuntimeError(f"{sym}: insufficient bars")
+        if sym == "516550" and (g.date.min() > pd.Timestamp("2021-05-31") or len(g)<800):
+            raise RuntimeError("516550: missing early listing history")
         all_groups.append(g)
         notes[sym]={"sector":sector,"n":len(g),"first":str(g.date.min().date()),
             "last":str(g.date.max().date()),"archived_count":counts.get(sym,0),
