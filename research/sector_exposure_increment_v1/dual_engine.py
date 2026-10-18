@@ -254,6 +254,7 @@ def main():
             "eligible_events_by_symbol":eligible,
             "production_changed":False}
 
+    frozen_top1 = None
     for label,symbols in VARIANTS.items():
         mask=features.symbol.isin(symbols)
         ff=features.loc[mask]
@@ -261,6 +262,8 @@ def main():
         top_pnl=backtest_open_to_open(bars.loc[bars.symbol.isin(symbols)],targets)
         top_pnl=top_pnl[["date","net_ret","missing_quote"]].copy().rename(
           columns={"net_ret":"top1_ret"})
+        if label=="BASE":
+            frozen_top1=top_pnl.copy()
         # Explicitly keep original Top1 series, without retuning to rebuild.
         entry={"top1_only":{
           "discovery":period(top_pnl.rename(columns={"top1_ret":"net_ret"}),"2021-01-01","2024-12-31"),
@@ -282,6 +285,16 @@ def main():
                 entry[f"mix_{int(top_weight*100)}_{int((1-top_weight)*100)}_{max_slots}_slot"]={
                  "discovery":period(mixture,"2021-01-01","2024-12-31"),
                  "validation":period(mixture,"2025-01-01")}
+                # Orthogonal admission experiment: Top1 universe is exactly
+                # frozen BASE. Only the independent rebuilding sleeve expands.
+                fixed=frozen_top1.merge(
+                    r2_daily[["date","ret"]],on="date",how="inner")
+                fixed_mix=fixed[["date"]].copy()
+                fixed_mix["net_ret"]=(top_weight*fixed.top1_ret+
+                                     (1-top_weight)*fixed.ret)
+                entry[f"frozen_top1_mix_{int(top_weight*100)}_{int((1-top_weight)*100)}_{max_slots}_slot"]={
+                    "discovery":period(fixed_mix,"2021-01-01","2024-12-31"),
+                    "validation":period(fixed_mix,"2025-01-01")}
         result["tests"][label]=entry
 
     # Use the identical daily calendar and signal rule in every counterfactual.
@@ -292,7 +305,7 @@ def main():
         summary[k]={key:{"discovery":round(r["discovery"]["total_return"],4),
                           "validation":round(r["validation"]["total_return"],4),
                           "validation_mdd":round(r["validation"]["max_drawdown"],4)}
-                    for key,r in v.items() if key.startswith("mix_")}
+                    for key,r in v.items() if key.startswith(("mix_","frozen_top1_mix_"))}
     print(json.dumps(summary,ensure_ascii=False))
 
 if __name__=="__main__":
