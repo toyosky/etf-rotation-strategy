@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-10-18T07:56:05.822973+00:00",
+  "created_at_utc": "2026-10-18T07:58:41.937812+00:00",
   "study": "sector_exposure_increment_v1",
   "production_changed": false,
   "data_storage": "research.sector_candidate_bars; not public.daily_bars",
@@ -27,6 +27,20 @@
       "seam": "full Tencent HFQ history, no archive available",
       "eligible_days": 0,
       "universe_admissible_days": 0
+    },
+    "159825": {
+      "sector": "AGRICULTURE_RETIRED",
+      "n": 1403,
+      "first": "2020-12-29",
+      "last": "2026-10-16",
+      "archived_count": 1387,
+      "seam": {
+        "overlap_days": 49,
+        "archive_to_tencent_ratio": 1.0,
+        "overlap_p90_error": 0.005571205007824709
+      },
+      "eligible_days": 570,
+      "universe_admissible_days": 1160
     },
     "512660": {
       "sector": "DEFENSE",
@@ -67,11 +81,16 @@
       "AGRICULTURE",
       "sh516550"
     ],
+    "159825": [
+      "AGRICULTURE_RETIRED",
+      "sz159825"
+    ],
     "512660": [
       "DEFENSE",
       "sh512660"
     ]
   },
+  "agriculture_note": "159825 is the formerly retired strategy candidate; 516550 tests an alternative agricultural index. ADD_ALL uses 159825 as its single agriculture representative.",
   "method": "Frozen 26-bar weighted OLS, HL10, existing research liquidity/D2 filters; top1 close(t)->next open; 6bps each side; no C2/state-map/premium veto",
   "variants": {
     "BASE": {
@@ -422,6 +441,123 @@
       "sector_top1_when_baseline_cash": 0,
       "sector_takeover_vs_baseline": 0
     },
+    "ADD_AGRICULTURE_RETIRED": {
+      "variant": "ADD_AGRICULTURE_RETIRED",
+      "full_2021_2026": {
+        "trading_days": 1399,
+        "total_return": 5.124208645746502,
+        "gross_total_return": 6.928009127399887,
+        "cagr": 0.3684902523855451,
+        "gross_cagr": 0.43103135037247475,
+        "max_drawdown": -0.45363496960726934,
+        "gross_max_drawdown": -0.4349538086888577,
+        "switch_events": 222,
+        "turnover_sides": 430,
+        "invested_ratio": 0.9728377412437456,
+        "missing_quote_days": 6
+      },
+      "period_2021_2024": {
+        "trading_days": 969,
+        "total_return": 0.31895543309818963,
+        "gross_total_return": 0.5233690941739872,
+        "cagr": 0.07186489949087571,
+        "gross_cagr": 0.11128832544559564,
+        "max_drawdown": -0.3615050938076132,
+        "gross_max_drawdown": -0.3404664829331753,
+        "switch_events": 126,
+        "turnover_sides": 240,
+        "invested_ratio": 0.9638802889576883,
+        "missing_quote_days": 0
+      },
+      "period_2025_2026": {
+        "trading_days": 430,
+        "total_return": 3.643226368430742,
+        "gross_total_return": 4.204260187317686,
+        "cagr": 1.3666055984841905,
+        "gross_cagr": 1.5230178034240427,
+        "max_drawdown": -0.4536349696072687,
+        "gross_max_drawdown": -0.4349538086888576,
+        "switch_events": 96,
+        "turnover_sides": 190,
+        "invested_ratio": 0.9930232558139535,
+        "missing_quote_days": 6
+      },
+      "yearly_returns": {
+        "2021": {
+          "net": -0.2200905991551293,
+          "gross": -0.19342531704422483
+        },
+        "2022": {
+          "net": 0.20668087265686408,
+          "gross": 0.24793936890994273
+        },
+        "2023": {
+          "net": 0.3705295991488089,
+          "gross": 0.4072152142686356
+        },
+        "2024": {
+          "net": 0.02259842113029986,
+          "gross": 0.07549042136262307
+        },
+        "2025": {
+          "net": 1.3280626205147197,
+          "gross": 1.454365151522591
+        },
+        "2026": {
+          "net": 0.9944593962013548,
+          "gross": 1.1204099088879151
+        }
+      },
+      "candidate_count_mean": 4.829285714285715,
+      "candidate_count_median": 4.0,
+      "candidate_count_p10": 1.0,
+      "candidate_empty_signal_days": 38,
+      "top_symbols": [
+        {
+          "symbol": "513100",
+          "signal_days": 256
+        },
+        {
+          "symbol": "159985",
+          "signal_days": 192
+        },
+        {
+          "symbol": "161226",
+          "signal_days": 153
+        },
+        {
+          "symbol": "159934",
+          "signal_days": 134
+        },
+        {
+          "symbol": "159509",
+          "signal_days": 105
+        },
+        {
+          "symbol": "513530",
+          "signal_days": 83
+        },
+        {
+          "symbol": "511380",
+          "signal_days": 71
+        },
+        {
+          "symbol": "501018",
+          "signal_days": 69
+        },
+        {
+          "symbol": "159957",
+          "signal_days": 61
+        },
+        {
+          "symbol": "159981",
+          "signal_days": 61
+        }
+      ],
+      "sector_top1_signal_days": 55,
+      "sector_top1_when_baseline_cash": 4,
+      "sector_takeover_vs_baseline": 51
+    },
     "ADD_DEFENSE": {
       "variant": "ADD_DEFENSE",
       "full_2021_2026": {
@@ -543,73 +679,73 @@
       "variant": "ADD_ALL",
       "full_2021_2026": {
         "trading_days": 1399,
-        "total_return": 5.902149554019675,
-        "gross_total_return": 8.207367960988222,
-        "cagr": 0.3971137672169245,
-        "gross_cagr": 0.46857444742159626,
-        "max_drawdown": -0.41594773294919263,
-        "gross_max_drawdown": -0.39525228327342055,
-        "switch_events": 245,
-        "turnover_sides": 480,
-        "invested_ratio": 0.9878484631879915,
+        "total_return": 5.3883161124559775,
+        "gross_total_return": 7.5424141249441,
+        "cagr": 0.3785287272195743,
+        "gross_cagr": 0.44964138576777746,
+        "max_drawdown": -0.43397403748779806,
+        "gross_max_drawdown": -0.41391733625880855,
+        "switch_events": 246,
+        "turnover_sides": 484,
+        "invested_ratio": 0.9892780557541101,
         "missing_quote_days": 6
       },
       "period_2021_2024": {
         "trading_days": 969,
-        "total_return": 0.6024492322643125,
-        "gross_total_return": 0.8980620434988955,
-        "cagr": 0.12547699371382137,
-        "gross_cagr": 0.174271761343054,
-        "max_drawdown": -0.28199183555519136,
-        "gross_max_drawdown": -0.2627725708344034,
-        "switch_events": 145,
-        "turnover_sides": 282,
-        "invested_ratio": 0.9834881320949432,
+        "total_return": 0.4087735657387188,
+        "gross_total_return": 0.6726699380512013,
+        "cagr": 0.08971380910913607,
+        "gross_cagr": 0.13764273749103584,
+        "max_drawdown": -0.2938864692701786,
+        "gross_max_drawdown": -0.27411453128310515,
+        "switch_events": 147,
+        "turnover_sides": 286,
+        "invested_ratio": 0.9845201238390093,
         "missing_quote_days": 0
       },
       "period_2025_2026": {
         "trading_days": 430,
-        "total_return": 3.3072500613743196,
-        "gross_total_return": 3.8509309758996784,
-        "cagr": 1.2689464270839022,
-        "gross_cagr": 1.4254312264329867,
-        "max_drawdown": -0.4159477329491923,
-        "gross_max_drawdown": -0.3952522832734199,
-        "switch_events": 100,
+        "total_return": 3.534664951003771,
+        "gross_total_return": 4.107053059670999,
+        "cagr": 1.3353995477620546,
+        "gross_cagr": 1.4964679937765042,
+        "max_drawdown": -0.4339740374877974,
+        "gross_max_drawdown": -0.4139173362588089,
+        "switch_events": 99,
         "turnover_sides": 198,
-        "invested_ratio": 0.9976744186046511,
+        "invested_ratio": 1.0,
         "missing_quote_days": 6
       },
       "yearly_returns": {
         "2021": {
-          "net": -0.059166067804029,
-          "gross": -0.019962905365755068
+          "net": -0.07205420386150807,
+          "gross": -0.033388071045676204
         },
         "2022": {
-          "net": 0.09421249508920293,
-          "gross": 0.1466710718619877
+          "net": 0.028964700553869127,
+          "gross": 0.07570882134252477
         },
         "2023": {
-          "net": 0.28898572298427805,
-          "gross": 0.326670713843763
+          "net": 0.27776479836138934,
+          "gross": 0.3182837150780835
         },
         "2024": {
-          "net": 0.20759562295035439,
-          "gross": 0.27310988961572535
+          "net": 0.15469474587637322,
+          "gross": 0.22026592444079252
         },
         "2025": {
-          "net": 1.1712601140820968,
-          "gross": 1.2945585747001216
+          "net": 1.3586979792466627,
+          "gross": 1.4926412957291362
         },
         "2026": {
-          "net": 0.9837558998292633,
-          "gross": 1.114102045328539
+          "net": 0.9225288658839155,
+          "gross": 1.0488519822011182
         }
       },
-      "candidate_count_mean": 5.365714285714286,
+      "candidate_count_mean": 5.772857142857143,
       "candidate_count_median": 5.0,
       "candidate_count_p10": 2.0,
-      "candidate_empty_signal_days": 17,
+      "candidate_empty_signal_days": 15,
       "top_symbols": [
         {
           "symbol": "513100",
@@ -617,19 +753,19 @@
         },
         {
           "symbol": "159985",
-          "signal_days": 177
+          "signal_days": 173
         },
         {
           "symbol": "512660",
-          "signal_days": 171
+          "signal_days": 154
         },
         {
           "symbol": "512800",
-          "signal_days": 153
+          "signal_days": 150
         },
         {
           "symbol": "161226",
-          "signal_days": 117
+          "signal_days": 115
         },
         {
           "symbol": "159934",
@@ -645,16 +781,133 @@
         },
         {
           "symbol": "513290",
-          "signal_days": 56
+          "signal_days": 55
         },
         {
           "symbol": "164824",
           "signal_days": 54
         }
       ],
-      "sector_top1_signal_days": 336,
-      "sector_top1_when_baseline_cash": 36,
-      "sector_takeover_vs_baseline": 300
+      "sector_top1_signal_days": 353,
+      "sector_top1_when_baseline_cash": 38,
+      "sector_takeover_vs_baseline": 315
+    },
+    "ADD_ALL_WITH_BOTH_AGRI": {
+      "variant": "ADD_ALL_WITH_BOTH_AGRI",
+      "full_2021_2026": {
+        "trading_days": 1399,
+        "total_return": 5.3883161124559775,
+        "gross_total_return": 7.5424141249441,
+        "cagr": 0.3785287272195743,
+        "gross_cagr": 0.44964138576777746,
+        "max_drawdown": -0.43397403748779806,
+        "gross_max_drawdown": -0.41391733625880855,
+        "switch_events": 246,
+        "turnover_sides": 484,
+        "invested_ratio": 0.9892780557541101,
+        "missing_quote_days": 6
+      },
+      "period_2021_2024": {
+        "trading_days": 969,
+        "total_return": 0.4087735657387188,
+        "gross_total_return": 0.6726699380512013,
+        "cagr": 0.08971380910913607,
+        "gross_cagr": 0.13764273749103584,
+        "max_drawdown": -0.2938864692701786,
+        "gross_max_drawdown": -0.27411453128310515,
+        "switch_events": 147,
+        "turnover_sides": 286,
+        "invested_ratio": 0.9845201238390093,
+        "missing_quote_days": 0
+      },
+      "period_2025_2026": {
+        "trading_days": 430,
+        "total_return": 3.534664951003771,
+        "gross_total_return": 4.107053059670999,
+        "cagr": 1.3353995477620546,
+        "gross_cagr": 1.4964679937765042,
+        "max_drawdown": -0.4339740374877974,
+        "gross_max_drawdown": -0.4139173362588089,
+        "switch_events": 99,
+        "turnover_sides": 198,
+        "invested_ratio": 1.0,
+        "missing_quote_days": 6
+      },
+      "yearly_returns": {
+        "2021": {
+          "net": -0.07205420386150807,
+          "gross": -0.033388071045676204
+        },
+        "2022": {
+          "net": 0.028964700553869127,
+          "gross": 0.07570882134252477
+        },
+        "2023": {
+          "net": 0.27776479836138934,
+          "gross": 0.3182837150780835
+        },
+        "2024": {
+          "net": 0.15469474587637322,
+          "gross": 0.22026592444079252
+        },
+        "2025": {
+          "net": 1.3586979792466627,
+          "gross": 1.4926412957291362
+        },
+        "2026": {
+          "net": 0.9225288658839155,
+          "gross": 1.0488519822011182
+        }
+      },
+      "candidate_count_mean": 5.772857142857143,
+      "candidate_count_median": 5.0,
+      "candidate_count_p10": 2.0,
+      "candidate_empty_signal_days": 15,
+      "top_symbols": [
+        {
+          "symbol": "513100",
+          "signal_days": 204
+        },
+        {
+          "symbol": "159985",
+          "signal_days": 173
+        },
+        {
+          "symbol": "512660",
+          "signal_days": 154
+        },
+        {
+          "symbol": "512800",
+          "signal_days": 150
+        },
+        {
+          "symbol": "161226",
+          "signal_days": 115
+        },
+        {
+          "symbol": "159934",
+          "signal_days": 99
+        },
+        {
+          "symbol": "159509",
+          "signal_days": 94
+        },
+        {
+          "symbol": "501018",
+          "signal_days": 64
+        },
+        {
+          "symbol": "513290",
+          "signal_days": 55
+        },
+        {
+          "symbol": "164824",
+          "signal_days": 54
+        }
+      ],
+      "sector_top1_signal_days": 353,
+      "sector_top1_when_baseline_cash": 38,
+      "sector_takeover_vs_baseline": 315
     }
   },
   "rebuilding_events": {
@@ -665,7 +918,7 @@
         {
           "signal_date": "2021-01-12",
           "first_cross_date": "2021-01-11",
-          "r2": 0.22603788933701652,
+          "r2": 0.2260378893370163,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.04237288135593231,
           "next_open_to_10d_close": 0.016949152542372836,
@@ -685,7 +938,7 @@
         {
           "signal_date": "2021-04-30",
           "first_cross_date": "2021-04-29",
-          "r2": 0.0007369378465522658,
+          "r2": 0.0007369378465525989,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.016260162601626105,
           "next_open_to_10d_close": 0.016260162601626105,
@@ -695,7 +948,7 @@
         {
           "signal_date": "2021-08-17",
           "first_cross_date": "2021-08-16",
-          "r2": 0.016184118319698793,
+          "r2": 0.01618411831969835,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01754385964912286,
           "next_open_to_10d_close": -0.00877192982456143,
@@ -705,7 +958,7 @@
         {
           "signal_date": "2021-09-02",
           "first_cross_date": "2021-09-01",
-          "r2": 0.016245898467427855,
+          "r2": 0.016245898467428188,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.008547008547008517,
           "next_open_to_10d_close": -0.017094017094017144,
@@ -715,7 +968,7 @@
         {
           "signal_date": "2021-10-13",
           "first_cross_date": "2021-10-12",
-          "r2": 0.037920320966176146,
+          "r2": 0.03792032096617648,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.008474576271186418,
           "next_open_to_10d_close": 0.008474576271186418,
@@ -735,7 +988,7 @@
         {
           "signal_date": "2022-01-11",
           "first_cross_date": "2022-01-10",
-          "r2": 0.19046697699263526,
+          "r2": 0.19046697699263493,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0,
@@ -745,7 +998,7 @@
         {
           "signal_date": "2022-04-01",
           "first_cross_date": "2022-03-31",
-          "r2": 0.17280066103280545,
+          "r2": 0.17280066103280534,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.008547008547008517,
           "next_open_to_10d_close": -0.008547008547008517,
@@ -755,7 +1008,7 @@
         {
           "signal_date": "2022-06-10",
           "first_cross_date": "2022-06-09",
-          "r2": 0.12114857422420189,
+          "r2": 0.12114857422420222,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0,
@@ -765,7 +1018,7 @@
         {
           "signal_date": "2022-09-02",
           "first_cross_date": "2022-09-01",
-          "r2": 0.08529370533535452,
+          "r2": 0.0852937053353543,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01904761904761898,
           "next_open_to_10d_close": 0.00952380952380949,
@@ -775,7 +1028,7 @@
         {
           "signal_date": "2022-11-15",
           "first_cross_date": "2022-11-14",
-          "r2": 0.13157672114905894,
+          "r2": 0.13157672114905905,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0490196078431373,
@@ -785,7 +1038,7 @@
         {
           "signal_date": "2022-12-30",
           "first_cross_date": "2022-12-29",
-          "r2": 0.015024613324499891,
+          "r2": 0.015024613324500113,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0185185185185186,
           "next_open_to_10d_close": 0.0277777777777779,
@@ -795,7 +1048,7 @@
         {
           "signal_date": "2023-04-12",
           "first_cross_date": "2023-04-11",
-          "r2": 0.02590362961171777,
+          "r2": 0.02590362961171766,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.037735849056603765,
           "next_open_to_10d_close": 0.028301886792452935,
@@ -805,7 +1058,7 @@
         {
           "signal_date": "2023-07-17",
           "first_cross_date": "2023-07-14",
-          "r2": 0.05362584900538936,
+          "r2": 0.05362584900538925,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.07339449541284382,
@@ -825,7 +1078,7 @@
         {
           "signal_date": "2024-01-04",
           "first_cross_date": "2024-01-03",
-          "r2": 0.24229368261125295,
+          "r2": 0.24229368261125317,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.01904761904761898,
@@ -845,7 +1098,7 @@
         {
           "signal_date": "2024-07-01",
           "first_cross_date": "2024-06-28",
-          "r2": 0.09665354714717878,
+          "r2": 0.09665354714717855,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.007936507936507908,
           "next_open_to_10d_close": 0.031746031746031855,
@@ -855,7 +1108,7 @@
         {
           "signal_date": "2024-08-20",
           "first_cross_date": "2024-08-19",
-          "r2": 0.16537304212191895,
+          "r2": 0.1653730421219195,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01526717557251911,
           "next_open_to_10d_close": -0.06106870229007644,
@@ -865,7 +1118,7 @@
         {
           "signal_date": "2024-09-26",
           "first_cross_date": "2024-09-25",
-          "r2": 0.105291636797056,
+          "r2": 0.10529163679705578,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.029197080291970767,
           "next_open_to_10d_close": 0.04379562043795615,
@@ -875,7 +1128,7 @@
         {
           "signal_date": "2024-12-04",
           "first_cross_date": "2024-12-03",
-          "r2": 0.048674081004264624,
+          "r2": 0.048674081004264735,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.014184397163120588,
           "next_open_to_10d_close": 0.028368794326241176,
@@ -885,7 +1138,7 @@
         {
           "signal_date": "2025-01-24",
           "first_cross_date": "2025-01-23",
-          "r2": 0.020632640491799248,
+          "r2": 0.020632640491796916,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.020270270270270396,
@@ -895,7 +1148,7 @@
         {
           "signal_date": "2025-03-06",
           "first_cross_date": "2025-03-05",
-          "r2": 0.023277487262657992,
+          "r2": 0.023277487262658214,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.026666666666666616,
@@ -905,7 +1158,7 @@
         {
           "signal_date": "2025-04-21",
           "first_cross_date": "2025-04-18",
-          "r2": 0.06255862776265053,
+          "r2": 0.06255862776265109,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.019607843137254832,
           "next_open_to_10d_close": 0.019607843137254832,
@@ -915,7 +1168,7 @@
         {
           "signal_date": "2025-10-20",
           "first_cross_date": "2025-10-17",
-          "r2": 0.10652933731314773,
+          "r2": 0.10652933731314851,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01840490797546024,
           "next_open_to_10d_close": 0.012269938650306678,
@@ -925,7 +1178,7 @@
         {
           "signal_date": "2026-02-11",
           "first_cross_date": "2026-02-10",
-          "r2": 0.05731135332596393,
+          "r2": 0.05731135332596349,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.03144654088050314,
           "next_open_to_10d_close": -0.012578616352201255,
@@ -955,7 +1208,7 @@
         {
           "signal_date": "2026-06-08",
           "first_cross_date": "2026-06-05",
-          "r2": 0.1167558946739069,
+          "r2": 0.11675589467390746,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.019108280254777066,
           "next_open_to_10d_close": -0.006369426751592355,
@@ -965,7 +1218,7 @@
         {
           "signal_date": "2026-07-15",
           "first_cross_date": "2026-07-14",
-          "r2": 0.08790332311919125,
+          "r2": 0.08790332311919113,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.012658227848101333,
           "next_open_to_10d_close": 0.036708860759493644,
@@ -975,7 +1228,7 @@
         {
           "signal_date": "2026-08-24",
           "first_cross_date": "2026-08-21",
-          "r2": 0.06903410907769081,
+          "r2": 0.06903410907769048,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.001204819277108471,
           "next_open_to_10d_close": 0.006024096385542244,
@@ -985,7 +1238,7 @@
         {
           "signal_date": "2026-10-08",
           "first_cross_date": "2026-09-30",
-          "r2": 0.15612813432806683,
+          "r2": 0.15612813432806671,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.00465657741559955,
           "next_open_to_10d_close": null,
@@ -1002,7 +1255,7 @@
         {
           "signal_date": "2021-08-11",
           "first_cross_date": "2021-08-10",
-          "r2": 0.02330499493203264,
+          "r2": 0.02330499493203242,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.04139433551198257,
           "next_open_to_10d_close": -0.045751633986928164,
@@ -1012,7 +1265,7 @@
         {
           "signal_date": "2021-09-10",
           "first_cross_date": "2021-09-09",
-          "r2": 0.04259453605182606,
+          "r2": 0.042594536051825393,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.023622047244094557,
           "next_open_to_10d_close": -0.0011248593925758943,
@@ -1022,7 +1275,7 @@
         {
           "signal_date": "2021-09-28",
           "first_cross_date": "2021-09-27",
-          "r2": 0.09639215325593531,
+          "r2": 0.0963921532559362,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.03518728717366626,
           "next_open_to_10d_close": 0.04653802497162318,
@@ -1032,7 +1285,7 @@
         {
           "signal_date": "2021-12-13",
           "first_cross_date": "2021-12-10",
-          "r2": 0.14650658425055185,
+          "r2": 0.14650658425055219,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.032631578947368345,
           "next_open_to_10d_close": 0.0,
@@ -1062,7 +1315,7 @@
         {
           "signal_date": "2022-03-02",
           "first_cross_date": "2022-03-01",
-          "r2": 0.059030679343691106,
+          "r2": 0.05903067934369077,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.08715083798882695,
           "next_open_to_10d_close": -0.10837988826815637,
@@ -1072,7 +1325,7 @@
         {
           "signal_date": "2022-04-06",
           "first_cross_date": "2022-04-01",
-          "r2": 0.016786435842383707,
+          "r2": 0.016786435842383596,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.007202881152461038,
           "next_open_to_10d_close": 0.025210084033613578,
@@ -1082,7 +1335,7 @@
         {
           "signal_date": "2022-04-12",
           "first_cross_date": "2022-04-11",
-          "r2": 0.009894537920355884,
+          "r2": 0.009894537920355995,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.026378896882494063,
           "next_open_to_10d_close": -0.0683453237410071,
@@ -1092,7 +1345,7 @@
         {
           "signal_date": "2022-05-27",
           "first_cross_date": "2022-05-26",
-          "r2": 0.021612993757614274,
+          "r2": 0.02161299375761394,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.022360248447204745,
           "next_open_to_10d_close": 0.06211180124223592,
@@ -1102,7 +1355,7 @@
         {
           "signal_date": "2022-08-23",
           "first_cross_date": "2022-08-22",
-          "r2": 0.09897401626299795,
+          "r2": 0.09897401626299751,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.0034522439585730202,
           "next_open_to_10d_close": -0.024165707710011475,
@@ -1122,7 +1375,7 @@
         {
           "signal_date": "2022-11-30",
           "first_cross_date": "2022-11-29",
-          "r2": 0.010492563186126569,
+          "r2": 0.010492563186126902,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.041131105398457546,
           "next_open_to_10d_close": 0.03470437017994854,
@@ -1132,7 +1385,7 @@
         {
           "signal_date": "2023-01-16",
           "first_cross_date": "2023-01-13",
-          "r2": 0.11516256659966795,
+          "r2": 0.11516256659966762,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.0062266500622665255,
           "next_open_to_10d_close": -0.00996264009962644,
@@ -1142,7 +1395,7 @@
         {
           "signal_date": "2023-02-23",
           "first_cross_date": "2023-02-22",
-          "r2": 0.029175936219092313,
+          "r2": 0.02917593621909198,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.0024999999999999467,
           "next_open_to_10d_close": -0.03500000000000003,
@@ -1152,7 +1405,7 @@
         {
           "signal_date": "2023-07-14",
           "first_cross_date": "2023-07-13",
-          "r2": 0.03138084918126738,
+          "r2": 0.03138084918126616,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.01615271659324513,
           "next_open_to_10d_close": 0.02643171806167377,
@@ -1162,7 +1415,7 @@
         {
           "signal_date": "2023-11-02",
           "first_cross_date": "2023-11-01",
-          "r2": 0.014599695989625627,
+          "r2": 0.014599695989625738,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.011041009463722329,
           "next_open_to_10d_close": 0.003154574132492094,
@@ -1192,7 +1445,7 @@
         {
           "signal_date": "2024-04-24",
           "first_cross_date": "2024-04-23",
-          "r2": 0.004923476648288183,
+          "r2": 0.004923476648287961,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.044334975369458185,
           "next_open_to_10d_close": 0.062397372742200474,
@@ -1202,7 +1455,7 @@
         {
           "signal_date": "2024-09-26",
           "first_cross_date": "2024-09-25",
-          "r2": 0.15294825398453915,
+          "r2": 0.15294825398453926,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.10172413793103452,
           "next_open_to_10d_close": 0.04137931034482767,
@@ -1212,7 +1465,7 @@
         {
           "signal_date": "2024-12-12",
           "first_cross_date": "2024-12-11",
-          "r2": 0.11948698718086281,
+          "r2": 0.11948698718086159,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.035820895522388096,
           "next_open_to_10d_close": -0.046268656716418,
@@ -1222,7 +1475,7 @@
         {
           "signal_date": "2025-02-14",
           "first_cross_date": "2025-02-13",
-          "r2": 0.19072550758206375,
+          "r2": 0.19072550758206508,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.012882447665056418,
           "next_open_to_10d_close": -0.012882447665056418,
@@ -1232,7 +1485,7 @@
         {
           "signal_date": "2025-03-04",
           "first_cross_date": "2025-03-03",
-          "r2": 0.11986380848986111,
+          "r2": 0.11986380848985811,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.009661835748792313,
           "next_open_to_10d_close": 0.027375201288244888,
@@ -1242,7 +1495,7 @@
         {
           "signal_date": "2025-05-20",
           "first_cross_date": "2025-05-15",
-          "r2": 0.11735297353654706,
+          "r2": 0.1173529735365475,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.007645259938837912,
           "next_open_to_10d_close": 0.030581039755351647,
@@ -1252,7 +1505,7 @@
         {
           "signal_date": "2025-05-20",
           "first_cross_date": "2025-05-19",
-          "r2": 0.11735297353654706,
+          "r2": 0.1173529735365475,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.007645259938837912,
           "next_open_to_10d_close": 0.030581039755351647,
@@ -1262,7 +1515,7 @@
         {
           "signal_date": "2025-07-04",
           "first_cross_date": "2025-07-03",
-          "r2": 0.01077827616732685,
+          "r2": 0.010778276167327738,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.007496251874062887,
           "next_open_to_10d_close": 0.016491754122938573,
@@ -1272,7 +1525,7 @@
         {
           "signal_date": "2025-10-13",
           "first_cross_date": "2025-10-10",
-          "r2": 0.027579079109633753,
+          "r2": 0.02757907910963353,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.02684563758389269,
           "next_open_to_10d_close": -0.014765100671141007,
@@ -1282,7 +1535,7 @@
         {
           "signal_date": "2025-10-31",
           "first_cross_date": "2025-10-30",
-          "r2": 0.03951956010346869,
+          "r2": 0.03951956010346935,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.008086253369272267,
           "next_open_to_10d_close": 0.037735849056603765,
@@ -1292,7 +1545,7 @@
         {
           "signal_date": "2025-11-07",
           "first_cross_date": "2025-11-06",
-          "r2": 0.1090436343847202,
+          "r2": 0.10904363438472042,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.028037383177570208,
           "next_open_to_10d_close": -0.01468624833110821,
@@ -1302,7 +1555,7 @@
         {
           "signal_date": "2025-12-22",
           "first_cross_date": "2025-12-19",
-          "r2": 0.16865112764840218,
+          "r2": 0.1686511276484033,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.0013089005235602524,
           "next_open_to_10d_close": 0.035340314136125706,
@@ -1312,7 +1565,7 @@
         {
           "signal_date": "2026-02-26",
           "first_cross_date": "2026-02-25",
-          "r2": 0.17256115405482952,
+          "r2": 0.17256115405482997,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.016049382716049387,
           "next_open_to_10d_close": 0.022222222222222143,
@@ -1322,7 +1575,7 @@
         {
           "signal_date": "2026-04-17",
           "first_cross_date": "2026-04-16",
-          "r2": 0.0019440674252495516,
+          "r2": 0.0019440674252493295,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.0012853470437017567,
           "next_open_to_10d_close": 0.02313624678663251,
@@ -1342,7 +1595,7 @@
         {
           "signal_date": "2026-07-21",
           "first_cross_date": "2026-07-20",
-          "r2": 0.10280867889507994,
+          "r2": 0.10280867889507961,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.02507374631268422,
           "next_open_to_10d_close": 0.041297935103244754,
@@ -1362,6 +1615,333 @@
       ],
       "post_entry_20d_mean": -0.0020675308833500283
     },
+    "159825": {
+      "events": 32,
+      "eligible_events": 26,
+      "signals": [
+        {
+          "signal_date": "2021-04-22",
+          "first_cross_date": "2021-04-21",
+          "r2": 0.011992904919988612,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.009803921568627416,
+          "next_open_to_10d_close": -0.019607843137254943,
+          "next_open_to_20d_close": 0.0,
+          "next_open_to_40d_close": -0.07843137254901966
+        },
+        {
+          "signal_date": "2021-05-18",
+          "first_cross_date": "2021-05-17",
+          "r2": 0.013918892914736136,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.009803921568627416,
+          "next_open_to_20d_close": -0.06862745098039225,
+          "next_open_to_40d_close": -0.06862745098039225
+        },
+        {
+          "signal_date": "2021-08-11",
+          "first_cross_date": "2021-08-10",
+          "r2": 0.08667143807801114,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.031914893617021156,
+          "next_open_to_10d_close": -0.031914893617021156,
+          "next_open_to_20d_close": 0.010638297872340496,
+          "next_open_to_40d_close": 0.010638297872340496
+        },
+        {
+          "signal_date": "2021-09-06",
+          "first_cross_date": "2021-09-03",
+          "r2": 0.04887170106657013,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.021505376344086002,
+          "next_open_to_10d_close": 0.0,
+          "next_open_to_20d_close": 0.043010752688172005,
+          "next_open_to_40d_close": 0.08602150537634401
+        },
+        {
+          "signal_date": "2021-12-13",
+          "first_cross_date": "2021-12-10",
+          "r2": 0.010393459825161822,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.030000000000000027,
+          "next_open_to_10d_close": 0.010000000000000009,
+          "next_open_to_20d_close": 0.020000000000000018,
+          "next_open_to_40d_close": -0.030000000000000027
+        },
+        {
+          "signal_date": "2021-12-24",
+          "first_cross_date": "2021-12-23",
+          "r2": 0.1565169009623435,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": 0.019607843137254832,
+          "next_open_to_20d_close": -0.0490196078431373,
+          "next_open_to_40d_close": -0.03921568627450989
+        },
+        {
+          "signal_date": "2022-02-22",
+          "first_cross_date": "2022-02-21",
+          "r2": 0.08016247219107475,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.06999999999999995,
+          "next_open_to_20d_close": -0.06000000000000005,
+          "next_open_to_40d_close": -0.06000000000000005
+        },
+        {
+          "signal_date": "2022-03-30",
+          "first_cross_date": "2022-03-29",
+          "r2": 0.0477933381810377,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.030612244897959218,
+          "next_open_to_10d_close": -0.030612244897959218,
+          "next_open_to_20d_close": -0.09183673469387754,
+          "next_open_to_40d_close": -0.05102040816326525
+        },
+        {
+          "signal_date": "2022-05-25",
+          "first_cross_date": "2022-05-23",
+          "r2": 0.005564655512158234,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.010869565217391353,
+          "next_open_to_10d_close": 0.04347826086956519,
+          "next_open_to_20d_close": 0.07608695652173902,
+          "next_open_to_40d_close": 0.07608695652173902
+        },
+        {
+          "signal_date": "2022-05-26",
+          "first_cross_date": "2022-05-25",
+          "r2": 0.028535079144704434,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.010869565217391353,
+          "next_open_to_10d_close": 0.05434782608695654,
+          "next_open_to_20d_close": 0.08695652173913038,
+          "next_open_to_40d_close": 0.06521739130434767
+        },
+        {
+          "signal_date": "2022-08-23",
+          "first_cross_date": "2022-08-22",
+          "r2": 0.22062098662555463,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.010000000000000009,
+          "next_open_to_20d_close": -0.07999999999999996,
+          "next_open_to_40d_close": -0.14
+        },
+        {
+          "signal_date": "2022-12-05",
+          "first_cross_date": "2022-12-02",
+          "r2": 0.12052341858483195,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.022727272727272707,
+          "next_open_to_20d_close": -0.03409090909090917,
+          "next_open_to_40d_close": 0.022727272727272707
+        },
+        {
+          "signal_date": "2023-01-16",
+          "first_cross_date": "2023-01-13",
+          "r2": 0.15753036314421986,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": 0.011235955056179803,
+          "next_open_to_20d_close": 0.0,
+          "next_open_to_40d_close": -0.0449438202247191
+        },
+        {
+          "signal_date": "2023-02-22",
+          "first_cross_date": "2023-02-21",
+          "r2": 0.011397470161429224,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.033333333333333326,
+          "next_open_to_20d_close": -0.05555555555555558,
+          "next_open_to_40d_close": -0.06666666666666676
+        },
+        {
+          "signal_date": "2023-04-07",
+          "first_cross_date": "2023-04-06",
+          "r2": 0.035076621426508914,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.034482758620689724,
+          "next_open_to_10d_close": -0.04597701149425293,
+          "next_open_to_20d_close": -0.08045977011494243,
+          "next_open_to_40d_close": -0.16091954022988508
+        },
+        {
+          "signal_date": "2023-06-30",
+          "first_cross_date": "2023-06-29",
+          "r2": 0.07714194695626708,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.013157894736842035,
+          "next_open_to_10d_close": 0.013157894736842035,
+          "next_open_to_20d_close": 0.03947368421052633,
+          "next_open_to_40d_close": -0.02631578947368418
+        },
+        {
+          "signal_date": "2023-09-20",
+          "first_cross_date": "2023-09-19",
+          "r2": 0.034032228118376806,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.013333333333333308,
+          "next_open_to_10d_close": -0.026666666666666727,
+          "next_open_to_20d_close": -0.053333333333333344,
+          "next_open_to_40d_close": -0.013333333333333308
+        },
+        {
+          "signal_date": "2023-11-02",
+          "first_cross_date": "2023-11-01",
+          "r2": 0.024423322480817578,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": 0.0,
+          "next_open_to_20d_close": 0.027397260273972712,
+          "next_open_to_40d_close": 0.0
+        },
+        {
+          "signal_date": "2024-02-22",
+          "first_cross_date": "2024-02-21",
+          "r2": 0.05075656789724192,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.014705882352941124,
+          "next_open_to_10d_close": 0.0,
+          "next_open_to_20d_close": 0.0588235294117645,
+          "next_open_to_40d_close": 0.02941176470588225
+        },
+        {
+          "signal_date": "2024-04-26",
+          "first_cross_date": "2024-04-25",
+          "r2": 0.016276525670374964,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.04285714285714293,
+          "next_open_to_10d_close": 0.05714285714285716,
+          "next_open_to_20d_close": 0.05714285714285716,
+          "next_open_to_40d_close": -0.05714285714285705
+        },
+        {
+          "signal_date": "2024-09-27",
+          "first_cross_date": "2024-09-26",
+          "r2": 0.14915106455838145,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.02941176470588236,
+          "next_open_to_10d_close": -0.02941176470588236,
+          "next_open_to_20d_close": 0.014705882352941124,
+          "next_open_to_40d_close": 0.0
+        },
+        {
+          "signal_date": "2024-12-13",
+          "first_cross_date": "2024-12-12",
+          "r2": 0.09490080142030743,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.02857142857142847,
+          "next_open_to_10d_close": -0.02857142857142847,
+          "next_open_to_20d_close": -0.09999999999999998,
+          "next_open_to_40d_close": -0.07142857142857129
+        },
+        {
+          "signal_date": "2025-02-07",
+          "first_cross_date": "2025-02-06",
+          "r2": 0.02407293340213945,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.01538461538461533,
+          "next_open_to_10d_close": 0.0,
+          "next_open_to_20d_close": 0.01538461538461533,
+          "next_open_to_40d_close": 0.01538461538461533
+        },
+        {
+          "signal_date": "2025-05-27",
+          "first_cross_date": "2025-05-22",
+          "r2": 0.022593704585153307,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.02898550724637694,
+          "next_open_to_10d_close": 0.05797101449275366,
+          "next_open_to_20d_close": 0.02898550724637694,
+          "next_open_to_40d_close": 0.11594202898550732
+        },
+        {
+          "signal_date": "2025-05-27",
+          "first_cross_date": "2025-05-26",
+          "r2": 0.022593704585153307,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.02898550724637694,
+          "next_open_to_10d_close": 0.05797101449275366,
+          "next_open_to_20d_close": 0.02898550724637694,
+          "next_open_to_40d_close": 0.11594202898550732
+        },
+        {
+          "signal_date": "2025-05-30",
+          "first_cross_date": "2025-05-29",
+          "r2": 0.10808283755487602,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.028571428571428692,
+          "next_open_to_10d_close": 0.028571428571428692,
+          "next_open_to_20d_close": 0.028571428571428692,
+          "next_open_to_40d_close": 0.10000000000000009
+        },
+        {
+          "signal_date": "2025-10-14",
+          "first_cross_date": "2025-10-13",
+          "r2": 0.009998332106459173,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.024390243902438935,
+          "next_open_to_10d_close": -0.012195121951219412,
+          "next_open_to_20d_close": 0.012195121951219523,
+          "next_open_to_40d_close": -0.024390243902438935
+        },
+        {
+          "signal_date": "2025-10-30",
+          "first_cross_date": "2025-10-29",
+          "r2": 0.006733481768367522,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.012345679012345512,
+          "next_open_to_10d_close": 0.03703703703703698,
+          "next_open_to_20d_close": 0.0,
+          "next_open_to_40d_close": 0.024691358024691246
+        },
+        {
+          "signal_date": "2025-12-18",
+          "first_cross_date": "2025-12-17",
+          "r2": 0.03403262971616128,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.012195121951219523,
+          "next_open_to_10d_close": 0.024390243902439046,
+          "next_open_to_20d_close": 0.03658536585365857,
+          "next_open_to_40d_close": 0.024390243902439046
+        },
+        {
+          "signal_date": "2026-03-02",
+          "first_cross_date": "2026-02-27",
+          "r2": 0.18293586744650658,
+          "universe_eligible": true,
+          "next_open_to_5d_close": 0.022727272727272707,
+          "next_open_to_10d_close": 0.03409090909090917,
+          "next_open_to_20d_close": -0.03409090909090917,
+          "next_open_to_40d_close": -0.06818181818181823
+        },
+        {
+          "signal_date": "2026-04-21",
+          "first_cross_date": "2026-04-17",
+          "r2": 0.025073991206251867,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.023809523809523836,
+          "next_open_to_10d_close": -0.011904761904761862,
+          "next_open_to_20d_close": -0.1071428571428571,
+          "next_open_to_40d_close": -0.19047619047619035
+        },
+        {
+          "signal_date": "2026-07-07",
+          "first_cross_date": "2026-07-06",
+          "r2": 0.024895932013711874,
+          "universe_eligible": true,
+          "next_open_to_5d_close": -0.005797101449275255,
+          "next_open_to_10d_close": 0.02898550724637694,
+          "next_open_to_20d_close": 0.04347826086956519,
+          "next_open_to_40d_close": 0.11594202898550732
+        }
+      ],
+      "post_entry_20d_mean": -0.005804236828413405
+    },
     "512660": {
       "events": 32,
       "eligible_events": 32,
@@ -1369,7 +1949,7 @@
         {
           "signal_date": "2021-04-07",
           "first_cross_date": "2021-04-06",
-          "r2": 0.033069864633433865,
+          "r2": 0.033069864633433976,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.00952380952380949,
           "next_open_to_10d_close": -0.00952380952380949,
@@ -1379,7 +1959,7 @@
         {
           "signal_date": "2021-05-19",
           "first_cross_date": "2021-05-18",
-          "r2": 0.09202978058859379,
+          "r2": 0.0920297805885939,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.028301886792452935,
           "next_open_to_10d_close": 0.04716981132075482,
@@ -1399,7 +1979,7 @@
         {
           "signal_date": "2021-10-27",
           "first_cross_date": "2021-10-26",
-          "r2": 0.1294749525189044,
+          "r2": 0.12947495251890428,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0546875,
           "next_open_to_10d_close": 0.09375,
@@ -1409,7 +1989,7 @@
         {
           "signal_date": "2022-01-04",
           "first_cross_date": "2021-12-31",
-          "r2": 0.017990802160880337,
+          "r2": 0.017990802160880115,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.10416666666666663,
           "next_open_to_10d_close": -0.08333333333333326,
@@ -1419,7 +1999,7 @@
         {
           "signal_date": "2022-02-28",
           "first_cross_date": "2022-02-25",
-          "r2": 0.12531132063680128,
+          "r2": 0.12531132063680106,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.04761904761904767,
           "next_open_to_10d_close": -0.07936507936507942,
@@ -1459,7 +2039,7 @@
         {
           "signal_date": "2023-01-18",
           "first_cross_date": "2023-01-17",
-          "r2": 0.023817308280741023,
+          "r2": 0.023817308280740912,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.06422018348623837,
           "next_open_to_10d_close": 0.02752293577981657,
@@ -1469,7 +2049,7 @@
         {
           "signal_date": "2023-02-28",
           "first_cross_date": "2023-02-27",
-          "r2": 0.0017776295308749024,
+          "r2": 0.0017776295308754575,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.00877192982456143,
           "next_open_to_10d_close": 0.0,
@@ -1479,7 +2059,7 @@
         {
           "signal_date": "2023-05-19",
           "first_cross_date": "2023-05-18",
-          "r2": 0.07478868536773742,
+          "r2": 0.0747886853677373,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.027027027027027084,
           "next_open_to_10d_close": -0.027027027027027084,
@@ -1499,7 +2079,7 @@
         {
           "signal_date": "2023-09-07",
           "first_cross_date": "2023-09-06",
-          "r2": 0.04485208099860971,
+          "r2": 0.044852080998610044,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.009615384615384581,
           "next_open_to_10d_close": -0.03846153846153855,
@@ -1519,7 +2099,7 @@
         {
           "signal_date": "2024-01-04",
           "first_cross_date": "2024-01-03",
-          "r2": 0.013365949545387501,
+          "r2": 0.013365949545387723,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.05319148936170204,
           "next_open_to_10d_close": -0.10638297872340419,
@@ -1529,7 +2109,7 @@
         {
           "signal_date": "2024-02-23",
           "first_cross_date": "2024-02-22",
-          "r2": 0.0733044642914863,
+          "r2": 0.07330446429148618,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.05882352941176472,
           "next_open_to_10d_close": 0.04705882352941182,
@@ -1539,7 +2119,7 @@
         {
           "signal_date": "2024-04-26",
           "first_cross_date": "2024-04-25",
-          "r2": 0.02631788482520725,
+          "r2": 0.02631788482520714,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.022471910112359605,
           "next_open_to_10d_close": 0.022471910112359605,
@@ -1549,7 +2129,7 @@
         {
           "signal_date": "2024-06-13",
           "first_cross_date": "2024-06-12",
-          "r2": 0.007786019537447286,
+          "r2": 0.007786019537447397,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.03296703296703296,
           "next_open_to_10d_close": -0.06593406593406603,
@@ -1559,7 +2139,7 @@
         {
           "signal_date": "2024-07-22",
           "first_cross_date": "2024-07-19",
-          "r2": 0.16797343557299627,
+          "r2": 0.16797343557299638,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.011235955056179803,
           "next_open_to_10d_close": -0.011235955056179803,
@@ -1569,7 +2149,7 @@
         {
           "signal_date": "2024-09-27",
           "first_cross_date": "2024-09-26",
-          "r2": 0.21008047221830117,
+          "r2": 0.21008047221830106,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.021052631578947434,
           "next_open_to_10d_close": 0.08421052631578951,
@@ -1579,7 +2159,7 @@
         {
           "signal_date": "2025-02-07",
           "first_cross_date": "2025-02-06",
-          "r2": 0.08858796149242731,
+          "r2": 0.08858796149242709,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.009708737864077666,
@@ -1589,7 +2169,7 @@
         {
           "signal_date": "2025-05-08",
           "first_cross_date": "2025-05-07",
-          "r2": 0.2191056165460813,
+          "r2": 0.21910561654608118,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.028037383177570097,
           "next_open_to_10d_close": -0.028037383177570097,
@@ -1609,7 +2189,7 @@
         {
           "signal_date": "2025-10-10",
           "first_cross_date": "2025-10-09",
-          "r2": 0.1449783778585212,
+          "r2": 0.14497837785852086,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.01666666666666672,
           "next_open_to_10d_close": 0.008333333333333304,
@@ -1619,7 +2199,7 @@
         {
           "signal_date": "2025-10-29",
           "first_cross_date": "2025-10-28",
-          "r2": 0.06138875753151174,
+          "r2": 0.06138875753151196,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.040322580645161366,
           "next_open_to_10d_close": -0.05645161290322587,
@@ -1639,7 +2219,7 @@
         {
           "signal_date": "2026-02-26",
           "first_cross_date": "2026-02-25",
-          "r2": 0.10597016500700474,
+          "r2": 0.10597016500700462,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.019480519480519543,
           "next_open_to_10d_close": -0.051948051948051965,
@@ -1659,7 +2239,7 @@
         {
           "signal_date": "2026-07-02",
           "first_cross_date": "2026-07-01",
-          "r2": 0.0005573941929777337,
+          "r2": 0.0005573941929774007,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.015873015873015928,
           "next_open_to_10d_close": -0.11111111111111105,
