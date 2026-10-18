@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-10-18T07:54:20.417789+00:00",
+  "created_at_utc": "2026-10-18T07:56:05.822973+00:00",
   "study": "sector_exposure_increment_v1",
   "production_changed": false,
   "data_storage": "research.sector_candidate_bars; not public.daily_bars",
@@ -20,8 +20,8 @@
     },
     "516550": {
       "sector": "AGRICULTURE",
-      "n": 250,
-      "first": "2025-09-29",
+      "n": 1338,
+      "first": "2021-04-08",
       "last": "2026-10-16",
       "archived_count": 0,
       "seam": "full Tencent HFQ history, no archive available",
@@ -665,7 +665,7 @@
         {
           "signal_date": "2021-01-12",
           "first_cross_date": "2021-01-11",
-          "r2": 0.2260378893370163,
+          "r2": 0.22603788933701652,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.04237288135593231,
           "next_open_to_10d_close": 0.016949152542372836,
@@ -685,7 +685,7 @@
         {
           "signal_date": "2021-04-30",
           "first_cross_date": "2021-04-29",
-          "r2": 0.0007369378465525989,
+          "r2": 0.0007369378465522658,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.016260162601626105,
           "next_open_to_10d_close": 0.016260162601626105,
@@ -695,7 +695,7 @@
         {
           "signal_date": "2021-08-17",
           "first_cross_date": "2021-08-16",
-          "r2": 0.01618411831969835,
+          "r2": 0.016184118319698793,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01754385964912286,
           "next_open_to_10d_close": -0.00877192982456143,
@@ -705,7 +705,7 @@
         {
           "signal_date": "2021-09-02",
           "first_cross_date": "2021-09-01",
-          "r2": 0.016245898467428188,
+          "r2": 0.016245898467427855,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.008547008547008517,
           "next_open_to_10d_close": -0.017094017094017144,
@@ -715,7 +715,7 @@
         {
           "signal_date": "2021-10-13",
           "first_cross_date": "2021-10-12",
-          "r2": 0.03792032096617648,
+          "r2": 0.037920320966176146,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.008474576271186418,
           "next_open_to_10d_close": 0.008474576271186418,
@@ -735,7 +735,7 @@
         {
           "signal_date": "2022-01-11",
           "first_cross_date": "2022-01-10",
-          "r2": 0.19046697699263493,
+          "r2": 0.19046697699263526,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0,
@@ -745,7 +745,7 @@
         {
           "signal_date": "2022-04-01",
           "first_cross_date": "2022-03-31",
-          "r2": 0.17280066103280534,
+          "r2": 0.17280066103280545,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.008547008547008517,
           "next_open_to_10d_close": -0.008547008547008517,
@@ -755,7 +755,7 @@
         {
           "signal_date": "2022-06-10",
           "first_cross_date": "2022-06-09",
-          "r2": 0.12114857422420222,
+          "r2": 0.12114857422420189,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0,
@@ -765,7 +765,7 @@
         {
           "signal_date": "2022-09-02",
           "first_cross_date": "2022-09-01",
-          "r2": 0.0852937053353543,
+          "r2": 0.08529370533535452,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01904761904761898,
           "next_open_to_10d_close": 0.00952380952380949,
@@ -775,7 +775,7 @@
         {
           "signal_date": "2022-11-15",
           "first_cross_date": "2022-11-14",
-          "r2": 0.13157672114905905,
+          "r2": 0.13157672114905894,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.0490196078431373,
@@ -785,7 +785,7 @@
         {
           "signal_date": "2022-12-30",
           "first_cross_date": "2022-12-29",
-          "r2": 0.015024613324500113,
+          "r2": 0.015024613324499891,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0185185185185186,
           "next_open_to_10d_close": 0.0277777777777779,
@@ -795,7 +795,7 @@
         {
           "signal_date": "2023-04-12",
           "first_cross_date": "2023-04-11",
-          "r2": 0.02590362961171766,
+          "r2": 0.02590362961171777,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.037735849056603765,
           "next_open_to_10d_close": 0.028301886792452935,
@@ -805,7 +805,7 @@
         {
           "signal_date": "2023-07-17",
           "first_cross_date": "2023-07-14",
-          "r2": 0.05362584900538925,
+          "r2": 0.05362584900538936,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.07339449541284382,
@@ -825,7 +825,7 @@
         {
           "signal_date": "2024-01-04",
           "first_cross_date": "2024-01-03",
-          "r2": 0.24229368261125317,
+          "r2": 0.24229368261125295,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.01904761904761898,
@@ -845,7 +845,7 @@
         {
           "signal_date": "2024-07-01",
           "first_cross_date": "2024-06-28",
-          "r2": 0.09665354714717855,
+          "r2": 0.09665354714717878,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.007936507936507908,
           "next_open_to_10d_close": 0.031746031746031855,
@@ -855,7 +855,7 @@
         {
           "signal_date": "2024-08-20",
           "first_cross_date": "2024-08-19",
-          "r2": 0.1653730421219195,
+          "r2": 0.16537304212191895,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01526717557251911,
           "next_open_to_10d_close": -0.06106870229007644,
@@ -865,7 +865,7 @@
         {
           "signal_date": "2024-09-26",
           "first_cross_date": "2024-09-25",
-          "r2": 0.10529163679705578,
+          "r2": 0.105291636797056,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.029197080291970767,
           "next_open_to_10d_close": 0.04379562043795615,
@@ -875,7 +875,7 @@
         {
           "signal_date": "2024-12-04",
           "first_cross_date": "2024-12-03",
-          "r2": 0.048674081004264735,
+          "r2": 0.048674081004264624,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.014184397163120588,
           "next_open_to_10d_close": 0.028368794326241176,
@@ -885,7 +885,7 @@
         {
           "signal_date": "2025-01-24",
           "first_cross_date": "2025-01-23",
-          "r2": 0.020632640491796916,
+          "r2": 0.020632640491799248,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.020270270270270396,
@@ -895,7 +895,7 @@
         {
           "signal_date": "2025-03-06",
           "first_cross_date": "2025-03-05",
-          "r2": 0.023277487262658214,
+          "r2": 0.023277487262657992,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.026666666666666616,
@@ -905,7 +905,7 @@
         {
           "signal_date": "2025-04-21",
           "first_cross_date": "2025-04-18",
-          "r2": 0.06255862776265109,
+          "r2": 0.06255862776265053,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.019607843137254832,
           "next_open_to_10d_close": 0.019607843137254832,
@@ -915,7 +915,7 @@
         {
           "signal_date": "2025-10-20",
           "first_cross_date": "2025-10-17",
-          "r2": 0.10652933731314851,
+          "r2": 0.10652933731314773,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.01840490797546024,
           "next_open_to_10d_close": 0.012269938650306678,
@@ -925,7 +925,7 @@
         {
           "signal_date": "2026-02-11",
           "first_cross_date": "2026-02-10",
-          "r2": 0.05731135332596349,
+          "r2": 0.05731135332596393,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.03144654088050314,
           "next_open_to_10d_close": -0.012578616352201255,
@@ -955,7 +955,7 @@
         {
           "signal_date": "2026-06-08",
           "first_cross_date": "2026-06-05",
-          "r2": 0.11675589467390746,
+          "r2": 0.1167558946739069,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.019108280254777066,
           "next_open_to_10d_close": -0.006369426751592355,
@@ -965,7 +965,7 @@
         {
           "signal_date": "2026-07-15",
           "first_cross_date": "2026-07-14",
-          "r2": 0.08790332311919113,
+          "r2": 0.08790332311919125,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.012658227848101333,
           "next_open_to_10d_close": 0.036708860759493644,
@@ -975,7 +975,7 @@
         {
           "signal_date": "2026-08-24",
           "first_cross_date": "2026-08-21",
-          "r2": 0.06903410907769048,
+          "r2": 0.06903410907769081,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.001204819277108471,
           "next_open_to_10d_close": 0.006024096385542244,
@@ -985,7 +985,7 @@
         {
           "signal_date": "2026-10-08",
           "first_cross_date": "2026-09-30",
-          "r2": 0.15612813432806671,
+          "r2": 0.15612813432806683,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.00465657741559955,
           "next_open_to_10d_close": null,
@@ -996,13 +996,313 @@
       "post_entry_20d_mean": 0.009082271090647083
     },
     "516550": {
-      "events": 6,
+      "events": 36,
       "eligible_events": 0,
       "signals": [
         {
+          "signal_date": "2021-08-11",
+          "first_cross_date": "2021-08-10",
+          "r2": 0.02330499493203264,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.04139433551198257,
+          "next_open_to_10d_close": -0.045751633986928164,
+          "next_open_to_20d_close": -0.02941176470588236,
+          "next_open_to_40d_close": -0.01851851851851849
+        },
+        {
+          "signal_date": "2021-09-10",
+          "first_cross_date": "2021-09-09",
+          "r2": 0.04259453605182606,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.023622047244094557,
+          "next_open_to_10d_close": -0.0011248593925758943,
+          "next_open_to_20d_close": 0.03712035995500562,
+          "next_open_to_40d_close": 0.06074240719910007
+        },
+        {
+          "signal_date": "2021-09-28",
+          "first_cross_date": "2021-09-27",
+          "r2": 0.09639215325593531,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.03518728717366626,
+          "next_open_to_10d_close": 0.04653802497162318,
+          "next_open_to_20d_close": 0.06810442678774109,
+          "next_open_to_40d_close": 0.03291713961407505
+        },
+        {
+          "signal_date": "2021-12-13",
+          "first_cross_date": "2021-12-10",
+          "r2": 0.14650658425055185,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.032631578947368345,
+          "next_open_to_10d_close": 0.0,
+          "next_open_to_20d_close": -0.027368421052631486,
+          "next_open_to_40d_close": -0.06736842105263152
+        },
+        {
+          "signal_date": "2021-12-23",
+          "first_cross_date": "2021-12-22",
+          "r2": 0.014646893952131035,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.0031982942430702765,
+          "next_open_to_10d_close": -0.006396588486140664,
+          "next_open_to_20d_close": -0.046908315565031944,
+          "next_open_to_40d_close": -0.0639658848614072
+        },
+        {
+          "signal_date": "2022-02-23",
+          "first_cross_date": "2022-02-22",
+          "r2": 0.013703889417591375,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.009039548022598876,
+          "next_open_to_10d_close": -0.07683615819209044,
+          "next_open_to_20d_close": -0.06101694915254241,
+          "next_open_to_40d_close": -0.08248587570621468
+        },
+        {
+          "signal_date": "2022-03-02",
+          "first_cross_date": "2022-03-01",
+          "r2": 0.059030679343691106,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.08715083798882695,
+          "next_open_to_10d_close": -0.10837988826815637,
+          "next_open_to_20d_close": -0.051396648044692794,
+          "next_open_to_40d_close": -0.11396648044692737
+        },
+        {
+          "signal_date": "2022-04-06",
+          "first_cross_date": "2022-04-01",
+          "r2": 0.016786435842383707,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.007202881152461038,
+          "next_open_to_10d_close": 0.025210084033613578,
+          "next_open_to_20d_close": -0.03841536614645846,
+          "next_open_to_40d_close": -0.0024009603841537164
+        },
+        {
+          "signal_date": "2022-04-12",
+          "first_cross_date": "2022-04-11",
+          "r2": 0.009894537920355884,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.026378896882494063,
+          "next_open_to_10d_close": -0.0683453237410071,
+          "next_open_to_20d_close": -0.04196642685851315,
+          "next_open_to_40d_close": 0.02517985611510798
+        },
+        {
+          "signal_date": "2022-05-27",
+          "first_cross_date": "2022-05-26",
+          "r2": 0.021612993757614274,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.022360248447204745,
+          "next_open_to_10d_close": 0.06211180124223592,
+          "next_open_to_20d_close": 0.12298136645962732,
+          "next_open_to_40d_close": 0.0732919254658384
+        },
+        {
+          "signal_date": "2022-08-23",
+          "first_cross_date": "2022-08-22",
+          "r2": 0.09897401626299795,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.0034522439585730202,
+          "next_open_to_10d_close": -0.024165707710011475,
+          "next_open_to_20d_close": -0.07479861910241647,
+          "next_open_to_40d_close": -0.13233601841196774
+        },
+        {
+          "signal_date": "2022-11-14",
+          "first_cross_date": "2022-11-11",
+          "r2": 0.00905393698028878,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.0,
+          "next_open_to_10d_close": -0.01820546163849157,
+          "next_open_to_20d_close": 0.032509752925877766,
+          "next_open_to_40d_close": 0.01820546163849146
+        },
+        {
+          "signal_date": "2022-11-30",
+          "first_cross_date": "2022-11-29",
+          "r2": 0.010492563186126569,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.041131105398457546,
+          "next_open_to_10d_close": 0.03470437017994854,
+          "next_open_to_20d_close": -0.0012853470437017567,
+          "next_open_to_40d_close": 0.041131105398457546
+        },
+        {
+          "signal_date": "2023-01-16",
+          "first_cross_date": "2023-01-13",
+          "r2": 0.11516256659966795,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.0062266500622665255,
+          "next_open_to_10d_close": -0.00996264009962644,
+          "next_open_to_20d_close": -0.00996264009962644,
+          "next_open_to_40d_close": -0.06849315068493156
+        },
+        {
+          "signal_date": "2023-02-23",
+          "first_cross_date": "2023-02-22",
+          "r2": 0.029175936219092313,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.0024999999999999467,
+          "next_open_to_10d_close": -0.03500000000000003,
+          "next_open_to_20d_close": -0.057499999999999996,
+          "next_open_to_40d_close": -0.0887500000000001
+        },
+        {
+          "signal_date": "2023-07-14",
+          "first_cross_date": "2023-07-13",
+          "r2": 0.03138084918126738,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.01615271659324513,
+          "next_open_to_10d_close": 0.02643171806167377,
+          "next_open_to_20d_close": -0.001468428781204123,
+          "next_open_to_40d_close": -0.05139500734214397
+        },
+        {
+          "signal_date": "2023-11-02",
+          "first_cross_date": "2023-11-01",
+          "r2": 0.014599695989625627,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.011041009463722329,
+          "next_open_to_10d_close": 0.003154574132492094,
+          "next_open_to_20d_close": 0.006309148264984188,
+          "next_open_to_40d_close": -0.03154574132492116
+        },
+        {
+          "signal_date": "2024-02-20",
+          "first_cross_date": "2024-02-19",
+          "r2": 0.05685235509918152,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.027118644067796627,
+          "next_open_to_10d_close": 0.035593220338983045,
+          "next_open_to_20d_close": 0.04915254237288136,
+          "next_open_to_40d_close": 0.03050847457627115
+        },
+        {
+          "signal_date": "2024-04-09",
+          "first_cross_date": "2024-04-03",
+          "r2": 0.023804363317880273,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.032573289902280145,
+          "next_open_to_10d_close": -0.004885993485342022,
+          "next_open_to_20d_close": 0.04885993485342022,
+          "next_open_to_40d_close": 0.004885993485342022
+        },
+        {
+          "signal_date": "2024-04-24",
+          "first_cross_date": "2024-04-23",
+          "r2": 0.004923476648288183,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.044334975369458185,
+          "next_open_to_10d_close": 0.062397372742200474,
+          "next_open_to_20d_close": 0.044334975369458185,
+          "next_open_to_40d_close": -0.0525451559934319
+        },
+        {
+          "signal_date": "2024-09-26",
+          "first_cross_date": "2024-09-25",
+          "r2": 0.15294825398453915,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.10172413793103452,
+          "next_open_to_10d_close": 0.04137931034482767,
+          "next_open_to_20d_close": 0.10000000000000009,
+          "next_open_to_40d_close": 0.08965517241379328
+        },
+        {
+          "signal_date": "2024-12-12",
+          "first_cross_date": "2024-12-11",
+          "r2": 0.11948698718086281,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.035820895522388096,
+          "next_open_to_10d_close": -0.046268656716418,
+          "next_open_to_20d_close": -0.09552238805970159,
+          "next_open_to_40d_close": -0.0791044776119404
+        },
+        {
+          "signal_date": "2025-02-14",
+          "first_cross_date": "2025-02-13",
+          "r2": 0.19072550758206375,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.012882447665056418,
+          "next_open_to_10d_close": -0.012882447665056418,
+          "next_open_to_20d_close": 0.027375201288244888,
+          "next_open_to_40d_close": 0.04508856682769724
+        },
+        {
+          "signal_date": "2025-03-04",
+          "first_cross_date": "2025-03-03",
+          "r2": 0.11986380848986111,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.009661835748792313,
+          "next_open_to_10d_close": 0.027375201288244888,
+          "next_open_to_20d_close": 0.024154589371980784,
+          "next_open_to_40d_close": 0.03542673107890493
+        },
+        {
+          "signal_date": "2025-05-20",
+          "first_cross_date": "2025-05-15",
+          "r2": 0.11735297353654706,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.007645259938837912,
+          "next_open_to_10d_close": 0.030581039755351647,
+          "next_open_to_20d_close": 0.01681957186544336,
+          "next_open_to_40d_close": 0.021406727828746197
+        },
+        {
+          "signal_date": "2025-05-20",
+          "first_cross_date": "2025-05-19",
+          "r2": 0.11735297353654706,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.007645259938837912,
+          "next_open_to_10d_close": 0.030581039755351647,
+          "next_open_to_20d_close": 0.01681957186544336,
+          "next_open_to_40d_close": 0.021406727828746197
+        },
+        {
+          "signal_date": "2025-07-04",
+          "first_cross_date": "2025-07-03",
+          "r2": 0.01077827616732685,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.007496251874062887,
+          "next_open_to_10d_close": 0.016491754122938573,
+          "next_open_to_20d_close": 0.022488755622188883,
+          "next_open_to_40d_close": 0.10944527736131926
+        },
+        {
+          "signal_date": "2025-10-13",
+          "first_cross_date": "2025-10-10",
+          "r2": 0.027579079109633753,
+          "universe_eligible": false,
+          "next_open_to_5d_close": -0.02684563758389269,
+          "next_open_to_10d_close": -0.014765100671141007,
+          "next_open_to_20d_close": 0.02684563758389258,
+          "next_open_to_40d_close": 0.0013422818791946067
+        },
+        {
+          "signal_date": "2025-10-31",
+          "first_cross_date": "2025-10-30",
+          "r2": 0.03951956010346869,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.008086253369272267,
+          "next_open_to_10d_close": 0.037735849056603765,
+          "next_open_to_20d_close": 0.008086253369272267,
+          "next_open_to_40d_close": 0.037735849056603765
+        },
+        {
+          "signal_date": "2025-11-07",
+          "first_cross_date": "2025-11-06",
+          "r2": 0.1090436343847202,
+          "universe_eligible": false,
+          "next_open_to_5d_close": 0.028037383177570208,
+          "next_open_to_10d_close": -0.01468624833110821,
+          "next_open_to_20d_close": -0.004005340453938633,
+          "next_open_to_40d_close": 0.06408544726301746
+        },
+        {
           "signal_date": "2025-12-22",
           "first_cross_date": "2025-12-19",
-          "r2": 0.1686511276484033,
+          "r2": 0.16865112764840218,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.0013089005235602524,
           "next_open_to_10d_close": 0.035340314136125706,
@@ -1012,7 +1312,7 @@
         {
           "signal_date": "2026-02-26",
           "first_cross_date": "2026-02-25",
-          "r2": 0.17256115405482997,
+          "r2": 0.17256115405482952,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.016049382716049387,
           "next_open_to_10d_close": 0.022222222222222143,
@@ -1022,7 +1322,7 @@
         {
           "signal_date": "2026-04-17",
           "first_cross_date": "2026-04-16",
-          "r2": 0.0019440674252493295,
+          "r2": 0.0019440674252495516,
           "universe_eligible": false,
           "next_open_to_5d_close": -0.0012853470437017567,
           "next_open_to_10d_close": 0.02313624678663251,
@@ -1042,7 +1342,7 @@
         {
           "signal_date": "2026-07-21",
           "first_cross_date": "2026-07-20",
-          "r2": 0.10280867889507961,
+          "r2": 0.10280867889507994,
           "universe_eligible": false,
           "next_open_to_5d_close": 0.02507374631268422,
           "next_open_to_10d_close": 0.041297935103244754,
@@ -1060,7 +1360,7 @@
           "next_open_to_40d_close": null
         }
       ],
-      "post_entry_20d_mean": -0.03089442411495356
+      "post_entry_20d_mean": -0.0020675308833500283
     },
     "512660": {
       "events": 32,
@@ -1069,7 +1369,7 @@
         {
           "signal_date": "2021-04-07",
           "first_cross_date": "2021-04-06",
-          "r2": 0.033069864633433976,
+          "r2": 0.033069864633433865,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.00952380952380949,
           "next_open_to_10d_close": -0.00952380952380949,
@@ -1079,7 +1379,7 @@
         {
           "signal_date": "2021-05-19",
           "first_cross_date": "2021-05-18",
-          "r2": 0.0920297805885939,
+          "r2": 0.09202978058859379,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.028301886792452935,
           "next_open_to_10d_close": 0.04716981132075482,
@@ -1099,7 +1399,7 @@
         {
           "signal_date": "2021-10-27",
           "first_cross_date": "2021-10-26",
-          "r2": 0.12947495251890428,
+          "r2": 0.1294749525189044,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0546875,
           "next_open_to_10d_close": 0.09375,
@@ -1109,7 +1409,7 @@
         {
           "signal_date": "2022-01-04",
           "first_cross_date": "2021-12-31",
-          "r2": 0.017990802160880115,
+          "r2": 0.017990802160880337,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.10416666666666663,
           "next_open_to_10d_close": -0.08333333333333326,
@@ -1119,7 +1419,7 @@
         {
           "signal_date": "2022-02-28",
           "first_cross_date": "2022-02-25",
-          "r2": 0.12531132063680106,
+          "r2": 0.12531132063680128,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.04761904761904767,
           "next_open_to_10d_close": -0.07936507936507942,
@@ -1159,7 +1459,7 @@
         {
           "signal_date": "2023-01-18",
           "first_cross_date": "2023-01-17",
-          "r2": 0.023817308280740912,
+          "r2": 0.023817308280741023,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.06422018348623837,
           "next_open_to_10d_close": 0.02752293577981657,
@@ -1169,7 +1469,7 @@
         {
           "signal_date": "2023-02-28",
           "first_cross_date": "2023-02-27",
-          "r2": 0.0017776295308754575,
+          "r2": 0.0017776295308749024,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.00877192982456143,
           "next_open_to_10d_close": 0.0,
@@ -1179,7 +1479,7 @@
         {
           "signal_date": "2023-05-19",
           "first_cross_date": "2023-05-18",
-          "r2": 0.0747886853677373,
+          "r2": 0.07478868536773742,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.027027027027027084,
           "next_open_to_10d_close": -0.027027027027027084,
@@ -1199,7 +1499,7 @@
         {
           "signal_date": "2023-09-07",
           "first_cross_date": "2023-09-06",
-          "r2": 0.044852080998610044,
+          "r2": 0.04485208099860971,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.009615384615384581,
           "next_open_to_10d_close": -0.03846153846153855,
@@ -1219,7 +1519,7 @@
         {
           "signal_date": "2024-01-04",
           "first_cross_date": "2024-01-03",
-          "r2": 0.013365949545387723,
+          "r2": 0.013365949545387501,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.05319148936170204,
           "next_open_to_10d_close": -0.10638297872340419,
@@ -1229,7 +1529,7 @@
         {
           "signal_date": "2024-02-23",
           "first_cross_date": "2024-02-22",
-          "r2": 0.07330446429148618,
+          "r2": 0.0733044642914863,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.05882352941176472,
           "next_open_to_10d_close": 0.04705882352941182,
@@ -1239,7 +1539,7 @@
         {
           "signal_date": "2024-04-26",
           "first_cross_date": "2024-04-25",
-          "r2": 0.02631788482520714,
+          "r2": 0.02631788482520725,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.022471910112359605,
           "next_open_to_10d_close": 0.022471910112359605,
@@ -1249,7 +1549,7 @@
         {
           "signal_date": "2024-06-13",
           "first_cross_date": "2024-06-12",
-          "r2": 0.007786019537447397,
+          "r2": 0.007786019537447286,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.03296703296703296,
           "next_open_to_10d_close": -0.06593406593406603,
@@ -1259,7 +1559,7 @@
         {
           "signal_date": "2024-07-22",
           "first_cross_date": "2024-07-19",
-          "r2": 0.16797343557299638,
+          "r2": 0.16797343557299627,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.011235955056179803,
           "next_open_to_10d_close": -0.011235955056179803,
@@ -1269,7 +1569,7 @@
         {
           "signal_date": "2024-09-27",
           "first_cross_date": "2024-09-26",
-          "r2": 0.21008047221830106,
+          "r2": 0.21008047221830117,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.021052631578947434,
           "next_open_to_10d_close": 0.08421052631578951,
@@ -1279,7 +1579,7 @@
         {
           "signal_date": "2025-02-07",
           "first_cross_date": "2025-02-06",
-          "r2": 0.08858796149242709,
+          "r2": 0.08858796149242731,
           "universe_eligible": true,
           "next_open_to_5d_close": 0.0,
           "next_open_to_10d_close": 0.009708737864077666,
@@ -1289,7 +1589,7 @@
         {
           "signal_date": "2025-05-08",
           "first_cross_date": "2025-05-07",
-          "r2": 0.21910561654608118,
+          "r2": 0.2191056165460813,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.028037383177570097,
           "next_open_to_10d_close": -0.028037383177570097,
@@ -1309,7 +1609,7 @@
         {
           "signal_date": "2025-10-10",
           "first_cross_date": "2025-10-09",
-          "r2": 0.14497837785852086,
+          "r2": 0.1449783778585212,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.01666666666666672,
           "next_open_to_10d_close": 0.008333333333333304,
@@ -1319,7 +1619,7 @@
         {
           "signal_date": "2025-10-29",
           "first_cross_date": "2025-10-28",
-          "r2": 0.06138875753151196,
+          "r2": 0.06138875753151174,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.040322580645161366,
           "next_open_to_10d_close": -0.05645161290322587,
@@ -1339,7 +1639,7 @@
         {
           "signal_date": "2026-02-26",
           "first_cross_date": "2026-02-25",
-          "r2": 0.10597016500700462,
+          "r2": 0.10597016500700474,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.019480519480519543,
           "next_open_to_10d_close": -0.051948051948051965,
@@ -1359,7 +1659,7 @@
         {
           "signal_date": "2026-07-02",
           "first_cross_date": "2026-07-01",
-          "r2": 0.0005573941929774007,
+          "r2": 0.0005573941929777337,
           "universe_eligible": true,
           "next_open_to_5d_close": -0.015873015873015928,
           "next_open_to_10d_close": -0.11111111111111105,
