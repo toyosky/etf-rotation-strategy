@@ -1,0 +1,1106 @@
+{
+  "version": "dual_ols_rebuild_sector_v1",
+  "data_end": "2026-10-16",
+  "interpretation": "Fixed-weight daily combining independently simulated sleeves, no top-level rebalancing fee; research approximation",
+  "r2_rebuild": "26-bar HL10, first qualified 1-3 days after annual cross, liquidity and D2 admission at qualification; chosen historical 20/30/50 R2>=0.5 staged additions, max20 sessions, exit annual<=0",
+  "cost_per_trade_side": 0.0006,
+  "tests": {
+    "BASE": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6327471898683199,
+          "cagr": 0.13077414908146734,
+          "max_drawdown": -0.3521334598233964,
+          "daily_vol_annual": 0.23201811139015502,
+          "positive_day_ratio": 0.39628482972136225
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.489713895361244,
+          "cagr": 1.3223824719661046,
+          "max_drawdown": -0.4260921236813189,
+          "daily_vol_annual": 0.5239059657220202,
+          "positive_day_ratio": 0.4720930232558139
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.47306295400571496,
+          "cagr": 0.10197256975526803,
+          "max_drawdown": -0.15713469290801563,
+          "daily_vol_annual": 0.12514250141486982,
+          "positive_day_ratio": 0.23839009287925697
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.19552699612446345,
+          "cagr": 0.10538982521630103,
+          "max_drawdown": -0.1962774277028756,
+          "daily_vol_annual": 0.24086546248726753,
+          "positive_day_ratio": 0.31627906976744186
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 7,
+            "513100": 9,
+            "159934": 16,
+            "159985": 5,
+            "511380": 8,
+            "159981": 7,
+            "513530": 6,
+            "513290": 3,
+            "159509": 1,
+            "501018": 3,
+            "159957": 1,
+            "164824": 2,
+            "159529": 1
+          },
+          "accepted_event_count": 69,
+          "fill_count": 168,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 102.08921513741942,
+          "avg_active_slots": 0.681915654038599,
+          "avg_invested_fraction": 0.4876582158763145
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5887981952970442,
+          "cagr": 0.12306575909780304,
+          "max_drawdown": -0.21755241058700037,
+          "daily_vol_annual": 0.1491316137411741,
+          "positive_day_ratio": 0.4262125902992776
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.446940755465398,
+          "cagr": 0.6521179111466424,
+          "max_drawdown": -0.27468929981849766,
+          "daily_vol_annual": 0.3196051418972861,
+          "positive_day_ratio": 0.513953488372093
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6155445809165081,
+          "cagr": 0.12777565335253094,
+          "max_drawdown": -0.2722788856509356,
+          "daily_vol_annual": 0.17853737913033788,
+          "positive_day_ratio": 0.4241486068111455
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.1605309792087644,
+          "cagr": 0.9071960056246529,
+          "max_drawdown": -0.3333947567381087,
+          "daily_vol_annual": 0.3945828224668233,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.05485695265126078,
+          "cagr": 0.013477965986072427,
+          "max_drawdown": -0.10240531269845798,
+          "daily_vol_annual": 0.0730105103411575,
+          "positive_day_ratio": 0.36429308565531476
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.4300343486293672,
+          "cagr": 0.22224614352596794,
+          "max_drawdown": -0.09244313206939825,
+          "daily_vol_annual": 0.1486506534224903,
+          "positive_day_ratio": 0.4697674418604651
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 22,
+            "159934": 30,
+            "159985": 17,
+            "513100": 23,
+            "511380": 20,
+            "159981": 15,
+            "501018": 6,
+            "513530": 11,
+            "164824": 12,
+            "513290": 10,
+            "159509": 6,
+            "159957": 5,
+            "159529": 2
+          },
+          "accepted_event_count": 179,
+          "fill_count": 432,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 87.4097428860713,
+          "avg_active_slots": 1.7176554681915654,
+          "avg_invested_fraction": 0.4106800979145573
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3414624922820291,
+          "cagr": 0.07642108465532305,
+          "max_drawdown": -0.228797650897839,
+          "daily_vol_annual": 0.13490342825954468,
+          "positive_day_ratio": 0.45098039215686275
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6633071829201667,
+          "cagr": 0.7325541340930264,
+          "max_drawdown": -0.25227736070483875,
+          "daily_vol_annual": 0.2991529777352315,
+          "positive_day_ratio": 0.5279069767441861
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4587935202161779,
+          "cagr": 0.09928679777745453,
+          "max_drawdown": -0.2785895512980847,
+          "daily_vol_annual": 0.17239638723712195,
+          "positive_day_ratio": 0.45304437564499483
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3212791598993987,
+          "cagr": 0.9610268893146432,
+          "max_drawdown": -0.32435926464388587,
+          "daily_vol_annual": 0.38649159173208575,
+          "positive_day_ratio": 0.5302325581395348
+        }
+      }
+    },
+    "ADD_BANK": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6627378569784927,
+          "cagr": 0.13594552971938856,
+          "max_drawdown": -0.3462883150949485,
+          "daily_vol_annual": 0.23109244852071703,
+          "positive_day_ratio": 0.3993808049535604
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.5154035988524637,
+          "cagr": 1.3298287487597777,
+          "max_drawdown": -0.41594773294919274,
+          "daily_vol_annual": 0.5245311368272658,
+          "positive_day_ratio": 0.4813953488372093
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.29333005551811064,
+          "cagr": 0.0666059778004695,
+          "max_drawdown": -0.19824876201061914,
+          "daily_vol_annual": 0.12445365630530282,
+          "positive_day_ratio": 0.25696594427244585
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.3345762295944954,
+          "cagr": 0.1757775082215587,
+          "max_drawdown": -0.17172757553190454,
+          "daily_vol_annual": 0.22712875106497732,
+          "positive_day_ratio": 0.32790697674418606
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 5,
+            "513100": 7,
+            "512800": 12,
+            "159934": 13,
+            "159985": 6,
+            "511380": 7,
+            "159981": 5,
+            "513530": 4,
+            "513290": 3,
+            "159509": 1,
+            "501018": 3,
+            "159957": 1,
+            "164824": 2,
+            "159529": 1
+          },
+          "accepted_event_count": 70,
+          "fill_count": 175,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 107.71224556056266,
+          "avg_active_slots": 0.7205146533238027,
+          "avg_invested_fraction": 0.5200414976952565
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5056962166272974,
+          "cagr": 0.10804227008507095,
+          "max_drawdown": -0.2068165335181169,
+          "daily_vol_annual": 0.14405763880453623,
+          "positive_day_ratio": 0.4375644994840041
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.5935373755644076,
+          "cagr": 0.7069409370693902,
+          "max_drawdown": -0.2569211261256117,
+          "daily_vol_annual": 0.31418107503433695,
+          "positive_day_ratio": 0.5255813953488372
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5765609741172368,
+          "cagr": 0.12089102080269654,
+          "max_drawdown": -0.26368437353377827,
+          "daily_vol_annual": 0.17471858171316856,
+          "positive_day_ratio": 0.43137254901960786
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.280573258974185,
+          "cagr": 0.947505594178131,
+          "max_drawdown": -0.3188202525253343,
+          "daily_vol_annual": 0.3921261374574504,
+          "positive_day_ratio": 0.5302325581395348
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.06977557200573692,
+          "cagr": 0.017052271167699695,
+          "max_drawdown": -0.14060100597167724,
+          "daily_vol_annual": 0.07784646312806566,
+          "positive_day_ratio": 0.39215686274509803
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.45933808123600506,
+          "cagr": 0.2362357621096085,
+          "max_drawdown": -0.09183077215276281,
+          "daily_vol_annual": 0.14128928179140626,
+          "positive_day_ratio": 0.4813953488372093
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 20,
+            "159934": 29,
+            "159985": 17,
+            "513100": 21,
+            "512800": 23,
+            "511380": 18,
+            "159981": 16,
+            "513530": 9,
+            "164824": 11,
+            "513290": 9,
+            "159509": 6,
+            "501018": 5,
+            "159957": 4,
+            "159529": 3
+          },
+          "accepted_event_count": 191,
+          "fill_count": 470,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 95.86220102901714,
+          "avg_active_slots": 1.875625446747677,
+          "avg_invested_fraction": 0.45501195175339315
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.36282420059589016,
+          "cagr": 0.08069273256256637,
+          "max_drawdown": -0.221249004229486,
+          "daily_vol_annual": 0.13600140735082797,
+          "positive_day_ratio": 0.4582043343653251
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.70265338125383,
+          "cagr": 0.7468686634757407,
+          "max_drawdown": -0.2552408312264435,
+          "daily_vol_annual": 0.29455202544460146,
+          "positive_day_ratio": 0.541860465116279
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4833271367115526,
+          "cagr": 0.10389244884169346,
+          "max_drawdown": -0.2717760807505961,
+          "daily_vol_annual": 0.17251896843048609,
+          "positive_day_ratio": 0.46439628482972134
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3596349353270236,
+          "cagr": 0.9737011344785533,
+          "max_drawdown": -0.32104691356049575,
+          "daily_vol_annual": 0.3840844292926019,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      }
+    },
+    "ADD_AGRI_FUGUO": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.31895543309818963,
+          "cagr": 0.07186489949087571,
+          "max_drawdown": -0.3615050938076132,
+          "daily_vol_annual": 0.23596612665229902,
+          "positive_day_ratio": 0.39628482972136225
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.643226368430742,
+          "cagr": 1.3666055984841905,
+          "max_drawdown": -0.4536349696072687,
+          "daily_vol_annual": 0.5284950500711716,
+          "positive_day_ratio": 0.4744186046511628
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.27370158915977405,
+          "cagr": 0.06252470083204376,
+          "max_drawdown": -0.1970971142665926,
+          "daily_vol_annual": 0.1226759305465138,
+          "positive_day_ratio": 0.23219814241486067
+        },
+        "validation": {
+          "days": 430,
+          "total_return": -0.04923513940002566,
+          "cagr": -0.02792962436118851,
+          "max_drawdown": -0.2285338520091158,
+          "daily_vol_annual": 0.15721486314941113,
+          "positive_day_ratio": 0.2744186046511628
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 8,
+            "513100": 8,
+            "159934": 13,
+            "159985": 7,
+            "511380": 9,
+            "159825": 8,
+            "159981": 3,
+            "513530": 6,
+            "513290": 3,
+            "159509": 1,
+            "501018": 3,
+            "159529": 2,
+            "164824": 2
+          },
+          "accepted_event_count": 73,
+          "fill_count": 174,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 105.50750212066674,
+          "avg_active_slots": 0.6854896354538956,
+          "avg_invested_fraction": 0.4869312710074602
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.33080802779829965,
+          "cagr": 0.07427146133579332,
+          "max_drawdown": -0.23205108458974655,
+          "daily_vol_annual": 0.14734859848425416,
+          "positive_day_ratio": 0.4282765737874097
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.229844719986604,
+          "cagr": 0.5682053343431543,
+          "max_drawdown": -0.29222481735928985,
+          "daily_vol_annual": 0.2871721715016741,
+          "positive_day_ratio": 0.5046511627906977
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.334459068858745,
+          "cagr": 0.07500953567363555,
+          "max_drawdown": -0.28194853464723146,
+          "daily_vol_annual": 0.17894756077302817,
+          "positive_day_ratio": 0.42208462332301344
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.032865077350687,
+          "cagr": 0.8635817572628453,
+          "max_drawdown": -0.3558898632505293,
+          "daily_vol_annual": 0.3801486321873365,
+          "positive_day_ratio": 0.5046511627906977
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": -0.003603569803176443,
+          "cagr": -0.0009045879364203424,
+          "max_drawdown": -0.12435031003516206,
+          "daily_vol_annual": 0.06961259875424626,
+          "positive_day_ratio": 0.35810113519091846
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.3877006420269522,
+          "cagr": 0.2018117960196253,
+          "max_drawdown": -0.0924431320693988,
+          "daily_vol_annual": 0.15465983328146066,
+          "positive_day_ratio": 0.45813953488372094
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 22,
+            "159934": 28,
+            "159985": 17,
+            "513100": 21,
+            "511380": 18,
+            "159825": 17,
+            "159981": 14,
+            "513530": 11,
+            "164824": 12,
+            "513290": 9,
+            "159509": 6,
+            "501018": 5,
+            "159957": 5,
+            "159529": 2
+          },
+          "accepted_event_count": 187,
+          "fill_count": 448,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 90.61284988187444,
+          "avg_active_slots": 1.784131522516083,
+          "avg_invested_fraction": 0.4223876249055233
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.17300431402751637,
+          "cagr": 0.04081241890080922,
+          "max_drawdown": -0.2362135124692175,
+          "daily_vol_annual": 0.13545504469363015,
+          "positive_day_ratio": 0.44685242518059853
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6709317245678634,
+          "cagr": 0.7353352299025173,
+          "max_drawdown": -0.2702259835882328,
+          "daily_vol_annual": 0.3025920348372875,
+          "positive_day_ratio": 0.5186046511627908
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.23611385621496805,
+          "cagr": 0.05457580281908214,
+          "max_drawdown": -0.28817763597532564,
+          "daily_vol_annual": 0.17441694878274677,
+          "positive_day_ratio": 0.44891640866873067
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.372863206668301,
+          "cagr": 0.9780575258096957,
+          "max_drawdown": -0.34706227910744103,
+          "daily_vol_annual": 0.3901892291718232,
+          "positive_day_ratio": 0.5209302325581395
+        }
+      }
+    },
+    "ADD_AGRI_JIASHI": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6327471898683199,
+          "cagr": 0.13077414908146734,
+          "max_drawdown": -0.3521334598233964,
+          "daily_vol_annual": 0.23201811139015502,
+          "positive_day_ratio": 0.39628482972136225
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.489713895361244,
+          "cagr": 1.3223824719661046,
+          "max_drawdown": -0.4260921236813189,
+          "daily_vol_annual": 0.5239059657220202,
+          "positive_day_ratio": 0.4720930232558139
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.47306295400571496,
+          "cagr": 0.10197256975526803,
+          "max_drawdown": -0.15713469290801563,
+          "daily_vol_annual": 0.12514250141486982,
+          "positive_day_ratio": 0.23839009287925697
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.19552699612446345,
+          "cagr": 0.10538982521630103,
+          "max_drawdown": -0.1962774277028756,
+          "daily_vol_annual": 0.24086546248726753,
+          "positive_day_ratio": 0.31627906976744186
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 7,
+            "513100": 9,
+            "159934": 16,
+            "159985": 5,
+            "511380": 8,
+            "159981": 7,
+            "513530": 6,
+            "513290": 3,
+            "159509": 1,
+            "501018": 3,
+            "159957": 1,
+            "164824": 2,
+            "159529": 1
+          },
+          "accepted_event_count": 69,
+          "fill_count": 168,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 102.08921513741942,
+          "avg_active_slots": 0.681915654038599,
+          "avg_invested_fraction": 0.4876582158763145
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5887981952970442,
+          "cagr": 0.12306575909780304,
+          "max_drawdown": -0.21755241058700037,
+          "daily_vol_annual": 0.1491316137411741,
+          "positive_day_ratio": 0.4262125902992776
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.446940755465398,
+          "cagr": 0.6521179111466424,
+          "max_drawdown": -0.27468929981849766,
+          "daily_vol_annual": 0.3196051418972861,
+          "positive_day_ratio": 0.513953488372093
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6155445809165081,
+          "cagr": 0.12777565335253094,
+          "max_drawdown": -0.2722788856509356,
+          "daily_vol_annual": 0.17853737913033788,
+          "positive_day_ratio": 0.4241486068111455
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.1605309792087644,
+          "cagr": 0.9071960056246529,
+          "max_drawdown": -0.3333947567381087,
+          "daily_vol_annual": 0.3945828224668233,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.05485695265126078,
+          "cagr": 0.013477965986072427,
+          "max_drawdown": -0.10240531269845798,
+          "daily_vol_annual": 0.0730105103411575,
+          "positive_day_ratio": 0.36429308565531476
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.4300343486293672,
+          "cagr": 0.22224614352596794,
+          "max_drawdown": -0.09244313206939825,
+          "daily_vol_annual": 0.1486506534224903,
+          "positive_day_ratio": 0.4697674418604651
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 22,
+            "159934": 30,
+            "159985": 17,
+            "513100": 23,
+            "511380": 20,
+            "159981": 15,
+            "501018": 6,
+            "513530": 11,
+            "164824": 12,
+            "513290": 10,
+            "159509": 6,
+            "159957": 5,
+            "159529": 2
+          },
+          "accepted_event_count": 179,
+          "fill_count": 432,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 87.4097428860713,
+          "avg_active_slots": 1.7176554681915654,
+          "avg_invested_fraction": 0.4106800979145573
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3414624922820291,
+          "cagr": 0.07642108465532305,
+          "max_drawdown": -0.228797650897839,
+          "daily_vol_annual": 0.13490342825954468,
+          "positive_day_ratio": 0.45098039215686275
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6633071829201667,
+          "cagr": 0.7325541340930264,
+          "max_drawdown": -0.25227736070483875,
+          "daily_vol_annual": 0.2991529777352315,
+          "positive_day_ratio": 0.5279069767441861
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4587935202161779,
+          "cagr": 0.09928679777745453,
+          "max_drawdown": -0.2785895512980847,
+          "daily_vol_annual": 0.17239638723712195,
+          "positive_day_ratio": 0.45304437564499483
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3212791598993987,
+          "cagr": 0.9610268893146432,
+          "max_drawdown": -0.32435926464388587,
+          "daily_vol_annual": 0.38649159173208575,
+          "positive_day_ratio": 0.5302325581395348
+        }
+      }
+    },
+    "ADD_DEFENSE": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.46382627810254395,
+          "cagr": 0.1002362941656687,
+          "max_drawdown": -0.33497422676610855,
+          "daily_vol_annual": 0.2538709971230462,
+          "positive_day_ratio": 0.4066047471620227
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.3108737295360138,
+          "cagr": 1.2700172105319143,
+          "max_drawdown": -0.42609212368131877,
+          "daily_vol_annual": 0.5170348968094366,
+          "positive_day_ratio": 0.4720930232558139
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.35912205865329394,
+          "cagr": 0.07995603604370416,
+          "max_drawdown": -0.17219492206637166,
+          "daily_vol_annual": 0.1319712176243427,
+          "positive_day_ratio": 0.24251805985552116
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.12609949220203998,
+          "cagr": 0.06890141919495552,
+          "max_drawdown": -0.24963851679912663,
+          "daily_vol_annual": 0.28925709690851004,
+          "positive_day_ratio": 0.313953488372093
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 7,
+            "513100": 10,
+            "159934": 15,
+            "159985": 4,
+            "512660": 6,
+            "511380": 9,
+            "159981": 6,
+            "513530": 6,
+            "513290": 4,
+            "159509": 1,
+            "501018": 3,
+            "159957": 1,
+            "164824": 1
+          },
+          "accepted_event_count": 73,
+          "fill_count": 177,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 106.97129105974004,
+          "avg_active_slots": 0.7026447462473195,
+          "avg_invested_fraction": 0.5009172317050258
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4507186101229561,
+          "cagr": 0.0977582176945977,
+          "max_drawdown": -0.2353041764749677,
+          "daily_vol_annual": 0.16231280353437827,
+          "positive_day_ratio": 0.43550051599587203
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.320579637494669,
+          "cagr": 0.603694078993307,
+          "max_drawdown": -0.2793655775674678,
+          "daily_vol_annual": 0.33863830046800464,
+          "positive_day_ratio": 0.5023255813953489
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.46578152674008355,
+          "cagr": 0.10060451797979786,
+          "max_drawdown": -0.27637704318804934,
+          "daily_vol_annual": 0.19515722332857438,
+          "positive_day_ratio": 0.4324045407636739
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.0101659303912234,
+          "cagr": 0.8557433199792961,
+          "max_drawdown": -0.340456948778732,
+          "daily_vol_annual": 0.40142050055852535,
+          "positive_day_ratio": 0.513953488372093
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.06474482753346633,
+          "cagr": 0.015851168515090164,
+          "max_drawdown": -0.13207813356980302,
+          "daily_vol_annual": 0.07469087643489998,
+          "positive_day_ratio": 0.3715170278637771
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.4000135004450609,
+          "cagr": 0.20778305413965725,
+          "max_drawdown": -0.10654232554852694,
+          "daily_vol_annual": 0.1553489350444453,
+          "positive_day_ratio": 0.4813953488372093
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 22,
+            "159934": 30,
+            "159985": 15,
+            "513100": 23,
+            "511380": 19,
+            "512660": 17,
+            "501018": 6,
+            "159981": 15,
+            "513530": 11,
+            "164824": 11,
+            "513290": 9,
+            "159509": 6,
+            "159957": 4,
+            "159529": 2
+          },
+          "accepted_event_count": 190,
+          "fill_count": 459,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 92.82431756399319,
+          "avg_active_slots": 1.8048606147248034,
+          "avg_invested_fraction": 0.4312026210772507
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.2813142909090198,
+          "cagr": 0.06411314014175806,
+          "max_drawdown": -0.2064395250790272,
+          "daily_vol_annual": 0.14661415150392293,
+          "positive_day_ratio": 0.45923632610939114
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.5774987461924384,
+          "cagr": 0.701010410492102,
+          "max_drawdown": -0.25557023175612315,
+          "daily_vol_annual": 0.29900426337650693,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3598482879380809,
+          "cagr": 0.0801006682865899,
+          "max_drawdown": -0.2602122016819567,
+          "daily_vol_annual": 0.18823677632592714,
+          "positive_day_ratio": 0.45717234262125905
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.2028332709792173,
+          "cagr": 0.9214763583920789,
+          "max_drawdown": -0.32778479355777324,
+          "daily_vol_annual": 0.38347621864396025,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      }
+    },
+    "ADD_ALL": {
+      "top1_only": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4087735657387188,
+          "cagr": 0.08971380910913607,
+          "max_drawdown": -0.2938864692701786,
+          "daily_vol_annual": 0.2545050977387972,
+          "positive_day_ratio": 0.40763673890608876
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 3.534664951003771,
+          "cagr": 1.3353995477620546,
+          "max_drawdown": -0.4339740374877974,
+          "daily_vol_annual": 0.5220292298910953,
+          "positive_day_ratio": 0.48604651162790696
+        }
+      },
+      "missing_top1_quote_days": 6,
+      "rebuild_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.08311125604255643,
+          "cagr": 0.020215846377352076,
+          "max_drawdown": -0.2897828581269305,
+          "daily_vol_annual": 0.12831022292869457,
+          "positive_day_ratio": 0.2590299277605779
+        },
+        "validation": {
+          "days": 430,
+          "total_return": -0.000288943140348108,
+          "cagr": -0.00016212469350040948,
+          "max_drawdown": -0.2577532942673555,
+          "daily_vol_annual": 0.20975785480913273,
+          "positive_day_ratio": 0.2837209302325581
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 4,
+            "513100": 8,
+            "512800": 11,
+            "159934": 12,
+            "159985": 6,
+            "512660": 6,
+            "511380": 7,
+            "159825": 8,
+            "159981": 2,
+            "513530": 4,
+            "513290": 4,
+            "159509": 1,
+            "501018": 3,
+            "159529": 1,
+            "164824": 1
+          },
+          "accepted_event_count": 78,
+          "fill_count": 187,
+          "missing_quote_marks": 0,
+          "turnover_notional_units": 113.81018096020009,
+          "avg_active_slots": 0.7405289492494639,
+          "avg_invested_fraction": 0.5279898989201031
+        }
+      },
+      "mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.2746771419395466,
+          "cagr": 0.06272865294165952,
+          "max_drawdown": -0.25576688440763296,
+          "daily_vol_annual": 0.155868966695823,
+          "positive_day_ratio": 0.4458204334365325
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.2553046334127438,
+          "cagr": 0.5782263271196892,
+          "max_drawdown": -0.27274582427014826,
+          "daily_vol_annual": 0.3012866265900267,
+          "positive_day_ratio": 0.5069767441860465
+        }
+      },
+      "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3367188559855301,
+          "cagr": 0.07546560399762114,
+          "max_drawdown": -0.2523154665705296,
+          "daily_vol_annual": 0.19122941236708374,
+          "positive_day_ratio": 0.4375644994840041
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.0234729471394166,
+          "cagr": 0.860341614031759,
+          "max_drawdown": -0.3403206407462217,
+          "daily_vol_annual": 0.38376309377866985,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "rebuild_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.04455649875135004,
+          "cagr": 0.010987946220554878,
+          "max_drawdown": -0.16828200701880258,
+          "daily_vol_annual": 0.07863511292826243,
+          "positive_day_ratio": 0.4055727554179567
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 0.31722009151493236,
+          "cagr": 0.16717372089734162,
+          "max_drawdown": -0.09752338027764695,
+          "daily_vol_annual": 0.13110413397258644,
+          "positive_day_ratio": 0.48604651162790696
+        },
+        "diagnostics": {
+          "accepted_events": {
+            "161226": 19,
+            "159934": 26,
+            "159985": 17,
+            "513100": 19,
+            "512800": 22,
+            "511380": 15,
+            "512660": 14,
+            "159825": 13,
+            "159981": 12,
+            "513530": 9,
+            "164824": 11,
+            "513290": 9,
+            "159509": 6,
+            "501018": 5,
+            "159957": 4,
+            "159529": 2
+          },
+          "accepted_event_count": 203,
+          "fill_count": 495,
+          "missing_quote_marks": 2,
+          "turnover_notional_units": 100.62955984611351,
+          "avg_active_slots": 1.9699785561115082,
+          "avg_invested_fraction": 0.4695548758814006
+        }
+      },
+      "mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.24561431568817294,
+          "cagr": 0.05660184199404439,
+          "max_drawdown": -0.18356755120726598,
+          "daily_vol_annual": 0.14726023412025604,
+          "positive_day_ratio": 0.47058823529411764
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.577666139485265,
+          "cagr": 0.7010723902117533,
+          "max_drawdown": -0.26781677997804265,
+          "daily_vol_annual": 0.2870286789757516,
+          "positive_day_ratio": 0.5372093023255814
+        }
+      },
+      "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.31678732398154974,
+          "cagr": 0.07142293296563151,
+          "max_drawdown": -0.22889719531843056,
+          "daily_vol_annual": 0.18870681790393545,
+          "positive_day_ratio": 0.47058823529411764
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.272476015237664,
+          "cagr": 0.9448071657958004,
+          "max_drawdown": -0.3378991440678234,
+          "daily_vol_annual": 0.3787416771276481,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      }
+    }
+  },
+  "generated_events_by_symbol": {
+    "159509": 17,
+    "159529": 11,
+    "159825": 32,
+    "159934": 39,
+    "159957": 30,
+    "159981": 35,
+    "159985": 31,
+    "161226": 37,
+    "164824": 26,
+    "501018": 28,
+    "511380": 36,
+    "512660": 33,
+    "512800": 33,
+    "513100": 31,
+    "513290": 25,
+    "513530": 24,
+    "516550": 36
+  },
+  "eligible_events_by_symbol": {
+    "159509": 13,
+    "159529": 8,
+    "159825": 24,
+    "159934": 39,
+    "159957": 11,
+    "159981": 28,
+    "159985": 24,
+    "161226": 29,
+    "164824": 17,
+    "501018": 10,
+    "511380": 33,
+    "512660": 33,
+    "512800": 33,
+    "513100": 31,
+    "513290": 17,
+    "513530": 18
+  },
+  "production_changed": false
+}
