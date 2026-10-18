@@ -41,7 +41,7 @@ jobs:
         if: success()
         shell: bash
         run: |
-          cat data/sector-exposure-increment-20261018.json | python -m json.tool | head -n 200 >> "$GITHUB_STEP_SUMMARY"
+          python -c 'import json; d=json.load(open("data/sector-exposure-increment-20261018.json",encoding="utf-8")); print(json.dumps({"data_quality":d["data_quality"],"segments":{k:{"discovery":v["period_2021_2024"],"validation":v["period_2025_2026"]} for k,v in d["variants"].items()}},ensure_ascii=False,indent=2))' >> "$GITHUB_STEP_SUMMARY"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/sector-exposure-increment-20261018.json
