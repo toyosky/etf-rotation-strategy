@@ -24,6 +24,7 @@ from walk_forward_candidate_pool import build_daily_targets, backtest_open_to_op
 from sector_exposure_increment_v1.run import BASE, SECTORS
 
 OUT = ROOT / "data" / "sector-dual-engine-backtest-20261018.json"
+BRAZIL_REBUILD_ONLY = ["520870","159100"]
 SIDE_COST = 0.0006
 BEGIN = pd.Timestamp("2021-01-01")
 DISCOVERY_END = pd.Timestamp("2024-12-31")
@@ -231,12 +232,12 @@ def main():
     with engine.connect() as c:
         mainbar=pd.read_sql_query(text("""select symbol,date,open,high,low,close,volume,amount
         from public.daily_bars where symbol=any(:s) order by symbol,date"""),
-        c,params={"s":BASE},parse_dates=["date"])
+        c,params={"s":BASE+BRAZIL_REBUILD_ONLY},parse_dates=["date"])
         add=pd.read_sql_query(text("""select symbol,date,open,high,low,close,volume,amount
         from research.sector_candidate_bars where symbol=any(:s) order by symbol,date"""),
         c,params={"s":list(SECTORS)},parse_dates=["date"])
     bars=pd.concat([mainbar,add],ignore_index=True)
-    expected=set(BASE)|set(SECTORS)
+    expected=set(BASE)|set(SECTORS)|set(BRAZIL_REBUILD_ONLY)
     if set(bars.symbol.astype(str))!=expected:
         raise RuntimeError("Missing sector or baseline bars")
     features=build_features(bars)
@@ -252,7 +253,9 @@ def main():
             "cost_per_trade_side":SIDE_COST,
             "tests":{}, "generated_events_by_symbol":generated,
             "eligible_events_by_symbol":eligible,
-            "production_changed":False}
+            "production_changed":False,
+            "r2_baseline_additional_carriers":BRAZIL_REBUILD_ONLY,
+            "top1_base_excludes_brazil":True}
 
     frozen_top1 = None
     for label,symbols in VARIANTS.items():
@@ -270,7 +273,7 @@ def main():
           "validation":period(top_pnl.rename(columns={"top1_ret":"net_ret"}),"2025-01-01")},
           "missing_top1_quote_days":int(top_pnl.loc[top_pnl.date>=BEGIN,"missing_quote"].sum())}
         for max_slots in (1,3):
-            r2_daily,diagnostics=simulate_rebuild(events,set(symbols),calendar,open_wide,max_slots)
+            r2_daily,diagnostics=simulate_rebuild(events,set(symbols)|set(BRAZIL_REBUILD_ONLY),calendar,open_wide,max_slots)
             # R2 returns at open date i; top1 date i means holding from open(i)
             # to open(i+1) with the prior close's target.
             merged=top_pnl.merge(r2_daily[["date","ret","active_slots","invested_fraction"]],
