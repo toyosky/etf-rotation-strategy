@@ -160,6 +160,7 @@ def simulate_rebuild(events, symbols, calendar, open_wide, capacity):
                 missing+=1
                 continue
             active[ev.symbol]=ev
+            setattr(ev,"_bought_fraction",0.0)
             entries[ev.symbol]+=1
 
         # Each episode has an equal RESERVED slot. Buy only when stage advances.
