@@ -84,7 +84,43 @@
           "positive_day_ratio": 0.513953488372093
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5887981952970442,
+          "cagr": 0.12306575909780304,
+          "max_drawdown": -0.21755241058700037,
+          "daily_vol_annual": 0.1491316137411741,
+          "positive_day_ratio": 0.4262125902992776
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.446940755465398,
+          "cagr": 0.6521179111466424,
+          "max_drawdown": -0.27468929981849766,
+          "daily_vol_annual": 0.3196051418972861,
+          "positive_day_ratio": 0.513953488372093
+        }
+      },
       "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6155445809165081,
+          "cagr": 0.12777565335253094,
+          "max_drawdown": -0.2722788856509356,
+          "daily_vol_annual": 0.17853737913033788,
+          "positive_day_ratio": 0.4241486068111455
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.1605309792087644,
+          "cagr": 0.9071960056246529,
+          "max_drawdown": -0.3333947567381087,
+          "daily_vol_annual": 0.3945828224668233,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
           "total_return": 0.6155445809165081,
@@ -161,7 +197,43 @@
           "positive_day_ratio": 0.5279069767441861
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3414624922820291,
+          "cagr": 0.07642108465532305,
+          "max_drawdown": -0.228797650897839,
+          "daily_vol_annual": 0.13490342825954468,
+          "positive_day_ratio": 0.45098039215686275
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6633071829201667,
+          "cagr": 0.7325541340930264,
+          "max_drawdown": -0.25227736070483875,
+          "daily_vol_annual": 0.2991529777352315,
+          "positive_day_ratio": 0.5279069767441861
+        }
+      },
       "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4587935202161779,
+          "cagr": 0.09928679777745453,
+          "max_drawdown": -0.2785895512980847,
+          "daily_vol_annual": 0.17239638723712195,
+          "positive_day_ratio": 0.45304437564499483
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3212791598993987,
+          "cagr": 0.9610268893146432,
+          "max_drawdown": -0.32435926464388587,
+          "daily_vol_annual": 0.38649159173208575,
+          "positive_day_ratio": 0.5302325581395348
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
           "total_return": 0.4587935202161779,
@@ -260,6 +332,24 @@
           "positive_day_ratio": 0.5255813953488372
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4929179397800467,
+          "cagr": 0.10567739902613349,
+          "max_drawdown": -0.21007232163747258,
+          "daily_vol_annual": 0.14384078783521292,
+          "positive_day_ratio": 0.4406604747162023
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.5860333659546146,
+          "cagr": 0.704168225626135,
+          "max_drawdown": -0.2630928374416258,
+          "daily_vol_annual": 0.313762809264343,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
       "mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
@@ -276,6 +366,24 @@
           "max_drawdown": -0.3188202525253343,
           "daily_vol_annual": 0.3921261374574504,
           "positive_day_ratio": 0.5302325581395348
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5573689212643109,
+          "cagr": 0.11745468910509005,
+          "max_drawdown": -0.2680668505058609,
+          "daily_vol_annual": 0.17491189868436682,
+          "positive_day_ratio": 0.434468524251806
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.2673815171633107,
+          "cagr": 0.9431079083525218,
+          "max_drawdown": -0.3268838938682682,
+          "daily_vol_annual": 0.39161046603886124,
+          "positive_day_ratio": 0.5186046511627908
         }
       },
       "rebuild_3_slot": {
@@ -338,6 +446,24 @@
           "positive_day_ratio": 0.541860465116279
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3514599889228416,
+          "cagr": 0.07842655630210849,
+          "max_drawdown": -0.22458205222090388,
+          "daily_vol_annual": 0.13549426260456113,
+          "positive_day_ratio": 0.4551083591331269
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6941418293572275,
+          "cagr": 0.7437798732169285,
+          "max_drawdown": -0.2617609508511469,
+          "daily_vol_annual": 0.2946042975479633,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      },
       "mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
@@ -354,6 +480,24 @@
           "max_drawdown": -0.32104691356049575,
           "daily_vol_annual": 0.3840844292926019,
           "positive_day_ratio": 0.5325581395348837
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.46545085094196326,
+          "cagr": 0.10054226905692176,
+          "max_drawdown": -0.27621717970840987,
+          "daily_vol_annual": 0.17253164484239544,
+          "positive_day_ratio": 0.46233230134158926
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3453971827203346,
+          "cagr": 0.9690038750386343,
+          "max_drawdown": -0.329341182385243,
+          "daily_vol_annual": 0.38387913607252844,
+          "positive_day_ratio": 0.5255813953488372
         }
       }
     },
@@ -436,6 +580,24 @@
           "positive_day_ratio": 0.5046511627906977
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.47957838387606544,
+          "cagr": 0.10319241517580768,
+          "max_drawdown": -0.21755241058700048,
+          "daily_vol_annual": 0.14550577011455537,
+          "positive_day_ratio": 0.4262125902992776
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.190477026552216,
+          "cagr": 0.5526108370239808,
+          "max_drawdown": -0.27468929981849854,
+          "daily_vol_annual": 0.28499868718429844,
+          "positive_day_ratio": 0.5023255813953489
+        }
+      },
       "mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
@@ -452,6 +614,24 @@
           "max_drawdown": -0.3558898632505293,
           "daily_vol_annual": 0.3801486321873365,
           "positive_day_ratio": 0.5046511627906977
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.548518702115645,
+          "cagr": 0.11585936157644783,
+          "max_drawdown": -0.27227888565093616,
+          "daily_vol_annual": 0.17621454970055653,
+          "positive_day_ratio": 0.42105263157894735
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.9598409883674432,
+          "cagr": 0.838272091763713,
+          "max_drawdown": -0.33339475673810925,
+          "daily_vol_annual": 0.3769828628720855,
+          "positive_day_ratio": 0.5023255813953489
         }
       },
       "rebuild_3_slot": {
@@ -514,6 +694,24 @@
           "positive_day_ratio": 0.5186046511627908
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3043194349973084,
+          "cagr": 0.06887072932238958,
+          "max_drawdown": -0.2287976508978392,
+          "daily_vol_annual": 0.13319447382481348,
+          "positive_day_ratio": 0.4458204334365325
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6235680693932881,
+          "cagr": 0.7180021214071173,
+          "max_drawdown": -0.25227736070483975,
+          "daily_vol_annual": 0.3006907520945371,
+          "positive_day_ratio": 0.5186046511627908
+        }
+      },
       "mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
@@ -529,6 +727,24 @@
           "cagr": 0.9780575258096957,
           "max_drawdown": -0.34706227910744103,
           "daily_vol_annual": 0.3901892291718232,
+          "positive_day_ratio": 0.5209302325581395
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.43456997463414626,
+          "cagr": 0.09468205523535489,
+          "max_drawdown": -0.27858955129808494,
+          "daily_vol_annual": 0.17144622613312535,
+          "positive_day_ratio": 0.4499484004127967
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.291428227826742,
+          "cagr": 0.9511184596724629,
+          "max_drawdown": -0.32435926464388554,
+          "daily_vol_annual": 0.38721036817939963,
           "positive_day_ratio": 0.5209302325581395
         }
       }
@@ -612,7 +828,43 @@
           "positive_day_ratio": 0.513953488372093
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5887981952970442,
+          "cagr": 0.12306575909780304,
+          "max_drawdown": -0.21755241058700037,
+          "daily_vol_annual": 0.1491316137411741,
+          "positive_day_ratio": 0.4262125902992776
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.446940755465398,
+          "cagr": 0.6521179111466424,
+          "max_drawdown": -0.27468929981849766,
+          "daily_vol_annual": 0.3196051418972861,
+          "positive_day_ratio": 0.513953488372093
+        }
+      },
       "mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.6155445809165081,
+          "cagr": 0.12777565335253094,
+          "max_drawdown": -0.2722788856509356,
+          "daily_vol_annual": 0.17853737913033788,
+          "positive_day_ratio": 0.4241486068111455
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.1605309792087644,
+          "cagr": 0.9071960056246529,
+          "max_drawdown": -0.3333947567381087,
+          "daily_vol_annual": 0.3945828224668233,
+          "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
           "total_return": 0.6155445809165081,
@@ -689,7 +941,43 @@
           "positive_day_ratio": 0.5279069767441861
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3414624922820291,
+          "cagr": 0.07642108465532305,
+          "max_drawdown": -0.228797650897839,
+          "daily_vol_annual": 0.13490342825954468,
+          "positive_day_ratio": 0.45098039215686275
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6633071829201667,
+          "cagr": 0.7325541340930264,
+          "max_drawdown": -0.25227736070483875,
+          "daily_vol_annual": 0.2991529777352315,
+          "positive_day_ratio": 0.5279069767441861
+        }
+      },
       "mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.4587935202161779,
+          "cagr": 0.09928679777745453,
+          "max_drawdown": -0.2785895512980847,
+          "daily_vol_annual": 0.17239638723712195,
+          "positive_day_ratio": 0.45304437564499483
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.3212791598993987,
+          "cagr": 0.9610268893146432,
+          "max_drawdown": -0.32435926464388587,
+          "daily_vol_annual": 0.38649159173208575,
+          "positive_day_ratio": 0.5302325581395348
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
           "total_return": 0.4587935202161779,
@@ -787,6 +1075,24 @@
           "positive_day_ratio": 0.5023255813953489
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5271943346475085,
+          "cagr": 0.11198720583962829,
+          "max_drawdown": -0.2263905538014962,
+          "daily_vol_annual": 0.15084336521234212,
+          "positive_day_ratio": 0.43343653250773995
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.3704381690429606,
+          "cagr": 0.6229357144971568,
+          "max_drawdown": -0.27936557756746794,
+          "daily_vol_annual": 0.34176447585677994,
+          "positive_day_ratio": 0.5069767441860465
+        }
+      },
       "mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
@@ -803,6 +1109,24 @@
           "max_drawdown": -0.340456948778732,
           "daily_vol_annual": 0.40142050055852535,
           "positive_day_ratio": 0.513953488372093
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.5779277201745456,
+          "cagr": 0.12113453826652965,
+          "max_drawdown": -0.2771990726223661,
+          "daily_vol_annual": 0.17915420828413609,
+          "positive_day_ratio": 0.43137254901960786
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.099372720637329,
+          "cagr": 0.8864010802579838,
+          "max_drawdown": -0.3404569487787322,
+          "daily_vol_annual": 0.4061130541220703,
+          "positive_day_ratio": 0.5162790697674419
         }
       },
       "rebuild_3_slot": {
@@ -865,6 +1189,24 @@
           "positive_day_ratio": 0.5325581395348837
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3478218287657724,
+          "cagr": 0.07769804153804172,
+          "max_drawdown": -0.2322584309747573,
+          "daily_vol_annual": 0.13523567889050597,
+          "positive_day_ratio": 0.46439628482972134
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.6333984497189045,
+          "cagr": 0.721610850413942,
+          "max_drawdown": -0.25557023175612303,
+          "daily_vol_annual": 0.302162031315325,
+          "positive_day_ratio": 0.5325581395348837
+        }
+      },
       "mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
@@ -881,6 +1223,24 @@
           "max_drawdown": -0.32778479355777324,
           "daily_vol_annual": 0.38347621864396025,
           "positive_day_ratio": 0.5325581395348837
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.46296049175936993,
+          "cagr": 0.10007312650363986,
+          "max_drawdown": -0.2805396319003083,
+          "daily_vol_annual": 0.17252861939609176,
+          "positive_day_ratio": 0.46233230134158926
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.2983017479440444,
+          "cagr": 0.9534034733275096,
+          "max_drawdown": -0.32778479355777257,
+          "daily_vol_annual": 0.3881382283731506,
+          "positive_day_ratio": 0.5348837209302325
         }
       }
     },
@@ -965,6 +1325,24 @@
           "positive_day_ratio": 0.5069767441860465
         }
       },
+      "frozen_top1_mix_50_50_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3689773523090092,
+          "cagr": 0.08191384978735483,
+          "max_drawdown": -0.240136607857531,
+          "daily_vol_annual": 0.14193954116543187,
+          "positive_day_ratio": 0.44685242518059853
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.242614105018761,
+          "cagr": 0.5732375917739734,
+          "max_drawdown": -0.2678438807758343,
+          "daily_vol_annual": 0.30363411844489896,
+          "positive_day_ratio": 0.49767441860465117
+        }
+      },
       "mix_70_30_1_slot": {
         "discovery": {
           "days": 969,
@@ -981,6 +1359,24 @@
           "max_drawdown": -0.3403206407462217,
           "daily_vol_annual": 0.38376309377866985,
           "positive_day_ratio": 0.5162790697674419
+        }
+      },
+      "frozen_top1_mix_70_30_1_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.479170281253942,
+          "cagr": 0.10311612682402438,
+          "max_drawdown": -0.2680668505058611,
+          "daily_vol_annual": 0.17326509036025306,
+          "positive_day_ratio": 0.4406604747162023
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.0006955286427224,
+          "cagr": 0.8524653472856423,
+          "max_drawdown": -0.33401506371007417,
+          "daily_vol_annual": 0.38602665136135356,
+          "positive_day_ratio": 0.5046511627906977
         }
       },
       "rebuild_3_slot": {
@@ -1045,6 +1441,24 @@
           "positive_day_ratio": 0.5372093023255814
         }
       },
+      "frozen_top1_mix_50_50_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.3362766864229221,
+          "cagr": 0.07537641119767535,
+          "max_drawdown": -0.22806517085004707,
+          "daily_vol_annual": 0.13451512109725372,
+          "positive_day_ratio": 0.47368421052631576
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 1.5650051395086129,
+          "cagr": 0.6963794783999417,
+          "max_drawdown": -0.2628524164041194,
+          "daily_vol_annual": 0.28797226642917445,
+          "positive_day_ratio": 0.5279069767441861
+        }
+      },
       "mix_70_30_3_slot": {
         "discovery": {
           "days": 969,
@@ -1061,6 +1475,24 @@
           "max_drawdown": -0.3378991440678234,
           "daily_vol_annual": 0.3787416771276481,
           "positive_day_ratio": 0.5325581395348837
+        }
+      },
+      "frozen_top1_mix_70_30_3_slot": {
+        "discovery": {
+          "days": 969,
+          "total_return": 0.45576885075230833,
+          "cagr": 0.09871497240031024,
+          "max_drawdown": -0.27817631001722065,
+          "daily_vol_annual": 0.17184377312147733,
+          "positive_day_ratio": 0.47678018575851394
+        },
+        "validation": {
+          "days": 430,
+          "total_return": 2.2497849033353687,
+          "cagr": 0.9372296352826217,
+          "max_drawdown": -0.3315467308961123,
+          "daily_vol_annual": 0.3800666202380428,
+          "positive_day_ratio": 0.5232558139534884
         }
       }
     }
