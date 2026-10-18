@@ -1,0 +1,60 @@
+name: Bank Agriculture Defense Increment Study
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sector-exposure-increment.yml'
+      - 'research/sector_exposure_increment_v1/run.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sector-exposure-increment-study
+  cancel-in-progress: false
+
+jobs:
+  study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
+      SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: research/requirements-full-market-ols.txt
+      - run: python -m pip install -r research/requirements-full-market-ols.txt
+      - name: Retrieve audited historical archive, fill latest bars, run matched comparison
+        run: python research/sector_exposure_increment_v1/run.py
+      - name: Publish concise report
+        if: success()
+        shell: bash
+        run: |
+          cat data/sector-exposure-increment-20261018.json | python -m json.tool | head -n 200 >> "$GITHUB_STEP_SUMMARY"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sector-exposure-increment-20261018.json
+          if ! git diff --cached --quiet; then
+            git commit -m "research: archive sector exposure OLS validation results"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Archive full audit output
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: sector-exposure-increment-v1
+          path: data/sector-exposure-increment-20261018.json
+          if-no-files-found: warn
+          retention-days: 30
