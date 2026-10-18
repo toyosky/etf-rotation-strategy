@@ -33,6 +33,7 @@ PREFIX = "raw_daily_bars/frozen_20260917"
 SECTORS = {
     "512800": ("BANK", "sh512800"),
     "516550": ("AGRICULTURE", "sh516550"),
+    "159825": ("AGRICULTURE_RETIRED", "sz159825"),
     "512660": ("DEFENSE", "sh512660"),
 }
 BASE = [
@@ -234,8 +235,10 @@ def main():
         "BASE":BASE,
         "ADD_BANK":BASE+["512800"],
         "ADD_AGRICULTURE":BASE+["516550"],
+        "ADD_AGRICULTURE_RETIRED":BASE+["159825"],
         "ADD_DEFENSE":BASE+["512660"],
-        "ADD_ALL":BASE+list(SECTORS),
+        "ADD_ALL":BASE+["512800","159825","512660"],
+        "ADD_ALL_WITH_BOTH_AGRI":BASE+list(SECTORS),
     }
     results={}
     target_frames={}
@@ -260,6 +263,7 @@ def main():
       "data_quality":quality,
       "baseline":BASE,
       "research_assets":SECTORS,
+      "agriculture_note":"159825 is the formerly retired strategy candidate; 516550 tests an alternative agricultural index. ADD_ALL uses 159825 as its single agriculture representative.",
       "method":"Frozen 26-bar weighted OLS, HL10, existing research liquidity/D2 filters; top1 close(t)->next open; 6bps each side; no C2/state-map/premium veto",
       "variants":results,
       "rebuilding_events":summary_events(features,list(SECTORS))
