@@ -259,6 +259,7 @@ def main():
             "raw_qualified_symbols":qualified.symbol.tolist(),
             "qualified_candidates":candidates,
             "qualified_sort": "first_qualified_date descending, cross_date descending, r2 descending, symbol ascending",
+            "notification_format": "ols_full_market_v2",
             "strict_qualified_symbols":eligible.symbol.tolist(),
             "data_quality_gate": "PASS" if coverage>=.90 and with_today>=1000 else "PARTIAL_OR_FAILED",
             "data_version":f"2026-09-17 frozen plus Tencent incremental HFQ to {args.as_of}",
