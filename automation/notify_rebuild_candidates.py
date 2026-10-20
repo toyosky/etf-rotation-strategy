@@ -105,6 +105,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--previous", required=True)
     ap.add_argument("--current", required=True)
+    ap.add_argument("--previous-market", default="")
     ap.add_argument("--market-report", required=True)
     ap.add_argument("--test", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="Validate + render but do not send PushPlus")
@@ -114,6 +115,7 @@ def main():
     previous = json.loads(Path(args.previous).read_text(encoding="utf-8"))
     current = json.loads(Path(args.current).read_text(encoding="utf-8"))
     market = json.loads(Path(args.market_report).read_text(encoding="utf-8"))
+    older_market = json.loads(Path(args.previous_market).read_text(encoding="utf-8")) if args.previous_market else {}
     title, content = build_report(previous, current, market, args.test)
 
     if args.output_markdown:
@@ -125,9 +127,12 @@ def main():
                           "characters":len(content)}, ensure_ascii=False))
         return
     date = current.get("market_data_date")
-    if not args.test and (previous.get("market_data_date") == date
-                         and (previous.get("next_strategy_target") or {}).get("signal_date")==date):
-        print("Already published this market date; skip repeat PushPlus daily report")
+    if (not args.test and older_market.get("notification_format")=="ols_full_market_v2"
+        and older_market.get("as_of")==date
+        and [(r["symbol"],r["first_qualified_date"]) for r in older_market.get("qualified_candidates",[])]
+            == [(r["symbol"],r["first_qualified_date"]) for r in market.get("qualified_candidates",[])]
+        and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})):
+        print("Already sent this OLS + full-market report; skip duplicate PushPlus")
         return
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
     if not token:
