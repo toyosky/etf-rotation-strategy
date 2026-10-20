@@ -13,6 +13,7 @@ from sqlalchemy import create_engine
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "fundamental-audit-trigger.json"
 LIVE = ROOT / "data" / "live-forward.json"
+ACTUAL = ROOT / "data" / "actual-holding.json"
 
 RISK_POOL = [
     "159934", "159985", "161226", "513100", "159957", "159509",
@@ -96,6 +97,16 @@ def load_live() -> dict:
 
 
 def current_holding_from_live(live: dict) -> dict:
+    if ACTUAL.exists():
+        actual = json.loads(ACTUAL.read_text(encoding="utf-8"))
+        symbols = actual.get("symbols")
+        if isinstance(symbols, list) and len(symbols) == 0:
+            return {"symbol": None, "name": "现金（实际空仓）",
+                    "as_of": actual.get("as_of"), "source": "data/actual-holding.json (user-reported)"}
+        if isinstance(symbols, list) and len(symbols) == 1:
+            symbol = str(symbols[0])
+            return {"symbol": symbol, "name": NAMES.get(symbol, symbol),
+                    "as_of": actual.get("as_of"), "source": "data/actual-holding.json (user-reported)"}
     mtm = ((live.get("mark_to_market") or {}).get("baseline") or {})
     target = mtm.get("target")
     if not target:
