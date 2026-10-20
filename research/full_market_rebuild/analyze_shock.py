@@ -183,7 +183,7 @@ def main():
     by_symbol.to_csv(out/"by_symbol.csv",index=False)
     report = {
         "status":"exploratory_event_study_only", "data_as_of":str(max(g.date.max() for g in groups.values()).date()),
-        "source":"Supabase public.daily_bars, current 19-symbol sample",
+        "source":"Supabase public.daily_bars, 18 risk-asset symbols after excluding cash proxy 511220",
         "events_input":str(a.events), "signal":"frozen OLS 26 sessions, half-life 10; annual cross; R2 recovery within 1-3 days",
         "classification":{"asof":"signal close only","primary":"last 2 close-to-close sessions >= +10% OR max single day close-to-close in last 3 >= +8%",
                           "sensitivity":{"8_6":"2d>=8% or max1d>=6%","12_10":"2d>=12% or max1d>=10%"}},
@@ -191,10 +191,10 @@ def main():
         "risk":"MAE is minimum close mark from entry open to j+h, not intraday max drawdown",
         "summaries":summaries, "comparisons":comparisons, "sensitivity":sensitivities,
         "critical_limitations":[
-            "19 existing/surviving ETFs only; not whole market nor survivorship-bias-free",
+            "18 existing/surviving risk assets only; not whole market nor survivorship-bias-free",
             "candidate universe and weighting not PIT reconstructed",
             "classification thresholds informed by Oct 2026 Brazil event; 2025-26 is not uncontaminated out-of-sample validation",
-            "overlapping correlated events; bootstrap resamples symbols, not independent trade outcomes",
+            "overlapping correlated events; bootstrap resamples symbols, not independent trade outcomes; 6 shock events only",
             "no commissions/slippage/premium filters, no portfolio capital allocation or top1 benchmark",
             "historical adjusted price lineage/price-as-of validation not finished",
             "right censoring: incomplete forward horizons excluded per metric",
