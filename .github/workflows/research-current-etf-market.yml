@@ -16,6 +16,9 @@ on:
         description: 'Trade date YYYY-MM-DD'
         type: string
         default: '2026-10-20'
+concurrency:
+  group: research-current-etf-market-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
