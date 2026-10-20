@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: true
 permissions:
   contents: write
+  actions: write
 jobs:
   refresh-and-scan:
     runs-on: ubuntu-24.04
@@ -33,6 +34,21 @@ jobs:
       MARKET_MAX_SYMBOLS: ${{ inputs.max_symbols || '0' }}
     steps:
       - uses: actions/checkout@v4
+      - name: Cancel superseded market research refreshes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh run list --workflow research-current-etf-market.yml \
+            --repo "$GH_REPO" --limit 30 \
+            --json databaseId,status \
+            --jq '.[] | select(.status == "in_progress" or .status == "queued" or .status == "waiting") | .databaseId' \
+            | while read -r rid; do
+                if [ "$rid" != "$GITHUB_RUN_ID" ]; then
+                  echo "Cancel older overlapping research run $rid"
+                  gh run cancel "$rid" --repo "$GH_REPO" || true
+                fi
+              done
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
