@@ -23,7 +23,7 @@ permissions:
 
 concurrency:
   group: fundamental-audit-trigger
-  cancel-in-progress: false
+  cancel-in-progress: true  # supersede stale premarket runs; report is idempotent by date and candidate set
 
 jobs:
   build:
