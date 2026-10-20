@@ -91,11 +91,12 @@ jobs:
       - name: Validate and preview unified OLS + full-market rebuild report
         shell: bash
         run: |
+          git show HEAD:data/fundamental-audit-trigger.json > /tmp/previous-fundamental-audit-trigger.json 2>/dev/null || echo '{}' > /tmp/previous-fundamental-audit-trigger.json
+          git show HEAD:data/full-market-rebuild-latest.json > /tmp/previous-market-report.json 2>/dev/null || echo '{}' > /tmp/previous-market-report.json
           python automation/notify_rebuild_candidates.py \
             --previous /tmp/previous-fundamental-audit-trigger.json \
             --current data/fundamental-audit-trigger.json \
             --previous-market /tmp/previous-market-report.json \
-            --market-report data/full-market-rebuild-latest.json \
             --market-report data/full-market-rebuild-latest.json \
             --dry-run --output-markdown /tmp/full-market-daily-report.md
 
@@ -104,11 +105,11 @@ jobs:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         shell: bash
         run: |
-          git show HEAD:data/fundamental-audit-trigger.json > /tmp/previous-fundamental-audit-trigger.json 2>/dev/null || echo '{}' > /tmp/previous-fundamental-audit-trigger.json
-          git show HEAD:data/full-market-rebuild-latest.json > /tmp/previous-market-report.json 2>/dev/null || echo '{}' > /tmp/previous-market-report.json
           python automation/notify_rebuild_candidates.py \
             --previous /tmp/previous-fundamental-audit-trigger.json \
-            --current data/fundamental-audit-trigger.json
+            --current data/fundamental-audit-trigger.json \
+            --previous-market /tmp/previous-market-report.json \
+            --market-report data/full-market-rebuild-latest.json
 
       - name: Commit trigger snapshot
         shell: bash
