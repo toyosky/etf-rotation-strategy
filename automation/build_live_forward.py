@@ -18,14 +18,19 @@ import optimal_universe_reverse_engineering.oure_stage8m_fixv2_v1_long_horizon a
 import optimal_universe_reverse_engineering.oure_stage8q_map_comparator_robustness as s8q
 import optimal_universe_reverse_engineering.oure_stage8za_prevoid_incumbent_full_backtest as s8za
 
+# Live-only bank admission, without changing frozen historical research modules.
+s8m.MAIN_RISK = tuple(dict.fromkeys(s8m.MAIN_RISK + ('512800',)))
+s8m.MAIN_MEMBERS = tuple(sorted(s8m.MAIN_RISK + (s8m.CASH,)))
+s8q.RISK = tuple(s8m.MAIN_RISK)
+
 START=pd.Timestamp('2026-09-14')
 COST=0.0006
 OUT=ROOT/'data'/'live-forward.json'
 EXECUTION_OVERRIDES=ROOT/'data'/'execution-overrides.json'
 CASH='511220'; CARRIER='513500'; BENCHMARK='510300'
 PREMIUM_LIMIT=0.15
-PREMIUM_SENSITIVE={'159934','159985','161226','513100','159957','159509','513290','159529','159981','501018','513530','511380','164824','513500'}
-NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
+PREMIUM_SENSITIVE={'159934','159985','161226','513100','159957','159509','513290','159529','159981','501018','513530','511380','164824','513500','512800'}
+NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','512800':'银行','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
 BACKTEST_REFERENCE={
   'period':'2015-01-26 → 2026-09-15',
   'baseline':{'cagr':0.4453,'mdd':-0.3130,'sharpe':1.249,'switches':298},
