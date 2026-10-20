@@ -41,10 +41,10 @@
     "premium_limit": 0.15,
     "decision": "PREMIUM_UNVERIFIED_KEEP_INCUMBENT",
     "quadrant": "DEFENSIVE_VOID",
-    "breadth_pct": 38.46153846153846,
+    "breadth_pct": 35.714285714285715,
     "gap_percentile": 40.87301587301587,
-    "target_score": 0.2929904003020292,
-    "cash_score": 0.029308588913677745,
+    "target_score": 0.29299040030203766,
+    "cash_score": 0.02930858891367043,
     "carrier_score": 0.0002299685982162108,
     "completed_through": "2026-10-19",
     "performance_signal_through": "2026-10-15"
