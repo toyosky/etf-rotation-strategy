@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Notify first REBUILDING_QUALIFIED observation for each trend rebuild episode."""
+"""Send one daily PushPlus report: next-day OLS target and ALL current-market rebuild candidates.
+
+The independent full-market scan is required. Do not fall back silently to the
+fixed production pool if coverage is missing or data timestamps disagree.
+"""
 from __future__ import annotations
 
 import argparse
@@ -10,107 +14,140 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 
 
-def episode_keys(data: dict) -> set[tuple[str, str]]:
-    return {
-        (str(row["symbol"]), str(row["cross_date"]))
-        for row in data.get("qualified_candidates", [])
-        if row.get("stage") == "REBUILDING_QUALIFIED"
-        and row.get("symbol") and row.get("cross_date")
-    }
+def validate_and_sort(current: dict, market: dict) -> list[dict]:
+    day = str(current.get("market_data_date") or "")
+    target = current.get("next_strategy_target") or {}
+    if not day or day != str(market.get("as_of") or ""):
+        raise ValueError("Production and full-market dates differ")
+    if str(target.get("signal_date")) != day:
+        raise ValueError("Next-day OLS signal is stale; no notification")
+    if market.get("data_quality_gate") != "PASS":
+        raise ValueError("Full-market quality gate failed; no partial-as-complete notification")
+    if market.get("listed_requested", 0) < 1200:
+        raise ValueError("Full-market universe unexpectedly small")
+    if market.get("asof_coverage", 0) < 0.90:
+        raise ValueError("Full-market coverage below 90%")
+    rows = market.get("qualified_candidates")
+    if not isinstance(rows, list):
+        raise ValueError("Missing full-market qualified rows (no limited-pool fallback)")
+    if len(rows) != market.get("raw_qualified"):
+        raise ValueError("Candidate count and serialized rows disagree")
+    if len({r.get("symbol") for r in rows}) != len(rows):
+        raise ValueError("Duplicate ETF codes in qualified list")
+    for r in rows:
+        if r.get("stage") != "REBUILDING_QUALIFIED":
+            raise ValueError("Nonqualified row in qualified candidates")
+        if not r.get("cross_date") or not r.get("first_qualified_date"):
+            raise ValueError("Candidate missing event dates")
+        if str(r.get("first_qualified_date")) > day:
+            raise ValueError("Future first-qualification date")
+    return sorted(
+        rows,
+        key=lambda r: (str(r.get("first_qualified_date")), str(r.get("cross_date")),
+                       float(r.get("r2") or 0), str(r.get("symbol"))),
+        reverse=True,
+    )
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--previous", required=True)
-    parser.add_argument("--current", required=True)
-    parser.add_argument("--test", action="store_true", help="Send an explicitly labelled test notification")
-    args = parser.parse_args()
+def build_report(previous: dict, current: dict, market: dict, test: bool = False) -> tuple[str, str]:
+    rows = validate_and_sort(current, market)
+    day = current["market_data_date"]
+    tgt = current.get("next_strategy_target") or {}
+    model = tgt.get("model_target")
+    execution = tgt.get("symbol")
+    model_name = tgt.get("model_target_name") or ""
+    execution_name = tgt.get("name") or ""
+    coverage = float(market["asof_coverage"])
+    count = int(market["symbols_with_asof_close"])
+    listed = int(market["listed_requested"])
+    extra = "【测试】" if test else ""
+    body = [
+        f"# {extra}ETF 收盘策略日报",
+        f"数据日期：{day}（A股交易日收盘）",
+        f"全市场有效行情：{count}/{listed}，覆盖率 {coverage:.1%}",
+        f"未取得当日行情：{listed-count} 只，不视为无重建信号。",
+        "",
+        "## 下一交易日 OLS 模型信号",
+        f"- 模型首选：**{model+' '+model_name if model else '现金/无模型首选'}**",
+        f"- 执行层目标：**{execution+' '+execution_name if execution else '现金/无执行目标'}**",
+        f"- 决策：{tgt.get('decision') or '未提供'}；执行状态：{tgt.get('execution_status') or '未提供'}",
+        "- 两项可能不同：模型首选未经全部溢价和执行层过滤；均不代表用户实际持仓。",
+        "",
+        "## 全市场 R² 趋势重建（按首次合格日期由新到旧）",
+        f"- 当前合格：**{len(rows)} 只**；不以成交额、上市年限过滤，仅保留风险提示。",
+        f"- 本交易日首次合格：{sum(r['first_qualified_date']==day for r in rows)} 只。",
+        "- 时间口径：首次合格日期 ≠ annual 翻正日期。以下均为收盘后信号，尚未完成基本面/溢价审计。",
+        "",
+    ]
+    if not rows:
+        body.append("今日没有满足条件的重建标的。")
+    for i, row in enumerate(rows, 1):
+        r2 = row.get("r2")
+        annual = row.get("annual")
+        r2txt = f"{float(r2):.3f}" if r2 is not None else "未知"
+        annualtxt = f"{float(annual)*100:+.1f}%" if annual is not None else "未知"
+        warnings = []
+        if not row.get("strict_eligible"):
+            warnings.append("低流动性/短历史需检查")
+        if row.get("shock10_8"):
+            warnings.append("短期急涨")
+        caveat = f"；{'、'.join(warnings)}" if warnings else ""
+        body.append(
+            f"{i}. **{row['first_qualified_date']}** | {row['symbol']} {row.get('name','')} | "
+            f"R² {r2txt} | annual {annualtxt} | 翻正 {row['cross_date']}{caveat}"
+        )
+    body.extend(["", "重建仅为研究候选；交易前检查交易所盘口、基金净值时点、溢价、消息与真实底层资产。"])
+    title = f"{extra}ETF日报 {day}｜OLS {model or '现金'}｜全市场重建 {len(rows)}"
+    return title, "\n".join(body)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--previous", required=True)
+    ap.add_argument("--current", required=True)
+    ap.add_argument("--market-report", required=True)
+    ap.add_argument("--test", action="store_true")
+    ap.add_argument("--dry-run", action="store_true", help="Validate + render but do not send PushPlus")
+    ap.add_argument("--output-markdown", default="")
+    args = ap.parse_args()
 
     previous = json.loads(Path(args.previous).read_text(encoding="utf-8"))
     current = json.loads(Path(args.current).read_text(encoding="utf-8"))
-    new_keys = episode_keys(current) - episode_keys(previous)
-    new_rows = [
-        row for row in current.get("qualified_candidates", [])
-        if (str(row.get("symbol")), str(row.get("cross_date"))) in new_keys
-    ]
+    market = json.loads(Path(args.market_report).read_text(encoding="utf-8"))
+    title, content = build_report(previous, current, market, args.test)
 
+    if args.output_markdown:
+        Path(args.output_markdown).write_text(content, encoding="utf-8")
+    if args.dry_run:
+        print(json.dumps({"status":"DRY_RUN","title":title,
+                          "market_data_date":market["as_of"],
+                          "candidates":market["raw_qualified"],
+                          "characters":len(content)}, ensure_ascii=False))
+        return
+    date = current.get("market_data_date")
+    if not args.test and (previous.get("market_data_date") == date
+                         and (previous.get("next_strategy_target") or {}).get("signal_date")==date):
+        print("Already published this market date; skip repeat PushPlus daily report")
+        return
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
     if not token:
-        raise SystemExit("New qualified rebuild candidates exist but PUSHPLUS_TOKEN is missing")
-
-    date = current.get("market_data_date", "unknown")
-    if not args.test and previous.get("market_data_date") == date and (previous.get("next_strategy_target") or {}).get("signal_date") == date:
-        print("Duplicate market date; skip daily message.")
-        return
-    target = current.get("next_strategy_target") or {}
-    if not args.test and (date == "unknown" or target.get("signal_date") != date):
-        raise SystemExit("Stale next-day target or market data; refusing daily notification.")
-    symbol = target.get("symbol")
-    target_label = f"{symbol} {target.get('name') or ''}" if symbol else "现金/无目标"
-    qualified = [r for r in current.get("qualified_candidates", []) if r.get("stage") == "REBUILDING_QUALIFIED"]
-
-    lines = [
-        "# ETF 收盘策略日报【测试】" if args.test else "# ETF 收盘策略日报",
-        "",
-        f"数据日期：{date}",
-        "测试消息，不代表新增信号。" if args.test else "",
-        "",
-        "## 下一交易日目标",
-        f"- **{target_label}**",
-        f"- 决策：{target.get('decision') or '未提供'}",
-        "- 目标为收盘后的策略信号，不代表成交；执行前仍需复核溢价及风险。",
-        "",
-        "## 趋势重建候选",
-        f"- 当日合格：{len(qualified)} 只",
-        f"- 当日新增：{len(new_rows)} 只",
-        "",
-    ]
-    if not qualified:
-        lines.append("无重建合格候选。")
-    else:
-        lines.append("以下候选尚未完成基本面审计：")
-    for row in qualified:
-        r2 = row.get("r2")
-        r2_text = f"{r2:.3f}" if isinstance(r2, (int, float)) else "未知"
-        age = row.get("cross_age_sessions")
-        age_text = f"{age}个交易日" if isinstance(age, int) else "未知"
-        freshness = (
-            "较早期确认" if age == 1
-            else "延后确认，注意追高风险" if isinstance(age, int) and age >= 2
-            else "时间信息不足"
-        )
-        lines.extend([
-            f"- **{row.get('symbol')} {row.get('name', '')}**",
-            f"  - 趋势起点（annual 首次翻正）：{row.get('cross_date') or '未知'}",
-            f"  - 本次合格信号日期：{date}",
-            f"  - 距趋势起点：{age_text}（{freshness}）",
-            f"  - R²：{r2_text}",
-        ])
-    lines.extend(["", "请自行进一步审计基本面、宏观事件、溢价和买入风险。"])
-    payload = json.dumps({
-        "token": token,
-        "title": f"【测试】ETF 收盘日报 {date}" if args.test else f"ETF 收盘日报 {date}｜目标 {symbol or '现金'}｜重建 {len(qualified)}",
-        "content": "\n".join(lines),
-        "template": "markdown",
-    }, ensure_ascii=False).encode("utf-8")
+        raise SystemExit("PUSHPLUS_TOKEN missing; refusing to mark daily notification delivered")
+    encoded=json.dumps({"token":token,"title":title,"content":content,"template":"markdown"},
+                       ensure_ascii=False).encode("utf-8")
     for attempt in range(3):
         try:
-            request = Request(
-                "https://www.pushplus.plus/send", data=payload,
-                headers={"Content-Type": "application/json; charset=utf-8"},
-                method="POST",
-            )
-            with urlopen(request, timeout=15) as resp:
-                body = json.loads(resp.read().decode("utf-8"))
-            if int(body.get("code", 0)) != 200:
-                raise RuntimeError(f"PushPlus API rejection code={body.get('code')}; msg={body.get('msg')}")
-            print(f"PushPlus sent: test={args.test}; candidates={len(new_rows)}.")
+            request=Request("https://www.pushplus.plus/send",data=encoded,
+                            headers={"Content-Type":"application/json; charset=utf-8"},method="POST")
+            with urlopen(request,timeout=20) as resp:
+                payload=json.loads(resp.read().decode("utf-8"))
+            if int(payload.get("code",0))!=200:
+                raise RuntimeError(f"PushPlus API returned {payload.get('code')}: {payload.get('msg')}")
+            print(f"PushPlus daily sent; market={date}; all-qualified={market['raw_qualified']}; test={args.test}")
             return
-        except Exception as exc:
-            if attempt == 2:
-                raise RuntimeError("PushPlus send failed after 3 attempts") from exc
-            time.sleep(2 ** attempt)
+        except Exception as e:
+            if attempt==2:raise RuntimeError("PushPlus notification failed after three attempts") from e
+            time.sleep(2**attempt)
 
 
-if __name__ == "__main__":
+if __name__=="__main__":
     main()
