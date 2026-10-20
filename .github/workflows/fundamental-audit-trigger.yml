@@ -80,7 +80,8 @@ jobs:
         env:
           MARKET_AS_OF: ${{ github.event.inputs.as_of || '' }}
         run: |
-          AS_OF="${MARKET_AS_OF:-$(TZ=Asia/Shanghai date +%F)}"
+          AS_OF="$(python -c "import json;print(json.load(open('data/fundamental-audit-trigger.json',encoding='utf-8'))['market_data_date'])")"
+          echo "Using latest completed market session: $AS_OF"
           python -m automation.refresh_full_market_rebuild \
             --as-of "$AS_OF" \
             --resume-path /tmp/etf-full-market-base/refreshed_daily_bars.parquet \
