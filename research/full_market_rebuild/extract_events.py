@@ -67,6 +67,11 @@ def main():
     a.add_argument("--min-symbols",type=int,default=1)
     args=a.parse_args()
     frame,source=load(args)
+    # 511220 is a cash/bond parking proxy, not a risk-asset rebuilding candidate.
+    # Long exact-price plateaus cause floating-point-sensitive annual-zero crossings.
+    # Exclusion is a pre-specified research-universe rule, NOT an OLS formula change.
+    excluded_symbols = ["511220"]
+    frame = frame.loc[~frame.symbol.isin(excluded_symbols)].copy()
     symbols=int(frame.symbol.nunique())
     if symbols<args.min_symbols:raise RuntimeError(f"Insufficient universe: {symbols} < {args.min_symbols}")
     records=[]
@@ -79,7 +84,7 @@ def main():
     if not event_df.empty:
         years={str(k):int(v) for k,v in event_df.signal_date.str[:4].value_counts().sort_index().items()}
     meta={"status":"research_only","universe_is_full_market":False if not args.input else None,
-          "source":source,"symbols":symbols,"bars":int(len(frame)),
+          "source":source,"universe_excluded_symbols":excluded_symbols,"symbols":symbols,"bars":int(len(frame)),
           "first_date":str(frame.date.min().date()),"last_date":str(frame.date.max().date()),
           "unique_events":len(records),"events_by_year":years,
           "signal":"frozen weighted-OLS26 half-life10; annual crosses 0; first R2 improving day 1..3",
