@@ -49,21 +49,40 @@ def read_current_universe():
     return df.reset_index(drop=True)
 
 def refresh_batch(items,begin,end,attempts):
-    codes=[symbol_to_tencent(s) for s in items]
-    types={s:"ETF" for s in items}
-    last_error=None
-    for trial in range(attempts):
-        try:
-            payload=run_westock(codes,begin,end,1)
-            bars=normalize(payload,codes,types,end)
-            # If bulk provider response omits requested symbols, let coverage report
-            # explain missing. Do not imply missing items are suspended/delisted.
-            if bars:return bars, None
-            last_error="No usable rows returned from Tencent"
-        except Exception as err:
-            last_error=str(err)[-320:]
-        time.sleep(min(2**trial,4))
-    return [], last_error
+    # One bad code can cause the Tencent batched endpoint to return no data at
+    # all. Recover with recursive halves and ultimately individual tickers.
+    # Keep valid rows even if some symbols have no available quotes.
+    def fetch(piece):
+        codes=[symbol_to_tencent(sym) for sym in piece]
+        types={sym:"ETF" for sym in piece}
+        error=None
+        for trial in range(attempts):
+            try:
+                response=run_westock(codes,begin,end,1)
+                rows=normalize(response,codes,types,end)
+                if rows:
+                    got={r[0] for r in rows}
+                    missed=[sym for sym in piece if sym not in got]
+                    if missed and len(piece)>1:
+                        recovered, errs=divide(missed)
+                        rows.extend(recovered)
+                        return rows,errs
+                    return rows,[]
+                error="Empty Tencent kline response"
+            except Exception as ex:
+                error=str(ex)[-240:]
+            if trial+1<attempts:time.sleep(min(2**trial,3))
+        if len(piece)>1:
+            return divide(piece)
+        return [],[{"symbols":piece,"error":error or "empty"}]
+    def divide(piece):
+        if len(piece)<=1:return fetch(piece)
+        half=len(piece)//2
+        left,e1=fetch(piece[:half])
+        right,e2=fetch(piece[half:])
+        return left+right,e1+e2
+    rows,errs=fetch(items)
+    return rows, errs
 
 def fetch_updates(current, archive, as_of, workers=5, batch_size=12, attempts=2, max_symbols=0):
     old=set(archive.symbol.unique())
@@ -94,7 +113,7 @@ def fetch_updates(current, archive, as_of, workers=5, batch_size=12, attempts=2,
                 rows,error=future.result()
                 updates.extend(rows)
                 completed.update(r[0] for r in rows)
-                if error:errors.append({"symbols":codes,"error":error})
+                if error:errors.extend(error)
             except Exception as e:
                 errors.append({"symbols":codes,"error":repr(e)[:400]})
             if ix%20==0 or ix==len(jobs):
@@ -175,31 +194,46 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--as-of",type=date.fromisoformat,default=date(2026,10,20))
     p.add_argument("--max-symbols",type=int,default=0)
+    p.add_argument("--resume-path",default="")
     p.add_argument("--workers",type=int,default=5)
     p.add_argument("--batch-size",type=int,default=12)
     p.add_argument("--out",default="research/full_market_rebuild/today_output")
     args=p.parse_args()
     out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-    data,manifest,checks=read_snapshot(out/"base_frozen_archive.tar.gz")
+    if args.resume_path and Path(args.resume_path).exists():
+        data=pd.read_parquet(args.resume_path)
+        data["symbol"]=data.symbol.astype(str).str.zfill(6)
+        data["date"]=pd.to_datetime(data.date)
+        print("RESUME_SNAPSHOT "+json.dumps({"rows":len(data),"symbols":int(data.symbol.nunique())}),flush=True)
+    else:
+        data,manifest,checks=read_snapshot(out/"base_frozen_archive.tar.gz")
     current=read_current_universe()
-    update,errors,requested,batch_stats=fetch_updates(current,data,args.as_of,args.workers,args.batch_size,max_symbols=args.max_symbols)
+    already_current=set(data.loc[pd.to_datetime(data.date).dt.date==args.as_of,"symbol"].astype(str))
+    missing_now=current[~current.symbol.isin(already_current)].copy()
+    update,errors,requested,batch_stats=fetch_updates(missing_now,data,args.as_of,args.workers,args.batch_size,max_symbols=args.max_symbols)
     all_data,overlap=merge(data,update)
     # Store self-contained snapshot (parquet metadata remains separated).
     all_data.to_parquet(out/"refreshed_daily_bars.parquet",index=False,compression="zstd")
     current_names=dict(zip(current.symbol,current.name))
-    actual = all_data[all_data.symbol.isin(requested.symbol)].copy()
+    actual = all_data[all_data.symbol.isin(current.symbol)].copy()
     actual["name"]=actual.symbol.map(current_names)
     results=[scan_one(g,args.as_of) for _,g in actual.groupby("symbol",sort=True)]
+    found=set(actual.symbol.unique())
+    for sym in current.symbol:
+        if sym not in found:
+            results.append({"symbol":sym,"name":str(current_names.get(sym,"")),"last_date":None,
+                            "history_bars":0,"stale":True,"stage":"DATA_MISSING",
+                            "strict_eligible":False,"broad_eligible":False})
     scan=pd.DataFrame(results).sort_values(["stage","symbol"])
     scan.to_csv(out/"today_signals.csv",index=False)
     stages={str(k):int(v) for k,v in scan.stage.value_counts().items()}
     eligible=scan[(scan.stage=="REBUILDING_QUALIFIED")&scan.strict_eligible]
     qualified=scan[scan.stage=="REBUILDING_QUALIFIED"]
     with_today=int((scan.last_date==str(args.as_of)).sum())
-    coverage=with_today/len(requested)
+    coverage=with_today/len(current)
     report={"as_of":str(args.as_of),"source":"Tencent HFQ latest daily bar merged with frozen 2026-09-17 Supabase archive",
             "update_method":"research only, no live PostgreSQL writes","snapshot_symbols":int(all_data.symbol.nunique()),
-            "snapshot_rows":len(all_data),"listed_requested":len(requested),
+            "snapshot_rows":len(all_data),"listed_requested":len(current),"requested_for_update":len(requested),
             "symbols_with_asof_close":with_today,"asof_coverage":coverage,
             "refresh_rows":len(update),"refresh_batches":batch_stats,
             "query_batch_errors":errors[:80],"query_error_count":len(errors),
