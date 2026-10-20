@@ -5,6 +5,7 @@ on:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
       - 'automation/notify_rebuild_candidates.py'
+      - 'automation/refresh_full_market_rebuild.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
   workflow_run:
     workflows:
@@ -14,7 +15,7 @@ on:
       - completed
   schedule:
     # Fallback only. Primary trigger is completion of Tencent HFQ Daily Bars Sync.
-    - cron: "20 8 * * *"
+    - cron: "0 12 * * 1-5"  # 20:00 Asia/Shanghai fallback: allow full-market quote publication
   workflow_dispatch:
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
   build:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 70
     env:
       ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
       PYTHONPATH: research
@@ -44,14 +45,57 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
-        run: python -m pip install numpy pandas sqlalchemy psycopg2-binary
+      - name: Set up Node.js for Tencent market-wide data requests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-      - name: Compile trigger builder
-        run: python -m py_compile automation/build_fundamental_audit_trigger.py
+      - name: Install dependencies
+        run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 pyarrow
+
+      - name: Compile trigger and daily market-wide scanner
+        run: python -m py_compile automation/build_fundamental_audit_trigger.py automation/refresh_full_market_rebuild.py automation/notify_rebuild_candidates.py
 
       - name: Build fundamental-audit trigger
         run: python automation/build_fundamental_audit_trigger.py
+
+      - name: Load latest independently verified full-market research snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          mkdir -p /tmp/etf-full-market-base
+          if gh release view research-data-fullmarket-current --repo "$GH_REPO" >/dev/null 2>&1; then
+            TAG=research-data-fullmarket-current
+          else
+            TAG=research-data-fullmarket-20261020
+          fi
+          gh release download "$TAG" --repo "$GH_REPO" \
+            --pattern refreshed_daily_bars.parquet --dir /tmp/etf-full-market-base
+          test -s /tmp/etf-full-market-base/refreshed_daily_bars.parquet
+          echo "Full-market historical base: $TAG"
+
+      - name: Refresh listed-market prices and compute all qualifying rebuild signals
+        env:
+          MARKET_AS_OF: ${{ github.event.inputs.as_of || '' }}
+        run: |
+          AS_OF="${MARKET_AS_OF:-$(TZ=Asia/Shanghai date +%F)}"
+          python -m automation.refresh_full_market_rebuild \
+            --as-of "$AS_OF" \
+            --resume-path /tmp/etf-full-market-base/refreshed_daily_bars.parquet \
+            --out research/full_market_rebuild/today_output
+          cp research/full_market_rebuild/today_output/today_report.json data/full-market-rebuild-latest.json
+
+      - name: Validate and preview unified OLS + full-market rebuild report
+        shell: bash
+        run: |
+          python automation/notify_rebuild_candidates.py \
+            --previous /tmp/previous-fundamental-audit-trigger.json \
+            --current data/fundamental-audit-trigger.json \
+            --market-report data/full-market-rebuild-latest.json \
+            --market-report data/full-market-rebuild-latest.json \
+            --dry-run --output-markdown /tmp/full-market-daily-report.md
 
       - name: Send daily close report via PushPlus
         env:
@@ -66,16 +110,34 @@ jobs:
       - name: Commit trigger snapshot
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/fundamental-audit-trigger.json)" ]; then
+          if [ -z "$(git status --porcelain -- data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json)" ]; then
             echo "Fundamental-audit trigger unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/fundamental-audit-trigger.json
+          git add data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json
           git commit -m "data: refresh fundamental audit trigger"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Update private rolling full-market snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          TAG=research-data-fullmarket-current
+          if ! gh release view "$TAG" --repo "$GH_REPO" >/dev/null 2>&1; then
+            gh release create "$TAG" --repo "$GH_REPO" --target main \
+              --title "ETF daily full-market research snapshot (rolling)" \
+              --notes "Research only. Snapshot is date-stamped in today_report.json; excludes stale symbols from current rebuild signals."
+          fi
+          gh release upload "$TAG" \
+            research/full_market_rebuild/today_output/refreshed_daily_bars.parquet \
+            research/full_market_rebuild/today_output/today_report.json \
+            research/full_market_rebuild/today_output/today_signals.csv \
+            --repo "$GH_REPO" --clobber
 
       - name: Publish summary
         if: always()
@@ -96,12 +158,30 @@ jobs:
           },ensure_ascii=False,indent=2))
           PY
           fi
+          if [ -f data/full-market-rebuild-latest.json ]; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          m=json.load(open('data/full-market-rebuild-latest.json',encoding='utf-8'))
+          print(json.dumps({
+            'market_as_of':m.get('as_of'),
+            'covered':m.get('symbols_with_asof_close'),
+            'listed':m.get('listed_requested'),
+            'coverage':m.get('asof_coverage'),
+            'full_market_rebuild_total':m.get('raw_qualified'),
+            'all_first_qualification_dates':[x.get('first_qualified_date') for x in m.get('qualified_candidates',[])],
+          },ensure_ascii=False,indent=2))
+          PY
+          fi
 
       - name: Upload trigger artifact
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: fundamental-audit-trigger-${{ github.run_id }}
-          path: data/fundamental-audit-trigger.json
+          path: |
+            data/fundamental-audit-trigger.json
+            data/full-market-rebuild-latest.json
+            research/full_market_rebuild/today_output/today_signals.csv
+            /tmp/full-market-daily-report.md
           if-no-files-found: warn
           retention-days: 30
