@@ -4,14 +4,14 @@
 这是2026-09-17冻结后的聚宽执行版。核心研究逻辑与GitHub冻结基线保持一致：
 
 一、正常状态：FixV2 + V1(75)
-- 固定13只风险资产与511220现金比较器；
+- 固定14只风险资产（新增512800银行ETF）与511220现金比较器；
 - 26日加权log-price OLS，名义半衰期10日（np.polyfit的w²为实际损失权重）；
 - 风险Top1只有在自身趋势合格且score高于511220时才成为基础目标，否则基础目标为现金；
 - V1仅抑制“纯排名换帅”：新Top1的ResistancePct252 >= 75%，且当日raw score增量 <= 0时，
   暂不换帅；若旧仓已经失效，则V1不得阻止切换。
 
 二、State Map（只用raw OLS，不套recent_drop3/溢价）
-- Breadth = 13只风险资产中 raw score > 511220 raw score 的比例，固定分母13；
+- Breadth = 14只风险资产中 raw score > 511220 raw score 的比例，固定分母14；
 - Leadership Gap = raw Top1 - raw Top2；
 - Gap Percentile = Gap在截至当日最近252个有效交易日中的历史分位；
 - Breadth < 50% 且 Gap Percentile < 50% => DEFENSIVE_VOID。
@@ -45,7 +45,7 @@ import requests
 from jqdata import *
 
 
-STRATEGY_ID = "FIXV2_V1_75_VOID_ROUTE_BASELINE_V1_INTRADAY_S1_PREMIUM10"
+STRATEGY_ID = "FIXV2_V1_75_VOID_ROUTE_BANK14_INTRADAY_S1_PREMIUM10"
 PUSHPLUS_TOKEN = ""
 PUSHPLUS_URL = "https://www.pushplus.plus/send"
 PUSHPLUS_SEND_IN_BACKTEST = False
@@ -68,7 +68,7 @@ RISK_POOL = [
     "159934.XSHE", "159985.XSHE", "161226.XSHE", "513100.XSHG",
     "159957.XSHE", "159509.XSHE", "513290.XSHG", "159529.XSHE",
     "159981.XSHE", "501018.XSHG", "513530.XSHG", "511380.XSHG",
-    "164824.XSHE",
+    "164824.XSHE", "512800.XSHG",
 ]
 ETF_POOL = RISK_POOL + [CASH_SIGNAL_SYMBOL]
 MANAGED_POOL = ETF_POOL + [US_CARRIER_SYMBOL]
@@ -87,6 +87,7 @@ ETF_NAMES = {
     "513530.XSHG": "港股红利ETF",
     "511380.XSHG": "转债ETF",
     "164824.XSHE": "印度基金LOF",
+    "512800.XSHG": "银行ETF华宝",
     "511220.XSHG": "城投债ETF（现金比较器/防守路由）",
     "513500.XSHG": "标普500ETF（US Carrier）",
 }
