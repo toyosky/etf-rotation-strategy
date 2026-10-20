@@ -8,9 +8,10 @@
     "note": "Research trigger only. It does not alter production ranking or execute trades."
   },
   "current_holding": {
-    "symbol": "159981",
-    "name": "能源化工",
-    "source": "data/live-forward.json baseline holding/mark-to-market"
+    "symbol": null,
+    "name": "现金（实际空仓）",
+    "as_of": "2026-10-20",
+    "source": "data/actual-holding.json (user-reported)"
   },
   "next_strategy_target": {
     "symbol": "159981",
