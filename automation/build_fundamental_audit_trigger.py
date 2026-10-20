@@ -128,6 +128,10 @@ def next_target_from_live(live: dict) -> dict:
     return {
         "symbol": target,
         "name": NAMES.get(target, "现金") if target else "现金",
+        "model_target": latest.get("model_target"),
+        "model_target_name": latest.get("model_target_name") or (NAMES.get(latest.get("model_target"), "现金") if latest.get("model_target") else "现金"),
+        "holding_target": latest.get("holding_target"),
+        "execution_status": latest.get("execution_status"),
         "signal_date": latest.get("date"),
         "decision": latest.get("decision"),
     }
