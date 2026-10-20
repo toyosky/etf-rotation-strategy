@@ -33,6 +33,13 @@ jobs:
           python -m research.full_market_rebuild.extract_events \
             --min-symbols "${{ inputs.min_symbols || '1' }}" \
             --out research/full_market_rebuild/output
+      - name: Compare shock vs gradual rebuild episodes
+        env:
+          ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+        run: |
+          python -m research.full_market_rebuild.analyze_shock \
+            --events research/full_market_rebuild/output/events.csv \
+            --out research/full_market_rebuild/output
       - name: Upload research-only audit output
         uses: actions/upload-artifact@v4
         with:
@@ -40,4 +47,7 @@ jobs:
           path: |
             research/full_market_rebuild/output/events.csv
             research/full_market_rebuild/output/manifest.json
+            research/full_market_rebuild/output/events_labeled.csv
+            research/full_market_rebuild/output/shock_report.json
+            research/full_market_rebuild/output/by_symbol.csv
           retention-days: 14
