@@ -11,7 +11,7 @@ CORE15 = {
     "513530", "511380", "164824", "511220", "513500",
 }
 BENCHMARKS = {"510300"}
-RESEARCH_ONLY = {"520870", "159100"}
+RESEARCH_ONLY = {"520870", "159100", "512800"}
 # Research-only carriers must never expand the frozen production core.
 
 
