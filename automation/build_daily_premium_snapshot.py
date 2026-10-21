@@ -20,10 +20,8 @@ def build(database_url, day, symbol):
     if not database_url:
         result["reason"]="DATABASE_URL_MISSING"
         return result
-    from sqlalchemy.engine import make_url
-    url=database_url
-    if url.startswith("postgres://"):
-        url="postgresql://"+url[len("postgres://"):]
+    from automation.build_fundamental_audit_trigger import db_url
+    url=db_url(database_url)
     engine=create_engine(url,pool_pre_ping=True,connect_args={"connect_timeout":10})
     with engine.connect() as connection:
         rows=connection.execute(text("""
@@ -65,7 +63,7 @@ def main():
         result=build(os.getenv("ETF_DAILY_BARS_DATABASE_URL",""),day,symbol)
     except Exception as exc:
         result={"symbol":symbol,"signal_date":day,"threshold_pct":10.0,
-                "status":"UNVERIFIED","reason":"DATABASE_QUERY_FAILED:"+type(exc).__name__,
+                "status":"UNVERIFIED","reason":"DATABASE_QUERY_FAILED:"+type(exc).__name__+":"+str(exc)[:180],
                 "premium_pct":None}
     Path(args.output).write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps(result,ensure_ascii=False))
