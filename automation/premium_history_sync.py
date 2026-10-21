@@ -14,6 +14,7 @@ Forward pre-open collection:
 from __future__ import annotations
 
 import argparse
+import ast
 import csv
 import json
 import math
@@ -121,6 +122,40 @@ def db_url() -> str:
     if value.startswith("postgresql://"):
         value = "postgresql+psycopg2://" + value[len("postgresql://"):]
     return value
+
+
+def fixed_ols_symbols() -> set[str]:
+    """Read production OLS risk pool without importing JoinQuant-only strategy APIs."""
+    source = Path(__file__).resolve().parents[1] / "strategy" / "main.py"
+    parsed = ast.parse(source.read_text(encoding="utf-8"))
+    definitions = {}
+    for node in parsed.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if isinstance(target, ast.Name) and target.id in ("RISK_POOL", "US_CARRIER_SYMBOL"):
+                definitions[target.id] = ast.literal_eval(node.value)
+    risk = definitions.get("RISK_POOL")
+    carrier = definitions.get("US_CARRIER_SYMBOL")
+    if not isinstance(risk, list) or len(risk) < 5 or not isinstance(carrier, str):
+        raise RuntimeError("Cannot resolve canonical fixed OLS premium monitoring universe")
+    return normalize_symbols([str(symbol).split(".")[0] for symbol in risk + [carrier]])
+
+
+def rebuild_qualified_symbols(path: str, new_only: bool = False) -> set[str]:
+    """Read full-market research candidates, never substitute OLS fixed-pool rows."""
+    if not path:
+        return set()
+    report = json.loads(Path(path).read_text(encoding="utf-8"))
+    day = report.get("as_of")
+    if not day or report.get("data_quality_gate") != "PASS":
+        raise RuntimeError("Full-market rebuild report not validated")
+    candidates = report.get("qualified_candidates")
+    if not isinstance(candidates, list):
+        raise RuntimeError("Full-market rebuild candidate list missing")
+    rows = [r for r in candidates if r.get("stage") == "REBUILDING_QUALIFIED"
+            and (not new_only or r.get("first_qualified_date") == day)]
+    return normalize_symbols([r.get("symbol") for r in rows])
 
 
 def normalize_symbols(values) -> set[str]:
@@ -540,12 +575,22 @@ def main() -> int:
     ap.add_argument("--symbols", default="", help="Additional comma-separated ETF/LOF symbols")
     ap.add_argument("--signals-file", default="", help="Daily strategy JSON containing dynamic candidates")
     ap.add_argument("--only-selected", action="store_true", help="Sync only supplied candidate symbols")
+    ap.add_argument("--fixed-ols", action="store_true", help="Monitor the canonical fixed OLS pool")
+    ap.add_argument("--rebuild-report", default="", help="Optional independently scanned full-market report")
+    ap.add_argument("--new-rebuild-only", action="store_true", help="Fetch only first-qualified rebuild candidates")
     args = ap.parse_args()
 
     engine = create_engine(db_url(), pool_pre_ping=True)
     selected = normalize_symbols(args.symbols.split(",") if args.symbols else [])
     selected |= read_signal_symbols(args.signals_file)
+    if args.fixed_ols:
+        selected |= fixed_ols_symbols()
+    if args.rebuild_report:
+        selected |= rebuild_qualified_symbols(args.rebuild_report, args.new_rebuild_only)
     if args.only_selected and not selected:
+        if args.rebuild_report and args.new_rebuild_only:
+            print("No new full-market rebuild candidates; premium sync has nothing to update")
+            return 0
         raise RuntimeError("No selected ETF/LOF symbols supplied for candidate premium sync")
     universe = load_universe(engine, selected, args.only_selected)
     tracked = {rec["symbol"] for rec in universe}
