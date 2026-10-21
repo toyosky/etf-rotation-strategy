@@ -13,11 +13,29 @@
   ],
   "known_index_identifications": {
     "159119": "CSI_800_FREE_CASH_FLOW_932368",
+    "159201": "SZSE_FREE_CASH_FLOW",
+    "159222": "SZSE_FREE_CASH_FLOW",
     "159229": "CSI_800_FREE_CASH_FLOW_932368",
+    "159276": "SZSE_FREE_CASH_FLOW",
+    "159399": "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
     "159520": "CSI_CONSUMER_LEADERS",
+    "159670": "CSI_CONSUMER_50",
+    "159672": "CSI_ESSENTIAL_CONSUMER",
+    "159689": "CSI_ESSENTIAL_CONSUMER",
+    "159798": "CSI_CONSUMER_50",
+    "159928": "CSI_ESSENTIAL_CONSUMER",
+    "160632": "CSI_LIQUOR",
     "161725": "CSI_BAIJIU",
+    "501090": "CSI_CONSUMER_LEADERS",
+    "512600": "CSI_ESSENTIAL_CONSUMER",
     "512690": "CSI_LIQUOR",
+    "513070": "CSI_HK_CONNECT_CONSUMER_HKD",
+    "513970": "HANG_SENG_CONSUMER",
+    "515650": "CSI_CONSUMER_50",
+    "516130": "CSI_CONSUMER_LEADERS",
     "516460": "CSI_800_FREE_CASH_FLOW_932368",
+    "520520": "HANG_SENG_CONSUMER",
+    "520620": "HANG_SENG_CONSUMER",
     "563580": "CSI_800_FREE_CASH_FLOW_932368",
     "563680": "CSI_800_FREE_CASH_FLOW_932368",
     "563990": "CSI_800_FREE_CASH_FLOW_932368"
@@ -41,14 +59,15 @@
         "2026-10-20": 1
       },
       "verified_index_groups": {
+        "CSI_LIQUOR": [
+          "160632",
+          "512690"
+        ],
         "CSI_BAIJIU": [
           "161725"
-        ],
-        "CSI_LIQUOR": [
-          "512690"
         ]
       },
-      "unverified_index_count": 1,
+      "unverified_index_count": 0,
       "price_clusters": {
         "0.75": {
           "n": 1,
@@ -146,9 +165,17 @@
           "563580",
           "563680",
           "563990"
+        ],
+        "SZSE_FREE_CASH_FLOW": [
+          "159201",
+          "159222",
+          "159276"
+        ],
+        "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS": [
+          "159399"
         ]
       },
-      "unverified_index_count": 4,
+      "unverified_index_count": 0,
       "price_clusters": {
         "0.75": {
           "n": 2,
@@ -280,10 +307,23 @@
       },
       "verified_index_groups": {
         "CSI_CONSUMER_LEADERS": [
-          "159520"
+          "159520",
+          "501090",
+          "516130"
+        ],
+        "CSI_CONSUMER_50": [
+          "159670",
+          "159798",
+          "515650"
+        ],
+        "CSI_ESSENTIAL_CONSUMER": [
+          "159672",
+          "159689",
+          "159928",
+          "512600"
         ]
       },
-      "unverified_index_count": 15,
+      "unverified_index_count": 6,
       "price_clusters": {
         "0.75": {
           "n": 1,
@@ -489,8 +529,17 @@
         "2026-10-19": 1,
         "2026-10-20": 7
       },
-      "verified_index_groups": {},
-      "unverified_index_count": 8,
+      "verified_index_groups": {
+        "CSI_HK_CONNECT_CONSUMER_HKD": [
+          "513070"
+        ],
+        "HANG_SENG_CONSUMER": [
+          "513970",
+          "520520",
+          "520620"
+        ]
+      },
+      "unverified_index_count": 4,
       "price_clusters": {
         "0.75": {
           "n": 1,
@@ -703,7 +752,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.0419,
       "avg_daily_amount60": 318128500.3,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "SZSE_FREE_CASH_FLOW",
       "oct_prices": {
         "2026-10-15": 1.16,
         "2026-10-16": 1.172,
@@ -722,7 +771,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.03,
       "avg_daily_amount60": 110799354.0,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "SZSE_FREE_CASH_FLOW",
       "oct_prices": {
         "2026-10-15": 1.242,
         "2026-10-16": 1.255,
@@ -779,7 +828,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.0606,
       "avg_daily_amount60": 8927644.5,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "SZSE_FREE_CASH_FLOW",
       "oct_prices": {
         "2026-10-15": 1.083,
         "2026-10-16": 1.092,
@@ -817,7 +866,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.0114,
       "avg_daily_amount60": 148126433.6,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
       "oct_prices": {
         "2026-10-15": 1.036,
         "2026-10-16": 1.043,
@@ -855,7 +904,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.2517,
       "avg_daily_amount60": 3553673.9,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_CONSUMER_50",
       "oct_prices": {
         "2026-10-15": 0.86,
         "2026-10-16": 0.867,
@@ -874,7 +923,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.1765,
       "avg_daily_amount60": 3409839.4,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_ESSENTIAL_CONSUMER",
       "oct_prices": {
         "2026-10-15": 0.623,
         "2026-10-16": 0.632,
@@ -893,7 +942,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.1589,
       "avg_daily_amount60": 2828520.0,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_ESSENTIAL_CONSUMER",
       "oct_prices": {
         "2026-10-15": 0.626,
         "2026-10-16": 0.636,
@@ -931,7 +980,7 @@
       "first_qualified_date": "2026-10-16",
       "r2_asof": 0.309,
       "avg_daily_amount60": 13498690.9,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_CONSUMER_50",
       "oct_prices": {
         "2026-10-15": 0.853,
         "2026-10-16": 0.862,
@@ -969,7 +1018,7 @@
       "first_qualified_date": "2026-10-16",
       "r2_asof": 0.2001,
       "avg_daily_amount60": 315614183.6,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_ESSENTIAL_CONSUMER",
       "oct_prices": {
         "2026-10-15": 2.64,
         "2026-10-16": 2.668,
@@ -1007,7 +1056,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.0978,
       "avg_daily_amount60": 2635962.9,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_LIQUOR",
       "oct_prices": {
         "2026-10-15": 0.732,
         "2026-10-16": 0.733,
@@ -1045,7 +1094,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.1319,
       "avg_daily_amount60": 633342.7,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_CONSUMER_LEADERS",
       "oct_prices": {
         "2026-10-15": 1.067,
         "2026-10-16": 1.072,
@@ -1083,7 +1132,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.1466,
       "avg_daily_amount60": 13828839.2,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_ESSENTIAL_CONSUMER",
       "oct_prices": {
         "2026-10-15": 2.835,
         "2026-10-16": 2.87,
@@ -1121,7 +1170,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.1426,
       "avg_daily_amount60": 92343892.8,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_HK_CONNECT_CONSUMER_HKD",
       "oct_prices": {
         "2026-10-15": 1.039,
         "2026-10-16": 1.048,
@@ -1197,7 +1246,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.0702,
       "avg_daily_amount60": 33636304.0,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "HANG_SENG_CONSUMER",
       "oct_prices": {
         "2026-10-15": 0.77,
         "2026-10-16": 0.78,
@@ -1235,7 +1284,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.249,
       "avg_daily_amount60": 68882498.4,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_CONSUMER_50",
       "oct_prices": {
         "2026-10-15": 1.06,
         "2026-10-16": 1.068,
@@ -1273,7 +1322,7 @@
       "first_qualified_date": "2026-10-19",
       "r2_asof": 0.1977,
       "avg_daily_amount60": 12536697.4,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "CSI_CONSUMER_LEADERS",
       "oct_prices": {
         "2026-10-15": 0.673,
         "2026-10-16": 0.676,
@@ -1349,7 +1398,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.0359,
       "avg_daily_amount60": 2780140.1,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "HANG_SENG_CONSUMER",
       "oct_prices": {
         "2026-10-15": 0.893,
         "2026-10-16": 0.902,
@@ -1368,7 +1417,7 @@
       "first_qualified_date": "2026-10-20",
       "r2_asof": 0.0165,
       "avg_daily_amount60": 3547644.8,
-      "verified_underlying_index": null,
+      "verified_underlying_index": "HANG_SENG_CONSUMER",
       "oct_prices": {
         "2026-10-15": 0.765,
         "2026-10-16": 0.771,
@@ -1446,7 +1495,7 @@
       "corr_1d_120": 0.9694,
       "corr_5d_120": 0.99369,
       "corr_5d_60": 0.99068,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "520520",
@@ -1455,7 +1504,7 @@
       "corr_1d_120": 0.9664,
       "corr_5d_120": 0.99076,
       "corr_5d_60": 0.98592,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159201",
@@ -1464,7 +1513,7 @@
       "corr_1d_120": 0.93159,
       "corr_5d_120": 0.98523,
       "corr_5d_60": 0.98291,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "513230",
@@ -1482,7 +1531,7 @@
       "corr_1d_120": 0.88892,
       "corr_5d_120": 0.9792,
       "corr_5d_60": 0.98281,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159672",
@@ -1491,7 +1540,7 @@
       "corr_1d_120": 0.93641,
       "corr_5d_120": 0.97869,
       "corr_5d_60": 0.97598,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159222",
@@ -1500,7 +1549,7 @@
       "corr_1d_120": 0.89259,
       "corr_5d_120": 0.97857,
       "corr_5d_60": 0.97495,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159201",
@@ -1509,7 +1558,7 @@
       "corr_1d_120": 0.91131,
       "corr_5d_120": 0.9785,
       "corr_5d_60": 0.97031,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159672",
@@ -1518,7 +1567,7 @@
       "corr_1d_120": 0.92355,
       "corr_5d_120": 0.97844,
       "corr_5d_60": 0.97739,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159798",
@@ -1527,7 +1576,7 @@
       "corr_1d_120": 0.8887,
       "corr_5d_120": 0.97714,
       "corr_5d_60": 0.98656,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159229",
@@ -1581,7 +1630,7 @@
       "corr_1d_120": 0.89524,
       "corr_5d_120": 0.97166,
       "corr_5d_60": 0.97494,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159689",
@@ -1590,7 +1639,7 @@
       "corr_1d_120": 0.87338,
       "corr_5d_120": 0.9708,
       "corr_5d_60": 0.972,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159229",
@@ -1626,7 +1675,7 @@
       "corr_1d_120": 0.89499,
       "corr_5d_120": 0.96964,
       "corr_5d_60": 0.98019,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "516460",
@@ -1680,7 +1729,7 @@
       "corr_1d_120": 0.87144,
       "corr_5d_120": 0.96678,
       "corr_5d_60": 0.96219,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "516460",
@@ -1752,7 +1801,7 @@
       "corr_1d_120": 0.84726,
       "corr_5d_120": 0.96139,
       "corr_5d_60": 0.9715,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159285",
@@ -1779,7 +1828,7 @@
       "corr_1d_120": 0.8027,
       "corr_5d_120": 0.9583,
       "corr_5d_60": 0.96544,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159672",
@@ -1788,7 +1837,7 @@
       "corr_1d_120": 0.81852,
       "corr_5d_120": 0.95818,
       "corr_5d_60": 0.96694,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "160222",
@@ -1986,7 +2035,7 @@
       "corr_1d_120": 0.69241,
       "corr_5d_120": 0.94264,
       "corr_5d_60": 0.9416,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "159862",
@@ -2022,7 +2071,7 @@
       "corr_1d_120": 0.66688,
       "corr_5d_120": 0.94105,
       "corr_5d_60": 0.95568,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "513230",
@@ -2481,7 +2530,7 @@
       "corr_1d_120": 0.67595,
       "corr_5d_120": 0.91614,
       "corr_5d_60": 0.96876,
-      "same_verified_index": false
+      "same_verified_index": true
     },
     {
       "a": "501090",
