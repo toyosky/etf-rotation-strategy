@@ -146,8 +146,7 @@ def main():
         and older_market.get("as_of")==date
         and [(r["symbol"],r["first_qualified_date"]) for r in older_market.get("qualified_candidates",[])]
             == [(r["symbol"],r["first_qualified_date"]) for r in market.get("qualified_candidates",[])]
-        and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})
-        and not args.premium_snapshot):
+        and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})):
         print("Already sent this OLS + full-market report; skip duplicate PushPlus")
         return
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
