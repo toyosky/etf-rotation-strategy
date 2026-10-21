@@ -49,7 +49,7 @@ def validate_and_sort(current: dict, market: dict) -> list[dict]:
     )
 
 
-def build_report(previous: dict, current: dict, market: dict, test: bool = False) -> tuple[str, str]:
+def build_report(previous: dict, current: dict, market: dict, test: bool = False, premium: dict | None = None) -> tuple[str, str]:
     rows = validate_and_sort(current, market)
     day = current["market_data_date"]
     tgt = current.get("next_strategy_target") or {}
@@ -61,6 +61,18 @@ def build_report(previous: dict, current: dict, market: dict, test: bool = False
     count = int(market["symbols_with_asof_close"])
     listed = int(market["listed_requested"])
     extra = "【测试】" if test else ""
+    premium = premium or {}
+    pct = premium.get("premium_pct")
+    matched = premium.get("symbol") == model and premium.get("signal_date") == day
+    if not matched:
+        premium_line = "- Premium10：未核实（标的或日期不匹配）"
+    elif pct is None:
+        premium_line = f"- Premium10：无法计算；原因 {premium.get('reason', '数据缺失')}"
+    else:
+        label = "同日历史配对" if premium.get("status") == "MATCHED_HISTORY" else "过期历史配对"
+        premium_line = (f"- Premium10：{float(pct):+.2f}%（{label}；"
+                        f"净值及价格日期 {premium.get('nav_date', '未知')}；"
+                        f"阈值 10%，非实时买入许可）")
     body = [
         f"# {extra}ETF 收盘策略日报",
         f"数据日期：{day}（A股交易日收盘）",
@@ -71,6 +83,7 @@ def build_report(previous: dict, current: dict, market: dict, test: bool = False
         f"- 模型首选：**{model+' '+model_name if model else '现金/无模型首选'}**",
         f"- 执行层目标：**{execution+' '+execution_name if execution else '现金/无执行目标'}**",
         f"- 决策：{tgt.get('decision') or '未提供'}；执行状态：{tgt.get('execution_status') or '未提供'}",
+        premium_line,
         "- 两项可能不同：模型首选未经全部溢价和执行层过滤；均不代表用户实际持仓。",
         "",
         "## 全市场 R² 趋势重建（按首次合格日期由新到旧）",
@@ -110,13 +123,15 @@ def main():
     ap.add_argument("--test", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="Validate + render but do not send PushPlus")
     ap.add_argument("--output-markdown", default="")
+    ap.add_argument("--premium-snapshot", default="")
     args = ap.parse_args()
 
     previous = json.loads(Path(args.previous).read_text(encoding="utf-8"))
     current = json.loads(Path(args.current).read_text(encoding="utf-8"))
     market = json.loads(Path(args.market_report).read_text(encoding="utf-8"))
     older_market = json.loads(Path(args.previous_market).read_text(encoding="utf-8")) if args.previous_market else {}
-    title, content = build_report(previous, current, market, args.test)
+    premium = json.loads(Path(args.premium_snapshot).read_text(encoding="utf-8")) if args.premium_snapshot else {}
+    title, content = build_report(previous, current, market, args.test, premium)
 
     if args.output_markdown:
         Path(args.output_markdown).write_text(content, encoding="utf-8")
@@ -131,7 +146,8 @@ def main():
         and older_market.get("as_of")==date
         and [(r["symbol"],r["first_qualified_date"]) for r in older_market.get("qualified_candidates",[])]
             == [(r["symbol"],r["first_qualified_date"]) for r in market.get("qualified_candidates",[])]
-        and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})):
+        and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})
+        and not args.premium_snapshot):
         print("Already sent this OLS + full-market report; skip duplicate PushPlus")
         return
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
