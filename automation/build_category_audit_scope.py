@@ -185,9 +185,23 @@ def build(current,market,metadata,actual=None):
         label,drivers=(CATEGORY_INFO[k] if k in CATEGORY_INFO else
                        ("待核实：" + members[0]["name"],
                         "核实基金实际指数与成分，暂不与其他标的合并审计"))
+        # Cohorts refer to members still qualified in THIS snapshot. They do not
+        # prove the category breadth or exact constituent roster was known on
+        # the older date; historical backtests must replay each as-of snapshot.
+        by_first=defaultdict(list)
+        for member in members:
+            if member.get("first_qualified_date"):
+                by_first[str(member["first_qualified_date"])].append(member["symbol"])
+        cohorts=[{"date":d, "count":len(codes), "symbols":sorted(codes)}
+                 for d,codes in sorted(by_first.items())]
+        onset=cohorts[0]["date"] if cohorts else None
         output.append({
             "category_id":k, "category_name":label,"drivers":drivers,
             "count":len(members),
+            "category_first_qualified_date":onset,
+            "category_onset_symbols":cohorts[0]["symbols"] if cohorts else [],
+            "qualification_cohorts":cohorts,
+            "date_provenance":"inferred_from_currently_qualified_members_as_of_"+day,
             "ols_top1":top if any("OLS_TOP1" in x["roles"] for x in members) else None,
             "new_today_count":sum(x["new_today"] for x in members),
             "needs_review":any(x["needs_review"] for x in members),
@@ -211,6 +225,7 @@ def build(current,market,metadata,actual=None):
         "new_rebuild_count":sum(x["new_today"] for x in indexed.values()),
         "unique_symbols":len(indexed),
         "category_count":len(output),"categories":output,
+        "category_date_definition":"Category first date is the earliest known member qualification among members still qualified at as_of; never rewrite each ETF's own first_qualified_date. Backtesting requires genuine as-of snapshots; cohort counts are NOT contemporaneous total-sector breadth.",
         "audit_instruction":"Each category receives one shared macro/fundamental/news audit; "
             "individual ETF exceptions (premium, currency, index, liquidity, tracking) "
             "are separately checked for each candidate. No automatic veto/trade.",
