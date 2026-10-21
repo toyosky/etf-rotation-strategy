@@ -34,9 +34,11 @@ def summarize(a):
 def entry_metrics(rows,label,h):
     return summarize([r.get(label,{}).get(str(h)) for r in rows])
 
-def drawdown(g,start_idx,end_idx,entry):
-    if end_idx>=len(g) or start_idx>=len(g):return None
-    series=np.r_[entry,g.iloc[start_idx:end_idx+1]["close"].to_numpy(dtype=float)]
+def drawdown(g,start_date,end_date,entry):
+    # Must use dated index, never global calendar index on individual ETF rows.
+    if start_date not in g.index or end_date not in g.index:
+        return None
+    series=np.r_[entry,g.loc[start_date:end_date,"close"].to_numpy(dtype=float)]
     peak=np.maximum.accumulate(series)
     return float(np.min(series/peak-1))
 
@@ -87,10 +89,10 @@ def per_event(x,stocks,trading_dates,idx):
                     val=float(p.at[end_date,"close"])/base-1
             ans[name][str(h)]=val
         ans["mdd_hold_early"][str(h)]=(
-            drawdown(p,t+1,end_e,open1) if
+            drawdown(p,ds[1],trading_dates[end_e],open1) if
             all(trading_dates[k] in p.index for k in range(t+1,min(end_e+1,len(trading_dates)))) else None)
         ans["mdd_hold_delayed"][str(h)]=(
-            drawdown(p,t+3,end_d,open3) if
+            drawdown(p,ds[3],trading_dates[end_d],open3) if
             end_d<len(trading_dates) and
             all(trading_dates[k] in p.index for k in range(t+3,end_d+1)) else None)
     return ans
