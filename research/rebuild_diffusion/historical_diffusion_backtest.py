@@ -100,6 +100,19 @@ def build_series(raw, metadata):
                      & (r2 > cross_r2 + 1e-12)
                      & (ix >= MIN_HISTORY - 1))
         amount60 = g["amount"].rolling(60, min_periods=60).mean().to_numpy()
+        # Relative turnover/amount information strictly available at signal close.
+        # Baseline excludes the latest 3 days to avoid a breakout contaminating it.
+        amt = g["amount"].to_numpy(dtype=float)
+        prev20 = pd.Series(amt).shift(3).rolling(20,min_periods=20).mean().to_numpy()
+        recent3 = pd.Series(amt).rolling(3,min_periods=3).mean().to_numpy()
+        ratio3 = np.divide(recent3,prev20,out=np.full(len(g),np.nan),
+                           where=np.isfinite(prev20)&(prev20>0))
+        direction = np.sign(np.diff(close,prepend=close[0]))
+        up = pd.Series(np.where(direction>0,amt,0)).rolling(5,min_periods=5).sum().to_numpy()
+        down = pd.Series(np.where(direction<0,amt,0)).rolling(5,min_periods=5).sum().to_numpy()
+        directional_share = np.divide(up,up+down,out=np.full(len(g),np.nan),where=(up+down)>0)
+        ret5 = np.full(len(g),np.nan)
+        ret5[5:] = close[5:]/close[:-5]-1
         liquid = amount60 >= BROAD_AMOUNT60
         dates = pd.to_datetime(g["date"]).dt.strftime("%Y-%m-%d").to_numpy()
         open_ = g["open"].to_numpy()
@@ -111,6 +124,9 @@ def build_series(raw, metadata):
             qualifications[(category, dates[t])].append({
                 "symbol": sym, "amount60": safe_float(amount60[t]),
                 "r2": safe_float(r2[t]), "annual": safe_float(annual[t]),
+                "amount_ratio_3v20": safe_float(ratio3[t]),
+                "directional_amount_share_5": safe_float(directional_share[t]),
+                "price_return_5": safe_float(ret5[t]),
                 "strict_amount": bool(amount60[t] >= STRICT_AMOUNT60),
                 "cross_date": str(dates[cross_ix[t]])})
     return qualifications, price, categories, exclusion
@@ -180,6 +196,9 @@ def replay(qualifications, prices, categories, calendar, start="2021-01-01", coo
             item={"category":cat,"onset_date":day,"leader_symbol":lead,
                   "leader_onset_r2":first[0]["r2"],
                   "leader_amount60":first[0]["amount60"],
+                  "leader_volume_3v20":first[0].get("amount_ratio_3v20"),
+                  "leader_up_amount_share5":first[0].get("directional_amount_share_5"),
+                  "leader_price_return5":first[0].get("price_return_5"),
                   "leader_strict_amount":first[0]["strict_amount"],
                   "leaders_onset_n":len(members),
                   "leaders_onset_corr_clusters":corr_clusters(members,day,prices),
@@ -270,6 +289,69 @@ def summarize(events, start, end):
             "next20":metrics([a.get("early_return_20") for a in ex]),
             "two_independent_within5":sum(a.get("confirm_independent_2_lag") is not None for a in ex),
             "two_etf_within5":sum(a.get("confirm_etf_2_lag") is not None for a in ex)}
+    # This is an exploratory signal-time stratification, not an optimized rule.
+    # Crucially categories are assigned from information known at onset.
+    def split_by(fn):
+        groups=defaultdict(list)
+        for event in samples:
+            groups[fn(event)].append(event)
+        return {key:{
+            "episodes":len(items),
+            "future5":metrics([x.get("early_return_5") for x in items]),
+            "future10":metrics([x.get("early_return_10") for x in items]),
+            "future20":metrics([x.get("early_return_20") for x in items]),
+            "mdd20":metrics([x.get("early_mdd_20") for x in items]),
+            "spread_to_two_pct":round(100*sum(x.get("confirm_etf_2_lag") is not None for x in items)/len(items),1)
+        } for key,items in groups.items()}
+    def band(x):
+        v=x.get("leader_volume_3v20")
+        return ("missing" if v is None else "<0.8" if v<0.8 else "0.8-1.2" if v<1.2
+                else "1.2-1.8" if v<1.8 else ">=1.8")
+    def directional(x):
+        v=x.get("leader_up_amount_share5")
+        return "missing" if v is None else "<=0.5" if v<=0.5 else ">0.5"
+    def mark(x):
+        v=x.get("leader_price_return5")
+        return "missing" if v is None else "price<=0%" if v<=0 else "0-3%" if v<=.03 else ">3%"
+    result["volume_research"]={
+        "signal_time_features":{
+          "amount_ratio_3v20":"mean daily amount on [t-2,t] divided by mean on [t-22,t-3] (prior 20 sessions); all at t close",
+          "up_amount_share5":"amount on five up-close days divided by amount on up + down-close days; unchanged-price days excluded",
+          "price_return5":"close[t]/close[t-5]-1; all known at signal close",
+          "note":"Leader selected by trailing 60-session amount before seeing outcomes; liquidity already requires >=3m/day",
+        },
+        "all_onsets":split_by(band),
+        "single_leader_onsets":{
+          "volume_3v20":{key: {
+              "episodes":len(rows),
+              "future5":metrics([x.get("early_return_5") for x in rows]),
+              "future10":metrics([x.get("early_return_10") for x in rows]),
+              "future20":metrics([x.get("early_return_20") for x in rows]),
+              "mdd20":metrics([x.get("early_mdd_20") for x in rows]),
+              "spread_to_two_pct":round(100*sum(x.get("confirm_etf_2_lag") is not None for x in rows)/len(rows),1),
+          } for key,rows in ((k,[a for a in samples if a["leaders_onset_n"]==1 and band(a)==k])
+                              for k in ["missing","<0.8","0.8-1.2","1.2-1.8",">=1.8"])
+                      if rows},
+          "directional_share5":{key:{
+              "episodes":len(rows),
+              "future5":metrics([x.get("early_return_5") for x in rows]),
+              "future20":metrics([x.get("early_return_20") for x in rows]),
+              "spread_to_two_pct":round(100*sum(x.get("confirm_etf_2_lag") is not None for x in rows)/len(rows),1),
+          } for key,rows in ((k,[a for a in samples if a["leaders_onset_n"]==1 and directional(a)==k])
+                          for k in ["missing","<=0.5",">0.5"]) if rows},
+          "joint_signal":{key:{
+              "episodes":len(rows),
+              "future5":metrics([x.get("early_return_5") for x in rows]),
+              "future20":metrics([x.get("early_return_20") for x in rows]),
+              "spread_to_two_pct":round(100*sum(x.get("confirm_etf_2_lag") is not None for x in rows)/len(rows),1),
+          } for key,rows in ((k,[a for a in samples if a["leaders_onset_n"]==1 and
+                  ("positive_price_and_amount_impulse" if
+                   (a.get("leader_price_return5") is not None and a["leader_price_return5"]>0 and
+                    a.get("leader_volume_3v20") is not None and a["leader_volume_3v20"]>=1.2 and
+                    a.get("leader_up_amount_share5") is not None and a["leader_up_amount_share5"]>0.5)
+                   else "other") ==k]) for k in ["positive_price_and_amount_impulse","other"]) if rows}
+        }
+    }
     return result
 
 
@@ -328,13 +410,15 @@ def main():
         "summary":summarize(events,args.start,args.end),
         "events":[x for x in events if args.start<=x["onset_date"]<=args.end]
     }
+    result["volume_research"] = result["summary"].pop("volume_research")
     out=Path(args.out);out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False,default=str),encoding="utf-8")
     print(json.dumps({"status":"OK","episode_count":result["summary"]["episode_count"],
                      "year_counts":result["summary"]["year_counts"],
                      "data_quality":result["data_quality"],
                      "horizons":result["summary"]["horizons"],
-                     "diffusion":result["summary"]["diffusion"]},ensure_ascii=False))
+                     "diffusion":result["summary"]["diffusion"],
+                     "volume_research":result["volume_research"]},ensure_ascii=False))
 
 
 if __name__=="__main__":
