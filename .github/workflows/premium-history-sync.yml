@@ -7,7 +7,7 @@ on:
       - 'automation/requirements-premium-history.txt'
       - '.github/workflows/premium-history-sync.yml'
   schedule:
-    # 01:20 UTC = 09:20 Asia/Shanghai; sync latest available NAV before trading.
+    # 01:20 UTC = 09:20 Asia/Shanghai; monitor canonical fixed OLS pool.
     - cron: "20 1 * * *"
   workflow_dispatch:
     inputs:
@@ -78,7 +78,7 @@ jobs:
           MODE="${{ github.event.inputs.mode || 'auto' }}"
           python automation/premium_history_sync.py \
             --mode "$MODE" \
-            --signals-file data/fundamental-audit-trigger.json \
+            --fixed-ols --only-selected \
             --summary premium-history-sync-summary.json
 
       - name: Publish summary
