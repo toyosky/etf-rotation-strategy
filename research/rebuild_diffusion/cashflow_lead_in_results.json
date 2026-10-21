@@ -1,0 +1,3742 @@
+{
+  "as_of": "2026-10-20",
+  "begin": "2026-05-01",
+  "data_source": "archived Tencent-adjusted fullmarket ETF daily parquet",
+  "definitions": {
+    "index_family": "each known underlying tracked index counts once; group daily median ETF percentage return",
+    "composite": "equal mean of 3 index-family daily return proxies, each 1/3",
+    "benchmark": "ETF price proxies, not official index level or underlying constituent returns",
+    "relative_excess": "window cashflow ETF return minus window selected broad-market ETF return in percentage points",
+    "risk": "adjusted price rounding and fund inception/survivorship, missing observations, no flows/official index NAV"
+  },
+  "coverage": {
+    "symbols": [
+      {
+        "symbol": "159119",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 23.2
+      },
+      {
+        "symbol": "159201",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 16.1
+      },
+      {
+        "symbol": "159222",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 17.9
+      },
+      {
+        "symbol": "159229",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 16.1
+      },
+      {
+        "symbol": "159276",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 13.4
+      },
+      {
+        "symbol": "159399",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 18.8
+      },
+      {
+        "symbol": "159915",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 2.7
+      },
+      {
+        "symbol": "159928",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 10.7
+      },
+      {
+        "symbol": "159957",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 2.7
+      },
+      {
+        "symbol": "510300",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 8.9
+      },
+      {
+        "symbol": "510500",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 2.7
+      },
+      {
+        "symbol": "510880",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 14.3
+      },
+      {
+        "symbol": "512800",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 12.5
+      },
+      {
+        "symbol": "515800",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 13.4
+      },
+      {
+        "symbol": "516460",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 22.3
+      },
+      {
+        "symbol": "563580",
+        "n_days": 48,
+        "first": "2026-08-06",
+        "last": "2026-10-20",
+        "same_close_pct": 2.1
+      },
+      {
+        "symbol": "563680",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 17.9
+      },
+      {
+        "symbol": "563990",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 16.1
+      },
+      {
+        "symbol": "588000",
+        "n_days": 113,
+        "first": "2026-05-06",
+        "last": "2026-10-20",
+        "same_close_pct": 4.5
+      }
+    ],
+    "missing_symbols": [],
+    "valid_days_by_series": {
+      "CSI800_CASHFLOW": 112,
+      "GUOZHENG_CASHFLOW": 112,
+      "FTSE_A_CASHFLOW": 112,
+      "CASHFLOW_3_INDEX_EQUAL": 112,
+      "CSI300_510300": 112,
+      "CSI500_510500": 112,
+      "CSI800_515800": 112,
+      "DIVIDEND_510880": 112,
+      "BANKS_512800": 112,
+      "CONSUMER_159928": 112,
+      "GROWTH_159915": 112,
+      "GROWTH_159957": 112,
+      "TECH_588000": 112
+    },
+    "index_families": {
+      "CSI800_CASHFLOW": {
+        "expected_symbols": [
+          "159119",
+          "159229",
+          "516460",
+          "563580",
+          "563680",
+          "563990"
+        ],
+        "available_symbols": [
+          "159119",
+          "159229",
+          "516460",
+          "563580",
+          "563680",
+          "563990"
+        ],
+        "last_data_date": "2026-10-20",
+        "individual_date_counts": {
+          "159119": 113,
+          "159229": 113,
+          "516460": 113,
+          "563580": 48,
+          "563680": 113,
+          "563990": 113
+        }
+      },
+      "GUOZHENG_CASHFLOW": {
+        "expected_symbols": [
+          "159201",
+          "159222",
+          "159276"
+        ],
+        "available_symbols": [
+          "159201",
+          "159222",
+          "159276"
+        ],
+        "last_data_date": "2026-10-20",
+        "individual_date_counts": {
+          "159201": 113,
+          "159222": 113,
+          "159276": 113
+        }
+      },
+      "FTSE_A_CASHFLOW": {
+        "expected_symbols": [
+          "159399"
+        ],
+        "available_symbols": [
+          "159399"
+        ],
+        "last_data_date": "2026-10-20",
+        "individual_date_counts": {
+          "159399": 113
+        }
+      }
+    }
+  },
+  "period_returns": {
+    "JUL1_TO_AUG3": {
+      "start": "2026-07-01",
+      "end": "2026-08-03",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 9.687
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 11.168
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 11.458
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 10.788
+        },
+        "CSI300_510300": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -6.881
+        },
+        "CSI500_510500": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -16.887
+        },
+        "CSI800_515800": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -9.868
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 7.407
+        },
+        "BANKS_512800": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 12.925
+        },
+        "CONSUMER_159928": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": 9.524
+        },
+        "GROWTH_159915": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -22.245
+        },
+        "GROWTH_159957": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -22.42
+        },
+        "TECH_588000": {
+          "start": "2026-07-01",
+          "end": "2026-08-03",
+          "return_pct": -28.302
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 17.669,
+        "CSI500_510500": 27.675,
+        "CSI800_515800": 20.656,
+        "DIVIDEND_510880": 3.381,
+        "BANKS_512800": -2.137,
+        "CONSUMER_159928": 1.264,
+        "GROWTH_159915": 33.033,
+        "GROWTH_159957": 33.208,
+        "TECH_588000": 39.09
+      }
+    },
+    "AUG3_TO_SEP1": {
+      "start": "2026-08-03",
+      "end": "2026-09-01",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 0.209
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 0.551
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": -0.187
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 0.194
+        },
+        "CSI300_510300": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 1.675
+        },
+        "CSI500_510500": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 5.777
+        },
+        "CSI800_515800": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 2.409
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 3.887
+        },
+        "BANKS_512800": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 1.928
+        },
+        "CONSUMER_159928": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": -2.319
+        },
+        "GROWTH_159915": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 2.598
+        },
+        "GROWTH_159957": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 2.615
+        },
+        "TECH_588000": {
+          "start": "2026-08-03",
+          "end": "2026-09-01",
+          "return_pct": 5.965
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": -1.481,
+        "CSI500_510500": -5.583,
+        "CSI800_515800": -2.215,
+        "DIVIDEND_510880": -3.693,
+        "BANKS_512800": -1.734,
+        "CONSUMER_159928": 2.513,
+        "GROWTH_159915": -2.404,
+        "GROWTH_159957": -2.421,
+        "TECH_588000": -5.771
+      }
+    },
+    "SEP1_TO_SEP30": {
+      "start": "2026-09-01",
+      "end": "2026-09-30",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -4.774
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -2.707
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -2.903
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -3.463
+        },
+        "CSI300_510300": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -4.506
+        },
+        "CSI500_510500": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -4.934
+        },
+        "CSI800_515800": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -4.989
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -2.233
+        },
+        "BANKS_512800": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": 0.827
+        },
+        "CONSUMER_159928": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -2.374
+        },
+        "GROWTH_159915": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -7.572
+        },
+        "GROWTH_159957": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -7.599
+        },
+        "TECH_588000": {
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "return_pct": -7.119
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 1.043,
+        "CSI500_510500": 1.471,
+        "CSI800_515800": 1.526,
+        "DIVIDEND_510880": -1.23,
+        "BANKS_512800": -4.29,
+        "CONSUMER_159928": -1.089,
+        "GROWTH_159915": 4.109,
+        "GROWTH_159957": 4.136,
+        "TECH_588000": 3.656
+      }
+    },
+    "JUL1_TO_SEP30": {
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 4.669
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 8.756
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 8.021
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 7.158
+        },
+        "CSI300_510300": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -9.587
+        },
+        "CSI500_510500": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -16.424
+        },
+        "CSI800_515800": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -12.303
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 9.091
+        },
+        "BANKS_512800": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 16.054
+        },
+        "CONSUMER_159928": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": 4.444
+        },
+        "GROWTH_159915": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -26.265
+        },
+        "GROWTH_159957": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -26.441
+        },
+        "TECH_588000": {
+          "start": "2026-07-01",
+          "end": "2026-09-30",
+          "return_pct": -29.434
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 16.745,
+        "CSI500_510500": 23.582,
+        "CSI800_515800": 19.461,
+        "DIVIDEND_510880": -1.933,
+        "BANKS_512800": -8.896,
+        "CONSUMER_159928": 2.714,
+        "GROWTH_159915": 33.423,
+        "GROWTH_159957": 33.599,
+        "TECH_588000": 36.592
+      }
+    },
+    "SEP30_TO_OCT15": {
+      "start": "2026-09-30",
+      "end": "2026-10-15",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": 1.469
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -0.147
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -0.096
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": 0.408
+        },
+        "CSI300_510300": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -3.602
+        },
+        "CSI500_510500": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -8.518
+        },
+        "CSI800_515800": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -5.026
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": 0.772
+        },
+        "BANKS_512800": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": 1.172
+        },
+        "CONSUMER_159928": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": 0.304
+        },
+        "GROWTH_159915": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -11.016
+        },
+        "GROWTH_159957": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -10.982
+        },
+        "TECH_588000": {
+          "start": "2026-09-30",
+          "end": "2026-10-15",
+          "return_pct": -10.963
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 4.01,
+        "CSI500_510500": 8.926,
+        "CSI800_515800": 5.434,
+        "DIVIDEND_510880": -0.364,
+        "BANKS_512800": -0.764,
+        "CONSUMER_159928": 0.104,
+        "GROWTH_159915": 11.424,
+        "GROWTH_159957": 11.39,
+        "TECH_588000": 11.371
+      }
+    },
+    "OCT9_TO_OCT15": {
+      "start": "2026-10-09",
+      "end": "2026-10-15",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": 0.337
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -1.108
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -0.861
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -0.544
+        },
+        "CSI300_510300": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -2.714
+        },
+        "CSI500_510500": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -6.253
+        },
+        "CSI800_515800": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -3.799
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -0.488
+        },
+        "BANKS_512800": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": 1.529
+        },
+        "CONSUMER_159928": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -0.151
+        },
+        "GROWTH_159915": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -8.405
+        },
+        "GROWTH_159957": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -8.412
+        },
+        "TECH_588000": {
+          "start": "2026-10-09",
+          "end": "2026-10-15",
+          "return_pct": -6.636
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 2.17,
+        "CSI500_510500": 5.709,
+        "CSI800_515800": 3.255,
+        "DIVIDEND_510880": -0.056,
+        "BANKS_512800": -2.073,
+        "CONSUMER_159928": -0.393,
+        "GROWTH_159915": 7.861,
+        "GROWTH_159957": 7.868,
+        "TECH_588000": 6.092
+      }
+    },
+    "OCT15_TO_OCT20": {
+      "start": "2026-10-15",
+      "end": "2026-10-20",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.845
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 1.004
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.772
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.874
+        },
+        "CSI300_510300": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": -0.421
+        },
+        "CSI500_510500": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.953
+        },
+        "CSI800_515800": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.0
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.184
+        },
+        "BANKS_512800": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.348
+        },
+        "CONSUMER_159928": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": 0.606
+        },
+        "GROWTH_159915": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": -1.804
+        },
+        "GROWTH_159957": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": -1.739
+        },
+        "TECH_588000": {
+          "start": "2026-10-15",
+          "end": "2026-10-20",
+          "return_pct": -1.502
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 1.295,
+        "CSI500_510500": -0.079,
+        "CSI800_515800": 0.874,
+        "DIVIDEND_510880": 0.69,
+        "BANKS_512800": 0.526,
+        "CONSUMER_159928": 0.268,
+        "GROWTH_159915": 2.678,
+        "GROWTH_159957": 2.613,
+        "TECH_588000": 2.376
+      }
+    },
+    "AUG3_TO_OCT15": {
+      "start": "2026-08-03",
+      "end": "2026-10-15",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -3.173
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -2.314
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -3.178
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -2.882
+        },
+        "CSI300_510300": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -6.404
+        },
+        "CSI500_510500": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -8.008
+        },
+        "CSI800_515800": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -7.591
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": 2.351
+        },
+        "BANKS_512800": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": 3.976
+        },
+        "CONSUMER_159928": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -4.348
+        },
+        "GROWTH_159915": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -15.617
+        },
+        "GROWTH_159957": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -15.596
+        },
+        "TECH_588000": {
+          "start": "2026-08-03",
+          "end": "2026-10-15",
+          "return_pct": -12.368
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 3.522,
+        "CSI500_510500": 5.126,
+        "CSI800_515800": 4.709,
+        "DIVIDEND_510880": -5.233,
+        "BANKS_512800": -6.858,
+        "CONSUMER_159928": 1.466,
+        "GROWTH_159915": 12.735,
+        "GROWTH_159957": 12.714,
+        "TECH_588000": 9.486
+      }
+    },
+    "JUL1_TO_OCT15": {
+      "start": "2026-07-01",
+      "end": "2026-10-15",
+      "returns": {
+        "CSI800_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 6.207
+        },
+        "GUOZHENG_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 8.596
+        },
+        "FTSE_A_CASHFLOW": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 7.917
+        },
+        "CASHFLOW_3_INDEX_EQUAL": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 7.595
+        },
+        "CSI300_510300": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -12.844
+        },
+        "CSI500_510500": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -23.543
+        },
+        "CSI800_515800": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -16.711
+        },
+        "DIVIDEND_510880": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 9.933
+        },
+        "BANKS_512800": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 17.415
+        },
+        "CONSUMER_159928": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": 4.762
+        },
+        "GROWTH_159915": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -34.388
+        },
+        "GROWTH_159957": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -34.52
+        },
+        "TECH_588000": {
+          "start": "2026-07-01",
+          "end": "2026-10-15",
+          "return_pct": -37.17
+        }
+      },
+      "cashflow_excess_pp": {
+        "CSI300_510300": 20.439,
+        "CSI500_510500": 31.138,
+        "CSI800_515800": 24.306,
+        "DIVIDEND_510880": -2.338,
+        "BANKS_512800": -9.82,
+        "CONSUMER_159928": 2.833,
+        "GROWTH_159915": 41.983,
+        "GROWTH_159957": 42.115,
+        "TECH_588000": 44.765
+      }
+    }
+  },
+  "relative_20d_leading": {
+    "CSI800_CASHFLOW": {
+      "cross_above_1pp": [
+        {
+          "date": "2026-07-15",
+          "alpha20_pp": 1.884,
+          "factor20_pct": 0.489
+        },
+        {
+          "date": "2026-08-18",
+          "alpha20_pp": 1.848,
+          "factor20_pct": 1.943
+        },
+        {
+          "date": "2026-09-02",
+          "alpha20_pp": 1.255,
+          "factor20_pct": -0.668
+        },
+        {
+          "date": "2026-10-08",
+          "alpha20_pp": 1.506,
+          "factor20_pct": -2.661
+        }
+      ],
+      "checkpoints": [
+        {
+          "date": "2026-06-01",
+          "alpha20_pp": null,
+          "factor20_pct": null
+        },
+        {
+          "date": "2026-07-01",
+          "alpha20_pp": -9.388,
+          "factor20_pct": -8.462
+        },
+        {
+          "date": "2026-08-03",
+          "alpha20_pp": 12.023,
+          "factor20_pct": 6.882
+        },
+        {
+          "date": "2026-08-17",
+          "alpha20_pp": -1.251,
+          "factor20_pct": 1.53
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 0.361,
+          "factor20_pct": 1.044
+        },
+        {
+          "date": "2026-09-15",
+          "alpha20_pp": 1.687,
+          "factor20_pct": -2.976
+        },
+        {
+          "date": "2026-09-30",
+          "alpha20_pp": -0.268,
+          "factor20_pct": -4.774
+        },
+        {
+          "date": "2026-10-09",
+          "alpha20_pp": 1.994,
+          "factor20_pct": -2.318
+        },
+        {
+          "date": "2026-10-15",
+          "alpha20_pp": 3.975,
+          "factor20_pct": -3.206
+        },
+        {
+          "date": "2026-10-16",
+          "alpha20_pp": 5.229,
+          "factor20_pct": -1.686
+        },
+        {
+          "date": "2026-10-19",
+          "alpha20_pp": 6.656,
+          "factor20_pct": 0.434
+        },
+        {
+          "date": "2026-10-20",
+          "alpha20_pp": 6.405,
+          "factor20_pct": 0.301
+        }
+      ],
+      "first_5_sessions_above_1pp": "2026-07-21"
+    },
+    "GUOZHENG_CASHFLOW": {
+      "cross_above_1pp": [
+        {
+          "date": "2026-07-16",
+          "alpha20_pp": 2.585,
+          "factor20_pct": -1.101
+        },
+        {
+          "date": "2026-08-18",
+          "alpha20_pp": 3.809,
+          "factor20_pct": 3.904
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 1.477,
+          "factor20_pct": 2.16
+        },
+        {
+          "date": "2026-09-29",
+          "alpha20_pp": 1.192,
+          "factor20_pct": -3.605
+        }
+      ],
+      "checkpoints": [
+        {
+          "date": "2026-06-01",
+          "alpha20_pp": null,
+          "factor20_pct": null
+        },
+        {
+          "date": "2026-07-01",
+          "alpha20_pp": -12.95,
+          "factor20_pct": -12.024
+        },
+        {
+          "date": "2026-08-03",
+          "alpha20_pp": 12.572,
+          "factor20_pct": 7.431
+        },
+        {
+          "date": "2026-08-17",
+          "alpha20_pp": 0.796,
+          "factor20_pct": 3.576
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 1.477,
+          "factor20_pct": 2.16
+        },
+        {
+          "date": "2026-09-15",
+          "alpha20_pp": 3.225,
+          "factor20_pct": -1.437
+        },
+        {
+          "date": "2026-09-30",
+          "alpha20_pp": 1.799,
+          "factor20_pct": -2.707
+        },
+        {
+          "date": "2026-10-09",
+          "alpha20_pp": 4.102,
+          "factor20_pct": -0.21
+        },
+        {
+          "date": "2026-10-15",
+          "alpha20_pp": 4.12,
+          "factor20_pct": -3.061
+        },
+        {
+          "date": "2026-10-16",
+          "alpha20_pp": 5.297,
+          "factor20_pct": -1.618
+        },
+        {
+          "date": "2026-10-19",
+          "alpha20_pp": 6.592,
+          "factor20_pct": 0.37
+        },
+        {
+          "date": "2026-10-20",
+          "alpha20_pp": 5.539,
+          "factor20_pct": -0.565
+        }
+      ],
+      "first_5_sessions_above_1pp": "2026-07-22"
+    },
+    "FTSE_A_CASHFLOW": {
+      "cross_above_1pp": [
+        {
+          "date": "2026-07-17",
+          "alpha20_pp": 5.891,
+          "factor20_pct": -0.99
+        },
+        {
+          "date": "2026-08-18",
+          "alpha20_pp": 2.526,
+          "factor20_pct": 2.621
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 1.031,
+          "factor20_pct": 1.714
+        },
+        {
+          "date": "2026-09-29",
+          "alpha20_pp": 1.322,
+          "factor20_pct": -3.474
+        }
+      ],
+      "checkpoints": [
+        {
+          "date": "2026-06-01",
+          "alpha20_pp": null,
+          "factor20_pct": null
+        },
+        {
+          "date": "2026-07-01",
+          "alpha20_pp": -13.653,
+          "factor20_pct": -12.727
+        },
+        {
+          "date": "2026-08-03",
+          "alpha20_pp": 13.221,
+          "factor20_pct": 8.081
+        },
+        {
+          "date": "2026-08-17",
+          "alpha20_pp": -1.338,
+          "factor20_pct": 1.442
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 1.031,
+          "factor20_pct": 1.714
+        },
+        {
+          "date": "2026-09-15",
+          "alpha20_pp": 4.095,
+          "factor20_pct": -0.568
+        },
+        {
+          "date": "2026-09-30",
+          "alpha20_pp": 1.603,
+          "factor20_pct": -2.903
+        },
+        {
+          "date": "2026-10-09",
+          "alpha20_pp": 3.458,
+          "factor20_pct": -0.854
+        },
+        {
+          "date": "2026-10-15",
+          "alpha20_pp": 4.276,
+          "factor20_pct": -2.905
+        },
+        {
+          "date": "2026-10-16",
+          "alpha20_pp": 4.849,
+          "factor20_pct": -2.066
+        },
+        {
+          "date": "2026-10-19",
+          "alpha20_pp": 5.559,
+          "factor20_pct": -0.663
+        },
+        {
+          "date": "2026-10-20",
+          "alpha20_pp": 4.968,
+          "factor20_pct": -1.136
+        }
+      ],
+      "first_5_sessions_above_1pp": "2026-07-23"
+    },
+    "CASHFLOW_3_INDEX_EQUAL": {
+      "cross_above_1pp": [
+        {
+          "date": "2026-07-16",
+          "alpha20_pp": 2.24,
+          "factor20_pct": -1.446
+        },
+        {
+          "date": "2026-08-18",
+          "alpha20_pp": 2.732,
+          "factor20_pct": 2.828
+        },
+        {
+          "date": "2026-09-02",
+          "alpha20_pp": 1.959,
+          "factor20_pct": 0.036
+        },
+        {
+          "date": "2026-09-30",
+          "alpha20_pp": 1.042,
+          "factor20_pct": -3.463
+        }
+      ],
+      "checkpoints": [
+        {
+          "date": "2026-06-01",
+          "alpha20_pp": null,
+          "factor20_pct": null
+        },
+        {
+          "date": "2026-07-01",
+          "alpha20_pp": -12.001,
+          "factor20_pct": -11.075
+        },
+        {
+          "date": "2026-08-03",
+          "alpha20_pp": 12.62,
+          "factor20_pct": 7.48
+        },
+        {
+          "date": "2026-08-17",
+          "alpha20_pp": -0.594,
+          "factor20_pct": 2.187
+        },
+        {
+          "date": "2026-09-01",
+          "alpha20_pp": 0.958,
+          "factor20_pct": 1.641
+        },
+        {
+          "date": "2026-09-15",
+          "alpha20_pp": 3.0,
+          "factor20_pct": -1.662
+        },
+        {
+          "date": "2026-09-30",
+          "alpha20_pp": 1.042,
+          "factor20_pct": -3.463
+        },
+        {
+          "date": "2026-10-09",
+          "alpha20_pp": 3.183,
+          "factor20_pct": -1.129
+        },
+        {
+          "date": "2026-10-15",
+          "alpha20_pp": 4.127,
+          "factor20_pct": -3.054
+        },
+        {
+          "date": "2026-10-16",
+          "alpha20_pp": 5.129,
+          "factor20_pct": -1.787
+        },
+        {
+          "date": "2026-10-19",
+          "alpha20_pp": 6.271,
+          "factor20_pct": 0.049
+        },
+        {
+          "date": "2026-10-20",
+          "alpha20_pp": 5.639,
+          "factor20_pct": -0.465
+        }
+      ],
+      "first_5_sessions_above_1pp": "2026-07-22"
+    }
+  },
+  "ols_rebuild_timing": {
+    "CSI800_CASHFLOW": {
+      "last_annual": 0.26403,
+      "last_r2": 0.21691,
+      "cross_dates": [
+        "2026-07-15",
+        "2026-08-26",
+        "2026-09-04",
+        "2026-10-15"
+      ],
+      "qualification_events": [
+        {
+          "first_qualified_date": "2026-07-16",
+          "cross_date": "2026-07-15",
+          "r2": 0.1027,
+          "annual": 0.2578
+        },
+        {
+          "first_qualified_date": "2026-08-27",
+          "cross_date": "2026-08-26",
+          "r2": 0.018,
+          "annual": 0.035
+        },
+        {
+          "first_qualified_date": "2026-09-08",
+          "cross_date": "2026-09-04",
+          "r2": 0.0041,
+          "annual": 0.0158
+        },
+        {
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "r2": 0.0302,
+          "annual": 0.0925
+        }
+      ]
+    },
+    "GUOZHENG_CASHFLOW": {
+      "last_annual": 0.10925,
+      "last_r2": 0.07922,
+      "cross_dates": [
+        "2026-07-15",
+        "2026-10-14"
+      ],
+      "qualification_events": [
+        {
+          "first_qualified_date": "2026-07-16",
+          "cross_date": "2026-07-15",
+          "r2": 0.0295,
+          "annual": 0.1671
+        },
+        {
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-14",
+          "r2": 0.0653,
+          "annual": 0.1063
+        }
+      ]
+    },
+    "FTSE_A_CASHFLOW": {
+      "last_annual": 0.03556,
+      "last_r2": 0.01137,
+      "cross_dates": [
+        "2026-07-16",
+        "2026-10-19"
+      ],
+      "qualification_events": [
+        {
+          "first_qualified_date": "2026-07-17",
+          "cross_date": "2026-07-16",
+          "r2": 0.0358,
+          "annual": 0.1652
+        },
+        {
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "r2": 0.0114,
+          "annual": 0.0356
+        }
+      ]
+    },
+    "CASHFLOW_3_INDEX_EQUAL": {
+      "last_annual": 0.13288,
+      "last_r2": 0.10623,
+      "cross_dates": [
+        "2026-07-15",
+        "2026-10-16"
+      ],
+      "qualification_events": [
+        {
+          "first_qualified_date": "2026-07-16",
+          "cross_date": "2026-07-15",
+          "r2": 0.0314,
+          "annual": 0.1547
+        },
+        {
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "r2": 0.0631,
+          "annual": 0.1078
+        }
+      ]
+    }
+  },
+  "turnover_5v20_by_family": {
+    "CSI800_CASHFLOW": {
+      "2026-06-01": {
+        "asof": null,
+        "ratio": null
+      },
+      "2026-07-01": {
+        "asof": "2026-07-01",
+        "ratio": 1.468
+      },
+      "2026-08-03": {
+        "asof": "2026-08-03",
+        "ratio": 0.654
+      },
+      "2026-08-17": {
+        "asof": "2026-08-17",
+        "ratio": 0.752
+      },
+      "2026-09-01": {
+        "asof": "2026-09-01",
+        "ratio": 0.779
+      },
+      "2026-09-15": {
+        "asof": "2026-09-15",
+        "ratio": 0.908
+      },
+      "2026-09-30": {
+        "asof": "2026-09-30",
+        "ratio": 0.659
+      },
+      "2026-10-09": {
+        "asof": "2026-10-09",
+        "ratio": 0.821
+      },
+      "2026-10-15": {
+        "asof": "2026-10-15",
+        "ratio": 1.568
+      },
+      "2026-10-16": {
+        "asof": "2026-10-16",
+        "ratio": 1.421
+      },
+      "2026-10-19": {
+        "asof": "2026-10-19",
+        "ratio": 1.493
+      },
+      "2026-10-20": {
+        "asof": "2026-10-20",
+        "ratio": 1.425
+      }
+    },
+    "GUOZHENG_CASHFLOW": {
+      "2026-06-01": {
+        "asof": null,
+        "ratio": null
+      },
+      "2026-07-01": {
+        "asof": "2026-07-01",
+        "ratio": 1.002
+      },
+      "2026-08-03": {
+        "asof": "2026-08-03",
+        "ratio": 1.398
+      },
+      "2026-08-17": {
+        "asof": "2026-08-17",
+        "ratio": 0.691
+      },
+      "2026-09-01": {
+        "asof": "2026-09-01",
+        "ratio": 0.706
+      },
+      "2026-09-15": {
+        "asof": "2026-09-15",
+        "ratio": 0.894
+      },
+      "2026-09-30": {
+        "asof": "2026-09-30",
+        "ratio": 0.825
+      },
+      "2026-10-09": {
+        "asof": "2026-10-09",
+        "ratio": 0.741
+      },
+      "2026-10-15": {
+        "asof": "2026-10-15",
+        "ratio": 1.143
+      },
+      "2026-10-16": {
+        "asof": "2026-10-16",
+        "ratio": 1.115
+      },
+      "2026-10-19": {
+        "asof": "2026-10-19",
+        "ratio": 1.264
+      },
+      "2026-10-20": {
+        "asof": "2026-10-20",
+        "ratio": 1.242
+      }
+    },
+    "FTSE_A_CASHFLOW": {
+      "2026-06-01": {
+        "asof": null,
+        "ratio": null
+      },
+      "2026-07-01": {
+        "asof": "2026-07-01",
+        "ratio": 0.896
+      },
+      "2026-08-03": {
+        "asof": "2026-08-03",
+        "ratio": 1.332
+      },
+      "2026-08-17": {
+        "asof": "2026-08-17",
+        "ratio": 1.035
+      },
+      "2026-09-01": {
+        "asof": "2026-09-01",
+        "ratio": 0.834
+      },
+      "2026-09-15": {
+        "asof": "2026-09-15",
+        "ratio": 0.738
+      },
+      "2026-09-30": {
+        "asof": "2026-09-30",
+        "ratio": 0.81
+      },
+      "2026-10-09": {
+        "asof": "2026-10-09",
+        "ratio": 0.893
+      },
+      "2026-10-15": {
+        "asof": "2026-10-15",
+        "ratio": 0.834
+      },
+      "2026-10-16": {
+        "asof": "2026-10-16",
+        "ratio": 0.891
+      },
+      "2026-10-19": {
+        "asof": "2026-10-19",
+        "ratio": 0.933
+      },
+      "2026-10-20": {
+        "asof": "2026-10-20",
+        "ratio": 0.963
+      }
+    }
+  },
+  "levels_at_checkpoints": {
+    "2026-06-01": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-06-01",
+        "level": 93.976
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-06-01",
+        "level": 92.641
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-06-01",
+        "level": 94.828
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-06-01",
+        "level": 93.822
+      },
+      "CSI300_510300": {
+        "asof": "2026-06-01",
+        "level": 99.533
+      },
+      "CSI500_510500": {
+        "asof": "2026-06-01",
+        "level": 96.503
+      },
+      "CSI800_515800": {
+        "asof": "2026-06-01",
+        "level": 99.315
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-06-01",
+        "level": 99.379
+      },
+      "BANKS_512800": {
+        "asof": "2026-06-01",
+        "level": 99.367
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-06-01",
+        "level": 92.929
+      },
+      "GROWTH_159915": {
+        "asof": "2026-06-01",
+        "level": 104.608
+      },
+      "GROWTH_159957": {
+        "asof": "2026-06-01",
+        "level": 104.418
+      },
+      "TECH_588000": {
+        "asof": "2026-06-01",
+        "level": 100.826
+      }
+    },
+    "2026-07-01": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-07-01",
+        "level": 86.024
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-07-01",
+        "level": 81.502
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-07-01",
+        "level": 82.759
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-07-01",
+        "level": 83.431
+      },
+      "CSI300_510300": {
+        "asof": "2026-07-01",
+        "level": 101.869
+      },
+      "CSI500_510500": {
+        "asof": "2026-07-01",
+        "level": 105.594
+      },
+      "CSI800_515800": {
+        "asof": "2026-07-01",
+        "level": 104.11
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-07-01",
+        "level": 92.236
+      },
+      "BANKS_512800": {
+        "asof": "2026-07-01",
+        "level": 93.038
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-07-01",
+        "level": 84.848
+      },
+      "GROWTH_159915": {
+        "asof": "2026-07-01",
+        "level": 112.903
+      },
+      "GROWTH_159957": {
+        "asof": "2026-07-01",
+        "level": 112.851
+      },
+      "TECH_588000": {
+        "asof": "2026-07-01",
+        "level": 131.405
+      }
+    },
+    "2026-08-03": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-08-03",
+        "level": 94.358
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-08-03",
+        "level": 90.604
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-08-03",
+        "level": 92.241
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-08-03",
+        "level": 92.431
+      },
+      "CSI300_510300": {
+        "asof": "2026-08-03",
+        "level": 94.86
+      },
+      "CSI500_510500": {
+        "asof": "2026-08-03",
+        "level": 87.762
+      },
+      "CSI800_515800": {
+        "asof": "2026-08-03",
+        "level": 93.836
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-08-03",
+        "level": 99.068
+      },
+      "BANKS_512800": {
+        "asof": "2026-08-03",
+        "level": 105.063
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-08-03",
+        "level": 92.929
+      },
+      "GROWTH_159915": {
+        "asof": "2026-08-03",
+        "level": 87.788
+      },
+      "GROWTH_159957": {
+        "asof": "2026-08-03",
+        "level": 87.55
+      },
+      "TECH_588000": {
+        "asof": "2026-08-03",
+        "level": 94.215
+      }
+    },
+    "2026-08-17": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-08-17",
+        "level": 93.406
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-08-17",
+        "level": 90.156
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-08-17",
+        "level": 90.948
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-08-17",
+        "level": 91.537
+      },
+      "CSI300_510300": {
+        "asof": "2026-08-17",
+        "level": 98.458
+      },
+      "CSI500_510500": {
+        "asof": "2026-08-17",
+        "level": 96.399
+      },
+      "CSI800_515800": {
+        "asof": "2026-08-17",
+        "level": 98.562
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-08-17",
+        "level": 99.317
+      },
+      "BANKS_512800": {
+        "asof": "2026-08-17",
+        "level": 100.759
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-08-17",
+        "level": 89.832
+      },
+      "GROWTH_159915": {
+        "asof": "2026-08-17",
+        "level": 99.147
+      },
+      "GROWTH_159957": {
+        "asof": "2026-08-17",
+        "level": 98.795
+      },
+      "TECH_588000": {
+        "asof": "2026-08-17",
+        "level": 108.347
+      }
+    },
+    "2026-09-01": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-09-01",
+        "level": 94.555
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-09-01",
+        "level": 91.104
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-09-01",
+        "level": 92.069
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-09-01",
+        "level": 92.611
+      },
+      "CSI300_510300": {
+        "asof": "2026-09-01",
+        "level": 96.449
+      },
+      "CSI500_510500": {
+        "asof": "2026-09-01",
+        "level": 92.832
+      },
+      "CSI800_515800": {
+        "asof": "2026-09-01",
+        "level": 96.096
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-09-01",
+        "level": 102.919
+      },
+      "BANKS_512800": {
+        "asof": "2026-09-01",
+        "level": 107.089
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-09-01",
+        "level": 90.774
+      },
+      "GROWTH_159915": {
+        "asof": "2026-09-01",
+        "level": 90.069
+      },
+      "GROWTH_159957": {
+        "asof": "2026-09-01",
+        "level": 89.839
+      },
+      "TECH_588000": {
+        "asof": "2026-09-01",
+        "level": 99.835
+      }
+    },
+    "2026-09-15": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-09-15",
+        "level": 90.996
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-09-15",
+        "level": 89.141
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-09-15",
+        "level": 90.603
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-09-15",
+        "level": 90.29
+      },
+      "CSI300_510300": {
+        "asof": "2026-09-15",
+        "level": 93.645
+      },
+      "CSI500_510500": {
+        "asof": "2026-09-15",
+        "level": 89.545
+      },
+      "CSI800_515800": {
+        "asof": "2026-09-15",
+        "level": 92.945
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-09-15",
+        "level": 100.901
+      },
+      "BANKS_512800": {
+        "asof": "2026-09-15",
+        "level": 106.709
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-09-15",
+        "level": 88.081
+      },
+      "GROWTH_159915": {
+        "asof": "2026-09-15",
+        "level": 86.267
+      },
+      "GROWTH_159957": {
+        "asof": "2026-09-15",
+        "level": 86.024
+      },
+      "TECH_588000": {
+        "asof": "2026-09-15",
+        "level": 94.05
+      }
+    },
+    "2026-09-30": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-09-30",
+        "level": 90.041
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-09-30",
+        "level": 88.638
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-09-30",
+        "level": 89.397
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-09-30",
+        "level": 89.403
+      },
+      "CSI300_510300": {
+        "asof": "2026-09-30",
+        "level": 92.103
+      },
+      "CSI500_510500": {
+        "asof": "2026-09-30",
+        "level": 88.252
+      },
+      "CSI800_515800": {
+        "asof": "2026-09-30",
+        "level": 91.301
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-09-30",
+        "level": 100.621
+      },
+      "BANKS_512800": {
+        "asof": "2026-09-30",
+        "level": 107.975
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-09-30",
+        "level": 88.62
+      },
+      "GROWTH_159915": {
+        "asof": "2026-09-30",
+        "level": 83.249
+      },
+      "GROWTH_159957": {
+        "asof": "2026-09-30",
+        "level": 83.012
+      },
+      "TECH_588000": {
+        "asof": "2026-09-30",
+        "level": 92.727
+      }
+    },
+    "2026-10-09": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-10-09",
+        "level": 91.057
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-10-09",
+        "level": 89.499
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-10-09",
+        "level": 90.086
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-10-09",
+        "level": 90.259
+      },
+      "CSI300_510300": {
+        "asof": "2026-10-09",
+        "level": 91.262
+      },
+      "CSI500_510500": {
+        "asof": "2026-10-09",
+        "level": 86.119
+      },
+      "CSI800_515800": {
+        "asof": "2026-10-09",
+        "level": 90.137
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-10-09",
+        "level": 101.894
+      },
+      "BANKS_512800": {
+        "asof": "2026-10-09",
+        "level": 107.595
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-10-09",
+        "level": 89.024
+      },
+      "GROWTH_159915": {
+        "asof": "2026-10-09",
+        "level": 80.876
+      },
+      "GROWTH_159957": {
+        "asof": "2026-10-09",
+        "level": 80.683
+      },
+      "TECH_588000": {
+        "asof": "2026-10-09",
+        "level": 88.43
+      }
+    },
+    "2026-10-15": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-10-15",
+        "level": 91.364
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-10-15",
+        "level": 88.507
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-10-15",
+        "level": 89.31
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-10-15",
+        "level": 89.768
+      },
+      "CSI300_510300": {
+        "asof": "2026-10-15",
+        "level": 88.785
+      },
+      "CSI500_510500": {
+        "asof": "2026-10-15",
+        "level": 80.734
+      },
+      "CSI800_515800": {
+        "asof": "2026-10-15",
+        "level": 86.712
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-10-15",
+        "level": 101.398
+      },
+      "BANKS_512800": {
+        "asof": "2026-10-15",
+        "level": 109.241
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-10-15",
+        "level": 88.889
+      },
+      "GROWTH_159915": {
+        "asof": "2026-10-15",
+        "level": 74.078
+      },
+      "GROWTH_159957": {
+        "asof": "2026-10-15",
+        "level": 73.896
+      },
+      "TECH_588000": {
+        "asof": "2026-10-15",
+        "level": 82.562
+      }
+    },
+    "2026-10-16": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-10-16",
+        "level": 91.935
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-10-16",
+        "level": 89.423
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-10-16",
+        "level": 89.914
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-10-16",
+        "level": 90.467
+      },
+      "CSI300_510300": {
+        "asof": "2026-10-16",
+        "level": 88.692
+      },
+      "CSI500_510500": {
+        "asof": "2026-10-16",
+        "level": 80.804
+      },
+      "CSI800_515800": {
+        "asof": "2026-10-16",
+        "level": 86.644
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-10-16",
+        "level": 101.863
+      },
+      "BANKS_512800": {
+        "asof": "2026-10-16",
+        "level": 109.367
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-10-16",
+        "level": 89.832
+      },
+      "GROWTH_159915": {
+        "asof": "2026-10-16",
+        "level": 73.618
+      },
+      "GROWTH_159957": {
+        "asof": "2026-10-16",
+        "level": 73.373
+      },
+      "TECH_588000": {
+        "asof": "2026-10-16",
+        "level": 82.066
+      }
+    },
+    "2026-10-19": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-10-19",
+        "level": 92.412
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-10-19",
+        "level": 90.16
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-10-19",
+        "level": 90.431
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-10-19",
+        "level": 91.045
+      },
+      "CSI300_510300": {
+        "asof": "2026-10-19",
+        "level": 88.738
+      },
+      "CSI500_510500": {
+        "asof": "2026-10-19",
+        "level": 81.049
+      },
+      "CSI800_515800": {
+        "asof": "2026-10-19",
+        "level": 86.918
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-10-19",
+        "level": 102.547
+      },
+      "BANKS_512800": {
+        "asof": "2026-10-19",
+        "level": 111.013
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-10-19",
+        "level": 89.697
+      },
+      "GROWTH_159915": {
+        "asof": "2026-10-19",
+        "level": 72.903
+      },
+      "GROWTH_159957": {
+        "asof": "2026-10-19",
+        "level": 72.691
+      },
+      "TECH_588000": {
+        "asof": "2026-10-19",
+        "level": 80.661
+      }
+    },
+    "2026-10-20": {
+      "CSI800_CASHFLOW": {
+        "asof": "2026-10-20",
+        "level": 92.136
+      },
+      "GUOZHENG_CASHFLOW": {
+        "asof": "2026-10-20",
+        "level": 89.396
+      },
+      "FTSE_A_CASHFLOW": {
+        "asof": "2026-10-20",
+        "level": 90.0
+      },
+      "CASHFLOW_3_INDEX_EQUAL": {
+        "asof": "2026-10-20",
+        "level": 90.552
+      },
+      "CSI300_510300": {
+        "asof": "2026-10-20",
+        "level": 88.411
+      },
+      "CSI500_510500": {
+        "asof": "2026-10-20",
+        "level": 81.503
+      },
+      "CSI800_515800": {
+        "asof": "2026-10-20",
+        "level": 86.712
+      },
+      "DIVIDEND_510880": {
+        "asof": "2026-10-20",
+        "level": 101.584
+      },
+      "BANKS_512800": {
+        "asof": "2026-10-20",
+        "level": 109.62
+      },
+      "CONSUMER_159928": {
+        "asof": "2026-10-20",
+        "level": 89.428
+      },
+      "GROWTH_159915": {
+        "asof": "2026-10-20",
+        "level": 72.742
+      },
+      "GROWTH_159957": {
+        "asof": "2026-10-20",
+        "level": 72.61
+      },
+      "TECH_588000": {
+        "asof": "2026-10-20",
+        "level": 81.322
+      }
+    }
+  },
+  "price_curve": [
+    {
+      "date": "2026-06-01",
+      "CSI800_CASHFLOW": 93.9764,
+      "GUOZHENG_CASHFLOW": 92.641,
+      "FTSE_A_CASHFLOW": 94.8276,
+      "CASHFLOW_3_INDEX_EQUAL": 93.822,
+      "CSI300_510300": 99.5327,
+      "CSI500_510500": 96.5035,
+      "CSI800_515800": 99.3151,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 99.3671,
+      "CONSUMER_159928": 92.9293,
+      "GROWTH_159915": 104.6083,
+      "GROWTH_159957": 104.4177,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-06-02",
+      "CSI800_CASHFLOW": 93.9764,
+      "GUOZHENG_CASHFLOW": 92.641,
+      "FTSE_A_CASHFLOW": 94.8276,
+      "CASHFLOW_3_INDEX_EQUAL": 93.822,
+      "CSI300_510300": 100.9346,
+      "CSI500_510500": 97.2028,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 91.5825,
+      "GROWTH_159915": 107.3733,
+      "GROWTH_159957": 107.2289,
+      "TECH_588000": 102.4793
+    },
+    {
+      "date": "2026-06-03",
+      "CSI800_CASHFLOW": 93.9764,
+      "GUOZHENG_CASHFLOW": 91.8879,
+      "FTSE_A_CASHFLOW": 93.9655,
+      "CASHFLOW_3_INDEX_EQUAL": 93.2835,
+      "CSI300_510300": 101.4019,
+      "CSI500_510500": 97.5524,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 99.6894,
+      "BANKS_512800": 99.3671,
+      "CONSUMER_159928": 90.2357,
+      "GROWTH_159915": 109.447,
+      "GROWTH_159957": 108.8353,
+      "TECH_588000": 104.9587
+    },
+    {
+      "date": "2026-06-04",
+      "CSI800_CASHFLOW": 92.4728,
+      "GUOZHENG_CASHFLOW": 90.4742,
+      "FTSE_A_CASHFLOW": 93.1034,
+      "CASHFLOW_3_INDEX_EQUAL": 92.0223,
+      "CSI300_510300": 100.4673,
+      "CSI500_510500": 97.5524,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 99.6894,
+      "BANKS_512800": 98.1013,
+      "CONSUMER_159928": 88.8889,
+      "GROWTH_159915": 108.2949,
+      "GROWTH_159957": 108.0321,
+      "TECH_588000": 104.9587
+    },
+    {
+      "date": "2026-06-05",
+      "CSI800_CASHFLOW": 92.4728,
+      "GUOZHENG_CASHFLOW": 89.7202,
+      "FTSE_A_CASHFLOW": 92.2414,
+      "CASHFLOW_3_INDEX_EQUAL": 91.4827,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 96.1538,
+      "CSI800_515800": 98.6301,
+      "DIVIDEND_510880": 99.6894,
+      "BANKS_512800": 99.3671,
+      "CONSUMER_159928": 88.5522,
+      "GROWTH_159915": 105.0691,
+      "GROWTH_159957": 104.8193,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-06-08",
+      "CSI800_CASHFLOW": 90.9568,
+      "GUOZHENG_CASHFLOW": 88.1181,
+      "FTSE_A_CASHFLOW": 91.3793,
+      "CASHFLOW_3_INDEX_EQUAL": 90.1532,
+      "CSI300_510300": 97.1963,
+      "CSI500_510500": 93.3566,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 86.8687,
+      "GROWTH_159915": 100.9217,
+      "GROWTH_159957": 100.8032,
+      "TECH_588000": 96.6942
+    },
+    {
+      "date": "2026-06-09",
+      "CSI800_CASHFLOW": 90.9568,
+      "GUOZHENG_CASHFLOW": 88.1181,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 89.8697,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 95.4545,
+      "CSI800_515800": 98.6301,
+      "DIVIDEND_510880": 99.0683,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 86.8687,
+      "GROWTH_159915": 104.8387,
+      "GROWTH_159957": 104.8193,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-06-10",
+      "CSI800_CASHFLOW": 90.9568,
+      "GUOZHENG_CASHFLOW": 87.3097,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 89.5949,
+      "CSI300_510300": 98.1308,
+      "CSI500_510500": 94.4056,
+      "CSI800_515800": 97.2603,
+      "DIVIDEND_510880": 98.4472,
+      "BANKS_512800": 101.8987,
+      "CONSUMER_159928": 87.5421,
+      "GROWTH_159915": 102.0737,
+      "GROWTH_159957": 102.008,
+      "TECH_588000": 100.0
+    },
+    {
+      "date": "2026-06-11",
+      "CSI800_CASHFLOW": 90.2174,
+      "GUOZHENG_CASHFLOW": 87.3097,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 89.3521,
+      "CSI300_510300": 97.6636,
+      "CSI500_510500": 94.0559,
+      "CSI800_515800": 97.2603,
+      "DIVIDEND_510880": 98.4472,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 87.5421,
+      "GROWTH_159915": 101.1521,
+      "GROWTH_159957": 100.8032,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-06-12",
+      "CSI800_CASHFLOW": 90.963,
+      "GUOZHENG_CASHFLOW": 88.815,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 90.1118,
+      "CSI300_510300": 98.5981,
+      "CSI500_510500": 95.1049,
+      "CSI800_515800": 97.9452,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 103.1646,
+      "CONSUMER_159928": 88.5522,
+      "GROWTH_159915": 101.6129,
+      "GROWTH_159957": 101.2048,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-06-15",
+      "CSI800_CASHFLOW": 90.963,
+      "GUOZHENG_CASHFLOW": 88.0623,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 89.8572,
+      "CSI300_510300": 100.4673,
+      "CSI500_510500": 98.6014,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 98.1366,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 88.2155,
+      "GROWTH_159915": 106.682,
+      "GROWTH_159957": 106.8273,
+      "TECH_588000": 105.7851
+    },
+    {
+      "date": "2026-06-16",
+      "CSI800_CASHFLOW": 89.4212,
+      "GUOZHENG_CASHFLOW": 86.557,
+      "FTSE_A_CASHFLOW": 88.7931,
+      "CASHFLOW_3_INDEX_EQUAL": 88.267,
+      "CSI300_510300": 100.4673,
+      "CSI500_510500": 99.6503,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 97.205,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 86.1953,
+      "GROWTH_159915": 108.5253,
+      "GROWTH_159957": 108.4337,
+      "TECH_588000": 106.6116
+    },
+    {
+      "date": "2026-06-17",
+      "CSI800_CASHFLOW": 89.4212,
+      "GUOZHENG_CASHFLOW": 85.8475,
+      "FTSE_A_CASHFLOW": 88.7931,
+      "CASHFLOW_3_INDEX_EQUAL": 88.0259,
+      "CSI300_510300": 101.4019,
+      "CSI500_510500": 101.049,
+      "CSI800_515800": 102.0548,
+      "DIVIDEND_510880": 96.2733,
+      "BANKS_512800": 99.3671,
+      "CONSUMER_159928": 85.5219,
+      "GROWTH_159915": 110.3687,
+      "GROWTH_159957": 110.0402,
+      "TECH_588000": 111.5702
+    },
+    {
+      "date": "2026-06-18",
+      "CSI800_CASHFLOW": 88.6503,
+      "GUOZHENG_CASHFLOW": 85.0945,
+      "FTSE_A_CASHFLOW": 87.069,
+      "CASHFLOW_3_INDEX_EQUAL": 86.9458,
+      "CSI300_510300": 101.8692,
+      "CSI500_510500": 101.7483,
+      "CSI800_515800": 102.0548,
+      "DIVIDEND_510880": 95.0311,
+      "BANKS_512800": 96.8354,
+      "CONSUMER_159928": 83.8384,
+      "GROWTH_159915": 112.6728,
+      "GROWTH_159957": 112.4498,
+      "TECH_588000": 115.7025
+    },
+    {
+      "date": "2026-06-22",
+      "CSI800_CASHFLOW": 89.4016,
+      "GUOZHENG_CASHFLOW": 85.8475,
+      "FTSE_A_CASHFLOW": 87.931,
+      "CASHFLOW_3_INDEX_EQUAL": 87.7348,
+      "CSI300_510300": 103.271,
+      "CSI500_510500": 103.8462,
+      "CSI800_515800": 104.1096,
+      "DIVIDEND_510880": 95.6522,
+      "BANKS_512800": 97.4684,
+      "CONSUMER_159928": 84.5118,
+      "GROWTH_159915": 115.6682,
+      "GROWTH_159957": 115.261,
+      "TECH_588000": 118.1818
+    },
+    {
+      "date": "2026-06-23",
+      "CSI800_CASHFLOW": 87.0895,
+      "GUOZHENG_CASHFLOW": 83.7191,
+      "FTSE_A_CASHFLOW": 86.2069,
+      "CASHFLOW_3_INDEX_EQUAL": 85.68,
+      "CSI300_510300": 100.9346,
+      "CSI500_510500": 101.7483,
+      "CSI800_515800": 101.3699,
+      "DIVIDEND_510880": 95.3416,
+      "BANKS_512800": 98.7342,
+      "CONSUMER_159928": 83.165,
+      "GROWTH_159915": 111.0599,
+      "GROWTH_159957": 111.245,
+      "TECH_588000": 115.7025
+    },
+    {
+      "date": "2026-06-24",
+      "CSI800_CASHFLOW": 86.3451,
+      "GUOZHENG_CASHFLOW": 82.9648,
+      "FTSE_A_CASHFLOW": 85.3448,
+      "CASHFLOW_3_INDEX_EQUAL": 84.893,
+      "CSI300_510300": 101.4019,
+      "CSI500_510500": 103.4965,
+      "CSI800_515800": 102.7397,
+      "DIVIDEND_510880": 94.0994,
+      "BANKS_512800": 96.2025,
+      "CONSUMER_159928": 81.8182,
+      "GROWTH_159915": 112.4424,
+      "GROWTH_159957": 112.0482,
+      "TECH_588000": 120.6612
+    },
+    {
+      "date": "2026-06-25",
+      "CSI800_CASHFLOW": 86.3451,
+      "GUOZHENG_CASHFLOW": 82.2106,
+      "FTSE_A_CASHFLOW": 83.6207,
+      "CASHFLOW_3_INDEX_EQUAL": 84.064,
+      "CSI300_510300": 102.8037,
+      "CSI500_510500": 104.5455,
+      "CSI800_515800": 104.1096,
+      "DIVIDEND_510880": 93.1677,
+      "BANKS_512800": 95.5696,
+      "CONSUMER_159928": 82.1549,
+      "GROWTH_159915": 115.8986,
+      "GROWTH_159957": 116.0643,
+      "TECH_588000": 124.7934
+    },
+    {
+      "date": "2026-06-26",
+      "CSI800_CASHFLOW": 84.4883,
+      "GUOZHENG_CASHFLOW": 80.0845,
+      "FTSE_A_CASHFLOW": 81.8966,
+      "CASHFLOW_3_INDEX_EQUAL": 82.159,
+      "CSI300_510300": 100.4673,
+      "CSI500_510500": 102.0979,
+      "CSI800_515800": 102.0548,
+      "DIVIDEND_510880": 92.236,
+      "BANKS_512800": 94.3038,
+      "CONSUMER_159928": 81.1448,
+      "GROWTH_159915": 111.2903,
+      "GROWTH_159957": 111.245,
+      "TECH_588000": 122.314
+    },
+    {
+      "date": "2026-06-29",
+      "CSI800_CASHFLOW": 85.2563,
+      "GUOZHENG_CASHFLOW": 80.84,
+      "FTSE_A_CASHFLOW": 82.7586,
+      "CASHFLOW_3_INDEX_EQUAL": 82.9546,
+      "CSI300_510300": 101.4019,
+      "CSI500_510500": 103.4965,
+      "CSI800_515800": 102.7397,
+      "DIVIDEND_510880": 92.5466,
+      "BANKS_512800": 94.9367,
+      "CONSUMER_159928": 83.8384,
+      "GROWTH_159915": 111.7512,
+      "GROWTH_159957": 111.6466,
+      "TECH_588000": 128.9256
+    },
+    {
+      "date": "2026-06-30",
+      "CSI800_CASHFLOW": 85.2563,
+      "GUOZHENG_CASHFLOW": 80.0845,
+      "FTSE_A_CASHFLOW": 81.8966,
+      "CASHFLOW_3_INDEX_EQUAL": 82.4081,
+      "CSI300_510300": 102.3364,
+      "CSI500_510500": 105.9441,
+      "CSI800_515800": 104.1096,
+      "DIVIDEND_510880": 91.3043,
+      "BANKS_512800": 93.038,
+      "CONSUMER_159928": 82.8283,
+      "GROWTH_159915": 115.2074,
+      "GROWTH_159957": 114.8594,
+      "TECH_588000": 134.7107
+    },
+    {
+      "date": "2026-07-01",
+      "CSI800_CASHFLOW": 86.0244,
+      "GUOZHENG_CASHFLOW": 81.5019,
+      "FTSE_A_CASHFLOW": 82.7586,
+      "CASHFLOW_3_INDEX_EQUAL": 83.4309,
+      "CSI300_510300": 101.8692,
+      "CSI500_510500": 105.5944,
+      "CSI800_515800": 104.1096,
+      "DIVIDEND_510880": 92.236,
+      "BANKS_512800": 93.038,
+      "CONSUMER_159928": 84.8485,
+      "GROWTH_159915": 112.9032,
+      "GROWTH_159957": 112.8514,
+      "TECH_588000": 131.405
+    },
+    {
+      "date": "2026-07-02",
+      "CSI800_CASHFLOW": 86.0244,
+      "GUOZHENG_CASHFLOW": 81.5019,
+      "FTSE_A_CASHFLOW": 83.6207,
+      "CASHFLOW_3_INDEX_EQUAL": 83.7206,
+      "CSI300_510300": 99.5327,
+      "CSI500_510500": 102.0979,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 92.8571,
+      "BANKS_512800": 94.9367,
+      "CONSUMER_159928": 84.5118,
+      "GROWTH_159915": 106.4516,
+      "GROWTH_159957": 107.2289,
+      "TECH_588000": 121.4876
+    },
+    {
+      "date": "2026-07-03",
+      "CSI800_CASHFLOW": 87.5336,
+      "GUOZHENG_CASHFLOW": 82.9193,
+      "FTSE_A_CASHFLOW": 84.4828,
+      "CASHFLOW_3_INDEX_EQUAL": 84.9833,
+      "CSI300_510300": 100.0,
+      "CSI500_510500": 102.7972,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 93.4783,
+      "BANKS_512800": 94.3038,
+      "CONSUMER_159928": 84.5118,
+      "GROWTH_159915": 106.4516,
+      "GROWTH_159957": 106.4257,
+      "TECH_588000": 120.6612
+    },
+    {
+      "date": "2026-07-06",
+      "CSI800_CASHFLOW": 88.2818,
+      "GUOZHENG_CASHFLOW": 84.3368,
+      "FTSE_A_CASHFLOW": 85.3448,
+      "CASHFLOW_3_INDEX_EQUAL": 85.9987,
+      "CSI300_510300": 100.0,
+      "CSI500_510500": 101.7483,
+      "CSI800_515800": 100.6849,
+      "DIVIDEND_510880": 95.0311,
+      "BANKS_512800": 96.2025,
+      "CONSUMER_159928": 86.1953,
+      "GROWTH_159915": 104.8387,
+      "GROWTH_159957": 104.4177,
+      "TECH_588000": 121.4876
+    },
+    {
+      "date": "2026-07-07",
+      "CSI800_CASHFLOW": 87.5074,
+      "GUOZHENG_CASHFLOW": 82.7149,
+      "FTSE_A_CASHFLOW": 84.4828,
+      "CASHFLOW_3_INDEX_EQUAL": 84.9064,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 100.0,
+      "CSI800_515800": 99.3151,
+      "DIVIDEND_510880": 94.0994,
+      "BANKS_512800": 96.2025,
+      "CONSUMER_159928": 84.8485,
+      "GROWTH_159915": 103.6866,
+      "GROWTH_159957": 103.2129,
+      "TECH_588000": 122.314
+    },
+    {
+      "date": "2026-07-08",
+      "CSI800_CASHFLOW": 86.733,
+      "GUOZHENG_CASHFLOW": 82.7149,
+      "FTSE_A_CASHFLOW": 83.6207,
+      "CASHFLOW_3_INDEX_EQUAL": 84.3671,
+      "CSI300_510300": 98.5981,
+      "CSI500_510500": 98.6014,
+      "CSI800_515800": 98.6301,
+      "DIVIDEND_510880": 94.7205,
+      "BANKS_512800": 97.4684,
+      "CONSUMER_159928": 84.1751,
+      "GROWTH_159915": 102.0737,
+      "GROWTH_159957": 102.008,
+      "TECH_588000": 123.1405
+    },
+    {
+      "date": "2026-07-09",
+      "CSI800_CASHFLOW": 86.733,
+      "GUOZHENG_CASHFLOW": 81.956,
+      "FTSE_A_CASHFLOW": 83.6207,
+      "CASHFLOW_3_INDEX_EQUAL": 84.1091,
+      "CSI300_510300": 100.4673,
+      "CSI500_510500": 101.3986,
+      "CSI800_515800": 101.3699,
+      "DIVIDEND_510880": 93.7888,
+      "BANKS_512800": 96.2025,
+      "CONSUMER_159928": 83.165,
+      "GROWTH_159915": 106.682,
+      "GROWTH_159957": 106.4257,
+      "TECH_588000": 133.8843
+    },
+    {
+      "date": "2026-07-10",
+      "CSI800_CASHFLOW": 87.5143,
+      "GUOZHENG_CASHFLOW": 82.7149,
+      "FTSE_A_CASHFLOW": 84.4828,
+      "CASHFLOW_3_INDEX_EQUAL": 84.9103,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 100.3497,
+      "CSI800_515800": 100.0,
+      "DIVIDEND_510880": 94.0994,
+      "BANKS_512800": 96.8354,
+      "CONSUMER_159928": 85.1852,
+      "GROWTH_159915": 101.8433,
+      "GROWTH_159957": 102.008,
+      "TECH_588000": 126.4463
+    },
+    {
+      "date": "2026-07-13",
+      "CSI800_CASHFLOW": 86.733,
+      "GUOZHENG_CASHFLOW": 81.956,
+      "FTSE_A_CASHFLOW": 84.4828,
+      "CASHFLOW_3_INDEX_EQUAL": 84.398,
+      "CSI300_510300": 97.6636,
+      "CSI500_510500": 95.8042,
+      "CSI800_515800": 97.2603,
+      "DIVIDEND_510880": 94.4099,
+      "BANKS_512800": 98.7342,
+      "CONSUMER_159928": 84.8485,
+      "GROWTH_159915": 99.0783,
+      "GROWTH_159957": 98.7952,
+      "TECH_588000": 120.6612
+    },
+    {
+      "date": "2026-07-14",
+      "CSI800_CASHFLOW": 88.2957,
+      "GUOZHENG_CASHFLOW": 84.2326,
+      "FTSE_A_CASHFLOW": 85.3448,
+      "CASHFLOW_3_INDEX_EQUAL": 85.9734,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 97.2028,
+      "CSI800_515800": 99.3151,
+      "DIVIDEND_510880": 95.9627,
+      "BANKS_512800": 98.7342,
+      "CONSUMER_159928": 85.1852,
+      "GROWTH_159915": 102.0737,
+      "GROWTH_159957": 102.008,
+      "TECH_588000": 122.314
+    },
+    {
+      "date": "2026-07-15",
+      "CSI800_CASHFLOW": 89.8585,
+      "GUOZHENG_CASHFLOW": 85.6603,
+      "FTSE_A_CASHFLOW": 87.069,
+      "CASHFLOW_3_INDEX_EQUAL": 87.5453,
+      "CSI300_510300": 99.0654,
+      "CSI500_510500": 95.8042,
+      "CSI800_515800": 98.6301,
+      "DIVIDEND_510880": 96.8944,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 88.2155,
+      "GROWTH_159915": 101.1521,
+      "GROWTH_159957": 100.8032,
+      "TECH_588000": 116.5289
+    },
+    {
+      "date": "2026-07-16",
+      "CSI800_CASHFLOW": 89.1034,
+      "GUOZHENG_CASHFLOW": 84.9022,
+      "FTSE_A_CASHFLOW": 86.2069,
+      "CASHFLOW_3_INDEX_EQUAL": 86.7529,
+      "CSI300_510300": 97.6636,
+      "CSI500_510500": 93.7063,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 95.9627,
+      "BANKS_512800": 98.7342,
+      "CONSUMER_159928": 89.5623,
+      "GROWTH_159915": 98.3871,
+      "GROWTH_159957": 98.3936,
+      "TECH_588000": 111.5702
+    },
+    {
+      "date": "2026-07-17",
+      "CSI800_CASHFLOW": 88.1654,
+      "GUOZHENG_CASHFLOW": 84.1887,
+      "FTSE_A_CASHFLOW": 86.2069,
+      "CASHFLOW_3_INDEX_EQUAL": 86.2055,
+      "CSI300_510300": 94.8598,
+      "CSI500_510500": 88.4615,
+      "CSI800_515800": 93.1507,
+      "DIVIDEND_510880": 95.9627,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 87.8788,
+      "GROWTH_159915": 91.4747,
+      "GROWTH_159957": 91.5663,
+      "TECH_588000": 103.3058
+    },
+    {
+      "date": "2026-07-20",
+      "CSI800_CASHFLOW": 91.9987,
+      "GUOZHENG_CASHFLOW": 87.0426,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 89.5783,
+      "CSI300_510300": 95.7944,
+      "CSI500_510500": 87.7622,
+      "CSI800_515800": 94.5205,
+      "DIVIDEND_510880": 98.1366,
+      "BANKS_512800": 102.5316,
+      "CONSUMER_159928": 90.9091,
+      "GROWTH_159915": 91.7051,
+      "GROWTH_159957": 91.5663,
+      "TECH_588000": 104.1322
+    },
+    {
+      "date": "2026-07-21",
+      "CSI800_CASHFLOW": 91.9987,
+      "GUOZHENG_CASHFLOW": 87.0426,
+      "FTSE_A_CASHFLOW": 88.7931,
+      "CASHFLOW_3_INDEX_EQUAL": 89.2912,
+      "CSI300_510300": 98.1308,
+      "CSI500_510500": 91.958,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 97.205,
+      "BANKS_512800": 100.0,
+      "CONSUMER_159928": 90.2357,
+      "GROWTH_159915": 97.9263,
+      "GROWTH_159957": 97.992,
+      "TECH_588000": 115.7025
+    },
+    {
+      "date": "2026-07-22",
+      "CSI800_CASHFLOW": 92.7784,
+      "GUOZHENG_CASHFLOW": 87.7561,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 90.0764,
+      "CSI300_510300": 97.6636,
+      "CSI500_510500": 91.2587,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 98.1366,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 90.5724,
+      "GROWTH_159915": 94.7005,
+      "GROWTH_159957": 94.3775,
+      "TECH_588000": 112.3967
+    },
+    {
+      "date": "2026-07-23",
+      "CSI800_CASHFLOW": 93.558,
+      "GUOZHENG_CASHFLOW": 89.183,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 91.1056,
+      "CSI300_510300": 98.1308,
+      "CSI500_510500": 91.2587,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 98.7578,
+      "BANKS_512800": 101.8987,
+      "CONSUMER_159928": 90.2357,
+      "GROWTH_159915": 94.9309,
+      "GROWTH_159957": 94.7791,
+      "TECH_588000": 108.2645
+    },
+    {
+      "date": "2026-07-24",
+      "CSI800_CASHFLOW": 91.2945,
+      "GUOZHENG_CASHFLOW": 87.5466,
+      "FTSE_A_CASHFLOW": 88.7931,
+      "CASHFLOW_3_INDEX_EQUAL": 89.2352,
+      "CSI300_510300": 96.729,
+      "CSI500_510500": 89.1608,
+      "CSI800_515800": 95.2055,
+      "DIVIDEND_510880": 97.5155,
+      "BANKS_512800": 101.8987,
+      "CONSUMER_159928": 88.2155,
+      "GROWTH_159915": 92.6267,
+      "GROWTH_159957": 92.3695,
+      "TECH_588000": 108.2645
+    },
+    {
+      "date": "2026-07-27",
+      "CSI800_CASHFLOW": 92.0748,
+      "GUOZHENG_CASHFLOW": 88.2642,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 90.022,
+      "CSI300_510300": 97.6636,
+      "CSI500_510500": 91.2587,
+      "CSI800_515800": 96.5753,
+      "DIVIDEND_510880": 97.8261,
+      "BANKS_512800": 101.8987,
+      "CONSUMER_159928": 89.2256,
+      "GROWTH_159915": 95.3917,
+      "GROWTH_159957": 95.1807,
+      "TECH_588000": 109.9174
+    },
+    {
+      "date": "2026-07-28",
+      "CSI800_CASHFLOW": 92.0748,
+      "GUOZHENG_CASHFLOW": 88.2642,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 90.022,
+      "CSI300_510300": 95.3271,
+      "CSI500_510500": 88.1119,
+      "CSI800_515800": 93.8356,
+      "DIVIDEND_510880": 97.8261,
+      "BANKS_512800": 103.7975,
+      "CONSUMER_159928": 90.5724,
+      "GROWTH_159915": 88.4793,
+      "GROWTH_159957": 88.3534,
+      "TECH_588000": 102.4793
+    },
+    {
+      "date": "2026-07-29",
+      "CSI800_CASHFLOW": 94.3389,
+      "GUOZHENG_CASHFLOW": 89.0815,
+      "FTSE_A_CASHFLOW": 91.3793,
+      "CASHFLOW_3_INDEX_EQUAL": 91.6148,
+      "CSI300_510300": 95.7944,
+      "CSI500_510500": 89.1608,
+      "CSI800_515800": 94.5205,
+      "DIVIDEND_510880": 98.7578,
+      "BANKS_512800": 103.7975,
+      "CONSUMER_159928": 91.5825,
+      "GROWTH_159915": 89.8618,
+      "GROWTH_159957": 89.5582,
+      "TECH_588000": 101.6529
+    },
+    {
+      "date": "2026-07-30",
+      "CSI800_CASHFLOW": 95.1186,
+      "GUOZHENG_CASHFLOW": 90.6042,
+      "FTSE_A_CASHFLOW": 93.1034,
+      "CASHFLOW_3_INDEX_EQUAL": 92.9654,
+      "CSI300_510300": 94.8598,
+      "CSI500_510500": 86.7133,
+      "CSI800_515800": 93.1507,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 106.3291,
+      "CONSUMER_159928": 94.2761,
+      "GROWTH_159915": 86.4055,
+      "GROWTH_159957": 85.9438,
+      "TECH_588000": 95.8678
+    },
+    {
+      "date": "2026-07-31",
+      "CSI800_CASHFLOW": 95.1186,
+      "GUOZHENG_CASHFLOW": 90.6042,
+      "FTSE_A_CASHFLOW": 92.2414,
+      "CASHFLOW_3_INDEX_EQUAL": 92.6785,
+      "CSI300_510300": 95.7944,
+      "CSI500_510500": 88.4615,
+      "CSI800_515800": 94.5205,
+      "DIVIDEND_510880": 99.3789,
+      "BANKS_512800": 105.6962,
+      "CONSUMER_159928": 93.9394,
+      "GROWTH_159915": 88.9401,
+      "GROWTH_159957": 88.755,
+      "TECH_588000": 99.1736
+    },
+    {
+      "date": "2026-08-03",
+      "CSI800_CASHFLOW": 94.3576,
+      "GUOZHENG_CASHFLOW": 90.6042,
+      "FTSE_A_CASHFLOW": 92.2414,
+      "CASHFLOW_3_INDEX_EQUAL": 92.4314,
+      "CSI300_510300": 94.8598,
+      "CSI500_510500": 87.7622,
+      "CSI800_515800": 93.8356,
+      "DIVIDEND_510880": 99.0683,
+      "BANKS_512800": 105.0633,
+      "CONSUMER_159928": 92.9293,
+      "GROWTH_159915": 87.788,
+      "GROWTH_159957": 87.5502,
+      "TECH_588000": 94.2149
+    },
+    {
+      "date": "2026-08-04",
+      "CSI800_CASHFLOW": 93.5778,
+      "GUOZHENG_CASHFLOW": 89.1774,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 91.1156,
+      "CSI300_510300": 95.7944,
+      "CSI500_510500": 89.8601,
+      "CSI800_515800": 94.5205,
+      "DIVIDEND_510880": 97.8261,
+      "BANKS_512800": 102.5316,
+      "CONSUMER_159928": 91.5825,
+      "GROWTH_159915": 92.8571,
+      "GROWTH_159957": 92.3695,
+      "TECH_588000": 97.5207
+    },
+    {
+      "date": "2026-08-05",
+      "CSI800_CASHFLOW": 93.5778,
+      "GUOZHENG_CASHFLOW": 89.1774,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 91.1156,
+      "CSI300_510300": 97.1963,
+      "CSI500_510500": 91.958,
+      "CSI800_515800": 95.8904,
+      "DIVIDEND_510880": 97.8261,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 90.9091,
+      "GROWTH_159915": 94.0092,
+      "GROWTH_159957": 93.5743,
+      "TECH_588000": 102.4793
+    },
+    {
+      "date": "2026-08-06",
+      "CSI800_CASHFLOW": 92.9692,
+      "GUOZHENG_CASHFLOW": 88.9319,
+      "FTSE_A_CASHFLOW": 90.0862,
+      "CASHFLOW_3_INDEX_EQUAL": 90.6899,
+      "CSI300_510300": 96.8692,
+      "CSI500_510500": 92.3077,
+      "CSI800_515800": 96.0959,
+      "DIVIDEND_510880": 98.9752,
+      "BANKS_512800": 101.8987,
+      "CONSUMER_159928": 90.101,
+      "GROWTH_159915": 93.4332,
+      "GROWTH_159957": 93.0924,
+      "TECH_588000": 102.9752
+    },
+    {
+      "date": "2026-08-07",
+      "CSI800_CASHFLOW": 93.0488,
+      "GUOZHENG_CASHFLOW": 88.8501,
+      "FTSE_A_CASHFLOW": 90.0,
+      "CASHFLOW_3_INDEX_EQUAL": 90.659,
+      "CSI300_510300": 97.6168,
+      "CSI500_510500": 94.021,
+      "CSI800_515800": 97.3288,
+      "DIVIDEND_510880": 98.8509,
+      "BANKS_512800": 101.0127,
+      "CONSUMER_159928": 90.5051,
+      "GROWTH_159915": 94.6544,
+      "GROWTH_159957": 94.257,
+      "TECH_588000": 105.6198
+    },
+    {
+      "date": "2026-08-10",
+      "CSI800_CASHFLOW": 94.5193,
+      "GUOZHENG_CASHFLOW": 90.3476,
+      "FTSE_A_CASHFLOW": 91.3793,
+      "CASHFLOW_3_INDEX_EQUAL": 92.109,
+      "CSI300_510300": 97.757,
+      "CSI500_510500": 94.5804,
+      "CSI800_515800": 97.3973,
+      "DIVIDEND_510880": 99.6273,
+      "BANKS_512800": 101.6456,
+      "CONSUMER_159928": 92.9293,
+      "GROWTH_159915": 93.9401,
+      "GROWTH_159957": 93.5743,
+      "TECH_588000": 105.2893
+    },
+    {
+      "date": "2026-08-11",
+      "CSI800_CASHFLOW": 94.4812,
+      "GUOZHENG_CASHFLOW": 90.4294,
+      "FTSE_A_CASHFLOW": 91.2931,
+      "CASHFLOW_3_INDEX_EQUAL": 92.0955,
+      "CSI300_510300": 97.1963,
+      "CSI500_510500": 94.0559,
+      "CSI800_515800": 96.6438,
+      "DIVIDEND_510880": 99.4099,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 91.7172,
+      "GROWTH_159915": 94.1014,
+      "GROWTH_159957": 93.9357,
+      "TECH_588000": 103.6364
+    },
+    {
+      "date": "2026-08-12",
+      "CSI800_CASHFLOW": 94.4812,
+      "GUOZHENG_CASHFLOW": 90.3533,
+      "FTSE_A_CASHFLOW": 91.3793,
+      "CASHFLOW_3_INDEX_EQUAL": 92.0987,
+      "CSI300_510300": 97.5701,
+      "CSI500_510500": 94.7902,
+      "CSI800_515800": 97.3288,
+      "DIVIDEND_510880": 99.2857,
+      "BANKS_512800": 101.2658,
+      "CONSUMER_159928": 91.9865,
+      "GROWTH_159915": 95.576,
+      "GROWTH_159957": 95.3012,
+      "TECH_588000": 105.2066
+    },
+    {
+      "date": "2026-08-13",
+      "CSI800_CASHFLOW": 92.9982,
+      "GUOZHENG_CASHFLOW": 89.453,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 91.0213,
+      "CSI300_510300": 97.243,
+      "CSI500_510500": 93.951,
+      "CSI800_515800": 96.9178,
+      "DIVIDEND_510880": 98.6646,
+      "BANKS_512800": 101.6456,
+      "CONSUMER_159928": 92.1212,
+      "GROWTH_159915": 95.1382,
+      "GROWTH_159957": 94.8594,
+      "TECH_588000": 103.9669
+    },
+    {
+      "date": "2026-08-14",
+      "CSI800_CASHFLOW": 92.6773,
+      "GUOZHENG_CASHFLOW": 89.3003,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 90.8648,
+      "CSI300_510300": 97.1963,
+      "CSI500_510500": 94.1608,
+      "CSI800_515800": 96.9178,
+      "DIVIDEND_510880": 99.1615,
+      "BANKS_512800": 100.8861,
+      "CONSUMER_159928": 90.6397,
+      "GROWTH_159915": 96.2212,
+      "GROWTH_159957": 95.9036,
+      "TECH_588000": 104.1322
+    },
+    {
+      "date": "2026-08-17",
+      "CSI800_CASHFLOW": 93.4062,
+      "GUOZHENG_CASHFLOW": 90.1556,
+      "FTSE_A_CASHFLOW": 90.9483,
+      "CASHFLOW_3_INDEX_EQUAL": 91.5373,
+      "CSI300_510300": 98.4579,
+      "CSI500_510500": 96.3986,
+      "CSI800_515800": 98.5616,
+      "DIVIDEND_510880": 99.3168,
+      "BANKS_512800": 100.7595,
+      "CONSUMER_159928": 89.8316,
+      "GROWTH_159915": 99.1475,
+      "GROWTH_159957": 98.7952,
+      "TECH_588000": 108.3471
+    },
+    {
+      "date": "2026-08-18",
+      "CSI800_CASHFLOW": 93.7867,
+      "GUOZHENG_CASHFLOW": 90.4407,
+      "FTSE_A_CASHFLOW": 91.1207,
+      "CASHFLOW_3_INDEX_EQUAL": 91.8159,
+      "CSI300_510300": 98.2243,
+      "CSI500_510500": 96.2587,
+      "CSI800_515800": 98.3562,
+      "DIVIDEND_510880": 100.0311,
+      "BANKS_512800": 101.519,
+      "CONSUMER_159928": 90.3704,
+      "GROWTH_159915": 98.2719,
+      "GROWTH_159957": 97.992,
+      "TECH_588000": 108.3471
+    },
+    {
+      "date": "2026-08-19",
+      "CSI800_CASHFLOW": 93.0222,
+      "GUOZHENG_CASHFLOW": 89.5854,
+      "FTSE_A_CASHFLOW": 90.6897,
+      "CASHFLOW_3_INDEX_EQUAL": 91.1323,
+      "CSI300_510300": 95.9346,
+      "CSI500_510500": 91.993,
+      "CSI800_515800": 95.411,
+      "DIVIDEND_510880": 100.4658,
+      "BANKS_512800": 103.1646,
+      "CONSUMER_159928": 89.4276,
+      "GROWTH_159915": 92.3272,
+      "GROWTH_159957": 92.0482,
+      "TECH_588000": 101.0744
+    },
+    {
+      "date": "2026-08-20",
+      "CSI800_CASHFLOW": 93.6859,
+      "GUOZHENG_CASHFLOW": 90.1581,
+      "FTSE_A_CASHFLOW": 91.5517,
+      "CASHFLOW_3_INDEX_EQUAL": 91.832,
+      "CSI300_510300": 95.9346,
+      "CSI500_510500": 92.6573,
+      "CSI800_515800": 95.4795,
+      "DIVIDEND_510880": 100.9006,
+      "BANKS_512800": 103.5443,
+      "CONSUMER_159928": 90.101,
+      "GROWTH_159915": 92.6959,
+      "GROWTH_159957": 92.4096,
+      "TECH_588000": 100.0826
+    },
+    {
+      "date": "2026-08-21",
+      "CSI800_CASHFLOW": 93.4785,
+      "GUOZHENG_CASHFLOW": 89.9127,
+      "FTSE_A_CASHFLOW": 91.2069,
+      "CASHFLOW_3_INDEX_EQUAL": 91.5656,
+      "CSI300_510300": 96.4019,
+      "CSI500_510500": 92.6923,
+      "CSI800_515800": 96.0959,
+      "DIVIDEND_510880": 100.9938,
+      "BANKS_512800": 103.1646,
+      "CONSUMER_159928": 88.7542,
+      "GROWTH_159915": 93.9631,
+      "GROWTH_159957": 93.7751,
+      "TECH_588000": 100.1653
+    },
+    {
+      "date": "2026-08-24",
+      "CSI800_CASHFLOW": 93.4785,
+      "GUOZHENG_CASHFLOW": 89.9127,
+      "FTSE_A_CASHFLOW": 91.2069,
+      "CASHFLOW_3_INDEX_EQUAL": 91.5656,
+      "CSI300_510300": 95.4673,
+      "CSI500_510500": 91.2587,
+      "CSI800_515800": 94.863,
+      "DIVIDEND_510880": 102.0807,
+      "BANKS_512800": 104.6835,
+      "CONSUMER_159928": 88.8889,
+      "GROWTH_159915": 91.2442,
+      "GROWTH_159957": 90.8835,
+      "TECH_588000": 97.0248
+    },
+    {
+      "date": "2026-08-25",
+      "CSI800_CASHFLOW": 93.3927,
+      "GUOZHENG_CASHFLOW": 90.0762,
+      "FTSE_A_CASHFLOW": 91.4655,
+      "CASHFLOW_3_INDEX_EQUAL": 91.6796,
+      "CSI300_510300": 95.2804,
+      "CSI500_510500": 91.1189,
+      "CSI800_515800": 94.6575,
+      "DIVIDEND_510880": 101.4596,
+      "BANKS_512800": 103.9241,
+      "CONSUMER_159928": 89.4276,
+      "GROWTH_159915": 90.2535,
+      "GROWTH_159957": 89.9197,
+      "TECH_588000": 97.1901
+    },
+    {
+      "date": "2026-08-26",
+      "CSI800_CASHFLOW": 93.9535,
+      "GUOZHENG_CASHFLOW": 90.4031,
+      "FTSE_A_CASHFLOW": 91.8966,
+      "CASHFLOW_3_INDEX_EQUAL": 92.1181,
+      "CSI300_510300": 95.8879,
+      "CSI500_510500": 91.8182,
+      "CSI800_515800": 95.274,
+      "DIVIDEND_510880": 102.0807,
+      "BANKS_512800": 104.9367,
+      "CONSUMER_159928": 89.5623,
+      "GROWTH_159915": 90.5991,
+      "GROWTH_159957": 90.3213,
+      "TECH_588000": 98.7603
+    },
+    {
+      "date": "2026-08-27",
+      "CSI800_CASHFLOW": 94.1056,
+      "GUOZHENG_CASHFLOW": 90.3214,
+      "FTSE_A_CASHFLOW": 91.4655,
+      "CASHFLOW_3_INDEX_EQUAL": 91.996,
+      "CSI300_510300": 96.5888,
+      "CSI500_510500": 93.8811,
+      "CSI800_515800": 96.3014,
+      "DIVIDEND_510880": 102.3602,
+      "BANKS_512800": 103.6709,
+      "CONSUMER_159928": 89.5623,
+      "GROWTH_159915": 92.235,
+      "GROWTH_159957": 91.8876,
+      "TECH_588000": 102.6446
+    },
+    {
+      "date": "2026-08-28",
+      "CSI800_CASHFLOW": 94.5634,
+      "GUOZHENG_CASHFLOW": 91.1037,
+      "FTSE_A_CASHFLOW": 91.8103,
+      "CASHFLOW_3_INDEX_EQUAL": 92.5264,
+      "CSI300_510300": 96.3551,
+      "CSI500_510500": 93.3217,
+      "CSI800_515800": 96.1644,
+      "DIVIDEND_510880": 102.5155,
+      "BANKS_512800": 103.4177,
+      "CONSUMER_159928": 90.3704,
+      "GROWTH_159915": 90.8756,
+      "GROWTH_159957": 90.6024,
+      "TECH_588000": 100.8264
+    },
+    {
+      "date": "2026-08-31",
+      "CSI800_CASHFLOW": 94.6849,
+      "GUOZHENG_CASHFLOW": 91.1037,
+      "FTSE_A_CASHFLOW": 91.8103,
+      "CASHFLOW_3_INDEX_EQUAL": 92.566,
+      "CSI300_510300": 96.4486,
+      "CSI500_510500": 93.8112,
+      "CSI800_515800": 96.3699,
+      "DIVIDEND_510880": 103.0745,
+      "BANKS_512800": 104.9367,
+      "CONSUMER_159928": 89.697,
+      "GROWTH_159915": 91.2212,
+      "GROWTH_159957": 90.8434,
+      "TECH_588000": 101.9835
+    },
+    {
+      "date": "2026-09-01",
+      "CSI800_CASHFLOW": 94.5551,
+      "GUOZHENG_CASHFLOW": 91.1037,
+      "FTSE_A_CASHFLOW": 92.069,
+      "CASHFLOW_3_INDEX_EQUAL": 92.6106,
+      "CSI300_510300": 96.4486,
+      "CSI500_510500": 92.8322,
+      "CSI800_515800": 96.0959,
+      "DIVIDEND_510880": 102.9193,
+      "BANKS_512800": 107.0886,
+      "CONSUMER_159928": 90.7744,
+      "GROWTH_159915": 90.0691,
+      "GROWTH_159957": 89.8394,
+      "TECH_588000": 99.8347
+    },
+    {
+      "date": "2026-09-02",
+      "CSI800_CASHFLOW": 92.9525,
+      "GUOZHENG_CASHFLOW": 89.6113,
+      "FTSE_A_CASHFLOW": 90.7759,
+      "CASHFLOW_3_INDEX_EQUAL": 91.1481,
+      "CSI300_510300": 95.3271,
+      "CSI500_510500": 91.3986,
+      "CSI800_515800": 94.589,
+      "DIVIDEND_510880": 101.8323,
+      "BANKS_512800": 106.8354,
+      "CONSUMER_159928": 89.9663,
+      "GROWTH_159915": 88.0415,
+      "GROWTH_159957": 87.6707,
+      "TECH_588000": 98.0165
+    },
+    {
+      "date": "2026-09-03",
+      "CSI800_CASHFLOW": 93.2173,
+      "GUOZHENG_CASHFLOW": 89.6875,
+      "FTSE_A_CASHFLOW": 90.8621,
+      "CASHFLOW_3_INDEX_EQUAL": 91.2894,
+      "CSI300_510300": 95.3738,
+      "CSI500_510500": 91.7133,
+      "CSI800_515800": 94.9315,
+      "DIVIDEND_510880": 101.9876,
+      "BANKS_512800": 106.3291,
+      "CONSUMER_159928": 89.5623,
+      "GROWTH_159915": 87.9032,
+      "GROWTH_159957": 87.6305,
+      "TECH_588000": 97.7686
+    },
+    {
+      "date": "2026-09-04",
+      "CSI800_CASHFLOW": 93.817,
+      "GUOZHENG_CASHFLOW": 90.2593,
+      "FTSE_A_CASHFLOW": 91.1207,
+      "CASHFLOW_3_INDEX_EQUAL": 91.7658,
+      "CSI300_510300": 95.2804,
+      "CSI500_510500": 90.5245,
+      "CSI800_515800": 94.3836,
+      "DIVIDEND_510880": 102.0497,
+      "BANKS_512800": 107.3418,
+      "CONSUMER_159928": 92.5253,
+      "GROWTH_159915": 87.235,
+      "GROWTH_159957": 87.0281,
+      "TECH_588000": 95.7025
+    },
+    {
+      "date": "2026-09-07",
+      "CSI800_CASHFLOW": 93.599,
+      "GUOZHENG_CASHFLOW": 89.9326,
+      "FTSE_A_CASHFLOW": 90.8621,
+      "CASHFLOW_3_INDEX_EQUAL": 91.4971,
+      "CSI300_510300": 95.5607,
+      "CSI500_510500": 91.6084,
+      "CSI800_515800": 95.0685,
+      "DIVIDEND_510880": 101.0559,
+      "BANKS_512800": 105.6962,
+      "CONSUMER_159928": 91.9865,
+      "GROWTH_159915": 90.1152,
+      "GROWTH_159957": 89.8394,
+      "TECH_588000": 97.8512
+    },
+    {
+      "date": "2026-09-08",
+      "CSI800_CASHFLOW": 93.8753,
+      "GUOZHENG_CASHFLOW": 90.5413,
+      "FTSE_A_CASHFLOW": 91.5517,
+      "CASHFLOW_3_INDEX_EQUAL": 92.0251,
+      "CSI300_510300": 95.4206,
+      "CSI500_510500": 91.8182,
+      "CSI800_515800": 95.0,
+      "DIVIDEND_510880": 102.205,
+      "BANKS_512800": 106.2025,
+      "CONSUMER_159928": 91.9865,
+      "GROWTH_159915": 89.1244,
+      "GROWTH_159957": 88.8755,
+      "TECH_588000": 96.4463
+    },
+    {
+      "date": "2026-09-09",
+      "CSI800_CASHFLOW": 94.3899,
+      "GUOZHENG_CASHFLOW": 91.3021,
+      "FTSE_A_CASHFLOW": 91.9828,
+      "CASHFLOW_3_INDEX_EQUAL": 92.5954,
+      "CSI300_510300": 95.6542,
+      "CSI500_510500": 91.7832,
+      "CSI800_515800": 95.2055,
+      "DIVIDEND_510880": 103.2609,
+      "BANKS_512800": 106.5823,
+      "CONSUMER_159928": 91.4478,
+      "GROWTH_159915": 89.0323,
+      "GROWTH_159957": 88.755,
+      "TECH_588000": 95.9504
+    },
+    {
+      "date": "2026-09-10",
+      "CSI800_CASHFLOW": 93.5119,
+      "GUOZHENG_CASHFLOW": 90.8934,
+      "FTSE_A_CASHFLOW": 91.8103,
+      "CASHFLOW_3_INDEX_EQUAL": 92.1123,
+      "CSI300_510300": 95.2804,
+      "CSI500_510500": 91.2937,
+      "CSI800_515800": 94.6575,
+      "DIVIDEND_510880": 102.764,
+      "BANKS_512800": 107.9747,
+      "CONSUMER_159928": 89.8316,
+      "GROWTH_159915": 88.6406,
+      "GROWTH_159957": 88.3936,
+      "TECH_588000": 95.2066
+    },
+    {
+      "date": "2026-09-11",
+      "CSI800_CASHFLOW": 92.013,
+      "GUOZHENG_CASHFLOW": 89.8274,
+      "FTSE_A_CASHFLOW": 91.0345,
+      "CASHFLOW_3_INDEX_EQUAL": 91.0006,
+      "CSI300_510300": 94.6262,
+      "CSI500_510500": 89.8252,
+      "CSI800_515800": 93.8356,
+      "DIVIDEND_510880": 101.646,
+      "BANKS_512800": 107.2152,
+      "CONSUMER_159928": 88.6195,
+      "GROWTH_159915": 88.1797,
+      "GROWTH_159957": 87.8715,
+      "TECH_588000": 94.0496
+    },
+    {
+      "date": "2026-09-14",
+      "CSI800_CASHFLOW": 91.8595,
+      "GUOZHENG_CASHFLOW": 89.9037,
+      "FTSE_A_CASHFLOW": 91.0345,
+      "CASHFLOW_3_INDEX_EQUAL": 90.9758,
+      "CSI300_510300": 94.1589,
+      "CSI500_510500": 89.6853,
+      "CSI800_515800": 93.2192,
+      "DIVIDEND_510880": 101.3354,
+      "BANKS_512800": 108.3544,
+      "CONSUMER_159928": 88.4848,
+      "GROWTH_159915": 87.212,
+      "GROWTH_159957": 86.988,
+      "TECH_588000": 92.562
+    },
+    {
+      "date": "2026-09-15",
+      "CSI800_CASHFLOW": 90.9961,
+      "GUOZHENG_CASHFLOW": 89.1412,
+      "FTSE_A_CASHFLOW": 90.6034,
+      "CASHFLOW_3_INDEX_EQUAL": 90.2899,
+      "CSI300_510300": 93.6449,
+      "CSI500_510500": 89.5455,
+      "CSI800_515800": 92.9452,
+      "DIVIDEND_510880": 100.9006,
+      "BANKS_512800": 106.7089,
+      "CONSUMER_159928": 88.0808,
+      "GROWTH_159915": 86.2673,
+      "GROWTH_159957": 86.0241,
+      "TECH_588000": 94.0496
+    },
+    {
+      "date": "2026-09-16",
+      "CSI800_CASHFLOW": 90.3124,
+      "GUOZHENG_CASHFLOW": 88.6074,
+      "FTSE_A_CASHFLOW": 89.9138,
+      "CASHFLOW_3_INDEX_EQUAL": 89.6545,
+      "CSI300_510300": 94.1121,
+      "CSI500_510500": 90.9091,
+      "CSI800_515800": 93.5616,
+      "DIVIDEND_510880": 100.5901,
+      "BANKS_512800": 106.2025,
+      "CONSUMER_159928": 87.2727,
+      "GROWTH_159915": 87.9032,
+      "GROWTH_159957": 87.6305,
+      "TECH_588000": 98.0165
+    },
+    {
+      "date": "2026-09-17",
+      "CSI800_CASHFLOW": 90.0462,
+      "GUOZHENG_CASHFLOW": 88.3786,
+      "FTSE_A_CASHFLOW": 89.3966,
+      "CASHFLOW_3_INDEX_EQUAL": 89.3173,
+      "CSI300_510300": 93.8318,
+      "CSI500_510500": 90.5944,
+      "CSI800_515800": 93.3562,
+      "DIVIDEND_510880": 100.1863,
+      "BANKS_512800": 105.9494,
+      "CONSUMER_159928": 87.4074,
+      "GROWTH_159915": 87.6037,
+      "GROWTH_159957": 87.2691,
+      "TECH_588000": 97.3554
+    },
+    {
+      "date": "2026-09-18",
+      "CSI800_CASHFLOW": 90.3533,
+      "GUOZHENG_CASHFLOW": 88.8692,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 89.6702,
+      "CSI300_510300": 94.6729,
+      "CSI500_510500": 92.2727,
+      "CSI800_515800": 94.5205,
+      "DIVIDEND_510880": 100.0311,
+      "BANKS_512800": 105.6962,
+      "CONSUMER_159928": 87.8114,
+      "GROWTH_159915": 89.5161,
+      "GROWTH_159957": 89.1566,
+      "TECH_588000": 100.0826
+    },
+    {
+      "date": "2026-09-21",
+      "CSI800_CASHFLOW": 90.5951,
+      "GUOZHENG_CASHFLOW": 89.4414,
+      "FTSE_A_CASHFLOW": 90.0,
+      "CASHFLOW_3_INDEX_EQUAL": 90.0577,
+      "CSI300_510300": 95.1402,
+      "CSI500_510500": 92.7622,
+      "CSI800_515800": 95.137,
+      "DIVIDEND_510880": 100.9627,
+      "BANKS_512800": 106.2025,
+      "CONSUMER_159928": 88.6195,
+      "GROWTH_159915": 90.2304,
+      "GROWTH_159957": 89.8795,
+      "TECH_588000": 100.4132
+    },
+    {
+      "date": "2026-09-22",
+      "CSI800_CASHFLOW": 90.5095,
+      "GUOZHENG_CASHFLOW": 89.1573,
+      "FTSE_A_CASHFLOW": 89.6552,
+      "CASHFLOW_3_INDEX_EQUAL": 89.8189,
+      "CSI300_510300": 95.2336,
+      "CSI500_510500": 92.4825,
+      "CSI800_515800": 95.0685,
+      "DIVIDEND_510880": 100.8696,
+      "BANKS_512800": 106.2025,
+      "CONSUMER_159928": 88.6195,
+      "GROWTH_159915": 90.2765,
+      "GROWTH_159957": 90.0,
+      "TECH_588000": 100.9091
+    },
+    {
+      "date": "2026-09-23",
+      "CSI800_CASHFLOW": 89.6319,
+      "GUOZHENG_CASHFLOW": 88.2337,
+      "FTSE_A_CASHFLOW": 88.9655,
+      "CASHFLOW_3_INDEX_EQUAL": 88.9882,
+      "CSI300_510300": 94.8131,
+      "CSI500_510500": 92.1329,
+      "CSI800_515800": 94.726,
+      "DIVIDEND_510880": 100.2484,
+      "BANKS_512800": 105.443,
+      "CONSUMER_159928": 88.3502,
+      "GROWTH_159915": 89.7235,
+      "GROWTH_159957": 89.4378,
+      "TECH_588000": 100.7438
+    },
+    {
+      "date": "2026-09-24",
+      "CSI800_CASHFLOW": 89.1596,
+      "GUOZHENG_CASHFLOW": 87.7431,
+      "FTSE_A_CASHFLOW": 88.4483,
+      "CASHFLOW_3_INDEX_EQUAL": 88.4945,
+      "CSI300_510300": 93.5047,
+      "CSI500_510500": 90.2448,
+      "CSI800_515800": 93.0822,
+      "DIVIDEND_510880": 100.4037,
+      "BANKS_512800": 106.2025,
+      "CONSUMER_159928": 87.0034,
+      "GROWTH_159915": 87.4194,
+      "GROWTH_159957": 87.1486,
+      "TECH_588000": 98.3471
+    },
+    {
+      "date": "2026-09-28",
+      "CSI800_CASHFLOW": 89.0089,
+      "GUOZHENG_CASHFLOW": 87.5142,
+      "FTSE_A_CASHFLOW": 88.1034,
+      "CASHFLOW_3_INDEX_EQUAL": 88.2526,
+      "CSI300_510300": 91.8224,
+      "CSI500_510500": 87.9021,
+      "CSI800_515800": 91.0274,
+      "DIVIDEND_510880": 100.0932,
+      "BANKS_512800": 105.6962,
+      "CONSUMER_159928": 86.8687,
+      "GROWTH_159915": 83.3871,
+      "GROWTH_159957": 83.2129,
+      "TECH_588000": 94.2975
+    },
+    {
+      "date": "2026-09-29",
+      "CSI800_CASHFLOW": 89.2107,
+      "GUOZHENG_CASHFLOW": 87.8194,
+      "FTSE_A_CASHFLOW": 88.6207,
+      "CASHFLOW_3_INDEX_EQUAL": 88.5946,
+      "CSI300_510300": 91.8224,
+      "CSI500_510500": 88.2867,
+      "CSI800_515800": 91.1644,
+      "DIVIDEND_510880": 99.7516,
+      "BANKS_512800": 106.4557,
+      "CONSUMER_159928": 87.138,
+      "GROWTH_159915": 83.4562,
+      "GROWTH_159957": 83.253,
+      "TECH_588000": 95.124
+    },
+    {
+      "date": "2026-09-30",
+      "CSI800_CASHFLOW": 90.0408,
+      "GUOZHENG_CASHFLOW": 88.6378,
+      "FTSE_A_CASHFLOW": 89.3966,
+      "CASHFLOW_3_INDEX_EQUAL": 89.4032,
+      "CSI300_510300": 92.1028,
+      "CSI500_510500": 88.2517,
+      "CSI800_515800": 91.3014,
+      "DIVIDEND_510880": 100.6211,
+      "BANKS_512800": 107.9747,
+      "CONSUMER_159928": 88.6195,
+      "GROWTH_159915": 83.2488,
+      "GROWTH_159957": 83.012,
+      "TECH_588000": 92.7273
+    },
+    {
+      "date": "2026-10-08",
+      "CSI800_CASHFLOW": 90.4793,
+      "GUOZHENG_CASHFLOW": 88.9652,
+      "FTSE_A_CASHFLOW": 89.7414,
+      "CASHFLOW_3_INDEX_EQUAL": 89.7734,
+      "CSI300_510300": 91.3551,
+      "CSI500_510500": 86.0839,
+      "CSI800_515800": 90.0,
+      "DIVIDEND_510880": 101.5839,
+      "BANKS_512800": 108.7342,
+      "CONSUMER_159928": 87.9461,
+      "GROWTH_159915": 80.5991,
+      "GROWTH_159957": 80.3213,
+      "TECH_588000": 88.1818
+    },
+    {
+      "date": "2026-10-09",
+      "CSI800_CASHFLOW": 91.0567,
+      "GUOZHENG_CASHFLOW": 89.4993,
+      "FTSE_A_CASHFLOW": 90.0862,
+      "CASHFLOW_3_INDEX_EQUAL": 90.259,
+      "CSI300_510300": 91.2617,
+      "CSI500_510500": 86.1189,
+      "CSI800_515800": 90.137,
+      "DIVIDEND_510880": 101.8944,
+      "BANKS_512800": 107.5949,
+      "CONSUMER_159928": 89.0236,
+      "GROWTH_159915": 80.8756,
+      "GROWTH_159957": 80.6827,
+      "TECH_588000": 88.4298
+    },
+    {
+      "date": "2026-10-12",
+      "CSI800_CASHFLOW": 91.4674,
+      "GUOZHENG_CASHFLOW": 89.4993,
+      "FTSE_A_CASHFLOW": 90.431,
+      "CASHFLOW_3_INDEX_EQUAL": 90.5098,
+      "CSI300_510300": 90.8411,
+      "CSI500_510500": 84.3706,
+      "CSI800_515800": 89.3151,
+      "DIVIDEND_510880": 102.236,
+      "BANKS_512800": 109.8734,
+      "CONSUMER_159928": 89.697,
+      "GROWTH_159915": 78.7327,
+      "GROWTH_159957": 78.5141,
+      "TECH_588000": 86.4463
+    },
+    {
+      "date": "2026-10-13",
+      "CSI800_CASHFLOW": 91.2684,
+      "GUOZHENG_CASHFLOW": 89.6519,
+      "FTSE_A_CASHFLOW": 90.3448,
+      "CASHFLOW_3_INDEX_EQUAL": 90.4669,
+      "CSI300_510300": 90.5607,
+      "CSI500_510500": 84.1958,
+      "CSI800_515800": 88.9041,
+      "DIVIDEND_510880": 102.764,
+      "BANKS_512800": 109.3671,
+      "CONSUMER_159928": 88.6195,
+      "GROWTH_159915": 78.5023,
+      "GROWTH_159957": 78.3936,
+      "TECH_588000": 86.5289
+    },
+    {
+      "date": "2026-10-14",
+      "CSI800_CASHFLOW": 92.0162,
+      "GUOZHENG_CASHFLOW": 90.186,
+      "FTSE_A_CASHFLOW": 90.5172,
+      "CASHFLOW_3_INDEX_EQUAL": 90.9512,
+      "CSI300_510300": 89.6729,
+      "CSI500_510500": 83.2517,
+      "CSI800_515800": 88.0822,
+      "DIVIDEND_510880": 103.2919,
+      "BANKS_512800": 109.4937,
+      "CONSUMER_159928": 89.1582,
+      "GROWTH_159915": 76.3134,
+      "GROWTH_159957": 76.1446,
+      "TECH_588000": 83.719
+    },
+    {
+      "date": "2026-10-15",
+      "CSI800_CASHFLOW": 91.3638,
+      "GUOZHENG_CASHFLOW": 88.5074,
+      "FTSE_A_CASHFLOW": 89.3103,
+      "CASHFLOW_3_INDEX_EQUAL": 89.7677,
+      "CSI300_510300": 88.785,
+      "CSI500_510500": 80.7343,
+      "CSI800_515800": 86.7123,
+      "DIVIDEND_510880": 101.3975,
+      "BANKS_512800": 109.2405,
+      "CONSUMER_159928": 88.8889,
+      "GROWTH_159915": 74.0783,
+      "GROWTH_159957": 73.8956,
+      "TECH_588000": 82.562
+    },
+    {
+      "date": "2026-10-16",
+      "CSI800_CASHFLOW": 91.9353,
+      "GUOZHENG_CASHFLOW": 89.423,
+      "FTSE_A_CASHFLOW": 89.9138,
+      "CASHFLOW_3_INDEX_EQUAL": 90.4666,
+      "CSI300_510300": 88.6916,
+      "CSI500_510500": 80.8042,
+      "CSI800_515800": 86.6438,
+      "DIVIDEND_510880": 101.8634,
+      "BANKS_512800": 109.3671,
+      "CONSUMER_159928": 89.8316,
+      "GROWTH_159915": 73.6175,
+      "GROWTH_159957": 73.3735,
+      "TECH_588000": 82.0661
+    },
+    {
+      "date": "2026-10-19",
+      "CSI800_CASHFLOW": 92.4124,
+      "GUOZHENG_CASHFLOW": 90.16,
+      "FTSE_A_CASHFLOW": 90.431,
+      "CASHFLOW_3_INDEX_EQUAL": 91.0451,
+      "CSI300_510300": 88.7383,
+      "CSI500_510500": 81.049,
+      "CSI800_515800": 86.9178,
+      "DIVIDEND_510880": 102.5466,
+      "BANKS_512800": 111.0127,
+      "CONSUMER_159928": 89.697,
+      "GROWTH_159915": 72.9032,
+      "GROWTH_159957": 72.6908,
+      "TECH_588000": 80.6612
+    },
+    {
+      "date": "2026-10-20",
+      "CSI800_CASHFLOW": 92.1359,
+      "GUOZHENG_CASHFLOW": 89.396,
+      "FTSE_A_CASHFLOW": 90.0,
+      "CASHFLOW_3_INDEX_EQUAL": 90.5524,
+      "CSI300_510300": 88.4112,
+      "CSI500_510500": 81.5035,
+      "CSI800_515800": 86.7123,
+      "DIVIDEND_510880": 101.5839,
+      "BANKS_512800": 109.6203,
+      "CONSUMER_159928": 89.4276,
+      "GROWTH_159915": 72.7419,
+      "GROWTH_159957": 72.6104,
+      "TECH_588000": 81.3223
+    }
+  ]
+}
