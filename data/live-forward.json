@@ -38,13 +38,13 @@
     "execution_note": "Unconfirmed switch to 501018; no date-specific premium clearance or broker fill. Keep prior holding 159981.",
     "execution_filter": "PREMIUM_UNVERIFIED",
     "premium_pct": null,
-    "premium_limit": 0.15,
+    "premium_limit": 0.1,
     "decision": "PREMIUM_UNVERIFIED_KEEP_INCUMBENT",
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 42.857142857142854,
     "gap_percentile": 19.841269841269842,
-    "target_score": 0.17712487716256037,
-    "cash_score": 0.029172298867275667,
+    "target_score": 0.17712487716256056,
+    "cash_score": 0.02917229886728312,
     "carrier_score": 0.0,
     "completed_through": "2026-10-20",
     "performance_signal_through": "2026-10-16"
@@ -1080,6 +1080,6 @@
     "Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.",
     "Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.",
     "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
-    "Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium15 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills."
+    "Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium10 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills."
   ]
 }
