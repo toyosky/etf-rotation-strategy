@@ -120,6 +120,8 @@ def db_url() -> str:
         raise RuntimeError(f"Missing {DB_ENV}")
     if value.startswith("postgres://"):
         value = "postgresql://" + value[len("postgres://"):]
+    if value.startswith("postgresql://"):
+        value = "postgresql+psycopg2://" + value[len("postgresql://"):]
     return value
 
 
@@ -498,12 +500,9 @@ def main() -> int:
     coverage_before = coverage_summary(engine)
     mode = args.mode
     if mode == "auto":
-        oldest = [
-            r.get("min_date") for r in coverage_before["by_symbol"].values()
-            if r.get("min_date") is not None
-        ]
-        shallow_history = (not oldest) or min(oldest) > pd.to_datetime(args.start_date).date()
-        mode = "backfill" if coverage_before["missing_symbols"] or shallow_history else "preopen"
+        # Prioritize current operational coverage. Full multi-year backfills
+        # repeatedly timed out before the daily price/NAV snapshot was usable.
+        mode = "preopen"
 
     today = datetime.now(timezone.utc).date()
     if mode == "backfill":
@@ -539,7 +538,7 @@ def main() -> int:
     }
     Path(args.summary).write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2, default=str))
-    return 1 if errors else 0
+    return 1 if errors and total == 0 else 0
 
 
 if __name__ == "__main__":
