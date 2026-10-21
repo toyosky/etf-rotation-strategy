@@ -144,7 +144,8 @@ def read_signal_symbols(path: str) -> set[str]:
     values = [target.get("model_target"), target.get("symbol"),
               target.get("holding_target"), holding.get("symbol")]
     if isinstance(holding.get("symbols"), list):
-        values.extend(holding["symbols"])
+        values.extend(item.get("symbol") if isinstance(item, dict) else item
+                      for item in holding["symbols"])
     return normalize_symbols(values)
 
 
