@@ -18,6 +18,7 @@ import csv
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import time
@@ -35,12 +36,9 @@ DB_ENV = "ETF_DAILY_BARS_DATABASE_URL"
 TABLE = "fund_premium_history"
 UNIVERSE_PATH = Path(__file__).with_name("tencent_daily_universe.csv")
 
-# Must match strategy/main.py PREMIUM_MONITOR_POOL:
-# 13 risk assets + 513500 carrier. 511220 cash and 510300 benchmark are excluded.
-MONITOR_SYMBOLS = {
-    "159934", "159985", "161226", "513100", "159957", "159509", "513290",
-    "159529", "159981", "501018", "513530", "511380", "164824", "513500",
-}
+# Routine coverage comes from the universe CSV; signal-driven funds are added
+# dynamically, including newly listed ETFs/LOFs not present in that file.
+DEFAULT_EXCLUDED = {"511220", "510300"}  # cash carrier and benchmark only
 
 TENCENT_KLINE_PACKAGE = "westock-data-skillhub@1.0.5"
 TENCENT_NAV_PACKAGE = "westock-data-skillhub@1.0.3"
@@ -125,21 +123,65 @@ def db_url() -> str:
     return value
 
 
-def load_universe() -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
+def normalize_symbols(values) -> set[str]:
+    selected = set()
+    for value in values:
+        if value is None or str(value).upper() in {"", "CASH", "NONE"}:
+            continue
+        symbol = str(value).strip()
+        if not re.fullmatch(r"[0-9]{6}", symbol):
+            raise ValueError(f"Invalid ETF/LOF symbol: {symbol!r}")
+        selected.add(symbol)
+    return selected
+
+
+def read_signal_symbols(path: str) -> set[str]:
+    if not path:
+        return set()
+    report = json.loads(Path(path).read_text(encoding="utf-8"))
+    target = report.get("next_strategy_target") or {}
+    holding = report.get("current_holding") or {}
+    values = [target.get("model_target"), target.get("symbol"),
+              target.get("holding_target"), holding.get("symbol")]
+    if isinstance(holding.get("symbols"), list):
+        values.extend(holding["symbols"])
+    return normalize_symbols(values)
+
+
+def load_universe(engine, selected: set[str] | None = None, only_selected=False) -> list[dict[str, str]]:
+    records: dict[str, dict[str, str]] = {}
     with UNIVERSE_PATH.open("r", encoding="utf-8-sig", newline="") as fh:
         for row in csv.DictReader(fh):
             symbol = str(row["symbol"]).zfill(6)
-            if symbol in MONITOR_SYMBOLS:
-                rows.append({
-                    "symbol": symbol,
-                    "name": row.get("name", ""),
-                    "instrument_type": (row.get("instrument_type") or "ETF").upper(),
-                })
-    missing = MONITOR_SYMBOLS - {x["symbol"] for x in rows}
+            if (row.get("instrument_type") or "ETF").upper() not in ("ETF", "LOF"):
+                continue
+            if only_selected and symbol not in (selected or set()):
+                continue
+            if not only_selected and symbol in DEFAULT_EXCLUDED and symbol not in (selected or set()):
+                continue
+            records[symbol] = {
+                "symbol": symbol, "name": row.get("name", ""),
+                "instrument_type": (row.get("instrument_type") or "ETF").upper()
+            }
+    missing = (selected or set()) - set(records)
     if missing:
-        raise RuntimeError(f"Premium universe missing symbols: {sorted(missing)}")
-    return rows
+        with engine.connect() as connection:
+            rows = connection.execute(text("""
+                SELECT symbol, name, product_type
+                FROM public.instrument_metadata
+                WHERE symbol = ANY(:symbols) AND product_type IN ('ETF', 'LOF')
+                      AND current_exchange_listed IS TRUE
+            """), {"symbols": sorted(missing)}).mappings().all()
+        for row in rows:
+            sym = str(row["symbol"]).zfill(6)
+            records[sym] = {"symbol": sym, "name": str(row["name"] or ""),
+                            "instrument_type": str(row["product_type"])}
+    unresolved = (selected or set()) - set(records)
+    if unresolved:
+        raise RuntimeError(f"Unlisted or unsupported ETF/LOF symbols: {sorted(unresolved)}")
+    # Prioritize currently actionable symbols; there is no asset-specific rule.
+    return sorted(records.values(),
+                  key=lambda rec: (rec["symbol"] not in (selected or set()), rec["symbol"]))
 
 
 def _col(df: pd.DataFrame, names: list[str]) -> str | None:
@@ -454,16 +496,16 @@ def table_count(engine) -> int:
         return int(conn.execute(text(f"select count(*) from public.{TABLE}")).scalar_one())
 
 
-def coverage_summary(engine) -> dict:
+def coverage_summary(engine, symbols: set[str]) -> dict:
     with engine.connect() as conn:
         rows = conn.execute(text(f"""
             select symbol, count(*) as n, min(nav_date) as min_date, max(nav_date) as max_date
             from public.{TABLE}
             where symbol = any(:symbols)
             group by symbol
-        """), {"symbols": sorted(MONITOR_SYMBOLS)}).mappings().all()
+        """), {"symbols": sorted(symbols)}).mappings().all()
     by_symbol = {str(r["symbol"]): dict(r) for r in rows}
-    missing = sorted(MONITOR_SYMBOLS - set(by_symbol))
+    missing = sorted(symbols - set(by_symbol))
     return {"by_symbol": by_symbol, "missing_symbols": missing}
 
 
@@ -494,11 +536,20 @@ def main() -> int:
     ap.add_argument("--start-date", default="20210101")
     ap.add_argument("--lookback-days", type=int, default=45)
     ap.add_argument("--summary", default="premium-history-sync-summary.json")
+    ap.add_argument("--symbols", default="", help="Additional comma-separated ETF/LOF symbols")
+    ap.add_argument("--signals-file", default="", help="Daily strategy JSON containing dynamic candidates")
+    ap.add_argument("--only-selected", action="store_true", help="Sync only supplied candidate symbols")
     args = ap.parse_args()
 
     engine = create_engine(db_url(), pool_pre_ping=True)
+    selected = normalize_symbols(args.symbols.split(",") if args.symbols else [])
+    selected |= read_signal_symbols(args.signals_file)
+    if args.only_selected and not selected:
+        raise RuntimeError("No selected ETF/LOF symbols supplied for candidate premium sync")
+    universe = load_universe(engine, selected, args.only_selected)
+    tracked = {rec["symbol"] for rec in universe}
     existing = table_count(engine)
-    coverage_before = coverage_summary(engine)
+    coverage_before = coverage_summary(engine, tracked)
     mode = args.mode
     if mode == "auto":
         # Prioritize current operational coverage. Full multi-year backfills
@@ -517,8 +568,7 @@ def main() -> int:
     per_symbol = {}
     errors = {}
     total = 0
-    # Process the current OLS candidate first so a slow secondary symbol does not starve it.
-    for meta in sorted(load_universe(), key=lambda x: (x["symbol"] != "501018", x["symbol"])):
+    for meta in universe:
         try:
             rows = build_rows(meta, start_date, end_date, phase)
             changed = upsert_rows(engine, rows)
@@ -532,7 +582,9 @@ def main() -> int:
         "range": [start_date, end_date],
         "existing_before": existing,
         "coverage_before": coverage_before,
-        "coverage_after": coverage_summary(engine),
+        "coverage_after": coverage_summary(engine, tracked),
+        "selected_symbols": sorted(selected),
+        "tracked_symbols": sorted(tracked),
         "upserted": total,
         "symbols": per_symbol,
         "errors": errors,
@@ -540,8 +592,9 @@ def main() -> int:
     }
     Path(args.summary).write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2, default=str))
-    if "501018" not in per_symbol:
-        print("ERROR: critical symbol 501018 is missing; premium sync not healthy", flush=True)
+    missed_candidates = sorted(selected - set(per_symbol))
+    if missed_candidates:
+        print(f"ERROR: candidate premium sync failed: {missed_candidates}", flush=True)
         return 1
     return 1 if errors and total == 0 else 0
 
