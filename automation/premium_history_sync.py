@@ -540,6 +540,9 @@ def main() -> int:
     }
     Path(args.summary).write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2, default=str))
+    if "501018" not in per_symbol:
+        print("ERROR: critical symbol 501018 is missing; premium sync not healthy", flush=True)
+        return 1
     return 1 if errors and total == 0 else 0
 
 
