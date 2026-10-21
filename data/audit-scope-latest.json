@@ -1,0 +1,726 @@
+{
+  "version": "category-audit-scope-v1",
+  "as_of": "2026-10-20",
+  "source_ols": "data/fundamental-audit-trigger.json:next_strategy_target.model_target",
+  "source_rebuild": "data/full-market-rebuild-latest.json:qualified_candidates",
+  "data_quality_gate": "PASS",
+  "ols_top1": "501018",
+  "execution_target": "159981",
+  "actual_holding": {
+    "as_of": "2026-10-20",
+    "symbols": [],
+    "status": "CASH",
+    "source": "user confirmed discretionary exits of 159981 and 159529",
+    "note": "Actual holding is manually reported and may become stale; never use as automatic broker synchronization."
+  },
+  "all_market_rebuild_count": 40,
+  "new_rebuild_count": 14,
+  "unique_symbols": 41,
+  "category_count": 8,
+  "categories": [
+    {
+      "category_id": "CRUDE_OIL",
+      "category_name": "原油",
+      "drivers": "全球供需、OPEC政策、库存、期限结构与外汇",
+      "count": 1,
+      "ols_top1": "501018",
+      "new_today_count": 0,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "501018",
+          "name": "原油",
+          "roles": [
+            "OLS_TOP1"
+          ],
+          "first_qualified_date": null,
+          "cross_date": null,
+          "annual": null,
+          "r2": null,
+          "new_today": false,
+          "category": "CRUDE_OIL",
+          "classification_rule": "metadata",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CN_CONSUMER",
+      "category_name": "A股消费（不含白酒专项）",
+      "drivers": "国内消费需求、零售/食品饮料、盈利与估值",
+      "count": 16,
+      "ols_top1": null,
+      "new_today_count": 2,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "159520",
+          "name": "消费龙头ETF工银",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.14428463089107213,
+          "r2": 0.11639598889153968,
+          "new_today": true,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "501090",
+          "name": "消费龙头LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.1529025805723896,
+          "r2": 0.13190094842142874,
+          "new_today": true,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159670",
+          "name": "消费50ETF国联安",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.25406145497277643,
+          "r2": 0.25173178139922847,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159672",
+          "name": "消费ETF博时",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.19436692928022192,
+          "r2": 0.1764803347327064,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159689",
+          "name": "消费ETF南方",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.1978855010653744,
+          "r2": 0.15885560648154395,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159736",
+          "name": "食品饮料ETF天弘",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.06717797807268977,
+          "r2": 0.036646640496451055,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159798",
+          "name": "消费ETF易方达",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.3156560667547621,
+          "r2": 0.3090033227693222,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159862",
+          "name": "食品饮料ETF银华",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.23790961317541726,
+          "r2": 0.2906356828754887,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159928",
+          "name": "消费ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.22131426178648805,
+          "r2": 0.20010786284138604,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "160222",
+          "name": "食品LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.2147225221422191,
+          "r2": 0.25325979768907025,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": true
+        },
+        {
+          "symbol": "512600",
+          "name": "消费ETF嘉实",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.16311509203961672,
+          "r2": 0.14656583592934902,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "515170",
+          "name": "食品饮料ETF华夏",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.21440700898871423,
+          "r2": 0.25505979133886725,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "515650",
+          "name": "消费50ETF富国",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.25533432515430565,
+          "r2": 0.2490210626226106,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "515710",
+          "name": "食品饮料ETF华宝",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.24024863132688878,
+          "r2": 0.3127880479553463,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "516130",
+          "name": "消费龙头ETF华宝",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.2011197924406274,
+          "r2": 0.19768854077062703,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "516900",
+          "name": "食品饮料ETF华安",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.2636387692582196,
+          "r2": 0.35299716567613126,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CN_CASHFLOW_FACTOR",
+      "category_name": "A股现金流因子",
+      "drivers": "自由现金流策略选股、行业权重与价值风格",
+      "count": 10,
+      "ols_top1": null,
+      "new_today_count": 2,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "159222",
+          "name": "自由现金流ETF易方达",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.06553490936516604,
+          "r2": 0.03002310691467891,
+          "new_today": true,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159399",
+          "name": "现金流ETF国泰",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.03556040665531368,
+          "r2": 0.011369584477533001,
+          "new_today": true,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159119",
+          "name": "800现金流ETF招商",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.24382197871078382,
+          "r2": 0.2073104694056669,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159201",
+          "name": "自由现金流ETF华夏",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.07753798251577826,
+          "r2": 0.04192287197584044,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159229",
+          "name": "自由现金流ETF广发",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.2611192294867981,
+          "r2": 0.21055726693231724,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159276",
+          "name": "现金流ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.09046310627954224,
+          "r2": 0.060605140839192106,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "516460",
+          "name": "现金流ETF800鹏华",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.24466310548235537,
+          "r2": 0.19609918789276348,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "563580",
+          "name": "自由现金流800ETF万家",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.252697373189283,
+          "r2": 0.20372749336955298,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "563680",
+          "name": "800现金流ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.23118168242491022,
+          "r2": 0.1763152011800474,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "563990",
+          "name": "800现金流ETF富国",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.2887003870812539,
+          "r2": 0.26236218298066516,
+          "new_today": false,
+          "category": "CN_CASHFLOW_FACTOR",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "HK_CONSUMER",
+      "category_name": "港股消费",
+      "drivers": "港股消费成分股、港币汇率、离岸流动性和消费需求",
+      "count": 8,
+      "ols_top1": null,
+      "new_today_count": 7,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "159268",
+          "name": "港股通消费ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.02642220282719343,
+          "r2": 0.004232042402906755,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "159285",
+          "name": "港股通消费ETF华安",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.04382863173497609,
+          "r2": 0.0127258099481794,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "513230",
+          "name": "港股通消费ETF华夏",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.08997132998075341,
+          "r2": 0.04237818657525383,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "513590",
+          "name": "港股通消费ETF鹏华",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.060607019619359104,
+          "r2": 0.026716858957329004,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "513970",
+          "name": "恒生消费ETF景顺",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.13830889776764854,
+          "r2": 0.07018095327701424,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "520520",
+          "name": "恒生消费ETF华泰柏瑞",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.08178171255562772,
+          "r2": 0.03586757563532905,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "520620",
+          "name": "恒生消费ETF嘉实",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.05040411248658794,
+          "r2": 0.016536760238979986,
+          "new_today": true,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "513070",
+          "name": "港股通消费ETF易方达",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.18701453271784985,
+          "r2": 0.1425561213033104,
+          "new_today": false,
+          "category": "HK_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CN_BAIJIU",
+      "category_name": "A股白酒",
+      "drivers": "高端与次高端白酒动销、库存、批价、渠道与政策",
+      "count": 3,
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "161725",
+          "name": "白酒基金LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.18055042531964838,
+          "r2": 0.08932062937301244,
+          "new_today": true,
+          "category": "CN_BAIJIU",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "160632",
+          "name": "酒LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.04677943069930435,
+          "r2": 0.09784767252503901,
+          "new_today": false,
+          "category": "CN_BAIJIU",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        },
+        {
+          "symbol": "512690",
+          "name": "酒ETF鹏华",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-16",
+          "cross_date": "2026-10-15",
+          "annual": 0.1412110311330501,
+          "r2": 0.2207714653139058,
+          "new_today": false,
+          "category": "CN_BAIJIU",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CROSS_BORDER_CONSUMER",
+      "category_name": "沪港深消费",
+      "drivers": "跨市场指数权重、A/H估值及境内外消费需求",
+      "count": 1,
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "517550",
+          "name": "沪港深消费龙头ETF招商",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.1166753884394609,
+          "r2": 0.058987405004190974,
+          "new_today": true,
+          "category": "CROSS_BORDER_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "US_EQUITY",
+      "category_name": "美股宽基",
+      "drivers": "美股盈利、利率、估值、汇率与指数权重",
+      "count": 1,
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "513400",
+          "name": "道琼斯ETF鹏华",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-20",
+          "cross_date": "2026-10-19",
+          "annual": 0.05748040033878765,
+          "r2": 0.014437650736957686,
+          "new_today": true,
+          "category": "US_EQUITY",
+          "classification_rule": "metadata",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "US_BONDS",
+      "category_name": "美元债",
+      "drivers": "美国利率曲线、信用利差、久期与汇率",
+      "count": 1,
+      "ols_top1": null,
+      "new_today_count": 0,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "501300",
+          "name": "美元债LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-19",
+          "cross_date": "2026-10-16",
+          "annual": 0.10201485304817415,
+          "r2": 0.14601195230548458,
+          "new_today": false,
+          "category": "US_BONDS",
+          "classification_rule": "name_specific",
+          "needs_review": true
+        }
+      ]
+    }
+  ],
+  "audit_instruction": "Each category receives one shared macro/fundamental/news audit; individual ETF exceptions (premium, currency, index, liquidity, tracking) are separately checked for each candidate. No automatic veto/trade."
+}
