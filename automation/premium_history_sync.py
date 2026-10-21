@@ -400,10 +400,11 @@ def build_rows(meta: dict[str, str], start_date: str, end_date: str, phase: str)
             "redemption_status": None if pd.isna(x.get("redemption_status")) else str(x.get("redemption_status")),
             "source_nav": "eastmoney_direct_or_tencent_fallback",
             "source_price": price_source,
+            # Prior NAV dates are backfilled today, NOT point-in-time safe on their NAV date.
             "first_seen_at": now if live_observation else None,
-            "first_seen_phase": "preopen" if live_observation else None,
-            "pit_safe": live_observation,
-            "backfilled": not live_observation,
+            "first_seen_phase": "sync_observed" if live_observation else None,
+            "pit_safe": False,
+            "backfilled": True,
             "updated_at": now,
         })
     return rows
@@ -516,7 +517,8 @@ def main() -> int:
     per_symbol = {}
     errors = {}
     total = 0
-    for meta in load_universe():
+    # Process the current OLS candidate first so a slow secondary symbol does not starve it.
+    for meta in sorted(load_universe(), key=lambda x: (x["symbol"] != "501018", x["symbol"])):
         try:
             rows = build_rows(meta, start_date, end_date, phase)
             changed = upsert_rows(engine, rows)
