@@ -779,10 +779,10 @@
         "model_to": "159509",
         "model_to_name": "纳指科技",
         "decision": "VOID_EXIT_BLOCKED_PREMIUM",
-        "execution_filter": "PREMIUM15",
+        "execution_filter": "PREMIUM10",
         "premium_pct": 0.3001,
-        "premium_limit": 0.15,
-        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981.",
+        "premium_limit": 0.1,
+        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 10% execution limit. Do not fall through to Top2; keep the incumbent 159981.",
         "audit_only": true
       }
     ],
@@ -905,11 +905,11 @@
         "final_target": "159981",
         "final_target_name": "能源化工",
         "decision": "VOID_EXIT_BLOCKED_PREMIUM",
-        "filter": "PREMIUM15",
+        "filter": "PREMIUM10",
         "premium_pct": 0.3001,
-        "premium_limit": 0.15,
+        "premium_limit": 0.1,
         "source": "manual_confirmed_execution_audit",
-        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981."
+        "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 10% execution limit. Do not fall through to Top2; keep the incumbent 159981."
       }
     ],
     "original": [],
