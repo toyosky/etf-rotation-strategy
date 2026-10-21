@@ -8,6 +8,8 @@ on:
       - 'automation/test_daily_notification.py'
       - 'automation/build_daily_premium_snapshot.py'
       - 'automation/refresh_full_market_rebuild.py'
+      - 'automation/build_category_audit_scope.py'
+      - 'automation/test_category_audit_scope.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
   workflow_run:
     workflows:
@@ -58,8 +60,10 @@ jobs:
       - name: Compile trigger and daily market-wide scanner
         run: python -m py_compile automation/build_fundamental_audit_trigger.py automation/refresh_full_market_rebuild.py automation/notify_rebuild_candidates.py
 
-      - name: Validate combined daily notification contract
-        run: python -m unittest automation.test_daily_notification
+      - name: Validate daily notification and category audit scope
+        run: |
+          python -m py_compile automation/build_category_audit_scope.py
+          python -m unittest automation.test_daily_notification automation.test_category_audit_scope
 
       - name: Build fundamental-audit trigger
         run: python automation/build_fundamental_audit_trigger.py
@@ -104,6 +108,14 @@ jobs:
             --out research/full_market_rebuild/today_output
           cp research/full_market_rebuild/today_output/today_report.json data/full-market-rebuild-latest.json
 
+      - name: Build post-close category audit scope
+        run: |
+          python automation/build_category_audit_scope.py \
+            --current data/fundamental-audit-trigger.json \
+            --market data/full-market-rebuild-latest.json \
+            --actual data/actual-holding.json \
+            --output data/audit-scope-latest.json
+
       - name: Build dated Premium10 snapshot for OLS candidate
         run: |
           python automation/build_daily_premium_snapshot.py \
@@ -138,13 +150,13 @@ jobs:
       - name: Commit trigger snapshot
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json)" ]; then
+          if [ -z "$(git status --porcelain -- data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json data/audit-scope-latest.json)" ]; then
             echo "Fundamental-audit trigger unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json
+          git add data/fundamental-audit-trigger.json data/full-market-rebuild-latest.json data/audit-scope-latest.json
           git commit -m "data: refresh fundamental audit trigger"
           git pull --rebase origin main
           git push origin HEAD:main
@@ -209,6 +221,7 @@ jobs:
           path: |
             data/fundamental-audit-trigger.json
             data/full-market-rebuild-latest.json
+            data/audit-scope-latest.json
             research/full_market_rebuild/today_output/today_signals.csv
             /tmp/full-market-daily-report.md
             /tmp/daily-premium-snapshot.json
