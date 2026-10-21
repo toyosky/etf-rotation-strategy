@@ -1,0 +1,3127 @@
+{
+  "as_of": "2026-10-20",
+  "source": "private archived all-market Tencent HFQ parq release asof 2026-10-20",
+  "qualified_etf_count": 40,
+  "definition_note": "Intra-category clusters use 5-session log close returns, trailing 120 A-share sessions, minimum 45 overlapping returns, complete-link min pairwise correlations; thresholds are SENSITIVITY analyses not factually independent indexes.",
+  "caution": [
+    "ETF prices are adjusted and may be rounded; correlation cannot prove tracking-index identity",
+    "Historical tracking-index IDs are unknown for most members; no exact total-index count asserted",
+    "Cross-border ETF price updates on China trading days even when Hong Kong underlying is closed",
+    "Correlation windows include pre-signal days but no post-2026-10-20 prices",
+    "Rolling 5-day returns overlap; correlated sampling noise; thresholds exploratory",
+    "No NAV/premium on 10/20; underlying-index truth test cannot yet be run"
+  ],
+  "known_index_identifications": {
+    "159119": "CSI_800_FREE_CASH_FLOW_932368",
+    "159229": "CSI_800_FREE_CASH_FLOW_932368",
+    "159520": "CSI_CONSUMER_LEADERS",
+    "161725": "CSI_BAIJIU",
+    "512690": "CSI_LIQUOR",
+    "516460": "CSI_800_FREE_CASH_FLOW_932368",
+    "563580": "CSI_800_FREE_CASH_FLOW_932368",
+    "563680": "CSI_800_FREE_CASH_FLOW_932368",
+    "563990": "CSI_800_FREE_CASH_FLOW_932368"
+  },
+  "market_holidays": {
+    "HK": [
+      "2026-10-19"
+    ]
+  },
+  "categories": {
+    "CN_BAIJIU": {
+      "n": 3,
+      "members": [
+        "160632",
+        "161725",
+        "512690"
+      ],
+      "onset_dates": {
+        "2026-10-16": 1,
+        "2026-10-19": 1,
+        "2026-10-20": 1
+      },
+      "verified_index_groups": {
+        "CSI_BAIJIU": [
+          "161725"
+        ],
+        "CSI_LIQUOR": [
+          "512690"
+        ]
+      },
+      "unverified_index_count": 1,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "members": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 2,
+          "members": [
+            [
+              "161725",
+              "512690"
+            ],
+            [
+              "160632"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 2,
+          "members": [
+            [
+              "161725",
+              "512690"
+            ],
+            [
+              "160632"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {
+        "corr5_120": {
+          "pairs": 3,
+          "min": 0.89225,
+          "median": 0.9161,
+          "max": 0.9698,
+          "share_above_0_9": 0.667
+        },
+        "corr1_120": {
+          "pairs": 3,
+          "min": 0.64077,
+          "median": 0.676,
+          "max": 0.90762,
+          "share_above_0_9": 0.333
+        },
+        "corr5_60": {
+          "pairs": 3,
+          "min": 0.93042,
+          "median": 0.9688,
+          "max": 0.97598,
+          "share_above_0_9": 1.0
+        }
+      }
+    },
+    "CN_CASHFLOW_FACTOR": {
+      "n": 10,
+      "members": [
+        "159119",
+        "159201",
+        "159222",
+        "159229",
+        "159276",
+        "159399",
+        "516460",
+        "563580",
+        "563680",
+        "563990"
+      ],
+      "onset_dates": {
+        "2026-10-16": 3,
+        "2026-10-19": 5,
+        "2026-10-20": 2
+      },
+      "verified_index_groups": {
+        "CSI_800_FREE_CASH_FLOW_932368": [
+          "159119",
+          "159229",
+          "516460",
+          "563580",
+          "563680",
+          "563990"
+        ]
+      },
+      "unverified_index_count": 4,
+      "price_clusters": {
+        "0.75": {
+          "n": 2,
+          "members": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563680",
+              "563990"
+            ],
+            [
+              "563580"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 2,
+          "members": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563680",
+              "563990"
+            ],
+            [
+              "563580"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 2,
+          "members": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563680",
+              "563990"
+            ],
+            [
+              "563580"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 3,
+          "members": [
+            [
+              "159119",
+              "159229",
+              "516460",
+              "563680",
+              "563990"
+            ],
+            [
+              "159201",
+              "159222",
+              "159276",
+              "159399"
+            ],
+            [
+              "563580"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {
+        "corr5_120": {
+          "pairs": 36,
+          "min": 0.90076,
+          "median": 0.939,
+          "max": 0.98523,
+          "share_above_0_9": 1.0
+        },
+        "corr1_120": {
+          "pairs": 45,
+          "min": 0.7221,
+          "median": 0.8495,
+          "max": 0.96865,
+          "share_above_0_9": 0.267
+        },
+        "corr5_60": {
+          "pairs": 45,
+          "min": 0.86144,
+          "median": 0.9386,
+          "max": 0.99397,
+          "share_above_0_9": 0.867
+        }
+      }
+    },
+    "CN_CONSUMER": {
+      "n": 16,
+      "members": [
+        "159520",
+        "159670",
+        "159672",
+        "159689",
+        "159736",
+        "159798",
+        "159862",
+        "159928",
+        "160222",
+        "501090",
+        "512600",
+        "515170",
+        "515650",
+        "515710",
+        "516130",
+        "516900"
+      ],
+      "onset_dates": {
+        "2026-10-16": 6,
+        "2026-10-19": 8,
+        "2026-10-20": 2
+      },
+      "verified_index_groups": {
+        "CSI_CONSUMER_LEADERS": [
+          "159520"
+        ]
+      },
+      "unverified_index_count": 15,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "159520",
+              "159670",
+              "159672",
+              "159689",
+              "159736",
+              "159798",
+              "159862",
+              "159928",
+              "160222",
+              "501090",
+              "512600",
+              "515170",
+              "515650",
+              "515710",
+              "516130",
+              "516900"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 2,
+          "members": [
+            [
+              "159672",
+              "159689",
+              "159736",
+              "159862",
+              "159928",
+              "160222",
+              "512600",
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159520",
+              "159670",
+              "159798",
+              "501090",
+              "515650",
+              "516130"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 4,
+          "members": [
+            [
+              "159672",
+              "159689",
+              "159736",
+              "159928",
+              "512600"
+            ],
+            [
+              "159862",
+              "160222",
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159520",
+              "501090",
+              "516130"
+            ],
+            [
+              "159670",
+              "159798",
+              "515650"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 8,
+          "members": [
+            [
+              "159672",
+              "159689",
+              "159928",
+              "512600"
+            ],
+            [
+              "159670",
+              "159798",
+              "515650"
+            ],
+            [
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159520",
+              "516130"
+            ],
+            [
+              "159736"
+            ],
+            [
+              "159862"
+            ],
+            [
+              "160222"
+            ],
+            [
+              "501090"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {
+        "corr5_120": {
+          "pairs": 120,
+          "min": 0.78105,
+          "median": 0.9155,
+          "max": 0.99369,
+          "share_above_0_9": 0.625
+        },
+        "corr1_120": {
+          "pairs": 120,
+          "min": 0.42935,
+          "median": 0.8015,
+          "max": 0.9694,
+          "share_above_0_9": 0.05
+        },
+        "corr5_60": {
+          "pairs": 120,
+          "min": 0.73921,
+          "median": 0.9091,
+          "max": 0.99429,
+          "share_above_0_9": 0.558
+        }
+      }
+    },
+    "CROSS_BORDER_CONSUMER": {
+      "n": 1,
+      "members": [
+        "517550"
+      ],
+      "onset_dates": {
+        "2026-10-16": 0,
+        "2026-10-19": 0,
+        "2026-10-20": 1
+      },
+      "verified_index_groups": {},
+      "unverified_index_count": 1,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "members": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "members": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "members": [
+            [
+              "517550"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {}
+    },
+    "HK_CONSUMER": {
+      "n": 8,
+      "members": [
+        "159268",
+        "159285",
+        "513070",
+        "513230",
+        "513590",
+        "513970",
+        "520520",
+        "520620"
+      ],
+      "onset_dates": {
+        "2026-10-16": 0,
+        "2026-10-19": 1,
+        "2026-10-20": 7
+      },
+      "verified_index_groups": {},
+      "unverified_index_count": 8,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "members": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "members": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 2,
+          "members": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590"
+            ],
+            [
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {
+        "corr5_120": {
+          "pairs": 28,
+          "min": 0.93326,
+          "median": 0.9591,
+          "max": 0.99076,
+          "share_above_0_9": 1.0
+        },
+        "corr1_120": {
+          "pairs": 28,
+          "min": 0.78587,
+          "median": 0.8811,
+          "max": 0.9664,
+          "share_above_0_9": 0.25
+        },
+        "corr5_60": {
+          "pairs": 28,
+          "min": 0.9304,
+          "median": 0.9605,
+          "max": 0.99026,
+          "share_above_0_9": 1.0
+        }
+      }
+    },
+    "US_BONDS": {
+      "n": 1,
+      "members": [
+        "501300"
+      ],
+      "onset_dates": {
+        "2026-10-16": 0,
+        "2026-10-19": 1,
+        "2026-10-20": 0
+      },
+      "verified_index_groups": {},
+      "unverified_index_count": 1,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "members": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "members": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "members": [
+            [
+              "501300"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {}
+    },
+    "US_EQUITY": {
+      "n": 1,
+      "members": [
+        "513400"
+      ],
+      "onset_dates": {
+        "2026-10-16": 0,
+        "2026-10-19": 0,
+        "2026-10-20": 1
+      },
+      "verified_index_groups": {},
+      "unverified_index_count": 1,
+      "price_clusters": {
+        "0.75": {
+          "n": 1,
+          "members": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "members": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "members": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "members": [
+            [
+              "513400"
+            ]
+          ]
+        }
+      },
+      "pair_correlation_summary": {}
+    }
+  },
+  "members": [
+    {
+      "symbol": "159119",
+      "name": "800现金流ETF招商",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.2073,
+      "avg_daily_amount60": 8782587.3,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 0.976,
+        "2026-10-16": 0.982,
+        "2026-10-19": 0.985,
+        "2026-10-20": 0.985
+      },
+      "ret_16_to_19_pct": 0.305,
+      "ret_19_to_20_pct": 0.0,
+      "pct_same_close_days_since_june": 21.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159201",
+      "name": "自由现金流ETF华夏",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.0419,
+      "avg_daily_amount60": 318128500.3,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.16,
+        "2026-10-16": 1.172,
+        "2026-10-19": 1.18,
+        "2026-10-20": 1.17
+      },
+      "ret_16_to_19_pct": 0.683,
+      "ret_19_to_20_pct": -0.847,
+      "pct_same_close_days_since_june": 14.9,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159222",
+      "name": "自由现金流ETF易方达",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.03,
+      "avg_daily_amount60": 110799354.0,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.242,
+        "2026-10-16": 1.255,
+        "2026-10-19": 1.266,
+        "2026-10-20": 1.254
+      },
+      "ret_16_to_19_pct": 0.876,
+      "ret_19_to_20_pct": -0.948,
+      "pct_same_close_days_since_june": 14.9,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159229",
+      "name": "自由现金流ETF广发",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2106,
+      "avg_daily_amount60": 6804588.2,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 1.18,
+        "2026-10-16": 1.186,
+        "2026-10-19": 1.193,
+        "2026-10-20": 1.187
+      },
+      "ret_16_to_19_pct": 0.59,
+      "ret_19_to_20_pct": -0.503,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159268",
+      "name": "港股通消费ETF汇添富",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0042,
+      "avg_daily_amount60": 18219130.9,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.73,
+        "2026-10-16": 0.739,
+        "2026-10-19": 0.739,
+        "2026-10-20": 0.732
+      },
+      "ret_16_to_19_pct": 0.0,
+      "ret_19_to_20_pct": -0.947,
+      "pct_same_close_days_since_june": 25.5,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "159276",
+      "name": "现金流ETF汇添富",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.0606,
+      "avg_daily_amount60": 8927644.5,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.083,
+        "2026-10-16": 1.092,
+        "2026-10-19": 1.101,
+        "2026-10-20": 1.093
+      },
+      "ret_16_to_19_pct": 0.824,
+      "ret_19_to_20_pct": -0.727,
+      "pct_same_close_days_since_june": 11.7,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159285",
+      "name": "港股通消费ETF华安",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0127,
+      "avg_daily_amount60": 6840486.8,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.727,
+        "2026-10-16": 0.734,
+        "2026-10-19": 0.736,
+        "2026-10-20": 0.731
+      },
+      "ret_16_to_19_pct": 0.272,
+      "ret_19_to_20_pct": -0.679,
+      "pct_same_close_days_since_june": 18.1,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "159399",
+      "name": "现金流ETF国泰",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0114,
+      "avg_daily_amount60": 148126433.6,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.036,
+        "2026-10-16": 1.043,
+        "2026-10-19": 1.049,
+        "2026-10-20": 1.044
+      },
+      "ret_16_to_19_pct": 0.575,
+      "ret_19_to_20_pct": -0.477,
+      "pct_same_close_days_since_june": 17.0,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159520",
+      "name": "消费龙头ETF工银",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.1164,
+      "avg_daily_amount60": 6399079.6,
+      "verified_underlying_index": "CSI_CONSUMER_LEADERS",
+      "oct_prices": {
+        "2026-10-15": 0.905,
+        "2026-10-16": 0.912,
+        "2026-10-19": 0.917,
+        "2026-10-20": 0.912
+      },
+      "ret_16_to_19_pct": 0.548,
+      "ret_19_to_20_pct": -0.545,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159670",
+      "name": "消费50ETF国联安",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.2517,
+      "avg_daily_amount60": 3553673.9,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.86,
+        "2026-10-16": 0.867,
+        "2026-10-19": 0.871,
+        "2026-10-20": 0.863
+      },
+      "ret_16_to_19_pct": 0.461,
+      "ret_19_to_20_pct": -0.918,
+      "pct_same_close_days_since_june": 18.1,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159672",
+      "name": "消费ETF博时",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1765,
+      "avg_daily_amount60": 3409839.4,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.623,
+        "2026-10-16": 0.632,
+        "2026-10-19": 0.631,
+        "2026-10-20": 0.627
+      },
+      "ret_16_to_19_pct": -0.158,
+      "ret_19_to_20_pct": -0.634,
+      "pct_same_close_days_since_june": 22.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159689",
+      "name": "消费ETF南方",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1589,
+      "avg_daily_amount60": 2828520.0,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.626,
+        "2026-10-16": 0.636,
+        "2026-10-19": 0.635,
+        "2026-10-20": 0.631
+      },
+      "ret_16_to_19_pct": -0.157,
+      "ret_19_to_20_pct": -0.63,
+      "pct_same_close_days_since_june": 21.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159736",
+      "name": "食品饮料ETF天弘",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.0366,
+      "avg_daily_amount60": 21073919.8,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.58,
+        "2026-10-16": 0.584,
+        "2026-10-19": 0.584,
+        "2026-10-20": 0.583
+      },
+      "ret_16_to_19_pct": 0.0,
+      "ret_19_to_20_pct": -0.171,
+      "pct_same_close_days_since_june": 20.2,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159798",
+      "name": "消费ETF易方达",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.309,
+      "avg_daily_amount60": 13498690.9,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.853,
+        "2026-10-16": 0.862,
+        "2026-10-19": 0.865,
+        "2026-10-20": 0.857
+      },
+      "ret_16_to_19_pct": 0.348,
+      "ret_19_to_20_pct": -0.925,
+      "pct_same_close_days_since_june": 17.0,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159862",
+      "name": "食品饮料ETF银华",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2906,
+      "avg_daily_amount60": 2504219.8,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.539,
+        "2026-10-16": 0.543,
+        "2026-10-19": 0.543,
+        "2026-10-20": 0.542
+      },
+      "ret_16_to_19_pct": 0.0,
+      "ret_19_to_20_pct": -0.184,
+      "pct_same_close_days_since_june": 27.7,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "159928",
+      "name": "消费ETF汇添富",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2001,
+      "avg_daily_amount60": 315614183.6,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 2.64,
+        "2026-10-16": 2.668,
+        "2026-10-19": 2.664,
+        "2026-10-20": 2.656
+      },
+      "ret_16_to_19_pct": -0.15,
+      "ret_19_to_20_pct": -0.3,
+      "pct_same_close_days_since_june": 6.4,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "160222",
+      "name": "食品LOF",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.2533,
+      "avg_daily_amount60": 141882.2,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.652,
+        "2026-10-16": 0.658,
+        "2026-10-19": 0.662,
+        "2026-10-20": 0.658
+      },
+      "ret_16_to_19_pct": 0.608,
+      "ret_19_to_20_pct": -0.604,
+      "pct_same_close_days_since_june": 5.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "160632",
+      "name": "酒LOF",
+      "category": "CN_BAIJIU",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.0978,
+      "avg_daily_amount60": 2635962.9,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.732,
+        "2026-10-16": 0.733,
+        "2026-10-19": 0.734,
+        "2026-10-20": 0.731
+      },
+      "ret_16_to_19_pct": 0.136,
+      "ret_19_to_20_pct": -0.409,
+      "pct_same_close_days_since_june": 40.4,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "161725",
+      "name": "白酒基金LOF",
+      "category": "CN_BAIJIU",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0893,
+      "avg_daily_amount60": 35616471.5,
+      "verified_underlying_index": "CSI_BAIJIU",
+      "oct_prices": {
+        "2026-10-15": 0.617,
+        "2026-10-16": 0.622,
+        "2026-10-19": 0.629,
+        "2026-10-20": 0.624
+      },
+      "ret_16_to_19_pct": 1.125,
+      "ret_19_to_20_pct": -0.795,
+      "pct_same_close_days_since_june": 19.1,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "501090",
+      "name": "消费龙头LOF",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.1319,
+      "avg_daily_amount60": 633342.7,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.067,
+        "2026-10-16": 1.072,
+        "2026-10-19": 1.08,
+        "2026-10-20": 1.08
+      },
+      "ret_16_to_19_pct": 0.746,
+      "ret_19_to_20_pct": 0.0,
+      "pct_same_close_days_since_june": 5.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "501300",
+      "name": "美元债LOF",
+      "category": "US_BONDS",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.146,
+      "avg_daily_amount60": 12006038.6,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.924,
+        "2026-10-16": 0.926,
+        "2026-10-19": 0.922,
+        "2026-10-20": 0.919
+      },
+      "ret_16_to_19_pct": -0.432,
+      "ret_19_to_20_pct": -0.325,
+      "pct_same_close_days_since_june": 22.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "512600",
+      "name": "消费ETF嘉实",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1466,
+      "avg_daily_amount60": 13828839.2,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 2.835,
+        "2026-10-16": 2.87,
+        "2026-10-19": 2.87,
+        "2026-10-20": 2.85
+      },
+      "ret_16_to_19_pct": 0.0,
+      "ret_19_to_20_pct": -0.697,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "512690",
+      "name": "酒ETF鹏华",
+      "category": "CN_BAIJIU",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2208,
+      "avg_daily_amount60": 522543927.4,
+      "verified_underlying_index": "CSI_LIQUOR",
+      "oct_prices": {
+        "2026-10-15": 1.534,
+        "2026-10-16": 1.542,
+        "2026-10-19": 1.546,
+        "2026-10-20": 1.538
+      },
+      "ret_16_to_19_pct": 0.259,
+      "ret_19_to_20_pct": -0.517,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "513070",
+      "name": "港股通消费ETF易方达",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1426,
+      "avg_daily_amount60": 92343892.8,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.039,
+        "2026-10-16": 1.048,
+        "2026-10-19": 1.048,
+        "2026-10-20": 1.043
+      },
+      "ret_16_to_19_pct": 0.0,
+      "ret_19_to_20_pct": -0.477,
+      "pct_same_close_days_since_june": 16.0,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "513230",
+      "name": "港股通消费ETF华夏",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0424,
+      "avg_daily_amount60": 20029317.2,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.816,
+        "2026-10-16": 0.824,
+        "2026-10-19": 0.825,
+        "2026-10-20": 0.817
+      },
+      "ret_16_to_19_pct": 0.121,
+      "ret_19_to_20_pct": -0.97,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "513400",
+      "name": "道琼斯ETF鹏华",
+      "category": "US_EQUITY",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0144,
+      "avg_daily_amount60": 264001873.9,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.297,
+        "2026-10-16": 1.328,
+        "2026-10-19": 1.321,
+        "2026-10-20": 1.317
+      },
+      "ret_16_to_19_pct": -0.527,
+      "ret_19_to_20_pct": -0.303,
+      "pct_same_close_days_since_june": 16.0,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "513590",
+      "name": "港股通消费ETF鹏华",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0267,
+      "avg_daily_amount60": 2925171.4,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.726,
+        "2026-10-16": 0.735,
+        "2026-10-19": 0.734,
+        "2026-10-20": 0.73
+      },
+      "ret_16_to_19_pct": -0.136,
+      "ret_19_to_20_pct": -0.545,
+      "pct_same_close_days_since_june": 18.1,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "513970",
+      "name": "恒生消费ETF景顺",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0702,
+      "avg_daily_amount60": 33636304.0,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.77,
+        "2026-10-16": 0.78,
+        "2026-10-19": 0.79,
+        "2026-10-20": 0.773
+      },
+      "ret_16_to_19_pct": 1.282,
+      "ret_19_to_20_pct": -2.152,
+      "pct_same_close_days_since_june": 25.5,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "515170",
+      "name": "食品饮料ETF华夏",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2551,
+      "avg_daily_amount60": 83185703.1,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.462,
+        "2026-10-16": 0.465,
+        "2026-10-19": 0.464,
+        "2026-10-20": 0.463
+      },
+      "ret_16_to_19_pct": -0.215,
+      "ret_19_to_20_pct": -0.216,
+      "pct_same_close_days_since_june": 31.9,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "515650",
+      "name": "消费50ETF富国",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.249,
+      "avg_daily_amount60": 68882498.4,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 1.06,
+        "2026-10-16": 1.068,
+        "2026-10-19": 1.073,
+        "2026-10-20": 1.064
+      },
+      "ret_16_to_19_pct": 0.468,
+      "ret_19_to_20_pct": -0.839,
+      "pct_same_close_days_since_june": 13.8,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "515710",
+      "name": "食品饮料ETF华宝",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.3128,
+      "avg_daily_amount60": 19750176.7,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.494,
+        "2026-10-16": 0.497,
+        "2026-10-19": 0.496,
+        "2026-10-20": 0.497
+      },
+      "ret_16_to_19_pct": -0.201,
+      "ret_19_to_20_pct": 0.202,
+      "pct_same_close_days_since_june": 23.4,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "516130",
+      "name": "消费龙头ETF华宝",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1977,
+      "avg_daily_amount60": 12536697.4,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.673,
+        "2026-10-16": 0.676,
+        "2026-10-19": 0.682,
+        "2026-10-20": 0.678
+      },
+      "ret_16_to_19_pct": 0.888,
+      "ret_19_to_20_pct": -0.587,
+      "pct_same_close_days_since_june": 18.1,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "516460",
+      "name": "现金流ETF800鹏华",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1961,
+      "avg_daily_amount60": 5071383.5,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 1.202,
+        "2026-10-16": 1.21,
+        "2026-10-19": 1.216,
+        "2026-10-20": 1.212
+      },
+      "ret_16_to_19_pct": 0.496,
+      "ret_19_to_20_pct": -0.329,
+      "pct_same_close_days_since_june": 21.3,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "516900",
+      "name": "食品饮料ETF华安",
+      "category": "CN_CONSUMER",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.353,
+      "avg_daily_amount60": 5850447.2,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.489,
+        "2026-10-16": 0.492,
+        "2026-10-19": 0.491,
+        "2026-10-20": 0.491
+      },
+      "ret_16_to_19_pct": -0.203,
+      "ret_19_to_20_pct": 0.0,
+      "pct_same_close_days_since_june": 6.4,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "517550",
+      "name": "沪港深消费龙头ETF招商",
+      "category": "CROSS_BORDER_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.059,
+      "avg_daily_amount60": 3691742.4,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.636,
+        "2026-10-16": 0.642,
+        "2026-10-19": 0.643,
+        "2026-10-20": 0.64
+      },
+      "ret_16_to_19_pct": 0.156,
+      "ret_19_to_20_pct": -0.467,
+      "pct_same_close_days_since_june": 22.3,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "520520",
+      "name": "恒生消费ETF华泰柏瑞",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0359,
+      "avg_daily_amount60": 2780140.1,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.893,
+        "2026-10-16": 0.902,
+        "2026-10-19": 0.904,
+        "2026-10-20": 0.896
+      },
+      "ret_16_to_19_pct": 0.222,
+      "ret_19_to_20_pct": -0.885,
+      "pct_same_close_days_since_june": 5.3,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "520620",
+      "name": "恒生消费ETF嘉实",
+      "category": "HK_CONSUMER",
+      "first_qualified_date": "2026-10-20",
+      "r2_asof": 0.0165,
+      "avg_daily_amount60": 3547644.8,
+      "verified_underlying_index": null,
+      "oct_prices": {
+        "2026-10-15": 0.765,
+        "2026-10-16": 0.771,
+        "2026-10-19": 0.772,
+        "2026-10-20": 0.765
+      },
+      "ret_16_to_19_pct": 0.13,
+      "ret_19_to_20_pct": -0.907,
+      "pct_same_close_days_since_june": 7.4,
+      "holiday_mismatch": true
+    },
+    {
+      "symbol": "563580",
+      "name": "自由现金流800ETF万家",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2037,
+      "avg_daily_amount60": 8771419.0,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 1.1,
+        "2026-10-16": 1.107,
+        "2026-10-19": 1.113,
+        "2026-10-20": 1.11
+      },
+      "ret_16_to_19_pct": 0.542,
+      "ret_19_to_20_pct": -0.27,
+      "pct_same_close_days_since_june": 2.1,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "563680",
+      "name": "800现金流ETF汇添富",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-19",
+      "r2_asof": 0.1763,
+      "avg_daily_amount60": 3367182.5,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 1.164,
+        "2026-10-16": 1.173,
+        "2026-10-19": 1.181,
+        "2026-10-20": 1.175
+      },
+      "ret_16_to_19_pct": 0.682,
+      "ret_19_to_20_pct": -0.508,
+      "pct_same_close_days_since_june": 18.1,
+      "holiday_mismatch": false
+    },
+    {
+      "symbol": "563990",
+      "name": "800现金流ETF富国",
+      "category": "CN_CASHFLOW_FACTOR",
+      "first_qualified_date": "2026-10-16",
+      "r2_asof": 0.2624,
+      "avg_daily_amount60": 8757737.2,
+      "verified_underlying_index": "CSI_800_FREE_CASH_FLOW_932368",
+      "oct_prices": {
+        "2026-10-15": 1.229,
+        "2026-10-16": 1.236,
+        "2026-10-19": 1.242,
+        "2026-10-20": 1.239
+      },
+      "ret_16_to_19_pct": 0.485,
+      "ret_19_to_20_pct": -0.242,
+      "pct_same_close_days_since_june": 16.0,
+      "holiday_mismatch": false
+    }
+  ],
+  "pairwise_extremes": [
+    {
+      "a": "159928",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.9694,
+      "corr_5d_120": 0.99369,
+      "corr_5d_60": 0.99068,
+      "same_verified_index": false
+    },
+    {
+      "a": "520520",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.9664,
+      "corr_5d_120": 0.99076,
+      "corr_5d_60": 0.98592,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "159222",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.93159,
+      "corr_5d_120": 0.98523,
+      "corr_5d_60": 0.98291,
+      "same_verified_index": false
+    },
+    {
+      "a": "513230",
+      "b": "513590",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.93499,
+      "corr_5d_120": 0.98022,
+      "corr_5d_60": 0.99026,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.88892,
+      "corr_5d_120": 0.9792,
+      "corr_5d_60": 0.98281,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.93641,
+      "corr_5d_120": 0.97869,
+      "corr_5d_60": 0.97598,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "159276",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.89259,
+      "corr_5d_120": 0.97857,
+      "corr_5d_60": 0.97495,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "159276",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.91131,
+      "corr_5d_120": 0.9785,
+      "corr_5d_60": 0.97031,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.92355,
+      "corr_5d_120": 0.97844,
+      "corr_5d_60": 0.97739,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8887,
+      "corr_5d_120": 0.97714,
+      "corr_5d_60": 0.98656,
+      "same_verified_index": false
+    },
+    {
+      "a": "159229",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.90027,
+      "corr_5d_120": 0.97619,
+      "corr_5d_60": 0.98037,
+      "same_verified_index": true
+    },
+    {
+      "a": "159285",
+      "b": "513070",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.90901,
+      "corr_5d_120": 0.97592,
+      "corr_5d_60": 0.97613,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "513070",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.88002,
+      "corr_5d_120": 0.9745,
+      "corr_5d_60": 0.97607,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "159229",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.91406,
+      "corr_5d_120": 0.97301,
+      "corr_5d_60": 0.97224,
+      "same_verified_index": true
+    },
+    {
+      "a": "513070",
+      "b": "513230",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.87405,
+      "corr_5d_120": 0.97194,
+      "corr_5d_60": 0.98353,
+      "same_verified_index": false
+    },
+    {
+      "a": "513970",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.89524,
+      "corr_5d_120": 0.97166,
+      "corr_5d_60": 0.97494,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.87338,
+      "corr_5d_120": 0.9708,
+      "corr_5d_60": 0.972,
+      "same_verified_index": false
+    },
+    {
+      "a": "159229",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.88105,
+      "corr_5d_120": 0.97079,
+      "corr_5d_60": 0.97558,
+      "same_verified_index": true
+    },
+    {
+      "a": "159119",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.91222,
+      "corr_5d_120": 0.97012,
+      "corr_5d_60": 0.97393,
+      "same_verified_index": true
+    },
+    {
+      "a": "161725",
+      "b": "512690",
+      "category": "CN_BAIJIU",
+      "corr_1d_120": 0.90762,
+      "corr_5d_120": 0.9698,
+      "corr_5d_60": 0.97598,
+      "same_verified_index": false
+    },
+    {
+      "a": "513970",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.89499,
+      "corr_5d_120": 0.96964,
+      "corr_5d_60": 0.98019,
+      "same_verified_index": false
+    },
+    {
+      "a": "516460",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.85971,
+      "corr_5d_120": 0.9695,
+      "corr_5d_60": 0.97867,
+      "same_verified_index": true
+    },
+    {
+      "a": "515710",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.88246,
+      "corr_5d_120": 0.9693,
+      "corr_5d_60": 0.98233,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "159285",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.86336,
+      "corr_5d_120": 0.96888,
+      "corr_5d_60": 0.9683,
+      "same_verified_index": false
+    },
+    {
+      "a": "513070",
+      "b": "513590",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.85127,
+      "corr_5d_120": 0.96783,
+      "corr_5d_60": 0.9744,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "513590",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.85155,
+      "corr_5d_120": 0.96779,
+      "corr_5d_60": 0.96206,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.87144,
+      "corr_5d_120": 0.96678,
+      "corr_5d_60": 0.96219,
+      "same_verified_index": false
+    },
+    {
+      "a": "516460",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.83783,
+      "corr_5d_120": 0.96675,
+      "corr_5d_60": 0.98355,
+      "same_verified_index": true
+    },
+    {
+      "a": "515170",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83926,
+      "corr_5d_120": 0.96581,
+      "corr_5d_60": 0.98429,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "513230",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.84431,
+      "corr_5d_120": 0.96307,
+      "corr_5d_60": 0.97302,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.86157,
+      "corr_5d_120": 0.96293,
+      "corr_5d_60": 0.96113,
+      "same_verified_index": true
+    },
+    {
+      "a": "159229",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.83133,
+      "corr_5d_120": 0.96293,
+      "corr_5d_60": 0.97463,
+      "same_verified_index": true
+    },
+    {
+      "a": "159285",
+      "b": "513590",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.87065,
+      "corr_5d_120": 0.96229,
+      "corr_5d_60": 0.97263,
+      "same_verified_index": false
+    },
+    {
+      "a": "159285",
+      "b": "513230",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.85555,
+      "corr_5d_120": 0.96186,
+      "corr_5d_60": 0.97895,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84726,
+      "corr_5d_120": 0.96139,
+      "corr_5d_60": 0.9715,
+      "same_verified_index": false
+    },
+    {
+      "a": "159285",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.90831,
+      "corr_5d_120": 0.95941,
+      "corr_5d_60": 0.94859,
+      "same_verified_index": false
+    },
+    {
+      "a": "159285",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.90515,
+      "corr_5d_120": 0.95879,
+      "corr_5d_60": 0.95082,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159798",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8027,
+      "corr_5d_120": 0.9583,
+      "corr_5d_60": 0.96544,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "159689",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81852,
+      "corr_5d_120": 0.95818,
+      "corr_5d_60": 0.96694,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8778,
+      "corr_5d_120": 0.95807,
+      "corr_5d_60": 0.96033,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.82286,
+      "corr_5d_120": 0.95768,
+      "corr_5d_60": 0.9791,
+      "same_verified_index": true
+    },
+    {
+      "a": "513070",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.9153,
+      "corr_5d_120": 0.95749,
+      "corr_5d_60": 0.9449,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.89406,
+      "corr_5d_120": 0.95744,
+      "corr_5d_60": 0.93943,
+      "same_verified_index": false
+    },
+    {
+      "a": "563680",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.7812,
+      "corr_5d_120": 0.95725,
+      "corr_5d_60": 0.96025,
+      "same_verified_index": true
+    },
+    {
+      "a": "513230",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.89113,
+      "corr_5d_120": 0.95723,
+      "corr_5d_60": 0.94711,
+      "same_verified_index": false
+    },
+    {
+      "a": "513070",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.91852,
+      "corr_5d_120": 0.95672,
+      "corr_5d_60": 0.9401,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83901,
+      "corr_5d_120": 0.95601,
+      "corr_5d_60": 0.983,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.89928,
+      "corr_5d_120": 0.95562,
+      "corr_5d_60": 0.93504,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "159399",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.83047,
+      "corr_5d_120": 0.95487,
+      "corr_5d_60": 0.95069,
+      "same_verified_index": false
+    },
+    {
+      "a": "513230",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.88309,
+      "corr_5d_120": 0.953,
+      "corr_5d_60": 0.94931,
+      "same_verified_index": false
+    },
+    {
+      "a": "513590",
+      "b": "520620",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.88224,
+      "corr_5d_120": 0.95234,
+      "corr_5d_60": 0.9304,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "159399",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84837,
+      "corr_5d_120": 0.95231,
+      "corr_5d_60": 0.95095,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.87266,
+      "corr_5d_120": 0.95127,
+      "corr_5d_60": 0.97187,
+      "same_verified_index": false
+    },
+    {
+      "a": "159276",
+      "b": "159399",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.83862,
+      "corr_5d_120": 0.95082,
+      "corr_5d_60": 0.94978,
+      "same_verified_index": false
+    },
+    {
+      "a": "515170",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81716,
+      "corr_5d_120": 0.95057,
+      "corr_5d_60": 0.99429,
+      "same_verified_index": false
+    },
+    {
+      "a": "513590",
+      "b": "520520",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.86184,
+      "corr_5d_120": 0.95045,
+      "corr_5d_60": 0.93592,
+      "same_verified_index": false
+    },
+    {
+      "a": "512600",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.91868,
+      "corr_5d_120": 0.94718,
+      "corr_5d_60": 0.96279,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.92059,
+      "corr_5d_120": 0.94563,
+      "corr_5d_60": 0.95394,
+      "same_verified_index": false
+    },
+    {
+      "a": "515650",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.85725,
+      "corr_5d_120": 0.94558,
+      "corr_5d_60": 0.97503,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80555,
+      "corr_5d_120": 0.94519,
+      "corr_5d_60": 0.95001,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.69241,
+      "corr_5d_120": 0.94264,
+      "corr_5d_60": 0.9416,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.7451,
+      "corr_5d_120": 0.94251,
+      "corr_5d_60": 0.98663,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.85372,
+      "corr_5d_120": 0.94212,
+      "corr_5d_60": 0.94214,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84947,
+      "corr_5d_120": 0.94144,
+      "corr_5d_60": 0.92506,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.66688,
+      "corr_5d_120": 0.94105,
+      "corr_5d_60": 0.95568,
+      "same_verified_index": false
+    },
+    {
+      "a": "513230",
+      "b": "513970",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.80295,
+      "corr_5d_120": 0.94089,
+      "corr_5d_60": 0.96823,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84942,
+      "corr_5d_120": 0.94023,
+      "corr_5d_60": 0.93814,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.78684,
+      "corr_5d_120": 0.93898,
+      "corr_5d_60": 0.94283,
+      "same_verified_index": false
+    },
+    {
+      "a": "513070",
+      "b": "513970",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.80946,
+      "corr_5d_120": 0.93827,
+      "corr_5d_60": 0.95782,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.87802,
+      "corr_5d_120": 0.9381,
+      "corr_5d_60": 0.94557,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "159229",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.86346,
+      "corr_5d_120": 0.93773,
+      "corr_5d_60": 0.93375,
+      "same_verified_index": false
+    },
+    {
+      "a": "159268",
+      "b": "513970",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.82653,
+      "corr_5d_120": 0.93713,
+      "corr_5d_60": 0.94761,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83592,
+      "corr_5d_120": 0.93688,
+      "corr_5d_60": 0.93685,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.85701,
+      "corr_5d_120": 0.93663,
+      "corr_5d_60": 0.93816,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80363,
+      "corr_5d_120": 0.93531,
+      "corr_5d_60": 0.92778,
+      "same_verified_index": false
+    },
+    {
+      "a": "159285",
+      "b": "513970",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.81497,
+      "corr_5d_120": 0.93502,
+      "corr_5d_60": 0.95665,
+      "same_verified_index": false
+    },
+    {
+      "a": "512600",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81396,
+      "corr_5d_120": 0.93441,
+      "corr_5d_60": 0.96401,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84032,
+      "corr_5d_120": 0.93387,
+      "corr_5d_60": 0.91522,
+      "same_verified_index": false
+    },
+    {
+      "a": "513590",
+      "b": "513970",
+      "category": "HK_CONSUMER",
+      "corr_1d_120": 0.78587,
+      "corr_5d_120": 0.93326,
+      "corr_5d_60": 0.95892,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81978,
+      "corr_5d_120": 0.9332,
+      "corr_5d_60": 0.96228,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.88133,
+      "corr_5d_120": 0.9328,
+      "corr_5d_60": 0.93383,
+      "same_verified_index": false
+    },
+    {
+      "a": "512600",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84618,
+      "corr_5d_120": 0.93177,
+      "corr_5d_60": 0.96322,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.89123,
+      "corr_5d_120": 0.93104,
+      "corr_5d_60": 0.89567,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159798",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81617,
+      "corr_5d_120": 0.93079,
+      "corr_5d_60": 0.96367,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81346,
+      "corr_5d_120": 0.93067,
+      "corr_5d_60": 0.9488,
+      "same_verified_index": false
+    },
+    {
+      "a": "512600",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.90073,
+      "corr_5d_120": 0.93059,
+      "corr_5d_60": 0.90023,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159670",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.78475,
+      "corr_5d_120": 0.93007,
+      "corr_5d_60": 0.94834,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "159229",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84614,
+      "corr_5d_120": 0.92979,
+      "corr_5d_60": 0.93856,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "159222",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.85542,
+      "corr_5d_120": 0.92978,
+      "corr_5d_60": 0.92231,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.70011,
+      "corr_5d_120": 0.92914,
+      "corr_5d_60": 0.98672,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8412,
+      "corr_5d_120": 0.92909,
+      "corr_5d_60": 0.94998,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.86829,
+      "corr_5d_120": 0.92889,
+      "corr_5d_60": 0.92412,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "159201",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.86434,
+      "corr_5d_120": 0.92864,
+      "corr_5d_60": 0.92985,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81337,
+      "corr_5d_120": 0.92775,
+      "corr_5d_60": 0.95729,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8119,
+      "corr_5d_120": 0.92727,
+      "corr_5d_60": 0.93043,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.85272,
+      "corr_5d_120": 0.92726,
+      "corr_5d_60": 0.89074,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84035,
+      "corr_5d_120": 0.92713,
+      "corr_5d_60": 0.96075,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81674,
+      "corr_5d_120": 0.92663,
+      "corr_5d_60": 0.94338,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "159736",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81667,
+      "corr_5d_120": 0.92482,
+      "corr_5d_60": 0.93129,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "159798",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80283,
+      "corr_5d_120": 0.9239,
+      "corr_5d_60": 0.90135,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80179,
+      "corr_5d_120": 0.92366,
+      "corr_5d_60": 0.91988,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75103,
+      "corr_5d_120": 0.92353,
+      "corr_5d_60": 0.94351,
+      "same_verified_index": false
+    },
+    {
+      "a": "159222",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.76849,
+      "corr_5d_120": 0.92211,
+      "corr_5d_60": 0.93296,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80269,
+      "corr_5d_120": 0.92126,
+      "corr_5d_60": 0.93912,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.82953,
+      "corr_5d_120": 0.9212,
+      "corr_5d_60": 0.88812,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.79012,
+      "corr_5d_120": 0.92086,
+      "corr_5d_60": 0.94539,
+      "same_verified_index": false
+    },
+    {
+      "a": "159201",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.76471,
+      "corr_5d_120": 0.92026,
+      "corr_5d_60": 0.9359,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.85841,
+      "corr_5d_120": 0.92015,
+      "corr_5d_60": 0.89546,
+      "same_verified_index": false
+    },
+    {
+      "a": "159276",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.80609,
+      "corr_5d_120": 0.91962,
+      "corr_5d_60": 0.93361,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83504,
+      "corr_5d_120": 0.91921,
+      "corr_5d_60": 0.90058,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80966,
+      "corr_5d_120": 0.91891,
+      "corr_5d_60": 0.93924,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.78916,
+      "corr_5d_120": 0.9178,
+      "corr_5d_60": 0.93452,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84081,
+      "corr_5d_120": 0.91773,
+      "corr_5d_60": 0.88952,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "159798",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.77733,
+      "corr_5d_120": 0.91721,
+      "corr_5d_60": 0.91773,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.71738,
+      "corr_5d_120": 0.91661,
+      "corr_5d_60": 0.91811,
+      "same_verified_index": false
+    },
+    {
+      "a": "160632",
+      "b": "512690",
+      "category": "CN_BAIJIU",
+      "corr_1d_120": 0.67595,
+      "corr_5d_120": 0.91614,
+      "corr_5d_60": 0.96876,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.65447,
+      "corr_5d_120": 0.9157,
+      "corr_5d_60": 0.92877,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8367,
+      "corr_5d_120": 0.91526,
+      "corr_5d_60": 0.88524,
+      "same_verified_index": false
+    },
+    {
+      "a": "159276",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.77101,
+      "corr_5d_120": 0.91505,
+      "corr_5d_60": 0.93596,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83466,
+      "corr_5d_120": 0.91477,
+      "corr_5d_60": 0.93176,
+      "same_verified_index": false
+    },
+    {
+      "a": "512600",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8217,
+      "corr_5d_120": 0.91465,
+      "corr_5d_60": 0.89055,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.77856,
+      "corr_5d_120": 0.91367,
+      "corr_5d_60": 0.90764,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.83357,
+      "corr_5d_120": 0.91252,
+      "corr_5d_60": 0.93245,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "159736",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81676,
+      "corr_5d_120": 0.91154,
+      "corr_5d_60": 0.93477,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159928",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84121,
+      "corr_5d_120": 0.9114,
+      "corr_5d_60": 0.88785,
+      "same_verified_index": false
+    },
+    {
+      "a": "159399",
+      "b": "516460",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.79781,
+      "corr_5d_120": 0.91139,
+      "corr_5d_60": 0.91759,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "159399",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.84507,
+      "corr_5d_120": 0.911,
+      "corr_5d_60": 0.88845,
+      "same_verified_index": false
+    },
+    {
+      "a": "159399",
+      "b": "563990",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.78781,
+      "corr_5d_120": 0.91047,
+      "corr_5d_60": 0.89781,
+      "same_verified_index": false
+    },
+    {
+      "a": "159229",
+      "b": "159276",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.79694,
+      "corr_5d_120": 0.91037,
+      "corr_5d_60": 0.9423,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75282,
+      "corr_5d_120": 0.91008,
+      "corr_5d_60": 0.90555,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84476,
+      "corr_5d_120": 0.91,
+      "corr_5d_60": 0.88683,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159672",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.77755,
+      "corr_5d_120": 0.90771,
+      "corr_5d_60": 0.88369,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.72341,
+      "corr_5d_120": 0.90755,
+      "corr_5d_60": 0.91574,
+      "same_verified_index": false
+    },
+    {
+      "a": "159119",
+      "b": "159276",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.80379,
+      "corr_5d_120": 0.90754,
+      "corr_5d_60": 0.92316,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.67342,
+      "corr_5d_120": 0.90729,
+      "corr_5d_60": 0.91052,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.74379,
+      "corr_5d_120": 0.90568,
+      "corr_5d_60": 0.92934,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.62672,
+      "corr_5d_120": 0.90459,
+      "corr_5d_60": 0.91944,
+      "same_verified_index": false
+    },
+    {
+      "a": "159276",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.7221,
+      "corr_5d_120": 0.90405,
+      "corr_5d_60": 0.93684,
+      "same_verified_index": false
+    },
+    {
+      "a": "159229",
+      "b": "159399",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.81978,
+      "corr_5d_120": 0.90383,
+      "corr_5d_60": 0.89822,
+      "same_verified_index": false
+    },
+    {
+      "a": "159399",
+      "b": "563680",
+      "category": "CN_CASHFLOW_FACTOR",
+      "corr_1d_120": 0.77336,
+      "corr_5d_120": 0.90076,
+      "corr_5d_60": 0.89913,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159689",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75414,
+      "corr_5d_120": 0.90014,
+      "corr_5d_60": 0.90394,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.70568,
+      "corr_5d_120": 0.89493,
+      "corr_5d_60": 0.92242,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159689",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75548,
+      "corr_5d_120": 0.89314,
+      "corr_5d_60": 0.8806,
+      "same_verified_index": false
+    },
+    {
+      "a": "160632",
+      "b": "161725",
+      "category": "CN_BAIJIU",
+      "corr_1d_120": 0.64077,
+      "corr_5d_120": 0.89225,
+      "corr_5d_60": 0.93042,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159672",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.7983,
+      "corr_5d_120": 0.89178,
+      "corr_5d_60": 0.88341,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.78961,
+      "corr_5d_120": 0.89076,
+      "corr_5d_60": 0.88099,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.84301,
+      "corr_5d_120": 0.88793,
+      "corr_5d_60": 0.85464,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.62524,
+      "corr_5d_120": 0.88626,
+      "corr_5d_60": 0.90125,
+      "same_verified_index": false
+    },
+    {
+      "a": "515650",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.86213,
+      "corr_5d_120": 0.88267,
+      "corr_5d_60": 0.86242,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "512600",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.61267,
+      "corr_5d_120": 0.88025,
+      "corr_5d_60": 0.88374,
+      "same_verified_index": false
+    },
+    {
+      "a": "159928",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.6065,
+      "corr_5d_120": 0.87591,
+      "corr_5d_60": 0.86983,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.76053,
+      "corr_5d_120": 0.87554,
+      "corr_5d_60": 0.85092,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.81654,
+      "corr_5d_120": 0.87526,
+      "corr_5d_60": 0.85275,
+      "same_verified_index": false
+    },
+    {
+      "a": "516130",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80113,
+      "corr_5d_120": 0.87492,
+      "corr_5d_60": 0.86883,
+      "same_verified_index": false
+    },
+    {
+      "a": "515650",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80033,
+      "corr_5d_120": 0.87349,
+      "corr_5d_60": 0.84233,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.7322,
+      "corr_5d_120": 0.87225,
+      "corr_5d_60": 0.83861,
+      "same_verified_index": false
+    },
+    {
+      "a": "515170",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75909,
+      "corr_5d_120": 0.8722,
+      "corr_5d_60": 0.85376,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.76703,
+      "corr_5d_120": 0.86906,
+      "corr_5d_60": 0.8235,
+      "same_verified_index": false
+    },
+    {
+      "a": "159689",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.52016,
+      "corr_5d_120": 0.86816,
+      "corr_5d_60": 0.87219,
+      "same_verified_index": false
+    },
+    {
+      "a": "515170",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75232,
+      "corr_5d_120": 0.86571,
+      "corr_5d_60": 0.85026,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.8114,
+      "corr_5d_120": 0.86314,
+      "corr_5d_60": 0.86763,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.69959,
+      "corr_5d_120": 0.86269,
+      "corr_5d_60": 0.83132,
+      "same_verified_index": false
+    },
+    {
+      "a": "515710",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.7365,
+      "corr_5d_120": 0.86261,
+      "corr_5d_60": 0.84265,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.73553,
+      "corr_5d_120": 0.86125,
+      "corr_5d_60": 0.84117,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.80429,
+      "corr_5d_120": 0.85911,
+      "corr_5d_60": 0.84893,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.56821,
+      "corr_5d_120": 0.85244,
+      "corr_5d_60": 0.85349,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.72158,
+      "corr_5d_120": 0.85175,
+      "corr_5d_60": 0.83971,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "515710",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.76119,
+      "corr_5d_120": 0.85136,
+      "corr_5d_60": 0.83503,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.56175,
+      "corr_5d_120": 0.85072,
+      "corr_5d_60": 0.86155,
+      "same_verified_index": false
+    },
+    {
+      "a": "160222",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.57547,
+      "corr_5d_120": 0.85042,
+      "corr_5d_60": 0.83719,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.75573,
+      "corr_5d_120": 0.8496,
+      "corr_5d_60": 0.84183,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "160222",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.77676,
+      "corr_5d_120": 0.84932,
+      "corr_5d_60": 0.83415,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.71683,
+      "corr_5d_120": 0.84813,
+      "corr_5d_60": 0.841,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "515170",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.71412,
+      "corr_5d_120": 0.84795,
+      "corr_5d_60": 0.849,
+      "same_verified_index": false
+    },
+    {
+      "a": "159672",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.53065,
+      "corr_5d_120": 0.8457,
+      "corr_5d_60": 0.85567,
+      "same_verified_index": false
+    },
+    {
+      "a": "159798",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.64454,
+      "corr_5d_120": 0.84448,
+      "corr_5d_60": 0.81675,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.66618,
+      "corr_5d_120": 0.84184,
+      "corr_5d_60": 0.84756,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.73537,
+      "corr_5d_120": 0.83521,
+      "corr_5d_60": 0.83944,
+      "same_verified_index": false
+    },
+    {
+      "a": "501090",
+      "b": "516900",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.60409,
+      "corr_5d_120": 0.83494,
+      "corr_5d_60": 0.85993,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "159798",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.74608,
+      "corr_5d_120": 0.82983,
+      "corr_5d_60": 0.79384,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159862",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.70212,
+      "corr_5d_120": 0.82252,
+      "corr_5d_60": 0.83926,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "516130",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.71199,
+      "corr_5d_120": 0.81923,
+      "corr_5d_60": 0.78549,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "515650",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.76143,
+      "corr_5d_120": 0.81902,
+      "corr_5d_60": 0.78529,
+      "same_verified_index": false
+    },
+    {
+      "a": "159862",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.56283,
+      "corr_5d_120": 0.81401,
+      "corr_5d_60": 0.84907,
+      "same_verified_index": false
+    },
+    {
+      "a": "159520",
+      "b": "159736",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.69864,
+      "corr_5d_120": 0.80844,
+      "corr_5d_60": 0.78705,
+      "same_verified_index": false
+    },
+    {
+      "a": "159736",
+      "b": "501090",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.42935,
+      "corr_5d_120": 0.78376,
+      "corr_5d_60": 0.76951,
+      "same_verified_index": false
+    },
+    {
+      "a": "159670",
+      "b": "159736",
+      "category": "CN_CONSUMER",
+      "corr_1d_120": 0.68852,
+      "corr_5d_120": 0.78105,
+      "corr_5d_60": 0.73921,
+      "same_verified_index": false
+    }
+  ],
+  "category_total": 7
+}
