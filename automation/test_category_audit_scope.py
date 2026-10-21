@@ -42,6 +42,11 @@ class CategoryAuditScopeTest(unittest.TestCase):
         self.assertTrue(groups["US_BONDS"]["needs_review"])
         self.assertEqual(sum(x["count"] for x in out["categories"]),10)
         self.assertEqual(out["new_rebuild_count"],7)
+        self.assertEqual(groups["CN_CONSUMER"]["category_first_qualified_date"],"2026-10-20")
+        self.assertEqual(groups["CN_CONSUMER"]["qualification_cohorts"][0]["count"],2)
+        self.assertEqual(groups["CRUDE_OIL"]["category_first_qualified_date"],None)
+        self.assertEqual(groups["CN_BAIJIU"]["category_first_qualified_date"],"2026-10-19")
+        self.assertEqual(groups["HK_CONSUMER"]["category_first_qualified_date"],"2026-10-20")
 
     def test_no_silent_other_bucket(self):
         a=classify("588999","未分类主题ETF",{})
