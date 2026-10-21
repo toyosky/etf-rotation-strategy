@@ -5,12 +5,14 @@ on:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
       - 'automation/notify_rebuild_candidates.py'
+      - 'automation/build_daily_premium_snapshot.py'
       - 'automation/refresh_full_market_rebuild.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
   workflow_run:
     workflows:
       - 'Tencent HFQ Daily Bars Sync'
       - 'Live Forward Strategy Tracker'
+      - 'Premium History Sync'
     types:
       - completed
   schedule:
@@ -88,6 +90,12 @@ jobs:
             --out research/full_market_rebuild/today_output
           cp research/full_market_rebuild/today_output/today_report.json data/full-market-rebuild-latest.json
 
+      - name: Build dated Premium10 snapshot for OLS candidate
+        run: |
+          python automation/build_daily_premium_snapshot.py \
+            --current data/fundamental-audit-trigger.json \
+            --output /tmp/daily-premium-snapshot.json
+
       - name: Validate and preview unified OLS + full-market rebuild report
         shell: bash
         run: |
@@ -98,6 +106,7 @@ jobs:
             --current data/fundamental-audit-trigger.json \
             --previous-market /tmp/previous-market-report.json \
             --market-report data/full-market-rebuild-latest.json \
+            --premium-snapshot /tmp/daily-premium-snapshot.json \
             --dry-run --output-markdown /tmp/full-market-daily-report.md
 
       - name: Send daily close report via PushPlus
@@ -109,7 +118,8 @@ jobs:
             --previous /tmp/previous-fundamental-audit-trigger.json \
             --current data/fundamental-audit-trigger.json \
             --previous-market /tmp/previous-market-report.json \
-            --market-report data/full-market-rebuild-latest.json
+            --market-report data/full-market-rebuild-latest.json \
+            --premium-snapshot /tmp/daily-premium-snapshot.json
 
       - name: Commit trigger snapshot
         shell: bash
@@ -187,5 +197,6 @@ jobs:
             data/full-market-rebuild-latest.json
             research/full_market_rebuild/today_output/today_signals.csv
             /tmp/full-market-daily-report.md
+            /tmp/daily-premium-snapshot.json
           if-no-files-found: warn
           retention-days: 30
