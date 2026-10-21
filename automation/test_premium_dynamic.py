@@ -62,6 +62,32 @@ class DynamicPremiumTest(unittest.TestCase):
         self.assertRaises(ValueError, sync.normalize_symbols, ["OIL"])
         self.assertRaises(RuntimeError, sync.load_universe, FakeEngine(), {"000001"}, True)
 
+    def test_fixed_ols_pool_is_not_full_market(self):
+        symbols = sync.fixed_ols_symbols()
+        self.assertEqual(len(symbols), 15)  # 14 risk ETFs/LOFs plus US carrier
+        self.assertIn("501018", symbols)
+        self.assertIn("512800", symbols)
+        self.assertIn("513500", symbols)
+        self.assertNotIn("520870", symbols)
+        self.assertNotIn("159100", symbols)
+
+    def test_full_market_qualified_kept_separate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "full.json"
+            path.write_text(json.dumps({
+                "as_of":"2026-10-20", "data_quality_gate":"PASS",
+                "qualified_candidates":[
+                    {"symbol":"520870","stage":"REBUILDING_QUALIFIED",
+                     "first_qualified_date":"2026-10-20"},
+                    {"symbol":"159100","stage":"REBUILDING_QUALIFIED",
+                     "first_qualified_date":"2026-10-19"},
+                    {"symbol":"512800","stage":"REBUILD_WATCH",
+                     "first_qualified_date":"2026-10-20"}
+                ]
+            }), encoding="utf-8")
+            self.assertEqual(sync.rebuild_qualified_symbols(str(path)), {"520870","159100"})
+            self.assertEqual(sync.rebuild_qualified_symbols(str(path), True), {"520870"})
+
     def test_default_universe_includes_banks_and_brazil(self):
         universe = sync.load_universe(FakeEngine())
         names = {row["symbol"] for row in universe}
