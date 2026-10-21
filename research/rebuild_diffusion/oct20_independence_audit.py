@@ -171,6 +171,45 @@ def main():
             else:
                 stats["unverified_index_count"]+=1
         stats["verified_index_groups"]={key:sorted(v) for key,v in groups.items()}
+        stats["known_index_count"]=len(groups)
+        stats["known_index_coverage"]=len(ids)-stats["unverified_index_count"]
+        # Identity precedes correlation: funds tracking the same VERIFIED index
+        # are represented by one price series even if a short/rounded ETF
+        # history makes its empirical correlations unavailable.
+        identity_groups={**{key:sorted(v) for key,v in groups.items()}}
+        for symbol in ids:
+            if symbol not in VERIFIED_INDEX:
+                identity_groups["UNVERIFIED_"+symbol]=[symbol]
+        # The representative maximizes usable historical calendar coverage,
+        # with trailing known liquidity as a tie-breaker.
+        date_count={symbol:int((data.symbol==symbol).sum()) for symbol in ids}
+        representatives={}
+        for index,member_codes in identity_groups.items():
+            representatives[index]=max(member_codes,key=lambda symbol:
+                (date_count[symbol],float(metas[symbol].get("avg_amount60") or 0),symbol))
+        stats["index_proxy_representatives"]=representatives
+        stats["index_proxy_clusters"]={}
+        for threshold in (.75,.85,.90,.95):
+            representatives_list=list(representatives.values())
+            rc=group_matrix(corr5,representatives_list)
+            c=complete_link(rc,threshold) if len(representatives_list)>1 else [representatives_list]
+            reverse={v:k for k,v in representatives.items()}
+            stats["index_proxy_clusters"][str(threshold)]={
+                "n":len(c),
+                "group_members":[sorted([reverse[x] for x in cluster]) for cluster in c],
+                "representative_groups":[sorted([s for index in [reverse[x] for x in cluster]
+                    for s in identity_groups[index]]) for cluster in c]}
+        index_onsets={}
+        for index,member_codes in groups.items():
+            ordered=sorted((str(metas[symbol].get("first_qualified_date")),
+                            symbol) for symbol in member_codes
+                           if metas[symbol].get("first_qualified_date"))
+            index_onsets[index]={"first_date":ordered[0][0] if ordered else None,
+                                 "first_symbols":[symbol for first,symbol in ordered
+                                                  if ordered and first==ordered[0][0]],
+                                 "later_members":[{"date":first,"symbol":symbol}
+                                                  for first,symbol in ordered]}
+        stats["verified_index_onsets"]=index_onsets
         if len(ids)>1:
             for name,m in [("corr5_120",corr5),("corr1_120",corr1),("corr5_60",corr5_60)]:
                 cm=group_matrix(m,ids)
