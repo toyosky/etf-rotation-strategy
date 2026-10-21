@@ -1,0 +1,80 @@
+name: Historical ETF Rebuild Diffusion Backtest
+on:
+  push:
+    paths:
+      - 'research/rebuild_diffusion/historical_diffusion_backtest.py'
+      - '.github/workflows/research-rebuild-diffusion.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: research-rebuild-diffusion
+  cancel-in-progress: true
+jobs:
+  backtest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install analysis requirements
+        run: python -m pip install "pandas>=2.2,<3" "numpy>=2,<3" "pyarrow>=18" "SQLAlchemy>=2,<3" "psycopg2-binary>=2.9,<3"
+      - name: Compile historical study
+        run: python -m py_compile research/rebuild_diffusion/historical_diffusion_backtest.py
+      - name: Fetch complete archived market bars
+        run: |
+          mkdir -p /tmp/etf-rebuild-data
+          gh release download research-data-fullmarket-current --repo "$GH_REPO" \
+            --pattern refreshed_daily_bars.parquet --dir /tmp/etf-rebuild-data
+          test -s /tmp/etf-rebuild-data/refreshed_daily_bars.parquet
+      - name: Replay historical sector rebuild episodes
+        run: |
+          python research/rebuild_diffusion/historical_diffusion_backtest.py \
+            --parquet /tmp/etf-rebuild-data/refreshed_daily_bars.parquet \
+            --start 2021-01-01 --end 2026-09-30 \
+            --cooldown 10 \
+            --out research/rebuild_diffusion/historical_diffusion_results.json
+      - name: Persist reproducible study results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/rebuild_diffusion/historical_diffusion_results.json
+          if git diff --cached --quiet; then
+            echo "Results unchanged"
+            exit 0
+          fi
+          git commit -m "research: archive ETF category onset diffusion backtest"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Publish study summary
+        if: always()
+        run: |
+          echo '## Full-market ETF diffusion backtest' >> "$GITHUB_STEP_SUMMARY"
+          if test -f research/rebuild_diffusion/historical_diffusion_results.json; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          x=json.load(open('research/rebuild_diffusion/historical_diffusion_results.json'))
+          print(json.dumps({'episodes':x['summary']['episode_count'],
+                            'by_year':x['summary']['year_counts'],
+                            'diffusion':x['summary']['diffusion'],
+                            'horizon5':x['summary']['horizons']['5']},ensure_ascii=False,indent=2))
+          PY
+          else
+            echo 'No research output generated.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload detailed results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: etf-rebuild-diffusion-${{ github.run_id }}
+          path: research/rebuild_diffusion/historical_diffusion_results.json
+          if-no-files-found: warn
+          retention-days: 30
