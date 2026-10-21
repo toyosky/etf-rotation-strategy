@@ -5,6 +5,7 @@ on:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
       - 'automation/notify_rebuild_candidates.py'
+      - 'automation/test_daily_notification.py'
       - 'automation/build_daily_premium_snapshot.py'
       - 'automation/refresh_full_market_rebuild.py'
       - '.github/workflows/fundamental-audit-trigger.yml'
@@ -56,6 +57,9 @@ jobs:
 
       - name: Compile trigger and daily market-wide scanner
         run: python -m py_compile automation/build_fundamental_audit_trigger.py automation/refresh_full_market_rebuild.py automation/notify_rebuild_candidates.py
+
+      - name: Validate combined daily notification contract
+        run: python -m unittest automation.test_daily_notification
 
       - name: Build fundamental-audit trigger
         run: python automation/build_fundamental_audit_trigger.py
