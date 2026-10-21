@@ -1,0 +1,46 @@
+name: PushPlus Premium10 Smoke Test
+
+on:
+  push:
+    paths:
+      - '.github/workflows/pushplus-premium-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sqlalchemy psycopg2-binary
+      - name: Create Premium10 snapshot
+        run: |
+          python automation/build_daily_premium_snapshot.py \
+            --current data/fundamental-audit-trigger.json \
+            --output /tmp/premium-smoke.json
+      - name: Test report validation (no push)
+        run: |
+          python automation/notify_rebuild_candidates.py \
+            --previous data/fundamental-audit-trigger.json \
+            --current data/fundamental-audit-trigger.json \
+            --previous-market data/full-market-rebuild-latest.json \
+            --market-report data/full-market-rebuild-latest.json \
+            --premium-snapshot /tmp/premium-smoke.json \
+            --test --dry-run --output-markdown /tmp/pushplus-smoke.md
+      - name: Send labelled test via PushPlus
+        run: |
+          python automation/notify_rebuild_candidates.py \
+            --previous data/fundamental-audit-trigger.json \
+            --current data/fundamental-audit-trigger.json \
+            --previous-market data/full-market-rebuild-latest.json \
+            --market-report data/full-market-rebuild-latest.json \
+            --premium-snapshot /tmp/premium-smoke.json --test
