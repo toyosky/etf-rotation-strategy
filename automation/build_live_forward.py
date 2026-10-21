@@ -29,7 +29,9 @@ OUT=ROOT/'data'/'live-forward.json'
 EXECUTION_OVERRIDES=ROOT/'data'/'execution-overrides.json'
 CASH='511220'; CARRIER='513500'; BENCHMARK='510300'
 PREMIUM_LIMIT=0.10
-PREMIUM_SENSITIVE={'159934','159985','161226','513100','159957','159509','513290','159529','159981','501018','513530','511380','164824','513500','512800'}
+# Every traded ETF/LOF (except the configured cash carrier) is subject to Premium10.
+def needs_premium_check(symbol):
+    return bool(symbol) and str(symbol) != CASH
 NAMES={'159934':'黄金','159985':'豆粕','161226':'白银','513100':'纳指100','159957':'创业板','159509':'纳指科技','513290':'纳指生物','159529':'标普消费','159981':'能源化工','501018':'原油','513530':'港股红利','511380':'可转债','164824':'印度','512800':'银行','511220':'城投债/现金','513500':'标普500 Carrier','510300':'沪深300ETF'}
 BACKTEST_REFERENCE={
   'period':'2015-01-26 → 2026-09-15',
@@ -118,7 +120,7 @@ def apply_execution_overrides(path,key,overrides):
         cur=None if pd.isna(q.at[idx,'target']) else str(q.at[idx,'target'])
         if date in confirmed_dates:
             anchored=True
-        elif anchored and cur != prev and cur in PREMIUM_SENSITIVE:
+        elif anchored and cur != prev and needs_premium_check(cur):
             q.at[idx,'target']=prev
             q.at[idx,'route_decision']='PREMIUM_UNVERIFIED_KEEP_INCUMBENT'
             q.at[idx,'execution_filter']='PREMIUM_UNVERIFIED'
@@ -245,7 +247,7 @@ def main():
     holding_name=NAMES.get(holding_target,'现金') if holding_target else '现金'
     execution_status=str(getattr(lr,'execution_status','MODEL'))
     execution_note=getattr(lr,'execution_note',None)
-    if latest_d==pd.Timestamp(lr.signal_date) and target!=holding_target and target in PREMIUM_SENSITIVE and execution_status=='MODEL':
+    if latest_d==pd.Timestamp(lr.signal_date) and target!=holding_target and needs_premium_check(target) and execution_status=='MODEL':
         execution_status='PENDING_PREMIUM_CHECK'
         execution_note=f'{target} {NAMES.get(target,"")} 是收盘候选；下一交易日开盘前必须通过 Premium{PREMIUM_LIMIT * 100:.0f}，且净值配对可用。当前持仓仍为 {holding_target or "现金"} {holding_name if holding_target else ""}'.strip()
     latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','model_target':model_target,'model_target_name':NAMES.get(model_target,'现金') if model_target else '现金','holding_target':holding_target,'holding_target_name':holding_name,'execution_status':execution_status,'execution_note':execution_note,'execution_filter':getattr(lr,'execution_filter',None),'premium_pct':clean(getattr(lr,'premium_pct',np.nan)),'premium_limit':clean(getattr(lr,'premium_limit',np.nan)),'decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':latest_d.strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
