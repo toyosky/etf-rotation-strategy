@@ -74,6 +74,7 @@ jobs:
           MODE="${{ github.event.inputs.mode || 'auto' }}"
           python automation/premium_history_sync.py \
             --mode "$MODE" \
+            --signals-file data/fundamental-audit-trigger.json \
             --summary premium-history-sync-summary.json
 
       - name: Publish summary
