@@ -18,6 +18,7 @@ jobs:
       ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
+      PYTHONPATH: .
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,7 +38,7 @@ jobs:
           test -s /tmp/etf-rebuild-data/refreshed_daily_bars.parquet
       - name: Replay historical sector rebuild episodes
         run: |
-          python research/rebuild_diffusion/historical_diffusion_backtest.py \
+          python -m research.rebuild_diffusion.historical_diffusion_backtest \
             --parquet /tmp/etf-rebuild-data/refreshed_daily_bars.parquet \
             --start 2021-01-01 --end 2026-09-30 \
             --cooldown 10 \
