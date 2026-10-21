@@ -7,8 +7,7 @@ on:
       - 'automation/requirements-premium-history.txt'
       - '.github/workflows/premium-history-sync.yml'
   schedule:
-    # 01:20 UTC = 09:20 Asia/Shanghai. Keep the scheduled heartbeat,
-    # but the premium retrieval itself is temporarily paused below.
+    # 01:20 UTC = 09:20 Asia/Shanghai; sync latest available NAV before trading.
     - cron: "20 1 * * *"
   workflow_dispatch:
     inputs:
@@ -35,9 +34,7 @@ jobs:
     timeout-minutes: 30
     env:
       ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
-      # Temporary kill-switch. Preserve the workflow/schedule while the
-      # unadjusted-price premium source is unavailable.
-      PREMIUM_HISTORY_SYNC_ENABLED: "false"
+      PREMIUM_HISTORY_SYNC_ENABLED: "true"
 
     steps:
       - name: Record paused status
