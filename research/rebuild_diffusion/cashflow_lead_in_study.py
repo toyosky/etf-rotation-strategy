@@ -101,13 +101,106 @@ def pick_relative_lead(series, benchmark):
             "first_5_sessions_above_1pp":next((str(s.index[i].date()) for i in range(4,len(s))
                 if all(s.iloc[i-j]>1 for j in range(5))),None)}
 
+# Executable shadow representatives fixed by index family before reviewing
+# the episode's outcome. Index-family median price generates the SIGNAL,
+# one ETF OPEN price determines the ENTRY and EXIT execution proxy.
+REPRESENTATIVES={
+    "CSI800_CASHFLOW":"159229",
+    "GUOZHENG_CASHFLOW":"159201",
+    "FTSE_A_CASHFLOW":"159399",
+}
+COST_PER_SIDE=0.0006
+
+def trend_episodes(level_series, representative_open, representative_close):
+    """First qualified after each annual cross; exit first annual<=0.
+
+    Signal at close T; buy T+1 open. Exit at next open after annual<=0.
+    No 20-day cap and no arbitrary R2 exit. Strictly chronological.
+    Right-censored episodes marked to most recent close with NO unrealized
+    liquidation cost. Synthetic index-family price is not itself tradable.
+    """
+    level_series=level_series.dropna().astype(float)
+    if len(level_series)<30:return []
+    annual,r2=calc_ols(level_series.to_numpy(dtype=float))
+    dates=list(level_series.index)
+    cross=np.zeros(len(dates),dtype=bool)
+    cross[1:]=(annual[1:]>1e-8)&(annual[:-1]<=1e-8)
+    pending_cross=None
+    own_open=representative_open.reindex(dates)
+    own_close=representative_close.reindex(dates)
+    trades=[]
+    active=None
+    for i in range(len(dates)):
+        # At the day's open, execute PREVIOUS close's orders. No same-day fill.
+        if active is not None and active.get("pending_exit"):
+            px=own_open.iloc[i]
+            if pd.notna(px) and px>0:
+                active["exit_date"]=str(dates[i].date())
+                active["exit_price"]=float(px)
+                active["exit_reason"]="annual_nonpositive"
+                active["exit_annual"]=active.pop("pending_exit_annual",None)
+                active.pop("pending_exit",None)
+                active["status"]="closed"
+                trades.append(active)
+                active=None
+        if active is not None and active.get("pending_entry"):
+            px=own_open.iloc[i]
+            if pd.notna(px) and px>0:
+                active["entry_date"]=str(dates[i].date())
+                active["entry_price"]=float(px)
+                active.pop("pending_entry",None)
+        # Observe close and compute today's signal AFTER open execution.
+        if active is not None and "entry_date" in active and np.isfinite(annual[i]) and annual[i]<=0:
+            active["pending_exit"]=True
+            active["pending_exit_annual"]=num(annual[i],5)
+            active["failure_date"]=str(dates[i].date())
+        if cross[i]:
+            pending_cross=i
+        if active is None and pending_cross is not None and i>pending_cross and i<=pending_cross+3:
+            if (annual[i]>1e-8 and np.isfinite(r2[i]) and r2[i]>r2[i-1]+1e-12
+                    and r2[i]>r2[pending_cross]+1e-12):
+                active={"cross_date":str(dates[pending_cross].date()),
+                        "qualified_date":str(dates[i].date()),
+                        "entry_annual":num(annual[i],5),
+                        "entry_r2":num(r2[i],5),
+                        "pending_entry":True}
+                pending_cross=None
+        if pending_cross is not None and (i>pending_cross+3 or annual[i]<=0):
+            pending_cross=None
+    if active is not None:
+        if "entry_date" in active:
+            # Exit order from latest signal cannot fill until next session.
+            mark=own_close.iloc[-1]
+            active["exit_date"]=str(dates[-1].date())
+            active["exit_price"]=float(mark) if pd.notna(mark) else None
+            active["exit_reason"]="right_censored_mark_to_market"
+            active["status"]="open"
+            active.pop("pending_entry",None)
+            active.pop("pending_exit",None)
+            active.pop("pending_exit_annual",None)
+            trades.append(active)
+    for x in trades:
+        a=x["entry_price"];b=x.get("exit_price")
+        x["gross_return_pct"]=num((b/a-1)*100) if b is not None else None
+        x["return_after_cost_pct"]=num(100*((b/a-1)-COST_PER_SIDE*(1 if x["status"]=="open" else 2))) if b is not None else None
+        x["trading_days_held"]=None
+        enter=pd.Timestamp(x["entry_date"])
+        end=pd.Timestamp(x["exit_date"])
+        if enter in own_close.index and end in own_close.index:
+            series=own_close.loc[enter:end].dropna().to_numpy(dtype=float)
+            if len(series):
+                curve=np.r_[float(a),series]
+                x["max_drawdown_pct"]=num(100*np.min(curve/np.maximum.accumulate(curve)-1))
+            x["trading_days_held"]=len(own_close.loc[enter:end])
+    return trades
+
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--parquet",required=True)
     parser.add_argument("--out",required=True)
     args=parser.parse_args()
     codes=set(s for members in GROUPS.values() for s in members)|set(BENCHMARKS.values())
-    raw=pd.read_parquet(args.parquet,columns=["symbol","date","close","amount"])
+    raw=pd.read_parquet(args.parquet,columns=["symbol","date","open","close","amount"])
     raw["symbol"]=raw.symbol.astype(str).str.zfill(6)
     raw["date"]=pd.to_datetime(raw.date)
     raw=raw[raw.symbol.isin(codes)&(raw.date>=pd.Timestamp(BEGIN))&(raw.date<=pd.Timestamp(ASOF))].copy()
@@ -118,6 +211,7 @@ def main():
     raw=raw.sort_values(["symbol","date"]).drop_duplicates(["symbol","date"],keep="last")
     close=raw.pivot(index="date",columns="symbol",values="close")
     amounts=raw.pivot(index="date",columns="symbol",values="amount")
+    open_prices=raw.pivot(index="date",columns="symbol",values="open")
     if len(close)<60:raise RuntimeError("Too few market data dates")
     # For ETFs sharing one actual index, median of their daily percentage returns,
     # capped to 0 when no fresh price; no forward fill. This suppresses 0.001 ticks.
@@ -174,6 +268,16 @@ def main():
          "turnover_5v20_by_family":{},
          "levels_at_checkpoints":{},
          "price_curve":[],
+        "trend_episode_replay":{},
+        "episode_contract":{"signal":"26-day weighted OLS annual crosses positive, first R2 improvement qualified within 1-3 sessions",
+           "entry":"qualify T close -> T+1 representative ETF open",
+           "exit":"first annual<=0 at close -> next day representative ETF open; no 20-session limit",
+           "reentry":"new annual nonpositive-to-positive crossing and subsequent qualification after exit",
+           "cash":"0 return while out of market, no opportunity-cost benchmark",
+           "reference_etfs":REPRESENTATIVES,
+           "trade_fee_each_side":COST_PER_SIDE,
+           "price_signal_warning":"median group ETF return reconstructed into synthetic NAV-100 signal; actual underlying index not available",
+           "right_censored":"current open positions marked at 2026-10-20 close, gross return and one-sided cost only"},
     }
     for label,start,end in WINDOWS:
         benchmarks={}
@@ -199,6 +303,18 @@ def main():
                 date:{"asof":str(at_or_before(s,date)[0].date()) if at_or_before(s,date)[0] is not None else None,
                       "ratio":num(at_or_before(s,date)[1])}
                 for date in POINTS}
+    for family,representative in REPRESENTATIVES.items():
+        if family in level and representative in open_prices and representative in close:
+            out["trend_episode_replay"][family]=trend_episodes(
+                level[family],open_prices[representative],close[representative])
+    # Synthetic 3-factor composite executed as a price PROXY using one third
+    # capital in each known representative. Each family has its own onset dates;
+    # this is just composite signal execution and not independently tradable.
+    synthetic_open=pd.DataFrame({k:open_prices[rep].pct_change(fill_method=None)
+                                 for k,rep in REPRESENTATIVES.items()}).mean(axis=1)
+    # Do not synthesize a misleading open basket: compare signal episodes
+    # using the most liquid observed underlying ETF carrier only, separately.
+    out["trend_episode_replay"]["CASHFLOW_3_INDEX_EQUAL_SIGNAL_ONLY"]=stats_ols(level["CASHFLOW_3_INDEX_EQUAL"])
     for date in POINTS:
         r={}
         for key in level:
