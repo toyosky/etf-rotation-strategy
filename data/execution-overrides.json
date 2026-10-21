@@ -10,11 +10,11 @@
       "final_target": "159981",
       "final_target_name": "能源化工",
       "decision": "VOID_EXIT_BLOCKED_PREMIUM",
-      "filter": "PREMIUM15",
+      "filter": "PREMIUM10",
       "premium_pct": 0.3001,
-      "premium_limit": 0.15,
+      "premium_limit": 0.10,
       "source": "manual_confirmed_execution_audit",
-      "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 15% execution limit. Do not fall through to Top2; keep the incumbent 159981."
+      "note": "159509 was the raw/V1 candidate, but its confirmed premium was about 30.01%, above the 10% execution limit. Do not fall through to Top2; keep the incumbent 159981."
     }
   ]
 }
