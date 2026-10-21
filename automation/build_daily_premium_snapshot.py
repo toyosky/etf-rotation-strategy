@@ -20,8 +20,11 @@ def build(database_url, day, symbol):
     if not database_url:
         result["reason"]="DATABASE_URL_MISSING"
         return result
-    from automation.build_fundamental_audit_trigger import db_url
-    url=db_url(database_url)
+    url=database_url
+    if url.startswith("postgres://"):
+        url="postgresql://"+url[len("postgres://"):]
+    if url.startswith("postgresql://"):
+        url="postgresql+psycopg2://"+url[len("postgresql://"):]
     engine=create_engine(url,pool_pre_ping=True,connect_args={"connect_timeout":10})
     with engine.connect() as connection:
         rows=connection.execute(text("""
