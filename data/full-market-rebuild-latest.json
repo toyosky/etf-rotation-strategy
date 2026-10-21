@@ -5,13 +5,13 @@
   "snapshot_symbols": 2003,
   "snapshot_rows": 1407560,
   "listed_requested": 2024,
-  "requested_for_update": 56,
+  "requested_for_update": 45,
   "symbols_with_asof_close": 1979,
   "asof_coverage": 0.9777667984189723,
-  "refresh_rows": 252,
+  "refresh_rows": 131,
   "refresh_batches": {
-    "jobs": 5,
-    "existing": 33,
+    "jobs": 4,
+    "existing": 22,
     "bootstrap": 23
   },
   "query_batch_errors": [
@@ -79,19 +79,19 @@
       "symbols": [
         "166802"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "167503"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "501023"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -115,13 +115,13 @@
       "symbols": [
         "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "160636"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -157,18 +157,18 @@
       "symbols": [
         "164401"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "164402"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     }
   ],
   "query_error_count": 25,
   "overlap_revision": {
-    "count": 241,
+    "count": 131,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
