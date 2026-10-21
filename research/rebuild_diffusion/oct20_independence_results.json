@@ -136,6 +136,108 @@
           "max": 0.97598,
           "share_above_0_9": 1.0
         }
+      },
+      "known_index_count": 2,
+      "known_index_coverage": 3,
+      "index_proxy_representatives": {
+        "CSI_LIQUOR": "512690",
+        "CSI_BAIJIU": "161725"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_BAIJIU",
+              "CSI_LIQUOR"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_BAIJIU",
+              "CSI_LIQUOR"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_BAIJIU",
+              "CSI_LIQUOR"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_BAIJIU",
+              "CSI_LIQUOR"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "160632",
+              "161725",
+              "512690"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {
+        "CSI_LIQUOR": {
+          "first_date": "2026-10-16",
+          "first_symbols": [
+            "512690"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-16",
+              "symbol": "512690"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "160632"
+            }
+          ]
+        },
+        "CSI_BAIJIU": {
+          "first_date": "2026-10-20",
+          "first_symbols": [
+            "161725"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-20",
+              "symbol": "161725"
+            }
+          ]
+        }
       }
     },
     "CN_CASHFLOW_FACTOR": {
@@ -277,6 +379,184 @@
           "median": 0.9386,
           "max": 0.99397,
           "share_above_0_9": 0.867
+        }
+      },
+      "known_index_count": 3,
+      "known_index_coverage": 10,
+      "index_proxy_representatives": {
+        "CSI_800_FREE_CASH_FLOW_932368": "563990",
+        "SZSE_FREE_CASH_FLOW": "159201",
+        "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS": "159399"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_800_FREE_CASH_FLOW_932368",
+              "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
+              "SZSE_FREE_CASH_FLOW"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563580",
+              "563680",
+              "563990"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_800_FREE_CASH_FLOW_932368",
+              "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
+              "SZSE_FREE_CASH_FLOW"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563580",
+              "563680",
+              "563990"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_800_FREE_CASH_FLOW_932368",
+              "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
+              "SZSE_FREE_CASH_FLOW"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159119",
+              "159201",
+              "159222",
+              "159229",
+              "159276",
+              "159399",
+              "516460",
+              "563580",
+              "563680",
+              "563990"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 2,
+          "group_members": [
+            [
+              "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS",
+              "SZSE_FREE_CASH_FLOW"
+            ],
+            [
+              "CSI_800_FREE_CASH_FLOW_932368"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159201",
+              "159222",
+              "159276",
+              "159399"
+            ],
+            [
+              "159119",
+              "159229",
+              "516460",
+              "563580",
+              "563680",
+              "563990"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {
+        "CSI_800_FREE_CASH_FLOW_932368": {
+          "first_date": "2026-10-16",
+          "first_symbols": [
+            "159229",
+            "563580",
+            "563990"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-16",
+              "symbol": "159229"
+            },
+            {
+              "date": "2026-10-16",
+              "symbol": "563580"
+            },
+            {
+              "date": "2026-10-16",
+              "symbol": "563990"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "159119"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "516460"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "563680"
+            }
+          ]
+        },
+        "SZSE_FREE_CASH_FLOW": {
+          "first_date": "2026-10-19",
+          "first_symbols": [
+            "159201",
+            "159276"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-19",
+              "symbol": "159201"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "159276"
+            },
+            {
+              "date": "2026-10-20",
+              "symbol": "159222"
+            }
+          ]
+        },
+        "FTSE_CHINA_A_FREE_CASH_FLOW_FOCUS": {
+          "first_date": "2026-10-20",
+          "first_symbols": [
+            "159399"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-20",
+              "symbol": "159399"
+            }
+          ]
         }
       }
     },
@@ -462,6 +742,267 @@
           "max": 0.99429,
           "share_above_0_9": 0.558
         }
+      },
+      "known_index_count": 3,
+      "known_index_coverage": 10,
+      "index_proxy_representatives": {
+        "CSI_CONSUMER_LEADERS": "516130",
+        "CSI_CONSUMER_50": "515650",
+        "CSI_ESSENTIAL_CONSUMER": "159928",
+        "UNVERIFIED_159736": "159736",
+        "UNVERIFIED_159862": "159862",
+        "UNVERIFIED_160222": "160222",
+        "UNVERIFIED_515170": "515170",
+        "UNVERIFIED_515710": "515710",
+        "UNVERIFIED_516900": "516900"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_CONSUMER_50",
+              "CSI_CONSUMER_LEADERS",
+              "CSI_ESSENTIAL_CONSUMER",
+              "UNVERIFIED_159736",
+              "UNVERIFIED_159862",
+              "UNVERIFIED_160222",
+              "UNVERIFIED_515170",
+              "UNVERIFIED_515710",
+              "UNVERIFIED_516900"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159520",
+              "159670",
+              "159672",
+              "159689",
+              "159736",
+              "159798",
+              "159862",
+              "159928",
+              "160222",
+              "501090",
+              "512600",
+              "515170",
+              "515650",
+              "515710",
+              "516130",
+              "516900"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 2,
+          "group_members": [
+            [
+              "CSI_ESSENTIAL_CONSUMER",
+              "UNVERIFIED_159736",
+              "UNVERIFIED_159862",
+              "UNVERIFIED_160222",
+              "UNVERIFIED_515170",
+              "UNVERIFIED_515710",
+              "UNVERIFIED_516900"
+            ],
+            [
+              "CSI_CONSUMER_50",
+              "CSI_CONSUMER_LEADERS"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159672",
+              "159689",
+              "159736",
+              "159862",
+              "159928",
+              "160222",
+              "512600",
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159520",
+              "159670",
+              "159798",
+              "501090",
+              "515650",
+              "516130"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 3,
+          "group_members": [
+            [
+              "CSI_ESSENTIAL_CONSUMER",
+              "UNVERIFIED_159862",
+              "UNVERIFIED_160222",
+              "UNVERIFIED_515170",
+              "UNVERIFIED_515710",
+              "UNVERIFIED_516900"
+            ],
+            [
+              "CSI_CONSUMER_50",
+              "CSI_CONSUMER_LEADERS"
+            ],
+            [
+              "UNVERIFIED_159736"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159672",
+              "159689",
+              "159862",
+              "159928",
+              "160222",
+              "512600",
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159520",
+              "159670",
+              "159798",
+              "501090",
+              "515650",
+              "516130"
+            ],
+            [
+              "159736"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 7,
+          "group_members": [
+            [
+              "UNVERIFIED_515170",
+              "UNVERIFIED_515710",
+              "UNVERIFIED_516900"
+            ],
+            [
+              "UNVERIFIED_159736"
+            ],
+            [
+              "UNVERIFIED_159862"
+            ],
+            [
+              "CSI_ESSENTIAL_CONSUMER"
+            ],
+            [
+              "UNVERIFIED_160222"
+            ],
+            [
+              "CSI_CONSUMER_50"
+            ],
+            [
+              "CSI_CONSUMER_LEADERS"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "515170",
+              "515710",
+              "516900"
+            ],
+            [
+              "159736"
+            ],
+            [
+              "159862"
+            ],
+            [
+              "159672",
+              "159689",
+              "159928",
+              "512600"
+            ],
+            [
+              "160222"
+            ],
+            [
+              "159670",
+              "159798",
+              "515650"
+            ],
+            [
+              "159520",
+              "501090",
+              "516130"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {
+        "CSI_CONSUMER_LEADERS": {
+          "first_date": "2026-10-19",
+          "first_symbols": [
+            "516130"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-19",
+              "symbol": "516130"
+            },
+            {
+              "date": "2026-10-20",
+              "symbol": "159520"
+            },
+            {
+              "date": "2026-10-20",
+              "symbol": "501090"
+            }
+          ]
+        },
+        "CSI_CONSUMER_50": {
+          "first_date": "2026-10-16",
+          "first_symbols": [
+            "159798"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-16",
+              "symbol": "159798"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "159670"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "515650"
+            }
+          ]
+        },
+        "CSI_ESSENTIAL_CONSUMER": {
+          "first_date": "2026-10-16",
+          "first_symbols": [
+            "159928"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-16",
+              "symbol": "159928"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "159672"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "159689"
+            },
+            {
+              "date": "2026-10-19",
+              "symbol": "512600"
+            }
+          ]
+        }
       }
     },
     "CROSS_BORDER_CONSUMER": {
@@ -510,7 +1051,67 @@
           ]
         }
       },
-      "pair_correlation_summary": {}
+      "pair_correlation_summary": {},
+      "known_index_count": 0,
+      "known_index_coverage": 0,
+      "index_proxy_representatives": {
+        "UNVERIFIED_517550": "517550"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_517550"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_517550"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_517550"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "517550"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_517550"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "517550"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {}
     },
     "HK_CONSUMER": {
       "n": 8,
@@ -626,6 +1227,158 @@
           "max": 0.99026,
           "share_above_0_9": 1.0
         }
+      },
+      "known_index_count": 2,
+      "known_index_coverage": 4,
+      "index_proxy_representatives": {
+        "CSI_HK_CONNECT_CONSUMER_HKD": "513070",
+        "HANG_SENG_CONSUMER": "513970",
+        "UNVERIFIED_159268": "159268",
+        "UNVERIFIED_159285": "159285",
+        "UNVERIFIED_513230": "513230",
+        "UNVERIFIED_513590": "513590"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_HK_CONNECT_CONSUMER_HKD",
+              "HANG_SENG_CONSUMER",
+              "UNVERIFIED_159268",
+              "UNVERIFIED_159285",
+              "UNVERIFIED_513230",
+              "UNVERIFIED_513590"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_HK_CONNECT_CONSUMER_HKD",
+              "HANG_SENG_CONSUMER",
+              "UNVERIFIED_159268",
+              "UNVERIFIED_159285",
+              "UNVERIFIED_513230",
+              "UNVERIFIED_513590"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "CSI_HK_CONNECT_CONSUMER_HKD",
+              "HANG_SENG_CONSUMER",
+              "UNVERIFIED_159268",
+              "UNVERIFIED_159285",
+              "UNVERIFIED_513230",
+              "UNVERIFIED_513590"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590",
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 2,
+          "group_members": [
+            [
+              "CSI_HK_CONNECT_CONSUMER_HKD",
+              "UNVERIFIED_159268",
+              "UNVERIFIED_159285",
+              "UNVERIFIED_513230",
+              "UNVERIFIED_513590"
+            ],
+            [
+              "HANG_SENG_CONSUMER"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "159268",
+              "159285",
+              "513070",
+              "513230",
+              "513590"
+            ],
+            [
+              "513970",
+              "520520",
+              "520620"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {
+        "CSI_HK_CONNECT_CONSUMER_HKD": {
+          "first_date": "2026-10-19",
+          "first_symbols": [
+            "513070"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-19",
+              "symbol": "513070"
+            }
+          ]
+        },
+        "HANG_SENG_CONSUMER": {
+          "first_date": "2026-10-20",
+          "first_symbols": [
+            "513970",
+            "520520",
+            "520620"
+          ],
+          "later_members": [
+            {
+              "date": "2026-10-20",
+              "symbol": "513970"
+            },
+            {
+              "date": "2026-10-20",
+              "symbol": "520520"
+            },
+            {
+              "date": "2026-10-20",
+              "symbol": "520620"
+            }
+          ]
+        }
       }
     },
     "US_BONDS": {
@@ -674,7 +1427,67 @@
           ]
         }
       },
-      "pair_correlation_summary": {}
+      "pair_correlation_summary": {},
+      "known_index_count": 0,
+      "known_index_coverage": 0,
+      "index_proxy_representatives": {
+        "UNVERIFIED_501300": "501300"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_501300"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_501300"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_501300"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "501300"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_501300"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "501300"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {}
     },
     "US_EQUITY": {
       "n": 1,
@@ -722,7 +1535,67 @@
           ]
         }
       },
-      "pair_correlation_summary": {}
+      "pair_correlation_summary": {},
+      "known_index_count": 0,
+      "known_index_coverage": 0,
+      "index_proxy_representatives": {
+        "UNVERIFIED_513400": "513400"
+      },
+      "index_proxy_clusters": {
+        "0.75": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_513400"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.85": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_513400"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.9": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_513400"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "513400"
+            ]
+          ]
+        },
+        "0.95": {
+          "n": 1,
+          "group_members": [
+            [
+              "UNVERIFIED_513400"
+            ]
+          ],
+          "representative_groups": [
+            [
+              "513400"
+            ]
+          ]
+        }
+      },
+      "verified_index_onsets": {}
     }
   },
   "members": [
