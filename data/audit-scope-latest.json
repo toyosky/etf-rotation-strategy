@@ -23,6 +23,10 @@
       "category_name": "原油",
       "drivers": "全球供需、OPEC政策、库存、期限结构与外汇",
       "count": 1,
+      "category_first_qualified_date": null,
+      "category_onset_symbols": [],
+      "qualification_cohorts": [],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": "501018",
       "new_today_count": 0,
       "needs_review": false,
@@ -49,6 +53,52 @@
       "category_name": "A股消费（不含白酒专项）",
       "drivers": "国内消费需求、零售/食品饮料、盈利与估值",
       "count": 16,
+      "category_first_qualified_date": "2026-10-16",
+      "category_onset_symbols": [
+        "159798",
+        "159862",
+        "159928",
+        "515170",
+        "515710",
+        "516900"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-16",
+          "count": 6,
+          "symbols": [
+            "159798",
+            "159862",
+            "159928",
+            "515170",
+            "515710",
+            "516900"
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "count": 8,
+          "symbols": [
+            "159670",
+            "159672",
+            "159689",
+            "159736",
+            "160222",
+            "512600",
+            "515650",
+            "516130"
+          ]
+        },
+        {
+          "date": "2026-10-20",
+          "count": 2,
+          "symbols": [
+            "159520",
+            "501090"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 2,
       "needs_review": true,
@@ -300,6 +350,43 @@
       "category_name": "A股现金流因子",
       "drivers": "自由现金流策略选股、行业权重与价值风格",
       "count": 10,
+      "category_first_qualified_date": "2026-10-16",
+      "category_onset_symbols": [
+        "159229",
+        "563580",
+        "563990"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-16",
+          "count": 3,
+          "symbols": [
+            "159229",
+            "563580",
+            "563990"
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "count": 5,
+          "symbols": [
+            "159119",
+            "159201",
+            "159276",
+            "516460",
+            "563680"
+          ]
+        },
+        {
+          "date": "2026-10-20",
+          "count": 2,
+          "symbols": [
+            "159222",
+            "159399"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 2,
       "needs_review": false,
@@ -461,6 +548,33 @@
       "category_name": "港股消费",
       "drivers": "港股消费成分股、港币汇率、离岸流动性和消费需求",
       "count": 8,
+      "category_first_qualified_date": "2026-10-19",
+      "category_onset_symbols": [
+        "513070"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-19",
+          "count": 1,
+          "symbols": [
+            "513070"
+          ]
+        },
+        {
+          "date": "2026-10-20",
+          "count": 7,
+          "symbols": [
+            "159268",
+            "159285",
+            "513230",
+            "513590",
+            "513970",
+            "520520",
+            "520620"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 7,
       "needs_review": false,
@@ -592,6 +706,34 @@
       "category_name": "A股白酒",
       "drivers": "高端与次高端白酒动销、库存、批价、渠道与政策",
       "count": 3,
+      "category_first_qualified_date": "2026-10-16",
+      "category_onset_symbols": [
+        "512690"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-16",
+          "count": 1,
+          "symbols": [
+            "512690"
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "count": 1,
+          "symbols": [
+            "160632"
+          ]
+        },
+        {
+          "date": "2026-10-20",
+          "count": 1,
+          "symbols": [
+            "161725"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 1,
       "needs_review": false,
@@ -648,6 +790,20 @@
       "category_name": "沪港深消费",
       "drivers": "跨市场指数权重、A/H估值及境内外消费需求",
       "count": 1,
+      "category_first_qualified_date": "2026-10-20",
+      "category_onset_symbols": [
+        "517550"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-20",
+          "count": 1,
+          "symbols": [
+            "517550"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 1,
       "needs_review": false,
@@ -674,6 +830,20 @@
       "category_name": "美股宽基",
       "drivers": "美股盈利、利率、估值、汇率与指数权重",
       "count": 1,
+      "category_first_qualified_date": "2026-10-20",
+      "category_onset_symbols": [
+        "513400"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-20",
+          "count": 1,
+          "symbols": [
+            "513400"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 1,
       "needs_review": false,
@@ -700,6 +870,20 @@
       "category_name": "美元债",
       "drivers": "美国利率曲线、信用利差、久期与汇率",
       "count": 1,
+      "category_first_qualified_date": "2026-10-19",
+      "category_onset_symbols": [
+        "501300"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-19",
+          "count": 1,
+          "symbols": [
+            "501300"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-20",
       "ols_top1": null,
       "new_today_count": 0,
       "needs_review": true,
@@ -722,5 +906,6 @@
       ]
     }
   ],
+  "category_date_definition": "Category first date is the earliest known member qualification among members still qualified at as_of; never rewrite each ETF's own first_qualified_date. Backtesting requires genuine as-of snapshots; cohort counts are NOT contemporaneous total-sector breadth.",
   "audit_instruction": "Each category receives one shared macro/fundamental/news audit; individual ETF exceptions (premium, currency, index, liquidity, tracking) are separately checked for each candidate. No automatic veto/trade."
 }
