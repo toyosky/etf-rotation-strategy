@@ -1,7 +1,7 @@
 {
   "tracking_start": "2026-09-14",
   "performance_anchor": "2026-09-14 15:00 close",
-  "settled_through": "2026-10-21",
+  "settled_through": "2026-10-22",
   "cost_per_side": 0.0006,
   "execution_rules": {
     "09:31_drop_ratio": 0.97,
@@ -188,11 +188,19 @@
           "holding": "159981",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-10-22",
+          "nav": 1.028683914510686,
+          "return": 0.010497237569060625,
+          "holding": "159981",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [],
-      "settled_return": 0.017997750281214975,
-      "latest_nav": 1.017997750281215,
+      "settled_return": 0.02868391451068608,
+      "latest_nav": 1.028683914510686,
       "latest_holding": "159981"
     },
     "original": {
@@ -373,6 +381,14 @@
           "holding": "159529",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-10-22",
+          "nav": 0.9079314372754556,
+          "return": -0.016023306627822254,
+          "holding": "159529",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [
@@ -440,8 +456,8 @@
           "blocked": null
         }
       ],
-      "settled_return": -0.07728359483404856,
-      "latest_nav": 0.9227164051659514,
+      "settled_return": -0.09206856272454444,
+      "latest_nav": 0.9079314372754556,
       "latest_holding": "159529"
     },
     "freeze_cash": {
@@ -622,6 +638,14 @@
           "holding": "501018",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-10-22",
+          "nav": 1.0659099269116157,
+          "return": 0.01224489795918382,
+          "holding": "501018",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [
@@ -662,8 +686,8 @@
           "blocked": null
         }
       ],
-      "settled_return": 0.0530158552151041,
-      "latest_nav": 1.053015855215104,
+      "settled_return": 0.06590992691161568,
+      "latest_nav": 1.0659099269116157,
       "latest_holding": "501018"
     }
   },
