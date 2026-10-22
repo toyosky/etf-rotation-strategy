@@ -13,10 +13,10 @@
     "source": "user confirmed discretionary exits of 159981 and 159529",
     "note": "Actual holding is manually reported and may become stale; never use as automatic broker synchronization."
   },
-  "all_market_rebuild_count": 0,
+  "all_market_rebuild_count": 1,
   "new_rebuild_count": 0,
-  "unique_symbols": 1,
-  "category_count": 1,
+  "unique_symbols": 2,
+  "category_count": 2,
   "categories": [
     {
       "category_id": "CRUDE_OIL",
@@ -44,6 +44,46 @@
           "new_today": false,
           "category": "CRUDE_OIL",
           "classification_rule": "metadata",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CN_CONSUMER",
+      "category_name": "A股消费（不含白酒专项）",
+      "drivers": "国内消费需求、零售/食品饮料、盈利与估值",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-21",
+      "category_onset_symbols": [
+        "162415"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-21",
+          "count": 1,
+          "symbols": [
+            "162415"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-22",
+      "ols_top1": null,
+      "new_today_count": 0,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "162415",
+          "name": "美国消费LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-21",
+          "cross_date": "2026-10-20",
+          "annual": 0.321498538657101,
+          "r2": 0.2605187244748546,
+          "new_today": false,
+          "category": "CN_CONSUMER",
+          "classification_rule": "name_specific",
           "needs_review": false
         }
       ]
