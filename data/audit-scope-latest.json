@@ -1,6 +1,6 @@
 {
   "version": "category-audit-scope-v1",
-  "as_of": "2026-10-22",
+  "as_of": "2026-10-23",
   "source_ols": "data/fundamental-audit-trigger.json:next_strategy_target.model_target",
   "source_rebuild": "data/full-market-rebuild-latest.json:qualified_candidates",
   "data_quality_gate": "PASS",
@@ -13,10 +13,10 @@
     "source": "user confirmed discretionary exits of 159981 and 159529",
     "note": "Actual holding is manually reported and may become stale; never use as automatic broker synchronization."
   },
-  "all_market_rebuild_count": 1,
-  "new_rebuild_count": 0,
-  "unique_symbols": 2,
-  "category_count": 2,
+  "all_market_rebuild_count": 2,
+  "new_rebuild_count": 1,
+  "unique_symbols": 3,
+  "category_count": 3,
   "categories": [
     {
       "category_id": "CRUDE_OIL",
@@ -26,7 +26,7 @@
       "category_first_qualified_date": null,
       "category_onset_symbols": [],
       "qualification_cohorts": [],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-22",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-23",
       "ols_top1": "501018",
       "new_today_count": 0,
       "needs_review": false,
@@ -49,6 +49,46 @@
       ]
     },
     {
+      "category_id": "UNCLASSIFIED_159005",
+      "category_name": "待核实：快钱ETF汇添富",
+      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-23",
+      "category_onset_symbols": [
+        "159005"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-23",
+          "count": 1,
+          "symbols": [
+            "159005"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-23",
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "159005",
+          "name": "快钱ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-23",
+          "cross_date": "2026-10-22",
+          "annual": 0.00011351197373410393,
+          "r2": 0.12992452731784288,
+          "new_today": true,
+          "category": "UNCLASSIFIED_159005",
+          "classification_rule": "unclassified",
+          "needs_review": true
+        }
+      ]
+    },
+    {
       "category_id": "CN_CONSUMER",
       "category_name": "A股消费（不含白酒专项）",
       "drivers": "国内消费需求、零售/食品饮料、盈利与估值",
@@ -66,7 +106,7 @@
           ]
         }
       ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-22",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-23",
       "ols_top1": null,
       "new_today_count": 0,
       "needs_review": false,
@@ -79,8 +119,8 @@
           ],
           "first_qualified_date": "2026-10-21",
           "cross_date": "2026-10-20",
-          "annual": 0.321498538657101,
-          "r2": 0.2605187244748546,
+          "annual": 0.34567689960340164,
+          "r2": 0.32621873094976317,
           "new_today": false,
           "category": "CN_CONSUMER",
           "classification_rule": "name_specific",
