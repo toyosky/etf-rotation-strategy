@@ -5,13 +5,13 @@
   "snapshot_symbols": 2003,
   "snapshot_rows": 1413484,
   "listed_requested": 2024,
-  "requested_for_update": 123,
+  "requested_for_update": 54,
   "symbols_with_asof_close": 1970,
   "asof_coverage": 0.9733201581027668,
-  "refresh_rows": 1075,
+  "refresh_rows": 251,
   "refresh_batches": {
-    "jobs": 11,
-    "existing": 100,
+    "jobs": 5,
+    "existing": 31,
     "bootstrap": 23
   },
   "query_batch_errors": [
@@ -49,7 +49,7 @@
       "symbols": [
         "165312"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -73,7 +73,7 @@
       "symbols": [
         "166802"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -115,7 +115,7 @@
       "symbols": [
         "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -133,36 +133,36 @@
       "symbols": [
         "161723"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "162107"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "164401"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "164402"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     }
   ],
   "query_error_count": 24,
   "overlap_revision": {
-    "count": 1006,
+    "count": 251,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
