@@ -25,6 +25,9 @@ from sqlalchemy import create_engine, text
 from automation.build_fundamental_audit_trigger import calc_ols, db_url
 from automation.tencent_daily_sync import run_westock, normalize
 
+# Cash-management funds do not express price trends comparable with risk ETFs.
+REBUILD_EXCLUDED_SYMBOLS = {"159005"}  # 汇添富收益快钱货币A
+
 def symbol_to_tencent(s):
     if len(s) != 6 or not s.isdigit(): return None
     if s[0] in "56": return "sh"+s
@@ -150,6 +153,10 @@ def scan_one(g,as_of):
     last=str(g.date.iloc[-1].date())
     result={"symbol":s,"name":str(g.at[0,"name"]) if "name" in g else "",
             "last_date":last,"history_bars":len(g),"stale":last!=str(as_of)}
+    if s in REBUILD_EXCLUDED_SYMBOLS:
+        result.update({"stage":"EXCLUDED_CASH_MANAGEMENT",
+                       "strict_eligible":False,"broad_eligible":False})
+        return result
     if len(g)<29 or result["stale"]:
         result["stage"]="DATA_STALE" if result["stale"] else "INSUFFICIENT_HISTORY"
         return result
