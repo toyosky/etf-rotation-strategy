@@ -3,12 +3,12 @@
   "source": "Tencent HFQ latest daily bar merged with frozen 2026-09-17 Supabase archive",
   "update_method": "research only, no live PostgreSQL writes",
   "snapshot_symbols": 2003,
-  "snapshot_rows": 1413484,
+  "snapshot_rows": 1413495,
   "listed_requested": 2024,
   "requested_for_update": 54,
-  "symbols_with_asof_close": 1970,
-  "asof_coverage": 0.9733201581027668,
-  "refresh_rows": 251,
+  "symbols_with_asof_close": 1981,
+  "asof_coverage": 0.9787549407114624,
+  "refresh_rows": 262,
   "refresh_batches": {
     "jobs": 5,
     "existing": 31,
@@ -55,25 +55,25 @@
       "symbols": [
         "165523"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "165524"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "165526"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "166802"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -133,13 +133,13 @@
       "symbols": [
         "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -168,10 +168,11 @@
     "over_5pct": 0
   },
   "stage_counts": {
-    "NONE": 1963,
-    "DATA_STALE": 31,
+    "NONE": 1972,
     "DATA_MISSING": 23,
+    "DATA_STALE": 20,
     "CROSS_DETECTED": 5,
+    "INSUFFICIENT_HISTORY": 2,
     "EXCLUDED_CASH_MANAGEMENT": 1,
     "REBUILDING_QUALIFIED": 1
   },
@@ -205,5 +206,5 @@
   "data_quality_gate": "PASS",
   "data_version": "2026-09-17 frozen plus Tencent incremental HFQ to 2026-10-23",
   "limitation": "Not a full census of historical delisted ETFs; ETF NAV/premium as-of unavailable; current metadata can exclude newly launched symbols",
-  "sha256_snapshot": "c18217f28784794621334a457c098dbf2e0913a72f027bfbe38416b5e701a007"
+  "sha256_snapshot": "7c90f6da13a4e785ab5b6a48683dfc1fb500873dcd07ea20c652a7d2017ef4f3"
 }
