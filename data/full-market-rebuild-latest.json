@@ -55,7 +55,7 @@
       "symbols": [
         "165523"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -85,7 +85,7 @@
       "symbols": [
         "501023"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -115,13 +115,13 @@
       "symbols": [
         "160636"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "161628"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -133,7 +133,7 @@
       "symbols": [
         "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -151,13 +151,13 @@
       "symbols": [
         "164401"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "164402"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     }
   ],
   "query_error_count": 24,
@@ -189,9 +189,9 @@
       "first_qualified_date": "2026-10-21",
       "cross_date": "2026-10-20",
       "cross_age_sessions": 3.0,
-      "annual": 0.34567689960340164,
-      "r2": 0.32621873094976317,
-      "delta_r2_1": 0.06570000647490859,
+      "annual": 0.3456768996033599,
+      "r2": 0.3262187309497593,
+      "delta_r2_1": 0.06570000647491014,
       "avg_amount60": 5645723.416666667,
       "strict_eligible": false,
       "broad_eligible": true,
