@@ -1,6 +1,6 @@
 {
   "version": "category-audit-scope-v1",
-  "as_of": "2026-10-23",
+  "as_of": "2026-10-26",
   "source_ols": "data/fundamental-audit-trigger.json:next_strategy_target.model_target",
   "source_rebuild": "data/full-market-rebuild-latest.json:qualified_candidates",
   "data_quality_gate": "PASS",
@@ -13,10 +13,10 @@
     "source": "user confirmed discretionary exits of 159981 and 159529",
     "note": "Actual holding is manually reported and may become stale; never use as automatic broker synchronization."
   },
-  "all_market_rebuild_count": 1,
-  "new_rebuild_count": 0,
-  "unique_symbols": 2,
-  "category_count": 2,
+  "all_market_rebuild_count": 5,
+  "new_rebuild_count": 5,
+  "unique_symbols": 6,
+  "category_count": 6,
   "categories": [
     {
       "category_id": "CRUDE_OIL",
@@ -26,7 +26,7 @@
       "category_first_qualified_date": null,
       "category_onset_symbols": [],
       "qualification_cohorts": [],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-23",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
       "ols_top1": "501018",
       "new_today_count": 0,
       "needs_review": false,
@@ -49,42 +49,202 @@
       ]
     },
     {
-      "category_id": "CN_CONSUMER",
-      "category_name": "A股消费（不含白酒专项）",
-      "drivers": "国内消费需求、零售/食品饮料、盈利与估值",
+      "category_id": "CN_BAIJIU",
+      "category_name": "A股白酒",
+      "drivers": "高端与次高端白酒动销、库存、批价、渠道与政策",
       "count": 1,
-      "category_first_qualified_date": "2026-10-21",
+      "category_first_qualified_date": "2026-10-26",
       "category_onset_symbols": [
-        "162415"
+        "161725"
       ],
       "qualification_cohorts": [
         {
-          "date": "2026-10-21",
+          "date": "2026-10-26",
           "count": 1,
           "symbols": [
-            "162415"
+            "161725"
           ]
         }
       ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-23",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
       "ols_top1": null,
-      "new_today_count": 0,
+      "new_today_count": 1,
       "needs_review": false,
       "members": [
         {
-          "symbol": "162415",
-          "name": "美国消费LOF",
+          "symbol": "161725",
+          "name": "白酒基金LOF",
           "roles": [
             "REBUILD_QUALIFIED"
           ],
-          "first_qualified_date": "2026-10-21",
-          "cross_date": "2026-10-20",
-          "annual": 0.3456768996033599,
-          "r2": 0.3262187309497593,
-          "new_today": false,
-          "category": "CN_CONSUMER",
+          "first_qualified_date": "2026-10-26",
+          "cross_date": "2026-10-23",
+          "annual": 0.20088434514330422,
+          "r2": 0.09836516808639739,
+          "new_today": true,
+          "category": "CN_BAIJIU",
           "classification_rule": "name_specific",
           "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "CROSS_BORDER_CONSUMER",
+      "category_name": "沪港深消费",
+      "drivers": "跨市场指数权重、A/H估值及境内外消费需求",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-26",
+      "category_onset_symbols": [
+        "517550"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-26",
+          "count": 1,
+          "symbols": [
+            "517550"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": false,
+      "members": [
+        {
+          "symbol": "517550",
+          "name": "沪港深消费龙头ETF招商",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-26",
+          "cross_date": "2026-10-23",
+          "annual": 0.03322896212559723,
+          "r2": 0.0068590820412514075,
+          "new_today": true,
+          "category": "CROSS_BORDER_CONSUMER",
+          "classification_rule": "name_specific",
+          "needs_review": false
+        }
+      ]
+    },
+    {
+      "category_id": "UNCLASSIFIED_159797",
+      "category_name": "待核实：医疗器械ETF汇添富",
+      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-26",
+      "category_onset_symbols": [
+        "159797"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-26",
+          "count": 1,
+          "symbols": [
+            "159797"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "159797",
+          "name": "医疗器械ETF汇添富",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-26",
+          "cross_date": "2026-10-23",
+          "annual": 0.3029156374907831,
+          "r2": 0.09670428552924093,
+          "new_today": true,
+          "category": "UNCLASSIFIED_159797",
+          "classification_rule": "unclassified",
+          "needs_review": true
+        }
+      ]
+    },
+    {
+      "category_id": "UNCLASSIFIED_160613",
+      "category_name": "待核实：鹏华盛世创新LOF",
+      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-26",
+      "category_onset_symbols": [
+        "160613"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-26",
+          "count": 1,
+          "symbols": [
+            "160613"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "160613",
+          "name": "鹏华盛世创新LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-26",
+          "cross_date": "2026-10-23",
+          "annual": 0.023170419674099607,
+          "r2": 0.02150284153584514,
+          "new_today": true,
+          "category": "UNCLASSIFIED_160613",
+          "classification_rule": "unclassified",
+          "needs_review": true
+        }
+      ]
+    },
+    {
+      "category_id": "UNCLASSIFIED_166011",
+      "category_name": "待核实：中欧盛世LOF",
+      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
+      "count": 1,
+      "category_first_qualified_date": "2026-10-26",
+      "category_onset_symbols": [
+        "166011"
+      ],
+      "qualification_cohorts": [
+        {
+          "date": "2026-10-26",
+          "count": 1,
+          "symbols": [
+            "166011"
+          ]
+        }
+      ],
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-10-26",
+      "ols_top1": null,
+      "new_today_count": 1,
+      "needs_review": true,
+      "members": [
+        {
+          "symbol": "166011",
+          "name": "中欧盛世LOF",
+          "roles": [
+            "REBUILD_QUALIFIED"
+          ],
+          "first_qualified_date": "2026-10-26",
+          "cross_date": "2026-10-23",
+          "annual": 0.8411490817711362,
+          "r2": 0.06982078850473361,
+          "new_today": true,
+          "category": "UNCLASSIFIED_166011",
+          "classification_rule": "unclassified",
+          "needs_review": true
         }
       ]
     }
