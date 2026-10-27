@@ -228,6 +228,26 @@ def main():
     already_current=set(data.loc[pd.to_datetime(data.date).dt.date==args.as_of,"symbol"].astype(str))
     missing_now=current[~current.symbol.isin(already_current)].copy()
     update,errors,requested,batch_stats=fetch_updates(missing_now,data,args.as_of,args.workers,args.batch_size,max_symbols=args.max_symbols)
+    # Recovery pass: Tencent throttles bursts and can silently omit symbols.
+    # Retry only symbols still lacking today's bar, using slower and smaller requests.
+    retrieved_today={str(row[0]) for row in update if str(row[1])[:10]==str(args.as_of)}
+    pending=missing_now[~missing_now.symbol.isin(retrieved_today)].copy()
+    recovery_stats=[]
+    for round_no in range(1,3):
+        if pending.empty:
+            break
+        delay=15 * round_no
+        print("RECOVERY_COOLDOWN "+json.dumps({"round":round_no,"seconds":delay,"pending":len(pending)}),flush=True)
+        time.sleep(delay)
+        extra,more_errors,_,stats=fetch_updates(
+            pending,data,args.as_of,workers=1,batch_size=6,attempts=3)
+        update.extend(extra)
+        errors.extend(more_errors)
+        retrieved_today.update(str(row[0]) for row in extra if str(row[1])[:10]==str(args.as_of))
+        pending=missing_now[~missing_now.symbol.isin(retrieved_today)].copy()
+        recovery_stats.append({"round":round_no,"remaining":len(pending),"rows":len(extra),"batches":stats["jobs"]})
+        print("RECOVERY_RESULT "+json.dumps(recovery_stats[-1]),flush=True)
+    batch_stats["recovery"]=recovery_stats
     all_data,overlap=merge(data,update)
     # Store self-contained snapshot (parquet metadata remains separated).
     all_data.to_parquet(out/"refreshed_daily_bars.parquet",index=False,compression="zstd")
