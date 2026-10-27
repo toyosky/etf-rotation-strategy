@@ -1,222 +1,698 @@
 {
-  "as_of": "2026-10-26",
+  "as_of": "2026-10-27",
   "source": "Tencent HFQ latest daily bar merged with frozen 2026-09-17 Supabase archive",
   "update_method": "research only, no live PostgreSQL writes",
   "snapshot_symbols": 2003,
-  "snapshot_rows": 1415466,
+  "snapshot_rows": 1417440,
   "listed_requested": 2024,
-  "requested_for_update": 53,
-  "symbols_with_asof_close": 1971,
-  "asof_coverage": 0.9738142292490118,
-  "refresh_rows": 268,
+  "requested_for_update": 2024,
+  "symbols_with_asof_close": 1963,
+  "asof_coverage": 0.9698616600790514,
+  "refresh_rows": 28407,
   "refresh_batches": {
-    "jobs": 5,
-    "existing": 30,
-    "bootstrap": 23
+    "jobs": 169,
+    "existing": 2001,
+    "bootstrap": 23,
+    "recovery": [
+      {
+        "round": 1,
+        "remaining": 61,
+        "rows": 3701,
+        "batches": 51
+      },
+      {
+        "round": 2,
+        "remaining": 61,
+        "rows": 371,
+        "batches": 11
+      }
+    ]
   },
   "query_batch_errors": [
     {
       "symbols": [
-        "512390"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164818"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164905"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164908"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165310"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165312"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165523"
+        "159306"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165524"
+        "159307"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165526"
+        "159309"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "166802"
+        "159330"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "167503"
+        "159331"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "501023"
+        "159381"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160137"
+        "159382"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160420"
+        "159387"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160516"
+        "159388"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160634"
+        "159639"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160636"
+        "159640"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161628"
+        "159667"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161721"
+        "159669"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161723"
+        "159670"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162107"
+        "159675"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "163209"
+        "159676"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164401"
+        "159677"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164402"
+        "159613"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159615"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159617"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159689"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159690"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159641"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159642"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159643"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159645"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159788"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159790"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159856"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159859"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159824"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159827"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159828"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159840"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159841"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159842"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159843"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159791"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159792"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159793"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159795"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159807"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159808"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159811"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159967"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159968"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160225"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160311"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160314"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159991"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159992"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159993"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159994"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160127"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160135"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160140"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160421"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "160515"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159970"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159971"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159972"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "159973"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161121"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161122"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "162207"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "162216"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "162307"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161706"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161715"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161716"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161222"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161224"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161225"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161812"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161815"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161816"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161123"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161124"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161125"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "161126"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     }
   ],
-  "query_error_count": 24,
+  "query_error_count": 316,
   "overlap_revision": {
-    "count": 268,
+    "count": 26413,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
   },
   "stage_counts": {
-    "NONE": 1923,
-    "CROSS_DETECTED": 42,
-    "DATA_STALE": 30,
+    "NONE": 1914,
+    "DATA_STALE": 38,
+    "REBUILD_WATCH": 29,
     "DATA_MISSING": 23,
-    "REBUILDING_QUALIFIED": 5,
+    "REBUILDING_QUALIFIED": 11,
+    "CROSS_DETECTED": 8,
     "EXCLUDED_CASH_MANAGEMENT": 1
   },
-  "raw_qualified": 5,
-  "strict_qualified": 1,
+  "raw_qualified": 11,
+  "strict_qualified": 5,
   "raw_qualified_symbols": [
+    "159048",
+    "159039",
+    "159272",
+    "159050",
+    "159530",
+    "159278",
+    "159559",
+    "159945",
     "161725",
-    "159797",
     "166011",
-    "160613",
-    "517550"
+    "160613"
   ],
   "qualified_candidates": [
+    {
+      "symbol": "159048",
+      "name": "机器人ETF大成",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.46851730114295886,
+      "r2": 0.029459933627892898,
+      "delta_r2_1": 0.021714878579988106,
+      "avg_amount60": 14268092.033333333,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 93,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159039",
+      "name": "机器人ETF华安",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.4357598474525082,
+      "r2": 0.026882400385967897,
+      "delta_r2_1": 0.020201470274985533,
+      "avg_amount60": 40162488.78333333,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 87,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159272",
+      "name": "机器人ETF富国",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.4360704316794852,
+      "r2": 0.026258534072115758,
+      "delta_r2_1": 0.019618920247197247,
+      "avg_amount60": 131470967.66666667,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 263,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159050",
+      "name": "机器人ETF广发",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.4340770230469282,
+      "r2": 0.026142291705745557,
+      "delta_r2_1": 0.018783392692351186,
+      "avg_amount60": 27888317.016666666,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 94,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159530",
+      "name": "机器人ETF易方达",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.43341649305736163,
+      "r2": 0.025575349492011568,
+      "delta_r2_1": 0.018053291562172835,
+      "avg_amount60": 716284523.1833333,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 668,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159278",
+      "name": "机器人ETF鹏华",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.41261863488200845,
+      "r2": 0.02436654899161783,
+      "delta_r2_1": 0.01917687927841405,
+      "avg_amount60": 120095884.08333333,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 291,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159559",
+      "name": "机器人ETF景顺",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.3856370621564871,
+      "r2": 0.021465134689251042,
+      "delta_r2_1": 0.017465368495520495,
+      "avg_amount60": 85625671.85,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 694,
+      "shock10_8": true
+    },
+    {
+      "symbol": "159945",
+      "name": "能源ETF广发",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-10-27",
+      "cross_date": "2026-10-26",
+      "cross_age_sessions": 1.0,
+      "annual": 0.059979772651137964,
+      "r2": 0.01064552283860809,
+      "delta_r2_1": 0.0019954910732117304,
+      "avg_amount60": 6486563.866666666,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-10-27",
+      "history_bars": 2744,
+      "shock10_8": false
+    },
     {
       "symbol": "161725",
       "name": "白酒基金LOF",
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-26",
       "cross_date": "2026-10-23",
-      "cross_age_sessions": 1.0,
-      "annual": 0.20088434514332287,
-      "r2": 0.09836516808639706,
-      "delta_r2_1": 0.09216133091990752,
-      "avg_amount60": 33533547.166666668,
+      "cross_age_sessions": 2.0,
+      "annual": 0.2593386597328513,
+      "r2": 0.16328167227297075,
+      "delta_r2_1": 0.06491650418657369,
+      "avg_amount60": 33458352.283333335,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-10-26",
-      "history_bars": 1397,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159797",
-      "name": "医疗器械ETF汇添富",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-26",
-      "cross_date": "2026-10-23",
-      "cross_age_sessions": 1.0,
-      "annual": 0.3029156374907931,
-      "r2": 0.09670428552924004,
-      "delta_r2_1": 0.0964567034224526,
-      "avg_amount60": 4355101.7,
-      "strict_eligible": false,
-      "broad_eligible": true,
-      "last_date": "2026-10-26",
-      "history_bars": 1079,
+      "last_date": "2026-10-27",
+      "history_bars": 1398,
       "shock10_8": false
     },
     {
@@ -225,15 +701,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-26",
       "cross_date": "2026-10-23",
-      "cross_age_sessions": 1.0,
-      "annual": 0.8411490817711076,
-      "r2": 0.06982078850473361,
-      "delta_r2_1": 0.06529265412323693,
-      "avg_amount60": 1032289.6333333333,
+      "cross_age_sessions": 2.0,
+      "annual": 1.2356564643910337,
+      "r2": 0.12715841113767878,
+      "delta_r2_1": 0.05733762263294495,
+      "avg_amount60": 1061845.4,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-10-26",
-      "history_bars": 254,
+      "last_date": "2026-10-27",
+      "history_bars": 255,
       "shock10_8": false
     },
     {
@@ -242,42 +718,29 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-26",
       "cross_date": "2026-10-23",
-      "cross_age_sessions": 1.0,
-      "annual": 0.023170419674099607,
-      "r2": 0.02150284153584625,
-      "delta_r2_1": 0.015197570279053774,
-      "avg_amount60": 14858.866666666667,
+      "cross_age_sessions": 2.0,
+      "annual": 0.023472455176235973,
+      "r2": 0.02527975454319953,
+      "delta_r2_1": 0.0037769130073532775,
+      "avg_amount60": 14845.416666666666,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-10-26",
-      "history_bars": 253,
-      "shock10_8": false
-    },
-    {
-      "symbol": "517550",
-      "name": "沪港深消费龙头ETF招商",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-26",
-      "cross_date": "2026-10-23",
-      "cross_age_sessions": 1.0,
-      "annual": 0.03322896212560522,
-      "r2": 0.00685908204125163,
-      "delta_r2_1": 0.005647279551825868,
-      "avg_amount60": 3418161.566666667,
-      "strict_eligible": false,
-      "broad_eligible": true,
-      "last_date": "2026-10-26",
-      "history_bars": 1143,
+      "last_date": "2026-10-27",
+      "history_bars": 254,
       "shock10_8": false
     }
   ],
   "qualified_sort": "first_qualified_date descending, cross_date descending, r2 descending, symbol ascending",
   "notification_format": "ols_full_market_v2",
   "strict_qualified_symbols": [
+    "159272",
+    "159278",
+    "159530",
+    "159559",
     "161725"
   ],
   "data_quality_gate": "PASS",
-  "data_version": "2026-09-17 frozen plus Tencent incremental HFQ to 2026-10-26",
+  "data_version": "2026-09-17 frozen plus Tencent incremental HFQ to 2026-10-27",
   "limitation": "Not a full census of historical delisted ETFs; ETF NAV/premium as-of unavailable; current metadata can exclude newly launched symbols",
-  "sha256_snapshot": "55ea29090f828cb6df04a04108ef727b57b2b824a95476bca4efbaf30c517a9c"
+  "sha256_snapshot": "8d30f9f6b945b5bb0694659385fab4e1f597f32be651e72dfbf9d8acaaf534dd"
 }
