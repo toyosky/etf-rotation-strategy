@@ -5,20 +5,20 @@
   "snapshot_symbols": 2003,
   "snapshot_rows": 1417440,
   "listed_requested": 2024,
-  "requested_for_update": 2024,
+  "requested_for_update": 61,
   "symbols_with_asof_close": 1963,
   "asof_coverage": 0.9698616600790514,
-  "refresh_rows": 28407,
+  "refresh_rows": 1113,
   "refresh_batches": {
-    "jobs": 169,
-    "existing": 2001,
+    "jobs": 6,
+    "existing": 38,
     "bootstrap": 23,
     "recovery": [
       {
         "round": 1,
         "remaining": 61,
-        "rows": 3701,
-        "batches": 51
+        "rows": 371,
+        "batches": 11
       },
       {
         "round": 2,
@@ -31,488 +31,440 @@
   "query_batch_errors": [
     {
       "symbols": [
-        "159306"
+        "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159307"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159309"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159330"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159331"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159381"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159382"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159387"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159388"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159639"
+        "164818"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159640"
+        "164905"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159667"
+        "164908"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159669"
+        "165310"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159670"
+        "165312"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159675"
+        "165523"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159676"
+        "165524"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159677"
+        "165526"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159613"
+        "166802"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159615"
+        "167503"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159617"
+        "501023"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "159689"
+        "160137"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159690"
+        "160420"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159641"
+        "160516"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159642"
+        "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159643"
+        "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159645"
+        "161628"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159788"
+        "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159790"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159856"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159859"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159824"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159827"
+        "164402"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "159828"
+        "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159840"
+        "160137"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159841"
+        "160420"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159842"
+        "160516"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159843"
+        "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159791"
+        "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159792"
+        "161628"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159793"
+        "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159795"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159807"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159808"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159811"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159967"
+        "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159968"
+        "164818"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160225"
+        "164905"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160311"
+        "164908"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160314"
+        "165310"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159991"
+        "165312"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159992"
+        "165523"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159993"
+        "165524"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159994"
+        "165526"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160127"
+        "166802"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160135"
+        "167503"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160140"
+        "501023"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160421"
+        "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "160515"
+        "160137"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159970"
+        "160420"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159971"
+        "160516"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159972"
+        "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "159973"
+        "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161121"
+        "161628"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161122"
+        "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "162207"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "162216"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "162307"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161706"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161715"
+        "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161716"
+        "164818"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161222"
+        "164905"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161224"
+        "164908"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161225"
+        "165310"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161812"
+        "165312"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161815"
+        "165523"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161816"
+        "165524"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161123"
+        "165526"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161124"
+        "166802"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161125"
+        "167503"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "161126"
+        "501023"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     }
   ],
-  "query_error_count": 316,
+  "query_error_count": 72,
   "overlap_revision": {
-    "count": 26413,
+    "count": 1113,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
