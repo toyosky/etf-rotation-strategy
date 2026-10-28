@@ -1,5 +1,12 @@
 name: A-share Value Drawdown Pilot
 on:
+  push:
+    branches:
+      - research/stock-value-pilot-20261028
+    paths:
+      - 'research/stock_value/scan_pilot.py'
+      - 'research/stock_value/README.md'
+      - '.github/workflows/stock-value-pilot.yml'
   workflow_dispatch:
     inputs:
       as_of:
@@ -26,8 +33,20 @@ jobs:
         with:
           python-version: '3.12'
       - name: Fetch and screen 7 stocks
+        id: scan
         run: python research/stock_value/scan_pilot.py --as-of "${{ inputs.as_of || '2026-10-28' }}"
+      - name: Upload diagnostic results even if fetch failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stock-value-pilot-diagnostics
+          path: |
+            research/stock_value/results/latest.json
+            research/stock_value/data/daily/*.csv.gz
+          if-no-files-found: warn
+          retention-days: 14
       - name: Commit only pilot archives and latest result
+        if: steps.scan.outcome == 'success'
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
