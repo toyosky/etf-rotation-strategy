@@ -154,5 +154,6 @@
     }
   ],
   "failures": [],
-  "full_acceptance": true
+  "price_full_acceptance": true,
+  "full_acceptance": false
 }
