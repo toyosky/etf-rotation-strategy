@@ -1,0 +1,156 @@
+{
+  "as_of": "2026-10-28",
+  "source": "Tencent Westock/direct with Eastmoney independent check",
+  "financial_data_status": "not_collected",
+  "universe": "7-stock exploratory pilot; not whole A-share market",
+  "drawdown_method": "Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
+  "candidates": [
+    {
+      "symbol": "300502",
+      "name": "新易盛",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 256.79,
+      "sept_oct_peak_high": 475.0,
+      "peak_date": "2026-09-22",
+      "drawdown_from_peak_pct": -45.94,
+      "window_low": 236.1,
+      "low_date": "2026-10-23",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "300308",
+      "name": "中际旭创",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 636.3,
+      "sept_oct_peak_high": 973.8,
+      "peak_date": "2026-09-22",
+      "drawdown_from_peak_pct": -34.66,
+      "window_low": 553.48,
+      "low_date": "2026-10-23",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "300394",
+      "name": "天孚通信",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 201.43,
+      "sept_oct_peak_high": 292.07,
+      "peak_date": "2026-09-18",
+      "drawdown_from_peak_pct": -31.03,
+      "window_low": 181.5,
+      "low_date": "2026-10-23",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "603986",
+      "name": "兆易创新",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 289.88,
+      "sept_oct_peak_high": 413.43,
+      "peak_date": "2026-09-22",
+      "drawdown_from_peak_pct": -29.88,
+      "window_low": 268.3,
+      "low_date": "2026-10-23",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "002353",
+      "name": "杰瑞股份",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 93.9,
+      "sept_oct_peak_high": 131.73,
+      "peak_date": "2026-09-04",
+      "drawdown_from_peak_pct": -28.72,
+      "window_low": 82.56,
+      "low_date": "2026-10-19",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "PASS",
+      "warnings": [],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "001309",
+      "name": "德明利",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 230.56,
+      "sept_oct_peak_high": 312.63,
+      "peak_date": "2026-09-01",
+      "drawdown_from_peak_pct": -26.25,
+      "window_low": 204.5,
+      "low_date": "2026-10-16",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    },
+    {
+      "symbol": "688059",
+      "name": "华锐精密",
+      "status": "OK",
+      "as_of_bar": "2026-10-28",
+      "close": 77.99,
+      "sept_oct_peak_high": 94.7,
+      "peak_date": "2026-09-22",
+      "drawdown_from_peak_pct": -17.65,
+      "window_low": 66.26,
+      "low_date": "2026-10-28",
+      "bars": 57,
+      "price_basis": "qfq (forward-adjusted)",
+      "primary_source": "Tencent Westock",
+      "secondary_source": "Eastmoney",
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
+      "financial_review": "NOT_VERIFIED"
+    }
+  ],
+  "failures": [],
+  "full_acceptance": false
+}

@@ -1,0 +1,42 @@
+{
+  "retrieved_at_utc": "2026-10-28T09:38:29.853678+00:00",
+  "source": "Tencent Westock finance --num 8 --raw",
+  "warning": "Raw vendor data only. Period, publication date, financial field mapping and as-of availability NOT VERIFIED.",
+  "items": [
+    {
+      "symbol": "002353",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 7446
+    },
+    {
+      "symbol": "688059",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 6734
+    },
+    {
+      "symbol": "300308",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 7364
+    },
+    {
+      "symbol": "300502",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 6749
+    },
+    {
+      "symbol": "300394",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 6702
+    },
+    {
+      "symbol": "603986",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 6966
+    },
+    {
+      "symbol": "001309",
+      "status": "RAW_CAPTURED_UNVERIFIED",
+      "compressed_bytes": 6916
+    }
+  ]
+}
