@@ -125,9 +125,10 @@
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
       "secondary_source": "Sina",
-      "secondary_verification": "PASS",
+      "secondary_verification": "PRICE_MISMATCH",
       "warnings": [
-        "Eastmoney: Remote end closed connection without response"
+        "Eastmoney: Remote end closed connection without response",
+        "Peak-date high discrepancy 2026-09-01: 28.815%"
       ],
       "financial_review": "NOT_VERIFIED"
     },
@@ -154,7 +155,7 @@
     }
   ],
   "failures": [],
-  "price_full_acceptance": true,
-  "full_acceptance": true,
+  "price_full_acceptance": false,
+  "full_acceptance": false,
   "financial_validation_file": "research/stock_value/results/financial-validation.json"
 }
