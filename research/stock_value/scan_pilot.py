@@ -74,6 +74,15 @@ def eastmoney(code,start,end):
         if len(f)>=7:rows.append([f[0],f[1],f[3],f[4],f[2],float(f[5])*100,f[6]])
     return normalize_rows(rows,start,end)
 
+def sina(code,start,end):
+    symbol=("sh" if code.startswith(("6","9")) else "sz")+code
+    data=http_json("https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData",
+                   {"symbol":symbol,"scale":240,"ma":"no","datalen":120},
+                   "https://finance.sina.com.cn/")
+    if not isinstance(data,list):raise ValueError("Unexpected Sina response")
+    rows=[[r["day"],r["open"],r["high"],r["low"],r["close"],r.get("volume",0),0] for r in data]
+    return normalize_rows(rows,start,end)
+
 def get_data(code,start,end):
     errors=[];primary=[];provider=None
     for label,func in (("Tencent Westock",westock),("Tencent direct",tencent_direct)):
@@ -83,21 +92,27 @@ def get_data(code,start,end):
                 provider=label;break
             errors.append(label+": insufficient rows "+str(len(primary)))
         except Exception as exc:errors.append(label+": "+str(exc)[:200])
+    secondary_provider="Eastmoney"
     try:secondary=eastmoney(code,start,end)
     except Exception as exc:
         secondary=[];errors.append("Eastmoney: "+str(exc)[:200])
+    if not secondary:
+        secondary_provider="Sina"
+        try:secondary=sina(code,start,end)
+        except Exception as exc:
+            secondary=[];errors.append("Sina: "+str(exc)[:200])
     if not primary and secondary:
-        return secondary,"Eastmoney ONLY","TENCENT_UNAVAILABLE",errors
+        return secondary,secondary_provider+" ONLY","NONE","TENCENT_UNAVAILABLE",errors
     if not primary:
         raise RuntimeError("; ".join(errors)[:600])
-    if not secondary:return primary,provider,"SECONDARY_UNAVAILABLE",errors
+    if not secondary:return primary,provider,"NONE","SECONDARY_UNAVAILABLE",errors
     p={r[0]:r for r in primary};s={r[0]:r for r in secondary}
     dates=sorted(set(p)&set(s))[-10:]
-    if len(dates)<5:return primary,provider,"INSUFFICIENT_OVERLAP",errors
+    if len(dates)<5:return primary,provider,secondary_provider,"INSUFFICIENT_OVERLAP",errors
     deviations=[abs(p[d][4]-s[d][4])/max(s[d][4],0.01) for d in dates]
     status="PASS" if max(deviations)<=0.015 else "PRICE_MISMATCH"
     if status!="PASS":errors.append("Maximum 10-day close discrepancy: "+str(round(max(deviations)*100,3))+"%")
-    return primary,provider,status,errors
+    return primary,provider,secondary_provider,status,errors
 
 def archive(code,rows):
     ARCHIVE.mkdir(parents=True,exist_ok=True)
@@ -110,7 +125,7 @@ def archive(code,rows):
     if path.stat().st_size>4_000_000:raise ValueError("Archive size cap exceeded")
     return path
 
-def screen(code,rows,as_of,provider,verification,errors):
+def screen(code,rows,as_of,provider,secondary_provider,verification,errors):
     latest=rows[-1]
     period=[r for r in rows if "2026-09-01"<=r[0]<=as_of]
     if not period:raise ValueError("No September/October rows")
@@ -120,7 +135,7 @@ def screen(code,rows,as_of,provider,verification,errors):
             "peak_date":peak[0],"drawdown_from_peak_pct":round((latest[4]/peak[2]-1)*100,2),
             "window_low":low[3],"low_date":low[0],"bars":len(rows),
             "price_basis":"qfq (forward-adjusted)","primary_source":provider,
-            "secondary_source":"Eastmoney","secondary_verification":verification,
+            "secondary_source":secondary_provider,"secondary_verification":verification,
             "warnings":errors,"financial_review":"NOT_VERIFIED"}
 
 def main():
@@ -131,16 +146,16 @@ def main():
     results=[];failures=[]
     for code in STOCKS:
         try:
-            rows,provider,verification,errors=get_data(code,args.start,args.as_of)
+            rows,provider,secondary_provider,verification,errors=get_data(code,args.start,args.as_of)
             if len(rows)<15:raise ValueError("Insufficient bars: "+str(len(rows)))
-            archive(code,rows);results.append(screen(code,rows,args.as_of,provider,verification,errors))
+            archive(code,rows);results.append(screen(code,rows,args.as_of,provider,secondary_provider,verification,errors))
             print(code,provider,verification,len(rows),flush=True)
         except Exception as exc:
             failures.append({"symbol":code,"error":str(exc)[:600]})
             print(code,"FAILED",str(exc)[:180],flush=True)
         time.sleep(1)
     RESULTS.mkdir(parents=True,exist_ok=True)
-    payload={"as_of":args.as_of,"source":"Tencent Westock/direct with Eastmoney independent check",
+    payload={"as_of":args.as_of,"source":"Tencent Westock/direct with Eastmoney/Sina independent check",
              "financial_data_status":"not_collected",
              "universe":"7-stock exploratory pilot; not whole A-share market",
              "drawdown_method":"Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
