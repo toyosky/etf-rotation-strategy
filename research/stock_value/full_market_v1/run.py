@@ -180,25 +180,51 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
 def fetch_all_bars(uni,start,end,workers=6,batch=15):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
     symbols=list(uni.symbol)
+    # Tencent/Westock truncates long single requests (~200-250 daily rows).
+    # Freeze three non-overlapping calendar segments, each below that practical cap.
+    segments=[
+        ("2024-07-01","2025-04-30"),
+        ("2025-05-01","2026-02-28"),
+        ("2026-03-01",end),
+    ]
     chunks=[symbols[i:i+batch] for i in range(0,len(symbols),batch)]
-    rows=[];missing=set()
+    jobs=[(ch,seg_start,seg_end) for seg_start,seg_end in segments for ch in chunks]
+    rows=[]; segment_seen={s:set() for s in symbols}
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        fut={ex.submit(fetch_kline_piece,ch,code_map,start,end):ch for ch in chunks}
+        fut={ex.submit(fetch_kline_piece,ch,code_map,seg_start,seg_end,2):(ch,seg_start,seg_end)
+             for ch,seg_start,seg_end in jobs}
         for n,f in enumerate(as_completed(fut),1):
+            ch,seg_start,seg_end=fut[f]
             try:
-                rr,mm=f.result(); rows.extend(rr); missing.update(mm)
-            except Exception: missing.update(fut[f])
-            if n%40==0 or n==len(fut):
-                print("KLINE_PROGRESS",json.dumps({"batches":n,"total":len(fut),"rows":len(rows),"missing":len(missing)}),flush=True)
-    # Slow individual recovery for misses.
+                rr,mm=f.result(); rows.extend(rr)
+                for r in rr: segment_seen[r[0]].add(seg_start)
+            except Exception:
+                pass
+            if n%80==0 or n==len(fut):
+                got=sum(bool(v) for v in segment_seen.values())
+                print("KLINE_PROGRESS",json.dumps({"jobs":n,"total":len(fut),"rows":len(rows),"symbols_any_data":got}),flush=True)
+    # Individual segmented recovery only for symbols with zero data; this avoids
+    # thousands of pointless retries while still rescuing batch endpoint misses.
+    zero=[s for s,v in segment_seen.items() if not v]
     recovered=set()
-    for n,code in enumerate(sorted(missing),1):
-        rr,mm=fetch_kline_piece([code],code_map,start,end,2)
-        if rr: rows.extend(rr); recovered.add(code)
-        if n%100==0: print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(missing),"recovered":len(recovered)}),flush=True)
+    for n,code in enumerate(zero,1):
+        for seg_start,seg_end in segments:
+            rr,mm=fetch_kline_piece([code],code_map,seg_start,seg_end,2)
+            if rr:
+                rows.extend(rr); recovered.add(code)
+        if n%100==0 or n==len(zero):
+            print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(zero),"recovered":len(recovered)}),flush=True)
     bars=pd.DataFrame(rows,columns=["symbol","date","open","high","low","close","volume","amount"])
-    bars["date"]=pd.to_datetime(bars.date); bars=bars.sort_values(["symbol","date"]).drop_duplicates(["symbol","date"],keep="last")
-    return bars,sorted(missing-recovered)
+    if bars.empty:
+        return bars,sorted(set(symbols)-recovered)
+    bars["date"]=pd.to_datetime(bars.date)
+    bars=bars.sort_values(["symbol","date"]).drop_duplicates(["symbol","date"],keep="last")
+    missing=sorted(set(symbols)-set(bars.symbol.astype(str)))
+    coverage=bars.groupby("symbol").date.agg(["min","max","count"]).reset_index()
+    thin=coverage[coverage["count"]<80]
+    print("KLINE_COVERAGE",json.dumps({"symbols":int(bars.symbol.nunique()),"rows":len(bars),
+                                        "missing":len(missing),"under_80_bars":len(thin)}),flush=True)
+    return bars,missing
 
 def price_features(g):
     g=g.sort_values("date").copy().reset_index(drop=True)
