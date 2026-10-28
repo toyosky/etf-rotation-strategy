@@ -4,7 +4,7 @@
 Tencent Westock kline -> gzipped CSV per stock -> dated screening JSON.
 Only past data as of --as-of. Raw files are small 7-stock pilot archives.
 """
-import argparse, csv, gzip, io, json, shutil, subprocess, sys, tempfile
+import argparse, csv, gzip, io, json, subprocess, sys
 from datetime import date
 from pathlib import Path
 
@@ -16,7 +16,7 @@ RESULTS=ROOT/"results"
 
 def fetch(code,start,end):
     prefix="sh" if code.startswith(("6","9")) else "sz"
-    p=subprocess.run(["npx","-y",PACKAGE,"kline",prefix+code,"--period","day","--start",start,"--end",end,"--fq","none","--raw"],
+    p=subprocess.run(["npx","-y",PACKAGE,"kline",prefix+code,"--period","day","--start",start,"--end",end,"--fq","bfq","--raw"],
                      text=True,capture_output=True,timeout=180)
     if p.returncode: raise RuntimeError((p.stderr or p.stdout)[-500:])
     d=json.loads(p.stdout)
@@ -61,7 +61,7 @@ def screen(code,rows,as_of):
             "close":latest[4],"sept_oct_peak_high":peak[2],"peak_date":peak[0],
             "drawdown_from_peak_pct":round((latest[4]/peak[2]-1)*100,2),
             "window_low":low[3],"low_date":low[0],"bars":len(bars),
-            "price_basis":"unadjusted","financial_review":"NOT_VERIFIED"}
+            "price_basis":"bfq (unadjusted)","financial_review":"NOT_VERIFIED"}
 
 def main():
     ap=argparse.ArgumentParser()
@@ -79,7 +79,7 @@ def main():
     RESULTS.mkdir(parents=True,exist_ok=True)
     payload={"as_of":args.as_of,"source":"Tencent Westock","financial_data_status":"not_collected",
              "universe":"7-stock exploratory pilot; not whole A-share market",
-             "drawdown_method":"window peak intraday high / as-of unadjusted close - 1",
+             "drawdown_method":"window peak intraday high / as-of bfq close - 1",
              "candidates":sorted(results,key=lambda x:x.get("drawdown_from_peak_pct",0)),
              "failures":failures}
     out=RESULTS/"latest.json";out.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
