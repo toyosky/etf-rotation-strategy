@@ -177,7 +177,7 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
         time.sleep(min(2**i,5))
     return [],list(symbols)
 
-def fetch_all_bars(uni,start,end,workers=6,batch=7,recovery_limit=0):
+def fetch_all_bars(uni,start,end,workers=8,batch=2,recovery_limit=0):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
     symbols=list(uni.symbol)
     # Tencent/Westock truncates long single requests (~200-250 daily rows).
@@ -203,9 +203,11 @@ def fetch_all_bars(uni,start,end,workers=6,batch=7,recovery_limit=0):
             if n%80==0 or n==len(fut):
                 got=sum(bool(v) for v in segment_seen.values())
                 print("KLINE_PROGRESS",json.dumps({"jobs":n,"total":len(fut),"rows":len(rows),"symbols_any_data":got}),flush=True)
-    # Seven-stock smoke returned full qfq history for every symbol (3941 bars),
-    # whereas 15-symbol full-market batches lost many long-history SH/SZ stocks.
-    # Record segment coverage to distinguish payload truncation from true missing data.
+    # Run #13: 7-symbol batches produced 4893/5575 symbols with any history but
+    # only 2781/5575 with the as-of close; each segment covered ~2700 symbols.
+    # This indicates incomplete multi-symbol payloads, not just absent tickers.
+    # Two-symbol batches keep each historical segment below common response caps.
+    # Preserve per-segment coverage to audit whether this resolves the issue.
     print("KLINE_SEGMENT_COVERAGE",json.dumps({seg_start:sum(seg_start in seen for seen in segment_seen.values())
           for seg_start,_ in segments}),flush=True)
     # A previous full run spent >150 minutes retrying 400/1016 zero-data symbols
@@ -398,7 +400,7 @@ def summarize(events,key):
     return out
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--as-of",default="2026-10-28");p.add_argument("--workers",type=int,default=6);p.add_argument("--max-symbols",type=int,default=0);p.add_argument("--recovery-limit",type=int,default=0)
+    p=argparse.ArgumentParser();p.add_argument("--as-of",default="2026-10-28");p.add_argument("--workers",type=int,default=8);p.add_argument("--max-symbols",type=int,default=0);p.add_argument("--recovery-limit",type=int,default=0)
     args=p.parse_args();date.fromisoformat(args.as_of);OUT.mkdir(parents=True,exist_ok=True);RESULTS.mkdir(parents=True,exist_ok=True)
     uni=universe()
     if args.max_symbols:uni=uni.head(args.max_symbols).copy()
