@@ -1,0 +1,198 @@
+{
+  "as_of": "2026-10-28",
+  "signal_contract": "frozen ETF weighted OLS26 / HL10 / annual cross + R2 rebuild",
+  "execution": "signal at close; hypothetical buy next session open",
+  "items": [
+    {
+      "symbol": "002353",
+      "name": "杰瑞股份",
+      "as_of": "2026-10-28",
+      "as_of_close": 93.9,
+      "as_of_day_return_pct": 4.92,
+      "first_sep_oct_rebuild": null,
+      "all_sep_oct_qualified": []
+    },
+    {
+      "symbol": "688059",
+      "name": "华锐精密",
+      "as_of": "2026-10-28",
+      "as_of_close": 77.99,
+      "as_of_day_return_pct": 16.93,
+      "first_sep_oct_rebuild": {
+        "cross_idx": 36,
+        "cross_date": "2026-09-22",
+        "cross_annual": 0.23362310031870637,
+        "cross_r2": 0.018977182532876613,
+        "qualified_idx": 37,
+        "qualified_date": "2026-09-23",
+        "annual": 0.7048090220422896,
+        "r2": 0.11656492935188378,
+        "delta_r2_1": 0.09758774681900717,
+        "entry_date": "2026-09-24",
+        "entry_open": 90.31,
+        "return_to_asof_close_pct": -13.64,
+        "first_annual_failure_date": "2026-09-30",
+        "alive_through_asof": false
+      },
+      "all_sep_oct_qualified": [
+        {
+          "cross_idx": 36,
+          "cross_date": "2026-09-22",
+          "cross_annual": 0.23362310031870637,
+          "cross_r2": 0.018977182532876613,
+          "qualified_idx": 37,
+          "qualified_date": "2026-09-23",
+          "annual": 0.7048090220422896,
+          "r2": 0.11656492935188378,
+          "delta_r2_1": 0.09758774681900717,
+          "entry_date": "2026-09-24",
+          "entry_open": 90.31,
+          "return_to_asof_close_pct": -13.64,
+          "first_annual_failure_date": "2026-09-30",
+          "alive_through_asof": false
+        }
+      ]
+    },
+    {
+      "symbol": "300308",
+      "name": "中际旭创",
+      "as_of": "2026-10-28",
+      "as_of_close": 636.3,
+      "as_of_day_return_pct": 10.28,
+      "first_sep_oct_rebuild": {
+        "cross_idx": 29,
+        "cross_date": "2026-09-11",
+        "cross_annual": 0.20593769406875917,
+        "cross_r2": 0.008328759868408975,
+        "qualified_idx": 32,
+        "qualified_date": "2026-09-16",
+        "annual": 0.21244795867658284,
+        "r2": 0.011994039164090697,
+        "delta_r2_1": 0.011898146674403809,
+        "entry_date": "2026-09-17",
+        "entry_open": 899.11,
+        "return_to_asof_close_pct": -29.23,
+        "first_annual_failure_date": "2026-09-29",
+        "alive_through_asof": false
+      },
+      "all_sep_oct_qualified": [
+        {
+          "cross_idx": 29,
+          "cross_date": "2026-09-11",
+          "cross_annual": 0.20593769406875917,
+          "cross_r2": 0.008328759868408975,
+          "qualified_idx": 32,
+          "qualified_date": "2026-09-16",
+          "annual": 0.21244795867658284,
+          "r2": 0.011994039164090697,
+          "delta_r2_1": 0.011898146674403809,
+          "entry_date": "2026-09-17",
+          "entry_open": 899.11,
+          "return_to_asof_close_pct": -29.23,
+          "first_annual_failure_date": "2026-09-29",
+          "alive_through_asof": false
+        }
+      ]
+    },
+    {
+      "symbol": "300502",
+      "name": "新易盛",
+      "as_of": "2026-10-28",
+      "as_of_close": 256.79,
+      "as_of_day_return_pct": 8.08,
+      "first_sep_oct_rebuild": {
+        "cross_idx": 33,
+        "cross_date": "2026-09-17",
+        "cross_annual": 0.232639322038797,
+        "cross_r2": 0.018999762014360266,
+        "qualified_idx": 34,
+        "qualified_date": "2026-09-18",
+        "annual": 0.999559955948188,
+        "r2": 0.1417283995847819,
+        "delta_r2_1": 0.12272863757042163,
+        "entry_date": "2026-09-21",
+        "entry_open": 455.04,
+        "return_to_asof_close_pct": -43.57,
+        "first_annual_failure_date": "2026-09-30",
+        "alive_through_asof": false
+      },
+      "all_sep_oct_qualified": [
+        {
+          "cross_idx": 33,
+          "cross_date": "2026-09-17",
+          "cross_annual": 0.232639322038797,
+          "cross_r2": 0.018999762014360266,
+          "qualified_idx": 34,
+          "qualified_date": "2026-09-18",
+          "annual": 0.999559955948188,
+          "r2": 0.1417283995847819,
+          "delta_r2_1": 0.12272863757042163,
+          "entry_date": "2026-09-21",
+          "entry_open": 455.04,
+          "return_to_asof_close_pct": -43.57,
+          "first_annual_failure_date": "2026-09-30",
+          "alive_through_asof": false
+        }
+      ]
+    },
+    {
+      "symbol": "300394",
+      "name": "天孚通信",
+      "as_of": "2026-10-28",
+      "as_of_close": 201.43,
+      "as_of_day_return_pct": 6.79,
+      "first_sep_oct_rebuild": {
+        "cross_idx": 32,
+        "cross_date": "2026-09-16",
+        "cross_annual": 0.035758249593901725,
+        "cross_r2": 0.000722976004750242,
+        "qualified_idx": 33,
+        "qualified_date": "2026-09-17",
+        "annual": 0.46403887468743044,
+        "r2": 0.061691082037842127,
+        "delta_r2_1": 0.060968106033091884,
+        "entry_date": "2026-09-18",
+        "entry_open": 283.67,
+        "return_to_asof_close_pct": -28.99,
+        "first_annual_failure_date": "2026-09-30",
+        "alive_through_asof": false
+      },
+      "all_sep_oct_qualified": [
+        {
+          "cross_idx": 32,
+          "cross_date": "2026-09-16",
+          "cross_annual": 0.035758249593901725,
+          "cross_r2": 0.000722976004750242,
+          "qualified_idx": 33,
+          "qualified_date": "2026-09-17",
+          "annual": 0.46403887468743044,
+          "r2": 0.061691082037842127,
+          "delta_r2_1": 0.060968106033091884,
+          "entry_date": "2026-09-18",
+          "entry_open": 283.67,
+          "return_to_asof_close_pct": -28.99,
+          "first_annual_failure_date": "2026-09-30",
+          "alive_through_asof": false
+        }
+      ]
+    },
+    {
+      "symbol": "603986",
+      "name": "兆易创新",
+      "as_of": "2026-10-28",
+      "as_of_close": 289.88,
+      "as_of_day_return_pct": 7.77,
+      "first_sep_oct_rebuild": null,
+      "all_sep_oct_qualified": []
+    },
+    {
+      "symbol": "001309",
+      "name": "德明利",
+      "as_of": "2026-10-28",
+      "as_of_close": 230.56,
+      "as_of_day_return_pct": 2.93,
+      "first_sep_oct_rebuild": null,
+      "all_sep_oct_qualified": []
+    }
+  ]
+}

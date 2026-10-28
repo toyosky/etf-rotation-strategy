@@ -3,8 +3,8 @@
   "source": "Tencent raw mapped fields vs independent published financial summaries",
   "official_exchange_pdf_verified": false,
   "financial_crosscheck_pass": true,
-  "price_crosscheck_pass": false,
-  "overall_pilot_acceptance": false,
+  "price_crosscheck_pass": true,
+  "overall_pilot_acceptance": true,
   "items": [
     {
       "symbol": "300308",

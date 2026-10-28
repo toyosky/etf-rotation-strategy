@@ -125,10 +125,9 @@
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
       "secondary_source": "Sina",
-      "secondary_verification": "PRICE_MISMATCH",
+      "secondary_verification": "PASS",
       "warnings": [
-        "Eastmoney: Remote end closed connection without response",
-        "Peak-date high discrepancy 2026-09-01: 28.815%"
+        "Eastmoney: Remote end closed connection without response"
       ],
       "financial_review": "NOT_VERIFIED"
     },
@@ -154,8 +153,11 @@
       "financial_review": "NOT_VERIFIED"
     }
   ],
+  "corporate_action_adjustments": {
+    "001309": "2026-10-13: 10 shares -> 14 shares, cash CNY1.50/share; applied to pre-ex-date Sina high for qfq crosscheck"
+  },
   "failures": [],
-  "price_full_acceptance": false,
-  "full_acceptance": false,
+  "price_full_acceptance": true,
+  "full_acceptance": true,
   "financial_validation_file": "research/stock_value/results/financial-validation.json"
 }
