@@ -110,8 +110,19 @@ def get_data(code,start,end):
     dates=sorted(set(p)&set(s))[-10:]
     if len(dates)<5:return primary,provider,secondary_provider,"INSUFFICIENT_OVERLAP",errors
     deviations=[abs(p[d][4]-s[d][4])/max(s[d][4],0.01) for d in dates]
-    status="PASS" if max(deviations)<=0.015 else "PRICE_MISMATCH"
-    if status!="PASS":errors.append("Maximum 10-day close discrepancy: "+str(round(max(deviations)*100,3))+"%")
+    window=[r for r in primary if "2026-09-01"<=r[0]<=end]
+    peak=max(window,key=lambda r:r[2])
+    peak_date=peak[0]
+    if peak_date not in s:
+        status="PEAK_DATE_UNAVAILABLE"
+        errors.append("Secondary source has no peak date "+peak_date)
+    else:
+        peak_gap=abs(p[peak_date][2]-s[peak_date][2])/max(s[peak_date][2],0.01)
+        status="PASS" if max(deviations)<=0.015 and peak_gap<=0.015 else "PRICE_MISMATCH"
+        if peak_gap>0.015:
+            errors.append("Peak-date high discrepancy "+peak_date+": "+str(round(peak_gap*100,3))+"%")
+    if max(deviations)>0.015:
+        errors.append("Maximum 10-day close discrepancy: "+str(round(max(deviations)*100,3))+"%")
     return primary,provider,secondary_provider,status,errors
 
 def archive(code,rows):
