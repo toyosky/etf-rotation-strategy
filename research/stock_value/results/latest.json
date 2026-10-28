@@ -104,8 +104,10 @@
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
       "secondary_source": "Eastmoney",
-      "secondary_verification": "PASS",
-      "warnings": [],
+      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
       "financial_review": "NOT_VERIFIED"
     },
     {
