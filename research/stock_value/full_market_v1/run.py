@@ -177,7 +177,7 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
         time.sleep(min(2**i,5))
     return [],list(symbols)
 
-def fetch_all_bars(uni,start,end,workers=6,batch=15,recovery_limit=0):
+def fetch_all_bars(uni,start,end,workers=6,batch=7,recovery_limit=0):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
     symbols=list(uni.symbol)
     # Tencent/Westock truncates long single requests (~200-250 daily rows).
@@ -203,6 +203,11 @@ def fetch_all_bars(uni,start,end,workers=6,batch=15,recovery_limit=0):
             if n%80==0 or n==len(fut):
                 got=sum(bool(v) for v in segment_seen.values())
                 print("KLINE_PROGRESS",json.dumps({"jobs":n,"total":len(fut),"rows":len(rows),"symbols_any_data":got}),flush=True)
+    # Seven-stock smoke returned full qfq history for every symbol (3941 bars),
+    # whereas 15-symbol full-market batches lost many long-history SH/SZ stocks.
+    # Record segment coverage to distinguish payload truncation from true missing data.
+    print("KLINE_SEGMENT_COVERAGE",json.dumps({seg_start:sum(seg_start in seen for seen in segment_seen.values())
+          for seg_start,_ in segments}),flush=True)
     # A previous full run spent >150 minutes retrying 400/1016 zero-data symbols
     # and recovered zero, then hit the 180-minute Actions timeout. Recovery is
     # opt-in and bounded; do not discard valid batch data to chase absent symbols.
@@ -420,6 +425,11 @@ def main():
     required=math.ceil(len(uni)*(0.8 if not args.max_symbols else 0.5))
     if coverage<required:
         raise RuntimeError(f"PRICE_QUALITY_GATE: {coverage}/{len(uni)} symbols with bars; minimum={required}; missing={len(missing)}")
+    # Missing the as-of close makes the Oct-27 -> Oct-28 capture test invalid.
+    # Reject stale partial bars even if older history clears the coverage threshold.
+    fresh=coverage_checkpoint["last_date_as_of_symbols"]
+    if fresh<required:
+        raise RuntimeError(f"PRICE_FRESHNESS_GATE: {fresh}/{len(uni)} symbols have {args.as_of} close; minimum={required}")
     # Price candidates: ever 20% below 60d high during test period.
     pc=[]
     for s,g in bars.groupby("symbol"):
