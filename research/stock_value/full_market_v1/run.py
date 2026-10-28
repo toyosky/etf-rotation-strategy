@@ -70,42 +70,69 @@ def http_json(url,params,attempts=4):
             time.sleep(min(2**i,8))
     raise RuntimeError(err)
 
-def eastmoney_list_page(params):
-    errs=[]
-    for host in ("https://push2delay.eastmoney.com","https://82.push2.eastmoney.com","https://push2.eastmoney.com"):
+def sina_list_page(node,page):
+    params={"page":page,"num":100,"sort":"symbol","asc":1,"node":node,"_s_r_a":"page"}
+    url="https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData"
+    q=url+"?"+urllib.parse.urlencode(params)
+    err=""
+    for i in range(4):
         try:
-            return http_json(host+"/api/qt/clist/get",params,attempts=2)
+            req=urllib.request.Request(q,headers={"User-Agent":"Mozilla/5.0","Referer":"https://vip.stock.finance.sina.com.cn/"})
+            with urllib.request.urlopen(req,timeout=25) as r:
+                raw=r.read().decode("utf-8","replace")
+            data=json.loads(raw)
+            return data if isinstance(data,list) else []
         except Exception as ex:
-            errs.append(host+":"+str(ex))
-    raise RuntimeError("Eastmoney list hosts failed: "+" | ".join(errs))
+            err=str(ex);time.sleep(min(1.5*(i+1),5))
+    raise RuntimeError(f"Sina list failed node={node} page={page}: {err}")
+
+def collect_sina_node(node,max_pages=100):
+    rows=[]
+    for page in range(1,max_pages+1):
+        part=sina_list_page(node,page)
+        if not part: break
+        rows.extend(part)
+        if len(part)<100: break
+        time.sleep(0.12)
+    return rows
 
 def universe():
-    rows=[]; page=1; total=None
-    while True:
-        params={"pn":page,"pz":100,"po":1,"np":1,"fltt":2,"invt":2,"fid":"f3",
-                "fs":"m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048",
-                "fields":"f12,f13,f14,f9,f20,f23,f26"}
-        raw=eastmoney_list_page(params)
-        data=(raw or {}).get("data") or {}
-        if total is None: total=int(data.get("total") or 0)
-        diff=data.get("diff") or []
-        if isinstance(diff,dict): diff=list(diff.values())
-        if not diff: break
-        for x in diff:
-            code=str(x.get("f12") or "").zfill(6); name=str(x.get("f14") or "")
-            if len(code)!=6 or not code.isdigit() or not name: continue
-            if code.startswith(("4","8","92")): tc="bj"+code
-            elif code.startswith(("5","6","9")): tc="sh"+code
-            else: tc="sz"+code
-            rows.append({"symbol":code,"name":name,"tencent_code":tc,
-                         "current_pe":x.get("f9"),"current_pb":x.get("f23"),
-                         "current_market_cap":x.get("f20"),"list_date":x.get("f26"),
-                         "signal_eligible":not any(t in name.upper() for t in ("ST","退"))})
-        if len(rows)>=total: break
-        page+=1
-        if page>100: raise RuntimeError("A-share universe pagination exceeded 100 pages")
+    raw=collect_sina_node("hs_a",80)
+    if len(raw)<5000:
+        raise RuntimeError(f"Sina hs_a universe unexpectedly small: {len(raw)}")
+    # BSE node names are not documented consistently; probe a short allowlist.
+    bse=[]
+    for node in ("bj_a","bjs","bj"):
+        try:
+            test=collect_sina_node(node,10)
+        except Exception:
+            continue
+        keep=[x for x in test if str(x.get("symbol") or "").lower().startswith("bj")
+              or str(x.get("code") or "").startswith(("4","8","92"))]
+        if len(keep)>len(bse): bse=keep
+    merged=raw+bse
+    rows=[]
+    for x in merged:
+        code=str(x.get("code") or "")[-6:].zfill(6)
+        sym=str(x.get("symbol") or "").lower()
+        name=str(x.get("name") or "")
+        if len(code)!=6 or not code.isdigit() or not name: continue
+        if sym.startswith(("sh","sz","bj")): tc=sym[:2]+code
+        elif code.startswith(("4","8","92")): tc="bj"+code
+        elif code.startswith(("5","6","9")): tc="sh"+code
+        else: tc="sz"+code
+        def fnum(key):
+            try:return float(x.get(key))
+            except:return None
+        mcap=fnum("mktcap")
+        rows.append({"symbol":code,"name":name,"tencent_code":tc,
+                     "current_pe":fnum("per"),"current_pb":fnum("pb"),
+                     "current_market_cap":None if mcap is None else mcap*10000.0,
+                     "list_date":None,
+                     "signal_eligible":not any(t in name.upper() for t in ("ST","退")),
+                     "exchange":"BJ" if tc.startswith("bj") else ("SH" if tc.startswith("sh") else "SZ")})
     df=pd.DataFrame(rows).drop_duplicates("symbol").sort_values("symbol")
-    if len(df)<5000: raise RuntimeError(f"A-share universe unexpectedly small: {len(df)}")
+    if len(df)<5000: raise RuntimeError(f"A-share universe unexpectedly small after Sina parse: {len(df)}")
     return df.reset_index(drop=True)
 
 def run(cmd,timeout=240):
@@ -320,7 +347,7 @@ def main():
     args=p.parse_args();date.fromisoformat(args.as_of);OUT.mkdir(parents=True,exist_ok=True);RESULTS.mkdir(parents=True,exist_ok=True)
     uni=universe()
     if args.max_symbols:uni=uni.head(args.max_symbols).copy()
-    print("UNIVERSE",json.dumps({"stocks":len(uni),"eligible":int(uni.signal_eligible.sum())}),flush=True)
+    print("UNIVERSE",json.dumps({"stocks":len(uni),"eligible":int(uni.signal_eligible.sum()),"bse":int((uni.exchange=="BJ").sum())}),flush=True)
     bars,missing=fetch_all_bars(uni,BOOTSTRAP_START,args.as_of,args.workers)
     # Price candidates: ever 20% below 60d high during test period.
     pc=[]
@@ -348,7 +375,7 @@ def main():
                                   "drawdown_at_value_pct":e["drawdown_at_value_pct"]})
     summary={k:summarize(events,k) for k in ("VALUE_OVERSOLD","EARLY_REVERSAL","OLS_REBUILD")}
     result={"version":"full-a-share-value-reversal-ols-v1","as_of":args.as_of,"backtest_start":"2025-01-01",
-            "universe_count":len(uni),"price_symbols":int(bars.symbol.nunique()),"price_missing":missing,
+            "universe_count":len(uni),"bse_count":int((uni.exchange=="BJ").sum()),"coverage_scope":"SH_SZ_BJ" if int((uni.exchange=="BJ").sum())>0 else "SH_SZ_ONLY_BSE_PENDING","price_symbols":int(bars.symbol.nunique()),"price_missing":missing,
             "price_oversold_symbols":len(pc),"finance_failures":fails,
             "rules":{"drawdown60_max":DD_THRESHOLD,"deducted_profit_positive":True,"deducted_profit_yoy_floor_pct":PROFIT_YOY_FLOOR,
                      "watch_sessions":WATCH_SESSIONS,"early_reversal":"slope5>0 & ret3>0 & close>MA5 & close>min10",
