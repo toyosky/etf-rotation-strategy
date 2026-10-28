@@ -82,11 +82,11 @@ def universe():
         diff=data.get("diff") or []
         if not diff: break
         for x in diff:
-        code=str(x.get("f12") or "").zfill(6); name=str(x.get("f14") or "")
-        if len(code)!=6 or not code.isdigit() or not name: continue
-        if code.startswith(("4","8","92")): tc="bj"+code
-        elif code.startswith(("5","6","9")): tc="sh"+code
-        else: tc="sz"+code
+            code=str(x.get("f12") or "").zfill(6); name=str(x.get("f14") or "")
+            if len(code)!=6 or not code.isdigit() or not name: continue
+            if code.startswith(("4","8","92")): tc="bj"+code
+            elif code.startswith(("5","6","9")): tc="sh"+code
+            else: tc="sz"+code
             rows.append({"symbol":code,"name":name,"tencent_code":tc,
                          "current_pe":x.get("f9"),"current_pb":x.get("f23"),
                          "current_market_cap":x.get("f20"),"list_date":x.get("f26"),
