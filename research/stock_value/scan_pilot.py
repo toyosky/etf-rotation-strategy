@@ -117,7 +117,13 @@ def get_data(code,start,end):
         status="PEAK_DATE_UNAVAILABLE"
         errors.append("Secondary source has no peak date "+peak_date)
     else:
-        peak_gap=abs(p[peak_date][2]-s[peak_date][2])/max(s[peak_date][2],0.01)
+        secondary_high=s[peak_date][2]
+        # 001309: 2026-10-13 ex-rights: 10-for-4 capital bonus + CNY 1.50/share cash.
+        # Sina daily highs are unadjusted; Tencent/Eastmoney qfq highs are adjusted.
+        # Corporate action: https://stock.10jqka.com.cn/20260928/c680335282.shtml
+        if code=="001309" and secondary_provider=="Sina" and peak_date<"2026-10-13"<=end:
+            secondary_high=(secondary_high-1.50)/1.40
+        peak_gap=abs(p[peak_date][2]-secondary_high)/max(secondary_high,0.01)
         status="PASS" if max(deviations)<=0.015 and peak_gap<=0.015 else "PRICE_MISMATCH"
         if peak_gap>0.015:
             errors.append("Peak-date high discrepancy "+peak_date+": "+str(round(peak_gap*100,3))+"%")
@@ -171,6 +177,7 @@ def main():
              "universe":"7-stock exploratory pilot; not whole A-share market",
              "drawdown_method":"Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
              "candidates":sorted(results,key=lambda x:x["drawdown_from_peak_pct"]),
+             "corporate_action_adjustments":{"001309":"2026-10-13: 10 shares -> 14 shares, cash CNY1.50/share; applied to pre-ex-date Sina high for qfq crosscheck"},
              "failures":failures,
              "price_full_acceptance":len(results)==7 and not failures and all(x["status"]=="OK" and x["secondary_verification"]=="PASS" and x["primary_source"]!="Eastmoney ONLY" for x in results)}
     payload["full_acceptance"]=False  # financial validation step must explicitly promote acceptance
