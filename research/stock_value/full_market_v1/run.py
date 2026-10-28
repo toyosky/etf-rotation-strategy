@@ -160,22 +160,22 @@ def extract_kline(payload,requested):
         except Exception: continue
     return out
 
-def fetch_kline_piece(codes,start,end,attempts=3):
-    tcodes=[codes[c] for c in codes]
+def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
+    tcodes=[code_map[c] for c in symbols]
     err=""
     for i in range(attempts):
         try:
             p=run(["npx","-y",PACKAGE,"kline",",".join(tcodes),"--period","day",
                    "--start",start,"--end",end,"--fq","bfq","--raw"],300)
-            rows=extract_kline(p,set(codes))
+            rows=extract_kline(p,set(symbols))
             got={r[0] for r in rows}
-            if rows and (got or len(codes)==1):
-                missing=[c for c in codes if c not in got]
+            if rows and (got or len(symbols)==1):
+                missing=[c for c in symbols if c not in got]
                 return rows,missing
             err="empty"
         except Exception as ex: err=str(ex)
         time.sleep(min(2**i,5))
-    return [],list(codes)
+    return [],list(symbols)
 
 def fetch_all_bars(uni,start,end,workers=6,batch=15):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
@@ -183,7 +183,7 @@ def fetch_all_bars(uni,start,end,workers=6,batch=15):
     chunks=[symbols[i:i+batch] for i in range(0,len(symbols),batch)]
     rows=[];missing=set()
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        fut={ex.submit(fetch_kline_piece,ch,start,end):ch for ch in chunks}
+        fut={ex.submit(fetch_kline_piece,ch,code_map,start,end):ch for ch in chunks}
         for n,f in enumerate(as_completed(fut),1):
             try:
                 rr,mm=f.result(); rows.extend(rr); missing.update(mm)
@@ -193,7 +193,7 @@ def fetch_all_bars(uni,start,end,workers=6,batch=15):
     # Slow individual recovery for misses.
     recovered=set()
     for n,code in enumerate(sorted(missing),1):
-        rr,mm=fetch_kline_piece([code],start,end,2)
+        rr,mm=fetch_kline_piece([code],code_map,start,end,2)
         if rr: rows.extend(rr); recovered.add(code)
         if n%100==0: print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(missing),"recovered":len(recovered)}),flush=True)
     bars=pd.DataFrame(rows,columns=["symbol","date","open","high","low","close","volume","amount"])
