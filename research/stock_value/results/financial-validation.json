@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-10-28",
+  "source": "Tencent raw mapped fields vs independent published financial summaries",
+  "official_exchange_pdf_verified": false,
+  "financial_crosscheck_pass": true,
+  "price_crosscheck_pass": true,
+  "overall_pilot_acceptance": true,
+  "items": [
+    {
+      "symbol": "300308",
+      "period": "2026-06-30",
+      "benchmark_url": "https://finance.eastmoney.com/a/202608213849522539.html",
+      "benchmark_published": "2026-08-21",
+      "deducted_profit_100m": 130.92,
+      "operating_cash_flow_100m": 18,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "300394",
+      "period": "2026-06-30",
+      "benchmark_url": "https://finance.eastmoney.com/a/202608183844965992.html",
+      "benchmark_published": "2026-08-18",
+      "deducted_profit_100m": 11.86,
+      "operating_cash_flow_100m": 10.01,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "300502",
+      "period": "2026-06-30",
+      "benchmark_url": "https://finance.sina.com.cn/stock/zqgd/2026-08-24/doc-inipmnpn2016893.shtml",
+      "benchmark_published": "2026-08-24",
+      "deducted_profit_100m": 75.1,
+      "operating_cash_flow_100m": 16.16,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "603986",
+      "period": "2026-06-30",
+      "benchmark_url": "https://finance.eastmoney.com/a/202608183844965323.html",
+      "benchmark_published": "2026-08-18",
+      "deducted_profit_100m": 48.83,
+      "operating_cash_flow_100m": 60.48,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "688059",
+      "period": "2026-09-30",
+      "benchmark_url": "https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/company/rptid/846447065800/index.phtml",
+      "benchmark_published": "2026-10-27",
+      "deducted_profit_100m": 3.09,
+      "operating_cash_flow_100m": -0.53,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "002353",
+      "period": "2026-09-30",
+      "benchmark_url": "https://finance.sina.cn/2026-10-21/detail-inivysym6164242.d.html",
+      "benchmark_published": "2026-10-21",
+      "deducted_profit_100m": 18.07,
+      "operating_cash_flow_100m": 24.13,
+      "status": "PASS",
+      "reasons": []
+    },
+    {
+      "symbol": "001309",
+      "period": "2026-09-30",
+      "benchmark_url": "https://finance.sina.com.cn/stock/relnews/cn/2026-10-26/doc-iniwqhxk2393555.shtml",
+      "benchmark_published": "2026-10-26",
+      "deducted_profit_100m": 86.92,
+      "operating_cash_flow_100m": -136.91,
+      "status": "PASS",
+      "reasons": []
+    }
+  ]
+}

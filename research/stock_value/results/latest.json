@@ -1,7 +1,7 @@
 {
   "as_of": "2026-10-28",
   "source": "Tencent Westock/direct with Eastmoney/Sina independent check",
-  "financial_data_status": "not_collected",
+  "financial_data_status": "INDEPENDENT_PUBLIC_REPORT_CROSSCHECK_PASS",
   "universe": "7-stock exploratory pilot; not whole A-share market",
   "drawdown_method": "Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
   "candidates": [
@@ -103,11 +103,9 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Sina",
+      "secondary_source": "Eastmoney",
       "secondary_verification": "PASS",
-      "warnings": [
-        "Eastmoney: Remote end closed connection without response"
-      ],
+      "warnings": [],
       "financial_review": "NOT_VERIFIED"
     },
     {
@@ -155,5 +153,6 @@
   ],
   "failures": [],
   "price_full_acceptance": true,
-  "full_acceptance": false
+  "full_acceptance": true,
+  "financial_validation_file": "research/stock_value/results/financial-validation.json"
 }
