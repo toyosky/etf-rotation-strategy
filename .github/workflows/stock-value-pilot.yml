@@ -7,6 +7,7 @@ on:
       - 'research/stock_value/scan_pilot.py'
       - 'research/stock_value/fetch_financials.py'
       - 'research/stock_value/normalize_financials.py'
+      - 'research/stock_value/test_rebuild_signals.py'
       - 'research/stock_value/validate_financials.py'
       - 'research/stock_value/financial-benchmarks-20261028.json'
       - 'research/stock_value/README.md'
@@ -50,6 +51,10 @@ jobs:
       - name: Cross-check published financials and finalize pilot acceptance
         if: always()
         run: python research/stock_value/validate_financials.py
+      - name: Test frozen OLS rebuilding on pilot stocks
+        if: always()
+        continue-on-error: true
+        run: python research/stock_value/test_rebuild_signals.py
       - name: Upload diagnostic results even if fetch failed
         if: always()
         uses: actions/upload-artifact@v4
@@ -59,6 +64,7 @@ jobs:
             research/stock_value/results/latest.json
             research/stock_value/results/financial-source-status.json
             research/stock_value/results/financial-summary.json
+            research/stock_value/results/rebuild-signals.json
             research/stock_value/results/financial-validation.json
             research/stock_value/data/finance/*.json.gz
             research/stock_value/data/daily/*.csv.gz
