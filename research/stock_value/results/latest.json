@@ -103,9 +103,11 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
+      "secondary_source": "Sina",
       "secondary_verification": "PASS",
-      "warnings": [],
+      "warnings": [
+        "Eastmoney: Remote end closed connection without response"
+      ],
       "financial_review": "NOT_VERIFIED"
     },
     {
