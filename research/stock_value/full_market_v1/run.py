@@ -180,16 +180,41 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
 def fetch_all_bars(uni,start,end,workers=8,batch=2,recovery_limit=0):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
     symbols=list(uni.symbol)
-    # Tencent/Westock truncates long single requests (~200-250 daily rows).
-    # Freeze three non-overlapping calendar segments, each below that practical cap.
+    # Use the previous failed run's archived bars as a checkpoint; never
+    # interpret partial segment coverage as a valid backtest.
     segments=[
         ("2024-07-01","2025-04-30"),
         ("2025-05-01","2026-02-28"),
         ("2026-03-01",end),
     ]
-    chunks=[symbols[i:i+batch] for i in range(0,len(symbols),batch)]
-    jobs=[(ch,seg_start,seg_end) for seg_start,seg_end in segments for ch in chunks]
-    rows=[]; segment_seen={s:set() for s in symbols}
+    cache_path=OUT/"daily_bars.parquet"
+    cached=pd.DataFrame(columns=["symbol","date","open","high","low","close","volume","amount"])
+    if cache_path.exists():
+        cached=pd.read_parquet(cache_path)
+        cached["symbol"]=cached.symbol.astype(str).str.zfill(6)
+        cached["date"]=pd.to_datetime(cached.date)
+        cached=cached[cached.symbol.isin(symbols)].copy()
+        cached=cached.sort_values(["symbol","date"]).drop_duplicates(["symbol","date"],keep="last")
+    segment_seen={s:set() for s in symbols}
+    jobs=[]
+    if not cached.empty:
+        batch=1  # Missing pieces must be fetched individually, not in truncated multi-code responses.
+    latest=set(cached.loc[cached.date==pd.Timestamp(end),"symbol"]) if not cached.empty else set()
+    for seg_start,seg_end in segments:
+        seen=set()
+        if not cached.empty:
+            piece=cached.loc[(cached.date>=pd.Timestamp(seg_start)) & (cached.date<=pd.Timestamp(seg_end))]
+            seen=set(piece.symbol)
+            for code in seen:segment_seen[code].add(seg_start)
+        # Latest segment must actually contain the as-of close; an older bar
+        # in this segment is insufficient for the Oct-27/Oct-28 capture test.
+        pending=[code for code in symbols if code not in (latest if seg_start=="2026-03-01" else seen)]
+        for i in range(0,len(pending),batch):
+            jobs.append((pending[i:i+batch],seg_start,seg_end))
+    print("KLINE_RESUME",json.dumps({"cache_rows":len(cached),"cache_symbols":cached.symbol.nunique(),
+                                      "jobs":len(jobs),"batch":batch,
+                                      "latest_cached":len(latest)}),flush=True)
+    rows=[]
     with ThreadPoolExecutor(max_workers=workers) as ex:
         fut={ex.submit(fetch_kline_piece,ch,code_map,seg_start,seg_end,2):(ch,seg_start,seg_end)
              for ch,seg_start,seg_end in jobs}
@@ -225,7 +250,10 @@ def fetch_all_bars(uni,start,end,workers=8,batch=2,recovery_limit=0):
                 rows.extend(rr); recovered.add(code)
         if n%20==0 or n==len(retry_codes):
             print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(retry_codes),"recovered":len(recovered)}),flush=True)
-    bars=pd.DataFrame(rows,columns=["symbol","date","open","high","low","close","volume","amount"])
+    new_bars=pd.DataFrame(rows,columns=["symbol","date","open","high","low","close","volume","amount"])
+    if not new_bars.empty:
+        new_bars["date"]=pd.to_datetime(new_bars.date)
+    bars=pd.concat([cached,new_bars],ignore_index=True)
     if bars.empty:
         return bars,sorted(set(symbols)-recovered)
     bars["date"]=pd.to_datetime(bars.date)
