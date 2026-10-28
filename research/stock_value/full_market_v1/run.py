@@ -7,7 +7,7 @@ Past-only backtest contract
 ---------------------------
 Universe: current exchange-listed A shares from Eastmoney list API (SH/SZ/BJ),
 excluding ST/*ST/退 names from signal eligibility.
-Price source: Tencent Westock bfq daily bars; Eastmoney is used only for universe
+Price source: Tencent Westock qfq (split/dividend adjusted) daily bars; Eastmoney is used only for universe
 and current valuation snapshot. Backtest starts 2025-01-01, bootstrap history
 starts 2024-07-01.
 Financial source: Tencent Westock finance --num 8 --raw, fetched only for stocks
@@ -166,7 +166,7 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
     for i in range(attempts):
         try:
             p=run(["npx","-y",PACKAGE,"kline",",".join(tcodes),"--period","day",
-                   "--start",start,"--end",end,"--fq","bfq","--raw"],300)
+                   "--start",start,"--end",end,"--fq","qfq","--raw"],300)
             rows=extract_kline(p,set(symbols))
             got={r[0] for r in rows}
             if rows and (got or len(symbols)==1):
@@ -309,8 +309,18 @@ def horizon_eval(g,signal_i):
         j=min(entry_i+h-1,len(g)-1)
         if j-entry_i+1<h:z[f"ret{h}_pct"]=None
         else:z[f"ret{h}_pct"]=round((float(g.at[j,"close"])/entry-1)*100,3)
-    j=min(entry_i+19,len(g)-1);path=g.loc[entry_i:j,"low"].to_numpy(float)/entry-1
-    z["mdd20_pct"]=round(float(np.min(path))*100,3) if len(path) else None
+    # Peak-to-trough drawdown over a *complete* 20-session holding window.
+    # Compare each session's low to prior peaks; do not assume its high
+    # preceded its low intraday. Include entry open as the initial peak.
+    if entry_i+19>=len(g):
+        z["mdd20_pct"]=None
+    else:
+        peak=entry;worst=0.0
+        for k in range(entry_i,entry_i+20):
+            low=float(g.at[k,"low"]);high=float(g.at[k,"high"])
+            worst=min(worst,low/peak-1.0)
+            peak=max(peak,high)
+        z["mdd20_pct"]=round(worst*100,3)
     return z
 
 def process_stock(meta,g,fin):
@@ -375,6 +385,11 @@ def main():
     if args.max_symbols:uni=uni.head(args.max_symbols).copy()
     print("UNIVERSE",json.dumps({"stocks":len(uni),"eligible":int(uni.signal_eligible.sum()),"bse":int((uni.exchange=="BJ").sum())}),flush=True)
     bars,missing=fetch_all_bars(uni,BOOTSTRAP_START,args.as_of,args.workers)
+    # Never report an empty or severely incomplete backtest as success.
+    coverage=int(bars.symbol.nunique())
+    required=math.ceil(len(uni)*(0.8 if not args.max_symbols else 0.5))
+    if coverage<required:
+        raise RuntimeError(f"PRICE_QUALITY_GATE: {coverage}/{len(uni)} symbols with bars; minimum={required}; missing={len(missing)}")
     # Price candidates: ever 20% below 60d high during test period.
     pc=[]
     for s,g in bars.groupby("symbol"):
@@ -382,6 +397,10 @@ def main():
         if ((gg.date>=BACKTEST_START)&(gg.drawdown60<=DD_THRESHOLD)).any():pc.append(s)
     print("PRICE_CANDIDATES",json.dumps({"count":len(pc),"missing_price":len(missing)}),flush=True)
     fin,fails=fetch_financials(uni,pc,args.workers)
+    if pc and fin.empty:
+        raise RuntimeError(f"FINANCE_QUALITY_GATE: {len(pc)} price candidates, zero usable finance rows; failures={len(fails)}")
+    if len(pc)>=50 and len(fails)>len(pc)*0.4:
+        raise RuntimeError(f"FINANCE_QUALITY_GATE: {len(fails)}/{len(pc)} finance requests failed")
     if not fin.empty:
         fin["publication_date"]=fin.publication_date.astype(str);fin["period_end"]=fin.period_end.astype(str)
     events=[];today=[]
@@ -393,16 +412,20 @@ def main():
         events.extend(ev)
         if len(g)>=2:
             yday=str(g.iloc[-2].date.date());today_date=str(g.iloc[-1].date.date())
-            for e in ev:
-                er=e.get("EARLY_REVERSAL")
-                if er and er["signal_date"]==yday and er["entry_date"]==today_date:
-                    today.append({"symbol":s,"name":meta.loc[s,"name"],"signal":"EARLY_REVERSAL",
-                                  "entry_open":er["entry_open"],"ret1_pct":er["ret1_pct"],
-                                  "drawdown_at_value_pct":e["drawdown_at_value_pct"]})
+            if today_date==args.as_of and (args.as_of!="2026-10-28" or yday=="2026-10-27"):
+                for e in ev:
+                    for kind in ("VALUE_OVERSOLD","EARLY_REVERSAL","OLS_REBUILD"):
+                        er=e.get(kind)
+                        if er and er["signal_date"]==yday and er["entry_date"]==today_date:
+                            today.append({"symbol":s,"name":meta.loc[s,"name"],"signal":kind,
+                                          "entry_open":er["entry_open"],"ret1_pct":er["ret1_pct"],
+                                          "drawdown_at_value_pct":e["drawdown_at_value_pct"]})
     summary={k:summarize(events,k) for k in ("VALUE_OVERSOLD","EARLY_REVERSAL","OLS_REBUILD")}
     result={"version":"full-a-share-value-reversal-ols-v1","as_of":args.as_of,"backtest_start":"2025-01-01",
             "universe_count":len(uni),"bse_count":int((uni.exchange=="BJ").sum()),"coverage_scope":"SH_SZ_BJ" if int((uni.exchange=="BJ").sum())>0 else "SH_SZ_ONLY_BSE_PENDING","price_symbols":int(bars.symbol.nunique()),"price_missing":missing,
             "price_oversold_symbols":len(pc),"finance_failures":fails,
+            "price_basis":"qfq_adjusted","quality_gate":{"minimum_price_symbols":required,"price_coverage_pct":round(coverage/len(uni)*100,2)},
+            "limitations":["Current listed universe and current ST name status cause survivorship bias; not a historical point-in-time universe","Financial source contains latest available 8 reports only; historical report coverage may be incomplete"],
             "rules":{"drawdown60_max":DD_THRESHOLD,"deducted_profit_positive":True,"deducted_profit_yoy_floor_pct":PROFIT_YOY_FLOOR,
                      "watch_sessions":WATCH_SESSIONS,"early_reversal":"slope5>0 & ret3>0 & close>MA5 & close>min10",
                      "ols_rebuild":"frozen ETF OLS26/HL10 cross + R2 rebuild"},
