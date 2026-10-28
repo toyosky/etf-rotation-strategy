@@ -45,7 +45,7 @@ import pandas as pd
 
 PACKAGE="westock-data-skillhub@1.0.5"
 ROOT=Path("research/stock_value/full_market_v1")
-OUT=ROOT/"output"
+OUT=ROOT/"output"\nRESULTS=Path("research/stock_value/results")
 CACHE=ROOT/"cache"
 BACKTEST_START=pd.Timestamp("2025-01-01")
 BOOTSTRAP_START="2024-07-01"
@@ -277,7 +277,7 @@ def process_stock(meta,g,fin):
                 if g.at[j,"annual"]>0 and g.at[j,"dr2"]>0 and g.at[j,"r2"]>g.at[cross,"r2"]:
                     ols=j;break
             if ols is not None:break
-        rec={"symbol":meta.symbol,"name":meta.name,"value_start_date":str(g.at[start,"date"].date()),
+        rec={"symbol":meta.symbol,"name":meta["name"],"value_start_date":str(g.at[start,"date"].date()),
              "drawdown_at_value_pct":round(float(g.at[start,"drawdown60"])*100,2),
              "financial":fin_quality[start],
              "VALUE_OVERSOLD":horizon_eval(g,start),
@@ -299,7 +299,7 @@ def summarize(events,key):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--as-of",default="2026-10-28");p.add_argument("--workers",type=int,default=6);p.add_argument("--max-symbols",type=int,default=0)
-    args=p.parse_args();date.fromisoformat(args.as_of);OUT.mkdir(parents=True,exist_ok=True)
+    args=p.parse_args();date.fromisoformat(args.as_of);OUT.mkdir(parents=True,exist_ok=True);RESULTS.mkdir(parents=True,exist_ok=True)
     uni=universe()
     if args.max_symbols:uni=uni.head(args.max_symbols).copy()
     print("UNIVERSE",json.dumps({"stocks":len(uni),"eligible":int(uni.signal_eligible.sum())}),flush=True)
@@ -344,7 +344,7 @@ def main():
     bars.to_parquet(OUT/"daily_bars.parquet",index=False,compression="zstd")
     if not fin.empty:fin.to_parquet(OUT/"financials.parquet",index=False,compression="zstd")
     compact={k:v for k,v in result.items() if k!="events"}
-    (Path("research/stock_value/results")/"full-market-v1-latest.json").write_text(json.dumps(compact,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    (RESULTS/"full-market-v1-latest.json").write_text(json.dumps(compact,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("DONE",json.dumps({"events":len(events),"today_capture":len(today),"summary":summary},ensure_ascii=False),flush=True)
 
 if __name__=="__main__":main()
