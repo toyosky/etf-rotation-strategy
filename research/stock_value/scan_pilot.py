@@ -161,8 +161,9 @@ def main():
              "drawdown_method":"Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
              "candidates":sorted(results,key=lambda x:x["drawdown_from_peak_pct"]),
              "failures":failures,
-             "full_acceptance":len(results)==7 and not failures and all(x["status"]=="OK" and x["secondary_verification"]=="PASS" and x["primary_source"]!="Eastmoney ONLY" for x in results)}
+             "price_full_acceptance":len(results)==7 and not failures and all(x["status"]=="OK" and x["secondary_verification"]=="PASS" and x["primary_source"]!="Eastmoney ONLY" for x in results)}
+    payload["full_acceptance"]=False  # financial validation step must explicitly promote acceptance
     out=RESULTS/"latest.json";out.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(json.dumps({"success":len(results),"failed":len(failures),"fully_price_verified":payload["full_acceptance"]},ensure_ascii=False))
+    print(json.dumps({"success":len(results),"failed":len(failures),"fully_price_verified":payload["price_full_acceptance"]},ensure_ascii=False))
     return 0 if len(results)==7 and not failures else 1
 if __name__=="__main__":sys.exit(main())
