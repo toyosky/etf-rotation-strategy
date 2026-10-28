@@ -358,7 +358,7 @@ def process_stock(meta,g,fin):
                 if g.at[j,"annual"]>0 and g.at[j,"dr2"]>0 and g.at[j,"r2"]>g.at[cross,"r2"]:
                     ols=j;break
             if ols is not None:break
-        rec={"symbol":meta.symbol,"name":meta["name"],"value_start_date":str(g.at[start,"date"].date()),
+        rec={"symbol":str(g.at[start,"symbol"]),"name":meta["name"],"value_start_date":str(g.at[start,"date"].date()),
              "drawdown_at_value_pct":round(float(g.at[start,"drawdown60"])*100,2),
              "financial":fin_quality[start],
              "VALUE_OVERSOLD":horizon_eval(g,start),
