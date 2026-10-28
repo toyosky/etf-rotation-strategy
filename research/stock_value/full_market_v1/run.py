@@ -177,7 +177,7 @@ def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
         time.sleep(min(2**i,5))
     return [],list(symbols)
 
-def fetch_all_bars(uni,start,end,workers=6,batch=15):
+def fetch_all_bars(uni,start,end,workers=6,batch=15,recovery_limit=0):
     code_map=dict(zip(uni.symbol,uni.tencent_code))
     symbols=list(uni.symbol)
     # Tencent/Westock truncates long single requests (~200-250 daily rows).
@@ -203,17 +203,21 @@ def fetch_all_bars(uni,start,end,workers=6,batch=15):
             if n%80==0 or n==len(fut):
                 got=sum(bool(v) for v in segment_seen.values())
                 print("KLINE_PROGRESS",json.dumps({"jobs":n,"total":len(fut),"rows":len(rows),"symbols_any_data":got}),flush=True)
-    # Individual segmented recovery only for symbols with zero data; this avoids
-    # thousands of pointless retries while still rescuing batch endpoint misses.
+    # A previous full run spent >150 minutes retrying 400/1016 zero-data symbols
+    # and recovered zero, then hit the 180-minute Actions timeout. Recovery is
+    # opt-in and bounded; do not discard valid batch data to chase absent symbols.
     zero=[s for s,v in segment_seen.items() if not v]
     recovered=set()
-    for n,code in enumerate(zero,1):
+    retry_codes=zero[:max(0,recovery_limit)]
+    print("RECOVERY_PLAN",json.dumps({"zero_data":len(zero),"attempt":len(retry_codes),
+                                      "skipped":len(zero)-len(retry_codes)}),flush=True)
+    for n,code in enumerate(retry_codes,1):
         for seg_start,seg_end in segments:
-            rr,mm=fetch_kline_piece([code],code_map,seg_start,seg_end,2)
+            rr,mm=fetch_kline_piece([code],code_map,seg_start,seg_end,1)
             if rr:
                 rows.extend(rr); recovered.add(code)
-        if n%100==0 or n==len(zero):
-            print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(zero),"recovered":len(recovered)}),flush=True)
+        if n%20==0 or n==len(retry_codes):
+            print("RECOVERY_PROGRESS",json.dumps({"done":n,"total":len(retry_codes),"recovered":len(recovered)}),flush=True)
     bars=pd.DataFrame(rows,columns=["symbol","date","open","high","low","close","volume","amount"])
     if bars.empty:
         return bars,sorted(set(symbols)-recovered)
@@ -222,8 +226,18 @@ def fetch_all_bars(uni,start,end,workers=6,batch=15):
     missing=sorted(set(symbols)-set(bars.symbol.astype(str)))
     coverage=bars.groupby("symbol").date.agg(["min","max","count"]).reset_index()
     thin=coverage[coverage["count"]<80]
+    exchange_by_symbol=dict(zip(uni.symbol,uni.exchange))
+    by_exchange={}
+    for ex_name in ("SH","SZ","BJ"):
+        ex_symbols={sym for sym,ex in exchange_by_symbol.items() if ex==ex_name}
+        seen=ex_symbols & set(bars.symbol.astype(str))
+        by_exchange[ex_name]={"universe":len(ex_symbols),"with_bars":len(seen),"missing":len(ex_symbols-seen)}
+    last_dates=bars.groupby("symbol").date.max()
+    fresh=int((last_dates==pd.Timestamp(end)).sum())
     print("KLINE_COVERAGE",json.dumps({"symbols":int(bars.symbol.nunique()),"rows":len(bars),
-                                        "missing":len(missing),"under_80_bars":len(thin)}),flush=True)
+                                        "missing":len(missing),"under_80_bars":len(thin),
+                                        "as_of_date":end,"as_of_symbols":fresh,
+                                        "by_exchange":by_exchange}),flush=True)
     return bars,missing
 
 def price_features(g):
@@ -379,12 +393,28 @@ def summarize(events,key):
     return out
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument("--as-of",default="2026-10-28");p.add_argument("--workers",type=int,default=6);p.add_argument("--max-symbols",type=int,default=0)
+    p=argparse.ArgumentParser();p.add_argument("--as-of",default="2026-10-28");p.add_argument("--workers",type=int,default=6);p.add_argument("--max-symbols",type=int,default=0);p.add_argument("--recovery-limit",type=int,default=0)
     args=p.parse_args();date.fromisoformat(args.as_of);OUT.mkdir(parents=True,exist_ok=True);RESULTS.mkdir(parents=True,exist_ok=True)
     uni=universe()
     if args.max_symbols:uni=uni.head(args.max_symbols).copy()
     print("UNIVERSE",json.dumps({"stocks":len(uni),"eligible":int(uni.signal_eligible.sum()),"bse":int((uni.exchange=="BJ").sum())}),flush=True)
-    bars,missing=fetch_all_bars(uni,BOOTSTRAP_START,args.as_of,args.workers)
+    bars,missing=fetch_all_bars(uni,BOOTSTRAP_START,args.as_of,args.workers,recovery_limit=args.recovery_limit)
+    # Checkpoint coverage and raw data before costly finance calls, so a timeout
+    # still leaves an inspectable research artifact.
+    universe_codes=set(uni.symbol)
+    bar_codes=set(bars.symbol.astype(str)) if not bars.empty else set()
+    coverage_checkpoint={
+        "as_of":args.as_of,"universe":len(uni),"with_bars":len(bar_codes),
+        "missing":len(missing),"missing_symbols":missing,
+        "by_exchange":{ex:{"universe":int((uni.exchange==ex).sum()),
+                            "with_bars":len(bar_codes & set(uni.loc[uni.exchange==ex,"symbol"]))}
+                       for ex in ("SH","SZ","BJ")},
+        "bars":len(bars),
+        "last_date_as_of_symbols":int((bars.groupby("symbol").date.max()==pd.Timestamp(args.as_of)).sum()) if not bars.empty else 0,
+        "recovery_limit":args.recovery_limit}
+    (OUT/"price_coverage.json").write_text(json.dumps(coverage_checkpoint,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    uni.to_csv(OUT/"universe.csv",index=False)
+    if not bars.empty: bars.to_parquet(OUT/"daily_bars.parquet",index=False,compression="zstd")
     # Never report an empty or severely incomplete backtest as success.
     coverage=int(bars.symbol.nunique())
     required=math.ceil(len(uni)*(0.8 if not args.max_symbols else 0.5))
@@ -396,6 +426,7 @@ def main():
         gg=price_features(g)
         if ((gg.date>=BACKTEST_START)&(gg.drawdown60<=DD_THRESHOLD)).any():pc.append(s)
     print("PRICE_CANDIDATES",json.dumps({"count":len(pc),"missing_price":len(missing)}),flush=True)
+    (OUT/"price_candidates.json").write_text(json.dumps({"count":len(pc),"symbols":pc},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     fin,fails=fetch_financials(uni,pc,args.workers)
     if pc and fin.empty:
         raise RuntimeError(f"FINANCE_QUALITY_GATE: {len(pc)} price candidates, zero usable finance rows; failures={len(fails)}")
@@ -422,7 +453,7 @@ def main():
                                           "drawdown_at_value_pct":e["drawdown_at_value_pct"]})
     summary={k:summarize(events,k) for k in ("VALUE_OVERSOLD","EARLY_REVERSAL","OLS_REBUILD")}
     result={"version":"full-a-share-value-reversal-ols-v1","as_of":args.as_of,"backtest_start":"2025-01-01",
-            "universe_count":len(uni),"bse_count":int((uni.exchange=="BJ").sum()),"coverage_scope":"SH_SZ_BJ" if int((uni.exchange=="BJ").sum())>0 else "SH_SZ_ONLY_BSE_PENDING","price_symbols":int(bars.symbol.nunique()),"price_missing":missing,
+            "universe_count":len(uni),"bse_count":int((uni.exchange=="BJ").sum()),"coverage_scope":"SH_SZ_BJ_PARTIAL" if int((uni.exchange=="BJ").sum())>0 else "SH_SZ_ONLY_BSE_PENDING","price_symbols":int(bars.symbol.nunique()),"price_missing":missing,"price_coverage_by_exchange":coverage_checkpoint["by_exchange"],"price_latest_asof_symbols":coverage_checkpoint["last_date_as_of_symbols"],
             "price_oversold_symbols":len(pc),"finance_failures":fails,
             "price_basis":"qfq_adjusted","quality_gate":{"minimum_price_symbols":required,"price_coverage_pct":round(coverage/len(uni)*100,2)},
             "limitations":["Current listed universe and current ST name status cause survivorship bias; not a historical point-in-time universe","Financial source contains latest available 8 reports only; historical report coverage may be incomplete"],
