@@ -71,22 +71,29 @@ def http_json(url,params,attempts=4):
     raise RuntimeError(err)
 
 def universe():
-    params={"pn":1,"pz":6000,"po":1,"np":1,"fltt":2,"invt":2,"fid":"f3",
-            "fs":"m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048",
-            "fields":"f12,f13,f14,f9,f20,f23,f26"}
-    raw=http_json("https://push2.eastmoney.com/api/qt/clist/get",params)
-    diff=((raw or {}).get("data") or {}).get("diff") or []
-    rows=[]
-    for x in diff:
+    rows=[]; page=1; total=None
+    while True:
+        params={"pn":page,"pz":100,"po":1,"np":1,"fltt":2,"invt":2,"fid":"f3",
+                "fs":"m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048",
+                "fields":"f12,f13,f14,f9,f20,f23,f26"}
+        raw=http_json("https://push2.eastmoney.com/api/qt/clist/get",params)
+        data=(raw or {}).get("data") or {}
+        if total is None: total=int(data.get("total") or 0)
+        diff=data.get("diff") or []
+        if not diff: break
+        for x in diff:
         code=str(x.get("f12") or "").zfill(6); name=str(x.get("f14") or "")
         if len(code)!=6 or not code.isdigit() or not name: continue
         if code.startswith(("4","8","92")): tc="bj"+code
         elif code.startswith(("5","6","9")): tc="sh"+code
         else: tc="sz"+code
-        rows.append({"symbol":code,"name":name,"tencent_code":tc,
-                     "current_pe":x.get("f9"),"current_pb":x.get("f23"),
-                     "current_market_cap":x.get("f20"),"list_date":x.get("f26"),
-                     "signal_eligible":not any(t in name.upper() for t in ("ST","退"))})
+            rows.append({"symbol":code,"name":name,"tencent_code":tc,
+                         "current_pe":x.get("f9"),"current_pb":x.get("f23"),
+                         "current_market_cap":x.get("f20"),"list_date":x.get("f26"),
+                         "signal_eligible":not any(t in name.upper() for t in ("ST","退"))})
+        if len(rows)>=total: break
+        page+=1
+        if page>100: raise RuntimeError("A-share universe pagination exceeded 100 pages")
     df=pd.DataFrame(rows).drop_duplicates("symbol").sort_values("symbol")
     if len(df)<5000: raise RuntimeError(f"A-share universe unexpectedly small: {len(df)}")
     return df.reset_index(drop=True)
