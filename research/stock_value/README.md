@@ -1,5 +1,7 @@
 # A-share value / drawdown research (pilot)
 
+Pilot launched: 2026-10-28. Push-triggered run enabled on the research branch.
+
 **Status:** experimental, isolated from production ETF/LOF strategies. Do not use as a buy signal.
 
 ## Scope
