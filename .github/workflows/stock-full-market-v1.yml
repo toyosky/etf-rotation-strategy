@@ -19,8 +19,8 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: stock-full-market-v1
-  cancel-in-progress: false
+  group: stock-full-market-v1-qfq-validated
+  cancel-in-progress: true
 jobs:
   backtest:
     runs-on: ubuntu-24.04
