@@ -1,0 +1,56 @@
+{
+  "as_of": "2026-10-28",
+  "provenance": "Independent published financial news summaries of company announcements; manually reviewed 2026-10-28. Not official exchange PDF originals.",
+  "tolerance_100m_cny": 0.02,
+  "benchmarks": {
+    "300308": {
+      "period": "2026-06-30",
+      "deducted_profit_100m": 130.92,
+      "operating_cash_flow_100m": 18,
+      "url": "https://finance.eastmoney.com/a/202608213849522539.html",
+      "published": "2026-08-21"
+    },
+    "300394": {
+      "period": "2026-06-30",
+      "deducted_profit_100m": 11.86,
+      "operating_cash_flow_100m": 10.01,
+      "url": "https://finance.eastmoney.com/a/202608183844965992.html",
+      "published": "2026-08-18"
+    },
+    "300502": {
+      "period": "2026-06-30",
+      "deducted_profit_100m": 75.1,
+      "operating_cash_flow_100m": 16.16,
+      "url": "https://finance.sina.com.cn/stock/zqgd/2026-08-24/doc-inipmnpn2016893.shtml",
+      "published": "2026-08-24"
+    },
+    "603986": {
+      "period": "2026-06-30",
+      "deducted_profit_100m": 48.83,
+      "operating_cash_flow_100m": 60.48,
+      "url": "https://finance.eastmoney.com/a/202608183844965323.html",
+      "published": "2026-08-18"
+    },
+    "688059": {
+      "period": "2026-09-30",
+      "deducted_profit_100m": 3.09,
+      "operating_cash_flow_100m": -0.53,
+      "url": "https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/company/rptid/846447065800/index.phtml",
+      "published": "2026-10-27"
+    },
+    "002353": {
+      "period": "2026-09-30",
+      "deducted_profit_100m": 18.07,
+      "operating_cash_flow_100m": 24.13,
+      "url": "https://finance.sina.cn/2026-10-21/detail-inivysym6164242.d.html",
+      "published": "2026-10-21"
+    },
+    "001309": {
+      "period": "2026-09-30",
+      "deducted_profit_100m": 86.92,
+      "operating_cash_flow_100m": -136.91,
+      "url": "https://finance.sina.com.cn/stock/relnews/cn/2026-10-26/doc-iniwqhxk2393555.shtml",
+      "published": "2026-10-26"
+    }
+  }
+}
