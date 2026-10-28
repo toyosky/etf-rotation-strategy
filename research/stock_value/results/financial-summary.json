@@ -1,0 +1,144 @@
+{
+  "as_of": "2026-10-28",
+  "data_status": "TENCENT_FIELD_MAPPED_NOT_OFFICIAL_REPORT_VERIFIED",
+  "unit": "100 million CNY for monetary values",
+  "method": "latest report with InfoPublDate <= as_of, compare same report period last year; YTD data not quarterly",
+  "items": [
+    {
+      "symbol": "002353",
+      "latest_report": "2026-09-30",
+      "publication_date": "2026-10-22",
+      "revenue_100m_cny": 119.739,
+      "net_profit_parent_100m_cny": 18.867,
+      "deducted_net_profit_100m_cny": 18.067,
+      "operating_cash_flow_100m_cny": 24.126,
+      "operating_cash_flow_to_net_profit": 1.279,
+      "same_period_last_year": "2025-09-30",
+      "net_profit_yoy_pct": 4.36,
+      "deducted_profit_yoy_pct": 1.36,
+      "operating_cash_flow_yoy_pct": -17.59,
+      "flags": [],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "688059",
+      "latest_report": "2026-09-30",
+      "publication_date": "2026-10-27",
+      "revenue_100m_cny": 9.327,
+      "net_profit_parent_100m_cny": 3.155,
+      "deducted_net_profit_100m_cny": 3.093,
+      "operating_cash_flow_100m_cny": -0.526,
+      "operating_cash_flow_to_net_profit": -0.167,
+      "same_period_last_year": "2025-09-30",
+      "net_profit_yoy_pct": 129.57,
+      "deducted_profit_yoy_pct": 128.14,
+      "operating_cash_flow_yoy_pct": -128.46,
+      "flags": [
+        "NEGATIVE_OPERATING_CASH_FLOW",
+        "LOW_CASH_CONVERSION"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "300308",
+      "latest_report": "2026-06-30",
+      "publication_date": "2026-08-22",
+      "revenue_100m_cny": 417.779,
+      "net_profit_parent_100m_cny": 136.511,
+      "deducted_net_profit_100m_cny": 130.916,
+      "operating_cash_flow_100m_cny": 17.997,
+      "operating_cash_flow_to_net_profit": 0.132,
+      "same_period_last_year": "2025-06-30",
+      "net_profit_yoy_pct": 241.7,
+      "deducted_profit_yoy_pct": 229.32,
+      "operating_cash_flow_yoy_pct": -44.08,
+      "flags": [
+        "LOW_CASH_CONVERSION",
+        "2026_Q3_NOT_YET_PUBLISHED_AS_OF_DATE"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "300502",
+      "latest_report": "2026-06-30",
+      "publication_date": "2026-08-25",
+      "revenue_100m_cny": 209.097,
+      "net_profit_parent_100m_cny": 75.292,
+      "deducted_net_profit_100m_cny": 75.107,
+      "operating_cash_flow_100m_cny": 16.164,
+      "operating_cash_flow_to_net_profit": 0.215,
+      "same_period_last_year": "2025-06-30",
+      "net_profit_yoy_pct": 90.98,
+      "deducted_profit_yoy_pct": 90.92,
+      "operating_cash_flow_yoy_pct": 69.67,
+      "flags": [
+        "LOW_CASH_CONVERSION",
+        "2026_Q3_NOT_YET_PUBLISHED_AS_OF_DATE"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "300394",
+      "latest_report": "2026-06-30",
+      "publication_date": "2026-08-19",
+      "revenue_100m_cny": 28.279,
+      "net_profit_parent_100m_cny": 12.043,
+      "deducted_net_profit_100m_cny": 11.863,
+      "operating_cash_flow_100m_cny": 10.009,
+      "operating_cash_flow_to_net_profit": 0.831,
+      "same_period_last_year": "2025-06-30",
+      "net_profit_yoy_pct": 33.92,
+      "deducted_profit_yoy_pct": 36.76,
+      "operating_cash_flow_yoy_pct": 64.57,
+      "flags": [
+        "2026_Q3_NOT_YET_PUBLISHED_AS_OF_DATE"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "603986",
+      "latest_report": "2026-06-30",
+      "publication_date": "2026-08-19",
+      "revenue_100m_cny": 115.658,
+      "net_profit_parent_100m_cny": 68.568,
+      "deducted_net_profit_100m_cny": 48.83,
+      "operating_cash_flow_100m_cny": 60.483,
+      "operating_cash_flow_to_net_profit": 0.882,
+      "same_period_last_year": "2025-06-30",
+      "net_profit_yoy_pct": 1091.5,
+      "deducted_profit_yoy_pct": 796.9,
+      "operating_cash_flow_yoy_pct": 531.47,
+      "flags": [
+        "2026_Q3_NOT_YET_PUBLISHED_AS_OF_DATE"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    },
+    {
+      "symbol": "001309",
+      "latest_report": "2026-09-30",
+      "publication_date": "2026-10-26",
+      "revenue_100m_cny": 285.553,
+      "net_profit_parent_100m_cny": 87.457,
+      "deducted_net_profit_100m_cny": 86.915,
+      "operating_cash_flow_100m_cny": -136.906,
+      "operating_cash_flow_to_net_profit": -1.565,
+      "same_period_last_year": "2025-09-30",
+      "net_profit_yoy_pct": null,
+      "deducted_profit_yoy_pct": null,
+      "operating_cash_flow_yoy_pct": null,
+      "flags": [
+        "NEGATIVE_OPERATING_CASH_FLOW",
+        "LOW_CASH_CONVERSION"
+      ],
+      "source": "Tencent Westock finance sections[0,1,2]",
+      "verification": "TENCENT_FIELD_MAPPED_NOT_INDEPENDENTLY_CROSSCHECKED"
+    }
+  ],
+  "failures": []
+}

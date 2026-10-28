@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-28",
-  "source": "Tencent Westock/direct with Eastmoney independent check",
+  "source": "Tencent Westock/direct with Eastmoney/Sina independent check",
   "financial_data_status": "not_collected",
   "universe": "7-stock exploratory pilot; not whole A-share market",
   "drawdown_method": "Sep 1–as-of maximum qfq intraday high / as-of qfq close - 1",
@@ -19,8 +19,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -40,8 +40,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -61,8 +61,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -82,8 +82,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -103,8 +103,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -124,8 +124,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -145,8 +145,8 @@
       "bars": 57,
       "price_basis": "qfq (forward-adjusted)",
       "primary_source": "Tencent Westock",
-      "secondary_source": "Eastmoney",
-      "secondary_verification": "SECONDARY_UNAVAILABLE",
+      "secondary_source": "Sina",
+      "secondary_verification": "PASS",
       "warnings": [
         "Eastmoney: Remote end closed connection without response"
       ],
@@ -154,5 +154,5 @@
     }
   ],
   "failures": [],
-  "full_acceptance": false
+  "full_acceptance": true
 }
