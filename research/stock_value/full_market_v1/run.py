@@ -70,16 +70,26 @@ def http_json(url,params,attempts=4):
             time.sleep(min(2**i,8))
     raise RuntimeError(err)
 
+def eastmoney_list_page(params):
+    errs=[]
+    for host in ("https://push2delay.eastmoney.com","https://82.push2.eastmoney.com","https://push2.eastmoney.com"):
+        try:
+            return http_json(host+"/api/qt/clist/get",params,attempts=2)
+        except Exception as ex:
+            errs.append(host+":"+str(ex))
+    raise RuntimeError("Eastmoney list hosts failed: "+" | ".join(errs))
+
 def universe():
     rows=[]; page=1; total=None
     while True:
         params={"pn":page,"pz":100,"po":1,"np":1,"fltt":2,"invt":2,"fid":"f3",
                 "fs":"m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23,m:0+t:81+s:2048",
                 "fields":"f12,f13,f14,f9,f20,f23,f26"}
-        raw=http_json("https://push2.eastmoney.com/api/qt/clist/get",params)
+        raw=eastmoney_list_page(params)
         data=(raw or {}).get("data") or {}
         if total is None: total=int(data.get("total") or 0)
         diff=data.get("diff") or []
+        if isinstance(diff,dict): diff=list(diff.values())
         if not diff: break
         for x in diff:
             code=str(x.get("f12") or "").zfill(6); name=str(x.get("f14") or "")
