@@ -1,0 +1,38 @@
+name: Stock Full-Market V1 Smoke
+on:
+  push:
+    branches:
+      - research/stock-value-pilot-20261028
+    paths:
+      - '.github/workflows/stock-full-market-v1-smoke.yml'
+permissions:
+  contents: read
+concurrency:
+  group: stock-full-market-v1-smoke
+  cancel-in-progress: true
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas pyarrow
+      - name: Run 120-stock smoke
+        run: python research/stock_value/full_market_v1/run.py --as-of 2026-10-28 --max-symbols 120
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stock-full-market-v1-smoke-${{ github.run_id }}
+          path: |
+            research/stock_value/full_market_v1/output/**
+            research/stock_value/results/full-market-v1-latest.json
+          if-no-files-found: warn
+          retention-days: 7
