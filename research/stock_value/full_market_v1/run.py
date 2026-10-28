@@ -45,7 +45,8 @@ import pandas as pd
 
 PACKAGE="westock-data-skillhub@1.0.5"
 ROOT=Path("research/stock_value/full_market_v1")
-OUT=ROOT/"output"\nRESULTS=Path("research/stock_value/results")
+OUT=ROOT/"output"
+RESULTS=Path("research/stock_value/results")
 CACHE=ROOT/"cache"
 BACKTEST_START=pd.Timestamp("2025-01-01")
 BOOTSTRAP_START="2024-07-01"
