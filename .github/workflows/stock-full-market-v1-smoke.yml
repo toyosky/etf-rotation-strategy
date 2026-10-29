@@ -41,6 +41,29 @@ jobs:
               except Exception as e:
                 print('KLINE_PROBE_ERROR',fq,codes,str(e),p.stdout[-250:],p.stderr[-250:],flush=True)
           PY
+      - name: Diagnose qfq short-window and target-code behavior
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          tests=[
+            ("sz000001,sh600519","2026-10-20","2026-10-28"),
+            ("sz000001,sh600519","2026-08-01","2026-10-28"),
+            ("sh600519,sz000001","2026-10-20","2026-10-28"),
+            ("sh600519,sz000001","2026-08-01","2026-10-28"),
+            ("sz002353,sz300308","2026-10-20","2026-10-28"),
+            ("sz002353,sz300308","2026-08-01","2026-10-28"),
+            ("sz000001,sz002353","2026-08-01","2026-10-28"),
+            ("sh600519,sz002353","2026-03-01","2026-10-28"),
+          ]
+          for codes,start,end in tests:
+            cmd=['npx','-y','westock-data-skillhub@1.0.5','kline',codes,'--period','day','--start',start,'--end',end,'--fq','qfq','--raw']
+            try:
+              p=subprocess.run(cmd,text=True,capture_output=True,timeout=60)
+              data=json.loads(p.stdout)
+              rows=data.get('data',[]) if isinstance(data,dict) else data
+              print('KLINE_DIAG',json.dumps({'codes':codes,'start':start,'rc':p.returncode,'shape':type(data).__name__,'keys':list(data)[:8] if isinstance(data,dict) else [],'rows':len(rows) if isinstance(rows,list) else -1,'first':str(rows[0])[:350] if isinstance(rows,list) and rows else None,'stderr':p.stderr[-200:]},ensure_ascii=False),flush=True)
+            except Exception as e:print('KLINE_DIAG_ERROR',codes,start,str(e),flush=True)
+          PY
       - name: Run 7-stock segmented smoke
         run: python research/stock_value/full_market_v1/run.py --as-of 2026-10-28 --max-symbols 7 --workers 2
       - if: always()
