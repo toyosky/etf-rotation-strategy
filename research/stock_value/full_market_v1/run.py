@@ -162,6 +162,12 @@ def extract_kline(payload,requested):
 
 def fetch_kline_piece(symbols,code_map,start,end,attempts=3):
     tcodes=[code_map[c] for c in symbols]
+    # Westock's single-ticker kline CLI returned zero rows for all 7,225
+    # checkpoint-recovery requests in Run #16. Keep the requested ticker
+    # first and append a liquid companion, while retaining only requested
+    # rows in extract_kline. Do not weaken the data-quality gates.
+    if len(tcodes)==1:
+        tcodes.append("sh600519" if tcodes[0]!="sh600519" else "sz000001")
     err=""
     for i in range(attempts):
         try:
@@ -214,6 +220,15 @@ def fetch_all_bars(uni,start,end,workers=8,batch=2,recovery_limit=0):
     print("KLINE_RESUME",json.dumps({"cache_rows":len(cached),"cache_symbols":cached.symbol.nunique(),
                                       "jobs":len(jobs),"batch":batch,
                                       "latest_cached":len(latest)}),flush=True)
+    # Fail in minutes rather than spending hours on a broken quote adapter.
+    # Exercise the exact single-target/companion path used by recovery jobs.
+    probe_code="600519" if "600519" in code_map else symbols[0]
+    probe_start=max("2026-10-20",segments[-1][0])
+    probe_rows,_=fetch_kline_piece([probe_code],code_map,probe_start,end,2)
+    print("KLINE_SINGLE_TARGET_PROBE",json.dumps({"symbol":probe_code,"start":probe_start,
+                                                   "end":end,"rows":len(probe_rows)}),flush=True)
+    if not probe_rows:
+        raise RuntimeError("KLINE_SINGLE_TARGET_PROBE_FAILED: companion quote request returned no rows; abort before costly full-market recovery")
     rows=[]
     with ThreadPoolExecutor(max_workers=workers) as ex:
         fut={ex.submit(fetch_kline_piece,ch,code_map,seg_start,seg_end,2):(ch,seg_start,seg_end)
