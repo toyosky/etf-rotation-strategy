@@ -1,11 +1,6 @@
 name: Stock Full-Market V1 Smoke
 on:
-  push:
-    branches:
-      - research/stock-value-pilot-20261028
-    paths:
-      - '.github/workflows/stock-full-market-v1-smoke.yml'
-      - 'research/stock_value/full_market_v1/run.py'
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
