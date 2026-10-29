@@ -142,6 +142,10 @@ def run(cmd,timeout=240):
     except Exception as ex: raise RuntimeError(f"invalid JSON: {ex}; tail={p.stdout[-300:]}")
 
 def extract_kline(payload,requested):
+    # Callers may supply a set; normalize before indexing the single target.
+    # Otherwise a successful companion-ticker response raises TypeError and
+    # every recovery request is incorrectly recorded as zero returned rows.
+    requested=tuple(sorted(set(requested)))
     data=payload.get("data",payload) if isinstance(payload,dict) else payload
     if not isinstance(data,list): return []
     if len(requested)==1:
