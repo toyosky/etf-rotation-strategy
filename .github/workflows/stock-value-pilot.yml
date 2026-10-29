@@ -1,17 +1,5 @@
 name: A-share Value Drawdown Pilot
 on:
-  push:
-    branches:
-      - research/stock-value-pilot-20261028
-    paths:
-      - 'research/stock_value/scan_pilot.py'
-      - 'research/stock_value/fetch_financials.py'
-      - 'research/stock_value/normalize_financials.py'
-      - 'research/stock_value/test_rebuild_signals.py'
-      - 'research/stock_value/validate_financials.py'
-      - 'research/stock_value/financial-benchmarks-20261028.json'
-      - 'research/stock_value/README.md'
-      - '.github/workflows/stock-value-pilot.yml'
   workflow_dispatch:
     inputs:
       as_of:
