@@ -96,10 +96,30 @@ def collect_sina_node(node,max_pages=100):
         time.sleep(0.12)
     return rows
 
+def load_cached_universe(reason):
+    # Research-only as-of checkpoint from Run #14; never accept a partial
+    # current Sina list as the full A-share universe.
+    path=OUT/"universe.csv"
+    if not path.exists():
+        raise RuntimeError(f"UNIVERSE_SOURCE_FAILED: {reason}; no saved universe")
+    df=pd.read_csv(path,dtype={"symbol":str,"tencent_code":str})
+    required={"symbol","name","tencent_code","signal_eligible","exchange"}
+    if len(df)<5000 or not required.issubset(df.columns):
+        raise RuntimeError(f"UNIVERSE_CACHE_INVALID: {reason}; cached_rows={len(df)}")
+    df["symbol"]=df.symbol.astype(str).str.zfill(6)
+    if df.symbol.nunique()!=len(df):
+        raise RuntimeError(f"UNIVERSE_CACHE_DUPLICATES: {reason}")
+    print("UNIVERSE_FALLBACK",json.dumps({"reason":str(reason),"cached_stocks":len(df),
+                                         "source":"Run14 checkpoint universe.csv"}),flush=True)
+    return df.reset_index(drop=True)
+
 def universe():
-    raw=collect_sina_node("hs_a",80)
+    try:
+        raw=collect_sina_node("hs_a",80)
+    except Exception as ex:
+        return load_cached_universe(f"Sina list exception: {ex}")
     if len(raw)<5000:
-        raise RuntimeError(f"Sina hs_a universe unexpectedly small: {len(raw)}")
+        return load_cached_universe(f"Sina hs_a universe unexpectedly small: {len(raw)}")
     # BSE node names are not documented consistently; probe a short allowlist.
     bse=[]
     for node in ("bj_a","bjs","bj"):
