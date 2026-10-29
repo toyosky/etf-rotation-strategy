@@ -1,11 +1,5 @@
 name: Full A-share Value Reversal OLS V1
 on:
-  push:
-    branches:
-      - research/stock-value-pilot-20261028
-    paths:
-      - 'research/stock_value/full_market_v1/run.py'
-      - '.github/workflows/stock-full-market-v1.yml'
   workflow_dispatch:
     inputs:
       as_of:
