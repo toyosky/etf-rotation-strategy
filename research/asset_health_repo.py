@@ -164,7 +164,7 @@ def ols_score(closes: list[float]) -> tuple[float, float]:
 
 def load_bars(db_url: str, pool: list[str], snapshot_date: date):
     sql = """
-      select symbol,date,close,source
+      select symbol,date,close
       from public.daily_bars
       where symbol = any(%s) and date <= %s
       order by symbol,date
@@ -173,9 +173,9 @@ def load_bars(db_url: str, pool: list[str], snapshot_date: date):
     with psycopg2.connect(db_url, connect_timeout=30, application_name="asset_health_monitor") as conn:
         with conn.cursor() as cur:
             cur.execute(sql, (pool, snapshot_date.isoformat()))
-            for symbol, d, close, source in cur.fetchall():
+            for symbol, d, close in cur.fetchall():
                 by_symbol[str(symbol)].append(
-                    {"date": d, "close": float(close), "source": str(source)}
+                    {"date": d, "close": float(close)}
                 )
     return by_symbol
 
@@ -207,9 +207,6 @@ def replay_events(by_symbol: dict[str, list[dict]], pool: list[str]) -> dict[str
         rows = by_symbol.get(symbol, [])
         idx = index_by_symbol_date.get(symbol, {}).get(d)
         if idx is None or idx < 19 or idx + 10 >= len(rows):
-            continue
-        source_window = {r["source"] for r in rows[idx - 19 : idx + 11]}
-        if len(source_window) > 1:
             continue
         close0 = float(rows[idx]["close"])
         high20 = max(float(r["close"]) for r in rows[idx - 19 : idx + 1])
