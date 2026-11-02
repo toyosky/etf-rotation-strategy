@@ -5,13 +5,13 @@
   "snapshot_symbols": 2003,
   "snapshot_rows": 1425355,
   "listed_requested": 2024,
-  "requested_for_update": 53,
+  "requested_for_update": 42,
   "symbols_with_asof_close": 1982,
   "asof_coverage": 0.9792490118577075,
-  "refresh_rows": 737,
+  "refresh_rows": 561,
   "refresh_batches": {
-    "jobs": 5,
-    "existing": 30,
+    "jobs": 4,
+    "existing": 19,
     "bootstrap": 23,
     "recovery": [
       {
@@ -31,13 +31,13 @@
   "query_batch_errors": [
     {
       "symbols": [
-        "512390"
+        "165512"
       ],
       "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "165512"
+        "512390"
       ],
       "error": "Empty Tencent kline response"
     },
@@ -75,7 +75,7 @@
       "symbols": [
         "165523"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -87,7 +87,7 @@
       "symbols": [
         "165526"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -99,13 +99,13 @@
       "symbols": [
         "167503"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "501023"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -135,7 +135,7 @@
       "symbols": [
         "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -147,13 +147,13 @@
       "symbols": [
         "161721"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "161723"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -171,13 +171,13 @@
       "symbols": [
         "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -482,7 +482,7 @@
   ],
   "query_error_count": 75,
   "overlap_revision": {
-    "count": 726,
+    "count": 561,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
@@ -559,9 +559,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.3627107889038945,
-      "r2": 0.18872397076940794,
-      "delta_r2_1": 0.14837704751928193,
+      "annual": 0.36271078890390496,
+      "r2": 0.18872397076940806,
+      "delta_r2_1": 0.14837704751928205,
       "avg_amount60": 485270527.6333333,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -578,7 +578,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.0019295708169400072,
       "r2": 0.17926145273029337,
-      "delta_r2_1": 0.08286737798534927,
+      "delta_r2_1": 0.08286737798508881,
       "avg_amount60": 341300496.31666666,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -595,7 +595,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.17922613697985001,
       "r2": 0.17527557250799597,
-      "delta_r2_1": 0.09890144653613409,
+      "delta_r2_1": 0.09890144653613375,
       "avg_amount60": 3787769.1333333333,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -611,8 +611,8 @@
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
       "annual": 0.17679405511067814,
-      "r2": 0.14371631573100563,
-      "delta_r2_1": 0.13444274920699184,
+      "r2": 0.14371631573100574,
+      "delta_r2_1": 0.13444274920699173,
       "avg_amount60": 2487935.75,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -628,8 +628,8 @@
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
       "annual": 0.25994205837645135,
-      "r2": 0.13731588490552393,
-      "delta_r2_1": 0.1279601687600075,
+      "r2": 0.13731588490552404,
+      "delta_r2_1": 0.1279601687600076,
       "avg_amount60": 3289326.45,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -646,7 +646,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.10026639936821047,
       "r2": 0.11892821420712762,
-      "delta_r2_1": 0.09328498856445333,
+      "delta_r2_1": 0.09328498856445822,
       "avg_amount60": 107375.76666666666,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -661,9 +661,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.24329238880623594,
-      "r2": 0.10878182378056234,
-      "delta_r2_1": 0.0942516058816526,
+      "annual": 0.2432923888062346,
+      "r2": 0.10878182378056211,
+      "delta_r2_1": 0.09425160588165238,
       "avg_amount60": 2726675.6666666665,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -678,9 +678,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.05598904602274479,
-      "r2": 0.0706088400070769,
-      "delta_r2_1": 0.06985650617567962,
+      "annual": 0.055989046022777655,
+      "r2": 0.07060884000709289,
+      "delta_r2_1": 0.06985650617568073,
       "avg_amount60": 15892.383333333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -695,9 +695,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.09929784092964589,
-      "r2": 0.05416427793247569,
-      "delta_r2_1": 0.04551350759032613,
+      "annual": 0.09929784092965432,
+      "r2": 0.054164277932474914,
+      "delta_r2_1": 0.045513507590324576,
       "avg_amount60": 255317.98333333334,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -713,8 +713,8 @@
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
       "annual": 0.08763353673607344,
-      "r2": 0.041320786426985,
-      "delta_r2_1": 0.02855347501483274,
+      "r2": 0.04132078642698511,
+      "delta_r2_1": 0.028553475014831298,
       "avg_amount60": 554624221.85,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -729,9 +729,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.09272955448954012,
-      "r2": 0.040840560829597194,
-      "delta_r2_1": 0.04082639914309749,
+      "annual": 0.092729554489557,
+      "r2": 0.040840560829598194,
+      "delta_r2_1": 0.040826399143099934,
       "avg_amount60": 524594.1333333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -748,7 +748,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.08627173989751347,
       "r2": 0.0389890777857137,
-      "delta_r2_1": 0.03316588354406047,
+      "delta_r2_1": 0.03316588354406336,
       "avg_amount60": 412861577.81666666,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -763,9 +763,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.11841731314141124,
-      "r2": 0.03337434926325922,
-      "delta_r2_1": 0.033284571431967835,
+      "annual": 0.11841731314140702,
+      "r2": 0.03337434926325955,
+      "delta_r2_1": 0.033284571431967946,
       "avg_amount60": 14511947.45,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -780,9 +780,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.09444148852412826,
-      "r2": 0.03189426450272925,
-      "delta_r2_1": 0.02845384743120083,
+      "annual": 0.09444148852412848,
+      "r2": 0.03189426450272903,
+      "delta_r2_1": 0.028453847431200607,
       "avg_amount60": 4072993.8666666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -797,9 +797,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.07435695691724509,
-      "r2": 0.030938418005488133,
-      "delta_r2_1": 0.025033829743321356,
+      "annual": 0.07435695691729505,
+      "r2": 0.030938418005487467,
+      "delta_r2_1": 0.025033829743318692,
       "avg_amount60": 6199922.6,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -814,9 +814,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.07376858772944184,
-      "r2": 0.030275274441795785,
-      "delta_r2_1": 0.027582240598305496,
+      "annual": 0.07376858772945849,
+      "r2": 0.03027527444179212,
+      "delta_r2_1": 0.02758224059830172,
       "avg_amount60": 358589010.05,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -831,9 +831,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.08297624612247878,
-      "r2": 0.029195876687067024,
-      "delta_r2_1": 0.026009694259855776,
+      "annual": 0.082976246122483,
+      "r2": 0.029195876687067468,
+      "delta_r2_1": 0.026009694259855887,
       "avg_amount60": 1107838.1166666667,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -848,9 +848,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.08508911425498855,
-      "r2": 0.028819209703263016,
-      "delta_r2_1": 0.02610711362507312,
+      "annual": 0.08508911425499277,
+      "r2": 0.02881920970326357,
+      "delta_r2_1": 0.026107113625073786,
       "avg_amount60": 30982606.866666667,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -865,9 +865,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.11300218294491082,
-      "r2": 0.028159253514658533,
-      "delta_r2_1": 0.028102930350848543,
+      "annual": 0.11300218294491948,
+      "r2": 0.028159253514657867,
+      "delta_r2_1": 0.028102930350847877,
       "avg_amount60": 51587154.85,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -882,9 +882,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.08114880953444592,
-      "r2": 0.026509208729466716,
-      "delta_r2_1": 0.023095560329384646,
+      "annual": 0.08114880953445014,
+      "r2": 0.02650920872946594,
+      "delta_r2_1": 0.023095560329383646,
       "avg_amount60": 1452460.05,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -899,9 +899,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.09991573161893741,
+      "annual": 0.09991573161893541,
       "r2": 0.02443751881359968,
-      "delta_r2_1": 0.02440028840196351,
+      "delta_r2_1": 0.024400288401963066,
       "avg_amount60": 4398871.883333334,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -916,9 +916,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.07153380131958786,
-      "r2": 0.02111373818661111,
-      "delta_r2_1": 0.01827568760372944,
+      "annual": 0.07153380131959008,
+      "r2": 0.021113738186610664,
+      "delta_r2_1": 0.018275687603728885,
       "avg_amount60": 448711.15,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -933,9 +933,9 @@
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
-      "annual": 0.0747063238445087,
-      "r2": 0.020889994702926185,
-      "delta_r2_1": 0.018377428746684354,
+      "annual": 0.07470632384451292,
+      "r2": 0.020889994702926296,
+      "delta_r2_1": 0.018377428746684465,
       "avg_amount60": 10417940.183333334,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -951,8 +951,8 @@
       "cross_date": "2026-10-30",
       "cross_age_sessions": 1.0,
       "annual": 0.04329851800156215,
-      "r2": 0.009192679954529104,
-      "delta_r2_1": 0.007948445297146667,
+      "r2": 0.009192679954529215,
+      "delta_r2_1": 0.007948445297146556,
       "avg_amount60": 3099305.55,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -969,7 +969,7 @@
       "cross_age_sessions": 1.0,
       "annual": 5.2098624017338224e-05,
       "r2": 0.0023640683170824683,
-      "delta_r2_1": 0.0010579495027125407,
+      "delta_r2_1": 0.0010579494970772707,
       "avg_amount60": 5025846.133333334,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -984,9 +984,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
       "cross_age_sessions": 2.0,
-      "annual": 0.23398091004728427,
-      "r2": 0.240612566647169,
-      "delta_r2_1": 0.14668174224271358,
+      "annual": 0.23398091004729382,
+      "r2": 0.24061256664716935,
+      "delta_r2_1": 0.14668174224271557,
       "avg_amount60": 250834.03333333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1001,9 +1001,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
       "cross_age_sessions": 2.0,
-      "annual": 0.4178807339631956,
-      "r2": 0.11938541478511067,
-      "delta_r2_1": 0.051306746436503126,
+      "annual": 0.41788073396320646,
+      "r2": 0.11938541478511,
+      "delta_r2_1": 0.051306746436503015,
       "avg_amount60": 256268421.71666667,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1018,9 +1018,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
       "cross_age_sessions": 2.0,
-      "annual": 0.9268902567034005,
-      "r2": 0.10014589064132073,
-      "delta_r2_1": 0.0643189807917518,
+      "annual": 0.9268902567034605,
+      "r2": 0.10014589064131951,
+      "delta_r2_1": 0.0643189807917508,
       "avg_amount60": 158122.66666666666,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1035,9 +1035,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
       "cross_age_sessions": 2.0,
-      "annual": 0.12371002436159473,
-      "r2": 0.09136516822980512,
-      "delta_r2_1": 0.08288409202710634,
+      "annual": 0.12371002436160339,
+      "r2": 0.0913651682298059,
+      "delta_r2_1": 0.08288409202710756,
       "avg_amount60": 48621.933333333334,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1052,9 +1052,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
       "cross_age_sessions": 2.0,
-      "annual": 0.09453912766583938,
-      "r2": 0.09082456182285359,
-      "delta_r2_1": 0.07376990486362811,
+      "annual": 0.09453912766585648,
+      "r2": 0.0908245618228477,
+      "delta_r2_1": 0.073769904863622,
       "avg_amount60": 4039906.716666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1069,9 +1069,9 @@
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-27",
       "cross_age_sessions": 3.0,
-      "annual": 0.7176458584826833,
-      "r2": 0.3218918399009958,
-      "delta_r2_1": 0.10875772272240603,
+      "annual": 0.7176458584826566,
+      "r2": 0.32189183990099524,
+      "delta_r2_1": 0.10875772272240425,
       "avg_amount60": 14602.033333333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1086,9 +1086,9 @@
       "first_qualified_date": "2026-10-29",
       "cross_date": "2026-10-28",
       "cross_age_sessions": 3.0,
-      "annual": 1.0032007069337525,
-      "r2": 0.31484655075990087,
-      "delta_r2_1": 0.0800039933304032,
+      "annual": 1.003200706933784,
+      "r2": 0.31484655075989987,
+      "delta_r2_1": 0.08000399333040242,
       "avg_amount60": 312265458.05,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1103,9 +1103,9 @@
       "first_qualified_date": "2026-10-29",
       "cross_date": "2026-10-28",
       "cross_age_sessions": 3.0,
-      "annual": 0.3253061581936165,
-      "r2": 0.20460714454502704,
-      "delta_r2_1": 0.10572248781296956,
+      "annual": 0.32530615819362163,
+      "r2": 0.20460714454502693,
+      "delta_r2_1": 0.10572248781296922,
       "avg_amount60": 103147202.05,
       "strict_eligible": true,
       "broad_eligible": true,
