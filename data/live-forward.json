@@ -4,7 +4,7 @@
   "pricing": "Tencent HFQ daily bars",
   "cost_per_side": 0.0006,
   "execution_model": "signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close",
-  "generated_from_market_data_through": "2026-10-30",
+  "generated_from_market_data_through": "2026-11-02",
   "backtest_reference": {
     "period": "2015-01-26 → 2026-09-15",
     "baseline": {
@@ -27,7 +27,7 @@
     }
   },
   "latest": {
-    "date": "2026-10-30",
+    "date": "2026-11-02",
     "target": "159981",
     "target_name": "能源化工",
     "model_target": "501018",
@@ -42,87 +42,87 @@
     "decision": "PREMIUM_UNVERIFIED_KEEP_INCUMBENT",
     "quadrant": "NARROW_LEADERSHIP",
     "breadth_pct": 35.714285714285715,
-    "gap_percentile": 62.301587301587304,
-    "target_score": 1.04284779982836,
+    "gap_percentile": 51.98412698412698,
+    "target_score": 1.1996392456515264,
     "cash_score": 0.0,
     "carrier_score": 0.0,
-    "completed_through": "2026-10-30",
-    "performance_signal_through": "2026-10-28"
+    "completed_through": "2026-11-02",
+    "performance_signal_through": "2026-10-29"
   },
   "summary": {
     "baseline": {
-      "total_return": 0.080427446569179,
+      "total_return": 0.09392575928009017,
       "mdd": -0.05735140771637115,
-      "sessions": 27,
+      "sessions": 28,
       "switches": 0,
       "turnover_sides": 0
     },
     "original": {
-      "total_return": -0.05708411245422951,
+      "total_return": -0.07659271702414205,
       "mdd": -0.11640174806248293,
-      "sessions": 27,
+      "sessions": 28,
       "switches": 8,
       "turnover_sides": 16
     },
     "freeze_cash": {
-      "total_return": 0.04853351225250391,
+      "total_return": 0.0268397154472797,
       "mdd": -0.10968736861968653,
-      "sessions": 27,
+      "sessions": 28,
       "switches": 4,
       "turnover_sides": 8
     }
   },
   "mark_to_market": {
     "baseline": {
-      "valuation_date": "2026-10-30",
+      "valuation_date": "2026-11-02",
       "available": true,
-      "signal_date": "2026-10-29",
-      "execution_date": "2026-10-30",
+      "signal_date": "2026-10-30",
+      "execution_date": "2026-11-02",
       "target": "159981",
       "target_name": "能源化工",
       "decision": "PREMIUM_UNVERIFIED_KEEP_INCUMBENT",
       "sides": 0,
-      "open": 1.921,
-      "close": 1.938,
-      "gross_return": 0.008849557522123908,
-      "provisional_return": 0.008849557522123908,
-      "official_nav": 1.080427446569179,
-      "mtm_nav": 1.0899887514060744,
-      "mtm_total_return": 0.08998875140607443
+      "open": 1.945,
+      "close": 1.941,
+      "gross_return": -0.0020565552699228773,
+      "provisional_return": -0.0020565552699228773,
+      "official_nav": 1.0939257592800902,
+      "mtm_nav": 1.0916760404949384,
+      "mtm_total_return": 0.09167604049493838
     },
     "original": {
-      "valuation_date": "2026-10-30",
+      "valuation_date": "2026-11-02",
       "available": true,
-      "signal_date": "2026-10-29",
-      "execution_date": "2026-10-30",
+      "signal_date": "2026-10-30",
+      "execution_date": "2026-11-02",
       "target": "501018",
       "target_name": "原油",
       "decision": "BASE",
       "sides": 0,
-      "open": 2.32,
-      "close": 2.303,
-      "gross_return": -0.0073275862068965525,
-      "provisional_return": -0.0073275862068965525,
-      "official_nav": 0.9429158875457705,
-      "mtm_nav": 0.9360065900939265,
-      "mtm_total_return": -0.0639934099060735
+      "open": 2.272,
+      "close": 2.244,
+      "gross_return": -0.012323943661971648,
+      "provisional_return": -0.012323943661971648,
+      "official_nav": 0.923407282975858,
+      "mtm_nav": 0.9120272636434091,
+      "mtm_total_return": -0.08797273635659086
     },
     "freeze_cash": {
-      "valuation_date": "2026-10-30",
+      "valuation_date": "2026-11-02",
       "available": true,
-      "signal_date": "2026-10-29",
-      "execution_date": "2026-10-30",
+      "signal_date": "2026-10-30",
+      "execution_date": "2026-11-02",
       "target": "501018",
       "target_name": "原油",
       "decision": "BASE",
       "sides": 0,
-      "open": 2.32,
-      "close": 2.303,
-      "gross_return": -0.0073275862068965525,
-      "provisional_return": -0.0073275862068965525,
-      "official_nav": 1.048533512252504,
-      "mtm_nav": 1.0408502925506538,
-      "mtm_total_return": 0.040850292550653755
+      "open": 2.272,
+      "close": 2.244,
+      "gross_return": -0.012323943661971648,
+      "provisional_return": -0.012323943661971648,
+      "official_nav": 1.0268397154472797,
+      "mtm_nav": 1.0141850006442323,
+      "mtm_total_return": 0.014185000644232337
     }
   },
   "series": {
@@ -423,6 +423,17 @@
         "nav": 1.080427446569179,
         "drawdown": -0.004147226542249971,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-10-29",
+        "execution_date": "2026-10-30",
+        "valuation_date": "2026-11-02",
+        "target": "159981",
+        "target_name": "能源化工",
+        "daily_return": 0.012493492972410314,
+        "nav": 1.0939257592800902,
+        "drawdown": 0.0,
+        "status": "settled"
       }
     ],
     "original": [
@@ -722,6 +733,17 @@
         "nav": 0.9429158875457705,
         "drawdown": -0.0879786160527194,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-10-29",
+        "execution_date": "2026-10-30",
+        "valuation_date": "2026-11-02",
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.020689655172413834,
+        "nav": 0.923407282975858,
+        "drawdown": -0.10684802399645632,
+        "status": "settled"
       }
     ],
     "freeze_cash": [
@@ -1020,6 +1042,17 @@
         "daily_return": -0.008547008547008517,
         "nav": 1.048533512252504,
         "drawdown": -0.02535782613112858,
+        "status": "settled"
+      },
+      {
+        "signal_date": "2026-10-29",
+        "execution_date": "2026-10-30",
+        "valuation_date": "2026-11-02",
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.020689655172413834,
+        "nav": 1.0268397154472797,
+        "drawdown": -0.045522836624967256,
         "status": "settled"
       }
     ]
@@ -1395,12 +1428,19 @@
         "daily_return": -0.009184224743381875,
         "drawdown": -0.10009813542688906,
         "status": "close"
+      },
+      {
+        "date": "2026-11-02",
+        "nav": 0.9141439205955335,
+        "daily_return": 0.004362050163576825,
+        "drawdown": -0.09617271835132479,
+        "status": "close"
       }
     ],
     "mark_to_market": {
-      "valuation_date": "2026-10-30",
-      "nav": 0.9101736972704715,
-      "total_return": -0.08982630272952852
+      "valuation_date": "2026-11-02",
+      "nav": 0.9141439205955335,
+      "total_return": -0.08585607940446649
     }
   },
   "notes": [
