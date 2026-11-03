@@ -1,555 +1,884 @@
 {
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-03",
   "source": "Tencent HFQ latest daily bar merged with frozen 2026-09-17 Supabase archive",
   "update_method": "research only, no live PostgreSQL writes",
   "snapshot_symbols": 2003,
-  "snapshot_rows": 1425355,
+  "snapshot_rows": 1427325,
   "listed_requested": 2024,
-  "requested_for_update": 42,
-  "symbols_with_asof_close": 1982,
-  "asof_coverage": 0.9792490118577075,
-  "refresh_rows": 561,
+  "requested_for_update": 2024,
+  "symbols_with_asof_close": 1970,
+  "asof_coverage": 0.9733201581027668,
+  "refresh_rows": 32313,
   "refresh_batches": {
-    "jobs": 4,
-    "existing": 19,
+    "jobs": 169,
+    "existing": 2001,
     "bootstrap": 23,
     "recovery": [
       {
         "round": 1,
-        "remaining": 42,
-        "rows": 187,
-        "batches": 8
+        "remaining": 54,
+        "rows": 1687,
+        "batches": 24
       },
       {
         "round": 2,
-        "remaining": 42,
-        "rows": 187,
-        "batches": 8
+        "remaining": 54,
+        "rows": 344,
+        "batches": 10
       }
     ]
   },
   "query_batch_errors": [
     {
       "symbols": [
-        "165512"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "512390"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164818"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164905"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "164908"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165310"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165312"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165523"
+        "159553"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165524"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165526"
+        "159639"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "166802"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "167503"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "501023"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "160137"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "160420"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "160516"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "160634"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "160636"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "161628"
+        "159640"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161721"
+        "159641"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161723"
+        "159675"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162107"
+        "159660"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "163209"
+        "159689"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164401"
+        "159821"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164402"
+        "159822"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165512"
+        "159760"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "512390"
+        "159795"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160137"
+        "159741"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160420"
+        "159779"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160516"
+        "159949"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160634"
+        "159952"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160636"
+        "159982"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161628"
+        "159985"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161721"
+        "159991"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161723"
+        "161121"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162107"
+        "160211"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "163209"
+        "159954"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164401"
+        "159961"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164402"
+        "159964"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164818"
+        "159965"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164905"
+        "161129"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164908"
+        "161219"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165310"
+        "167508"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165312"
+        "168101"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165523"
+        "166016"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165524"
+        "166023"
       ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "165526"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "166802"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "167503"
-      ],
-      "error": "Empty Tencent kline response"
-    },
-    {
-      "symbols": [
-        "501023"
-      ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "165512"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "165516"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "165517"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "501058"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "169106"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510760"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510770"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510910"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510950"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510160"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510230"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512620"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512630"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512760"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512940"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512950"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512130"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512140"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510410"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510580"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "510590"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "515180"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "515190"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "515560"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "512290"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "512390"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160137"
+        "512400"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160420"
+        "512410"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160516"
+        "515200"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160634"
+        "515580"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "160636"
+        "516560"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161628"
+        "517400"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161721"
+        "517520"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "161723"
+        "516840"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162107"
+        "516630"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "163209"
+        "516780"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164401"
+        "516980"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164402"
+        "517000"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164818"
+        "560030"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164905"
+        "560300"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "164908"
+        "560160"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165310"
+        "560570"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165312"
+        "562330"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165523"
+        "562340"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165524"
+        "561810"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "165526"
+        "561830"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "166802"
+        "561500"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "167503"
+        "561510"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "501023"
+        "561370"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+    },
+    {
+      "symbols": [
+        "563880"
+      ],
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     }
   ],
-  "query_error_count": 75,
+  "query_error_count": 162,
   "overlap_revision": {
-    "count": 561,
+    "count": 30343,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
   },
   "stage_counts": {
-    "NONE": 1920,
-    "REBUILDING_QUALIFIED": 34,
-    "CROSS_DETECTED": 26,
+    "NONE": 1846,
+    "CROSS_DETECTED": 65,
+    "REBUILDING_QUALIFIED": 44,
+    "DATA_STALE": 31,
     "DATA_MISSING": 23,
-    "DATA_STALE": 19,
-    "EXCLUDED_CASH_MANAGEMENT": 1,
-    "REBUILD_WATCH": 1
+    "REBUILD_WATCH": 14,
+    "EXCLUDED_CASH_MANAGEMENT": 1
   },
-  "raw_qualified": 34,
-  "strict_qualified": 11,
+  "raw_qualified": 44,
+  "strict_qualified": 13,
   "raw_qualified_symbols": [
+    "159736",
+    "562060",
+    "159931",
+    "159188",
+    "159940",
+    "159662",
+    "510160",
+    "501012",
+    "561510",
+    "562390",
+    "159647",
+    "501011",
+    "515950",
+    "560080",
+    "159855",
+    "501310",
+    "516620",
     "510630",
     "512690",
-    "511660",
     "160140",
     "160632",
     "517550",
     "510010",
+    "511660",
     "561320",
     "160910",
     "560030",
-    "510880",
     "501029",
     "515180",
-    "159189",
-    "560020",
     "515890",
+    "560020",
     "515080",
-    "561060",
-    "159581",
-    "159697",
+    "510880",
     "159515",
-    "159018",
+    "159581",
+    "561060",
     "563890",
     "159589",
     "159838",
     "511860",
     "159965",
-    "159502",
-    "160212",
     "165521",
     "512640",
-    "501209",
-    "513290",
-    "159207"
+    "160212"
   ],
   "qualified_candidates": [
+    {
+      "symbol": "159736",
+      "name": "食品饮料ETF天弘",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.5581878244327625,
+      "r2": 0.17202607035863038,
+      "delta_r2_1": 0.13731868876749487,
+      "avg_amount60": 20267689.783333335,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 1234,
+      "shock10_8": false
+    },
+    {
+      "symbol": "562060",
+      "name": "标普A股红利ETF华宝",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.2740699368227071,
+      "r2": 0.16502302953511827,
+      "delta_r2_1": 0.12520596655535854,
+      "avg_amount60": 64185582.9,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 687,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159931",
+      "name": "金融地产ETF汇添富",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.1539694437232253,
+      "r2": 0.16211167738327859,
+      "delta_r2_1": 0.12441626587120502,
+      "avg_amount60": 291952.25,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159188",
+      "name": "红利100ETF景顺",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.26140649917606185,
+      "r2": 0.1469159892821419,
+      "delta_r2_1": 0.1184414221052017,
+      "avg_amount60": 480724.63333333336,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 138,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159940",
+      "name": "金融地产ETF广发",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.11499299737584634,
+      "r2": 0.10643727260543556,
+      "delta_r2_1": 0.09524798788201905,
+      "avg_amount60": 2514799.3833333333,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 2579,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159662",
+      "name": "交运ETF南方",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.23601370829949575,
+      "r2": 0.10431108707981573,
+      "delta_r2_1": 0.09280746235703352,
+      "avg_amount60": 7081088.45,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 723,
+      "shock10_8": false
+    },
+    {
+      "symbol": "510160",
+      "name": "产业升级ETF南方",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.10367054364361383,
+      "r2": 0.0854161382422397,
+      "delta_r2_1": 0.08313635744926695,
+      "avg_amount60": 425019.9,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "501012",
+      "name": "中药基金LOFC",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.17190399403099033,
+      "r2": 0.08296674936577797,
+      "delta_r2_1": 0.07723163036657266,
+      "avg_amount60": 79788.78333333334,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "561510",
+      "name": "中药ETF华泰柏瑞",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.19825064900508194,
+      "r2": 0.08117039217901767,
+      "delta_r2_1": 0.07879579948885185,
+      "avg_amount60": 1611120.4833333334,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 1028,
+      "shock10_8": false
+    },
+    {
+      "symbol": "562390",
+      "name": "中药ETF银华",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.20228398908987177,
+      "r2": 0.07839382420285845,
+      "delta_r2_1": 0.0756748394808674,
+      "avg_amount60": 1635222.75,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 1033,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159647",
+      "name": "中药ETF鹏华",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.19747797099903974,
+      "r2": 0.07201275817558217,
+      "delta_r2_1": 0.07118095156194693,
+      "avg_amount60": 25626907.15,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "501011",
+      "name": "中药基金LOF",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.16473024422297566,
+      "r2": 0.06961705946236085,
+      "delta_r2_1": 0.06804890107112549,
+      "avg_amount60": 154594.63333333333,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "515950",
+      "name": "医药50ETF富国",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.11937342306321885,
+      "r2": 0.06386010126666686,
+      "delta_r2_1": 0.05945723696157701,
+      "avg_amount60": 10470615.15,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 1597,
+      "shock10_8": false
+    },
+    {
+      "symbol": "560080",
+      "name": "中药ETF汇添富",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.17537479558066926,
+      "r2": 0.06250066454016878,
+      "delta_r2_1": 0.062259865479355136,
+      "avg_amount60": 56565451.9,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 982,
+      "shock10_8": false
+    },
+    {
+      "symbol": "159855",
+      "name": "影视ETF银华",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.3224754135043051,
+      "r2": 0.0403637804568554,
+      "delta_r2_1": 0.03650790674452209,
+      "avg_amount60": 24047096.516666666,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 1378,
+      "shock10_8": true
+    },
+    {
+      "symbol": "501310",
+      "name": "价值基金LOF",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.09209193934790116,
+      "r2": 0.038987638084614806,
+      "delta_r2_1": 0.03879565946278429,
+      "avg_amount60": 198129.95,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 259,
+      "shock10_8": false
+    },
+    {
+      "symbol": "516620",
+      "name": "影视ETF国泰",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-03",
+      "cross_date": "2026-11-02",
+      "cross_age_sessions": 1.0,
+      "annual": 0.27324236029660454,
+      "r2": 0.027676859791705755,
+      "delta_r2_1": 0.027034754277660222,
+      "avg_amount60": 62378123.56666667,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 1210,
+      "shock10_8": true
+    },
     {
       "symbol": "510630",
       "name": "消费ETF华夏",
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.49756840276959835,
-      "r2": 0.2047258998616286,
-      "delta_r2_1": 0.15025059855031053,
-      "avg_amount60": 42377286.05,
+      "cross_age_sessions": 2.0,
+      "annual": 1.0743703595719598,
+      "r2": 0.3383427565175017,
+      "delta_r2_1": 0.13361685665587308,
+      "avg_amount60": 42105454.31666667,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 3277,
+      "last_date": "2026-11-03",
+      "history_bars": 3278,
       "shock10_8": false
     },
     {
@@ -558,32 +887,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.36271078890390496,
-      "r2": 0.18872397076940806,
-      "delta_r2_1": 0.14837704751928205,
-      "avg_amount60": 485270527.6333333,
+      "cross_age_sessions": 2.0,
+      "annual": 0.6951425731829912,
+      "r2": 0.32647751867958075,
+      "delta_r2_1": 0.1377535479101728,
+      "avg_amount60": 490934772.3666667,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1818,
-      "shock10_8": false
-    },
-    {
-      "symbol": "511660",
-      "name": "货币ETF建信",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.0019295708169400072,
-      "r2": 0.17926145273029337,
-      "delta_r2_1": 0.08286737798508881,
-      "avg_amount60": 341300496.31666666,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 2452,
+      "last_date": "2026-11-03",
+      "history_bars": 1819,
       "shock10_8": false
     },
     {
@@ -592,15 +904,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.17922613697985001,
-      "r2": 0.17527557250799597,
-      "delta_r2_1": 0.09890144653613375,
-      "avg_amount60": 3787769.1333333333,
+      "cross_age_sessions": 2.0,
+      "annual": 0.27236264639137997,
+      "r2": 0.32000040804328533,
+      "delta_r2_1": 0.14472483553528936,
+      "avg_amount60": 3782587.933333333,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 259,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
       "shock10_8": false
     },
     {
@@ -609,15 +921,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.17679405511067814,
-      "r2": 0.14371631573100574,
-      "delta_r2_1": 0.13444274920699173,
-      "avg_amount60": 2487935.75,
+      "cross_age_sessions": 2.0,
+      "annual": 0.35313454648927056,
+      "r2": 0.2874346244583771,
+      "delta_r2_1": 0.14371830872737135,
+      "avg_amount60": 2511328.4833333334,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 1401,
+      "last_date": "2026-11-03",
+      "history_bars": 1402,
       "shock10_8": false
     },
     {
@@ -626,15 +938,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.25994205837645135,
-      "r2": 0.13731588490552404,
-      "delta_r2_1": 0.1279601687600076,
-      "avg_amount60": 3289326.45,
+      "cross_age_sessions": 2.0,
+      "annual": 0.6638833797435986,
+      "r2": 0.2869846444723798,
+      "delta_r2_1": 0.14966875956685577,
+      "avg_amount60": 3278511.2666666666,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1148,
+      "last_date": "2026-11-03",
+      "history_bars": 1149,
       "shock10_8": false
     },
     {
@@ -643,15 +955,32 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.10026639936821047,
-      "r2": 0.11892821420712762,
-      "delta_r2_1": 0.09328498856445822,
-      "avg_amount60": 107375.76666666666,
+      "cross_age_sessions": 2.0,
+      "annual": 0.19154004117306833,
+      "r2": 0.263217242202507,
+      "delta_r2_1": 0.14428902799537935,
+      "avg_amount60": 108185.05,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 259,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
+      "shock10_8": false
+    },
+    {
+      "symbol": "511660",
+      "name": "货币ETF建信",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-02",
+      "cross_date": "2026-10-30",
+      "cross_age_sessions": 2.0,
+      "annual": 0.002249787008422377,
+      "r2": 0.2509320508558833,
+      "delta_r2_1": 0.07167059812558996,
+      "avg_amount60": 335007956.0833333,
+      "strict_eligible": true,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 2453,
       "shock10_8": false
     },
     {
@@ -660,15 +989,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.2432923888062346,
-      "r2": 0.10878182378056211,
-      "delta_r2_1": 0.09425160588165238,
-      "avg_amount60": 2726675.6666666665,
+      "cross_age_sessions": 2.0,
+      "annual": 0.4482999039646214,
+      "r2": 0.239542379958401,
+      "delta_r2_1": 0.13076055617783888,
+      "avg_amount60": 2734035.7666666666,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 259,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
       "shock10_8": false
     },
     {
@@ -677,15 +1006,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.055989046022777655,
-      "r2": 0.07060884000709289,
-      "delta_r2_1": 0.06985650617568073,
-      "avg_amount60": 15892.383333333333,
+      "cross_age_sessions": 2.0,
+      "annual": 0.1251592924717564,
+      "r2": 0.20460936815954744,
+      "delta_r2_1": 0.13161583400591537,
+      "avg_amount60": 15706.466666666667,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 248,
+      "last_date": "2026-11-03",
+      "history_bars": 249,
       "shock10_8": false
     },
     {
@@ -694,32 +1023,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.09929784092965432,
-      "r2": 0.054164277932474914,
-      "delta_r2_1": 0.045513507590324576,
-      "avg_amount60": 255317.98333333334,
+      "cross_age_sessions": 2.0,
+      "annual": 0.21979636332177654,
+      "r2": 0.17560957896942253,
+      "delta_r2_1": 0.1214453010369475,
+      "avg_amount60": 252349.55,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 258,
-      "shock10_8": false
-    },
-    {
-      "symbol": "510880",
-      "name": "红利ETF华泰柏瑞",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.08763353673607344,
-      "r2": 0.04132078642698511,
-      "delta_r2_1": 0.028553475014831298,
-      "avg_amount60": 554624221.85,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 4807,
+      "last_date": "2026-11-03",
+      "history_bars": 259,
       "shock10_8": false
     },
     {
@@ -728,15 +1040,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.092729554489557,
-      "r2": 0.040840560829598194,
-      "delta_r2_1": 0.040826399143099934,
-      "avg_amount60": 524594.1333333333,
+      "cross_age_sessions": 2.0,
+      "annual": 0.21588512449519026,
+      "r2": 0.1464699666684246,
+      "delta_r2_1": 0.1056294058388264,
+      "avg_amount60": 527903.0666666667,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 259,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
       "shock10_8": false
     },
     {
@@ -745,49 +1057,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.08627173989751347,
-      "r2": 0.0389890777857137,
-      "delta_r2_1": 0.03316588354406336,
-      "avg_amount60": 412861577.81666666,
+      "cross_age_sessions": 2.0,
+      "annual": 0.13213800800904418,
+      "r2": 0.08960086919140653,
+      "delta_r2_1": 0.0506117914056925,
+      "avg_amount60": 414509336.03333336,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1662,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159189",
-      "name": "石油ETF华夏",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.11841731314140702,
-      "r2": 0.03337434926325955,
-      "delta_r2_1": 0.033284571431967946,
-      "avg_amount60": 14511947.45,
-      "strict_eligible": false,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 152,
-      "shock10_8": false
-    },
-    {
-      "symbol": "560020",
-      "name": "红利ETF汇添富",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.09444148852412848,
-      "r2": 0.03189426450272903,
-      "delta_r2_1": 0.028453847431200607,
-      "avg_amount60": 4072993.8666666667,
-      "strict_eligible": false,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 739,
+      "last_date": "2026-11-03",
+      "history_bars": 1663,
       "shock10_8": false
     },
     {
@@ -796,15 +1074,32 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.07435695691729505,
-      "r2": 0.030938418005487467,
-      "delta_r2_1": 0.025033829743318692,
-      "avg_amount60": 6199922.6,
+      "cross_age_sessions": 2.0,
+      "annual": 0.11822383279090554,
+      "r2": 0.07695617552526302,
+      "delta_r2_1": 0.04601775751977555,
+      "avg_amount60": 6232018.066666666,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1584,
+      "last_date": "2026-11-03",
+      "history_bars": 1585,
+      "shock10_8": false
+    },
+    {
+      "symbol": "560020",
+      "name": "红利ETF汇添富",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-02",
+      "cross_date": "2026-10-30",
+      "cross_age_sessions": 2.0,
+      "annual": 0.14701180716327245,
+      "r2": 0.07627620024317261,
+      "delta_r2_1": 0.04438193574044358,
+      "avg_amount60": 4047741.2333333334,
+      "strict_eligible": false,
+      "broad_eligible": true,
+      "last_date": "2026-11-03",
+      "history_bars": 740,
       "shock10_8": false
     },
     {
@@ -813,66 +1108,32 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.07376858772945849,
-      "r2": 0.03027527444179212,
-      "delta_r2_1": 0.02758224059830172,
-      "avg_amount60": 358589010.05,
+      "cross_age_sessions": 2.0,
+      "annual": 0.11786526646677675,
+      "r2": 0.0762026722388498,
+      "delta_r2_1": 0.04592739779705768,
+      "avg_amount60": 360832200.1666667,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1657,
+      "last_date": "2026-11-03",
+      "history_bars": 1658,
       "shock10_8": false
     },
     {
-      "symbol": "561060",
-      "name": "国企红利ETF华安",
+      "symbol": "510880",
+      "name": "红利ETF华泰柏瑞",
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.082976246122483,
-      "r2": 0.029195876687067468,
-      "delta_r2_1": 0.026009694259855887,
-      "avg_amount60": 1107838.1166666667,
-      "strict_eligible": false,
-      "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 750,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159581",
-      "name": "红利ETF万家",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.08508911425499277,
-      "r2": 0.02881920970326357,
-      "delta_r2_1": 0.026107113625073786,
-      "avg_amount60": 30982606.866666667,
+      "cross_age_sessions": 2.0,
+      "annual": 0.11096717165770831,
+      "r2": 0.07076617576392619,
+      "delta_r2_1": 0.029445389336941075,
+      "avg_amount60": 556544414.0166667,
       "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 637,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159697",
-      "name": "石油ETF鹏华",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-11-02",
-      "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.11300218294491948,
-      "r2": 0.028159253514657867,
-      "delta_r2_1": 0.028102930350847877,
-      "avg_amount60": 51587154.85,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 848,
+      "last_date": "2026-11-03",
+      "history_bars": 4808,
       "shock10_8": false
     },
     {
@@ -881,32 +1142,49 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.08114880953445014,
-      "r2": 0.02650920872946594,
-      "delta_r2_1": 0.023095560329383646,
-      "avg_amount60": 1452460.05,
+      "cross_age_sessions": 2.0,
+      "annual": 0.1292951413465644,
+      "r2": 0.06698993638029915,
+      "delta_r2_1": 0.040480727650833215,
+      "avg_amount60": 1409655.0,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 258,
+      "last_date": "2026-11-03",
+      "history_bars": 259,
       "shock10_8": false
     },
     {
-      "symbol": "159018",
-      "name": "石油ETF广发",
+      "symbol": "159581",
+      "name": "红利ETF万家",
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.09991573161893541,
-      "r2": 0.02443751881359968,
-      "delta_r2_1": 0.024400288401963066,
-      "avg_amount60": 4398871.883333334,
-      "strict_eligible": false,
+      "cross_age_sessions": 2.0,
+      "annual": 0.1283747114185969,
+      "r2": 0.066562736008562,
+      "delta_r2_1": 0.037743526305298425,
+      "avg_amount60": 31086540.383333333,
+      "strict_eligible": true,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 126,
+      "last_date": "2026-11-03",
+      "history_bars": 638,
+      "shock10_8": false
+    },
+    {
+      "symbol": "561060",
+      "name": "国企红利ETF华安",
+      "stage": "REBUILDING_QUALIFIED",
+      "first_qualified_date": "2026-11-02",
+      "cross_date": "2026-10-30",
+      "cross_age_sessions": 2.0,
+      "annual": 0.12399215488156567,
+      "r2": 0.06646258572987862,
+      "delta_r2_1": 0.03726670904281115,
+      "avg_amount60": 1133377.85,
+      "strict_eligible": false,
+      "broad_eligible": false,
+      "last_date": "2026-11-03",
+      "history_bars": 751,
       "shock10_8": false
     },
     {
@@ -915,15 +1193,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.07153380131959008,
-      "r2": 0.021113738186610664,
-      "delta_r2_1": 0.018275687603728885,
-      "avg_amount60": 448711.15,
+      "cross_age_sessions": 2.0,
+      "annual": 0.12239805155718719,
+      "r2": 0.06097180962972126,
+      "delta_r2_1": 0.0398580714431106,
+      "avg_amount60": 434114.2166666667,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 253,
+      "last_date": "2026-11-03",
+      "history_bars": 254,
       "shock10_8": false
     },
     {
@@ -932,15 +1210,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.07470632384451292,
-      "r2": 0.020889994702926296,
-      "delta_r2_1": 0.018377428746684465,
-      "avg_amount60": 10417940.183333334,
+      "cross_age_sessions": 2.0,
+      "annual": 0.12600871608811337,
+      "r2": 0.05899287161846278,
+      "delta_r2_1": 0.03810287691553649,
+      "avg_amount60": 10325539.933333334,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 629,
+      "last_date": "2026-11-03",
+      "history_bars": 630,
       "shock10_8": false
     },
     {
@@ -949,15 +1227,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 0.04329851800156215,
-      "r2": 0.009192679954529215,
-      "delta_r2_1": 0.007948445297146556,
-      "avg_amount60": 3099305.55,
+      "cross_age_sessions": 2.0,
+      "annual": 0.1103361423169047,
+      "r2": 0.05462096485881762,
+      "delta_r2_1": 0.04542828490428841,
+      "avg_amount60": 3091506.3,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1272,
+      "last_date": "2026-11-03",
+      "history_bars": 1273,
       "shock10_8": false
     },
     {
@@ -966,15 +1244,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-11-02",
       "cross_date": "2026-10-30",
-      "cross_age_sessions": 1.0,
-      "annual": 5.2098624017338224e-05,
-      "r2": 0.0023640683170824683,
-      "delta_r2_1": 0.0010579494970772707,
-      "avg_amount60": 5025846.133333334,
+      "cross_age_sessions": 2.0,
+      "annual": 0.0002052211252254743,
+      "r2": 0.038826982756719475,
+      "delta_r2_1": 0.036462914439637006,
+      "avg_amount60": 4831167.483333333,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 2884,
+      "last_date": "2026-11-03",
+      "history_bars": 2885,
       "shock10_8": false
     },
     {
@@ -983,49 +1261,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
-      "cross_age_sessions": 2.0,
-      "annual": 0.23398091004729382,
-      "r2": 0.24061256664716935,
-      "delta_r2_1": 0.14668174224271557,
-      "avg_amount60": 250834.03333333333,
+      "cross_age_sessions": 3.0,
+      "annual": 0.36486614721621513,
+      "r2": 0.38566658201422954,
+      "delta_r2_1": 0.1450540153670602,
+      "avg_amount60": 259623.7,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 259,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159502",
-      "name": "标普生物科技ETF嘉实",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-30",
-      "cross_date": "2026-10-29",
-      "cross_age_sessions": 2.0,
-      "annual": 0.41788073396320646,
-      "r2": 0.11938541478511,
-      "delta_r2_1": 0.051306746436503015,
-      "avg_amount60": 256268421.71666667,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 678,
-      "shock10_8": false
-    },
-    {
-      "symbol": "160212",
-      "name": "国泰估值LOF",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-30",
-      "cross_date": "2026-10-29",
-      "cross_age_sessions": 2.0,
-      "annual": 0.9268902567034605,
-      "r2": 0.10014589064131951,
-      "delta_r2_1": 0.0643189807917508,
-      "avg_amount60": 158122.66666666666,
-      "strict_eligible": false,
-      "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 258,
+      "last_date": "2026-11-03",
+      "history_bars": 260,
       "shock10_8": false
     },
     {
@@ -1034,15 +1278,15 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
-      "cross_age_sessions": 2.0,
-      "annual": 0.12371002436160339,
-      "r2": 0.0913651682298059,
-      "delta_r2_1": 0.08288409202710756,
-      "avg_amount60": 48621.933333333334,
+      "cross_age_sessions": 3.0,
+      "annual": 0.255253860886101,
+      "r2": 0.2292623178093588,
+      "delta_r2_1": 0.1378971495795529,
+      "avg_amount60": 48949.066666666666,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 258,
+      "last_date": "2026-11-03",
+      "history_bars": 259,
       "shock10_8": false
     },
     {
@@ -1051,86 +1295,54 @@
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-30",
       "cross_date": "2026-10-29",
-      "cross_age_sessions": 2.0,
-      "annual": 0.09453912766585648,
-      "r2": 0.0908245618228477,
-      "delta_r2_1": 0.073769904863622,
-      "avg_amount60": 4039906.716666667,
+      "cross_age_sessions": 3.0,
+      "annual": 0.18956337292417658,
+      "r2": 0.22410946670201026,
+      "delta_r2_1": 0.13328490487916256,
+      "avg_amount60": 4050331.0166666666,
       "strict_eligible": false,
       "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 2718,
+      "last_date": "2026-11-03",
+      "history_bars": 2719,
       "shock10_8": false
     },
     {
-      "symbol": "501209",
-      "name": "富久食品饮料LOF",
+      "symbol": "160212",
+      "name": "国泰估值LOF",
       "stage": "REBUILDING_QUALIFIED",
       "first_qualified_date": "2026-10-30",
-      "cross_date": "2026-10-27",
+      "cross_date": "2026-10-29",
       "cross_age_sessions": 3.0,
-      "annual": 0.7176458584826566,
-      "r2": 0.32189183990099524,
-      "delta_r2_1": 0.10875772272240425,
-      "avg_amount60": 14602.033333333333,
+      "annual": 1.0691889134698842,
+      "r2": 0.1383881593821391,
+      "delta_r2_1": 0.038242268740819596,
+      "avg_amount60": 160779.15,
       "strict_eligible": false,
       "broad_eligible": false,
-      "last_date": "2026-11-02",
-      "history_bars": 258,
-      "shock10_8": false
-    },
-    {
-      "symbol": "513290",
-      "name": "纳指生物科技ETF汇添富",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-29",
-      "cross_date": "2026-10-28",
-      "cross_age_sessions": 3.0,
-      "annual": 1.003200706933784,
-      "r2": 0.31484655075989987,
-      "delta_r2_1": 0.08000399333040242,
-      "avg_amount60": 312265458.05,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 1010,
-      "shock10_8": false
-    },
-    {
-      "symbol": "159207",
-      "name": "高股息ETF广发",
-      "stage": "REBUILDING_QUALIFIED",
-      "first_qualified_date": "2026-10-29",
-      "cross_date": "2026-10-28",
-      "cross_age_sessions": 3.0,
-      "annual": 0.32530615819362163,
-      "r2": 0.20460714454502693,
-      "delta_r2_1": 0.10572248781296922,
-      "avg_amount60": 103147202.05,
-      "strict_eligible": true,
-      "broad_eligible": true,
-      "last_date": "2026-11-02",
-      "history_bars": 380,
+      "last_date": "2026-11-03",
+      "history_bars": 259,
       "shock10_8": false
     }
   ],
   "qualified_sort": "first_qualified_date descending, cross_date descending, r2 descending, symbol ascending",
   "notification_format": "ols_full_market_v2",
   "strict_qualified_symbols": [
-    "159207",
-    "159502",
     "159581",
-    "159697",
+    "159647",
+    "159736",
+    "159855",
     "510630",
     "510880",
     "511660",
     "512690",
-    "513290",
     "515080",
-    "515180"
+    "515180",
+    "516620",
+    "560080",
+    "562060"
   ],
   "data_quality_gate": "PASS",
-  "data_version": "2026-09-17 frozen plus Tencent incremental HFQ to 2026-11-02",
+  "data_version": "2026-09-17 frozen plus Tencent incremental HFQ to 2026-11-03",
   "limitation": "Not a full census of historical delisted ETFs; ETF NAV/premium as-of unavailable; current metadata can exclude newly launched symbols",
-  "sha256_snapshot": "5ffd05b50c99cc0859b439d691ebe59eb569bcb66a780f89809cee5b2417c202"
+  "sha256_snapshot": "619d668cbe37fefbc8aa12795a1e0583b0260536bc55cb4ef55092732f9dca90"
 }
