@@ -1,19 +1,5 @@
 [
   {
-    "date": "2025-10-22",
-    "breadth_count": 8,
-    "breadth_total": 14,
-    "breadth_pct": 57.1,
-    "cash_score": 0.0,
-    "top1": "159934",
-    "top1_score": 7.631477,
-    "top2": "161226",
-    "top2_score": 5.027206,
-    "gap_raw": 2.604271,
-    "gap_percentile": 71.4,
-    "quadrant": "TREND_EXPANSION"
-  },
-  {
     "date": "2025-10-23",
     "breadth_count": 8,
     "breadth_total": 14,
@@ -3525,6 +3511,20 @@
     "top2_score": 0.397665,
     "gap_raw": 0.49791,
     "gap_percentile": 21.4,
+    "quadrant": "DEFENSIVE_VOID"
+  },
+  {
+    "date": "2026-11-05",
+    "breadth_count": 6,
+    "breadth_total": 14,
+    "breadth_pct": 42.9,
+    "cash_score": 0.0,
+    "top1": "513290",
+    "top1_score": 0.58766,
+    "top2": "159529",
+    "top2_score": 0.462914,
+    "gap_raw": 0.124746,
+    "gap_percentile": 6.3,
     "quadrant": "DEFENSIVE_VOID",
     "updated_by": "github_action",
     "definition": "breadth=share(score>cash_score); leadership=rolling252 percentile(top1_score-top2_score)"
