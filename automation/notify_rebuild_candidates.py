@@ -159,11 +159,10 @@ def main():
     if marker in header:
         pos = header.index(marker)
         intro = header[:pos]
-        qualified = market.get("qualified_candidates") or []
         ordered = validate_and_sort(current, market)
         todays = [r for r in ordered if r.get("first_qualified_date") == date]
         recent = todays[:12] if todays else ordered[:12]
-        content = "\\n".join(intro + [
+        content = "\n".join(intro + [
             marker,
             f"- 全市场当前合格：{len(ordered)} 只；今日首次合格：{len(todays)} 只。",
             "- 下方仅列示今日新增前12只（如无新增则列当前前12只）。完整清单保存在 GitHub Actions Artifact 与 data/full-market-rebuild-latest.json。",
