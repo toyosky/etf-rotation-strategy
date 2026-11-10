@@ -5,19 +5,19 @@
   "carriers": [
     {
       "symbol": "520870",
-      "bars": 239,
+      "bars": 240,
       "first_date": "2025-11-13",
-      "last_date": "2026-11-09",
-      "latest_annual": -0.9844943168430134,
-      "latest_r2": 0.7436811628559679
+      "last_date": "2026-11-10",
+      "latest_annual": -0.9785351763743044,
+      "latest_r2": 0.7143511693856895
     },
     {
       "symbol": "159100",
-      "bars": 239,
+      "bars": 240,
       "first_date": "2025-11-13",
-      "last_date": "2026-11-09",
-      "latest_annual": -0.9845148771414699,
-      "latest_r2": 0.7431572947138643
+      "last_date": "2026-11-10",
+      "latest_annual": -0.9786506301311556,
+      "latest_r2": 0.7149767045987079
     }
   ],
   "events": [
@@ -358,8 +358,8 @@
       "next_open_to_5d_close_return": -0.015885022692889605,
       "future_10d_close_return": -0.21684053651266777,
       "next_open_to_10d_close_return": -0.2049924357034797,
-      "future_20d_close_return": null,
-      "next_open_to_20d_close_return": null
+      "future_20d_close_return": -0.24590163934426235,
+      "next_open_to_20d_close_return": -0.2344931921331317
     },
     {
       "symbol": "159100",
@@ -698,8 +698,8 @@
       "next_open_to_5d_close_return": -0.009841029523088518,
       "future_10d_close_return": -0.21551081282624907,
       "next_open_to_10d_close_return": -0.20363361090083265,
-      "future_20d_close_return": null,
-      "next_open_to_20d_close_return": null
+      "future_20d_close_return": -0.24533929903057416,
+      "next_open_to_20d_close_return": -0.23391370174110515
     }
   ],
   "note": "Research only. Shadow Top1 ignores FixV2 eligibility/state/route and costs; forward returns unadjusted for premium and spreads."

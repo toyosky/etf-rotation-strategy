@@ -4,7 +4,7 @@
   "pricing": "Tencent HFQ daily bars",
   "cost_per_side": 0.0006,
   "execution_model": "signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close",
-  "generated_from_market_data_through": "2026-11-09",
+  "generated_from_market_data_through": "2026-11-10",
   "backtest_reference": {
     "period": "2015-01-26 → 2026-09-15",
     "baseline": {
@@ -27,7 +27,7 @@
     }
   },
   "latest": {
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "target": "511220",
     "target_name": "城投债/现金",
     "model_target": "511220",
@@ -41,88 +41,88 @@
     "premium_limit": null,
     "decision": "VOID_HOLD_ROUTED",
     "quadrant": "DEFENSIVE_VOID",
-    "breadth_pct": 35.714285714285715,
-    "gap_percentile": 28.96825396825397,
+    "breadth_pct": 42.857142857142854,
+    "gap_percentile": 35.317460317460316,
     "target_score": 0.0,
     "cash_score": 0.0,
     "carrier_score": 0.0,
-    "completed_through": "2026-11-09",
-    "performance_signal_through": "2026-11-05"
+    "completed_through": "2026-11-10",
+    "performance_signal_through": "2026-11-06"
   },
   "summary": {
     "baseline": {
-      "total_return": 0.009561304836895212,
+      "total_return": 0.008349831271091013,
       "mdd": -0.0982005141388177,
-      "sessions": 33,
-      "switches": 0,
-      "turnover_sides": 0
+      "sessions": 34,
+      "switches": 1,
+      "turnover_sides": 2
     },
     "original": {
-      "total_return": -0.141379055746788,
+      "total_return": -0.13331374301043608,
       "mdd": -0.21259533101448125,
-      "sessions": 33,
-      "switches": 9,
-      "turnover_sides": 18
+      "sessions": 34,
+      "switches": 10,
+      "turnover_sides": 20
     },
     "freeze_cash": {
-      "total_return": -0.07349409477688229,
+      "total_return": -0.07460590186314997,
       "mdd": -0.15853091626752158,
-      "sessions": 33,
-      "switches": 4,
-      "turnover_sides": 8
+      "sessions": 34,
+      "switches": 5,
+      "turnover_sides": 10
     }
   },
   "mark_to_market": {
     "baseline": {
-      "valuation_date": "2026-11-09",
+      "valuation_date": "2026-11-10",
       "available": true,
-      "signal_date": "2026-11-06",
-      "execution_date": "2026-11-09",
+      "signal_date": "2026-11-09",
+      "execution_date": "2026-11-10",
       "target": "511220",
       "target_name": "城投债/现金",
-      "decision": "VOID_DEEP_INVALID_TO_CASH",
-      "sides": 2,
+      "decision": "VOID_HOLD_ROUTED",
+      "sides": 0,
       "open": 1.462,
-      "close": 1.462,
-      "gross_return": 0.0,
-      "provisional_return": -0.0011999999999999789,
-      "official_nav": 1.0095613048368952,
-      "mtm_nav": 1.008349831271091,
-      "mtm_total_return": 0.008349831271091013
+      "close": 1.46,
+      "gross_return": -0.001367989056087593,
+      "provisional_return": -0.001367989056087593,
+      "official_nav": 1.008349831271091,
+      "mtm_nav": 1.0069704197372045,
+      "mtm_total_return": 0.00697041973720447
     },
     "original": {
-      "valuation_date": "2026-11-09",
+      "valuation_date": "2026-11-10",
       "available": true,
-      "signal_date": "2026-11-06",
-      "execution_date": "2026-11-09",
+      "signal_date": "2026-11-09",
+      "execution_date": "2026-11-10",
       "target": "164824",
       "target_name": "印度",
       "decision": "BASE",
-      "sides": 2,
-      "open": 1.32,
-      "close": 1.323,
-      "gross_return": 0.002272727272727204,
-      "provisional_return": 0.0010699999999999044,
-      "official_nav": 0.858620944253212,
-      "mtm_nav": 0.8595396686635629,
-      "mtm_total_return": -0.1404603313364371
+      "sides": 0,
+      "open": 1.334,
+      "close": 1.34,
+      "gross_return": 0.004497751124437732,
+      "provisional_return": 0.004497751124437732,
+      "official_nav": 0.8666862569895639,
+      "mtm_nav": 0.8705843960764734,
+      "mtm_total_return": -0.12941560392352658
     },
     "freeze_cash": {
-      "valuation_date": "2026-11-09",
+      "valuation_date": "2026-11-10",
       "available": true,
-      "signal_date": "2026-11-06",
-      "execution_date": "2026-11-09",
+      "signal_date": "2026-11-09",
+      "execution_date": "2026-11-10",
       "target": "511220",
       "target_name": "城投债/现金",
-      "decision": "VOID_INVALID_TO_CASH",
-      "sides": 2,
+      "decision": "VOID_HOLD_ROUTED",
+      "sides": 0,
       "open": 1.462,
-      "close": 1.462,
-      "gross_return": 0.0,
-      "provisional_return": -0.0011999999999999789,
-      "official_nav": 0.9265059052231177,
-      "mtm_nav": 0.92539409813685,
-      "mtm_total_return": -0.07460590186314997
+      "close": 1.46,
+      "gross_return": -0.001367989056087593,
+      "provisional_return": -0.001367989056087593,
+      "official_nav": 0.92539409813685,
+      "mtm_nav": 0.9241281691380308,
+      "mtm_total_return": -0.07587183086196925
     }
   },
   "series": {
@@ -489,6 +489,17 @@
         "nav": 1.0095613048368952,
         "drawdown": -0.07712082262210829,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-11-06",
+        "execution_date": "2026-11-09",
+        "valuation_date": "2026-11-10",
+        "target": "511220",
+        "target_name": "城投债/现金",
+        "daily_return": -0.0011999999999999789,
+        "nav": 1.008349831271091,
+        "drawdown": -0.07822827763496165,
+        "status": "settled"
       }
     ],
     "original": [
@@ -854,6 +865,17 @@
         "nav": 0.858620944253212,
         "drawdown": -0.16951164763789872,
         "status": "settled"
+      },
+      {
+        "signal_date": "2026-11-06",
+        "execution_date": "2026-11-09",
+        "valuation_date": "2026-11-10",
+        "target": "164824",
+        "target_name": "印度",
+        "daily_return": 0.009393333333333365,
+        "nav": 0.8666862569895639,
+        "drawdown": -0.16171059371471064,
+        "status": "settled"
       }
     ],
     "freeze_cash": [
@@ -1218,6 +1240,17 @@
         "daily_return": -0.015842534805569075,
         "nav": 0.9265059052231177,
         "drawdown": -0.1387860101589714,
+        "status": "settled"
+      },
+      {
+        "signal_date": "2026-11-06",
+        "execution_date": "2026-11-09",
+        "valuation_date": "2026-11-10",
+        "target": "511220",
+        "target_name": "城投债/现金",
+        "daily_return": -0.0011999999999999789,
+        "nav": 0.92539409813685,
+        "drawdown": -0.1398194669467805,
         "status": "settled"
       }
     ]
@@ -1667,12 +1700,19 @@
         "daily_return": 0.001616379310344751,
         "drawdown": -0.08783120706575076,
         "status": "close"
+      },
+      {
+        "date": "2026-11-10",
+        "nav": 0.923076923076923,
+        "daily_return": 0.0005379236148468358,
+        "drawdown": -0.08734052993130526,
+        "status": "close"
       }
     ],
     "mark_to_market": {
-      "valuation_date": "2026-11-09",
-      "nav": 0.9225806451612902,
-      "total_return": -0.07741935483870976
+      "valuation_date": "2026-11-10",
+      "nav": 0.923076923076923,
+      "total_return": -0.07692307692307698
     }
   },
   "notes": [
