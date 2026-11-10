@@ -86,15 +86,24 @@ jobs:
         shell: bash
         run: |
           mkdir -p /tmp/etf-full-market-base
-          if gh release view research-data-fullmarket-current --repo "$GH_REPO" >/dev/null 2>&1; then
-            TAG=research-data-fullmarket-current
-          else
-            TAG=research-data-fullmarket-20261020
+          # A release tag can exist without the required parquet asset.
+          # Verify the downloaded file, not just the release tag, before selecting it.
+          BASE=/tmp/etf-full-market-base/refreshed_daily_bars.parquet
+          for TAG in research-data-fullmarket-current research-data-fullmarket-20261020; do
+            rm -f "$BASE"
+            if gh release download "$TAG" --repo "$GH_REPO" \
+              --pattern refreshed_daily_bars.parquet --dir /tmp/etf-full-market-base; then
+              if test -s "$BASE"; then
+                echo "Full-market historical base: $TAG"
+                break
+              fi
+            fi
+            echo "::warning::Full-market parquet missing or empty in release $TAG; trying fallback."
+          done
+          if ! test -s "$BASE"; then
+            echo "::error::No usable full-market historical parquet available in either release."
+            exit 1
           fi
-          gh release download "$TAG" --repo "$GH_REPO" \
-            --pattern refreshed_daily_bars.parquet --dir /tmp/etf-full-market-base
-          test -s /tmp/etf-full-market-base/refreshed_daily_bars.parquet
-          echo "Full-market historical base: $TAG"
 
       - name: Refresh listed-market prices and compute all qualifying rebuild signals
         env:
