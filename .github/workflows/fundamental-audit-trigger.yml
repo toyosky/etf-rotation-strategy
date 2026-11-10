@@ -144,18 +144,6 @@ jobs:
             --premium-snapshot /tmp/daily-premium-snapshot.json \
             --dry-run --output-markdown /tmp/full-market-daily-report.md
 
-      - name: Send daily close report via PushPlus
-        env:
-          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        shell: bash
-        run: |
-          python automation/notify_rebuild_candidates.py \
-            --previous /tmp/previous-fundamental-audit-trigger.json \
-            --current data/fundamental-audit-trigger.json \
-            --previous-market /tmp/previous-market-report.json \
-            --market-report data/full-market-rebuild-latest.json \
-            --premium-snapshot /tmp/daily-premium-snapshot.json
-
       - name: Commit trigger snapshot
         shell: bash
         run: |
@@ -187,6 +175,26 @@ jobs:
             research/full_market_rebuild/today_output/today_report.json \
             research/full_market_rebuild/today_output/today_signals.csv \
             --repo "$GH_REPO" --clobber
+
+      - name: Send daily close report via PushPlus
+        id: pushplus
+        continue-on-error: true
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        shell: bash
+        run: |
+          python automation/notify_rebuild_candidates.py \
+            --previous /tmp/previous-fundamental-audit-trigger.json \
+            --current data/fundamental-audit-trigger.json \
+            --previous-market /tmp/previous-market-report.json \
+            --market-report data/full-market-rebuild-latest.json \
+            --premium-snapshot /tmp/daily-premium-snapshot.json
+
+      - name: Fail run if PushPlus delivery failed
+        if: steps.pushplus.outcome == 'failure'
+        run: |
+          echo "::error::Full-market snapshot was archived, but PushPlus delivery failed."
+          exit 1
 
       - name: Publish summary
         if: always()
