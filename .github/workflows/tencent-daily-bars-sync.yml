@@ -18,6 +18,8 @@ on:
     - cron: "30 7 * * *"
     # Recovery pass at 16:15 CST if first run failed or provider published late.
     - cron: "15 8 * * *"
+    # Additional late recovery run: 21:00 CST (GitHub schedule is best-effort).
+    - cron: "0 13 * * 1-5"
   workflow_dispatch:
     inputs:
       lookback_days:
@@ -76,6 +78,18 @@ jobs:
           done
           echo "::error::Daily sync failed after three attempts."
           exit 1
+      - name: Verify source freshness before publishing trading signals
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime, json
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
+          x = json.loads(Path("tencent-daily-sync-summary.json").read_text(encoding="utf-8"))
+          print("Daily sync freshness summary:", json.dumps(x, ensure_ascii=False)[:1600])
+          # Only verified market dates in the upstream data may be used for ranking.
+          # Do not fabricate a trading-day signal from the wall clock.
+          PY
       - name: Backtest Brazil ETF OLS and R2 rebuild signals
         run: python -m automation.backtest_brazil_rebuild
       - name: Backtest staged R2 rebuild sizing
