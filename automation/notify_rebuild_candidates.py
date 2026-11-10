@@ -149,6 +149,30 @@ def main():
         and (previous.get("next_strategy_target") or {}) == (current.get("next_strategy_target") or {})):
         print("Already sent this OLS + full-market report; skip duplicate PushPlus")
         return
+    # PushPlus is a delivery channel, not the durable full-market archive.
+    # Persist the complete markdown separately; send a small mobile-safe index.
+    # Large (20k+ character) full-universe messages can fail provider validation.
+    full_content = content
+    summary_lines = full_content.splitlines()
+    header = summary_lines[:]
+    marker = "## 全市场 R² 趋势重建合格候选（按首次合格日期由新到旧）"
+    if marker in header:
+        pos = header.index(marker)
+        intro = header[:pos]
+        qualified = market.get("qualified_candidates") or []
+        ordered = validate_and_sort(current, market)
+        todays = [r for r in ordered if r.get("first_qualified_date") == date]
+        recent = todays[:12] if todays else ordered[:12]
+        content = "\\n".join(intro + [
+            marker,
+            f"- 全市场当前合格：{len(ordered)} 只；今日首次合格：{len(todays)} 只。",
+            "- 下方仅列示今日新增前12只（如无新增则列当前前12只）。完整清单保存在 GitHub Actions Artifact 与 data/full-market-rebuild-latest.json。",
+            *[f"- {r.get('first_qualified_date')} | {r.get('symbol')} {r.get('name','')} | R² {float(r.get('r2') or 0):.3f} | annual {float(r.get('annual') or 0)*100:+.1f}%"
+              for r in recent],
+            f"- 完整运行记录：https://github.com/{os.environ.get('GITHUB_REPOSITORY','toyosky/etf-rotation-strategy')}/actions",
+            "- 所有候选仅为研究信号，需进一步审计溢价、基本面和执行约束。"
+        ])
+    print(f"PushPlus compact message length={len(content)}; full report length={len(full_content)}")
     token = os.environ.get("PUSHPLUS_TOKEN", "").strip()
     if not token:
         raise SystemExit("PUSHPLUS_TOKEN missing; refusing to mark daily notification delivered")
