@@ -71,6 +71,8 @@ jobs:
         if: env.PREMIUM_HISTORY_SYNC_ENABLED == 'true'
         run: python -m unittest automation.test_premium_dynamic
 
+      # Historical backfills are recorded with first_seen_phase=sync_observed and pit_safe=false.
+      # The Supabase CHECK constraint must accept sync_observed, without reclassifying backfills.
       - name: Sync premium history
         if: env.PREMIUM_HISTORY_SYNC_ENABLED == 'true'
         shell: bash
