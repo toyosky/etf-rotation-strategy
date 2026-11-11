@@ -5,19 +5,19 @@
   "carriers": [
     {
       "symbol": "520870",
-      "bars": 240,
+      "bars": 241,
       "first_date": "2025-11-13",
-      "last_date": "2026-11-10",
-      "latest_annual": -0.9785351763743044,
-      "latest_r2": 0.7143511693856895
+      "last_date": "2026-11-11",
+      "latest_annual": -0.9729014566747946,
+      "latest_r2": 0.704544035727314
     },
     {
       "symbol": "159100",
-      "bars": 240,
+      "bars": 241,
       "first_date": "2025-11-13",
-      "last_date": "2026-11-10",
-      "latest_annual": -0.9786506301311556,
-      "latest_r2": 0.7149767045987079
+      "last_date": "2026-11-11",
+      "latest_annual": -0.9728202088780306,
+      "latest_r2": 0.7031233275408668
     }
   ],
   "events": [
