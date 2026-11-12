@@ -37,12 +37,28 @@ jobs:
           set -eu
           mkdir -p /tmp/taxonomy-v31/official
           cp research/taxonomy_v3/snapshot/official/*.json /tmp/taxonomy-v31/official/
-          if python research/taxonomy_v3/collect_csindex_catalog_v31.py \
+          # Freeze the current official 2026-11-12 capture: repeatable builds
+          # must not silently replace it with a future changing catalog.
+          if [ -f research/taxonomy_v3/snapshot/official_v31/csindex-catalog.json ]; then
+            cp research/taxonomy_v3/snapshot/official_v31/csindex-catalog.json /tmp/taxonomy-v31/official/csindex-catalog.json
+            cp research/taxonomy_v3/snapshot/official_v31/csindex-catalog.xlsx /tmp/taxonomy-v31/csindex-catalog.xlsx
+            python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path("/tmp/taxonomy-v31/official/csindex-catalog.json")
+          obj=json.loads(p.read_text())
+          raw=Path("/tmp/taxonomy-v31/csindex-catalog.xlsx").read_bytes()
+          assert hashlib.sha256(raw).hexdigest()==obj["raw_sha256"]
+          assert obj["observed_at"].startswith("2026-11-12")
+          print("FROZEN_OFFICIAL_CSI_SOURCE_REUSED",obj["index_count"])
+          PY
+            echo "CSI_CATALOG_CAPTURED=true" >> "$GITHUB_ENV"
+          elif python research/taxonomy_v3/collect_csindex_catalog_v31.py \
             --output /tmp/taxonomy-v31/official/csindex-catalog.json \
             --raw /tmp/taxonomy-v31/csindex-catalog.xlsx; then
             echo "CSI_CATALOG_CAPTURED=true" >> "$GITHUB_ENV"
           else
-            echo "::warning::CSI live catalog was temporarily unavailable; proceed with frozen evidence and descriptor repairs only"
+            echo "::warning::CSI live catalog temporarily unavailable; proceed with frozen prior official data without pretending it was verified"
             echo "CSI_CATALOG_CAPTURED=false" >> "$GITHUB_ENV"
           fi
       - name: Freeze the exact historical price archive
@@ -115,6 +131,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A research/taxonomy_v3
+          git add -f research/taxonomy_v3/output_v31/classifications.parquet
           echo "Working tree before V3.1 commit:"
           git status --short
           git diff --cached --quiet && exit 0
