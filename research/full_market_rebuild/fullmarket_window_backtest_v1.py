@@ -161,7 +161,7 @@ def main() -> None:
               "symbols_valid":int(bars.symbol.nunique()),"first_date":str(bars.date.min().date()),
               "last_date":str(asof.date()),"snapshot_sha256":sha256,
               "metadata_symbols":int(len(meta)), "snapshot_sha256_matches":sha_matches,
-              "missing_meta_symbols":int(sum(~bars.symbol.unique().astype(str).isin(meta.index)))}
+              "missing_meta_symbols":int(sum(~pd.Index(bars.symbol.unique().astype(str)).isin(meta.index)))}
     skipped = defaultdict(int)
     signals = []
     horizon_rows = []
