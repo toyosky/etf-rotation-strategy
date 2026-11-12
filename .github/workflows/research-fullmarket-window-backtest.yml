@@ -1,0 +1,73 @@
+name: Research Full-Market Multiwindow Rebuild Backtest
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research/full_market_rebuild/fullmarket_window_backtest_v1.py'
+      - '.github/workflows/research-fullmarket-window-backtest.yml'
+permissions:
+  contents: write
+concurrency:
+  group: research-fullmarket-window-backtest
+  cancel-in-progress: false
+jobs:
+  backtest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      ETF_DAILY_BARS_DATABASE_URL: ${{ secrets.ETF_DAILY_BARS_DATABASE_URL }}
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install research dependencies
+        run: python -m pip install "pandas>=2.2,<3" "numpy>=2,<3" "pyarrow>=18" "SQLAlchemy>=2,<3" "psycopg2-binary>=2.9,<3"
+      - name: Compile
+        run: python -m py_compile research/full_market_rebuild/fullmarket_window_backtest_v1.py
+      - name: Fetch whole-market research snapshot (private, frozen)
+        run: |
+          mkdir -p /tmp/etf-fullmarket-window
+          gh release download research-data-fullmarket-current --repo "$GH_REPO" \
+            --pattern refreshed_daily_bars.parquet --dir /tmp/etf-fullmarket-window
+          test -s /tmp/etf-fullmarket-window/refreshed_daily_bars.parquet
+          sha256sum /tmp/etf-fullmarket-window/refreshed_daily_bars.parquet | cut -d ' ' -f1
+      - name: Run all-market event and window comparison
+        run: |
+          python research/full_market_rebuild/fullmarket_window_backtest_v1.py \
+            --parquet /tmp/etf-fullmarket-window/refreshed_daily_bars.parquet \
+            --output research/full_market_rebuild/window_comparison_fullmarket_v1.json \
+            --markdown research/full_market_rebuild/window_comparison_fullmarket_v1.md \
+            --events /tmp/etf-fullmarket-window/window_comparison_fullmarket_v1_events.csv.gz
+      - name: Publish concise report
+        if: success()
+        run: cat research/full_market_rebuild/window_comparison_fullmarket_v1.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit research-only results
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/full_market_rebuild/window_comparison_fullmarket_v1.json research/full_market_rebuild/window_comparison_fullmarket_v1.md
+          if git diff --cached --quiet; then
+            echo "No changes to report"
+            exit 0
+          fi
+          git commit -m "research: record full-market OLS cycle comparison"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Upload detailed research artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fullmarket-window-rebuild-${{ github.run_id }}
+          path: |
+            research/full_market_rebuild/window_comparison_fullmarket_v1.json
+            research/full_market_rebuild/window_comparison_fullmarket_v1.md
+            /tmp/etf-fullmarket-window/window_comparison_fullmarket_v1_events.csv.gz
+          if-no-files-found: warn
+          retention-days: 30
