@@ -164,18 +164,27 @@ def slope_bootstrap(df,feature,outcome,controls=(),scale=10,reps=REPS,seed=SEED)
     z=df.dropna(subset=[feature,outcome,*controls]).copy()
     if len(z)<25:return {"n_days":len(z),"ci95_pp":None}
     z["mon"]=z.date.dt.strftime("%Y-%m")
-    months=z.mon.unique()
-    arrays={m:np.column_stack([np.ones(len(k)),k[feature].to_numpy()/scale,
-               *[k[c].to_numpy() for c in controls],k[outcome].to_numpy()*100])
-                for m,k in z.groupby("mon")}
+    months=sorted(z.mon.unique())
+    # Sufficient statistics allow exact block OLS without resampling raw events:
+    # each month contributes X'X and X'Y; preserves within-month dependencies.
+    gram=[];cross=[]
+    for month in months:
+        k=z.loc[z.mon==month]
+        X=np.column_stack([np.ones(len(k)),k[feature].to_numpy(float)/scale]+
+            [k[col].to_numpy(float) for col in controls])
+        Y=k[outcome].to_numpy(float)*100
+        gram.append(X.T@X)
+        cross.append(X.T@Y)
+    gram=np.stack(gram)
+    cross=np.stack(cross)
     rng=np.random.default_rng(seed)
     result=[]
     for _ in range(reps):
-        drawn=rng.choice(months,size=len(months),replace=True)
-        block=np.concatenate([arrays[m] for m in drawn],axis=0)
-        X=block[:,:-1];y=block[:,-1]
-        if np.linalg.matrix_rank(X)==X.shape[1]:
-            result.append(float(np.linalg.lstsq(X,y,rcond=None)[0][1]))
+        drawn=rng.integers(0,len(months),len(months))
+        xx=gram[drawn].sum(axis=0)
+        xy=cross[drawn].sum(axis=0)
+        if np.linalg.matrix_rank(xx)==len(xx):
+            result.append(float(np.linalg.solve(xx,xy)[1]))
     if not result:return {"n_days":len(z),"ci95_pp":None}
     return {"n_days":len(z),"months":len(months),
             "ci95_pp":[round(float(x),5) for x in np.quantile(result,[.025,.975])],
@@ -241,25 +250,24 @@ def compare_models(train,test):
 
 
 def nonlinear(train,test):
-    # Out-of-sample: freeze train-centered x transformation, ridge lambda 5.
+    # Predefined quadratic term (no OOS knot tuning), standardized using TRAIN.
     base=["trend_breadth15_pct","market_ret10_past","price_ret10","slope_delta",
           "persistence_d5_pct","cn_share","hk_share"]
     f="rebuild_diffusion5_pct"
-    s=fit_standard(train,base+[f])
-    x=standardized(train,f,s)
-    xt=standardized(test,f,s)
-    if np.max(np.abs(x))<1e-8:return {}
-    standard=np.mean(x*x)
-    train2=train.copy();test2=test.copy()
-    train2["diffusion_quadratic"]=x*x-standard
-    test2["diffusion_quadratic"]=xt*xt-standard
-    s["diffusion_quadratic"]=(-100.,100.,0.,1.)
-    square_center=float(standard)
-    line=train_model(train2,test2,base+[f],s)
-    quad=train_model(train2,test2,base+[f,"diffusion_quadratic"],s)
-    return {"linear":line,"quadratic":quad,
-            "delta_rmse_pp":round(line["full"]["rmse_pp"]-quad["full"]["rmse_pp"],5),
-            "quadratic_coef":quad["coefficients"]["diffusion_quadratic"]}
+    std=fit_standard(train,base+[f])
+    x=standardized(train,f,std)
+    xt=standardized(test,f,std)
+    mean_square=float(np.mean(x*x))
+    tr=train.copy();te=test.copy()
+    tr["diffusion_square"]=x*x-mean_square
+    te["diffusion_square"]=xt*xt-mean_square
+    std["diffusion_square"]=(-10000.,10000.,0.,1.)
+    linear=train_model(tr,te,base+[f],std)
+    quadratic=train_model(tr,te,base+[f,"diffusion_square"],std)
+    return {"linear":linear,"quadratic":quadratic,
+            "delta_rmse_pp":round(linear["full"]["rmse_pp"]-quadratic["full"]["rmse_pp"],5),
+            "quadratic_coef":quadratic["coefficients"]["diffusion_square"],
+            "basis":"(diffusion_standardized_on_train)**2 minus train mean squared; frozen before validation"}
 
 
 def main():
@@ -303,6 +311,7 @@ def main():
      "bands_out_of_sample":bands(train,test,etest),
      "continuous_day_equal":continuous(ev,train,test),
      "out_of_sample_models":compare_models(train,test),
+     "nonlinear_oos_check":nonlinear(train,test),
      "caveats":[
        "Current classifications underlie proxy grouping; 2021-2025 taxonomy not point-in-time; incomplete delisted instruments.",
        "Using a cross-sectional future median as a reference outcome is not a realistic investable strategy benchmark.",
@@ -341,7 +350,10 @@ def main():
             "|---|---:|---:|"]
     for name,row in output["out_of_sample_models"].items():
         lines.append(f"| {name} | {row['full']['rmse_pp']:.4f} | {row['full']['oos_r2_vs_train_mean']:+.4f} |")
-    lines+=["","## 局限","",*["- "+x for x in output["caveats"]]]
+    lines+=["","## 非线性（冻结二次项，训练后样本外）","",
+      "线性模型 RMSE: "+str(output["nonlinear_oos_check"]["linear"]["full"]["rmse_pp"])+
+      " pp；加入二次项: "+str(output["nonlinear_oos_check"]["quadratic"]["full"]["rmse_pp"])+" pp。",
+      "","## 局限","",*["- "+x for x in output["caveats"]]]
     m=Path(args.markdown);m.parent.mkdir(parents=True,exist_ok=True);m.write_text("\n".join(lines),encoding="utf-8")
     primary={f:{"validation_univ":v["validation"]["excess_univariate"],
                  "validation_adjusted":v["validation"]["excess_adjusted"],
