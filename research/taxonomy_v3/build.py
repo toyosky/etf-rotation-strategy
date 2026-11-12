@@ -315,12 +315,24 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
                 rec["index_provider"] = None
                 rec["exact_index_key"] = None
                 rec["exact_index_verified"] = False
-                rec["exposure_id"] = "NON_PASSIVE:GLOBAL_CRUDE_OIL_FOF"
-                rec["exposure_name"] = "全球原油基金中基金（非被动指数）"
-                rec["exposure_parent"] = "COMMODITY"
+                rec["exposure_id"] = d.get("legal_exposure_id","NON_PASSIVE:GLOBAL_CRUDE_OIL_FOF")
+                rec["exposure_name"] = d.get("legal_exposure_name","全球原油基金中基金（非被动指数）")
+                rec["exposure_parent"] = d["sector_level1"]
                 rec["performance_benchmark"] = d.get("performance_benchmark")
-                reasons = [x for x in reasons if x != "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX"]
-                reasons.append("OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED")
+                # The economic asset is legally identified, but there is no
+                # official tracked *index* to inject into the passive
+                # exact-index pool. Quarantine the benchmark alias.
+                reasons = [x for x in reasons if x not in {
+                    "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX",
+                    "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
+                    "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
+                    "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED",
+                    "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED"}]
+                identity_review = [x for x in identity_review if x["symbol"] != symbol]
+                reason = ("OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED"
+                          if d["tracking_mode"]=="ACTIVE_QDII_FOF"
+                          else "OFFICIALLY_VERIFIED_NON_INDEX_REFERENCE_EXCLUDED")
+                reasons.append(reason)
             # Missing settlement/premium/quote attributes are NOT invented.
             rec["classification_reason"].append(
                 "Official fund mandate recorded with document date; not automatically historical-PIT qualified")
