@@ -62,7 +62,8 @@ def main():
     if a.self_test:return selftest()
     sha=hashlib.sha256(a.bars.read_bytes()).hexdigest()
     src=json.loads(a.summary.read_text())
-    if sha!=src['archive_sha256']:raise RuntimeError('Archive hash mismatch')
+    if sha!=src['archive_sha256']:
+        raise RuntimeError(f'Archive hash mismatch: actual={sha} expected={src["archive_sha256"]} bytes={a.bars.stat().st_size}; frozen data must not be silently replaced')
     bars=pd.read_parquet(a.bars,columns=['symbol','date','open','high','low','close','amount'])
     daily,_=build_daily(bars,pd.read_parquet(a.taxonomy))
     d=v1.attach(v2.add_prior_state(daily),bars)
