@@ -91,7 +91,7 @@ def main():
         "verified_matches":sorted(done),"unresolved_official_response":sorted(missing),
         "request_errors":sorted(failed,key=lambda x:x["code"]),
         "not_requested":"Non-CNI/unknown provider codes never guessed; current-only snapshots"}
-    (args.output/"cnindex-extra-capture-status.json").write_text(
+    (args.output/"capture-cnindex-extra-status.json").write_text(
         json.dumps(outcome,ensure_ascii=False,sort_keys=True,indent=2)+"\n",encoding="utf8")
     print(json.dumps({"requested":len(codes),"verified":len(done),
         "not_found":len(missing),"errors":len(failed)},ensure_ascii=False))
