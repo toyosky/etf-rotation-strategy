@@ -269,3 +269,27 @@ def test_v31_index_name_boundary_regressions():
     assert parse("S&P Oil & Gas Exploration & Production Select Industry")['region_primary']=="US"
     assert parse("S&P Oil & Gas Exploration & Production Select Industry")['sector_level2']=="OIL_GAS_EQUITY"
     assert parse("中证港股通信息技术综合指数")['region_primary']=="HK"
+
+
+def test_v31_actual_fund_mandates_if_rebuilt():
+    p=Path(__file__).with_name('output_v31')/'classifications.json'
+    if not p.exists():
+        pytest.skip('V3.1 actual artifact is built by the official catalog CI workflow')
+    rows={r['symbol']:r for r in json.loads(p.read_text())}
+    a=rows['159981']
+    assert a['legal_mandate_verified'] and not a['needs_review']
+    assert a['tracking_mode']=='PASSIVE_INDEX'
+    assert a['index_name']=='易盛郑商所能源化工指数A'
+    assert a['exposure_type']=='COMMODITY_FUTURES'
+    assert a['exact_index_key'].startswith('INDEX_NAME:')
+    b=rows['159100']
+    assert b['legal_mandate_verified'] and not b['needs_review']
+    assert b['region_primary']=='BR' and b['tracking_mode']=='PASSIVE_INDEX'
+    assert b['replication_method']=='TARGET_ETF_FOF'
+    c=rows['501018']
+    assert c['legal_mandate_verified'] and c['needs_review']
+    assert c['tracking_mode']=='ACTIVE_QDII_FOF'
+    assert c['exact_index_key'] is None
+    assert c['exposure_type']=='COMMODITY_FOF'
+    assert all(r['execution_attributes_verified'] is False for r in [a,b,c])
+    assert all(r['known_from']=='2026-11-13' for r in [a,b,c])
