@@ -178,6 +178,9 @@ def main() -> None:
             if str(m["product_type"]) not in ("ETF","LOF"):
                 skipped["not_etf_lof"] += 1
                 continue
+            if str(m["asset_class"]).upper()=="CASHLIKE":
+                skipped["cashlike_metadata"] += 1
+                continue
             underlying = str(m["underlying_key"]) if pd.notna(m["underlying_key"]) else None
             historical_safe = bool(m["historical_safe"])
             valid_from = str(m["valid_from"]) if pd.notna(m["valid_from"]) else None
