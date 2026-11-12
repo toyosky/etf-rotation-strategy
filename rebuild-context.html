@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080d18" />
+  <title>ETF Rotation Lab · 重建市场环境</title>
+  <link rel="stylesheet" href="./site.css" />
+  <style>
+  .rc-hero{padding-bottom:42px}
+  .rc-hero h1{font-size:clamp(31px,5.2vw,55px)}
+  .rc-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:28px 0 16px}
+  .rc-metric{background:linear-gradient(150deg,#132139,#0b1423);border:1px solid #2a3a50;border-radius:16px;padding:18px;min-width:0}
+  .rc-metric small{display:block;color:#91a3bb;font-size:11px}
+  .rc-metric strong{display:block;font-size:clamp(21px,2.9vw,33px);letter-spacing:-.02em;margin:8px 0}
+  .rc-metric span{font-size:11px;color:#91a3bb}
+  .rc-meta{font-size:12px;color:#9bacc2}
+  .rc-presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .rc-presets button,.rc-regions button{border:1px solid #30435d;background:#101d2e;color:#b0bfd3;border-radius:9px;padding:8px 13px;font-size:12px;cursor:pointer}
+  .rc-presets button[aria-pressed="true"],.rc-regions button[aria-pressed="true"]{background:#1b4f62;border-color:#56d2ff;color:#f5f9ff}
+  .rc-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .rc-chart{border:1px solid #29384d;border-radius:16px;padding:18px;background:#0d1727;min-width:0}
+  .rc-chart h3{margin:0;font-size:15px}
+  .rc-chart p{margin:5px 0;color:#8ea2bd;font-size:11px;min-height:36px}
+  .rc-chart svg{display:block;width:100%;height:auto}
+  .rc-chart .rc-value{font-size:17px;margin-top:8px;color:#eaf4ff;font-weight:700}
+  .rc-axis{font-size:10px;fill:#90a6c1}
+  .rc-grid{stroke:#36465c;stroke-width:.8;stroke-dasharray:3 5}
+  .rc-regions{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .rc-sectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .rc-sector{padding:15px;border:1px solid #26364b;border-radius:12px;background:#0e1a29;min-width:0}
+  .rc-sector-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .rc-sector-title b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rc-sector-title strong{font-size:14px;white-space:nowrap}
+  .rc-sector small{color:#889cb4;font-size:10px}
+  .rc-track{height:6px;border-radius:4px;background:#1a273a;overflow:hidden;margin-top:9px}
+  .rc-fill{height:100%;border-radius:4px}
+  .rc-panel{background:#0c1524;border:1px solid #28394f;border-radius:16px;padding:20px}
+  .rc-audit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .rc-audit div{background:#122036;border-radius:10px;padding:13px}
+  .rc-audit strong{font-size:19px;display:block}
+  .rc-audit small{font-size:11px;color:#94a6c0}
+  .rc-audit p{margin:5px 0;color:#a6b7ce;font-size:12px}
+  .rc-caution{font-size:12px;color:#a3b4c8;line-height:1.8}
+  .rc-links{display:flex;flex-wrap:wrap;gap:14px;font-size:12px}
+  .rc-links a{color:#56d2ff}
+  .rc-error{border:1px solid #754453;background:#361d29;color:#ffdce5;padding:14px;border-radius:12px;display:none}
+  @media(max-width:720px){.rc-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.rc-charts,.rc-sectors{grid-template-columns:1fr}.rc-audit{grid-template-columns:1fr}.rc-hero{padding-top:45px}.rc-chart{padding:12px}.rc-metric{padding:14px}.topbar{flex-wrap:wrap;gap:8px}.topbar nav{overflow:auto;width:100%;white-space:nowrap;scrollbar-width:none}.hero,.section{padding-left:16px;padding-right:16px}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="topbar">
+    <a class="brand" href="./index.html"><span class="brand-mark">O</span><span>OLS Rotation Lab</span></a>
+    <nav>
+      <a href="./index.html">Universe</a>
+      <a href="./state-map.html">State Map</a>
+      <a class="active" href="./rebuild-context.html">Rebuild</a>
+      <a href="./live.html">Live</a>
+      <a href="./news.html">News</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero rc-hero">
+      <div class="eyebrow">REBUILD MARKET CONTEXT · RESEARCH V1</div>
+      <h1>重建市场环境<br><em>扩散 × 存续 × 相对强度</em></h1>
+      <p class="lede">观察新趋势是不是从局部反弹扩散为更广泛的行情；使用全市场历史基金价格，主题组去重。与 Top1 的固定小池 State Map 属于不同研究口径。</p>
+      <div class="rc-error" id="rc-error"></div>
+      <div class="rc-metrics">
+        <div class="rc-metric"><small>近 5 日重建扩散率</small><strong id="rc-diff">—</strong><span id="rc-diff-note">—</span></div>
+        <div class="rc-metric"><small>既往 D5 趋势存续率</small><strong id="rc-persist">—</strong><span id="rc-persist-note">—</span></div>
+        <div class="rc-metric"><small>15 日正趋势宽度</small><strong id="rc-trend">—</strong><span id="rc-trend-note">—</span></div>
+        <div class="rc-metric"><small>主题代理组总数</small><strong id="rc-proxies">—</strong><span id="rc-proxy-note">—</span></div>
+      </div>
+      <div id="rc-meta" class="rc-meta">读取历史数据中…</div>
+      <div class="method-note">研究观察值，不是买卖信号；份额净申购、LOF 溢价及历史清盘基金尚未完整纳入。</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="kicker">DAILY TRAJECTORY</span><h2>三个维度如何变化</h2></div>
+        <p>按收盘日读取，不包含未来价格。可切换观察周期。</p>
+      </div>
+      <div class="rc-presets" id="rc-presets" aria-label="查看交易日范围">
+        <button type="button" data-days="20" aria-pressed="true">20 日</button>
+        <button type="button" data-days="60" aria-pressed="false">60 日</button>
+        <button type="button" data-days="120" aria-pressed="false">120 日</button>
+      </div>
+      <div class="rc-charts">
+        <article class="rc-chart"><h3>重建扩散率</h3><p>过去 5 日至少一次重建的独立主题代理组 / 当日合格代理组</p><svg id="rc-diff-chart" viewBox="0 0 540 205" role="img" aria-label="最近重建扩散率曲线"></svg><div class="rc-value" id="rc-diff-value">—</div></article>
+        <article class="rc-chart"><h3>D5 重建存续率</h3><p>过去 20 个交易日已成熟的历史重建事件，在 D5 仍保持正趋势的比例</p><svg id="rc-persist-chart" viewBox="0 0 540 205" role="img" aria-label="重建存续率曲线"></svg><div class="rc-value" id="rc-persist-value">—</div></article>
+        <article class="rc-chart"><h3>15 日趋势宽度</h3><p>当日斜率为正的主题代理组 / 当日合格代理组</p><svg id="rc-trend-chart" viewBox="0 0 540 205" role="img" aria-label="正趋势宽度曲线"></svg><div class="rc-value" id="rc-trend-value">—</div></article>
+        <article class="rc-chart"><h3>新增重建数量</h3><p>当日独立主题代理组首次满足 15 日 OLS 重建条件的数量</p><svg id="rc-new-chart" viewBox="0 0 540 205" role="img" aria-label="当日新重建数量曲线"></svg><div class="rc-value" id="rc-new-value">—</div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="kicker">SECTOR ROTATION</span><h2>行业相对强度</h2></div>
+        <p>相对于同地区全部主题组的 10 日中位收益，单位为百分点。仅展示至少 3 个代理组的分类。</p>
+      </div>
+      <div class="rc-regions" id="rc-regions" aria-label="选择市场">
+        <button type="button" data-region="CN" aria-pressed="true">中国内地</button>
+        <button type="button" data-region="HK" aria-pressed="false">香港</button>
+        <button type="button" data-region="US" aria-pressed="false">美国</button>
+      </div>
+      <div id="rc-sectors" class="rc-sectors"></div>
+      <p class="rc-caution">分类采用现有主题标签，不等于历史时点经过认证的跟踪指数；同一主题内不同细分行业可能被合并，不能据此推断 ETF 净资金流向。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="kicker">HISTORICAL CHECK</span><h2>这些指标有预测价值吗？</h2></div>
+        <p>2021–2024 年固定分位阈值，2025–2026 年样本外检验；未来 10 日次日开盘到开盘净收益。</p>
+      </div>
+      <div class="rc-audit" id="rc-audit">正在载入验证结果…</div>
+      <p class="rc-caution">这只是分组统计，不是组合收益或可直接交易的回测。基金存续样本、历史主题分类、同月相关性和溢价缺失等限制尚未消除。尤其 D5 存续率目前尚未验证收益优势。</p>
+    </section>
+
+    <section class="section">
+      <span class="kicker">DATA CONTRACT</span>
+      <h2>数据与复现</h2>
+      <p class="rc-caution">数据来自冻结的全市场 Parquet 研究归档。以过去 60 日成交额选择主题内当日代表 ETF；历史价格指标只使用截至信号日已知数据。成熟事件在 D+5 实际发生后才进入存续率统计。全市场历史分类仍需点时校验，暂不改变正式交易策略。</p>
+      <div class="rc-links">
+        <a href="./data/rebuild-market-context-latest.json">最新指标 JSON</a>
+        <a href="./research/rebuild_market_context/indicators_v1.json">验证数据 JSON</a>
+        <a href="./research/rebuild_market_context/README_RESULTS.md">计算报告</a>
+        <a href="./state-map.html">返回原有 Top1 状态图</a>
+      </div>
+    </section>
+  </main>
+  <footer class="section" style="font-size:11px;color:#7085a0;padding-bottom:50px">OLS Rotation Lab · Research context only · No live orders</footer>
+  <script>
+  (function(){
+    "use strict";
+    var state={latest:null,full:null,days:20,region:"CN"};
+    var labels={CONSUMER:"消费",HEALTHCARE:"医药",MATERIALS:"材料",CHINA_GROWTH:"成长",TECHNOLOGY:"科技",
+      INDUSTRIALS:"工业",DEFENSE:"军工",CASH_FLOW:"现金流",GROWTH:"成长风格",ENERGY:"能源",
+      BROAD:"宽基",DIVIDEND:"红利",SOFTWARE_AI:"软件与AI",BANKS:"银行",SEMICONDUCTOR:"半导体",
+      NEW_ENERGY:"新能源",UTILITIES:"公用事业",SECURITIES:"证券",AUTOMOTIVE:"汽车",FINANCIALS:"金融"};
+    function byId(id){return document.getElementById(id);}
+    function pct(x){return x==null?"样本不足":Number(x).toFixed(1)+"%";}
+    function fmtSigned(v){return (v>0?"+":"")+Number(v).toFixed(2)+" pp";}
+    function reportError(err){var el=byId("rc-error");el.style.display="block";el.textContent="指标读取失败："+String(err);}
+    function renderCards(){
+      var d=state.latest.latest_day,q=state.latest.quality;
+      byId("rc-diff").textContent=pct(d.rebuild_diffusion5_pct);
+      byId("rc-diff-note").textContent=d.new_rebuild_5d+" / "+d.active_proxies+" 个主题组";
+      byId("rc-persist").textContent=pct(d.persistence_d5_pct);
+      byId("rc-persist-note").textContent=d.matured_success20+" / "+d.matured_cohorts20+" 次成熟事件";
+      byId("rc-trend").textContent=pct(d.trend_breadth15_pct);
+      byId("rc-trend-note").textContent=d.positive_proxies+" / "+d.active_proxies+" 个主题组";
+      byId("rc-proxies").textContent=String(q.distinct_proxy_groups);
+      byId("rc-proxy-note").textContent="当前合格 "+d.active_proxies+" 组";
+      byId("rc-meta").textContent="行情截至 "+d.date+" · 日频研究数据 · 已识别 "+q.distinct_group_events+" 次去重重建 · 非实时行情";
+    }
+    var ns="http://www.w3.org/2000/svg";
+    function S(t,attrs){var e=document.createElementNS(ns,t);Object.keys(attrs||{}).forEach(function(k){e.setAttribute(k,attrs[k]);});return e;}
+    function lineChart(id,key,color,isCount){
+      var svg=byId(id);while(svg.firstChild)svg.firstChild.remove();
+      var arr=state.latest.history_120_sessions.slice(-state.days);
+      var valid=arr.filter(function(r){return r[key]!=null;});
+      if(valid.length<2)return;
+      var max=isCount?Math.max(2,...valid.map(function(r){return Number(r[key]);})):100,min=0;
+      var L=39,R=520,T=12,B=166,w=R-L,h=B-T;
+      [0,.25,.5,.75,1].forEach(function(v){
+        var y=B-v*h;svg.appendChild(S("line",{x1:L,y1:y,x2:R,y2:y,class:"rc-grid"}));
+        var t=S("text",{x:3,y:y+4,class:"rc-axis"});t.textContent=(min+(max-min)*v).toFixed(isCount?0:0)+(isCount?"":"%");svg.appendChild(t);
+      });
+      var points=[];arr.forEach(function(r,i){
+        if(r[key]==null){points.push(null);return;}
+        points.push({x:L+(i/(arr.length-1))*w,y:B-(Number(r[key])-min)/(max-min)*h,v:r[key],date:r.date});
+      });
+      var segment=[];
+      function flush(){if(segment.length>1){svg.appendChild(S("polyline",{points:segment.map(function(p){return p.x+","+p.y;}).join(" "),fill:"none",stroke:color,"stroke-width":2.8,"stroke-linejoin":"round","stroke-linecap":"round"}));}segment=[];}
+      points.forEach(function(p){if(p)segment.push(p);else flush();});flush();
+      var latest=points.filter(Boolean).slice(-1)[0];
+      if(latest){
+        var dot=S("circle",{cx:latest.x,cy:latest.y,r:5,fill:color,stroke:"#0c1524","stroke-width":2});
+        var hint=S("title",{});hint.textContent=latest.date+" "+latest.v;dot.appendChild(hint);svg.appendChild(dot);
+      }
+      [0,arr.length-1].forEach(function(i){var z=S("text",{x:i===0?L:R,y:193,class:"rc-axis","text-anchor":i===0?"start":"end"});z.textContent=arr[i].date.slice(5);svg.appendChild(z);});
+      var value=arr[arr.length-1][key];
+      var field=id.replace("-chart","-value");
+      byId(field).textContent="最新："+(isCount?String(value)+" 组":pct(value));
+    }
+    function renderCharts(){
+      lineChart("rc-diff-chart","rebuild_diffusion5_pct","#56d2ff",false);
+      lineChart("rc-persist-chart","persistence_d5_pct","#61d9aa",false);
+      lineChart("rc-trend-chart","trend_breadth15_pct","#e9c36f",false);
+      lineChart("rc-new-chart","qualified_today","#aa9dff",true);
+    }
+    function renderSectors(){
+      var latest=state.latest;
+      var combined=[].concat(latest.latest_top_sectors||[],latest.latest_bottom_sectors||[]);
+      var seen=new Set();
+      var chosen=combined.filter(function(x){
+        var id=x.region+"-"+x.sector;
+        if(seen.has(id))return false;seen.add(id);
+        return x.region===state.region&&x.proxy_count>=3;
+      }).sort(function(a,b){return b.sector_rs10_pp-a.sector_rs10_pp;});
+      var box=byId("rc-sectors");box.replaceChildren();
+      if(!chosen.length){box.textContent="该市场暂时没有满足样本条件的行业组。";return;}
+      var scale=Math.max(1,...chosen.map(function(x){return Math.abs(Number(x.sector_rs10_pp));}));
+      chosen.forEach(function(x){
+        var item=document.createElement("div");item.className="rc-sector";
+        var title=document.createElement("div");title.className="rc-sector-title";
+        var name=document.createElement("b");name.textContent=labels[x.sector]||x.sector;
+        var value=document.createElement("strong");value.textContent=fmtSigned(x.sector_rs10_pp);
+        value.style.color=x.sector_rs10_pp>=0?"#61d9aa":"#ff889c";
+        title.append(name,value);
+        var tiny=document.createElement("small");tiny.textContent=x.proxy_count+" 个主题代理组 · "+x.sector;
+        var track=document.createElement("div");track.className="rc-track";
+        var fill=document.createElement("div");fill.className="rc-fill";
+        fill.style.background=x.sector_rs10_pp>=0?"#61d9aa":"#ff889c";
+        fill.style.width=Math.max(2,100*Math.abs(x.sector_rs10_pp)/scale)+"%";
+        track.appendChild(fill);item.append(title,tiny,track);box.appendChild(item);
+      });
+    }
+    function renderAudit(){
+      var d=state.full&&state.full.validation&&state.full.validation.feature_tests;
+      var box=byId("rc-audit");box.replaceChildren();
+      if(!d){box.textContent="验证数据暂时不可用。";return;}
+      [["rebuild_diffusion5_pct","重建扩散率"],["persistence_d5_pct","D5 存续率"],["sector_rs10_pp","行业相对强度"]].forEach(function(pair){
+        var x=d[pair[0]];if(!x)return;
+        var el=document.createElement("div"),label=document.createElement("small"),
+          value=document.createElement("strong"),desc=document.createElement("p");
+        label.textContent=pair[1]+" · 高组减低组";
+        value.textContent=fmtSigned(x.high_minus_low_net10_pp);
+        value.style.color=x.high_minus_low_net10_pp>0?"#61d9aa":"#ff889c";
+        desc.textContent="高组 "+x.high.n+" 次 / "+x.high.mean_net10_pct.toFixed(2)+"% ；低组 "+x.low.n+" 次 / "+x.low.mean_net10_pct.toFixed(2)+"%";
+        el.append(label,value,desc);box.appendChild(el);
+      });
+    }
+    document.querySelectorAll("#rc-presets button").forEach(function(b){
+      b.addEventListener("click",function(){
+        state.days=Number(b.dataset.days);
+        document.querySelectorAll("#rc-presets button").forEach(function(n){n.setAttribute("aria-pressed",String(n===b));});
+        if(state.latest)renderCharts();
+      });
+    });
+    document.querySelectorAll("#rc-regions button").forEach(function(b){
+      b.addEventListener("click",function(){
+        state.region=b.dataset.region;
+        document.querySelectorAll("#rc-regions button").forEach(function(n){n.setAttribute("aria-pressed",String(n===b));});
+        if(state.latest)renderSectors();
+      });
+    });
+    var suffix="?v="+Date.now();
+    Promise.all([
+      fetch("./data/rebuild-market-context-latest.json"+suffix).then(function(r){if(!r.ok)throw new Error("latest HTTP "+r.status);return r.json();}),
+      fetch("./research/rebuild_market_context/indicators_v1.json"+suffix).then(function(r){if(!r.ok)throw new Error("validation HTTP "+r.status);return r.json();}).catch(function(){return null;})
+    ]).then(function(z){state.latest=z[0];state.full=z[1];renderCards();renderCharts();renderSectors();renderAudit();}).catch(reportError);
+  })();
+  </script>
+</body>
+</html>
