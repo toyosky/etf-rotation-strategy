@@ -46,7 +46,7 @@ def selftest():
     e=pd.DataFrame([dict(date=dates[0],exact_key='X',symbol='A',global_id=0)])
     # Need 20 days maturity for production; this toy asserts carrier selection and mismatch.
     assert v2.one_carrier_per_index(d).iloc[-1].symbol=='B'
-    assert not d.loc[(d.symbol=='A')&d.signal].any().any()
+    assert not d.loc[d.symbol=='A','signal'].any()
     assert d.loc[(d.symbol=='B')&d.signal].shape[0]==1
     print('SELF_TEST_PASS')
 
