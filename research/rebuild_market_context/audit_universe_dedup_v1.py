@@ -29,7 +29,7 @@ MAX_HOLD=10
 
 
 def load_symbols(bars,meta):
-    elig=[],signals=[]
+    elig=[];signals=[]
     skipped=defaultdict(int)
     for code,g in bars.groupby("symbol",sort=True):
         if code not in meta.index:
