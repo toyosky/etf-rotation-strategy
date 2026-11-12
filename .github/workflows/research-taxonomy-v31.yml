@@ -1,0 +1,124 @@
+name: Research Taxonomy V3.1 Official CSI Coverage
+on:
+  push:
+    branches:
+      - research/taxonomy-v3-20261112
+    paths:
+      - 'research/taxonomy_v3/build.py'
+      - 'research/taxonomy_v3/collect_csindex_catalog_v31.py'
+      - 'research/taxonomy_v3/summarize_v31.py'
+      - '.github/workflows/research-taxonomy-v31.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: research-taxonomy-v31
+  cancel-in-progress: false
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated researcher dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "pandas>=2.2,<3" "numpy>=2,<3" "pyarrow>=18" "requests>=2.31" "beautifulsoup4>=4.12" "openpyxl>=3.1" "pytest>=8"
+      - name: Capture full official CSI index code-name catalog
+        run: |
+          set -eu
+          mkdir -p /tmp/taxonomy-v31/official
+          cp research/taxonomy_v3/snapshot/official/*.json /tmp/taxonomy-v31/official/
+          python research/taxonomy_v3/collect_csindex_catalog_v31.py \
+            --output /tmp/taxonomy-v31/official/csindex-catalog.json \
+            --raw /tmp/taxonomy-v31/csindex-catalog.xlsx
+      - name: Freeze the exact historical price archive
+        run: |
+          set -eu
+          mkdir -p /tmp/taxonomy-v31/price /tmp/taxonomy-v31/arch
+          gh release download research-data-fullmarket-current --repo "$GH_REPO" \
+            --pattern refreshed_daily_bars.parquet --dir /tmp/taxonomy-v31/price || true
+          expected="9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb"
+          actual=$(sha256sum /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet 2>/dev/null | cut -d' ' -f1 || true)
+          if [ "$actual" != "$expected" ]; then
+            echo "Release moved; use frozen independent evidence commit"
+            git fetch origin research/taxonomy-v3-evidence-20261112 --depth=1
+            git show 8037109205eb36a3514c5f14d8f2f8c2dba3d351:research/taxonomy_v3/archive/taxonomy-v3-evidence-20261112.tar.gz > /tmp/taxonomy-v31/frozen.tar.gz
+            tar -xzf /tmp/taxonomy-v31/frozen.tar.gz -C /tmp/taxonomy-v31/arch
+            find /tmp/taxonomy-v31/arch -name refreshed_daily_bars.parquet -exec cp {} /tmp/taxonomy-v31/price/ \;
+          fi
+          echo "$expected  /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet" | sha256sum -c -
+      - name: Recreate offline profile facts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/taxonomy-v31/profiles");p.mkdir(parents=True,exist_ok=True)
+          data=json.loads(Path("research/taxonomy_v3/output/profiles.json").read_text())
+          for r in data:
+              (p/(r["symbol"]+".json")).write_text(json.dumps(r,ensure_ascii=False))
+          print("Reconstituted frozen auxiliary facts:",len(data))
+          PY
+      - name: Rebuild official verified classification and audit
+        run: |
+          python -m research.taxonomy_v3.build \
+            --metadata research/taxonomy_v3/snapshot/metadata.json \
+            --profiles /tmp/taxonomy-v31/profiles \
+            --official /tmp/taxonomy-v31/official \
+            --bars /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet \
+            --snapshot-date 2026-11-12 \
+            --output research/taxonomy_v3/output_v31
+          python -m research.taxonomy_v3.validate \
+            --output research/taxonomy_v3/output_v31 \
+            --bars /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet
+          python -m research.taxonomy_v3.summarize_v31 \
+            --baseline research/taxonomy_v3/output \
+            --new research/taxonomy_v3/output_v31 \
+            --output research/taxonomy_v3/output_v31
+          python -m pytest research/taxonomy_v3/test_taxonomy.py -q
+      - name: Ensure official raw source is verifiably frozen
+        run: |
+          mkdir -p research/taxonomy_v3/snapshot/official_v31
+          cp /tmp/taxonomy-v31/official/csindex-catalog.json research/taxonomy_v3/snapshot/official_v31/
+          cp /tmp/taxonomy-v31/csindex-catalog.xlsx research/taxonomy_v3/snapshot/official_v31/
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('research/taxonomy_v3/snapshot/official_v31')
+          j=json.loads((p/'csindex-catalog.json').read_text())
+          assert hashlib.sha256((p/'csindex-catalog.xlsx').read_bytes()).hexdigest()==j['raw_sha256']
+          assert j['index_count']>=500
+          print('RAW_EVIDENCE_HASH_PASS',j['index_count'])
+          PY
+      - name: Publish regression and new coverage audit
+        if: success()
+        run: cat research/taxonomy_v3/output_v31/REPORT_V31.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Persist research branch only
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/taxonomy_v3/output_v31 research/taxonomy_v3/snapshot/official_v31
+          git diff --cached --quiet && exit 0
+          git commit -m "research: CSI official catalog verified V3.1 taxonomy classification delta"
+          git pull --rebase origin research/taxonomy-v3-20261112
+          git push origin HEAD:research/taxonomy-v3-20261112
+      - name: Save audit artifacts if data fetch failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: taxonomy-v31-${{ github.run_id }}
+          path: |
+            research/taxonomy_v3/output_v31/summary.json
+            research/taxonomy_v3/output_v31/diff_v31.json
+            research/taxonomy_v3/output_v31/REPORT_V31.md
+          if-no-files-found: warn
+          retention-days: 30
