@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 from .collect import parse_profile
-from .model import classifications_at, economic_labels, name_key, validate_intervals
+from .model import classifications_at, economic_labels, name_key, validate_intervals, supplemental_labels_v31
 from .representatives import Policy, select_representatives
 from .build import registry_inputs, quality_audit
 
@@ -229,3 +229,32 @@ def test_frozen_real_artifact_invariants():
         assert r['source_date'] is None
         if r['tracking_mode']=='UNVERIFIED_NON_INDEX_STRATEGY':
             assert r['exact_index_key'] is None
+
+
+def test_v31_fill_missing_broad_index_descriptors_without_merging_keys():
+    names=[
+        ("中证科创创业50指数","CN","EQUITY","MULTI_SECTOR"),
+        ("上证科创板100指数","CN","EQUITY","MULTI_SECTOR"),
+        ("中证稀有金属主题指数","CN","EQUITY","MATERIALS"),
+        ("中证港股通互联网指数","HK","EQUITY","TECHNOLOGY"),
+        ("MSCI中国A股国际通人民币指数","CN","EQUITY","MULTI_SECTOR"),
+        ("巴西BOVESPA","BR","EQUITY","MULTI_SECTOR"),
+        ("中证全指家用电器指数","CN","EQUITY","CONSUMER"),
+        ("中证工业互联网主题指数","CN","EQUITY","TECHNOLOGY"),
+        ("中证短融指数","CN","BOND","FIXED_INCOME"),
+    ]
+    for n,region,asset,sector in names:
+        x=supplemental_labels_v31(n,economic_labels(n))
+        assert (x['region_primary'],x['exposure_type'],x['sector_level1'])==(region,asset,sector), (n,x)
+
+
+def test_v31_index_descriptor_filling_does_not_override_verified_details():
+    before=dict(region_primary='CN',exposure_type='EQUITY',sector_level1='HEALTHCARE',
+       sector_level2='INNOVATIVE_DRUGS',index_style='SECTOR_OR_THEME',risk_bucket='CN|EQUITY|HEALTHCARE')
+    after=supplemental_labels_v31("中证工业互联网主题指数",before)
+    assert after==before
+
+
+def test_v31_unknown_index_remains_unclassified():
+    x=supplemental_labels_v31("某全新专项指数",economic_labels("某全新专项指数"))
+    assert not x['region_primary'] and not x['exposure_type'] and not x['sector_level1']
