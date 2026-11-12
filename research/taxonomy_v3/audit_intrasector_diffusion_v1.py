@@ -98,6 +98,13 @@ def checkpoints(episodes, daily, exact_daily, calendar):
     lookup=daily.set_index(['date','symbol'],verify_integrity=True)
     ref=exact_daily.copy()
     ref['region']=ref.broad_key.str.split('|',n=1).str[0]
+    # Dynamic eligibility: only sub-sector opportunities already eligible on the
+    # pioneer DATE may enter the comparison. No future listings/counts as peers.
+    specific_today=ref.loc[ref.subsector.map(specific)]
+    possible={
+        key:set(g.subsector.dropna())
+        for key,g in specific_today.groupby(['date','broad_key'])
+    }
     sector_ref=ref.groupby(['date','broad_key']).net10.median()
     region_ref=ref.groupby(['date','region']).net10.median()
     output=[];unusable=0;simultaneous=0
@@ -106,10 +113,14 @@ def checkpoints(episodes, daily, exact_daily, calendar):
             simultaneous+=1
             continue
         start=date_to_index[ep['first_date']]
+        possible_at_start=possible.get((ep['first_date'],ep['broad']),set())
+        # Do not let a subsequently listed/newly liquid sub-sector inflate breadth.
+        admitted={**ep, 'events':[e for e in ep['events']
+                                   if e['subsector'] in possible_at_start]}
         for offset in CHECKPOINTS:
             if start+offset>=len(calendar):continue
             day=calendar[start+offset]
-            state=expansion_state(ep,day)
+            state=expansion_state(admitted,day)
             # Ensure no future discoveries in the checkpoint state.
             assert all(x['date']<=day for x in ep['events']
                        if x['subsector'] in state['subsectors']
@@ -129,6 +140,7 @@ def checkpoints(episodes, daily, exact_daily, calendar):
                 'first_date':ep['first_date'],'leader':ep['leader'],
                 'leader_subsector':ep['leader_subsector'],
                 'tier':state['tier'],'distinct_subsectors':state['n'],
+                'start_eligible_subsectors':len(possible_at_start),
                 'subsectors':'/'.join(state['subsectors']),
                 'second_date':state['second_date'],'third_date':state['third_date'],
                 'leader_available':bool(available),'leader_alive':alive,
@@ -222,11 +234,19 @@ def sector_year_difference(df,metric='net10'):
 
 
 def analyze(cohorts,episodes,diagnostics,source):
-    result={'contract':'ETF_REBUILD_INTRA_SECTOR_DIFFUSION_V1',
+    if cohorts.empty:raise RuntimeError('No checkpoint observations')
+    result={'contract':'ETF_REBUILD_INTRA_SECTOR_DIFFUSION_V2',
             'source':source,'research_only':True,'historical_taxonomy_pit':False,
             'diagnostics':diagnostics,'cohorts':{},'differences':{},
-            'recent_examples':[]}
-    if cohorts.empty:raise RuntimeError('No checkpoint observations')
+            'robustness':{},'recent_examples':[]}
+    diagnostics['checkpoint_rows_total']=int(len(cohorts))
+    diagnostics['checkpoint_rows_with_2plus_available']=int((cohorts.start_eligible_subsectors>=2).sum())
+    diagnostics['checkpoint_rows_with_3plus_available']=int((cohorts.start_eligible_subsectors>=3).sum())
+    # Primary: every sector episode had at least THREE specific, trade-eligible
+    # sub-sector alternatives at its start, even if no others subsequently signaled.
+    all_cohorts=cohorts
+    cohorts=cohorts.loc[cohorts.start_eligible_subsectors>=3].copy()
+    if cohorts.empty:raise RuntimeError('No structurally comparable checkpoint observations')
     for checkpoint in CHECKPOINTS:
         result['cohorts'][str(checkpoint)]={}
         result['differences'][str(checkpoint)]={}
@@ -244,14 +264,23 @@ def analyze(cohorts,episodes,diagnostics,source):
                 'matched_date':matched_day(z),
                 'within_sector_year':sector_year_difference(z)
             }
+    # Sensitivities: at least 2 initial opportunities, and current R2 gate.
+    for offset in CHECKPOINTS:
+        year=all_cohorts.loc[
+            (all_cohorts.checkpoint==offset)&(all_cohorts.date>=base.SPLIT)]
+        atleast2=year.loc[year.start_eligible_subsectors>=2]
+        strict=cohorts.loc[(cohorts.checkpoint==offset)&(cohorts.date>=base.SPLIT)&
+                           (cohorts.leader_r2>=.50)&cohorts.leader_alive]
+        result['robustness'][str(offset)]={
+            'potential_2plus':bootstrap_difference(atleast2),
+            'potential_2plus_sector_excess':bootstrap_difference(atleast2,'excess_sector10'),
+            'r2_gate_and_alive':bootstrap_difference(strict),
+            'r2_gate_sample':int(len(strict)),
+            'primary_sample':int(len(cohorts.loc[(cohorts.checkpoint==offset)&(cohorts.date>=base.SPLIT)]))
+        }
     valid=cohorts.loc[cohorts.date>=base.SPLIT]
     examples=valid.loc[(valid.checkpoint==10)&(valid.tier!='1')].sort_values('date',ascending=False)
-    result['recent_examples']=[{
-        'first_date':str(x.first_date.date()), 'checkpoint_date':str(x.date.date()),
-        'broad':x.broad,'leader':x.leader,'leader_subsector':x.leader_subsector,
-        'distinct_subsectors':int(x.distinct_subsectors),'subsectors':x.subsectors,
-        'leader_alive':bool(x.leader_alive)
-    } for x in examples.itertuples(index=False,name='Record')[:20]] if False else [
+    result['recent_examples']=[
        {'first_date':str(x['first_date'].date()),'checkpoint_date':str(x['date'].date()),
         'broad':str(x['broad']),'leader':str(x['leader']),
         'leader_subsector':str(x['leader_subsector']),
@@ -269,6 +298,7 @@ def report(r):
            '研究时间：'+r['source']['as_of']+'收盘前所有可获得历史行情；训练<=2024，验证2025–2026。',
            '先行者定义：某地区×一级行业20个交易日无合格重建后首个精确指数组的确认信号。',
            '首次日同时出现不同细分方向的样本不定义先行者；排除综合跨行业及泛化细分标签。',
+           '主比较只选先行当日已具备至少3个不同细分、均有合格代表基金的地区×行业；新增上市或后来才达流动性门槛的细分不会追溯加入。',
            '固定在首信号后第5或10个市场交易日观察已出现的不同二级标签数=1、2、3+；绝不用之后才出现的重建事件分类。',
            '收益是观察日收盘确认后从次日开盘到11个市场交易日后的开盘（净、单边6bp），不是从先行日倒推，也不是可交易资金回测。',
            '',
@@ -297,6 +327,17 @@ def report(r):
         lines.append('| {} | {} | {} | {} | {} |'.format(
             k,fmt(main.get('expanded_minus_singleton_pp')),ci_label,
             fmt(exc.get('expanded_minus_singleton_pp')),within_label))
+    lines+=['','## 结构可比性与R²敏感性','',
+            '| 第几日 | 起点至少2个细分的收益差pp | 起点至少2个细分的行业超额差pp | R²≥0.5且先行者活跃的样本 | 该样本收益差pp |',
+            '|---|---:|---:|---:|---:|']
+    for k in ['5','10']:
+        z=r['robustness'][k]
+        fmt=lambda v:'—' if v is None else f'{v:+.3f}'
+        lines.append('| {} | {} | {} | {} | {} |'.format(
+            k,fmt(z['potential_2plus'].get('expanded_minus_singleton_pp')),
+            fmt(z['potential_2plus_sector_excess'].get('expanded_minus_singleton_pp')),
+            z['r2_gate_sample'],
+            fmt(z['r2_gate_and_alive'].get('expanded_minus_singleton_pp'))))
     lines+=['','## 2025与2026分别观察','',
             '| 检查点 | 年份 | 扩散组收益差pp | 月份区块95%区间 |',
             '|---|---|---:|---:|']
@@ -311,6 +352,7 @@ def report(r):
     lines+=['','## 分类复核导向','',
            '- 只有二级分类标签不同才计作细分扩散；同一指数的多只ETF只算一次；一级行业本身不去重。',
            '- 严格主样本排除MULTI_SECTOR及广义、混合二级标签；同类ETF不同指数不增加细分计数。',
+           '- 结构可比性：先行当日不少于3个已合格细分方向；仅统计起点即存在的具体方向，避免单一方向行业天然不可能扩散。',
            '- 真实经济独立性仍需要官方成分股、行业权重和指数规则书审计，不得据此修改经济等价分组。',
            '- 从出现信号的精确指数到细行业子类的映射应独立于本实验收益，防止回测结果反向污染分类。',
            '',
