@@ -1,6 +1,11 @@
 name: Research Rebuild Market Context Indicators
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Fundamental Audit Trigger'
+    types:
+      - completed
   push:
     paths:
       - 'research/rebuild_market_context/compute_indicators_v1.py'
