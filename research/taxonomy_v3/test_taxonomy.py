@@ -312,7 +312,7 @@ def test_v31_actual_fund_mandates_if_rebuilt():
     assert silver['exact_index_key'] is None
     assert silver['exposure_type']=='COMMODITY_FUTURES'
     tech=rows['159509']
-    assert tech['legal_mandate_verified'] and tech['index_name']=='纳斯达克科技市值加权指数'
+    assert tech['legal_mandate_verified'] and tech['index_name']=='纳斯达克科技市值加权指数（价格指数）'
     assert tech['region_primary']=='US' and tech['sector_level2']=='NASDAQ_100_TECHNOLOGY'
     consumer=rows['159529']
     assert consumer['legal_mandate_verified'] and consumer['index_name']=='标普500消费精选指数'
