@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 import pandas as pd
-from .model import economic_labels, name_key, normalize_name, valid_index_name, validate_intervals
+from .model import economic_labels, name_key, normalize_name, valid_index_name, validate_intervals, supplemental_labels_v31
 
 
 def dump(path: Path, value):
@@ -231,7 +231,7 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
         if rec['index_name'] and not rec['exact_index_key']:
             rec['exact_index_key'] = name_key(rec['index_name'])
         if rec['index_name'] and rec['exact_index_verified']:
-            rec.update(economic_labels(rec['index_name']))
+            rec.update(supplemental_labels_v31(rec['index_name'], economic_labels(rec['index_name'])))
             if rec['exposure_type'] and rec['region_primary']:
                 # Conservative minimum fine exposure: one distinct index/strategy.
                 # Cross-index equivalence is NEVER inferred from a sector label.
