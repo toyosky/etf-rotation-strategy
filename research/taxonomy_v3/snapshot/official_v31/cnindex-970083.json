@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:48.510806+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "970083",
+      "indexename": "CNTCIX",
+      "indexfullcname": "创业板算力基础设施指数",
+      "indexfullename": "SZSE ChiNext Computing Infrastructure Index",
+      "indexname": "创业板算力",
+      "indexsource": "0",
+      "indextype": "103",
+      "jr": "2022-12-30",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "bf71a4e4ff83e244996a3a710cd5fe02171aed4d4a7942bf9ff1a0b9dcf1c81c",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=970083"
+}

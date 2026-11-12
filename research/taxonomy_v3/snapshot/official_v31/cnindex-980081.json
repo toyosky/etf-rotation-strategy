@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:49.382005+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980081",
+      "indexename": "CNIV100",
+      "indexfullcname": "国证价值100指数",
+      "indexfullename": "CNI Value 100 Index",
+      "indexname": "价值100",
+      "indexsource": "0",
+      "indextype": "202",
+      "jr": "2012-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "0913beb6126f11e4a3f43aade1a4e592a28259b79158adbe45996708b8b6b7e3",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980081"
+}

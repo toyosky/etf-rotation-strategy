@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:39.157456+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980022",
+      "indexename": "CNIROBOT",
+      "indexfullcname": "国证机器人产业指数",
+      "indexfullename": "CNI Robot Index",
+      "indexname": "机器人产业",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2014-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "0c65d553b1a3501aaa4792acdd1b2e590fadd440f7c0061fca0ea9c215ea31fc",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980022"
+}

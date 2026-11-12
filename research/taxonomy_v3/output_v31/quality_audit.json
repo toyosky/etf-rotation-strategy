@@ -586,7 +586,7 @@
       "exact_indices": 24,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980030",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980030",
           "index_code": "980030",
           "index_name": "国证消费电子主题指数",
           "name": "消费电子ETF鹏华",
@@ -600,7 +600,7 @@
           "symbol": "159176"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980030",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980030",
           "index_code": "980030",
           "index_name": "国证消费电子主题指数",
           "name": "消费电子ETF汇添富",
@@ -677,7 +677,7 @@
           "symbol": "159730"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980030",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980030",
           "index_code": "980030",
           "index_name": "国证消费电子主题指数",
           "name": "消费电子ETF华夏",
@@ -909,7 +909,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_CONSUMER",
-      "proven_official_index_groups": 22
+      "proven_official_index_groups": 23
     },
     {
       "exact_indices": 2,
@@ -936,28 +936,28 @@
       "exact_indices": 3,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5075",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5075",
           "index_code": "CN5075",
           "index_name": "国证信息技术创新主题指数",
           "name": "信创ETF国泰",
           "symbol": "159537"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5075",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5075",
           "index_code": "CN5075",
           "index_name": "国证信息技术创新主题指数",
           "name": "信创ETF富国",
           "symbol": "159538"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5075",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5075",
           "index_code": "CN5075",
           "index_name": "国证信息技术创新主题指数",
           "name": "信创ETF广发",
           "symbol": "159539"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5075",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5075",
           "index_code": "CN5075",
           "index_name": "国证信息技术创新主题指数",
           "name": "信创ETF易方达",
@@ -1000,41 +1000,41 @@
         }
       ],
       "legacy_underlying_key": "CHINA_CYBERSECURITY",
-      "proven_official_index_groups": 2
+      "proven_official_index_groups": 3
     },
     {
       "exact_indices": 6,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5082",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
           "index_code": "CN5082",
           "index_name": "国证航天航空行业指数",
           "name": "航空航天ETF南方",
           "symbol": "158009"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5082",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
           "index_code": "CN5082",
           "index_name": "国证航天航空行业指数",
           "name": "航空航天ETF易方达",
           "symbol": "158013"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5082",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
           "index_code": "CN5082",
           "index_name": "国证航天航空行业指数",
           "name": "航空航天ETF万家",
           "symbol": "159208"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5082",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
           "index_code": "CN5082",
           "index_name": "国证航天航空行业指数",
           "name": "航空航天ETF华夏",
           "symbol": "159227"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:CN5082",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
           "index_code": "CN5082",
           "index_name": "国证航天航空行业指数",
           "name": "航空航天ETF天弘",
@@ -1098,7 +1098,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_DEFENSE",
-      "proven_official_index_groups": 5
+      "proven_official_index_groups": 6
     },
     {
       "exact_indices": 2,
@@ -1573,7 +1573,7 @@
       "exact_indices": 85,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF嘉实",
@@ -1678,7 +1678,7 @@
           "symbol": "159033"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF鹏华",
@@ -1692,7 +1692,7 @@
           "symbol": "159038"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF汇添富",
@@ -1797,7 +1797,7 @@
           "symbol": "159078"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF兴全",
@@ -1811,7 +1811,7 @@
           "symbol": "159082"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF永赢",
@@ -1832,14 +1832,14 @@
           "symbol": "159093"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF华夏",
           "symbol": "159096"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF招商",
@@ -2035,14 +2035,14 @@
           "symbol": "159642"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980015",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980015",
           "index_code": "980015",
           "index_name": "国证疫苗与生物科技指数",
           "name": "疫苗ETF国泰",
           "symbol": "159643"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980015",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980015",
           "index_code": "980015",
           "index_name": "国证疫苗与生物科技指数",
           "name": "疫苗ETF富国",
@@ -2175,7 +2175,7 @@
           "symbol": "159973"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980001",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980001",
           "index_code": "980001",
           "index_name": "粤港澳大湾区创新100指数",
           "name": "湾创ETF工银",
@@ -2855,7 +2855,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_EQUITY_OTHER",
-      "proven_official_index_groups": 77
+      "proven_official_index_groups": 80
     },
     {
       "exact_indices": 2,
@@ -2994,21 +2994,21 @@
       "exact_indices": 2,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980076",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980076",
           "index_code": "980076",
           "index_name": "国证通用航空产业指数",
           "name": "通用航空ETF华夏",
           "symbol": "159230"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980076",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980076",
           "index_code": "980076",
           "index_name": "国证通用航空产业指数",
           "name": "通用航空ETF华宝",
           "symbol": "159231"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980076",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980076",
           "index_code": "980076",
           "index_name": "国证通用航空产业指数",
           "name": "通用航空ETF易方达",
@@ -3022,7 +3022,7 @@
           "symbol": "159283"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980076",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980076",
           "index_code": "980076",
           "index_name": "国证通用航空产业指数",
           "name": "通用航空ETF永赢",
@@ -3044,7 +3044,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_GENERAL_AVIATION",
-      "proven_official_index_groups": 1
+      "proven_official_index_groups": 2
     },
     {
       "exact_indices": 2,
@@ -3071,7 +3071,7 @@
       "exact_indices": 2,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980080",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980080",
           "index_code": "980080",
           "index_name": "国证成长100指数",
           "name": "成长ETF易方达",
@@ -3086,7 +3086,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_GROWTH_FACTOR",
-      "proven_official_index_groups": 1
+      "proven_official_index_groups": 2
     },
     {
       "exact_indices": 18,
@@ -3141,7 +3141,7 @@
           "symbol": "159748"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980016",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980016",
           "index_code": "980016",
           "index_name": "国证公共卫生与医疗健康指数",
           "name": "医疗健康ETF泰康",
@@ -3408,7 +3408,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_HEALTHCARE",
-      "proven_official_index_groups": 17
+      "proven_official_index_groups": 18
     },
     {
       "exact_indices": 2,
@@ -3722,7 +3722,7 @@
       "exact_indices": 9,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF华夏",
@@ -3736,14 +3736,14 @@
           "symbol": "158019"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF嘉实",
           "symbol": "159052"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF华宝",
@@ -3778,7 +3778,7 @@
           "symbol": "159155"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "电池ETF万家",
@@ -3806,21 +3806,21 @@
           "symbol": "159183"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF银华",
           "symbol": "159193"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF广发",
           "symbol": "159305"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980027",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980027",
           "index_code": "980027",
           "index_name": "国证储能电池指数",
           "name": "储能电池ETF易方达",
@@ -3855,28 +3855,28 @@
           "symbol": "159752"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "电池ETF广发",
           "symbol": "159755"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "电池ETF景顺",
           "symbol": "159757"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "电池龙头ETF兴银",
           "symbol": "159767"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "电池ETF建信",
@@ -3904,7 +3904,7 @@
           "symbol": "159824"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980032",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980032",
           "index_code": "980032",
           "index_name": "国证新能源车电池指数",
           "name": "锂电池ETF工银",
@@ -4122,7 +4122,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_NEW_ENERGY",
-      "proven_official_index_groups": 7
+      "proven_official_index_groups": 9
     },
     {
       "exact_indices": 3,
@@ -4562,21 +4562,21 @@
       "exact_indices": 4,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF华安",
           "symbol": "159039"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF大成",
           "symbol": "159048"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF广发",
@@ -4597,14 +4597,14 @@
           "symbol": "159258"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF富国",
           "symbol": "159272"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF鹏华",
@@ -4618,7 +4618,7 @@
           "symbol": "159526"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF易方达",
@@ -4632,7 +4632,7 @@
           "symbol": "159551"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980022",
           "index_code": "980022",
           "index_name": "国证机器人产业指数",
           "name": "机器人ETF景顺",
@@ -4689,13 +4689,13 @@
         }
       ],
       "legacy_underlying_key": "CHINA_ROBOTICS",
-      "proven_official_index_groups": 3
+      "proven_official_index_groups": 4
     },
     {
       "exact_indices": 2,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980018",
           "index_code": "980018",
           "index_name": "国证商用卫星通信产业指数",
           "name": "卫星ETF永赢",
@@ -4731,7 +4731,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_SATELLITE",
-      "proven_official_index_groups": 1
+      "proven_official_index_groups": 2
     },
     {
       "exact_indices": 7,
@@ -4982,28 +4982,28 @@
           "symbol": "159599"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980017",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980017",
           "index_code": "980017",
           "index_name": "国证半导体芯片指数",
           "name": "半导体龙头ETF工银",
           "symbol": "159665"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980017",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980017",
           "index_code": "980017",
           "index_name": "国证半导体芯片指数",
           "name": "芯片ETF广发",
           "symbol": "159801"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980017",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980017",
           "index_code": "980017",
           "index_name": "国证半导体芯片指数",
           "name": "半导体ETF鹏华",
           "symbol": "159813"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980017",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980017",
           "index_code": "980017",
           "index_name": "国证半导体芯片指数",
           "name": "芯片ETF华夏",
@@ -5081,7 +5081,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_SEMICONDUCTOR",
-      "proven_official_index_groups": 8
+      "proven_official_index_groups": 9
     },
     {
       "exact_indices": 13,
@@ -5290,21 +5290,21 @@
           "symbol": "159099"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980034",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980034",
           "index_code": "980034",
           "index_name": "国证工业软件主题指数",
           "name": "工业软件ETF博时",
           "symbol": "159108"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980034",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980034",
           "index_code": "980034",
           "index_name": "国证工业软件主题指数",
           "name": "工业软件ETF广发",
           "symbol": "159145"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980034",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980034",
           "index_code": "980034",
           "index_name": "国证工业软件主题指数",
           "name": "软件ETF银华",
@@ -5536,7 +5536,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_SOFTWARE_AI",
-      "proven_official_index_groups": 12
+      "proven_official_index_groups": 13
     },
     {
       "exact_indices": 7,
@@ -5948,7 +5948,7 @@
       "exact_indices": 2,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980015",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980015",
           "index_code": "980015",
           "index_name": "国证疫苗与生物科技指数",
           "name": "疫苗ETF鹏华",
@@ -5970,13 +5970,13 @@
         }
       ],
       "legacy_underlying_key": "CHINA_VACCINE",
-      "proven_official_index_groups": 1
+      "proven_official_index_groups": 2
     },
     {
       "exact_indices": 4,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:980081",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
           "index_code": "980081",
           "index_name": "国证价值100指数",
           "name": "价值ETF易方达",
@@ -6005,7 +6005,7 @@
         }
       ],
       "legacy_underlying_key": "CHINA_VALUE_FACTOR",
-      "proven_official_index_groups": 3
+      "proven_official_index_groups": 4
     },
     {
       "exact_indices": 13,
@@ -6081,21 +6081,21 @@
           "symbol": "159205"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF大成",
           "symbol": "159242"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF招商",
           "symbol": "159243"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF富国",
@@ -6130,7 +6130,7 @@
           "symbol": "159270"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF华安",
@@ -6193,7 +6193,7 @@
           "symbol": "159298"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF华宝",
@@ -6256,14 +6256,14 @@
           "symbol": "159377"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF华夏",
           "symbol": "159381"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF南方",
@@ -6284,7 +6284,7 @@
           "symbol": "159387"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:970070",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:970070",
           "index_code": "970070",
           "index_name": "创业板人工智能指数",
           "name": "创业板人工智能ETF国泰",
@@ -6488,7 +6488,7 @@
         }
       ],
       "legacy_underlying_key": "CHINEXT",
-      "proven_official_index_groups": 12
+      "proven_official_index_groups": 13
     },
     {
       "exact_indices": 3,
@@ -8321,28 +8321,28 @@
       "exact_indices": 5,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987024",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987024",
           "index_code": "987024",
           "index_name": "国证港股通消费主题指数",
           "name": "港股通消费ETF富国",
           "symbol": "159245"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987024",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987024",
           "index_code": "987024",
           "index_name": "国证港股通消费主题指数",
           "name": "港股消费ETF鹏华",
           "symbol": "159265"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987024",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987024",
           "index_code": "987024",
           "index_name": "国证港股通消费主题指数",
           "name": "港股通消费ETF汇添富",
           "symbol": "159268"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987024",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987024",
           "index_code": "987024",
           "index_name": "国证港股通消费主题指数",
           "name": "港股通消费ETF华安",
@@ -8392,7 +8392,7 @@
         }
       ],
       "legacy_underlying_key": "HK_CONSUMER",
-      "proven_official_index_groups": 2
+      "proven_official_index_groups": 3
     },
     {
       "exact_indices": 14,
@@ -8482,7 +8482,7 @@
           "symbol": "159545"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987016",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987016",
           "index_code": "987016",
           "index_name": "国证港股通红利低波动率指数",
           "name": "港股红利低波ETF景顺",
@@ -8602,7 +8602,7 @@
         }
       ],
       "legacy_underlying_key": "HK_DIVIDEND",
-      "proven_official_index_groups": 7
+      "proven_official_index_groups": 8
     },
     {
       "exact_indices": 5,
@@ -8664,21 +8664,21 @@
       "exact_indices": 6,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987018",
           "index_code": "987018",
           "index_name": "国证港股通创新药指数",
           "name": "港股通创新药ETF工银",
           "symbol": "159217"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987018",
           "index_code": "987018",
           "index_name": "国证港股通创新药指数",
           "name": "港股通创新药ETF鹏华",
           "symbol": "159286"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987018",
           "index_code": "987018",
           "index_name": "国证港股通创新药指数",
           "name": "港股通创新药ETF南方",
@@ -8699,14 +8699,14 @@
           "symbol": "159506"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987018",
           "index_code": "987018",
           "index_name": "国证港股通创新药指数",
           "name": "港股创新药ETF银华",
           "symbol": "159567"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987018",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987018",
           "index_code": "987018",
           "index_name": "国证港股通创新药指数",
           "name": "港股通创新药ETF汇添富",
@@ -8749,7 +8749,7 @@
         }
       ],
       "legacy_underlying_key": "HK_INNOVATIVE_DRUG",
-      "proven_official_index_groups": 3
+      "proven_official_index_groups": 4
     },
     {
       "exact_indices": 4,
@@ -8762,7 +8762,7 @@
           "symbol": "159202"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987022",
           "index_code": "987022",
           "index_name": "国证港股通互联网指数",
           "name": "港股通互联网ETF汇添富",
@@ -8812,7 +8812,7 @@
         }
       ],
       "legacy_underlying_key": "HK_INTERNET",
-      "proven_official_index_groups": 2
+      "proven_official_index_groups": 3
     },
     {
       "exact_indices": 12,
@@ -8839,7 +8839,7 @@
           "symbol": "159040"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股通科技ETF华夏",
@@ -8853,14 +8853,14 @@
           "symbol": "159120"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股通科技ETF招商",
           "symbol": "159125"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股科技ETF天弘",
@@ -8902,7 +8902,7 @@
           "symbol": "159169"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987022",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987022",
           "index_code": "987022",
           "index_name": "国证港股通互联网指数",
           "name": "港股通互联网ETF永赢",
@@ -8916,14 +8916,14 @@
           "symbol": "159179"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股通科技ETF易方达",
           "symbol": "159191"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股通科技ETF万家",
@@ -8944,7 +8944,7 @@
           "symbol": "159269"
         },
         {
-          "exact_index_key": "SZSE_FITTED_CODE:987008",
+          "exact_index_key": "OFFICIAL_INDEX_CODE:987008",
           "index_code": "987008",
           "index_name": "国证港股通科技指数",
           "name": "港股通科技30ETF工银",
@@ -9204,7 +9204,7 @@
         }
       ],
       "legacy_underlying_key": "HK_TECH",
-      "proven_official_index_groups": 7
+      "proven_official_index_groups": 9
     },
     {
       "exact_indices": 3,
@@ -13744,7 +13744,7 @@
     },
     {
       "assessment": "SAME_INDEX_SPLIT_REPAIR",
-      "exact_index_key": "SZSE_FITTED_CODE:980015",
+      "exact_index_key": "OFFICIAL_INDEX_CODE:980015",
       "funds": [
         {
           "legacy_underlying_key": "CHINA_EQUITY_OTHER",
@@ -13769,7 +13769,7 @@
     },
     {
       "assessment": "SAME_INDEX_SPLIT_REPAIR",
-      "exact_index_key": "SZSE_FITTED_CODE:980076",
+      "exact_index_key": "OFFICIAL_INDEX_CODE:980076",
       "funds": [
         {
           "legacy_underlying_key": "CHINA_GENERAL_AVIATION",
@@ -13809,7 +13809,7 @@
     },
     {
       "assessment": "SAME_INDEX_SPLIT_REPAIR",
-      "exact_index_key": "SZSE_FITTED_CODE:980081",
+      "exact_index_key": "OFFICIAL_INDEX_CODE:980081",
       "funds": [
         {
           "legacy_underlying_key": "CHINA_EQUITY_OTHER",
@@ -13864,6 +13864,76 @@
     },
     {
       "assessment": "SAME_INDEX_SPLIT_REPAIR",
+      "exact_index_key": "OFFICIAL_INDEX_CODE:987022",
+      "funds": [
+        {
+          "legacy_underlying_key": null,
+          "name": "港股通互联网ETF国联",
+          "symbol": "159089"
+        },
+        {
+          "legacy_underlying_key": "HK_TECH",
+          "name": "港股通互联网ETF永赢",
+          "symbol": "159170"
+        },
+        {
+          "legacy_underlying_key": "HK_INTERNET",
+          "name": "港股通互联网ETF汇添富",
+          "symbol": "159280"
+        }
+      ],
+      "legacy_keys": [
+        "HK_INTERNET",
+        "HK_TECH"
+      ]
+    },
+    {
+      "assessment": "SAME_INDEX_SPLIT_REPAIR",
+      "exact_index_key": "OFFICIAL_INDEX_CODE:CN5082",
+      "funds": [
+        {
+          "legacy_underlying_key": "CHINA_DEFENSE",
+          "name": "航空航天ETF南方",
+          "symbol": "158009"
+        },
+        {
+          "legacy_underlying_key": "CHINA_DEFENSE",
+          "name": "航空航天ETF易方达",
+          "symbol": "158013"
+        },
+        {
+          "legacy_underlying_key": null,
+          "name": "航空航天ETF汇添富",
+          "symbol": "158030"
+        },
+        {
+          "legacy_underlying_key": "CHINA_DEFENSE",
+          "name": "航空航天ETF万家",
+          "symbol": "159208"
+        },
+        {
+          "legacy_underlying_key": "CHINA_DEFENSE",
+          "name": "航空航天ETF华夏",
+          "symbol": "159227"
+        },
+        {
+          "legacy_underlying_key": "CHINA_DEFENSE",
+          "name": "航空航天ETF天弘",
+          "symbol": "159241"
+        },
+        {
+          "legacy_underlying_key": "CHINA_SPACE",
+          "name": "航天ETF华安",
+          "symbol": "159267"
+        }
+      ],
+      "legacy_keys": [
+        "CHINA_DEFENSE",
+        "CHINA_SPACE"
+      ]
+    },
+    {
+      "assessment": "SAME_INDEX_SPLIT_REPAIR",
       "exact_index_key": "SZSE_FITTED_CODE:980092",
       "funds": [
         {
@@ -13905,76 +13975,6 @@
       "legacy_keys": [
         "CHINA_CASH_FLOW_FACTOR",
         "CHINA_EQUITY_OTHER"
-      ]
-    },
-    {
-      "assessment": "SAME_INDEX_SPLIT_REPAIR",
-      "exact_index_key": "SZSE_FITTED_CODE:987022",
-      "funds": [
-        {
-          "legacy_underlying_key": null,
-          "name": "港股通互联网ETF国联",
-          "symbol": "159089"
-        },
-        {
-          "legacy_underlying_key": "HK_TECH",
-          "name": "港股通互联网ETF永赢",
-          "symbol": "159170"
-        },
-        {
-          "legacy_underlying_key": "HK_INTERNET",
-          "name": "港股通互联网ETF汇添富",
-          "symbol": "159280"
-        }
-      ],
-      "legacy_keys": [
-        "HK_INTERNET",
-        "HK_TECH"
-      ]
-    },
-    {
-      "assessment": "SAME_INDEX_SPLIT_REPAIR",
-      "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-      "funds": [
-        {
-          "legacy_underlying_key": "CHINA_DEFENSE",
-          "name": "航空航天ETF南方",
-          "symbol": "158009"
-        },
-        {
-          "legacy_underlying_key": "CHINA_DEFENSE",
-          "name": "航空航天ETF易方达",
-          "symbol": "158013"
-        },
-        {
-          "legacy_underlying_key": null,
-          "name": "航空航天ETF汇添富",
-          "symbol": "158030"
-        },
-        {
-          "legacy_underlying_key": "CHINA_DEFENSE",
-          "name": "航空航天ETF万家",
-          "symbol": "159208"
-        },
-        {
-          "legacy_underlying_key": "CHINA_DEFENSE",
-          "name": "航空航天ETF华夏",
-          "symbol": "159227"
-        },
-        {
-          "legacy_underlying_key": "CHINA_DEFENSE",
-          "name": "航空航天ETF天弘",
-          "symbol": "159241"
-        },
-        {
-          "legacy_underlying_key": "CHINA_SPACE",
-          "name": "航天ETF华安",
-          "symbol": "159267"
-        }
-      ],
-      "legacy_keys": [
-        "CHINA_DEFENSE",
-        "CHINA_SPACE"
       ]
     },
     {

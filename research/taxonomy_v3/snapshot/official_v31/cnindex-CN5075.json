@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:41:04.496125+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "CN5075",
+      "indexename": "CNIITI",
+      "indexfullcname": "国证信息技术创新主题指数",
+      "indexfullename": "CNI Information Technology Innovation Index",
+      "indexname": "国证信创",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "9ccae98c78dc12528275dca215b5fdcd01a30457ccefc02e544548c86afcbc15",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=CN5075"
+}

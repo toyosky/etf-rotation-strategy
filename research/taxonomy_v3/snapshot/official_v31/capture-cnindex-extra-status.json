@@ -1,0 +1,48 @@
+{
+  "capture_as_of": "2026-11-12",
+  "not_requested": "Non-CNI/unknown provider codes never guessed; current-only snapshots",
+  "official_endpoint": "https://www.cnindex.com.cn/index/selectIndexByCode",
+  "request_errors": [
+    {
+      "code": "980028",
+      "error": "HTTPSConnectionPool(host='www.cnindex.com.cn', port=443): Read timed out. (read timeout=8)"
+    },
+    {
+      "code": "980092",
+      "error": "HTTPSConnectionPool(host='www.cnindex.com.cn', port=443): Read timed out. (read timeout=8)"
+    }
+  ],
+  "requested": 30,
+  "unresolved_official_response": [
+    "399701",
+    "399702",
+    "399903",
+    "399927"
+  ],
+  "verified_matches": [
+    "970070",
+    "970081",
+    "970083",
+    "970085",
+    "980001",
+    "980015",
+    "980016",
+    "980017",
+    "980018",
+    "980022",
+    "980027",
+    "980030",
+    "980032",
+    "980034",
+    "980076",
+    "980080",
+    "980081",
+    "987008",
+    "987016",
+    "987018",
+    "987022",
+    "987024",
+    "CN5075",
+    "CN5082"
+  ]
+}

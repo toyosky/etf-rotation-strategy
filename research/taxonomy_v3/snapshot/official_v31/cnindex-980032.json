@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:41.624251+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980032",
+      "indexename": "CNI NEV Battery",
+      "indexfullcname": "国证新能源车电池指数",
+      "indexfullename": "CNI NEV Battery Index",
+      "indexname": "新能电池",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "5945f1806dcf302a0cc1c6b9740ce938186472f5f26382f842df2f08ab7afcf7",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980032"
+}

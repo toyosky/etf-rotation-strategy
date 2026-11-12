@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:48.695253+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980027",
+      "indexename": "CNIESBI",
+      "indexfullcname": "国证储能电池指数",
+      "indexfullename": "CNI Energy Storage Battery Index",
+      "indexname": "国证储能电池",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2014-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "3b4dd50ecb81daa1228e021c1e5d7dec7a236439ed4e531f22b2ff370bd2015f",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980027"
+}

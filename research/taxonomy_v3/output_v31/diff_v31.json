@@ -64,18 +64,18 @@
     "archive_symbols": 2003,
     "archive_symbols_missing_legacy_metadata": 0,
     "dedup_comparison": {
-      "approved_archive_symbols": 1318,
+      "approved_archive_symbols": 1403,
       "broad_sector_groups": 34,
-      "exact_index_groups": 394,
-      "fine_exposure_groups": 394,
+      "exact_index_groups": 414,
+      "fine_exposure_groups": 414,
       "raw_archive_symbols": 2003,
       "verified_archive_symbols": 1608,
       "warning": "Partial verified subsets; unknowns are exclusions, never deduplication savings"
     },
-    "exact_index_groups": 394,
+    "exact_index_groups": 417,
     "execution_verified_count": 0,
-    "fine_exposure_groups": 394,
-    "fully_classified_current": 1367,
+    "fine_exposure_groups": 417,
+    "fully_classified_current": 1474,
     "historical_classifications_before_capture": 0,
     "index_code_count": 1569,
     "legacy_coverage": {
@@ -88,10 +88,10 @@
     "legacy_review": 424,
     "legal_mandates_verified_count": 3,
     "legal_non_passive_mandates_count": 1,
-    "needs_review": 780,
+    "needs_review": 673,
     "no_verified_tracking_identity": 462,
     "official_current_listed": 2123,
-    "official_full_name_count": 1475,
+    "official_full_name_count": 1583,
     "official_identity_candidate_groups": 516,
     "officially_verified_index_identity": 1685,
     "officially_verified_index_identity_pct": 78.48,
@@ -105,7 +105,7 @@
       "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED": 107,
       "NOT_IN_CAPTURED_OFFICIAL_LISTS": 24,
       "OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED": 1,
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 231,
+      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 123,
       "OFFICIAL_FITTED_CODE_MISSING": 180,
       "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX": 150
     },
@@ -122,12 +122,12 @@
   "overlap_after": {
     "name_only": 116,
     "verified": 1685,
-    "approved": 1367
+    "approved": 1474
   },
   "previously_approved_regressions": 0,
-  "changed_count": 1099,
-  "moved_from_review": 597,
-  "newly_approved_in_archive": 585,
+  "changed_count": 1207,
+  "moved_from_review": 704,
+  "newly_approved_in_archive": 670,
   "changes": [
     {
       "symbol": "158000",
@@ -136,6 +136,17 @@
       "new_exact": "CSI:H11146",
       "old_index_name": "中证港股通内地金融港元指数",
       "new_index_name": "中证港股通内地金融指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158001",
+      "name": "价值ETF嘉实",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -174,6 +185,28 @@
       "new_reasons": []
     },
     {
+      "symbol": "158008",
+      "name": "储能电池ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158009",
+      "name": "航空航天ETF南方",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "158010",
       "name": "医疗ETF嘉实",
       "old_exact": "SZSE_FITTED_CODE:399989",
@@ -191,6 +224,17 @@
       "new_exact": "CSI:931469",
       "old_index_name": "中证云计算50指数",
       "new_index_name": "中证云计算50指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158013",
+      "name": "航空航天ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -251,6 +295,28 @@
       "new_reasons": []
     },
     {
+      "symbol": "158030",
+      "name": "航空航天ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158031",
+      "name": "创业板人工智能ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "158032",
       "name": "化工ETF景顺",
       "old_exact": "SZSE_FITTED_CODE:000813",
@@ -295,12 +361,56 @@
       "new_reasons": []
     },
     {
+      "symbol": "158041",
+      "name": "创业板算力ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158043",
+      "name": "价值ETF南方",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "158046",
       "name": "卫星ETF南方",
       "old_exact": "SZSE_FITTED_CODE:931594",
       "new_exact": "CSI:931594",
       "old_index_name": "中证卫星产业指数",
       "new_index_name": "中证卫星产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158049",
+      "name": "创业板算力ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158050",
+      "name": "创业板算力ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -317,6 +427,116 @@
       "new_reasons": []
     },
     {
+      "symbol": "158052",
+      "name": "创业板金融科技ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:970085",
+      "new_exact": "OFFICIAL_INDEX_CODE:970085",
+      "old_index_name": "创业板金融科技指数",
+      "new_index_name": "创业板金融科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158053",
+      "name": "创业板算力ETF大成",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158055",
+      "name": "创业板算力ETF国泰",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158056",
+      "name": "创业板算力ETF嘉实",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158057",
+      "name": "创业板算力ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158058",
+      "name": "创业板金融科技ETF华泰柏瑞",
+      "old_exact": "SZSE_FITTED_CODE:970085",
+      "new_exact": "OFFICIAL_INDEX_CODE:970085",
+      "old_index_name": "创业板金融科技指数",
+      "new_index_name": "创业板金融科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158059",
+      "name": "创业板算力ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158061",
+      "name": "创业板算力ETF天弘",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158062",
+      "name": "创业板金融科技ETF建信",
+      "old_exact": "SZSE_FITTED_CODE:970085",
+      "new_exact": "OFFICIAL_INDEX_CODE:970085",
+      "old_index_name": "创业板金融科技指数",
+      "new_index_name": "创业板金融科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158063",
+      "name": "创业板算力ETF南方",
+      "old_exact": "SZSE_FITTED_CODE:970083",
+      "new_exact": "OFFICIAL_INDEX_CODE:970083",
+      "old_index_name": "创业板算力基础设施指数",
+      "new_index_name": "创业板算力基础设施指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "158066",
       "name": "大数据ETF前海开源",
       "old_exact": "SZSE_FITTED_CODE:930902",
@@ -328,12 +548,67 @@
       "new_reasons": []
     },
     {
+      "symbol": "158067",
+      "name": "创业板金融科技ETF万家",
+      "old_exact": "SZSE_FITTED_CODE:970085",
+      "new_exact": "OFFICIAL_INDEX_CODE:970085",
+      "old_index_name": "创业板金融科技指数",
+      "new_index_name": "创业板金融科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "158076",
       "name": "红利低波ETF广发",
       "old_exact": "SZSE_FITTED_CODE:H30269",
       "new_exact": "CSI:H30269",
       "old_index_name": "中证红利低波动指数",
       "new_index_name": "中证红利低波动指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158078",
+      "name": "创业板电池ETF华宝",
+      "old_exact": "SZSE_FITTED_CODE:970081",
+      "new_exact": "OFFICIAL_INDEX_CODE:970081",
+      "old_index_name": "创业板电池指数",
+      "new_index_name": "创业板电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158079",
+      "name": "创业板电池ETF华安",
+      "old_exact": "SZSE_FITTED_CODE:970081",
+      "new_exact": "OFFICIAL_INDEX_CODE:970081",
+      "old_index_name": "创业板电池指数",
+      "new_index_name": "创业板电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158081",
+      "name": "创业板电池ETF永赢",
+      "old_exact": "SZSE_FITTED_CODE:970081",
+      "new_exact": "OFFICIAL_INDEX_CODE:970081",
+      "old_index_name": "创业板电池指数",
+      "new_index_name": "创业板电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "158082",
+      "name": "创业板电池ETF银华",
+      "old_exact": "SZSE_FITTED_CODE:970081",
+      "new_exact": "OFFICIAL_INDEX_CODE:970081",
+      "old_index_name": "创业板电池指数",
+      "new_index_name": "创业板电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -504,6 +779,28 @@
       "new_reasons": []
     },
     {
+      "symbol": "159037",
+      "name": "价值ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159039",
+      "name": "机器人ETF华安",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159040",
       "name": "港股通互联网ETF鹏华",
       "old_exact": "SZSE_FITTED_CODE:931637",
@@ -521,6 +818,17 @@
       "new_exact": "CSI:000949",
       "old_index_name": "中证农业主题指数",
       "new_index_name": "中证农业主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159042",
+      "name": "价值ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -559,6 +867,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159048",
+      "name": "机器人ETF大成",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159049",
       "name": "有色ETF工银",
       "old_exact": "SZSE_FITTED_CODE:931892",
@@ -570,12 +889,34 @@
       "new_reasons": []
     },
     {
+      "symbol": "159050",
+      "name": "机器人ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159051",
       "name": "医疗器械ETF易方达",
       "old_exact": "SZSE_FITTED_CODE:H30217",
       "new_exact": "CSI:H30217",
       "old_index_name": "中证全指医疗器械指数",
       "new_index_name": "中证全指医疗器械指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159052",
+      "name": "储能电池ETF嘉实",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -702,6 +1043,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159071",
+      "name": "储能电池ETF华宝",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159075",
       "name": "工业互联网ETF华夏",
       "old_exact": "SZSE_FITTED_CODE:931495",
@@ -735,6 +1087,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159079",
+      "name": "价值ETF兴全",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159082",
       "name": "化工ETF华夏",
       "old_exact": "SZSE_FITTED_CODE:000813",
@@ -757,6 +1120,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159085",
+      "name": "价值ETF永赢",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159086",
       "name": "金融科技ETF广发",
       "old_exact": "SZSE_FITTED_CODE:930986",
@@ -774,6 +1148,17 @@
       "new_exact": "CSI:000813",
       "old_index_name": "细分化工",
       "new_index_name": "中证细分化工产业主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159089",
+      "name": "港股通互联网ETF国联",
+      "old_exact": "SZSE_FITTED_CODE:987022",
+      "new_exact": "OFFICIAL_INDEX_CODE:987022",
+      "old_index_name": "国证港股通互联网指数",
+      "new_index_name": "国证港股通互联网指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -812,6 +1197,28 @@
       "new_reasons": []
     },
     {
+      "symbol": "159096",
+      "name": "价值ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159098",
+      "name": "价值ETF招商",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159099",
       "name": "云计算ETF华宝",
       "old_exact": "SZSE_FITTED_CODE:931469",
@@ -834,6 +1241,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159101",
+      "name": "港股通科技ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159103",
       "name": "金融科技ETF汇添富",
       "old_exact": "SZSE_FITTED_CODE:930986",
@@ -851,6 +1269,17 @@
       "new_exact": "CSI:931265",
       "old_index_name": "中证民企300指数",
       "new_index_name": "中证民企300指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159108",
+      "name": "工业软件ETF博时",
+      "old_exact": "SZSE_FITTED_CODE:980034",
+      "new_exact": "OFFICIAL_INDEX_CODE:980034",
+      "old_index_name": "国证工业软件主题指数",
+      "new_index_name": "国证工业软件主题指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -933,6 +1362,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159125",
+      "name": "港股通科技ETF招商",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159126",
       "name": "港股通50ETF南方",
       "old_exact": "SZSE_FITTED_CODE:930931",
@@ -955,6 +1395,17 @@
       "new_reasons": [
         "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED"
       ]
+    },
+    {
+      "symbol": "159128",
+      "name": "港股科技ETF天弘",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
     },
     {
       "symbol": "159129",
@@ -1067,6 +1518,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159145",
+      "name": "工业软件ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:980034",
+      "new_exact": "OFFICIAL_INDEX_CODE:980034",
+      "old_index_name": "国证工业软件主题指数",
+      "new_index_name": "国证工业软件主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159146",
       "name": "电力ETF华宝",
       "old_exact": "SZSE_FITTED_CODE:H30199",
@@ -1111,12 +1573,34 @@
       "new_reasons": []
     },
     {
+      "symbol": "159153",
+      "name": "消费电子ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:980030",
+      "new_exact": "OFFICIAL_INDEX_CODE:980030",
+      "old_index_name": "国证消费电子主题指数",
+      "new_index_name": "国证消费电子主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159155",
       "name": "电池ETF大成",
       "old_exact": "SZSE_FITTED_CODE:931719",
       "new_exact": "CSI:931719",
       "old_index_name": "中证电池主题指数",
       "new_index_name": "中证电池主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159156",
+      "name": "电池ETF万家",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1232,6 +1716,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159170",
+      "name": "港股通互联网ETF永赢",
+      "old_exact": "SZSE_FITTED_CODE:987022",
+      "new_exact": "OFFICIAL_INDEX_CODE:987022",
+      "old_index_name": "国证港股通互联网指数",
+      "new_index_name": "国证港股通互联网指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159171",
       "name": "工业有色ETF博时",
       "old_exact": "SZSE_FITTED_CODE:H11059",
@@ -1298,12 +1793,34 @@
       "new_reasons": []
     },
     {
+      "symbol": "159178",
+      "name": "消费电子ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:980030",
+      "new_exact": "OFFICIAL_INDEX_CODE:980030",
+      "old_index_name": "国证消费电子主题指数",
+      "new_index_name": "国证消费电子主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159179",
       "name": "港股通互联网ETF工银",
       "old_exact": "SZSE_FITTED_CODE:931637",
       "new_exact": "CSI:931637",
       "old_index_name": "中证港股通互联网指数",
       "new_index_name": "中证港股通互联网指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159180",
+      "name": "软件ETF银华",
+      "old_exact": "SZSE_FITTED_CODE:980034",
+      "new_exact": "OFFICIAL_INDEX_CODE:980034",
+      "old_index_name": "国证工业软件主题指数",
+      "new_index_name": "国证工业软件主题指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1342,12 +1859,34 @@
       "new_reasons": []
     },
     {
+      "symbol": "159191",
+      "name": "港股通科技ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159192",
       "name": "家电ETF汇添富",
       "old_exact": "SZSE_FITTED_CODE:931021",
       "new_exact": "CSI:931021",
       "old_index_name": "中证家电龙头指数",
       "new_index_name": "中证家电龙头指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159193",
+      "name": "储能电池ETF银华",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1386,6 +1925,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159206",
+      "name": "卫星ETF永赢",
+      "old_exact": "SZSE_FITTED_CODE:980018",
+      "new_exact": "OFFICIAL_INDEX_CODE:980018",
+      "old_index_name": "国证商用卫星通信产业指数",
+      "new_index_name": "国证商用卫星通信产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159207",
       "name": "高股息ETF广发",
       "old_exact": "SZSE_FITTED_CODE:932305",
@@ -1397,6 +1947,17 @@
       "new_reasons": [
         "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED"
       ]
+    },
+    {
+      "symbol": "159208",
+      "name": "航空航天ETF万家",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
     },
     {
       "symbol": "159209",
@@ -1476,6 +2037,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159217",
+      "name": "港股通创新药ETF工银",
+      "old_exact": "SZSE_FITTED_CODE:987018",
+      "new_exact": "OFFICIAL_INDEX_CODE:987018",
+      "old_index_name": "国证港股通创新药指数",
+      "new_index_name": "国证港股通创新药指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159218",
       "name": "卫星ETF招商",
       "old_exact": "SZSE_FITTED_CODE:931594",
@@ -1511,6 +2083,17 @@
       ]
     },
     {
+      "symbol": "159227",
+      "name": "航空航天ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159228",
       "name": "红利低波ETF长城",
       "old_exact": "SZSE_FITTED_CODE:930955",
@@ -1528,6 +2111,28 @@
       "new_exact": "CSI:932368",
       "old_index_name": "中证800自由现金流指数",
       "new_index_name": "中证800自由现金流指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159230",
+      "name": "通用航空ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159231",
+      "name": "通用航空ETF华宝",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1601,6 +2206,61 @@
       ]
     },
     {
+      "symbol": "159241",
+      "name": "航空航天ETF天弘",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159242",
+      "name": "创业板人工智能ETF大成",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159243",
+      "name": "创业板人工智能ETF招商",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159245",
+      "name": "港股通消费ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:987024",
+      "new_exact": "OFFICIAL_INDEX_CODE:987024",
+      "old_index_name": "国证港股通消费主题指数",
+      "new_index_name": "国证港股通消费主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159246",
+      "name": "创业板人工智能ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159248",
       "name": "人工智能ETF万家",
       "old_exact": "SZSE_FITTED_CODE:930713",
@@ -1625,12 +2285,45 @@
       ]
     },
     {
+      "symbol": "159251",
+      "name": "港股通科技ETF万家",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159253",
       "name": "银行ETF博时",
       "old_exact": "SZSE_FITTED_CODE:399986",
       "new_exact": "CSI:399986",
       "old_index_name": "中证银行指数",
       "new_index_name": "中证银行指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159255",
+      "name": "通用航空ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159257",
+      "name": "航空ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1647,6 +2340,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159259",
+      "name": "成长ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:980080",
+      "new_exact": "OFFICIAL_INDEX_CODE:980080",
+      "old_index_name": "国证成长100指数",
+      "new_index_name": "国证成长100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159260",
       "name": "证券ETF博时",
       "old_exact": "SZSE_FITTED_CODE:399975",
@@ -1658,12 +2362,56 @@
       "new_reasons": []
     },
     {
+      "symbol": "159263",
+      "name": "价值ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:980081",
+      "new_exact": "OFFICIAL_INDEX_CODE:980081",
+      "old_index_name": "国证价值100指数",
+      "new_index_name": "国证价值100指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159265",
+      "name": "港股消费ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:987024",
+      "new_exact": "OFFICIAL_INDEX_CODE:987024",
+      "old_index_name": "国证港股通消费主题指数",
+      "new_index_name": "国证港股通消费主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159266",
       "name": "港股央企红利ETF永赢",
       "old_exact": "SZSE_FITTED_CODE:931233",
       "new_exact": "CSI:931233",
       "old_index_name": "中证港股通央企红利指数",
       "new_index_name": "中证港股通央企红利指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159267",
+      "name": "航天ETF华安",
+      "old_exact": "SZSE_FITTED_CODE:CN5082",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5082",
+      "old_index_name": "国证航天航空行业指数",
+      "new_index_name": "国证航天航空行业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159268",
+      "name": "港股通消费ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:987024",
+      "new_exact": "OFFICIAL_INDEX_CODE:987024",
+      "old_index_name": "国证港股通消费主题指数",
+      "new_index_name": "国证港股通消费主题指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1686,6 +2434,17 @@
       "new_exact": "OFFICIAL_INDEX_CODE:399019",
       "old_index_name": "创业板200指数",
       "new_index_name": "创业板200指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159272",
+      "name": "机器人ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1726,6 +2485,39 @@
       ]
     },
     {
+      "symbol": "159278",
+      "name": "机器人ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159279",
+      "name": "创业板人工智能ETF华安",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159280",
+      "name": "港股通互联网ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:987022",
+      "new_exact": "OFFICIAL_INDEX_CODE:987022",
+      "old_index_name": "国证港股通互联网指数",
+      "new_index_name": "国证港股通互联网指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159281",
       "name": "港股央企红利ETF天弘",
       "old_exact": "SZSE_FITTED_CODE:931233",
@@ -1748,12 +2540,45 @@
       "new_reasons": []
     },
     {
+      "symbol": "159285",
+      "name": "港股通消费ETF华安",
+      "old_exact": "SZSE_FITTED_CODE:987024",
+      "new_exact": "OFFICIAL_INDEX_CODE:987024",
+      "old_index_name": "国证港股通消费主题指数",
+      "new_index_name": "国证港股通消费主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159286",
+      "name": "港股通创新药ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:987018",
+      "new_exact": "OFFICIAL_INDEX_CODE:987018",
+      "old_index_name": "国证港股通创新药指数",
+      "new_index_name": "国证港股通创新药指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159296",
       "name": "A500红利低波ETF华宝",
       "old_exact": "SZSE_FITTED_CODE:932422",
       "new_exact": "CSI:932422",
       "old_index_name": "中证A500红利低波动指数",
       "new_index_name": "中证A500红利低波动指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159297",
+      "name": "港股通创新药ETF南方",
+      "old_exact": "SZSE_FITTED_CODE:987018",
+      "new_exact": "OFFICIAL_INDEX_CODE:987018",
+      "old_index_name": "国证港股通创新药指数",
+      "new_index_name": "国证港股通创新药指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -1787,6 +2612,17 @@
       "new_exact": "CSI:000995",
       "old_index_name": "中证全指公用事业指数",
       "new_index_name": "中证全指公用事业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159305",
+      "name": "储能电池ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -2146,6 +2982,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159363",
+      "name": "创业板人工智能ETF华宝",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159366",
       "name": "港股医疗ETF永赢",
       "old_exact": "SZSE_FITTED_CODE:932069",
@@ -2245,6 +3092,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159378",
+      "name": "通用航空ETF永赢",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159379",
       "name": "A500ETF融通",
       "old_exact": "SZSE_FITTED_CODE:000510",
@@ -2262,6 +3120,28 @@
       "new_exact": "CSI:000510",
       "old_index_name": "中证A500指数",
       "new_index_name": "中证A500指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159381",
+      "name": "创业板人工智能ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159382",
+      "name": "创业板人工智能ETF南方",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -2300,6 +3180,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159388",
+      "name": "创业板人工智能ETF国泰",
+      "old_exact": "SZSE_FITTED_CODE:970070",
+      "new_exact": "OFFICIAL_INDEX_CODE:970070",
+      "old_index_name": "创业板人工智能指数",
+      "new_index_name": "创业板人工智能指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159389",
       "name": "数字经济ETF嘉实",
       "old_exact": "SZSE_FITTED_CODE:931529",
@@ -2317,6 +3208,17 @@
       "new_exact": "CSI:930050",
       "old_index_name": "中证A50指数",
       "new_index_name": "中证A50指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159392",
+      "name": "航空ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:980076",
+      "new_exact": "OFFICIAL_INDEX_CODE:980076",
+      "old_index_name": "国证通用航空产业指数",
+      "new_index_name": "国证通用航空产业指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -2467,6 +3369,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159530",
+      "name": "机器人ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159531",
       "name": "中证2000ETF南方",
       "old_exact": "SZSE_FITTED_CODE:932000",
@@ -2517,6 +3430,50 @@
       "new_exact": "CSI:932000",
       "old_index_name": "中证2000指数",
       "new_index_name": "中证2000指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159537",
+      "name": "信创ETF国泰",
+      "old_exact": "SZSE_FITTED_CODE:CN5075",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5075",
+      "old_index_name": "国证信息技术创新主题指数",
+      "new_index_name": "国证信息技术创新主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159538",
+      "name": "信创ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:CN5075",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5075",
+      "old_index_name": "国证信息技术创新主题指数",
+      "new_index_name": "国证信息技术创新主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159539",
+      "name": "信创ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:CN5075",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5075",
+      "old_index_name": "国证信息技术创新主题指数",
+      "new_index_name": "国证信息技术创新主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159540",
+      "name": "信创ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:CN5075",
+      "new_exact": "OFFICIAL_INDEX_CODE:CN5075",
+      "old_index_name": "国证信息技术创新主题指数",
+      "new_index_name": "国证信息技术创新主题指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -2651,6 +3608,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159559",
+      "name": "机器人ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:980022",
+      "new_exact": "OFFICIAL_INDEX_CODE:980022",
+      "old_index_name": "国证机器人产业指数",
+      "new_index_name": "国证机器人产业指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159560",
       "name": "芯片ETF景顺",
       "old_exact": "SZSE_FITTED_CODE:H30007",
@@ -2684,12 +3652,56 @@
       "new_reasons": []
     },
     {
+      "symbol": "159566",
+      "name": "储能电池ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:980027",
+      "new_exact": "OFFICIAL_INDEX_CODE:980027",
+      "old_index_name": "国证储能电池指数",
+      "new_index_name": "国证储能电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159567",
+      "name": "港股创新药ETF银华",
+      "old_exact": "SZSE_FITTED_CODE:987018",
+      "new_exact": "OFFICIAL_INDEX_CODE:987018",
+      "old_index_name": "国证港股通创新药指数",
+      "new_index_name": "国证港股通创新药指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159568",
       "name": "港股互联网ETF博时",
       "old_exact": "SZSE_FITTED_CODE:931637",
       "new_exact": "CSI:931637",
       "old_index_name": "中证港股通互联网指数",
       "new_index_name": "中证港股通互联网指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159569",
+      "name": "港股红利低波ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:987016",
+      "new_exact": "OFFICIAL_INDEX_CODE:987016",
+      "old_index_name": "国证港股通红利低波动率指数",
+      "new_index_name": "国证港股通红利低波动率指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159570",
+      "name": "港股通创新药ETF汇添富",
+      "old_exact": "SZSE_FITTED_CODE:987018",
+      "new_exact": "OFFICIAL_INDEX_CODE:987018",
+      "old_index_name": "国证港股通创新药指数",
+      "new_index_name": "国证港股通创新药指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -3135,6 +4147,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159636",
+      "name": "港股通科技30ETF工银",
+      "old_exact": "SZSE_FITTED_CODE:987008",
+      "new_exact": "OFFICIAL_INDEX_CODE:987008",
+      "old_index_name": "国证港股通科技指数",
+      "new_index_name": "国证港股通科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159637",
       "name": "新能源车ETF东财",
       "old_exact": "SZSE_FITTED_CODE:399976",
@@ -3201,6 +4224,28 @@
       "new_reasons": []
     },
     {
+      "symbol": "159643",
+      "name": "疫苗ETF国泰",
+      "old_exact": "SZSE_FITTED_CODE:980015",
+      "new_exact": "OFFICIAL_INDEX_CODE:980015",
+      "old_index_name": "国证疫苗与生物科技指数",
+      "new_index_name": "国证疫苗与生物科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159645",
+      "name": "疫苗ETF富国",
+      "old_exact": "SZSE_FITTED_CODE:980015",
+      "new_exact": "OFFICIAL_INDEX_CODE:980015",
+      "old_index_name": "国证疫苗与生物科技指数",
+      "new_index_name": "国证疫苗与生物科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159647",
       "name": "中药ETF鹏华",
       "old_exact": "SZSE_FITTED_CODE:930641",
@@ -3234,6 +4279,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159657",
+      "name": "疫苗ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:980015",
+      "new_exact": "OFFICIAL_INDEX_CODE:980015",
+      "old_index_name": "国证疫苗与生物科技指数",
+      "new_index_name": "国证疫苗与生物科技指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159658",
       "name": "数字经济ETF华安",
       "old_exact": "SZSE_FITTED_CODE:931582",
@@ -3262,6 +4318,17 @@
       "new_exact": "CSI:931866",
       "old_index_name": "中证机床指数",
       "new_index_name": "中证机床指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159665",
+      "name": "半导体龙头ETF工银",
+      "old_exact": "SZSE_FITTED_CODE:980017",
+      "new_exact": "OFFICIAL_INDEX_CODE:980017",
+      "old_index_name": "国证半导体芯片指数",
+      "new_index_name": "国证半导体芯片指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -3642,6 +4709,17 @@
       ]
     },
     {
+      "symbol": "159732",
+      "name": "消费电子ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:980030",
+      "new_exact": "OFFICIAL_INDEX_CODE:980030",
+      "old_index_name": "国证消费电子主题指数",
+      "new_index_name": "国证消费电子主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159736",
       "name": "食品饮料ETF天弘",
       "old_exact": "SZSE_FITTED_CODE:930653",
@@ -3754,12 +4832,45 @@
       "new_reasons": []
     },
     {
+      "symbol": "159755",
+      "name": "电池ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159757",
+      "name": "电池ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159758",
       "name": "红利质量ETF华夏",
       "old_exact": "SZSE_FITTED_CODE:931468",
       "new_exact": "CSI:931468",
       "old_index_name": "中证红利质量指数",
       "new_index_name": "中证红利质量指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159760",
+      "name": "医疗健康ETF泰康",
+      "old_exact": "SZSE_FITTED_CODE:980016",
+      "new_exact": "OFFICIAL_INDEX_CODE:980016",
+      "old_index_name": "国证公共卫生与医疗健康指数",
+      "new_index_name": "国证公共卫生与医疗健康指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -3798,6 +4909,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159767",
+      "name": "电池龙头ETF兴银",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159768",
       "name": "房地产ETF银华",
       "old_exact": "SZSE_FITTED_CODE:000948",
@@ -3815,6 +4937,17 @@
       "new_exact": "CSI:H30590",
       "old_index_name": "中证机器人指数",
       "new_index_name": "中证机器人指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159775",
+      "name": "电池ETF建信",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -4018,6 +5151,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159801",
+      "name": "芯片ETF广发",
+      "old_exact": "SZSE_FITTED_CODE:980017",
+      "new_exact": "OFFICIAL_INDEX_CODE:980017",
+      "old_index_name": "国证半导体芯片指数",
+      "new_index_name": "国证半导体芯片指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159804",
       "name": "创中盘88ETF国寿",
       "old_exact": "OFFICIAL_INDEX_CODE:399291",
@@ -4068,6 +5212,17 @@
       "new_exact": "CSI:931406",
       "old_index_name": "中证5G产业50指数",
       "new_index_name": "中证5G产业50指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159813",
+      "name": "半导体ETF鹏华",
+      "old_exact": "SZSE_FITTED_CODE:980017",
+      "new_exact": "OFFICIAL_INDEX_CODE:980017",
+      "old_index_name": "国证半导体芯片指数",
+      "new_index_name": "国证半导体芯片指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -4178,6 +5333,17 @@
       "new_exact": "CSI:931140",
       "old_index_name": "中证医药50指数",
       "new_index_name": "中证医药50指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159840",
+      "name": "锂电池ETF工银",
+      "old_exact": "SZSE_FITTED_CODE:980032",
+      "new_exact": "OFFICIAL_INDEX_CODE:980032",
+      "old_index_name": "国证新能源车电池指数",
+      "new_index_name": "国证新能源车电池指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -4867,6 +6033,20 @@
       "new_reasons": []
     },
     {
+      "symbol": "159976",
+      "name": "湾创ETF工银",
+      "old_exact": "SZSE_FITTED_CODE:980001",
+      "new_exact": "OFFICIAL_INDEX_CODE:980001",
+      "old_index_name": "粤港澳大湾区创新100指数",
+      "new_index_name": "粤港澳大湾区创新100指数",
+      "old_needs_review": true,
+      "new_needs_review": true,
+      "new_reasons": [
+        "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
+        "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED"
+      ]
+    },
+    {
       "symbol": "159981",
       "name": "能源化工ETF建信",
       "old_exact": "SZSE_FITTED_CODE:000201",
@@ -4917,6 +6097,17 @@
       "new_exact": "CSI:931079",
       "old_index_name": "中证5G通信主题指数",
       "new_index_name": "中证5G通信主题指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159995",
+      "name": "芯片ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:980017",
+      "new_exact": "OFFICIAL_INDEX_CODE:980017",
+      "old_index_name": "国证半导体芯片指数",
+      "new_index_name": "国证半导体芯片指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []

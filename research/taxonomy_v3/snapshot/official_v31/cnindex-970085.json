@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:37.065286+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "970085",
+      "indexename": "CNTFI",
+      "indexfullcname": "创业板金融科技指数",
+      "indexfullename": "SZSE ChiNext Fintech Index",
+      "indexname": "创业板金融科技",
+      "indexsource": "0",
+      "indextype": "103",
+      "jr": "2018-06-29",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "c58653159a993e1bff5262120f2afacdb6673df39747ebdbaca1ba838c83fb7d",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=970085"
+}

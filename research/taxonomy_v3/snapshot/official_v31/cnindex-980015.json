@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:37.075098+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980015",
+      "indexename": "Vaccine and Biotech",
+      "indexfullcname": "国证疫苗与生物科技指数",
+      "indexfullename": "CNI Vaccine and Biotechnology Index",
+      "indexname": "疫苗生科",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "70b7aa60ecf267c53658ad62eb380eea2ccdf6338cfa46ce02f6b7bacaabb47e",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980015"
+}

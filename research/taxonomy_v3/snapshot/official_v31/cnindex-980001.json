@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:37.038499+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980001",
+      "indexename": "GBA Innovation 100",
+      "indexfullcname": "粤港澳大湾区创新100指数",
+      "indexfullename": "The Greater Bay Area Innovation 100 Index",
+      "indexname": "湾创100",
+      "indexsource": "0",
+      "indextype": "200",
+      "jr": "2017-06-30",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "9c9ed60206160c165d475c0bf39cabb77beae218e9c4b4ec2fad0a0dee9f9fb9",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980001"
+}

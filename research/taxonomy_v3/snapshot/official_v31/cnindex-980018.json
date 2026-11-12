@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:38.277362+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980018",
+      "indexename": "CNICSCIX",
+      "indexfullcname": "国证商用卫星通信产业指数",
+      "indexfullename": "CNI Commercial Satellite Communication Industry Index",
+      "indexname": "卫星通信",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "9b76c5e640d8848c2e4e175b9b1916a35fef5d35d783bebcab57789c4bde3c1a",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980018"
+}

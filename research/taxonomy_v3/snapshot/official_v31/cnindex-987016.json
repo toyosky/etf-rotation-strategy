@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:50.774425+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "987016",
+      "indexename": "HKCDLVI",
+      "indexfullcname": "国证港股通红利低波动率指数",
+      "indexfullename": "CNI HK Connect Dividend Low Volatility Index",
+      "indexname": "港股通红利低波",
+      "indexsource": "0",
+      "indextype": "204",
+      "jr": "2014-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "6eabfc9f1ec8c6ca9b474e9fb9195d17e438c784e22c4508432ee6a0d2d2cc4d",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=987016"
+}

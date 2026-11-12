@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:49.929240+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980030",
+      "indexename": "Consumer Electronics",
+      "indexfullcname": "国证消费电子主题指数",
+      "indexfullename": "CNI Consumer Electronics Index",
+      "indexname": "消费电子",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "e845523020fb429e4f5417991fbf4423b0579fca7202f07acf9e25bbe4f4a3e4",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980030"
+}

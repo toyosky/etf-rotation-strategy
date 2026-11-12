@@ -1,69 +1,5 @@
 [
   {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158001.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF嘉实",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=5",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=1"
-    ],
-    "symbol": "158001"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158008.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=5",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=1"
-    ],
-    "symbol": "158008"
-  },
-  {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158009.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF南方",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=7",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=1"
-    ],
-    "symbol": "158009"
-  },
-  {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158013.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=5",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=1"
-    ],
-    "symbol": "158013"
-  },
-  {
     "auxiliary_index_name": "创业板综合指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158022.html",
     "confidence": "HIGH_OFFICIAL_INDEX_LINK",
@@ -79,38 +15,6 @@
       "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399102"
     ],
     "symbol": "158022"
-  },
-  {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158030.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=3",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=1"
-    ],
-    "symbol": "158030"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158031.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158031"
   },
   {
     "auxiliary_index_name": "标普港股通低波红利港币指数",
@@ -129,22 +33,6 @@
     "symbol": "158039"
   },
   {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158041.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158041"
-  },
-  {
     "auxiliary_index_name": "恒生科技指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158042.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -159,294 +47,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
     ],
     "symbol": "158042"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158043.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF南方",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=2",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158043"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158049.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158049"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158050.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158050"
-  },
-  {
-    "auxiliary_index_name": "创业板金融科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158052.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970085",
-    "name": "创业板金融科技ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=2",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158052"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158053.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF大成",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158053"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158055.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF国泰",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=2",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158055"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158056.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF嘉实",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=3",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158056"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158057.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=2"
-    ],
-    "symbol": "158057"
-  },
-  {
-    "auxiliary_index_name": "创业板金融科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158058.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970085",
-    "name": "创业板金融科技ETF华泰柏瑞",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=3",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158058"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158059.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=3",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158059"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158061.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF天弘",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=4",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158061"
-  },
-  {
-    "auxiliary_index_name": "创业板金融科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158062.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970085",
-    "name": "创业板金融科技ETF建信",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=2",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158062"
-  },
-  {
-    "auxiliary_index_name": "创业板算力基础设施指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158063.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970083",
-    "name": "创业板算力ETF南方",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=3",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158063"
-  },
-  {
-    "auxiliary_index_name": "创业板金融科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158067.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970085",
-    "name": "创业板金融科技ETF万家",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=2",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158067"
-  },
-  {
-    "auxiliary_index_name": "创业板电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158078.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970081",
-    "name": "创业板电池ETF华宝",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=1",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158078"
-  },
-  {
-    "auxiliary_index_name": "创业板电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158079.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970081",
-    "name": "创业板电池ETF华安",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=1",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158079"
-  },
-  {
-    "auxiliary_index_name": "创业板电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158081.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970081",
-    "name": "创业板电池ETF永赢",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=1",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158081"
-  },
-  {
-    "auxiliary_index_name": "创业板电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_158082.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970081",
-    "name": "创业板电池ETF银华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=1",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=3"
-    ],
-    "symbol": "158082"
   },
   {
     "auxiliary_index_name": null,
@@ -545,214 +145,6 @@
     "symbol": "159028"
   },
   {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159037.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=10",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159037"
-  },
-  {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159039.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF华安",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=9",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159039"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159042.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=11",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159042"
-  },
-  {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159048.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF大成",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=11",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159048"
-  },
-  {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159050.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=11",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159050"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159052.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF嘉实",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=10",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5"
-    ],
-    "symbol": "159052"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159071.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF华宝",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=10",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=6"
-    ],
-    "symbol": "159071"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159079.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF兴全",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=7",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159079"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159085.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF永赢",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=8",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159085"
-  },
-  {
-    "auxiliary_index_name": "国证港股通互联网指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159089.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987022",
-    "name": "港股通互联网ETF国联",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=1",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159089"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159096.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=5",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159096"
-  },
-  {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159098.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF招商",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=7",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159098"
-  },
-  {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159101.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股通科技ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=24",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159101"
-  },
-  {
     "auxiliary_index_name": "恒生生物科技指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159102.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -783,22 +175,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
     ],
     "symbol": "159105"
-  },
-  {
-    "auxiliary_index_name": "国证工业软件主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159108.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980034",
-    "name": "工业软件ETF博时",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=20",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=8"
-    ],
-    "symbol": "159108"
   },
   {
     "auxiliary_index_name": "恒生港股通50指数",
@@ -897,22 +273,6 @@
     "symbol": "159121"
   },
   {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159125.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股通科技ETF招商",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=21",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=8"
-    ],
-    "symbol": "159125"
-  },
-  {
     "auxiliary_index_name": "中证港股通高股息投资港元指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159127.html",
     "confidence": "HIGH_OFFICIAL_INDEX_LINK",
@@ -928,22 +288,6 @@
       "https://www.csindex.com.cn/csindex-home/exportExcel/indexAll/CH"
     ],
     "symbol": "159127"
-  },
-  {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159128.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股科技ETF天弘",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=21",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=9"
-    ],
-    "symbol": "159128"
   },
   {
     "auxiliary_index_name": "恒生生物科技指数",
@@ -1010,22 +354,6 @@
     "symbol": "159143"
   },
   {
-    "auxiliary_index_name": "国证工业软件主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159145.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980034",
-    "name": "工业软件ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=19",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=9"
-    ],
-    "symbol": "159145"
-  },
-  {
     "auxiliary_index_name": "恒生港股通科技主题指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159152.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -1040,38 +368,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=10"
     ],
     "symbol": "159152"
-  },
-  {
-    "auxiliary_index_name": "国证消费电子主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159153.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980030",
-    "name": "消费电子ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=18",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=10"
-    ],
-    "symbol": "159153"
-  },
-  {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159156.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "电池ETF万家",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=17",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=10"
-    ],
-    "symbol": "159156"
   },
   {
     "auxiliary_index_name": "国证自由现金流指数",
@@ -1106,54 +402,6 @@
     "symbol": "159169"
   },
   {
-    "auxiliary_index_name": "国证港股通互联网指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159170.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987022",
-    "name": "港股通互联网ETF永赢",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=16",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=10"
-    ],
-    "symbol": "159170"
-  },
-  {
-    "auxiliary_index_name": "国证消费电子主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159178.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980030",
-    "name": "消费电子ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=13",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=11"
-    ],
-    "symbol": "159178"
-  },
-  {
-    "auxiliary_index_name": "国证工业软件主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159180.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980034",
-    "name": "软件ETF银华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=15",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=11"
-    ],
-    "symbol": "159180"
-  },
-  {
     "auxiliary_index_name": "恒生港股通汽车主题指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159186.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -1184,38 +432,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=11"
     ],
     "symbol": "159188"
-  },
-  {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159191.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股通科技ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=16",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=11"
-    ],
-    "symbol": "159191"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159193.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF银华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=13",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=11"
-    ],
-    "symbol": "159193"
   },
   {
     "auxiliary_index_name": "国证自由现金流指数",
@@ -1250,22 +466,6 @@
     "symbol": "159202"
   },
   {
-    "auxiliary_index_name": "国证商用卫星通信产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159206.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980018",
-    "name": "卫星ETF永赢",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=33",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=12"
-    ],
-    "symbol": "159206"
-  },
-  {
     "auxiliary_index_name": "中证智选高股息策略指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159207.html",
     "confidence": "HIGH_OFFICIAL_INDEX_LINK",
@@ -1281,38 +481,6 @@
       "https://www.csindex.com.cn/csindex-home/exportExcel/indexAll/CH"
     ],
     "symbol": "159207"
-  },
-  {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159208.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF万家",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=31",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=12"
-    ],
-    "symbol": "159208"
-  },
-  {
-    "auxiliary_index_name": "国证港股通创新药指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159217.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987018",
-    "name": "港股通创新药ETF工银",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=33",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=13"
-    ],
-    "symbol": "159217"
   },
   {
     "auxiliary_index_name": "标普港股通低波红利指数",
@@ -1412,54 +580,6 @@
     "symbol": "159226"
   },
   {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159227.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=30",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=13"
-    ],
-    "symbol": "159227"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159230.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "通用航空ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=30",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=13"
-    ],
-    "symbol": "159230"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159231.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "通用航空ETF华宝",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=31",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=13"
-    ],
-    "symbol": "159231"
-  },
-  {
     "auxiliary_index_name": "沪深300指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159238.html",
     "confidence": "HIGH_OFFICIAL_INDEX_LINK",
@@ -1510,86 +630,6 @@
     "symbol": "159240"
   },
   {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159241.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航空航天ETF天弘",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=30",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159241"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159242.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF大成",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=26",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159242"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159243.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF招商",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=19",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159243"
-  },
-  {
-    "auxiliary_index_name": "国证港股通消费主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159245.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987024",
-    "name": "港股通消费ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=29",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159245"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159246.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=27",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159246"
-  },
-  {
     "auxiliary_index_name": "中证A500指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159249.html",
     "confidence": "HIGH_OFFICIAL_INDEX_LINK",
@@ -1605,70 +645,6 @@
       "https://www.csindex.com.cn/csindex-home/exportExcel/indexAll/CH"
     ],
     "symbol": "159249"
-  },
-  {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159251.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股通科技ETF万家",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=27",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159251"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159255.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "通用航空ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=26",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159255"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159257.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "航空ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=26",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159257"
-  },
-  {
-    "auxiliary_index_name": "国证成长100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159259.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980080",
-    "name": "成长ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=25",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=14"
-    ],
-    "symbol": "159259"
   },
   {
     "auxiliary_index_name": "恒生港股通科技主题指数",
@@ -1687,70 +663,6 @@
     "symbol": "159262"
   },
   {
-    "auxiliary_index_name": "国证价值100指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159263.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980081",
-    "name": "价值ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=28",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159263"
-  },
-  {
-    "auxiliary_index_name": "国证港股通消费主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159265.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987024",
-    "name": "港股消费ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=28",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159265"
-  },
-  {
-    "auxiliary_index_name": "国证航天航空行业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159267.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5082",
-    "name": "航天ETF华安",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=26",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159267"
-  },
-  {
-    "auxiliary_index_name": "国证港股通消费主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159268.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987024",
-    "name": "港股通消费ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=27",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159268"
-  },
-  {
     "auxiliary_index_name": "恒生指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159271.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -1765,22 +677,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
     ],
     "symbol": "159271"
-  },
-  {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159272.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=23",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159272"
   },
   {
     "auxiliary_index_name": "国证自由现金流指数",
@@ -1814,86 +710,6 @@
       "https://www.csindex.com.cn/csindex-home/exportExcel/indexAll/CH"
     ],
     "symbol": "159277"
-  },
-  {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159278.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=25",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159278"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159279.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF华安",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=22",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159279"
-  },
-  {
-    "auxiliary_index_name": "国证港股通互联网指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159280.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987022",
-    "name": "港股通互联网ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=25",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159280"
-  },
-  {
-    "auxiliary_index_name": "国证港股通消费主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159285.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987024",
-    "name": "港股通消费ETF华安",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=22",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159285"
-  },
-  {
-    "auxiliary_index_name": "国证港股通创新药指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159286.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987018",
-    "name": "港股通创新药ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=24",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=15"
-    ],
-    "symbol": "159286"
   },
   {
     "auxiliary_index_name": "创业板综合指数",
@@ -1964,22 +780,6 @@
     "symbol": "159293"
   },
   {
-    "auxiliary_index_name": "国证港股通创新药指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159297.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987018",
-    "name": "港股通创新药ETF南方",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=23",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=16"
-    ],
-    "symbol": "159297"
-  },
-  {
     "auxiliary_index_name": "中证港股通高股息投资港元指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159302.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2011,22 +811,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=16"
     ],
     "symbol": "159303"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159305.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=37",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=16"
-    ],
-    "symbol": "159305"
   },
   {
     "auxiliary_index_name": "恒指港股通指数",
@@ -2127,22 +911,6 @@
     "symbol": "159331"
   },
   {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159363.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF华宝",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=36",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=18"
-    ],
-    "symbol": "159363"
-  },
-  {
     "auxiliary_index_name": "恒指港股通指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159365.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2157,86 +925,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=18"
     ],
     "symbol": "159365"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159378.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "通用航空ETF永赢",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=35",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=19"
-    ],
-    "symbol": "159378"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159381.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=33",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=19"
-    ],
-    "symbol": "159381"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159382.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF南方",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=31",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=19"
-    ],
-    "symbol": "159382"
-  },
-  {
-    "auxiliary_index_name": "创业板人工智能指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159388.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:970070",
-    "name": "创业板人工智能ETF国泰",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=33",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=19"
-    ],
-    "symbol": "159388"
-  },
-  {
-    "auxiliary_index_name": "国证通用航空产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159392.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980076",
-    "name": "航空ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=31",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=20"
-    ],
-    "symbol": "159392"
   },
   {
     "auxiliary_index_name": "深证基准做市信用债指数",
@@ -2464,86 +1152,6 @@
     "symbol": "159529"
   },
   {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159530.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=21"
-    ],
-    "symbol": "159530"
-  },
-  {
-    "auxiliary_index_name": "国证信息技术创新主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159537.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5075",
-    "name": "信创ETF国泰",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=46",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=22"
-    ],
-    "symbol": "159537"
-  },
-  {
-    "auxiliary_index_name": "国证信息技术创新主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159538.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5075",
-    "name": "信创ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=46",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=22"
-    ],
-    "symbol": "159538"
-  },
-  {
-    "auxiliary_index_name": "国证信息技术创新主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159539.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5075",
-    "name": "信创ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=46",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=22"
-    ],
-    "symbol": "159539"
-  },
-  {
-    "auxiliary_index_name": "国证信息技术创新主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159540.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:CN5075",
-    "name": "信创ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=46",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=22"
-    ],
-    "symbol": "159540"
-  },
-  {
     "auxiliary_index_name": "恒生港股通红利低波动指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159545.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2644,22 +1252,6 @@
     "symbol": "159557"
   },
   {
-    "auxiliary_index_name": "国证机器人产业指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159559.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980022",
-    "name": "机器人ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=44",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
-    ],
-    "symbol": "159559"
-  },
-  {
     "auxiliary_index_name": "法兰克福DAX指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159561.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2674,70 +1266,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
     ],
     "symbol": "159561"
-  },
-  {
-    "auxiliary_index_name": "国证储能电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159566.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980027",
-    "name": "储能电池ETF易方达",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
-    ],
-    "symbol": "159566"
-  },
-  {
-    "auxiliary_index_name": "国证港股通创新药指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159567.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987018",
-    "name": "港股创新药ETF银华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
-    ],
-    "symbol": "159567"
-  },
-  {
-    "auxiliary_index_name": "国证港股通红利低波动率指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159569.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987016",
-    "name": "港股红利低波ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=38",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
-    ],
-    "symbol": "159569"
-  },
-  {
-    "auxiliary_index_name": "国证港股通创新药指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159570.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987018",
-    "name": "港股通创新药ETF汇添富",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=23"
-    ],
-    "symbol": "159570"
   },
   {
     "auxiliary_index_name": "MSCI USA 50 Index",
@@ -2870,54 +1398,6 @@
     "symbol": "159632"
   },
   {
-    "auxiliary_index_name": "国证港股通科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159636.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:987008",
-    "name": "港股通科技30ETF工银",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=54",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=26"
-    ],
-    "symbol": "159636"
-  },
-  {
-    "auxiliary_index_name": "国证疫苗与生物科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159643.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980015",
-    "name": "疫苗ETF国泰",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=53",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=26"
-    ],
-    "symbol": "159643"
-  },
-  {
-    "auxiliary_index_name": "国证疫苗与生物科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159645.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980015",
-    "name": "疫苗ETF富国",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=52",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=26"
-    ],
-    "symbol": "159645"
-  },
-  {
     "auxiliary_index_name": "中债-1-5年国开行债券全价(总值)指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159649.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2982,22 +1462,6 @@
     "symbol": "159655"
   },
   {
-    "auxiliary_index_name": "国证疫苗与生物科技指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159657.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980015",
-    "name": "疫苗ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=50",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=27"
-    ],
-    "symbol": "159657"
-  },
-  {
     "auxiliary_index_name": "纳斯达克100指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159659.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -3028,22 +1492,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=27"
     ],
     "symbol": "159660"
-  },
-  {
-    "auxiliary_index_name": "国证半导体芯片指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159665.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980017",
-    "name": "半导体龙头ETF工银",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=51",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=27"
-    ],
-    "symbol": "159665"
   },
   {
     "auxiliary_index_name": "创业板指数(价格)",
@@ -3328,22 +1776,6 @@
     "symbol": "159731"
   },
   {
-    "auxiliary_index_name": "国证消费电子主题指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159732.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980030",
-    "name": "消费电子ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=61",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=30"
-    ],
-    "symbol": "159732"
-  },
-  {
     "auxiliary_index_name": "中证港股通消费主题港元指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159735.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -3425,86 +1857,6 @@
     "symbol": "159743"
   },
   {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159755.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "电池ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=64",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=30"
-    ],
-    "symbol": "159755"
-  },
-  {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159757.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "电池ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=62",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=30"
-    ],
-    "symbol": "159757"
-  },
-  {
-    "auxiliary_index_name": "国证公共卫生与医疗健康指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159760.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980016",
-    "name": "医疗健康ETF泰康",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=58",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=30"
-    ],
-    "symbol": "159760"
-  },
-  {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159767.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "电池龙头ETF兴银",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=61",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=31"
-    ],
-    "symbol": "159767"
-  },
-  {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159775.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "电池ETF建信",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=57",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=31"
-    ],
-    "symbol": "159775"
-  },
-  {
     "auxiliary_index_name": "中证港股通医药卫生综合港元指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159776.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -3519,22 +1871,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=31"
     ],
     "symbol": "159776"
-  },
-  {
-    "auxiliary_index_name": "国证半导体芯片指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159801.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980017",
-    "name": "芯片ETF广发",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=71",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=32"
-    ],
-    "symbol": "159801"
   },
   {
     "auxiliary_index_name": "黄金9999",
@@ -3552,22 +1888,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=32"
     ],
     "symbol": "159812"
-  },
-  {
-    "auxiliary_index_name": "国证半导体芯片指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159813.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980017",
-    "name": "半导体ETF鹏华",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=70",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=32"
-    ],
-    "symbol": "159813"
   },
   {
     "auxiliary_index_name": "标普中国新经济行业指数",
@@ -3637,22 +1957,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=33"
     ],
     "symbol": "159834"
-  },
-  {
-    "auxiliary_index_name": "国证新能源车电池指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159840.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980032",
-    "name": "锂电池ETF工银",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=61",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=33"
-    ],
-    "symbol": "159840"
   },
   {
     "auxiliary_index_name": "恒生中国企业指数",
@@ -3868,18 +2172,18 @@
   {
     "auxiliary_index_name": "粤港澳大湾区创新100指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159976.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980001",
+    "confidence": "HIGH_OFFICIAL_INDEX_LINK",
+    "exact_index_key": "OFFICIAL_INDEX_CODE:980001",
     "name": "湾创ETF工银",
     "observed_on": "2026-11-12",
     "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
       "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
       "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED"
     ],
     "source_url": [
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=71",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=38"
+      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=38",
+      "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980001"
     ],
     "symbol": "159976"
   },
@@ -3916,22 +2220,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=39"
     ],
     "symbol": "159985"
-  },
-  {
-    "auxiliary_index_name": "国证半导体芯片指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159995.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:980017",
-    "name": "芯片ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=71",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=39"
-    ],
-    "symbol": "159995"
   },
   {
     "auxiliary_index_name": null,

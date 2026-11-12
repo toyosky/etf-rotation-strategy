@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:42.912291+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980034",
+      "indexename": "CNIISI",
+      "indexfullcname": "国证工业软件主题指数",
+      "indexfullename": "CNI Industrial Software Index",
+      "indexname": "工业软件",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2012-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "3e086ea3840ea812b5e71d13ad00b22703a43aaecefdbaae5218ce1e1c71006a",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980034"
+}

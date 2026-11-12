@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:41:00.565164+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "987008",
+      "indexename": "HKCTECH",
+      "indexfullcname": "国证港股通科技指数",
+      "indexfullename": "CNI HK Connect Technology Index",
+      "indexname": "港股通科技",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2014-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "efbfc7cf0675eb98c11199b0a552f595410bcef43ec7aac32a9e7d52c193d32c",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=987008"
+}

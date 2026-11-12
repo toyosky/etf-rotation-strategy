@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:35.089976+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "970070",
+      "indexename": "CNTAI50",
+      "indexfullcname": "创业板人工智能指数",
+      "indexfullename": "SZSE ChiNext Artificial Intelligence Index",
+      "indexname": "创业板人工智能",
+      "indexsource": "0",
+      "indextype": "103",
+      "jr": "2018-12-28",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "42fd38cf82228cace211100c75c3ab37781263a5f7ba013930060d9ce7496622",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=970070"
+}

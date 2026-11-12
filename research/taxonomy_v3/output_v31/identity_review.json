@@ -1,165 +1,15 @@
 [
   {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158001"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158008"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158009"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158013"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158030"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158031"
-  },
-  {
     "candidate_name": "标普港股通低波红利港币指数",
     "official_code": "SPAHLVHP",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "158039"
   },
   {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158041"
-  },
-  {
     "candidate_name": "恒生科技指数",
     "official_code": "HSTECH",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "158042"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158043"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158049"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158050"
-  },
-  {
-    "candidate_name": "创业板金融科技指数",
-    "official_code": "970085",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158052"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158053"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158055"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158056"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158057"
-  },
-  {
-    "candidate_name": "创业板金融科技指数",
-    "official_code": "970085",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158058"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158059"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158061"
-  },
-  {
-    "candidate_name": "创业板金融科技指数",
-    "official_code": "970085",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158062"
-  },
-  {
-    "candidate_name": "创业板算力基础设施指数",
-    "official_code": "970083",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158063"
-  },
-  {
-    "candidate_name": "创业板金融科技指数",
-    "official_code": "970085",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158067"
-  },
-  {
-    "candidate_name": "创业板电池指数",
-    "official_code": "970081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158078"
-  },
-  {
-    "candidate_name": "创业板电池指数",
-    "official_code": "970081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158079"
-  },
-  {
-    "candidate_name": "创业板电池指数",
-    "official_code": "970081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158081"
-  },
-  {
-    "candidate_name": "创业板电池指数",
-    "official_code": "970081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "158082"
   },
   {
     "candidate_name": "恒生港股通科技主题指数",
@@ -180,84 +30,6 @@
     "symbol": "159028"
   },
   {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159037"
-  },
-  {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159039"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159042"
-  },
-  {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159048"
-  },
-  {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159050"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159052"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159071"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159079"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159085"
-  },
-  {
-    "candidate_name": "国证港股通互联网指数",
-    "official_code": "987022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159089"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159096"
-  },
-  {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159098"
-  },
-  {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159101"
-  },
-  {
     "candidate_name": "恒生生物科技指数",
     "official_code": "HSBIO",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -268,12 +40,6 @@
     "official_code": "HSBIO",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159105"
-  },
-  {
-    "candidate_name": "国证工业软件主题指数",
-    "official_code": "980034",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159108"
   },
   {
     "candidate_name": "恒生港股通50指数",
@@ -312,18 +78,6 @@
     "symbol": "159121"
   },
   {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159125"
-  },
-  {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159128"
-  },
-  {
     "candidate_name": "恒生生物科技指数",
     "official_code": "HSBIO",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -348,28 +102,10 @@
     "symbol": "159143"
   },
   {
-    "candidate_name": "国证工业软件主题指数",
-    "official_code": "980034",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159145"
-  },
-  {
     "candidate_name": "恒生港股通科技主题指数",
     "official_code": "HSSCITI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159152"
-  },
-  {
-    "candidate_name": "国证消费电子主题指数",
-    "official_code": "980030",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159153"
-  },
-  {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159156"
   },
   {
     "candidate_name": "国证自由现金流指数",
@@ -384,24 +120,6 @@
     "symbol": "159169"
   },
   {
-    "candidate_name": "国证港股通互联网指数",
-    "official_code": "987022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159170"
-  },
-  {
-    "candidate_name": "国证消费电子主题指数",
-    "official_code": "980030",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159178"
-  },
-  {
-    "candidate_name": "国证工业软件主题指数",
-    "official_code": "980034",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159180"
-  },
-  {
     "candidate_name": "恒生港股通汽车主题指数",
     "official_code": "HSSCAM",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -414,18 +132,6 @@
     "symbol": "159188"
   },
   {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159191"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159193"
-  },
-  {
     "candidate_name": "国证自由现金流指数",
     "official_code": "980092",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -436,24 +142,6 @@
     "official_code": "HSIII",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159202"
-  },
-  {
-    "candidate_name": "国证商用卫星通信产业指数",
-    "official_code": "980018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159206"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159208"
-  },
-  {
-    "candidate_name": "国证港股通创新药指数",
-    "official_code": "987018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159217"
   },
   {
     "candidate_name": "标普港股通低波红利指数",
@@ -486,82 +174,10 @@
     "symbol": "159225"
   },
   {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159227"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159230"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159231"
-  },
-  {
     "candidate_name": "恒生港股通汽车主题指数",
     "official_code": "HSSCAM",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159239"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159241"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159242"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159243"
-  },
-  {
-    "candidate_name": "国证港股通消费主题指数",
-    "official_code": "987024",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159245"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159246"
-  },
-  {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159251"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159255"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159257"
-  },
-  {
-    "candidate_name": "国证成长100指数",
-    "official_code": "980080",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159259"
   },
   {
     "candidate_name": "恒生港股通科技主题指数",
@@ -570,82 +186,16 @@
     "symbol": "159262"
   },
   {
-    "candidate_name": "国证价值100指数",
-    "official_code": "980081",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159263"
-  },
-  {
-    "candidate_name": "国证港股通消费主题指数",
-    "official_code": "987024",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159265"
-  },
-  {
-    "candidate_name": "国证航天航空行业指数",
-    "official_code": "CN5082",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159267"
-  },
-  {
-    "candidate_name": "国证港股通消费主题指数",
-    "official_code": "987024",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159268"
-  },
-  {
     "candidate_name": "恒生指数",
     "official_code": "HSI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159271"
   },
   {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159272"
-  },
-  {
     "candidate_name": "国证自由现金流指数",
     "official_code": "980092",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159276"
-  },
-  {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159278"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159279"
-  },
-  {
-    "candidate_name": "国证港股通互联网指数",
-    "official_code": "987022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159280"
-  },
-  {
-    "candidate_name": "国证港股通消费主题指数",
-    "official_code": "987024",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159285"
-  },
-  {
-    "candidate_name": "国证港股通创新药指数",
-    "official_code": "987018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159286"
-  },
-  {
-    "candidate_name": "国证港股通创新药指数",
-    "official_code": "987018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159297"
   },
   {
     "candidate_name": "中证港股通高股息投资港元指数",
@@ -658,12 +208,6 @@
     "official_code": "HSHCI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159303"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159305"
   },
   {
     "candidate_name": "恒指港股通指数",
@@ -696,46 +240,10 @@
     "symbol": "159329"
   },
   {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159363"
-  },
-  {
     "candidate_name": "恒指港股通指数",
     "official_code": "HSISC",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159365"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159378"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159381"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159382"
-  },
-  {
-    "candidate_name": "创业板人工智能指数",
-    "official_code": "970070",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159388"
-  },
-  {
-    "candidate_name": "国证通用航空产业指数",
-    "official_code": "980076",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159392"
   },
   {
     "candidate_name": "深证基准做市信用债指数",
@@ -816,36 +324,6 @@
     "symbol": "159529"
   },
   {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159530"
-  },
-  {
-    "candidate_name": "国证信息技术创新主题指数",
-    "official_code": "CN5075",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159537"
-  },
-  {
-    "candidate_name": "国证信息技术创新主题指数",
-    "official_code": "CN5075",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159538"
-  },
-  {
-    "candidate_name": "国证信息技术创新主题指数",
-    "official_code": "CN5075",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159539"
-  },
-  {
-    "candidate_name": "国证信息技术创新主题指数",
-    "official_code": "CN5075",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159540"
-  },
-  {
     "candidate_name": "恒生港股通红利低波动指数",
     "official_code": "HSHYLV",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -858,40 +336,10 @@
     "symbol": "159557"
   },
   {
-    "candidate_name": "国证机器人产业指数",
-    "official_code": "980022",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159559"
-  },
-  {
     "candidate_name": "法兰克福DAX指数",
     "official_code": "DAX",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159561"
-  },
-  {
-    "candidate_name": "国证储能电池指数",
-    "official_code": "980027",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159566"
-  },
-  {
-    "candidate_name": "国证港股通创新药指数",
-    "official_code": "987018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159567"
-  },
-  {
-    "candidate_name": "国证港股通红利低波动率指数",
-    "official_code": "987016",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159569"
-  },
-  {
-    "candidate_name": "国证港股通创新药指数",
-    "official_code": "987018",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159570"
   },
   {
     "candidate_name": "MSCI USA 50 Index",
@@ -936,24 +384,6 @@
     "symbol": "159632"
   },
   {
-    "candidate_name": "国证港股通科技指数",
-    "official_code": "987008",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159636"
-  },
-  {
-    "candidate_name": "国证疫苗与生物科技指数",
-    "official_code": "980015",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159643"
-  },
-  {
-    "candidate_name": "国证疫苗与生物科技指数",
-    "official_code": "980015",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159645"
-  },
-  {
     "candidate_name": "中债-1-5年国开行债券全价(总值)指数",
     "official_code": "CBA08303",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -978,12 +408,6 @@
     "symbol": "159655"
   },
   {
-    "candidate_name": "国证疫苗与生物科技指数",
-    "official_code": "980015",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159657"
-  },
-  {
     "candidate_name": "纳斯达克100指数",
     "official_code": "NDX",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -994,12 +418,6 @@
     "official_code": "NDX",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159660"
-  },
-  {
-    "candidate_name": "国证半导体芯片指数",
-    "official_code": "980017",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159665"
   },
   {
     "candidate_name": "富时亚太低碳精选指数",
@@ -1050,12 +468,6 @@
     "symbol": "159730"
   },
   {
-    "candidate_name": "国证消费电子主题指数",
-    "official_code": "980030",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159732"
-  },
-  {
     "candidate_name": "中证港股通消费主题港元指数",
     "official_code": "931455",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -1080,58 +492,16 @@
     "symbol": "159742"
   },
   {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159755"
-  },
-  {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159757"
-  },
-  {
-    "candidate_name": "国证公共卫生与医疗健康指数",
-    "official_code": "980016",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159760"
-  },
-  {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159767"
-  },
-  {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159775"
-  },
-  {
     "candidate_name": "中证港股通医药卫生综合港元指数",
     "official_code": "930975",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159776"
   },
   {
-    "candidate_name": "国证半导体芯片指数",
-    "official_code": "980017",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159801"
-  },
-  {
     "candidate_name": "黄金9999",
     "official_code": "AU9999",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159812"
-  },
-  {
-    "candidate_name": "国证半导体芯片指数",
-    "official_code": "980017",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159813"
   },
   {
     "candidate_name": "标普中国新经济行业指数",
@@ -1156,12 +526,6 @@
     "official_code": "SHAU",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159834"
-  },
-  {
-    "candidate_name": "国证新能源车电池指数",
-    "official_code": "980032",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159840"
   },
   {
     "candidate_name": "恒生中国企业指数",
@@ -1236,12 +600,6 @@
     "symbol": "159960"
   },
   {
-    "candidate_name": "粤港澳大湾区创新100指数",
-    "official_code": "980001",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159976"
-  },
-  {
     "candidate_name": "上期有色金属指数",
     "official_code": "IMCI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -1252,12 +610,6 @@
     "official_code": "DCESMFI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159985"
-  },
-  {
-    "candidate_name": "国证半导体芯片指数",
-    "official_code": "980017",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159995"
   },
   {
     "candidate_name": "道琼斯美国精选REIT指数",

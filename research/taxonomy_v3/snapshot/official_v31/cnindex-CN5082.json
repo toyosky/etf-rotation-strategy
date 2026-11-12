@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:41:10.463016+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "CN5082",
+      "indexename": "CNI Aerospace",
+      "indexfullcname": "国证航天航空行业指数",
+      "indexfullename": "CNI Aerospace Index",
+      "indexname": "国证航天",
+      "indexsource": "0",
+      "indextype": "201",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "2d85c423bf6dd5934516aaf73388f28691b2d9c52c6ddfe3a189a8a48e86f5ee",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=CN5082"
+}

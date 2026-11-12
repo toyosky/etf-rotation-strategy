@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:52.046221+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "987018",
+      "indexename": "HKCIDI",
+      "indexfullcname": "国证港股通创新药指数",
+      "indexfullename": "CNI HK Connect Innovative Drug Index",
+      "indexname": "港股通创新药",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2018-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "a4aa0a1770858e5acf3dc7e776df5e2a82def63d50c39980b50d837dd053b64b",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=987018"
+}
