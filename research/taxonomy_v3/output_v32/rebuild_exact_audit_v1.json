@@ -160,116 +160,136 @@
   "age_cohorts": {
     "TRAIN": {
       "01-02": {
-        "events": 5632,
-        "signal_days": 715,
-        "forward10_observed": 5626,
-        "mean_candidates_per_signal_day": 7.88,
-        "event_net10_pct": -0.065,
-        "day_equal_net10_pct": -0.026,
-        "median_net10_pct": -0.12,
-        "win_pct": 44.05,
-        "mean_r2": 0.04
+        "events": 2588,
+        "signal_days": 551,
+        "forward10_observed": 2585,
+        "mean_candidates_per_signal_day": 4.7,
+        "event_net10_pct": -0.259,
+        "day_equal_net10_pct": 0.136,
+        "median_net10_pct": -0.376,
+        "win_pct": 43.37,
+        "mean_r2": 0.071,
+        "r2_ge_0_5_observations": 0,
+        "r2_ge_0_5_day_equal_net10_pct": null
       },
       "03-05": {
-        "events": 8026,
-        "signal_days": 748,
-        "forward10_observed": 8015,
-        "mean_candidates_per_signal_day": 10.73,
-        "event_net10_pct": -0.364,
-        "day_equal_net10_pct": 0.091,
-        "median_net10_pct": -0.74,
-        "win_pct": 41.43,
-        "mean_r2": 0.224
+        "events": 7733,
+        "signal_days": 743,
+        "forward10_observed": 7722,
+        "mean_candidates_per_signal_day": 10.41,
+        "event_net10_pct": -0.365,
+        "day_equal_net10_pct": 0.097,
+        "median_net10_pct": -0.788,
+        "win_pct": 41.38,
+        "mean_r2": 0.228,
+        "r2_ge_0_5_observations": 458,
+        "r2_ge_0_5_day_equal_net10_pct": -0.326
       },
       "06-10": {
-        "events": 12060,
-        "signal_days": 793,
-        "forward10_observed": 12044,
-        "mean_candidates_per_signal_day": 15.21,
-        "event_net10_pct": -0.373,
-        "day_equal_net10_pct": 0.124,
-        "median_net10_pct": -0.948,
-        "win_pct": 40.13,
-        "mean_r2": 0.462
+        "events": 11578,
+        "signal_days": 788,
+        "forward10_observed": 11562,
+        "mean_candidates_per_signal_day": 14.69,
+        "event_net10_pct": -0.4,
+        "day_equal_net10_pct": 0.155,
+        "median_net10_pct": -0.974,
+        "win_pct": 39.79,
+        "mean_r2": 0.464,
+        "r2_ge_0_5_observations": 5653,
+        "r2_ge_0_5_day_equal_net10_pct": -0.073
       },
       "11-20": {
-        "events": 18257,
-        "signal_days": 850,
-        "forward10_observed": 18241,
-        "mean_candidates_per_signal_day": 21.48,
-        "event_net10_pct": -0.039,
-        "day_equal_net10_pct": -0.227,
+        "events": 17127,
+        "signal_days": 840,
+        "forward10_observed": 17111,
+        "mean_candidates_per_signal_day": 20.39,
+        "event_net10_pct": -0.024,
+        "day_equal_net10_pct": -0.24,
         "median_net10_pct": -0.12,
-        "win_pct": 42.05,
-        "mean_r2": 0.552
+        "win_pct": 41.86,
+        "mean_r2": 0.548,
+        "r2_ge_0_5_observations": 10882,
+        "r2_ge_0_5_day_equal_net10_pct": 0.032
       },
       "21+": {
-        "events": 24298,
-        "signal_days": 875,
-        "forward10_observed": 24214,
-        "mean_candidates_per_signal_day": 27.77,
-        "event_net10_pct": -0.711,
-        "day_equal_net10_pct": -0.458,
-        "median_net10_pct": -0.966,
-        "win_pct": 37.65,
-        "mean_r2": 0.437
+        "events": 20325,
+        "signal_days": 850,
+        "forward10_observed": 20281,
+        "mean_candidates_per_signal_day": 23.91,
+        "event_net10_pct": -0.604,
+        "day_equal_net10_pct": -0.368,
+        "median_net10_pct": -0.913,
+        "win_pct": 37.67,
+        "mean_r2": 0.435,
+        "r2_ge_0_5_observations": 9006,
+        "r2_ge_0_5_day_equal_net10_pct": -0.376
       }
     },
     "VALID": {
       "01-02": {
-        "events": 4521,
-        "signal_days": 389,
-        "forward10_observed": 4407,
-        "mean_candidates_per_signal_day": 11.62,
-        "event_net10_pct": 0.174,
-        "day_equal_net10_pct": -0.39,
-        "median_net10_pct": -0.059,
-        "win_pct": 49.9,
-        "mean_r2": 0.043
+        "events": 2029,
+        "signal_days": 326,
+        "forward10_observed": 1976,
+        "mean_candidates_per_signal_day": 6.22,
+        "event_net10_pct": 0.402,
+        "day_equal_net10_pct": -0.171,
+        "median_net10_pct": 0.363,
+        "win_pct": 51.67,
+        "mean_r2": 0.079,
+        "r2_ge_0_5_observations": 6,
+        "r2_ge_0_5_day_equal_net10_pct": -2.217
       },
       "03-05": {
-        "events": 6284,
-        "signal_days": 402,
-        "forward10_observed": 6153,
-        "mean_candidates_per_signal_day": 15.63,
-        "event_net10_pct": 0.492,
-        "day_equal_net10_pct": -0.237,
-        "median_net10_pct": -0.12,
-        "win_pct": 49.42,
-        "mean_r2": 0.275
+        "events": 5966,
+        "signal_days": 398,
+        "forward10_observed": 5835,
+        "mean_candidates_per_signal_day": 14.99,
+        "event_net10_pct": 0.602,
+        "day_equal_net10_pct": -0.193,
+        "median_net10_pct": -0.06,
+        "win_pct": 49.8,
+        "mean_r2": 0.283,
+        "r2_ge_0_5_observations": 963,
+        "r2_ge_0_5_day_equal_net10_pct": 1.43
       },
       "06-10": {
-        "events": 9486,
-        "signal_days": 413,
-        "forward10_observed": 9364,
-        "mean_candidates_per_signal_day": 22.97,
-        "event_net10_pct": 0.314,
-        "day_equal_net10_pct": 0.001,
+        "events": 9041,
+        "signal_days": 411,
+        "forward10_observed": 8919,
+        "mean_candidates_per_signal_day": 22.0,
+        "event_net10_pct": 0.429,
+        "day_equal_net10_pct": 0.046,
         "median_net10_pct": -0.12,
-        "win_pct": 47.85,
-        "mean_r2": 0.511
+        "win_pct": 48.59,
+        "mean_r2": 0.521,
+        "r2_ge_0_5_observations": 5271,
+        "r2_ge_0_5_day_equal_net10_pct": 0.182
       },
       "11-20": {
-        "events": 15674,
+        "events": 14969,
         "signal_days": 425,
-        "forward10_observed": 15441,
-        "mean_candidates_per_signal_day": 36.88,
-        "event_net10_pct": 0.46,
-        "day_equal_net10_pct": 0.537,
-        "median_net10_pct": 0.315,
-        "win_pct": 50.93,
-        "mean_r2": 0.559
+        "forward10_observed": 14744,
+        "mean_candidates_per_signal_day": 35.22,
+        "event_net10_pct": 0.462,
+        "day_equal_net10_pct": 0.521,
+        "median_net10_pct": 0.317,
+        "win_pct": 50.94,
+        "mean_r2": 0.564,
+        "r2_ge_0_5_observations": 9560,
+        "r2_ge_0_5_day_equal_net10_pct": 0.029
       },
       "21+": {
-        "events": 31197,
+        "events": 29162,
         "signal_days": 449,
-        "forward10_observed": 31080,
-        "mean_candidates_per_signal_day": 69.48,
-        "event_net10_pct": 0.708,
-        "day_equal_net10_pct": 0.024,
-        "median_net10_pct": 0.395,
-        "win_pct": 51.07,
-        "mean_r2": 0.518
+        "forward10_observed": 29055,
+        "mean_candidates_per_signal_day": 64.95,
+        "event_net10_pct": 0.753,
+        "day_equal_net10_pct": 0.015,
+        "median_net10_pct": 0.444,
+        "win_pct": 51.46,
+        "mean_r2": 0.519,
+        "r2_ge_0_5_observations": 16592,
+        "r2_ge_0_5_day_equal_net10_pct": -0.019
       }
     }
   },
@@ -279,5 +299,85 @@
     "exact_indices": 364,
     "broad_groups": 33,
     "subsector_unknown_symbols": 0
-  }
+  },
+  "paired_vs_all_valid": {
+    "EXACT_PRE": {
+      "paired_dates": 309,
+      "mean_difference_pp": -0.0664,
+      "month_block_ci95_pp": [
+        -0.2154,
+        0.069
+      ]
+    },
+    "BROAD_PRE": {
+      "paired_dates": 122,
+      "mean_difference_pp": 0.0398,
+      "month_block_ci95_pp": [
+        -0.4956,
+        0.5782
+      ]
+    }
+  },
+  "broad_group_compression_top12": [
+    {
+      "broad_group": "CN|MULTI_SECTOR",
+      "exact_indices": 108,
+      "verified_subsectors": 8
+    },
+    {
+      "broad_group": "CN|TECHNOLOGY",
+      "exact_indices": 49,
+      "verified_subsectors": 10
+    },
+    {
+      "broad_group": "CN|CONSUMER",
+      "exact_indices": 31,
+      "verified_subsectors": 8
+    },
+    {
+      "broad_group": "CN|INDUSTRIALS",
+      "exact_indices": 25,
+      "verified_subsectors": 8
+    },
+    {
+      "broad_group": "CN|HEALTHCARE",
+      "exact_indices": 22,
+      "verified_subsectors": 9
+    },
+    {
+      "broad_group": "HK|MULTI_SECTOR",
+      "exact_indices": 16,
+      "verified_subsectors": 4
+    },
+    {
+      "broad_group": "CN|FINANCIALS",
+      "exact_indices": 14,
+      "verified_subsectors": 5
+    },
+    {
+      "broad_group": "CN|COMMUNICATION",
+      "exact_indices": 14,
+      "verified_subsectors": 2
+    },
+    {
+      "broad_group": "CN|MATERIALS",
+      "exact_indices": 13,
+      "verified_subsectors": 2
+    },
+    {
+      "broad_group": "HK|HEALTHCARE",
+      "exact_indices": 12,
+      "verified_subsectors": 4
+    },
+    {
+      "broad_group": "HK|TECHNOLOGY",
+      "exact_indices": 10,
+      "verified_subsectors": 3
+    },
+    {
+      "broad_group": "CN|ENERGY",
+      "exact_indices": 6,
+      "verified_subsectors": 3
+    }
+  ]
 }
