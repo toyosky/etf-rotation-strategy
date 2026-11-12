@@ -138,6 +138,26 @@ def extreme_bucket(x):
             for k,v in top.groupby('bucket',observed=True)}
 
 
+def extreme_by_year(x):
+    """Validation tail cohorts use ex-post thresholds; not entry rules."""
+    top=rank_top(x)
+    top=top.loc[(top.date>=DATE_SPLIT)&top.net10.notna()].copy()
+    med,top10=top.slope.quantile([.5,.9]).to_numpy()
+    top['bucket']=pd.cut(top.slope,[-np.inf,med,top10,np.inf],
+        labels=['lower_50pct','middle_40pct','highest_10pct'],
+        include_lowest=True)
+    result={'oos_median_slope_bps':round(float(med*10000),3),
+            'oos_p90_slope_bps':round(float(top10*10000),3)}
+    for year,part in top.groupby(top.date.dt.year):
+        result[str(year)]={}
+        for bucket,g in part.groupby('bucket',observed=True):
+            result[str(year)][str(bucket)]={
+                'n':len(g),
+                'net10_mean_pct':round(float(g.net10.mean()*100),3),
+                'net10_p10_pct':round(float(g.net10.quantile(.1)*100),3)}
+    return result
+
+
 def analyze(daily,source,skipped):
     variants,threshold=pools(daily)
     results={'contract':'ETF_TAXONOMY_TOP1_EXTREME_V1','research_only':True,
@@ -151,7 +171,8 @@ def analyze(daily,source,skipped):
                        for k,v in variants.items() if k!='ALL'},
              'matched_vs_exact':{k:matched_compare(v,variants['EXACT_PRE'])
                        for k,v in variants.items() if k not in ('ALL','EXACT_PRE')},
-             'extreme_slope':extreme_bucket(variants['EXACT_PRE'])}
+             'extreme_slope':extreme_bucket(variants['EXACT_PRE']),
+             'extreme_slope_by_year':extreme_by_year(variants['EXACT_PRE'])}
     return results
 
 
@@ -204,6 +225,14 @@ def report(r):
     for name,d in r['extreme_slope'].items():
         lines.append('| {} | {} | {} | {} | {} |'.format(
             name,d['n'],d['net10_pct'],d['p10_pct'],d['win_pct']))
+    lines+=['','## β极值各年度表现（验证期事后分位，仅用于诊断）','',
+            '| 年份 | β分组 | 日期 | 后10日均值 | 收益P10 |',
+            '|---|---|---:|---:|---:|']
+    for year,info in r['extreme_slope_by_year'].items():
+        if year in ('oos_median_slope_bps','oos_p90_slope_bps'):continue
+        for bucket,z in info.items():
+            lines.append('| {} | {} | {} | {} | {} |'.format(
+                year,bucket,z['n'],z['net10_mean_pct'],z['net10_p10_pct']))
     lines+=['','## 结论边界','',
         '- 收盘当日已知的价格指标不能与前一日开盘的交易可行性混同；先选代表仅按事前成交额，但当日有报价才进入研究。',
         '- 降低最大β极值是数学上的候选数效应，只有同日Top1收益、尾部和换手共同改善才算交易价值。',
@@ -211,6 +240,7 @@ def report(r):
         '- 没有纳入历史NAV公布时点、LOF/QDII溢价、09:31与14:05盘中否决、完整持仓资金模拟、退市基金。',
         '- 2026-11-12分类没有早于2026-11-13的历史知悉证据，历史分组是静态回溯，非严格历史样本外。',
         '- 10交易日收益会重叠；月份区块bootstrap未纠正多重探索，较窄置信区间也不等于因果优势。',
+        '- “β最高10%”的分位在验证期全部观察完成后才可计算，此分组仅为事后诊断，不能当作预先可交易阈值。',
         '- 数据来自归档至2026-11-11；不能直接视为当前2026-11-12收盘信号。']
     return '\n'.join(lines)+'\n'
 
