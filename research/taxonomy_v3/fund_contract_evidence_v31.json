@@ -16,6 +16,38 @@
     "execution_attributes_verified": false
   },
   {
+    "symbol": "159509",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-02-04/1224964360.PDF",
+    "source_date": "2026-02-04",
+    "source_document": "景顺长城纳斯达克科技市值加权ETF QDII基金产品资料概要 2026 §2",
+    "index_name": "纳斯达克科技市值加权指数",
+    "index_name_english": "Nasdaq-100 Technology Sector Market-Cap Weighted Index (price index)",
+    "region_primary": "US",
+    "exposure_type": "EQUITY",
+    "sector_level1": "TECHNOLOGY",
+    "sector_level2": "NASDAQ_100_TECHNOLOGY",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Official prospectus identifies Nasdaq-100 Technology Sector Market-Cap Weighted Index price index and passive benchmark; do not merge with Nasdaq-100 broad or unrelated technology indices",
+    "execution_attributes_verified": false
+  },
+  {
+    "symbol": "159529",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-06-30/1225394408.PDF",
+    "source_date": "2026-06-30",
+    "source_document": "景顺长城标普消费精选ETF QDII基金产品资料概要 2026 §2",
+    "index_name": "标普500消费精选指数",
+    "index_name_english": "S&P 500 Consumer Select 15/60 Index",
+    "region_primary": "US",
+    "exposure_type": "EQUITY",
+    "sector_level1": "CONSUMER",
+    "sector_level2": "SP500_CONSUMER_SELECT_15_60",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Official prospectus identifies exact S&P 500 Consumer Select 15/60 index; is not S&P 500 broad and should not collapse into all US consumption funds",
+    "execution_attributes_verified": false
+  },
+  {
     "symbol": "159934",
     "kind": "OFFICIAL_NON_INDEX_SPOT_ETF_MANDATE",
     "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467474.PDF",
