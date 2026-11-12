@@ -47,3 +47,8 @@
 - Release `research-data-fullmarket-current` 当前 asset id 740827992，创建于 2026-11-12 19:39:51 UTC；GitHub 记录的 digest 与失败日志一致。根因定位为 **current 标签下数据资产已更新，原先冻结字节不再可由同一标签取得**。尚未证明具体行情内容变更程度。
 - 已归档证据、恢复/迁移门禁及下一步：`output_v32/frozen_archive_integrity_incident_20261113.md`；不放松 SHA256 门禁，不把新归档伪称旧数据，不更新 V2 的72.46%估计。
 - 下一轮必须先定位旧哈希归档的不可变来源；若不能恢复，则做新旧数据差异及独立重跑，明确研究版本。**载体连续性仍BLOCKED；不得修改main。**
+
+## 2026-11-13 第6轮：Release恢复搜索与不可变资产门禁
+- 已调用GitHub Releases API枚举当前可见的全部三个Release标签及资产：`research-data-fullmarket-current`、`research-data-fullmarket-20261020`、`research-data-fullmarket-20260917`。现存parquet的摘要分别是 `7a218407...` 与 `006ca6e0...`；旧 `9d55f6e0...` **未在可见Release资产中找到**。这不是证明旧字节不存在于Actions artifacts或其他备份；后者仍需核实。
+- 已新增 `pin_research_archive_asset_v2.py`（提交 `2106914a`）：通过GitHub Release asset id `740827992` 而非可变tag下载候选新版本，双重核验API元数据digest/size与实际字节SHA256，再写入包含行数、日期范围、字段、asset创建时间的manifest。旧哈希不被覆盖；新版本显式标记非PIT与尚未恢复旧归档。
+- **本轮仅完成脚本提交及Release资产枚举，没有运行新脚本或产生新行情回测；不可把候选版本当已验收数据。** 下一轮：在Actions执行下载/manifest脚本，核对结果；进一步搜索旧Actions artifacts，若旧字节仍不可恢复，则冻结新版本、在新版本完整重跑V1/V2/载体连续性与一致性，再做同口径收益比较。
