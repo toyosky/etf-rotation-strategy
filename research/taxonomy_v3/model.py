@@ -39,6 +39,10 @@ def economic_labels(index_name: str) -> dict:
         region = "GLOBAL"
     elif any(x in n for x in ("中证", "上证", "国证", "沪深", "深证", "创业板", "科创", "中债", "中债登")):
         region = "CN"
+    # CSI 'Overseas China' portfolios are not mainland A-shares even though
+    # the index compiler is called 中证. Distinct region avoids a false CN bucket.
+    if "海外中国" in n:
+        region = "CN_OFFSHORE"
     if "沪深港" in n or "沪港深" in n:
         region = "CN_HK"
     asset = None
@@ -68,6 +72,7 @@ def economic_labels(index_name: str) -> dict:
         ("TECHNOLOGY", "SOFTWARE", ("软件",)),
         ("TECHNOLOGY", "CONSUMER_ELECTRONICS", ("消费电子",)),
         ("INDUSTRIALS", "ROBOTICS", ("机器人",)),
+        ("TECHNOLOGY", "INFORMATION_TECHNOLOGY", ("信息技术",)),
         ("COMMUNICATION", "TELECOM", ("通信", "电信", "5G")),
         ("CONSUMER", "BAIJIU", ("白酒",)),
         ("CONSUMER", "ALCOHOL_MIXED", ("酒",)),
@@ -82,6 +87,7 @@ def economic_labels(index_name: str) -> dict:
         ("ENERGY", "OIL_GAS_EQUITY", ("石油", "油气",)),
         ("ENERGY", "COAL_EQUITY", ("煤炭",)),
         ("MATERIALS", "GOLD_MINERS", ("黄金产业", "黄金股")),
+        ("FINANCIALS", "NON_BANK_FINANCIALS", ("非银行金融",)),
         ("FINANCIALS", "BANKS", ("银行",)),
         ("FINANCIALS", "SECURITIES", ("证券公司", "证券行业",)),
         ("FINANCIALS", "INSURANCE", ("保险",)),
@@ -137,7 +143,7 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
     out = dict(base)
     region = out.get("region_primary")
     if not region:
-        if any(w in u for w in ("MSCI USA", "S&P OIL & GAS", "S&P500")) or any(w in n
+        if any(w in u for w in ("MSCIUSA", "S&POIL&GAS", "S&P500")) or any(w in n
                 for w in ("标准普尔500", "标普500", "道琼斯工业", "美国", "纳斯达克")):
             region="US"
         elif any(w in n for w in ("巴西", "BOVESPA")) or "IBOVESPA" in u:
@@ -187,7 +193,7 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
           ("CONSUMER","AGRICULTURE",("农牧渔","农牧主题")),
           ("INDUSTRIALS","GRID_EQUIPMENT",("电网设备",)),
           ("INDUSTRIALS","EQUIPMENT",("装备产业",)),
-          ("ENERGY","OIL_GAS_EQUITY",("S&P Oil & Gas","S&P OIL & GAS")),
+          ("ENERGY","OIL_GAS_EQUITY",("S&POIL&GAS",)),
           ("ENERGY","ENERGY_EQUITY",("中证能源","全指能源")),
           ("FINANCIALS","SECURITIES",("证券龙头",)),
           ("MULTI_SECTOR","LOW_CARBON",("碳中和","低碳经济","环保产业")),
