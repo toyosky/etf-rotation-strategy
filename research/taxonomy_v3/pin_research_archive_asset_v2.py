@@ -14,7 +14,7 @@ from urllib.request import Request, urlopen
 import pyarrow.parquet as pq
 
 REPO = "toyosky/etf-rotation-strategy"
-ASSET_ID = 740827992
+ASSET_ID = 741069813
 SHA256 = "7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644"
 BYTES = 17166998
 OLD_SHA256 = "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb"
