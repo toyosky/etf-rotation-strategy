@@ -30,3 +30,9 @@
 - 新增可执行复核脚本 `audit_v2_consistency_v1.py` 与独立Actions `research-v2-consistency.yml`，检查事件守恒、训练验证划分、分母与百分比以及未来标签的估计对象。运行 https://github.com/toyosky/etf-rotation-strategy/actions/runs/43265456174；成功后自动归档 `output_v32/drawdown_rebuild_v2_consistency_audit.md`。
 - 重要限定：未来20日确认是事后结局，按此分组的10日收益不能当作可交易alpha；D10从修复触发日算而不是OLS确认日。重建检测率不是对所有真实超跌反弹的完整召回率。
 - 下一轮优先保存事件级as-of特征与确认日，统一各信号次日开盘收益，完成短周期预警对照和月区块配对检验；其后才开展极端斜率的价格路径机制与二维市场状态控制。
+
+## 2026-11-13 第3轮：重建载体连续性审计（运行待验收）
+- 复查V2源码发现一项潜在估计对象错位：超跌事件按精确指数组去重，但`match_rebuild`只追踪触发事件原始ETF代码未来20日的`signal`。若同指数流动性最高代表切换，其他同指数ETF的确认可能被计为未确认。这不是已证实的错误幅度，需要独立定量。
+- 新增`audit_carrier_continuity_v1.py`及`.github/workflows/research-carrier-continuity-v1.yml`，冻结行情和历史分类，比较同一原代码、当日流动性最高代码、同指数任一成员三个口径，并记录载体切换数及新增检出数。工作流 https://github.com/toyosky/etf-rotation-strategy/actions/runs/43277003817 （建立时排队中，需下轮核验最终状态和报告）。
+- 这三种口径并不等价：同指数任一成员的信号可能增加覆盖，但不能直接代表真实可交易的当日策略。审计仅针对定义敏感性，不得未经检验改写V2的72.46%数字或修改main。
+- 后续：核验脚本测试、产物及事件差异；若差异显著，再重做事件级时点收益与短周期预警对照。
