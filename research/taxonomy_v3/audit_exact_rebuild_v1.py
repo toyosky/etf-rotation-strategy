@@ -115,7 +115,8 @@ def build_daily(bars, taxonomy):
         prior_amount = g.amount.shift(1).rolling(60,min_periods=60).mean().to_numpy()
         contiguous = np.zeros(n, dtype=bool)
         contiguous[60:] = ids[60:] - ids[:-60] == 60
-        vol10 = (g.amount.gt(0).rolling(10,min_periods=10).sum()==10).to_numpy()
+        # Eligibility uses the ten sessions ending yesterday, not today's volume.
+        vol10 = (g.amount.shift(1).gt(0).rolling(10,min_periods=10).sum()==10).to_numpy()
         eligible = (ix>=MIN_HISTORY)&(prior_amount>=MIN_PRIOR_AMOUNT)&contiguous&vol10
         eligible &= g.date.to_numpy() >= START.to_datetime64()
         ret1 = np.r_[np.nan,close[1:]/close[:-1]-1]
@@ -249,6 +250,7 @@ def build_report(daily,modes,source,skipped):
     positive = modes['EXACT_PRE'][0]
     positive = positive.loc[positive.confirmed & (positive.positive_streak>0)].copy()
     positive['age_bucket'] = positive.positive_streak.map(age_bucket)
+    result['age_paired_valid'] = {}
     for name,g in [('TRAIN',positive.loc[positive.date<SPLIT]),
                    ('VALID',positive.loc[positive.date>=SPLIT])]:
         result['age_cohorts'][name] = {}
@@ -259,6 +261,11 @@ def build_report(daily,modes,source,skipped):
             obj['r2_ge_0_5_observations'] = strict['events']
             obj['r2_ge_0_5_day_equal_net10_pct'] = strict.get('day_equal_net10_pct')
             result['age_cohorts'][name][age] = obj
+    cohorts = positive.loc[positive.date>=SPLIT]
+    baseline = cohorts.loc[cohorts.age_bucket=='03-05']
+    for age in ('01-02','06-10','11-20','21+'):
+        follow = cohorts.loc[cohorts.age_bucket==age]
+        result['age_paired_valid'][age+'_vs_03-05'] = paired_months(follow,baseline)
     lines = ['# ETF精确指数去重与重建持续性 V1（探索性）','',
        '冻结分类：2026-11-12；冻结行情截止：'+source['as_of']+'。','',
        '**本报告的2021–2026历史分组套用了2026-11-12分类，非严格历史PIT，不是可交易策略回测。**','',
@@ -301,10 +308,20 @@ def build_report(daily,modes,source,skipped):
         lines.append('| {} | {} | {} | {} |'.format(
             age,obj['events'],('{:+.3f}%'.format(value) if value is not None else '—'),
             obj['r2_ge_0_5_observations']))
+    lines += ['','## 已确认重建持续期的同日配对（相对3–5天）','',
+        '| 连续天数 | 共同日期 | 10日收益差pp | 月份区块95%区间 |',
+        '|---|---:|---:|---:|']
+    for label,obj in result['age_paired_valid'].items():
+        interval=obj.get('month_block_ci95_pp')
+        ci=('['+', '.join('{:+.3f}'.format(v) for v in interval)+']') if interval else '—'
+        lines.append('| {} | {} | {} | {} |'.format(
+            label,obj.get('paired_dates',0),
+            '{:+.3f}'.format(obj['mean_difference_pp']) if 'mean_difference_pp' in obj else '—',ci))
     lines += ['','## 审计边界','',
        '- 历史分类并非当时可知；退市基金及变更合同历史尚缺。不能据此确定历史策略收益。',
        '- 部分产品尚缺完整交易属性、NAV公布时点、溢价与盘中拦截证据。',
        '- 事件收益使用次一开盘到第11根开盘，单边6bp；是重叠事件研究，不是仓位回测。',
+       '- 当日若基金停牌或缺失收盘行情，该研究数据不会生成该基金的日期行；不能声称已完整处理所有潜在代表的开盘前资格。',
        '- 只有此前在该基金完成1–3日确认且自此β持续为正的观察才进入持续期分组；代表切换仍需单独核查。',
        '- 正斜率持续天数是当日已知量，事后分组不能被误读为独立或因果预测。',
        '- 粗行业去重仅作敏感性；不同指数不能未经官方证据直接合并。',
