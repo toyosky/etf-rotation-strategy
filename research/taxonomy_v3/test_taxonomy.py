@@ -293,3 +293,24 @@ def test_v31_actual_fund_mandates_if_rebuilt():
     assert c['exposure_type']=='COMMODITY_FOF'
     assert all(r['execution_attributes_verified'] is False for r in [a,b,c])
     assert all(r['known_from']=='2026-11-13' for r in [a,b,c])
+    meal=rows['159985']
+    assert meal['legal_mandate_verified'] and not meal['needs_review']
+    assert meal['index_name']=='大连商品交易所豆粕期货价格指数'
+    assert meal['exposure_type']=='COMMODITY_FUTURES'
+    city=rows['511220']
+    assert city['legal_mandate_verified'] and not city['needs_review']
+    assert city['exposure_type']=='BOND'
+    assert city['index_name']=='上证城投债指数'
+    gold=rows['159934']
+    assert gold['legal_mandate_verified'] and gold['needs_review']
+    assert gold['exposure_id']=='SPOT:SGE_AU9999'
+    assert gold['exact_index_key'] is None
+    assert gold['exposure_type']=='COMMODITY_SPOT'
+    silver=rows['161226']
+    assert silver['legal_mandate_verified'] and silver['needs_review']
+    assert silver['exposure_id']=='FUTURES_CONTRACT:SHFE_SILVER_MAIN'
+    assert silver['exact_index_key'] is None
+    assert silver['exposure_type']=='COMMODITY_FUTURES'
+    assert all(x['known_from']=='2026-11-13' for x in [meal,city,gold,silver])
+    assert all(x['execution_attributes_verified'] is False for x in [meal,city,gold,silver])
+
