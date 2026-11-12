@@ -47,7 +47,7 @@ function renderCards(s){
 }
 
 function renderPathAnalysis(history){
-  const rows=history.slice(-20);
+  const rows=history;
   const box=document.getElementById('pathAnalysis');
   if(rows.length<10){
     document.getElementById('pathDirection').textContent='历史样本不足';
@@ -100,7 +100,7 @@ function renderPathAnalysis(history){
     summary='Top1 与 Top2 的竞争正在重新变得接近，而有效机会数量整体变化不大。';
     implication='主要风险来自排名拥挤和潜在换帅，而不是机会数量本身。需要更关注 Score 差、Top1 寿命和 V1 过滤是否同步恶化。';
   }else{
-    summary='最近 20 日窗口两端的 Breadth 与 Leadership Gap 变化都不足 5 个百分点，暂未形成明确迁移方向。';
+    summary='所选窗口两端的 Breadth 与 Leadership Gap 变化都不足 5 个百分点，暂未形成明确迁移方向。';
     implication='当前更适合把注意力放在所在象限本身，而不是对短期轨迹做过度解释。';
   }
 
@@ -137,15 +137,38 @@ function renderMap(history){
   });
   const ylabel=el('text',{x:22,y:H/2,transform:`rotate(-90 22 ${H/2})`,'text-anchor':'middle',class:'svg-axis-label'});ylabel.textContent='Leadership Gap percentile';svg.appendChild(ylabel);
 
-  const recent=history.slice(-20);
+  const recent=history;
   if(recent.length){
     const d=recent.map((p,i)=>`${i?'L':'M'} ${X(p.breadth_pct)} ${Y(p.gap_percentile)}`).join(' ');
     svg.appendChild(el('path',{d,class:'state-path'}));
+    // Visible arrowheads show chronological travel, even on backtracking paths.
+    // Sample longer paths to keep the mobile plot readable.
+    const segments=[];
+    for(let i=1;i<recent.length;i++){
+      const a=recent[i-1],b=recent[i];
+      const x0=X(a.breadth_pct),y0=Y(a.gap_percentile);
+      const x1=X(b.breadth_pct),y1=Y(b.gap_percentile);
+      if(Math.hypot(x1-x0,y1-y0)>1.5)segments.push({x0,y0,x1,y1});
+    }
+    const step=Math.max(1,Math.ceil(segments.length/16));
+    segments.forEach((s,i)=>{
+      if(i%step!==0 && i!==segments.length-1)return;
+      const dx=s.x1-s.x0,dy=s.y1-s.y0,dist=Math.hypot(dx,dy);
+      const ux=dx/dist,uy=dy/dist;
+      const mid=.64,tipX=s.x0+dx*mid,tipY=s.y0+dy*mid;
+      const len=11,half=5.5;
+      const backX=tipX-ux*len,backY=tipY-uy*len;
+      const poly=el('path',{d:`M ${tipX} ${tipY} L ${backX-uy*half} ${backY+ux*half} L ${backX+uy*half} ${backY-ux*half} Z`,class:'state-arrow'});
+      svg.appendChild(poly);
+    });
   }
 
   recent.forEach((p,i)=>{
     const current=i===recent.length-1;
-    if(current)svg.appendChild(el('circle',{cx:X(p.breadth_pct),cy:Y(p.gap_percentile),r:17,class:'current-ring'}));
+    if(current && p.date===window.__latestStateDate){
+      svg.appendChild(el('circle',{cx:X(p.breadth_pct),cy:Y(p.gap_percentile),r:17,class:'current-ring'}));
+      svg.appendChild(el('circle',{cx:X(p.breadth_pct),cy:Y(p.gap_percentile),r:25,class:'current-halo'}));
+    }
     const c=el('circle',{cx:X(p.breadth_pct),cy:Y(p.gap_percentile),r:current?9:6,fill:COLORS[p.quadrant]||'#4cc9f0',class:`state-point ${current?'current':'old'}`});
     c.addEventListener('mouseenter',e=>showTip(e,p));
     c.addEventListener('mousemove',e=>showTip(e,p));
@@ -168,7 +191,7 @@ function renderMap(history){
 
 function renderLine(svgId,history,key,threshold=50,valueLabel=v=>pct(v)){
   const svg=document.getElementById(svgId);svg.innerHTML='';
-  const rows=history.slice(-60); if(!rows.length)return;
+  const rows=history; if(!rows.length)return;
   const W=760,H=260,p={l:42,r:20,t:24,b:34},iw=W-p.l-p.r,ih=H-p.t-p.b;
   const X=i=>p.l+(rows.length===1?0:i/(rows.length-1))*iw;
   const Y=v=>p.t+(1-Number(v)/100)*ih;
@@ -187,12 +210,56 @@ function renderLine(svgId,history,key,threshold=50,valueLabel=v=>pct(v)){
   const r=el('text',{x:W-p.r,y:H-8,'text-anchor':'end',class:'mini-label'});r.textContent=rows.at(-1).date.slice(5);svg.appendChild(r);
 }
 
+// Render the selected historical window consistently across the map and both mini charts.
 loadData().then(({latest,history})=>{
+  window.__latestStateDate=latest.date;
+  const sorted=history.slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const presets=document.querySelectorAll('[data-range]');
+  const from=document.getElementById('rangeStart');
+  const to=document.getElementById('rangeEnd');
+  const caption=document.getElementById('rangeSummary');
+  const latestDate=sorted.at(-1)?.date || latest.date;
+  if(!sorted.length)throw new Error('No history records');
+  from.min=to.min=sorted[0].date;
+  from.max=to.max=latestDate;
+  to.value=latestDate;
+  let mode='20';
+
+  function draw(){
+    let rows;
+    if(mode==='custom'){
+      if(from.value && to.value && from.value>to.value){
+        caption.textContent='开始日期不能晚于结束日期';return;
+      }
+      rows=sorted.filter(p=>(!from.value||p.date>=from.value)&&(!to.value||p.date<=to.value));
+    }else{
+      rows=mode==='all'?sorted:sorted.slice(-Number(mode));
+    }
+    if(!rows.length){
+      caption.textContent='此日期范围没有可用交易日数据';return;
+    }
+    const selected=rows.at(-1);
+    caption.textContent=`${rows[0].date} → ${selected.date} · ${rows.length} 个交易日${selected.date===latestDate?' · 末点为最新收盘':' · 末点为所选结束日'}`;
+    document.getElementById('pathRangeTitle').textContent=`所选 ${rows.length} 个交易日状态解读`;
+    renderMap(rows);
+    renderPathAnalysis(rows);
+    renderLine('breadthLine',rows,'breadth_pct');
+    renderLine('gapLine',rows,'gap_percentile');
+    presets.forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.range===mode)));
+  }
+  presets.forEach(btn=>btn.addEventListener('click',()=>{
+    mode=btn.dataset.range;
+    if(mode!=='custom'){
+      const rows=mode==='all'?sorted:sorted.slice(-Number(mode));
+      from.value=rows[0].date;to.value=latestDate;
+    }
+    draw();
+  }));
+  [from,to].forEach(input=>input.addEventListener('change',()=>{
+    mode='custom';draw();
+  }));
   renderCards(latest);
-  renderMap(history);
-  renderPathAnalysis(history);
-  renderLine('breadthLine',history,'breadth_pct');
-  renderLine('gapLine',history,'gap_percentile');
+  draw();
 }).catch(err=>{
   console.error(err);
   document.getElementById('latestRegime').textContent='数据读取失败';
