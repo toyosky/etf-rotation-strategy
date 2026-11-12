@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399372",
+  "observed_at": "2026-11-12T09:15:51.560482+00:00",
+  "sha256": "7f49cc1dc045c22e1880fcda5d0e8211ffcea34ce222ee0fa1f3acf6919ce402",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399372",
+      "indextype": "202",
+      "indexsource": "1",
+      "indexname": "大盘成长",
+      "indexename": "CNILCG",
+      "indexfullename": "CNI Large Cap Growth Index",
+      "indexfullcname": "国证大盘成长指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

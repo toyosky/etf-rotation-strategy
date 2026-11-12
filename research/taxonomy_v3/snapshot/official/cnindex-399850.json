@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399850",
+  "observed_at": "2026-11-12T09:15:54.724393+00:00",
+  "sha256": "2446ba43da95f8bd59dfdc489d605dbf8041b1dfc50bb46e723fd5ac6c7880e8",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399850",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "深证50",
+      "indexename": "Shenzhen 50",
+      "indexfullename": "Shenzhen 50 Index",
+      "indexfullcname": "深证50指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

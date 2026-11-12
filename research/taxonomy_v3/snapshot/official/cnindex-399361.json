@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399361",
+  "observed_at": "2026-11-12T09:15:51.511947+00:00",
+  "sha256": "48fe5c7e60dbcdbc04b29b67ea122a0d6c1f380c2266e146ee8f8d647053f517",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399361",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "在线消费",
+      "indexename": "Online Consumption",
+      "indexfullename": "CNI Online Consumption Index",
+      "indexfullcname": "国证在线消费指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

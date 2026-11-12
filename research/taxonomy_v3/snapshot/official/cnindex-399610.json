@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399610",
+  "observed_at": "2026-11-12T09:15:53.817021+00:00",
+  "sha256": "afee719607f29129f58afd7c0b2d2c577b4b5fd6ed898c65db7231b9b87aa02c",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399610",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "TMT50",
+      "indexename": "SZSE TMT 50",
+      "indexfullename": "SZSE TMT 50 Index",
+      "indexfullcname": "深证电子信息传媒产业50指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

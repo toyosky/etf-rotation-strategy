@@ -1,0 +1,14 @@
+{
+  "unit_tests": "31 passed",
+  "artifact_validation": "PASS",
+  "reproducibility": "PASS",
+  "byte_identical_outputs": 11,
+  "full_manifest_identical": true,
+  "raw_auxiliary_response_hashes_verified": 2147,
+  "real_price_archive_rows": 1439205,
+  "real_price_archive_symbols": 2003,
+  "historical_strategy_backtest_run": false,
+  "production_writes": 0,
+  "production_logic_changes": 0,
+  "tests_output": "...............................                                          [100%]\n31 passed in 1.08s"
+}

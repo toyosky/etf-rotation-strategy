@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399313",
+  "observed_at": "2026-11-12T09:21:36.537733+00:00",
+  "sha256": "52a09e69559c332a645d3903ebbc93cc42b6e799190202de66391ca78b839e5b",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399313",
+      "indextype": "200",
+      "indexsource": "1",
+      "indexname": "巨潮100",
+      "indexename": "CNI 100",
+      "indexfullename": "CNI 100 Index",
+      "indexfullcname": "巨潮100指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

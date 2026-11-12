@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399330",
+  "observed_at": "2026-11-12T09:15:51.256042+00:00",
+  "sha256": "7f35300df7ab4c7868d7dde7feada3d02468186b4073e44c5a789cb4d7c4c6d1",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399330",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "深证100",
+      "indexename": "Shenzhen 100",
+      "indexfullename": "Shenzhen 100 Index",
+      "indexfullcname": "深证100指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

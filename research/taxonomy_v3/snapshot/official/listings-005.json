@@ -1,0 +1,631 @@
+{
+  "source_url": "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=5",
+  "observed_at": "2026-11-12T09:22:32.597222+00:00",
+  "sha256": "0bbd5af2bf6483876860c315158d5c416bd6bb5188a3c605c04e418098d78c14",
+  "payload": [
+    {
+      "metadata": {
+        "catalogid": "1105",
+        "name": "基金列表",
+        "excel": "xlsx",
+        "pagetype": "tabs",
+        "subname": "2026-11-12 ",
+        "tabkey": "tab1",
+        "pagesize": 20,
+        "pageno": 5,
+        "pagecount": 55,
+        "recordcount": 1088,
+        "showrecordcount": false,
+        "header": "\n        \n        <table><tr><td class=\"link1\">1.点击<u>代码</u>查询行情，点击<u>简称</u>查询公告；</td></tr>\n            <tr>\n            <td class=\"link1\">\n               2.可通过<a href=\"http://fund.szse.cn/marketdata/fundslist/index.html\" target=\"_blank\">【基金子网】</a>查询日内回转交易基金列表、申购赎回代理券商、流动性服务商列表。\n            </td>\n            </tr>\n        </table>\n     \n    ",
+        "footer": "",
+        "reporttype": null,
+        "tabcss": null,
+        "conditions": [
+          {
+            "label": "代码或简称",
+            "name": "txtkey1",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "/shortname/gethangqing?dataType=JJ&input=",
+            "options": null,
+            "property": null,
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "基金管理人",
+            "name": "txtkey2",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "",
+            "options": null,
+            "property": null,
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "",
+            "name": "selectJjlb",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "SelectBox",
+            "typeAhead": "",
+            "options": [
+              {
+                "text": "全部基金类别",
+                "value": "",
+                "selected": "selected",
+                "group": null
+              },
+              {
+                "text": "ETF",
+                "value": "ETF",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "LOF",
+                "value": "LOF",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "封闭式",
+                "value": "封闭式基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "不动产基金",
+                "value": "不动产基金",
+                "selected": "",
+                "group": null
+              }
+            ],
+            "property": "style='width:100;'",
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "",
+            "name": "selectTzlb",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "SelectBox",
+            "typeAhead": "",
+            "options": [
+              {
+                "text": "全部投资类别",
+                "value": "",
+                "selected": "selected",
+                "group": null
+              },
+              {
+                "text": "股票型",
+                "value": "股票基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "混合型",
+                "value": "混合基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "债券型",
+                "value": "债券基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "货币型",
+                "value": "货币市场基金",
+                "selected": "",
+                "group": null
+              }
+            ],
+            "property": "style='width:100;'",
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          }
+        ],
+        "colStyle": {
+          "sys_key": {
+            "width": "8%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "jjjcurl": {
+            "width": "17%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "jjlb": {
+            "width": "10%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "tzlb": {
+            "width": "10%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "ssrq": {
+            "width": "10%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "dqgm": {
+            "width": "13%",
+            "align": "right",
+            "group": "false",
+            "hidden": "0"
+          },
+          "glrmc": {
+            "width": "18%",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "cxjqhq": {
+            "width": "11%",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          }
+        },
+        "cols": {
+          "sys_key": "基金代码",
+          "jjjcurl": "基金简称",
+          "jjlb": "基金类别",
+          "tzlb": "投资类别",
+          "ssrq": "上市日期",
+          "dqgm": "当前规模<br>（万份）<span class='tip'><span class='tipTxt'><i></i>该字段T日晚间更新的T日规模仅供参考，以T+1日早间更新的T日规模为准</span></span><br>（2026-11-11）",
+          "glrmc": "基金管理人",
+          "cxjqhq": "最新基金净值"
+        },
+        "colspan": 0,
+        "notes": null,
+        "topHeader": "",
+        "hidden": "0",
+        "tablestyle": "main",
+        "refreshCondition": true
+      },
+      "data": [
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159032'><u>159032</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159032&name=工业有色ETF易方达' title=点击简称查询公告><u>工业有色ETF易方达</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-05-13",
+          "dqgm": "26,784.50",
+          "glrmc": "易方达基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159032'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159033'><u>159033</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159033&name=粮食ETF国泰' title=点击简称查询公告><u>粮食ETF国泰</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-05",
+          "dqgm": "14,532.34",
+          "glrmc": "国泰基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159033'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159035'><u>159035</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159035&name=软件ETF天弘' title=点击简称查询公告><u>软件ETF天弘</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-05-15",
+          "dqgm": "97,185.97",
+          "glrmc": "天弘基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159035'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159036'><u>159036</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159036&name=软件开发ETF华宝' title=点击简称查询公告><u>软件开发ETF华宝</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-11",
+          "dqgm": "26,474.01",
+          "glrmc": "华宝基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159036'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159037'><u>159037</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159037&name=价值ETF鹏华' title=点击简称查询公告><u>价值ETF鹏华</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-11",
+          "dqgm": "7,024.98",
+          "glrmc": "鹏华基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159037'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159038'><u>159038</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159038&name=粮食ETF易方达' title=点击简称查询公告><u>粮食ETF易方达</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-05-21",
+          "dqgm": "21,502.69",
+          "glrmc": "易方达基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159038'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159039'><u>159039</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159039&name=机器人ETF华安' title=点击简称查询公告><u>机器人ETF华安</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-18",
+          "dqgm": "117,846.14",
+          "glrmc": "华安基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159039'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159040'><u>159040</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159040&name=港股通互联网ETF鹏华' title=点击简称查询公告><u>港股通互联网ETF鹏华</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-26",
+          "dqgm": "2,548.10",
+          "glrmc": "鹏华基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159040'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159041'><u>159041</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159041&name=农业ETF鹏华' title=点击简称查询公告><u>农业ETF鹏华</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-10",
+          "dqgm": "2,847.18",
+          "glrmc": "鹏华基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159041'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159042'><u>159042</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159042&name=价值ETF汇添富' title=点击简称查询公告><u>价值ETF汇添富</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-09",
+          "dqgm": "8,880.11",
+          "glrmc": "汇添富基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159042'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159043'><u>159043</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159043&name=食品ETF华安' title=点击简称查询公告><u>食品ETF华安</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-08-24",
+          "dqgm": "5,877.06",
+          "glrmc": "华安基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159043'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159045'><u>159045</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159045&name=稀有金属ETF大成' title=点击简称查询公告><u>稀有金属ETF大成</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-24",
+          "dqgm": "17,633.02",
+          "glrmc": "大成基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159045'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159046'><u>159046</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159046&name=绿电ETF天弘' title=点击简称查询公告><u>绿电ETF天弘</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-11",
+          "dqgm": "141,947.68",
+          "glrmc": "天弘基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159046'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159047'><u>159047</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159047&name=港股信息技术ETF银华' title=点击简称查询公告><u>港股信息技术ETF银华</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-10-21",
+          "dqgm": "9,849.37",
+          "glrmc": "银华基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159047'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159048'><u>159048</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159048&name=机器人ETF大成' title=点击简称查询公告><u>机器人ETF大成</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-10",
+          "dqgm": "21,780.38",
+          "glrmc": "大成基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159048'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159049'><u>159049</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159049&name=有色ETF工银' title=点击简称查询公告><u>有色ETF工银</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-07-08",
+          "dqgm": "4,007.33",
+          "glrmc": "工银瑞信基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159049'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159050'><u>159050</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159050&name=机器人ETF广发' title=点击简称查询公告><u>机器人ETF广发</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-09",
+          "dqgm": "71,170.36",
+          "glrmc": "广发基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159050'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159051'><u>159051</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159051&name=医疗器械ETF易方达' title=点击简称查询公告><u>医疗器械ETF易方达</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-09",
+          "dqgm": "7,011.78",
+          "glrmc": "易方达基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159051'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159052'><u>159052</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159052&name=储能电池ETF嘉实' title=点击简称查询公告><u>储能电池ETF嘉实</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-11",
+          "dqgm": "21,792.60",
+          "glrmc": "嘉实基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159052'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159053'><u>159053</u></a>",
+          "jjjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=159053&name=稀有金属ETF华夏' title=点击简称查询公告><u>稀有金属ETF华夏</u></a>",
+          "jjlb": "ETF",
+          "tzlb": "股票基金",
+          "ssrq": "2026-06-09",
+          "dqgm": "16,319.81",
+          "glrmc": "华夏基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159053'>查看</a>"
+        }
+      ],
+      "error": null
+    },
+    {
+      "metadata": {
+        "catalogid": "1105",
+        "name": "20%涨跌幅限制基金列表",
+        "excel": "xlsx",
+        "pagetype": "tabs",
+        "subname": "",
+        "tabkey": "tab2",
+        "pagesize": 20,
+        "pageno": 1,
+        "pagecount": 0,
+        "recordcount": 0,
+        "showrecordcount": false,
+        "header": "\n        \n        <table><tr><td class=\"link1\">1.点击<u>代码</u>查询行情，点击<u>简称</u>查询公告；</td></tr>\n            <tr>\n            <td class=\"link1\">\n               2.可通过<a href=\"http://fund.szse.cn/marketdata/fundslist/index.html\" target=\"_blank\">【基金子网】</a>查询日内回转交易基金列表、申购赎回代理券商、流动性服务商列表。\n            </td>\n            </tr>\n        </table>\n     \n    ",
+        "footer": "",
+        "reporttype": null,
+        "tabcss": null,
+        "conditions": [
+          {
+            "label": "代码或简称",
+            "name": "txtkey1",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "/shortname/gethangqing?dataType=JJ&input=",
+            "options": null,
+            "property": null,
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "基金管理人",
+            "name": "txtkey2",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "",
+            "options": null,
+            "property": null,
+            "maxlength": "100",
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "",
+            "name": "selectJjlb",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "SelectBox",
+            "typeAhead": "",
+            "options": [
+              {
+                "text": "全部基金类别",
+                "value": "",
+                "selected": "selected",
+                "group": null
+              },
+              {
+                "text": "ETF",
+                "value": "ETF",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "LOF",
+                "value": "LOF",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "封闭式",
+                "value": "封闭式基金",
+                "selected": "",
+                "group": null
+              }
+            ],
+            "property": "style='width:100;'",
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          },
+          {
+            "label": "",
+            "name": "selectTzlb",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "SelectBox",
+            "typeAhead": "",
+            "options": [
+              {
+                "text": "全部投资类别",
+                "value": "",
+                "selected": "selected",
+                "group": null
+              },
+              {
+                "text": "股票型",
+                "value": "股票基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "混合型",
+                "value": "混合基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "债券型",
+                "value": "债券基金",
+                "selected": "",
+                "group": null
+              },
+              {
+                "text": "货币型",
+                "value": "货币市场基金",
+                "selected": "",
+                "group": null
+              }
+            ],
+            "property": "style='width:100;'",
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          }
+        ],
+        "colStyle": {
+          "sys_key": {
+            "width": "8%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "jjjcurl": {
+            "width": "16%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "jjlb": {
+            "width": "8%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "tzlb": {
+            "width": "9%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "ssrq": {
+            "width": "9%",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "zdfxz": {
+            "width": "6%",
+            "align": "right",
+            "group": "false",
+            "hidden": "0"
+          },
+          "dqgm": {
+            "width": "14%",
+            "align": "right",
+            "group": "false",
+            "hidden": "0"
+          },
+          "glrmc": {
+            "width": "18%",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "cxjqhq": {
+            "width": "11%",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          }
+        },
+        "cols": {
+          "sys_key": "基金代码",
+          "jjjcurl": "基金简称",
+          "jjlb": "基金类别",
+          "tzlb": "投资类别",
+          "ssrq": "上市日期",
+          "zdfxz": "涨跌幅<br>限制",
+          "dqgm": "当前规模<br>（万份）<span class='tip'><span class='tipTxt'><i></i>该字段T日晚间更新的T日规模仅供参考，以T+1日早间更新的T日规模为准</span></span><br>",
+          "glrmc": "基金管理人",
+          "cxjqhq": "最新基金净值"
+        },
+        "colspan": 0,
+        "notes": null,
+        "topHeader": "",
+        "hidden": "0",
+        "tablestyle": "main",
+        "refreshCondition": true
+      },
+      "data": [],
+      "error": null
+    }
+  ]
+}

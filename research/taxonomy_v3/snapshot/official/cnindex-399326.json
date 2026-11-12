@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399326",
+  "observed_at": "2026-11-12T09:15:50.239344+00:00",
+  "sha256": "b39a55210900f43c630e04bbc7726437b6f1525db5e74d41a394e3de1445e6e8",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399326",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "成长40",
+      "indexename": "SZSE Growth 40",
+      "indexfullename": "SZSE Growth 40 Index",
+      "indexfullcname": "深证成长40指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

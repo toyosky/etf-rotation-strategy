@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399440",
+  "observed_at": "2026-11-12T09:21:36.783596+00:00",
+  "sha256": "1f1295882da7cb3ed8dcd9b62ccd9affe56b89fb56f5bc60547385accb9dfc76",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399440",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证钢铁",
+      "indexename": "CNI Ferrous Metals",
+      "indexfullename": "CNI Ferrous Metals Index",
+      "indexfullcname": "国证钢铁行业指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399291",
+  "observed_at": "2026-11-12T09:15:49.056474+00:00",
+  "sha256": "238eb42cad6fa6161b66c77605d035411a03719e5a51949a81c5735199ac45bb",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399291",
+      "indextype": "204",
+      "indexsource": "1",
+      "indexname": "创精选88",
+      "indexename": "ChiNext Select 88",
+      "indexfullename": "CNI ChiNext Midcap Select 88 Index",
+      "indexfullcname": "国证创业板中盘精选88指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

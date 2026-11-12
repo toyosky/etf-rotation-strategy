@@ -1,0 +1,16 @@
+[
+  {
+    "instrument_type": "ETF",
+    "rows": 25842,
+    "symbols": 16,
+    "min_date": "2013-05-15",
+    "max_date": "2026-11-11"
+  },
+  {
+    "instrument_type": "LOF",
+    "rows": 7249,
+    "symbols": 3,
+    "min_date": "2015-08-17",
+    "max_date": "2026-11-11"
+  }
+]

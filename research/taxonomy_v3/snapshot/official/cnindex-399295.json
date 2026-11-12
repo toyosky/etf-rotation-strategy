@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399295",
+  "observed_at": "2026-11-12T09:15:50.447674+00:00",
+  "sha256": "814bc0cbe4b7229f20579bb6c54d8c997098a0e92d13f1d740968394ddb3cb70",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399295",
+      "indextype": "108",
+      "indexsource": "1",
+      "indexname": "创价值",
+      "indexename": "CNTLVV",
+      "indexfullename": "SZSE ChiNext Low Volatility Value Index",
+      "indexfullcname": "创业板低波价值指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

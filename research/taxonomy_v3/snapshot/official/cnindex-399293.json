@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399293",
+  "observed_at": "2026-11-12T09:15:49.124589+00:00",
+  "sha256": "b7c65e48bbad27a239b0f3ab708f84ad549d5712833882b362369bf53bf0dd7f",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399293",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "创业大盘",
+      "indexename": "ChiNext Large Cap",
+      "indexfullename": "ChiNext Large Cap Index",
+      "indexfullcname": "创业板大盘指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

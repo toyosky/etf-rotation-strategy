@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399296",
+  "observed_at": "2026-11-12T09:15:49.586217+00:00",
+  "sha256": "03c587069c81fb139af7b93d0e0989ab3c2915fd93cc3b2f8eca03e3e091beb9",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399296",
+      "indextype": "108",
+      "indexsource": "1",
+      "indexname": "创成长",
+      "indexename": "ChiNext Momentum Growth",
+      "indexfullename": "SZSE ChiNext Momentum Growth Index",
+      "indexfullcname": "创业板动量成长指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

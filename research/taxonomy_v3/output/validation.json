@@ -1,0 +1,39 @@
+{
+  "accepted_classification_rows": 770,
+  "historical_probes": [
+    {
+      "date": "2021-01-04",
+      "eligible": 0,
+      "excluded": 2147,
+      "reasons": {
+        "NO_EFFECTIVE_CLASSIFICATION": 2147
+      },
+      "representatives": 0
+    },
+    {
+      "date": "2025-01-02",
+      "eligible": 0,
+      "excluded": 2147,
+      "reasons": {
+        "NO_EFFECTIVE_CLASSIFICATION": 2147
+      },
+      "representatives": 0
+    },
+    {
+      "date": "2026-11-11",
+      "eligible": 0,
+      "excluded": 2147,
+      "reasons": {
+        "NO_EFFECTIVE_CLASSIFICATION": 2147
+      },
+      "representatives": 0
+    }
+  ],
+  "input_rows": 1439205,
+  "input_symbols": 2003,
+  "no_approved_cross_index_region_asset_merges": true,
+  "no_approved_identical_name_splits": true,
+  "no_overlaps": true,
+  "status": "PASS",
+  "warning": "Empty historical pools are intended evidence gating; no historical strategy backtest was run"
+}

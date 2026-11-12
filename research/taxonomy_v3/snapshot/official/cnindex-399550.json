@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399550",
+  "observed_at": "2026-11-12T09:15:53.829772+00:00",
+  "sha256": "3fa2e6b9dd7c079bd5e3847cfbcff82e3ad2d67ca962d88b0645fa17a3b256d4",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399550",
+      "indextype": "300",
+      "indexsource": "1",
+      "indexname": "央视50",
+      "indexename": "CCTV 50",
+      "indexfullename": "CCTV 50 Index",
+      "indexfullcname": "央视财经50指数",
+      "jr": "2010-06-30",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

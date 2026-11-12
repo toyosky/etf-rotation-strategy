@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399437",
+  "observed_at": "2026-11-12T09:15:53.643029+00:00",
+  "sha256": "15679faed62ea241c9d4a59e449129c90dfd1c02d00eb4610bcb031223c713db",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399437",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "证券龙头",
+      "indexename": "Securities Top",
+      "indexfullename": "CNI Securities Top Index",
+      "indexfullcname": "国证证券龙头指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

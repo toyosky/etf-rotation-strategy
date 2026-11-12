@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399433",
+  "observed_at": "2026-11-12T09:15:52.489514+00:00",
+  "sha256": "03aca18092ed395be8f9253da0accf5d6b34a9749fcdd5557069518dc1cd284a",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399433",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证交运",
+      "indexename": "CNI Transportation",
+      "indexfullename": "CNI Transportation Index",
+      "indexfullcname": "国证交通运输行业指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

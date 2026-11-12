@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399012",
+  "observed_at": "2026-11-12T09:15:46.355077+00:00",
+  "sha256": "ef73cbe1693d41570b3191c01120706bb657d0a80b3f29c8bb3a75ec9f46d8f1",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399012",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "创业300",
+      "indexename": "ChiNext 300",
+      "indexfullename": "ChiNext 300 Index",
+      "indexfullcname": "创业板300指数",
+      "jr": "2012-06-29",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

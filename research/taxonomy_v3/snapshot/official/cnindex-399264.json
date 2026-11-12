@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399264",
+  "observed_at": "2026-11-12T09:15:47.781684+00:00",
+  "sha256": "8f9560d5bec7f73634a05997ff4ba6e96721e043c45737890feb19c1a8efa6b4",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399264",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "创业软件",
+      "indexename": "CNTSFT",
+      "indexfullename": "SZSE ChiNext Software Index",
+      "indexfullcname": "创业板软件指数",
+      "jr": "2017-12-29",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

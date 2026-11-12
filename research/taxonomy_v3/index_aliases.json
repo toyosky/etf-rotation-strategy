@@ -1,0 +1,26 @@
+[
+  {
+    "canonical_key": "CSI:000300",
+    "index_code": "000300",
+    "index_name": "沪深300指数",
+    "index_provider": null,
+    "code_aliases": ["000300", "399300"],
+    "name_aliases": ["沪深300指数"],
+    "source_url": "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3984891.shtml",
+    "source_date": "2005-04-05",
+    "evidence_excerpt": "上海行情使用代码为000300，深圳行情使用代码399300。",
+    "observed_on": "2026-11-12"
+  },
+  {
+    "canonical_key": "CSI:000905",
+    "index_code": "000905",
+    "index_name": "中证500指数",
+    "index_provider": null,
+    "code_aliases": ["000905", "399905"],
+    "name_aliases": ["中证500指数", "中证小盘500指数"],
+    "source_url": "https://investor.amac.org.cn/investwarn/fxjsflbd/smtzzjsxkp/xqcpfxts/202109/t20210914_12966.html",
+    "source_date": "2021-09-14",
+    "evidence_excerpt": "中证500指数又称中证小盘500指数，上海行情代码为000905，深圳行情代码为399905。",
+    "observed_on": "2026-11-12"
+  }
+]

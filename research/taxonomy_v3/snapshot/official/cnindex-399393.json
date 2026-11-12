@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399393",
+  "observed_at": "2026-11-12T09:21:36.041155+00:00",
+  "sha256": "898ea7e4d16fce5c289355839e1e2e4fe31e7c369d0e8c743427768e85940a5a",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399393",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证地产",
+      "indexename": "CNI Real Estate",
+      "indexfullename": "CNI Real Estate Index",
+      "indexfullcname": "国证房地产行业指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399001",
+  "observed_at": "2026-11-12T09:15:44.435849+00:00",
+  "sha256": "16be50f45d52a17be09f825489f63ec87e8c9c3779c33b07d3bcda4c9065fc5b",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399001",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "深证成指",
+      "indexename": "Shenzhen Index",
+      "indexfullename": "Shenzhen Component Index",
+      "indexfullcname": "深证成份指数",
+      "jr": "1994-07-20",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}
