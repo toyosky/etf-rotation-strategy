@@ -317,7 +317,7 @@ def records(df:pd.DataFrame)->list[dict]:
 
 def main():
     pa=argparse.ArgumentParser()
-    pa.add_argument("--parquet",required=True)
+    pa.add_argument("--parquet")
     pa.add_argument("--output",default="research/rebuild_market_context/indicators_v1.json")
     pa.add_argument("--latest",default="data/rebuild-market-context-latest.json")
     pa.add_argument("--report",default="research/rebuild_market_context/README_RESULTS.md")
@@ -331,6 +331,8 @@ def main():
         assert np.allclose(before[1],after[1][:len(x)],equal_nan=True)
         print("SELF_TEST_PASS: OLS prefix unchanged after future observations")
         return
+    if not args.parquet:
+        pa.error("--parquet is required except when --self-test is supplied")
     source=Path(args.parquet)
     meta=metadata(os.getenv("ETF_DAILY_BARS_DATABASE_URL",""))
     bars,data_info=prepare(source,meta)
