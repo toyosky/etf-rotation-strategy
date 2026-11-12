@@ -35,15 +35,15 @@ def read_catalog(data: bytes) -> list[dict]:
     if len(data) < 10000 or not data.startswith(b"PK"):
         raise ValueError("CSI response was not a nonempty XLSX workbook")
     t = pd.read_excel(BytesIO(data), dtype=str)
-    # CSI calls columns 指数代码, 指数名称 in its public current master.
-    # Never guess an unknown schema or convert codes to integers.
-    required={"指数代码","指数名称"}
+    # CSI's live export exposes 指数代码, 指数简称 and **指数全称**.
+    # Only the official FULL name is safe for exact index identity.
+    required={"指数代码","指数全称"}
     if not required.issubset(set(t.columns)):
         raise ValueError(f"CSI export changed schema; columns={list(t.columns)}")
     records=[]
     for _,r in t.iterrows():
         code=str(r["指数代码"] if pd.notna(r["指数代码"]) else "").strip()
-        name=str(r["指数名称"] if pd.notna(r["指数名称"]) else "").strip()
+        name=str(r["指数全称"] if pd.notna(r["指数全称"]) else "").strip()
         if code and name and code.lower()!="nan" and name.lower()!="nan":
             code=code.zfill(6) if code.isdigit() else code
             records.append({"index_code":code,"index_name":name})
