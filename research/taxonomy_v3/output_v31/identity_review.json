@@ -573,12 +573,6 @@
     "candidate_name": "黄金9999",
     "official_code": "AU9999",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159934"
-  },
-  {
-    "candidate_name": "黄金9999",
-    "official_code": "AU9999",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159937"
   },
   {
@@ -604,12 +598,6 @@
     "official_code": "IMCI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159980"
-  },
-  {
-    "candidate_name": "大商所豆粕期货价格指数",
-    "official_code": "DCESMFI",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159985"
   },
   {
     "candidate_name": "道琼斯美国精选REIT指数",

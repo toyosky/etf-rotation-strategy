@@ -64,20 +64,20 @@
     "archive_symbols": 2003,
     "archive_symbols_missing_legacy_metadata": 0,
     "dedup_comparison": {
-      "approved_archive_symbols": 1403,
+      "approved_archive_symbols": 1404,
       "broad_sector_groups": 34,
-      "exact_index_groups": 414,
-      "fine_exposure_groups": 414,
+      "exact_index_groups": 415,
+      "fine_exposure_groups": 415,
       "raw_archive_symbols": 2003,
-      "verified_archive_symbols": 1608,
+      "verified_archive_symbols": 1607,
       "warning": "Partial verified subsets; unknowns are exclusions, never deduplication savings"
     },
-    "exact_index_groups": 417,
+    "exact_index_groups": 418,
     "execution_verified_count": 0,
-    "fine_exposure_groups": 417,
-    "fully_classified_current": 1474,
+    "fine_exposure_groups": 418,
+    "fully_classified_current": 1475,
     "historical_classifications_before_capture": 0,
-    "index_code_count": 1569,
+    "index_code_count": 1566,
     "legacy_coverage": {
       "risk_bucket": 2026,
       "style_sector": 1585,
@@ -86,31 +86,32 @@
     "legacy_current_count": 2026,
     "legacy_historical_safe_flags": 17,
     "legacy_review": 424,
-    "legal_mandates_verified_count": 3,
+    "legal_mandates_verified_count": 7,
     "legal_non_passive_mandates_count": 1,
-    "needs_review": 673,
-    "no_verified_tracking_identity": 462,
+    "needs_review": 672,
+    "no_verified_tracking_identity": 463,
     "official_current_listed": 2123,
-    "official_full_name_count": 1583,
+    "official_full_name_count": 1584,
     "official_identity_candidate_groups": 516,
-    "officially_verified_index_identity": 1685,
-    "officially_verified_index_identity_pct": 78.48,
+    "officially_verified_index_identity": 1684,
+    "officially_verified_index_identity_pct": 78.44,
     "prelisting_history_count": 1,
-    "provisional_fine_exposure_groups": 522,
+    "provisional_fine_exposure_groups": 523,
     "review_reasons": {
       "AUXILIARY_TRACKING_IDENTITY_ONLY": 21,
       "ENHANCED_STRATEGY_REQUIRES_MANDATE_REVIEW": 76,
-      "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED": 15,
+      "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED": 13,
       "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED": 54,
       "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED": 107,
       "NOT_IN_CAPTURED_OFFICIAL_LISTS": 24,
+      "OFFICIALLY_VERIFIED_NON_INDEX_REFERENCE_EXCLUDED": 2,
       "OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED": 1,
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 123,
+      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 121,
       "OFFICIAL_FITTED_CODE_MISSING": 180,
       "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX": 150
     },
     "sector_level1_count": 13,
-    "sector_level2_count": 63,
+    "sector_level2_count": 64,
     "snapshot_date": "2026-11-12",
     "total_funds": 2147
   },
@@ -120,14 +121,23 @@
     "approved": 770
   },
   "overlap_after": {
-    "name_only": 116,
-    "verified": 1685,
-    "approved": 1474
+    "name_only": 118,
+    "verified": 1684,
+    "approved": 1475
   },
   "previously_approved_regressions": 0,
-  "changed_count": 1207,
-  "moved_from_review": 704,
-  "newly_approved_in_archive": 670,
+  "verified_non_index_identity_corrections": [
+    {
+      "symbol": "159934",
+      "previous_verified": true,
+      "previous_approved": false,
+      "revised_strategy": "PASSIVE_SPOT_ETF",
+      "legal_evidence": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467474.PDF"
+    }
+  ],
+  "changed_count": 1210,
+  "moved_from_review": 705,
+  "newly_approved_in_archive": 671,
   "changes": [
     {
       "symbol": "158000",
@@ -5868,6 +5878,19 @@
       "new_reasons": []
     },
     {
+      "symbol": "159934",
+      "name": "黄金ETF易方达",
+      "old_exact": "SZSE_FITTED_CODE:AU9999",
+      "new_exact": null,
+      "old_index_name": "黄金9999",
+      "new_index_name": null,
+      "old_needs_review": true,
+      "new_needs_review": true,
+      "new_reasons": [
+        "OFFICIALLY_VERIFIED_NON_INDEX_REFERENCE_EXCLUDED"
+      ]
+    },
+    {
       "symbol": "159936",
       "name": "可选消费ETF广发",
       "old_exact": "SZSE_FITTED_CODE:000989",
@@ -6053,6 +6076,17 @@
       "new_exact": "INDEX_NAME:31b3eea2891d925eb907",
       "old_index_name": "易盛郑商所能源化工指数A",
       "new_index_name": "易盛郑商所能源化工指数A",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159985",
+      "name": "豆粕ETF华夏",
+      "old_exact": "SZSE_FITTED_CODE:DCESMFI",
+      "new_exact": "INDEX_NAME:84d6c7562d81d172f8ca",
+      "old_index_name": "大商所豆粕期货价格指数",
+      "new_index_name": "大连商品交易所豆粕期货价格指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []
@@ -6396,6 +6430,17 @@
       "new_exact": "CSI:931552",
       "old_index_name": "中证1-3年国债指数",
       "new_index_name": "中证1-3年国债指数",
+      "old_needs_review": false,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "511220",
+      "name": "城投债ETF海富通",
+      "old_exact": "OFFICIAL_INDEX_CODE:H11098",
+      "new_exact": "INDEX_NAME:cb6014b47986527b6a29",
+      "old_index_name": "上证城投债指数",
+      "new_index_name": "上证城投债指数",
       "old_needs_review": false,
       "new_needs_review": false,
       "new_reasons": []

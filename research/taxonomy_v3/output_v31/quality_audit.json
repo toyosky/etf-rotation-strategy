@@ -7785,13 +7785,6 @@
           "exact_index_key": "SZSE_FITTED_CODE:AU9999",
           "index_code": "AU9999",
           "index_name": "黄金9999",
-          "name": "黄金ETF易方达",
-          "symbol": "159934"
-        },
-        {
-          "exact_index_key": "SZSE_FITTED_CODE:AU9999",
-          "index_code": "AU9999",
-          "index_name": "黄金9999",
           "name": "黄金ETF博时",
           "symbol": "159937"
         }
