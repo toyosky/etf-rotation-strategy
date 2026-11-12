@@ -4,8 +4,13 @@
     "index_code": "000300",
     "index_name": "沪深300指数",
     "index_provider": null,
-    "code_aliases": ["000300", "399300"],
-    "name_aliases": ["沪深300指数"],
+    "code_aliases": [
+      "000300",
+      "399300"
+    ],
+    "name_aliases": [
+      "沪深300指数"
+    ],
     "source_url": "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20150911_3984891.shtml",
     "source_date": "2005-04-05",
     "evidence_excerpt": "上海行情使用代码为000300，深圳行情使用代码399300。",
@@ -16,11 +21,713 @@
     "index_code": "000905",
     "index_name": "中证500指数",
     "index_provider": null,
-    "code_aliases": ["000905", "399905"],
-    "name_aliases": ["中证500指数", "中证小盘500指数"],
+    "code_aliases": [
+      "000905",
+      "399905"
+    ],
+    "name_aliases": [
+      "中证500指数",
+      "中证小盘500指数"
+    ],
     "source_url": "https://investor.amac.org.cn/investwarn/fxjsflbd/smtzzjsxkp/xqcpfxts/202109/t20210914_12966.html",
     "source_date": "2021-09-14",
     "evidence_excerpt": "中证500指数又称中证小盘500指数，上海行情代码为000905，深圳行情代码为399905。",
     "observed_on": "2026-11-12"
+  },
+  {
+    "canonical_key": "INDEX_NAME:9a82a9f28ca239cd19a0",
+    "index_code": null,
+    "index_name": "巴西IBOVESPA指数",
+    "index_provider": null,
+    "code_aliases": [],
+    "name_aliases": [
+      "巴西IBOVESPA指数",
+      "巴西伊博维斯帕指数"
+    ],
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-07-21/1225433022.PDF",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/brazil-159100.json",
+        "required_tokens": [
+          "159100",
+          "标的指数为巴西IBOVESPA指数"
+        ]
+      },
+      {
+        "manifest": "snapshot/supplement_v32/brazil-520870.json",
+        "required_tokens": [
+          "520870",
+          "标的指数为巴西IBOVESPA指数"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Both official fund documents explicitly identify the same underlying IBOVESPA index. Different target ETFs remain product execution attributes."
+  },
+  {
+    "canonical_key": "HSI:HSTECH",
+    "index_code": "HSTECH",
+    "index_name": "恒生科技指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSTECH"
+    ],
+    "name_aliases": [
+      "恒生科技指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hstech/IM_hstech.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hstech.json",
+        "required_tokens": [
+          "恒生科技指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSTECH(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSBIO",
+    "index_code": "HSBIO",
+    "index_name": "恒生生物科技指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSBIO"
+    ],
+    "name_aliases": [
+      "恒生生物科技指数",
+      "恒生香港上市生物科技指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsbio/IM_hsbio.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsbio.json",
+        "required_tokens": [
+          "恒生生物科技指数",
+          "此前为恒生香港上市生物科技指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSBIO(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSCITI",
+    "index_code": ".HSSCITI",
+    "index_name": "恒生港股通科技主题指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSSCITI",
+      "HSSCITI"
+    ],
+    "name_aliases": [
+      "恒生港股通科技主题指数",
+      "恒生港股通资讯科技业(可投资)指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hssciti/IM_hssciti.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hssciti.json",
+        "required_tokens": [
+          "恒生港股通科技主题指数",
+          "此前为恒生港股通资讯科技业(可投资)指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSCITI(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSCAM",
+    "index_code": ".HSSCAM",
+    "index_name": "恒生港股通汽车主题指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSSCAM",
+      "HSSCAM"
+    ],
+    "name_aliases": [
+      "恒生港股通汽车主题指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsscam/IM_hsscam.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsscam.json",
+        "required_tokens": [
+          "恒生港股通汽车主题指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSCAM(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSC50",
+    "index_code": ".HSSC50",
+    "index_name": "恒生港股通50指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSSC50",
+      "HSSC50"
+    ],
+    "name_aliases": [
+      "恒生港股通50指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hssc50/IM_hssc50.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hssc50.json",
+        "required_tokens": [
+          "恒生港股通50指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSC50(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSCEI",
+    "index_code": "HSCEI",
+    "index_name": "恒生中国企业指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSCEI"
+    ],
+    "name_aliases": [
+      "恒生中国企业指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hscei/IM_hscei.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hscei.json",
+        "required_tokens": [
+          "恒生中国企业指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSCE(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSI",
+    "index_code": "HSI",
+    "index_name": "恒生指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSI"
+    ],
+    "name_aliases": [
+      "恒生指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsi/IM_hsi.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsi.json",
+        "required_tokens": [
+          "恒生指数及分类指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSI(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSIII",
+    "index_code": "HSIII",
+    "index_name": "恒生互联网科技业指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSIII"
+    ],
+    "name_aliases": [
+      "恒生互联网科技业指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsiii/IM_hsiii.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsiii.json",
+        "required_tokens": [
+          "恒生互联网科技业指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSIII(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSHCI",
+    "index_code": ".HSHCI",
+    "index_name": "恒生医疗保健指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSHCI",
+      "HSHCI"
+    ],
+    "name_aliases": [
+      "恒生医疗保健指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hshci/IM_hshci.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hshci.json",
+        "required_tokens": [
+          "恒生医疗保健指数"
+        ],
+        "required_patterns": [
+          "路孚特\\s+\\.HSHCI\\s+\\.HSHCIDV"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSCID",
+    "index_code": ".HSSCID",
+    "index_name": "恒生港股通创新药指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSSCID",
+      "HSSCID"
+    ],
+    "name_aliases": [
+      "恒生港股通创新药指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsscid/IM_hsscid.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsscid.json",
+        "required_tokens": [
+          "恒生港股通创新药指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSCID(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSISC",
+    "index_code": ".HSISC",
+    "index_name": "恒指港股通指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      ".HSISC",
+      "HSISC"
+    ],
+    "name_aliases": [
+      "恒指港股通指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsisc/IM_hsisc.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsisc.json",
+        "required_tokens": [
+          "恒指港股通指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSISC(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Refinitiv",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSCSOY",
+    "index_code": "HSSCSOY",
+    "index_name": "恒生港股通中国央企红利指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSSCSOY"
+    ],
+    "name_aliases": [
+      "恒生港股通中国央企红利指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsscsoy/IM_hsscsoy.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsscsoy.json",
+        "required_tokens": [
+          "恒生港股通中国央企红利指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSCSOY(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSCGSI",
+    "index_code": "HSCGSI",
+    "index_name": "恒生消费指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSCGSI"
+    ],
+    "name_aliases": [
+      "恒生消费指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hscgsi/IM_hscgsi.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hscgsi.json",
+        "required_tokens": [
+          "恒生消费指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSCGSI(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSMCHYI",
+    "index_code": "HSMCHYI",
+    "index_name": "恒生港股通中国内地企业红利指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSMCHYI"
+    ],
+    "name_aliases": [
+      "恒生港股通中国内地企业红利指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsmchyi/IM_hsmchyi.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsmchyi.json",
+        "required_tokens": [
+          "恒生港股通中国内地企业红利指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSMCHYI(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSSCHI",
+    "index_code": "HSSCHI",
+    "index_name": "恒生港股通创新药及医疗保健指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSSCHI"
+    ],
+    "name_aliases": [
+      "恒生港股通创新药及医疗保健指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsschi/IM_hsschi.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsschi.json",
+        "required_tokens": [
+          "恒生港股通创新药及医疗保健指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSSCHI(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSHYLV",
+    "index_code": "HSHYLV",
+    "index_name": "恒生港股通红利低波动指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSHYLV"
+    ],
+    "name_aliases": [
+      "恒生港股通红利低波动指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hshylv/IM_hshylv.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hshylv.json",
+        "required_tokens": [
+          "恒生港股通红利低波动指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSHYLV(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "HSI:HSCAUPG",
+    "index_code": "HSCAUPG",
+    "index_name": "恒生A股电网设备指数",
+    "index_provider": "恒生指数有限公司",
+    "code_aliases": [
+      "HSCAUPG"
+    ],
+    "name_aliases": [
+      "恒生A股电网设备指数"
+    ],
+    "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hscaupg/IM_hscaupg.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hscaupg.json",
+        "required_tokens": [
+          "恒生A股电网设备指数"
+        ],
+        "required_patterns": [
+          "^\\s*价格指数\\s+\\.HSCAUPG(?:\\s|$)"
+        ]
+      }
+    ],
+    "index_return_variant": "PRICE",
+    "code_namespace": "Bloomberg",
+    "evidence_excerpt": "Official methodology price-index code row; dividend and net-return variants deliberately not aliased."
+  },
+  {
+    "canonical_key": "OFFICIAL_INDEX_CODE:980092",
+    "index_code": "980092",
+    "index_name": "国证自由现金流指数",
+    "index_provider": "国证指数",
+    "code_aliases": [
+      "980092"
+    ],
+    "name_aliases": [
+      "国证自由现金流指数"
+    ],
+    "source_url": "https://www.cnindex.com.cn/docs/gz_980092.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "code_namespace": "COMPILER",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/cni-methodology-980092.json",
+        "required_tokens": [
+          "指数名称:国证自由现金流指数",
+          "指数代码:980092"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Official code/name section. Other price/return versions in appendices are not merged."
+  },
+  {
+    "canonical_key": "OFFICIAL_INDEX_CODE:980028",
+    "index_code": "980028",
+    "index_name": "国证龙头家电指数",
+    "index_provider": "国证指数",
+    "code_aliases": [
+      "980028"
+    ],
+    "name_aliases": [
+      "国证龙头家电指数"
+    ],
+    "source_url": "https://www.cnindex.com.cn/docs/gz_980028.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "code_namespace": "COMPILER",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/cni-methodology-980028.json",
+        "required_tokens": [
+          "指数名称:国证龙头家电指数",
+          "指数代码:980028"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Official code/name section. Other price/return versions in appendices are not merged."
+  },
+  {
+    "canonical_key": "OFFICIAL_INDEX_CODE:921128",
+    "index_code": "921128",
+    "index_name": "深证基准做市信用债指数",
+    "index_provider": "国证指数",
+    "code_aliases": [
+      "921128"
+    ],
+    "name_aliases": [
+      "深证基准做市信用债指数"
+    ],
+    "source_url": "https://www.cnindex.com.cn/docs/gz_921128.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "code_namespace": "COMPILER",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/cni-methodology-921128.json",
+        "required_tokens": [
+          "指数名称:深证基准做市信用债指数",
+          "指数代码:921128"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Official code/name section. Other price/return versions in appendices are not merged."
+  },
+  {
+    "canonical_key": "OFFICIAL_INDEX_CODE:921130",
+    "index_code": "921130",
+    "index_name": "深证AAA科技创新公司债指数",
+    "index_provider": "国证指数",
+    "code_aliases": [
+      "921130"
+    ],
+    "name_aliases": [
+      "深证AAA科技创新公司债指数"
+    ],
+    "source_url": "https://www.cnindex.com.cn/docs/gz_921130.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "code_namespace": "COMPILER",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/cni-methodology-921130.json",
+        "required_tokens": [
+          "指数名称:深证AAA科技创新公司债指数",
+          "指数代码:921130"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Official code/name section. Other price/return versions in appendices are not merged."
+  },
+  {
+    "canonical_key": "CSI:000903",
+    "index_code": "000903",
+    "index_name": "中证A100指数",
+    "index_provider": "中证指数有限公司",
+    "code_aliases": [
+      "000903",
+      "399903"
+    ],
+    "name_aliases": [
+      "中证A100指数"
+    ],
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-06-11/561200_20260611_PEHQ.pdf",
+    "source_date": "2026-06-11",
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/csi-a100-dual-codes.json",
+        "required_tokens": [
+          "中证A100指数",
+          "000903/399903"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Current official prospectus explicitly lists 000903/399903 for CSI A100; no historical renaming interval inferred."
+  },
+  {
+    "canonical_key": "NASDAQ:NDX",
+    "index_code": "NDX",
+    "index_name": "纳斯达克100指数",
+    "index_provider": "Nasdaq",
+    "code_aliases": [
+      "NDX"
+    ],
+    "name_aliases": [
+      "纳斯达克100指数"
+    ],
+    "source_url": "https://indexes.nasdaq.com/docs/Methodology_NDX.pdf",
+    "source_date": null,
+    "observed_on": "2026-11-12",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/nasdaq-ndx-methodology.json",
+        "required_tokens": [
+          "NASDAQ-100 INDEX",
+          "NDX"
+        ]
+      },
+      {
+        "manifest": "snapshot/supplement_v32/nasdaq-ndx-fund.json",
+        "required_tokens": [
+          "纳斯达克100指数",
+          "目标指数代码:NDX"
+        ]
+      }
+    ],
+    "evidence_excerpt": "Official compiler NDX methodology and Chinese official fund prospectus explicitly connect the tracked full name and NDX. XNDX/net-return variants are not aliased."
   }
 ]

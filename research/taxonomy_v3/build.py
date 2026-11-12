@@ -9,6 +9,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import pandas as pd
 from .model import economic_labels, name_key, normalize_name, valid_index_name, validate_intervals, supplemental_labels_v31
+from .evidence import verify_documents
 
 
 def dump(path: Path, value):
@@ -38,7 +39,7 @@ def official_inputs(root: Path):
     return sh, sz
 
 
-def registry_inputs(root: Path):
+def registry_inputs(root: Path, snapshot_date: str | None = None):
     """Use ONLY official full-name/code links; never silently learn from returns."""
     by_code, by_name = {}, defaultdict(set)
     for p in sorted(root.glob('cnindex-*.json')):
@@ -98,19 +99,28 @@ def registry_inputs(root: Path):
             by_name[normalize_name(name)].add(code)
     aliases = json.loads(Path(__file__).with_name('index_aliases.json').read_text())
     for a in aliases:
+        verify_documents(a.get('evidence_documents', []), snapshot_date)
         rec = dict(key=a['canonical_key'], index_code=a['index_code'], index_name=a['index_name'],
-                   index_provider=a['index_provider'], source_url=a['source_url'])
+                   index_provider=a['index_provider'], source_url=a['source_url'],
+                   code_namespace=a.get('code_namespace'), return_variant=a.get('index_return_variant'))
         for code in a['code_aliases']:
+            prior = by_code.get(code)
+            if prior and normalize_name(prior['index_name']) not in {normalize_name(n) for n in a['name_aliases']}:
+                raise ValueError(f'curated code conflicts with a different official index: {code}')
             by_code[code] = rec
+        # Some legally verified synonyms have no evidenced canonical code.
+        # Internal lookup IDs must never be exposed as official index_code.
+        lookup = a['index_code'] or '@ALIAS:' + a['canonical_key']
+        by_code[lookup] = rec
         for name in a['name_aliases']:
-            by_name[normalize_name(name)] = {a['index_code']}
+            by_name[normalize_name(name)] = {lookup}
     return by_code, by_name
 
 
 def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.DataFrame,
           snapshot_date: str):
     sh, sz = official_inputs(official)
-    by_code, by_name = registry_inputs(official)
+    by_code, by_name = registry_inputs(official, snapshot_date)
     listings = {}
     for p in sorted(official.glob('listings-*.json')):
         src = json.loads(p.read_text())
@@ -162,7 +172,7 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             valid_from=snapshot_date, valid_to=None, known_from=next_day,
             listing_date=None, delisting_date=None, listing_known_from=None,
             confidence='UNVERIFIED', needs_review=True, classification_reason=[],
-            classification_version='V3.1.1', historical_scope='CURRENT_SNAPSHOT_ONLY',
+            classification_version='V3.2.0', historical_scope='CURRENT_SNAPSHOT_ONLY',
             legacy_underlying_key=legacy.get('underlying_key'), legacy_risk_bucket=legacy.get('risk_bucket'),
             legacy_style_sector=legacy.get('style_sector'),
             auxiliary_index_name=aux_index, auxiliary_source_url=prof.get('source_url'),
@@ -224,6 +234,8 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
         if registry:
             rec.update(exact_index_key=registry['key'], index_code=registry['index_code'],
                        index_provider=registry['index_provider'], confidence='HIGH_OFFICIAL_INDEX_LINK')
+            rec['index_code_namespace'] = registry.get('code_namespace')
+            rec['index_return_variant'] = registry.get('return_variant')
             rec['classification_source'].append('OFFICIAL_INDEX_REGISTRY_FULL_NAME_CODE')
             rec['source_url'].append(registry['source_url'])
         rec['official_fitted_index_code'] = (sz[symbol][0]['nhzs'].strip() if symbol in sz else None)
@@ -264,6 +276,7 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             rec['premium_sensitive'] = False
         if symbol in mandate_by_symbol:
             d = mandate_by_symbol[symbol]
+            verify_documents(d.get('evidence_documents', []), snapshot_date)
             # A documented fund-specific identity is stronger than a
             # third-party name bridge. The evidence is current and must
             # never be extrapolated before the current captured snapshot.
@@ -287,6 +300,9 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
                                         d["exposure_type"],d["sector_level1"]))
             if d.get("replication_method"):
                 rec["replication_method"] = d["replication_method"]
+            rec['share_class'] = d.get('share_class')
+            rec['reported_contract_effective_date'] = d.get('reported_contract_effective_date')
+            rec['history_review_note'] = d.get('history_review_note')
             if d["kind"] in {"OFFICIAL_PASSIVE_INDEX_MANDATE",
                               "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE"}:
                 if not d.get("index_name"):
@@ -294,9 +310,15 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
                 # Do not assert that an exchange 'fitted code' is the
                 # index compiler's canonical ID: legal-name key is safer.
                 rec["index_name"] = d["index_name"]
-                rec["index_code"] = None
-                rec["index_provider"] = None
-                rec["exact_index_key"] = name_key(d["index_name"])
+                matches = by_name.get(normalize_name(d['index_name']), set())
+                canonical = by_code[next(iter(matches))] if len(matches) == 1 else None
+                rec["index_code"] = canonical['index_code'] if canonical else None
+                rec["index_provider"] = canonical['index_provider'] if canonical else None
+                rec["exact_index_key"] = canonical['key'] if canonical else name_key(d["index_name"])
+                rec['canonical_index_name'] = canonical['index_name'] if canonical else d['index_name']
+                if canonical:
+                    rec['source_url'].append(canonical['source_url'])
+                    rec['classification_source'].append('OFFICIAL_DOCUMENTED_INDEX_SYNONYM')
                 rec["exact_index_verified"] = True
                 rec["exposure_id"] = "EXPOSURE:"+rec["exact_index_key"]
                 rec["exposure_name"] = d["index_name"]
@@ -305,7 +327,10 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
                     "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
                     "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
                     "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED",
-                    "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX"}]
+                    "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX",
+                    "OFFICIAL_FITTED_CODE_MISSING",
+                    "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED",
+                    "AUXILIARY_TRACKING_IDENTITY_ONLY"}]
                 identity_review = [x for x in identity_review if x['symbol'] != symbol]
             else:
                 if d.get("index_name") is not None:
@@ -327,7 +352,9 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
                     "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
                     "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
                     "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED",
-                    "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED"}]
+                    "LOF_LEGAL_TRACKING_MANDATE_NOT_VERIFIED",
+                    "OFFICIAL_FITTED_CODE_MISSING",
+                    "AUXILIARY_TRACKING_IDENTITY_ONLY"}]
                 identity_review = [x for x in identity_review if x["symbol"] != symbol]
                 reason = ("OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED"
                           if d["tracking_mode"]=="ACTIVE_QDII_FOF"
@@ -336,7 +363,15 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             # Missing settlement/premium/quote attributes are NOT invented.
             rec["classification_reason"].append(
                 "Official fund mandate recorded with document date; not automatically historical-PIT qualified")
-        rec['needs_review'] = bool(reasons)
+        known_exclusions = {'OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED',
+                            'OFFICIALLY_VERIFIED_NON_INDEX_REFERENCE_EXCLUDED'}
+        unresolved_reasons = [x for x in reasons if x not in known_exclusions]
+        rec['economic_classification_verified'] = not unresolved_reasons and bool(rec['exposure_id'])
+        rec['classification_status'] = ('VERIFIED_CURRENT_INDEX' if not reasons else
+            'VERIFIED_EXCLUDED_STRATEGY' if rec['economic_classification_verified'] else 'NEEDS_REVIEW')
+        rec['current_index_pool_approved'] = not reasons
+        rec['unresolved_reasons'] = unresolved_reasons
+        rec['needs_review'] = bool(reasons)  # legacy pool-approval flag; see classification_status
         rec['classification_reason'] += reasons + [
             'Distinct indices retained as distinct fine exposures; cross-index equivalence unapproved',
             'Current observation is unavailable before known_from; first quote is not a listing certificate']
@@ -344,6 +379,8 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
         if reasons:
             reviews.append(dict(symbol=symbol, name=rec['name'], reasons=reasons,
                                 auxiliary_index_name=aux_index, exact_index_key=rec['exact_index_key'],
+                                classification_status=rec['classification_status'],
+                                unresolved_reasons=unresolved_reasons,
                                 confidence=rec['confidence'], source_url=rec['source_url'],
                                 auxiliary_source_url=rec['auxiliary_source_url'], observed_on=snapshot_date))
     validate_intervals(records)
@@ -417,6 +454,19 @@ def main():
                        reason='Possible conversion/share-class/source history; first bar cannot establish current mandate')
                   for r in records if r['first_bar'] and r['listing_date'] and r['first_bar']<r['listing_date']]
     dump(out/'prelisting_history_review.json', prelisting)
+    history_events = [dict(symbol=r['symbol'],name=r['name'],
+        reported_contract_effective_date=r['reported_contract_effective_date'],
+        first_bar=r['first_bar'], current_replication_method=r['replication_method'],
+        source_url=r['mandate_document_url'], source_date=r['source_date'],
+        status='HISTORICAL_ANNOUNCEMENT_REQUIRED',
+        warning='Current report states a contract effective date; not proof of the earlier mandate or of its publication-time availability')
+        for r in records if r.get('reported_contract_effective_date') and r.get('first_bar')
+        and r['first_bar'] < r['reported_contract_effective_date']]
+    dump(out/'strategy_history_review.json',history_events)
+    index_events = json.loads(Path(__file__).with_name('index_history_events_v32.json').read_text())
+    for event in index_events:
+        verify_documents(event['evidence_documents'], args.snapshot_date)
+    dump(out/'index_history_review.json',index_events)
     dump(out/'profiles.json', [profiles[k] for k in sorted(profiles)])
     dump(out/'calendar_observed.json', sorted(bars.date.astype(str).str[:10].unique()))
     for name, rr in [('classifications', records), ('review_queue', reviews)]:
@@ -433,6 +483,7 @@ def main():
         archive_max_date=str(bars.date.max())[:10], archive_sha256=hashlib.sha256(args.bars.read_bytes()).hexdigest(),
         archive_duplicate_symbol_dates=int(bars.duplicated(['symbol','date']).sum()),
         prelisting_history_count=len(prelisting),
+        reported_contract_history_review_count=len(history_events),
         archive_symbols_missing_legacy_metadata=len(set(coverage)-set(current)),
         official_current_listed=sum(r['current_exchange_listed_verified'] for r in records),
         officially_verified_index_identity=len(verified),
@@ -446,6 +497,9 @@ def main():
         sector_level1_count=len({r['sector_level1'] for r in verified if r['sector_level1']}),
         sector_level2_count=len({r['sector_level2'] for r in verified if r['sector_level2']}),
         fully_classified_current=len(complete), needs_review=len(reviews),
+        economically_classified_count=sum(r['economic_classification_verified'] for r in records),
+        unresolved_classification_count=sum(not r['economic_classification_verified'] for r in records),
+        verified_excluded_strategy_count=sum(r['classification_status']=='VERIFIED_EXCLUDED_STRATEGY' for r in records),
         execution_verified_count=sum(r['execution_attributes_verified'] for r in records),
         legal_mandates_verified_count=sum(r.get('legal_mandate_verified',False) for r in records),
         legal_non_passive_mandates_count=sum(r.get('tracking_mode')=='ACTIVE_QDII_FOF' for r in records),
@@ -467,11 +521,11 @@ def main():
     dump(out/'summary.json', summary)
     # Full input digests plus deterministic output manifest; no wall-clock build
     # timestamp so repeated identical frozen inputs produce identical artifacts.
-    files = [args.metadata, args.bars, Path(__file__).with_name('index_aliases.json'), Path(__file__).with_name('fund_contract_evidence_v31.json')] + sorted(Path(__file__).parent.glob('*.py')) + sorted(args.profiles.glob('*.json')) + sorted(args.official.glob('*.json'))
+    files = [args.metadata, args.bars, Path(__file__).with_name('index_aliases.json'), Path(__file__).with_name('fund_contract_evidence_v31.json'), Path(__file__).with_name('index_history_events_v32.json')] + sorted(Path(__file__).parent.glob('*.py')) + sorted(args.profiles.glob('*.json')) + sorted(args.official.glob('*.json')) + sorted(Path(__file__).with_name('snapshot').joinpath('supplement_v32').glob('*'))
     output_names = ['classifications.json','classifications.csv','classifications.parquet','review_queue.json',
         'review_queue.csv','identity_review.json','quality_audit.json','profiles.json','calendar_observed.json',
-        'prelisting_history_review.json','summary.json']
-    dump(out/'manifest.json', dict(version='V3.1.1', inputs=[dict(name=p.name, sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in files],
+        'prelisting_history_review.json','strategy_history_review.json','index_history_review.json','summary.json']
+    dump(out/'manifest.json', dict(version='V3.2.0', inputs=[dict(name=p.name, sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in files],
         outputs={name:hashlib.sha256((out/name).read_bytes()).hexdigest() for name in output_names}))
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

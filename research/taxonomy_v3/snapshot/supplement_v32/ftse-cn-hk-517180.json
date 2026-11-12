@@ -1,0 +1,10 @@
+{
+  "id": "ftse-cn-hk-517180",
+  "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-04-21/517180_20250421_6CTO.pdf",
+  "observed_at": "2026-11-12T11:39:36.607615+00:00",
+  "status": "ok",
+  "raw_path": "ftse-cn-hk-517180.pdf",
+  "raw_sha256": "a2edc8e57537ed1c83a81f2ab5bef7c029e692419e325414da6c1545277163dc",
+  "text_path": "ftse-cn-hk-517180.txt",
+  "text_sha256": "ce1599303741a9c50ab77e621d6460f4876a1e23804109d7c901bc69e14c215c"
+}

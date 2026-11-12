@@ -1,0 +1,10 @@
+{
+  "id": "hsi-methodology-hssciti",
+  "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hssciti/IM_hssciti.pdf",
+  "observed_at": "2026-11-12T11:41:03.954675+00:00",
+  "status": "ok",
+  "raw_path": "hsi-methodology-hssciti.pdf",
+  "raw_sha256": "c2daca73d61a6709be031cc07c1b13834296a9a4b81b112d18825c6998da981d",
+  "text_path": "hsi-methodology-hssciti.txt",
+  "text_sha256": "bba28efa5f273f2ae565e0f40d6cea84ada581af839b27052f03e64e2569c3c3"
+}

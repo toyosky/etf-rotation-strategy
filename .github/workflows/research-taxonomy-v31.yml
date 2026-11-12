@@ -1,27 +1,25 @@
-name: Research Taxonomy V3.1 Official CSI Coverage
+name: Research Taxonomy V3.2 Evidence and Regression
 on:
   push:
-    branches:
-      - research/taxonomy-v3-20261112
+    branches: [research/taxonomy-v3-20261112]
     paths:
-      - 'research/taxonomy_v3/build.py'
-      - 'research/taxonomy_v3/model.py'
-      - 'research/taxonomy_v3/test_taxonomy.py'
-      - 'research/taxonomy_v3/collect_cnindex_extra_v31.py'
+      - 'research/taxonomy_v3/*.py'
+      - 'research/taxonomy_v3/index_aliases.json'
+      - 'research/taxonomy_v3/index_history_events_v32.json'
       - 'research/taxonomy_v3/fund_contract_evidence_v31.json'
-      - 'research/taxonomy_v3/collect_csindex_catalog_v31.py'
-      - 'research/taxonomy_v3/summarize_v31.py'
+      - 'research/taxonomy_v3/requirements.lock'
+      - 'research/taxonomy_v3/snapshot/supplement_v32/**'
       - '.github/workflows/research-taxonomy-v31.yml'
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  group: research-taxonomy-v31
+  group: research-taxonomy-v32
   cancel-in-progress: true
 jobs:
   rebuild:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 30
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
@@ -29,151 +27,50 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install isolated researcher dependencies
+      - name: Install pinned research dependencies
+        run: python -m pip install -r research/taxonomy_v3/requirements.lock
+      - name: Prepare frozen inputs and verify all evidence
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install "pandas>=2.2,<3" "numpy>=2,<3" "pyarrow>=18" "requests>=2.31" "beautifulsoup4>=4.12" "openpyxl>=3.1" "pytest>=8"
-      - name: Capture full official CSI index code-name catalog
-        run: |
-          set -eu
-          mkdir -p /tmp/taxonomy-v31/official
-          cp research/taxonomy_v3/snapshot/official/*.json /tmp/taxonomy-v31/official/
-          # Freeze the current official 2026-11-12 capture: repeatable builds
-          # must not silently replace it with a future changing catalog.
-          if [ -f research/taxonomy_v3/snapshot/official_v31/csindex-catalog.json ]; then
-            cp research/taxonomy_v3/snapshot/official_v31/csindex-catalog.json /tmp/taxonomy-v31/official/csindex-catalog.json
-            cp research/taxonomy_v3/snapshot/official_v31/csindex-catalog.xlsx /tmp/taxonomy-v31/csindex-catalog.xlsx
-            python - <<'PY'
-          import json,hashlib
-          from pathlib import Path
-          p=Path("/tmp/taxonomy-v31/official/csindex-catalog.json")
-          obj=json.loads(p.read_text())
-          raw=Path("/tmp/taxonomy-v31/csindex-catalog.xlsx").read_bytes()
-          assert hashlib.sha256(raw).hexdigest()==obj["raw_sha256"]
-          assert obj["observed_at"].startswith("2026-11-12")
-          print("FROZEN_OFFICIAL_CSI_SOURCE_REUSED",obj["index_count"])
-          PY
-            echo "CSI_CATALOG_CAPTURED=true" >> "$GITHUB_ENV"
-          elif python research/taxonomy_v3/collect_csindex_catalog_v31.py \
-            --output /tmp/taxonomy-v31/official/csindex-catalog.json \
-            --raw /tmp/taxonomy-v31/csindex-catalog.xlsx; then
-            echo "CSI_CATALOG_CAPTURED=true" >> "$GITHUB_ENV"
-          else
-            echo "::warning::CSI live catalog temporarily unavailable; proceed with frozen prior official data without pretending it was verified"
-            echo "CSI_CATALOG_CAPTURED=false" >> "$GITHUB_ENV"
-          fi
-      - name: Freeze the exact historical price archive
-        run: |
-          set -eu
-          mkdir -p /tmp/taxonomy-v31/price /tmp/taxonomy-v31/arch
+          mkdir -p /tmp/taxonomy-v32
           gh release download research-data-fullmarket-current --repo "$GH_REPO" \
-            --pattern refreshed_daily_bars.parquet --dir /tmp/taxonomy-v31/price || true
+            --pattern refreshed_daily_bars.parquet --dir /tmp/taxonomy-v32 || true
           expected="9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb"
-          actual=$(sha256sum /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet 2>/dev/null | cut -d' ' -f1 || true)
+          actual=$(sha256sum /tmp/taxonomy-v32/refreshed_daily_bars.parquet 2>/dev/null | cut -d' ' -f1 || true)
           if [ "$actual" != "$expected" ]; then
-            echo "Release moved; use frozen independent evidence commit"
             git fetch origin research/taxonomy-v3-evidence-20261112 --depth=1
-            git show 8037109205eb36a3514c5f14d8f2f8c2dba3d351:research/taxonomy_v3/archive/taxonomy-v3-evidence-20261112.tar.gz > /tmp/taxonomy-v31/frozen.tar.gz
-            tar -xzf /tmp/taxonomy-v31/frozen.tar.gz -C /tmp/taxonomy-v31/arch
-            find /tmp/taxonomy-v31/arch -name refreshed_daily_bars.parquet -exec cp {} /tmp/taxonomy-v31/price/ \;
+            git show 8037109205eb36a3514c5f14d8f2f8c2dba3d351:research/taxonomy_v3/archive/taxonomy-v3-evidence-20261112.tar.gz > /tmp/taxonomy-v32/frozen.tar.gz
+            mkdir -p /tmp/taxonomy-v32/archive
+            tar -xzf /tmp/taxonomy-v32/frozen.tar.gz -C /tmp/taxonomy-v32/archive
+            cp /tmp/taxonomy-v32/archive/refreshed_daily_bars.parquet /tmp/taxonomy-v32/
           fi
-          echo "$expected  /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet" | sha256sum -c -
-      - name: Recreate offline profile facts
+          echo "$expected  /tmp/taxonomy-v32/refreshed_daily_bars.parquet" | sha256sum -c -
+          python -m research.taxonomy_v3.run_v32 --prepare-only --work /tmp/taxonomy-v32
+      - name: Rebuild twice, validate semantics and verify byte reproducibility
         run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path("/tmp/taxonomy-v31/profiles");p.mkdir(parents=True,exist_ok=True)
-          data=json.loads(Path("research/taxonomy_v3/output/profiles.json").read_text())
-          for r in data:
-              (p/(r["symbol"]+".json")).write_text(json.dumps(r,ensure_ascii=False))
-          print("Reconstituted frozen auxiliary facts:",len(data))
-          PY
-      - name: Verify remaining national Shenzhen/Guozheng index codes
-        run: |
-          set -eu
-          if ls research/taxonomy_v3/snapshot/official_v31/cnindex-*.json >/dev/null 2>&1; then
-            cp research/taxonomy_v3/snapshot/official_v31/cnindex-*.json /tmp/taxonomy-v31/official/
-            echo "Using frozen source-verified Guozheng index responses"
-          else
-            python research/taxonomy_v3/collect_cnindex_extra_v31.py \
-              --classifications research/taxonomy_v3/output_v31/classifications.json \
-              --output /tmp/taxonomy-v31/official --max-workers 5
-          fi
-      - name: Rebuild official verified classification and audit
-        run: |
-          python -m research.taxonomy_v3.build \
-            --metadata research/taxonomy_v3/snapshot/metadata.json \
-            --profiles /tmp/taxonomy-v31/profiles \
-            --official /tmp/taxonomy-v31/official \
-            --bars /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet \
-            --snapshot-date 2026-11-12 \
-            --output research/taxonomy_v3/output_v31
-          python -m research.taxonomy_v3.validate \
-            --output research/taxonomy_v3/output_v31 \
-            --bars /tmp/taxonomy-v31/price/refreshed_daily_bars.parquet
-          python -m research.taxonomy_v3.summarize_v31 \
-            --baseline research/taxonomy_v3/output \
-            --new research/taxonomy_v3/output_v31 \
-            --output research/taxonomy_v3/output_v31
-          python -m pytest research/taxonomy_v3/test_taxonomy.py -q
-      - name: Ensure official raw source is verifiably frozen
-        run: |
-          mkdir -p research/taxonomy_v3/snapshot/official_v31
-          if ls /tmp/taxonomy-v31/official/cnindex-*.json >/dev/null 2>&1; then
-            # Existing original source rows are archived under snapshot/official,
-            # do not republish them in the V3.1 delta directory.
-            for src in /tmp/taxonomy-v31/official/cnindex-*.json; do
-              base="$(basename "$src")"
-              if [ ! -e "research/taxonomy_v3/snapshot/official/$base" ]; then
-                cp "$src" "research/taxonomy_v3/snapshot/official_v31/$base"
-              fi
-            done
-          fi
-          if [ -f /tmp/taxonomy-v31/capture-cnindex-extra-status.json ]; then
-            cp /tmp/taxonomy-v31/capture-cnindex-extra-status.json research/taxonomy_v3/snapshot/official_v31/
-          fi
-          if [ "$CSI_CATALOG_CAPTURED" = "true" ]; then
-            cp /tmp/taxonomy-v31/official/csindex-catalog.json research/taxonomy_v3/snapshot/official_v31/
-            cp /tmp/taxonomy-v31/csindex-catalog.xlsx research/taxonomy_v3/snapshot/official_v31/
-            python - <<'PY'
-          import hashlib,json
-          from pathlib import Path
-          p=Path('research/taxonomy_v3/snapshot/official_v31')
-          j=json.loads((p/'csindex-catalog.json').read_text())
-          assert hashlib.sha256((p/'csindex-catalog.xlsx').read_bytes()).hexdigest()==j['raw_sha256']
-          assert j['index_count']>=500
-          print('RAW_EVIDENCE_HASH_PASS',j['index_count'])
-          PY
-          fi
-          echo "{\"official_csi_captured\": $CSI_CATALOG_CAPTURED}" > research/taxonomy_v3/snapshot/official_v31/capture_status.json
-      - name: Publish regression and new coverage audit
-        if: success()
-        run: cat research/taxonomy_v3/output_v31/REPORT_V31.md >> "$GITHUB_STEP_SUMMARY"
-      - name: Persist research branch only
+          python -m research.taxonomy_v3.run_v32 --work /tmp/taxonomy-v32
+          cat research/taxonomy_v3/output_v32/REPORT_V32.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Persist only the research artifact directory
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A research/taxonomy_v3
-          git add -f research/taxonomy_v3/output_v31/classifications.parquet
-          echo "Working tree before V3.1 commit:"
-          git status --short
+          git add -A research/taxonomy_v3/output_v32
+          git add -f research/taxonomy_v3/output_v32/classifications.parquet
           git diff --cached --quiet && exit 0
-          git commit -m "research: verified V3.1 index identities and conservatively enriched descriptors"
-          git pull --rebase --autostash origin research/taxonomy-v3-20261112
+          git commit -m "research: freeze validated V3.2 classifications and evidence audit"
+          # Concurrent source changes require a rebuild, not a stale rebase.
+          git fetch origin research/taxonomy-v3-20261112
+          test "$(git rev-parse origin/research/taxonomy-v3-20261112)" = "$GITHUB_SHA"
           git push origin HEAD:research/taxonomy-v3-20261112
-      - name: Save audit artifacts if data fetch failed
+      - name: Archive reproducible audit outputs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: taxonomy-v31-${{ github.run_id }}
-          path: |
-            research/taxonomy_v3/output_v31/summary.json
-            research/taxonomy_v3/output_v31/diff_v31.json
-            research/taxonomy_v3/output_v31/REPORT_V31.md
+          name: taxonomy-v32-${{ github.run_id }}
+          path: research/taxonomy_v3/output_v32/
           if-no-files-found: warn
           retention-days: 30

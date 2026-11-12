@@ -45,6 +45,12 @@ def economic_labels(index_name: str) -> dict:
         region = "CN_OFFSHORE"
     if "沪深港" in n or "沪港深" in n:
         region = "CN_HK"
+    # Official FTSE methodology: 80 A-share and 20 HK-listed companies.
+    # Evidence is frozen in snapshot/supplement_v32, not inferred from “中国”.
+    if n == '富时中国国企开放共赢指数':
+        region = 'CN_HK'
+    if n.startswith('恒生A股'):
+        region = 'CN'
     asset = None
     if "期货" in n:
         asset = "COMMODITY_FUTURES"
@@ -64,6 +70,7 @@ def economic_labels(index_name: str) -> dict:
         ("HEALTHCARE", "INNOVATIVE_DRUGS", ("创新药",)),
         ("HEALTHCARE", "BIOTECH", ("生物科技", "生物技术",)),
         ("HEALTHCARE", "BIOPHARMA_MIXED", ("生物医药",)),
+        ("HEALTHCARE", "HEALTHCARE_BROAD", ("医疗保健", "医药卫生")),
         ("HEALTHCARE", "MEDICAL_MIXED", ("医疗",)),
         ("HEALTHCARE", "PHARMA_BROAD", ("医药", "制药", "卫生")),
         ("TECHNOLOGY", "SEMICONDUCTOR", ("半导体", "芯片", "集成电路")),
@@ -113,7 +120,7 @@ def economic_labels(index_name: str) -> dict:
             sector, sub = a, b
             break
     kind = "INDEX_OTHER"
-    if any(x in n for x in ("红利", "低波", "价值", "成长", "质量", "现金流", "动量", "ESG")):
+    if any(x in n for x in ("红利", "低波", "价值", "成长", "质量", "现金流", "动量", "ESG", "基本面", "等权")):
         kind = "FACTOR"
     elif sector:
         kind = "SECTOR_OR_THEME"
@@ -159,7 +166,7 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
         elif any(w in n for w in ("亚太", "东南亚")):
             region="ASIA"
         elif any(w in n for w in ("中国A股", "A股", "深证", "细分", "国证", "中小企业",
-                                   "中小创业", "上证", "央视财经", "创业板", "富时中国", "MSCI中国")) or "MSCI CHINA A" in u:
+                                   "中小创业", "上证", "央视财经", "创业板", "富时中国A50", "MSCI中国A50")) or "MSCI CHINA A" in u:
             region="CN"
     if region and not out.get("region_primary"):
         out["region_primary"]=region
@@ -199,7 +206,8 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
           ("ENERGY","ENERGY_EQUITY",("中证能源","全指能源")),
           ("FINANCIALS","SECURITIES",("证券龙头",)),
           ("MULTI_SECTOR","LOW_CARBON",("碳中和","低碳经济","环保产业")),
-          ("MULTI_SECTOR","SOE_REFORM",("央企","国企","国有企业","国证民企")),
+          ("MULTI_SECTOR","PRIVATE_ENTERPRISE",("国证民企",)),
+          ("MULTI_SECTOR","SOE_REFORM",("央企","国企","国有企业")),
         ]
         for a,b,words in sector_rules:
             if any(w in n for w in words):
@@ -269,6 +277,8 @@ def classifications_at(rows: list[dict], date: str) -> tuple[list[dict], list[di
             r = candidates[0]
             if r["known_from"] > date:
                 reason = "CLASSIFICATION_NOT_YET_KNOWN"
+            elif r.get('classification_status') == 'VERIFIED_EXCLUDED_STRATEGY':
+                reason = 'VERIFIED_STRATEGY_OUTSIDE_PASSIVE_INDEX_POOL'
             elif r.get("needs_review") or not r.get("exact_index_verified") or not r.get("exposure_id"):
                 reason = "UNVERIFIED_CLASSIFICATION"
             elif r.get("tracking_mode") != "PASSIVE_INDEX":

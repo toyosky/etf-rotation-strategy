@@ -1,2 +1,7 @@
 snapshot/** linguist-generated=true
 output/** linguist-generated=true
+output_v31/** linguist-generated=true
+output_v32/** linguist-generated=true
+# This small metadata artifact must be directly readable after checkout.
+# Leave the repository's large-price-dataset LFS policy unchanged.
+output_v32/*.parquet -filter -diff -merge -text

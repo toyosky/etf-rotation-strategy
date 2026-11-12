@@ -1,0 +1,7 @@
+{
+  "id": "cni-methodology-399701",
+  "source_url": "https://www.cnindex.com.cn/docs/gz_399701.pdf",
+  "observed_at": "2026-11-12T11:57:32.524210+00:00",
+  "status": "error",
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/docs/gz_399701.pdf"
+}
