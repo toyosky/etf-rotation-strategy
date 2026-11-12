@@ -1,0 +1,1166 @@
+{
+  "contract": "ETF_REBUILD_INTRA_SECTOR_DIFFUSION_V1",
+  "source": {
+    "archive_sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "as_of": "2026-11-11",
+    "taxonomy_date": "2026-11-12"
+  },
+  "research_only": true,
+  "historical_taxonomy_pit": false,
+  "diagnostics": {
+    "first_day_simultaneous_excluded": 27,
+    "leader_missing_checkpoint_rows": 1,
+    "filtered_signal_events": 1912,
+    "sector_episodes": 411,
+    "checkpoint_rows": 757,
+    "source_eligible_symbols": 1045,
+    "source_exact_indices": 364,
+    "distinct_subsector_labels": 44,
+    "skipped": {
+      "insufficient_postlisting_history": 281,
+      "outside_verified_equity": 567
+    }
+  },
+  "cohorts": {
+    "5": {
+      "TRAIN": {
+        "1": {
+          "episodes": 170,
+          "leader_available": 170,
+          "leader_alive_pct": 89.41,
+          "net10_n": 170,
+          "net10_mean_pct": -0.423,
+          "net10_win_pct": 42.35,
+          "excess_sector10_n": 170,
+          "excess_sector10_mean_pct": 0.074,
+          "excess_region10_n": 170,
+          "excess_region10_mean_pct": 0.315,
+          "survive5_n": 170,
+          "survive5_mean_pct": 73.529,
+          "survive10_n": 170,
+          "survive10_mean_pct": 52.353
+        },
+        "2": {
+          "episodes": 32,
+          "leader_available": 32,
+          "leader_alive_pct": 96.88,
+          "net10_n": 32,
+          "net10_mean_pct": 1.851,
+          "net10_win_pct": 53.12,
+          "excess_sector10_n": 32,
+          "excess_sector10_mean_pct": 0.559,
+          "excess_region10_n": 32,
+          "excess_region10_mean_pct": 1.171,
+          "survive5_n": 32,
+          "survive5_mean_pct": 81.25,
+          "survive10_n": 32,
+          "survive10_mean_pct": 78.125
+        },
+        "3+": {
+          "episodes": 40,
+          "leader_available": 40,
+          "leader_alive_pct": 97.5,
+          "net10_n": 40,
+          "net10_mean_pct": -0.315,
+          "net10_win_pct": 37.5,
+          "excess_sector10_n": 40,
+          "excess_sector10_mean_pct": -0.233,
+          "excess_region10_n": 40,
+          "excess_region10_mean_pct": 0.39,
+          "survive5_n": 40,
+          "survive5_mean_pct": 87.5,
+          "survive10_n": 40,
+          "survive10_mean_pct": 72.5
+        }
+      },
+      "VALID": {
+        "1": {
+          "episodes": 102,
+          "leader_available": 102,
+          "leader_alive_pct": 93.14,
+          "net10_n": 100,
+          "net10_mean_pct": -0.529,
+          "net10_win_pct": 44.0,
+          "excess_sector10_n": 100,
+          "excess_sector10_mean_pct": -0.153,
+          "excess_region10_n": 100,
+          "excess_region10_mean_pct": -0.525,
+          "survive5_n": 101,
+          "survive5_mean_pct": 83.168,
+          "survive10_n": 100,
+          "survive10_mean_pct": 68.0
+        },
+        "2": {
+          "episodes": 15,
+          "leader_available": 15,
+          "leader_alive_pct": 100.0,
+          "net10_n": 15,
+          "net10_mean_pct": 0.644,
+          "net10_win_pct": 53.33,
+          "excess_sector10_n": 15,
+          "excess_sector10_mean_pct": 0.171,
+          "excess_region10_n": 15,
+          "excess_region10_mean_pct": -0.126,
+          "survive5_n": 15,
+          "survive5_mean_pct": 86.667,
+          "survive10_n": 15,
+          "survive10_mean_pct": 73.333
+        },
+        "3+": {
+          "episodes": 20,
+          "leader_available": 20,
+          "leader_alive_pct": 100.0,
+          "net10_n": 20,
+          "net10_mean_pct": 1.753,
+          "net10_win_pct": 60.0,
+          "excess_sector10_n": 20,
+          "excess_sector10_mean_pct": 0.715,
+          "excess_region10_n": 20,
+          "excess_region10_mean_pct": 0.876,
+          "survive5_n": 20,
+          "survive5_mean_pct": 95.0,
+          "survive10_n": 20,
+          "survive10_mean_pct": 85.0
+        }
+      },
+      "2025": {
+        "1": {
+          "episodes": 47,
+          "leader_available": 47,
+          "leader_alive_pct": 93.62,
+          "net10_n": 47,
+          "net10_mean_pct": 1.121,
+          "net10_win_pct": 51.06,
+          "excess_sector10_n": 47,
+          "excess_sector10_mean_pct": 0.019,
+          "excess_region10_n": 47,
+          "excess_region10_mean_pct": 0.304,
+          "survive5_n": 47,
+          "survive5_mean_pct": 85.106,
+          "survive10_n": 47,
+          "survive10_mean_pct": 78.723
+        },
+        "2": {
+          "episodes": 10,
+          "leader_available": 10,
+          "leader_alive_pct": 100.0,
+          "net10_n": 10,
+          "net10_mean_pct": 2.993,
+          "net10_win_pct": 70.0,
+          "excess_sector10_n": 10,
+          "excess_sector10_mean_pct": 1.127,
+          "excess_region10_n": 10,
+          "excess_region10_mean_pct": 1.683,
+          "survive5_n": 10,
+          "survive5_mean_pct": 90.0,
+          "survive10_n": 10,
+          "survive10_mean_pct": 80.0
+        },
+        "3+": {
+          "episodes": 13,
+          "leader_available": 13,
+          "leader_alive_pct": 100.0,
+          "net10_n": 13,
+          "net10_mean_pct": 1.474,
+          "net10_win_pct": 53.85,
+          "excess_sector10_n": 13,
+          "excess_sector10_mean_pct": 0.644,
+          "excess_region10_n": 13,
+          "excess_region10_mean_pct": 1.062,
+          "survive5_n": 13,
+          "survive5_mean_pct": 92.308,
+          "survive10_n": 13,
+          "survive10_mean_pct": 76.923
+        }
+      },
+      "2026": {
+        "1": {
+          "episodes": 55,
+          "leader_available": 55,
+          "leader_alive_pct": 92.73,
+          "net10_n": 53,
+          "net10_mean_pct": -1.992,
+          "net10_win_pct": 37.74,
+          "excess_sector10_n": 53,
+          "excess_sector10_mean_pct": -0.307,
+          "excess_region10_n": 53,
+          "excess_region10_mean_pct": -1.26,
+          "survive5_n": 54,
+          "survive5_mean_pct": 81.481,
+          "survive10_n": 53,
+          "survive10_mean_pct": 58.491
+        },
+        "2": {
+          "episodes": 5,
+          "leader_available": 5,
+          "leader_alive_pct": 100.0,
+          "net10_n": 5,
+          "net10_mean_pct": -4.055,
+          "net10_win_pct": 20.0,
+          "excess_sector10_n": 5,
+          "excess_sector10_mean_pct": -1.741,
+          "excess_region10_n": 5,
+          "excess_region10_mean_pct": -3.743,
+          "survive5_n": 5,
+          "survive5_mean_pct": 80.0,
+          "survive10_n": 5,
+          "survive10_mean_pct": 60.0
+        },
+        "3+": {
+          "episodes": 7,
+          "leader_available": 7,
+          "leader_alive_pct": 100.0,
+          "net10_n": 7,
+          "net10_mean_pct": 2.272,
+          "net10_win_pct": 71.43,
+          "excess_sector10_n": 7,
+          "excess_sector10_mean_pct": 0.845,
+          "excess_region10_n": 7,
+          "excess_region10_mean_pct": 0.531,
+          "survive5_n": 7,
+          "survive5_mean_pct": 100.0,
+          "survive10_n": 7,
+          "survive10_mean_pct": 100.0
+        }
+      }
+    },
+    "10": {
+      "TRAIN": {
+        "1": {
+          "episodes": 147,
+          "leader_available": 147,
+          "leader_alive_pct": 72.79,
+          "net10_n": 147,
+          "net10_mean_pct": 0.248,
+          "net10_win_pct": 41.5,
+          "excess_sector10_n": 147,
+          "excess_sector10_mean_pct": -0.01,
+          "excess_region10_n": 147,
+          "excess_region10_mean_pct": 0.254,
+          "survive5_n": 147,
+          "survive5_mean_pct": 51.02,
+          "survive10_n": 147,
+          "survive10_mean_pct": 41.497
+        },
+        "2": {
+          "episodes": 43,
+          "leader_available": 43,
+          "leader_alive_pct": 83.72,
+          "net10_n": 43,
+          "net10_mean_pct": -0.247,
+          "net10_win_pct": 46.51,
+          "excess_sector10_n": 43,
+          "excess_sector10_mean_pct": -0.236,
+          "excess_region10_n": 43,
+          "excess_region10_mean_pct": 0.28,
+          "survive5_n": 43,
+          "survive5_mean_pct": 76.744,
+          "survive10_n": 43,
+          "survive10_mean_pct": 60.465
+        },
+        "3+": {
+          "episodes": 48,
+          "leader_available": 48,
+          "leader_alive_pct": 87.5,
+          "net10_n": 48,
+          "net10_mean_pct": -0.513,
+          "net10_win_pct": 39.58,
+          "excess_sector10_n": 48,
+          "excess_sector10_mean_pct": -0.203,
+          "excess_region10_n": 48,
+          "excess_region10_mean_pct": -0.054,
+          "survive5_n": 48,
+          "survive5_mean_pct": 77.083,
+          "survive10_n": 48,
+          "survive10_mean_pct": 64.583
+        }
+      },
+      "VALID": {
+        "1": {
+          "episodes": 91,
+          "leader_available": 90,
+          "leader_alive_pct": 82.42,
+          "net10_n": 88,
+          "net10_mean_pct": -1.101,
+          "net10_win_pct": 39.77,
+          "excess_sector10_n": 88,
+          "excess_sector10_mean_pct": -0.075,
+          "excess_region10_n": 88,
+          "excess_region10_mean_pct": -0.365,
+          "survive5_n": 90,
+          "survive5_mean_pct": 66.667,
+          "survive10_n": 89,
+          "survive10_mean_pct": 55.056
+        },
+        "2": {
+          "episodes": 18,
+          "leader_available": 18,
+          "leader_alive_pct": 88.89,
+          "net10_n": 17,
+          "net10_mean_pct": -0.138,
+          "net10_win_pct": 41.18,
+          "excess_sector10_n": 17,
+          "excess_sector10_mean_pct": -0.142,
+          "excess_region10_n": 17,
+          "excess_region10_mean_pct": -0.336,
+          "survive5_n": 17,
+          "survive5_mean_pct": 70.588,
+          "survive10_n": 17,
+          "survive10_mean_pct": 47.059
+        },
+        "3+": {
+          "episodes": 31,
+          "leader_available": 31,
+          "leader_alive_pct": 83.87,
+          "net10_n": 31,
+          "net10_mean_pct": 0.491,
+          "net10_win_pct": 48.39,
+          "excess_sector10_n": 31,
+          "excess_sector10_mean_pct": 0.733,
+          "excess_region10_n": 31,
+          "excess_region10_mean_pct": 0.432,
+          "survive5_n": 31,
+          "survive5_mean_pct": 74.194,
+          "survive10_n": 31,
+          "survive10_mean_pct": 70.968
+        }
+      },
+      "2025": {
+        "1": {
+          "episodes": 46,
+          "leader_available": 45,
+          "leader_alive_pct": 78.26,
+          "net10_n": 45,
+          "net10_mean_pct": 1.515,
+          "net10_win_pct": 62.22,
+          "excess_sector10_n": 45,
+          "excess_sector10_mean_pct": 0.118,
+          "excess_region10_n": 45,
+          "excess_region10_mean_pct": 0.479,
+          "survive5_n": 45,
+          "survive5_mean_pct": 71.111,
+          "survive10_n": 45,
+          "survive10_mean_pct": 64.444
+        },
+        "2": {
+          "episodes": 8,
+          "leader_available": 8,
+          "leader_alive_pct": 87.5,
+          "net10_n": 8,
+          "net10_mean_pct": 1.125,
+          "net10_win_pct": 50.0,
+          "excess_sector10_n": 8,
+          "excess_sector10_mean_pct": -1.04,
+          "excess_region10_n": 8,
+          "excess_region10_mean_pct": -0.338,
+          "survive5_n": 8,
+          "survive5_mean_pct": 75.0,
+          "survive10_n": 8,
+          "survive10_mean_pct": 62.5
+        },
+        "3+": {
+          "episodes": 18,
+          "leader_available": 18,
+          "leader_alive_pct": 94.44,
+          "net10_n": 18,
+          "net10_mean_pct": 1.132,
+          "net10_win_pct": 44.44,
+          "excess_sector10_n": 18,
+          "excess_sector10_mean_pct": 0.553,
+          "excess_region10_n": 18,
+          "excess_region10_mean_pct": 0.288,
+          "survive5_n": 18,
+          "survive5_mean_pct": 77.778,
+          "survive10_n": 18,
+          "survive10_mean_pct": 72.222
+        }
+      },
+      "2026": {
+        "1": {
+          "episodes": 45,
+          "leader_available": 45,
+          "leader_alive_pct": 86.67,
+          "net10_n": 43,
+          "net10_mean_pct": -3.84,
+          "net10_win_pct": 16.28,
+          "excess_sector10_n": 43,
+          "excess_sector10_mean_pct": -0.278,
+          "excess_region10_n": 43,
+          "excess_region10_mean_pct": -1.248,
+          "survive5_n": 45,
+          "survive5_mean_pct": 62.222,
+          "survive10_n": 44,
+          "survive10_mean_pct": 45.455
+        },
+        "2": {
+          "episodes": 10,
+          "leader_available": 10,
+          "leader_alive_pct": 90.0,
+          "net10_n": 9,
+          "net10_mean_pct": -1.26,
+          "net10_win_pct": 33.33,
+          "excess_sector10_n": 9,
+          "excess_sector10_mean_pct": 0.655,
+          "excess_region10_n": 9,
+          "excess_region10_mean_pct": -0.334,
+          "survive5_n": 9,
+          "survive5_mean_pct": 66.667,
+          "survive10_n": 9,
+          "survive10_mean_pct": 33.333
+        },
+        "3+": {
+          "episodes": 13,
+          "leader_available": 13,
+          "leader_alive_pct": 69.23,
+          "net10_n": 13,
+          "net10_mean_pct": -0.397,
+          "net10_win_pct": 53.85,
+          "excess_sector10_n": 13,
+          "excess_sector10_mean_pct": 0.982,
+          "excess_region10_n": 13,
+          "excess_region10_mean_pct": 0.631,
+          "survive5_n": 13,
+          "survive5_mean_pct": 69.231,
+          "survive10_n": 13,
+          "survive10_mean_pct": 69.231
+        }
+      }
+    }
+  },
+  "differences": {
+    "5": {
+      "TRAIN": {
+        "raw10": {
+          "base_n": 170,
+          "expanded_n": 72,
+          "expanded_minus_singleton_pp": 1.0701,
+          "month_bootstrap_ci95_pp": [
+            -1.0612,
+            3.2076
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 170,
+          "expanded_n": 72,
+          "expanded_minus_singleton_pp": 0.0453,
+          "month_bootstrap_ci95_pp": [
+            -0.7987,
+            0.9536
+          ]
+        },
+        "region_excess10": {
+          "base_n": 170,
+          "expanded_n": 72,
+          "expanded_minus_singleton_pp": 0.4221,
+          "month_bootstrap_ci95_pp": [
+            -1.0855,
+            2.0111
+          ]
+        },
+        "alive_only": {
+          "base_n": 152,
+          "expanded_n": 70,
+          "expanded_minus_singleton_pp": 1.2791,
+          "month_bootstrap_ci95_pp": [
+            -0.9231,
+            3.4312
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 9,
+          "equal_strata_mean_pp": 3.3175,
+          "strata": [
+            {
+              "sector": "CN_HK|TECHNOLOGY",
+              "year": 2023,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": -2.2275
+            },
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2023,
+              "n0": 3,
+              "n1": 2,
+              "diff_pp": 9.971
+            },
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2024,
+              "n0": 4,
+              "n1": 2,
+              "diff_pp": -3.3111
+            },
+            {
+              "sector": "CN|CONSUMER",
+              "year": 2022,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": 5.9024
+            },
+            {
+              "sector": "CN|CONSUMER",
+              "year": 2023,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": -1.8471
+            },
+            {
+              "sector": "CN|CONSUMER",
+              "year": 2024,
+              "n0": 3,
+              "n1": 2,
+              "diff_pp": 21.8488
+            },
+            {
+              "sector": "CN|ENERGY",
+              "year": 2024,
+              "n0": 3,
+              "n1": 3,
+              "diff_pp": -1.3022
+            },
+            {
+              "sector": "CN|FINANCIALS",
+              "year": 2021,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": -2.9914
+            },
+            {
+              "sector": "CN|TECHNOLOGY",
+              "year": 2022,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 3.8148
+            }
+          ]
+        }
+      },
+      "VALID": {
+        "raw10": {
+          "base_n": 100,
+          "expanded_n": 35,
+          "expanded_minus_singleton_pp": 1.8069,
+          "month_bootstrap_ci95_pp": [
+            0.4904,
+            3.1037
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 100,
+          "expanded_n": 35,
+          "expanded_minus_singleton_pp": 0.6351,
+          "month_bootstrap_ci95_pp": [
+            -0.0747,
+            1.2355
+          ]
+        },
+        "region_excess10": {
+          "base_n": 100,
+          "expanded_n": 35,
+          "expanded_minus_singleton_pp": 0.9719,
+          "month_bootstrap_ci95_pp": [
+            -0.322,
+            2.192
+          ]
+        },
+        "alive_only": {
+          "base_n": 94,
+          "expanded_n": 35,
+          "expanded_minus_singleton_pp": 1.7226,
+          "month_bootstrap_ci95_pp": [
+            0.4189,
+            2.9877
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 1,
+          "equal_strata_mean_pp": -0.3982,
+          "strata": [
+            {
+              "sector": "CN|ENERGY",
+              "year": 2025,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": -0.3982
+            }
+          ]
+        }
+      },
+      "2025": {
+        "raw10": {
+          "base_n": 47,
+          "expanded_n": 23,
+          "expanded_minus_singleton_pp": 1.0138,
+          "month_bootstrap_ci95_pp": [
+            -0.8019,
+            2.6527
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 47,
+          "expanded_n": 23,
+          "expanded_minus_singleton_pp": 0.8349,
+          "month_bootstrap_ci95_pp": [
+            -0.1263,
+            1.7616
+          ]
+        },
+        "region_excess10": {
+          "base_n": 47,
+          "expanded_n": 23,
+          "expanded_minus_singleton_pp": 1.0283,
+          "month_bootstrap_ci95_pp": [
+            -0.4027,
+            2.5829
+          ]
+        },
+        "alive_only": {
+          "base_n": 44,
+          "expanded_n": 23,
+          "expanded_minus_singleton_pp": 1.1422,
+          "month_bootstrap_ci95_pp": [
+            -0.6464,
+            2.7707
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 1,
+          "equal_strata_mean_pp": -0.3982,
+          "strata": [
+            {
+              "sector": "CN|ENERGY",
+              "year": 2025,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": -0.3982
+            }
+          ]
+        }
+      },
+      "2026": {
+        "raw10": {
+          "base_n": 53,
+          "expanded_n": 12,
+          "expanded_minus_singleton_pp": 1.6281,
+          "month_bootstrap_ci95_pp": [
+            -1.9836,
+            3.7962
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 53,
+          "expanded_n": 12,
+          "expanded_minus_singleton_pp": 0.0741,
+          "month_bootstrap_ci95_pp": [
+            -1.432,
+            0.6889
+          ]
+        },
+        "region_excess10": {
+          "base_n": 53,
+          "expanded_n": 12,
+          "expanded_minus_singleton_pp": 0.0101,
+          "month_bootstrap_ci95_pp": [
+            -4.0177,
+            2.7416
+          ]
+        },
+        "alive_only": {
+          "base_n": 50,
+          "expanded_n": 12,
+          "expanded_minus_singleton_pp": 1.3454,
+          "month_bootstrap_ci95_pp": [
+            -2.3553,
+            3.3236
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 0,
+          "equal_strata_mean_pp": null,
+          "strata": []
+        }
+      }
+    },
+    "10": {
+      "TRAIN": {
+        "raw10": {
+          "base_n": 147,
+          "expanded_n": 91,
+          "expanded_minus_singleton_pp": -0.6348,
+          "month_bootstrap_ci95_pp": [
+            -2.3969,
+            0.957
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 147,
+          "expanded_n": 91,
+          "expanded_minus_singleton_pp": -0.2085,
+          "month_bootstrap_ci95_pp": [
+            -0.8959,
+            0.4561
+          ]
+        },
+        "region_excess10": {
+          "base_n": 147,
+          "expanded_n": 91,
+          "expanded_minus_singleton_pp": -0.1503,
+          "month_bootstrap_ci95_pp": [
+            -1.4587,
+            1.0436
+          ]
+        },
+        "alive_only": {
+          "base_n": 107,
+          "expanded_n": 78,
+          "expanded_minus_singleton_pp": -0.3957,
+          "month_bootstrap_ci95_pp": [
+            -2.1985,
+            1.1208
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 9,
+          "equal_strata_mean_pp": 1.3567,
+          "strata": [
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2021,
+              "n0": 5,
+              "n1": 3,
+              "diff_pp": -3.0048
+            },
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2022,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 3.1678
+            },
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2023,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 2.0437
+            },
+            {
+              "sector": "CN|COMMUNICATION",
+              "year": 2024,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 2.4582
+            },
+            {
+              "sector": "CN|CONSUMER",
+              "year": 2024,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 5.4085
+            },
+            {
+              "sector": "CN|ENERGY",
+              "year": 2021,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": -0.9543
+            },
+            {
+              "sector": "CN|ENERGY",
+              "year": 2024,
+              "n0": 3,
+              "n1": 3,
+              "diff_pp": -7.2184
+            },
+            {
+              "sector": "CN|INDUSTRIALS",
+              "year": 2022,
+              "n0": 2,
+              "n1": 2,
+              "diff_pp": 0.5874
+            },
+            {
+              "sector": "CN|TECHNOLOGY",
+              "year": 2022,
+              "n0": 2,
+              "n1": 3,
+              "diff_pp": 9.7222
+            }
+          ]
+        }
+      },
+      "VALID": {
+        "raw10": {
+          "base_n": 88,
+          "expanded_n": 48,
+          "expanded_minus_singleton_pp": 1.3696,
+          "month_bootstrap_ci95_pp": [
+            -0.5077,
+            3.4045
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 88,
+          "expanded_n": 48,
+          "expanded_minus_singleton_pp": 0.4984,
+          "month_bootstrap_ci95_pp": [
+            -0.62,
+            1.4825
+          ]
+        },
+        "region_excess10": {
+          "base_n": 88,
+          "expanded_n": 48,
+          "expanded_minus_singleton_pp": 0.5247,
+          "month_bootstrap_ci95_pp": [
+            -1.0584,
+            2.0203
+          ]
+        },
+        "alive_only": {
+          "base_n": 73,
+          "expanded_n": 41,
+          "expanded_minus_singleton_pp": 1.6543,
+          "month_bootstrap_ci95_pp": [
+            -0.1906,
+            3.4136
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 1,
+          "equal_strata_mean_pp": 0.9533,
+          "strata": [
+            {
+              "sector": "CN|INDUSTRIALS",
+              "year": 2025,
+              "n0": 2,
+              "n1": 5,
+              "diff_pp": 0.9533
+            }
+          ]
+        }
+      },
+      "2025": {
+        "raw10": {
+          "base_n": 45,
+          "expanded_n": 26,
+          "expanded_minus_singleton_pp": -0.3851,
+          "month_bootstrap_ci95_pp": [
+            -2.3766,
+            1.0575
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 45,
+          "expanded_n": 26,
+          "expanded_minus_singleton_pp": -0.0551,
+          "month_bootstrap_ci95_pp": [
+            -1.5434,
+            1.0007
+          ]
+        },
+        "region_excess10": {
+          "base_n": 45,
+          "expanded_n": 26,
+          "expanded_minus_singleton_pp": -0.3834,
+          "month_bootstrap_ci95_pp": [
+            -2.7327,
+            1.0999
+          ]
+        },
+        "alive_only": {
+          "base_n": 36,
+          "expanded_n": 24,
+          "expanded_minus_singleton_pp": -0.5063,
+          "month_bootstrap_ci95_pp": [
+            -2.3718,
+            0.8745
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 1,
+          "equal_strata_mean_pp": 0.9533,
+          "strata": [
+            {
+              "sector": "CN|INDUSTRIALS",
+              "year": 2025,
+              "n0": 2,
+              "n1": 5,
+              "diff_pp": 0.9533
+            }
+          ]
+        }
+      },
+      "2026": {
+        "raw10": {
+          "base_n": 43,
+          "expanded_n": 22,
+          "expanded_minus_singleton_pp": 3.0892,
+          "month_bootstrap_ci95_pp": [
+            0.0697,
+            6.8098
+          ]
+        },
+        "sector_excess10": {
+          "base_n": 43,
+          "expanded_n": 22,
+          "expanded_minus_singleton_pp": 1.1264,
+          "month_bootstrap_ci95_pp": [
+            -0.6204,
+            2.7733
+          ]
+        },
+        "region_excess10": {
+          "base_n": 43,
+          "expanded_n": 22,
+          "expanded_minus_singleton_pp": 1.4838,
+          "month_bootstrap_ci95_pp": [
+            -1.1615,
+            4.4082
+          ]
+        },
+        "alive_only": {
+          "base_n": 37,
+          "expanded_n": 17,
+          "expanded_minus_singleton_pp": 3.5149,
+          "month_bootstrap_ci95_pp": [
+            0.38,
+            6.5442
+          ]
+        },
+        "matched_date": {
+          "paired_dates": 0
+        },
+        "within_sector_year": {
+          "eligible_strata": 0,
+          "equal_strata_mean_pp": null,
+          "strata": []
+        }
+      }
+    }
+  },
+  "recent_examples": [
+    {
+      "first_date": "2026-10-22",
+      "checkpoint_date": "2026-11-05",
+      "broad": "CN|CONSUMER",
+      "leader": "515170",
+      "leader_subsector": "FOOD_BEVERAGE",
+      "distinct_subsectors": 2,
+      "subsectors": "AGRICULTURE/FOOD_BEVERAGE",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-10-12",
+      "checkpoint_date": "2026-10-26",
+      "broad": "CN|HEALTHCARE",
+      "leader": "159643",
+      "leader_subsector": "VACCINES",
+      "distinct_subsectors": 3,
+      "subsectors": "MEDICAL_DEVICES/TCM/VACCINES",
+      "leader_alive": false
+    },
+    {
+      "first_date": "2026-07-22",
+      "checkpoint_date": "2026-08-05",
+      "broad": "CN|ENERGY",
+      "leader": "159930",
+      "leader_subsector": "ENERGY_EQUITY",
+      "distinct_subsectors": 3,
+      "subsectors": "COAL_EQUITY/ENERGY_EQUITY/OIL_GAS_EQUITY",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-07-13",
+      "checkpoint_date": "2026-07-27",
+      "broad": "CN|CONSUMER",
+      "leader": "159865",
+      "leader_subsector": "AGRICULTURE",
+      "distinct_subsectors": 2,
+      "subsectors": "AGRICULTURE/FOOD_BEVERAGE",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-07-01",
+      "checkpoint_date": "2026-07-15",
+      "broad": "CN_HK|TECHNOLOGY",
+      "leader": "517800",
+      "leader_subsector": "ARTIFICIAL_INTELLIGENCE",
+      "distinct_subsectors": 2,
+      "subsectors": "ARTIFICIAL_INTELLIGENCE/COMPUTE_CLOUD",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-07-01",
+      "checkpoint_date": "2026-07-15",
+      "broad": "CN|HEALTHCARE",
+      "leader": "159992",
+      "leader_subsector": "INNOVATIVE_DRUGS",
+      "distinct_subsectors": 5,
+      "subsectors": "BIOTECH/INNOVATIVE_DRUGS/MEDICAL_DEVICES/TCM/VACCINES",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-06-23",
+      "checkpoint_date": "2026-07-07",
+      "broad": "CN|INDUSTRIALS",
+      "leader": "561380",
+      "leader_subsector": "GRID_EQUIPMENT",
+      "distinct_subsectors": 3,
+      "subsectors": "DEFENSE/GRID_EQUIPMENT/ROBOTICS",
+      "leader_alive": false
+    },
+    {
+      "first_date": "2026-06-18",
+      "checkpoint_date": "2026-07-03",
+      "broad": "CN|TECHNOLOGY",
+      "leader": "588200",
+      "leader_subsector": "SEMICONDUCTOR",
+      "distinct_subsectors": 5,
+      "subsectors": "ARTIFICIAL_INTELLIGENCE/DATA/INDUSTRIAL_IOT/INFORMATION_TECHNOLOGY/SEMICONDUCTOR",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-06-11",
+      "checkpoint_date": "2026-06-26",
+      "broad": "CN|FINANCIALS",
+      "leader": "512800",
+      "leader_subsector": "BANKS",
+      "distinct_subsectors": 4,
+      "subsectors": "BANKS/INSURANCE/NON_BANK_FINANCIALS/SECURITIES",
+      "leader_alive": false
+    },
+    {
+      "first_date": "2026-06-04",
+      "checkpoint_date": "2026-06-18",
+      "broad": "CN|ENERGY",
+      "leader": "515220",
+      "leader_subsector": "COAL_EQUITY",
+      "distinct_subsectors": 2,
+      "subsectors": "COAL_EQUITY/ENERGY_EQUITY",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-16",
+      "checkpoint_date": "2026-04-30",
+      "broad": "CN_HK|TECHNOLOGY",
+      "leader": "159738",
+      "leader_subsector": "COMPUTE_CLOUD",
+      "distinct_subsectors": 3,
+      "subsectors": "ARTIFICIAL_INTELLIGENCE/COMPUTE_CLOUD/INTERNET",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-16",
+      "checkpoint_date": "2026-04-30",
+      "broad": "CN|INDUSTRIALS",
+      "leader": "588850",
+      "leader_subsector": "MACHINERY",
+      "distinct_subsectors": 8,
+      "subsectors": "AEROSPACE/DEFENSE/EQUIPMENT/GRID_EQUIPMENT/INFRASTRUCTURE/MACHINERY/ROBOTICS/TRANSPORT",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-14",
+      "checkpoint_date": "2026-04-28",
+      "broad": "CN|CONSUMER",
+      "leader": "515030",
+      "leader_subsector": "AUTOMOTIVE",
+      "distinct_subsectors": 4,
+      "subsectors": "AGRICULTURE/AUTOMOTIVE/FOOD_BEVERAGE/HOME_APPLIANCES",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-13",
+      "checkpoint_date": "2026-04-27",
+      "broad": "CN|TECHNOLOGY",
+      "leader": "159381",
+      "leader_subsector": "ARTIFICIAL_INTELLIGENCE",
+      "distinct_subsectors": 8,
+      "subsectors": "ARTIFICIAL_INTELLIGENCE/COMPUTE_CLOUD/CONSUMER_ELECTRONICS/DATA/ELECTRONICS/INFORMATION_TECHNOLOGY/SEMICONDUCTOR/SOFTWARE",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-02",
+      "checkpoint_date": "2026-04-17",
+      "broad": "CN|HEALTHCARE",
+      "leader": "159992",
+      "leader_subsector": "INNOVATIVE_DRUGS",
+      "distinct_subsectors": 4,
+      "subsectors": "BIOTECH/INNOVATIVE_DRUGS/MEDICAL_DEVICES/VACCINES",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-04-02",
+      "checkpoint_date": "2026-04-17",
+      "broad": "HK|HEALTHCARE",
+      "leader": "159570",
+      "leader_subsector": "INNOVATIVE_DRUGS",
+      "distinct_subsectors": 2,
+      "subsectors": "BIOTECH/INNOVATIVE_DRUGS",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-03-02",
+      "checkpoint_date": "2026-03-16",
+      "broad": "CN|TECHNOLOGY",
+      "leader": "562920",
+      "leader_subsector": "DATA",
+      "distinct_subsectors": 3,
+      "subsectors": "CONSUMER_ELECTRONICS/DATA/INDUSTRIAL_IOT",
+      "leader_alive": false
+    },
+    {
+      "first_date": "2026-02-27",
+      "checkpoint_date": "2026-03-13",
+      "broad": "CN|COMMUNICATION",
+      "leader": "515050",
+      "leader_subsector": "TELECOM",
+      "distinct_subsectors": 2,
+      "subsectors": "MEDIA/TELECOM",
+      "leader_alive": true
+    },
+    {
+      "first_date": "2026-02-12",
+      "checkpoint_date": "2026-03-06",
+      "broad": "CN|CONSUMER",
+      "leader": "515170",
+      "leader_subsector": "FOOD_BEVERAGE",
+      "distinct_subsectors": 2,
+      "subsectors": "AGRICULTURE/FOOD_BEVERAGE",
+      "leader_alive": false
+    },
+    {
+      "first_date": "2026-02-06",
+      "checkpoint_date": "2026-03-02",
+      "broad": "CN|INDUSTRIALS",
+      "leader": "159666",
+      "leader_subsector": "TRANSPORT",
+      "distinct_subsectors": 2,
+      "subsectors": "DEFENSE/TRANSPORT",
+      "leader_alive": true
+    }
+  ]
+}
