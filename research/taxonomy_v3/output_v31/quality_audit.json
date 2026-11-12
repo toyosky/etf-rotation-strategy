@@ -26,9 +26,9 @@
       "exact_indices": 2,
       "funds": [
         {
-          "exact_index_key": "SZSE_FITTED_CODE:IBOVESPA",
-          "index_code": "IBOVESPA",
-          "index_name": "巴西BOVESPA",
+          "exact_index_key": "INDEX_NAME:de513759f57d098c8ca4",
+          "index_code": null,
+          "index_name": "巴西伊博维斯帕指数",
           "name": "巴西ETF华夏",
           "symbol": "159100"
         },
@@ -41,7 +41,7 @@
         }
       ],
       "legacy_underlying_key": "BRAZIL_EQUITY",
-      "proven_official_index_groups": 1
+      "proven_official_index_groups": 2
     },
     {
       "exact_indices": 5,

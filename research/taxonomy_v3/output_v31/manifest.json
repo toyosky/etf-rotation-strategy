@@ -13,12 +13,16 @@
       "sha256": "96eac2d89bc6b0bb7eea57a1439fc0c456298c72473f43bce1719fdae8d848ea"
     },
     {
+      "name": "fund_contract_evidence_v31.json",
+      "sha256": "8c5d2b6f1d3bb72766b61e2d968b156f252dea0fe4bab5f30328e3fad62496dd"
+    },
+    {
       "name": "__init__.py",
       "sha256": "c44c72043ade109d74d5fd6e0bb55b1dde6b3488c08e3594e304efe3e7b97927"
     },
     {
       "name": "build.py",
-      "sha256": "c2462b2716d09f3375198c713c442546c4b92ae508cc1dc46e473d89166bc176"
+      "sha256": "62eb653d9ee5648bb678001adebb1af30f25a10130a311ae83fd58ae318e47c1"
     },
     {
       "name": "collect.py",
@@ -34,7 +38,7 @@
     },
     {
       "name": "model.py",
-      "sha256": "203c79cb82c1064f33a30553deab04878f77e843f48a12db81667c9d15a6e793"
+      "sha256": "f125b7915abbb737e8199573a46389d50ad821149ae8405ebb558df5a04b9c0e"
     },
     {
       "name": "prepare_universe.py",
@@ -50,11 +54,11 @@
     },
     {
       "name": "summarize_v31.py",
-      "sha256": "6d8d4331bf620d00b2866b7d5097f4b2b42744294a450417c05fd5fead1bbe3e"
+      "sha256": "0908965ed8e9bc5bacf7c8b64c6876d659d437a5260b14e5a58616f0f85859c0"
     },
     {
       "name": "test_taxonomy.py",
-      "sha256": "e9bddfc27552961aecaf29ca32ceb9be7fd9f66efd5b4667f0ce7a7ad57cbc33"
+      "sha256": "18f52a63596107189673c24327fac52a865c7e4a568e9c3e728f8a2de1376d70"
     },
     {
       "name": "validate.py",
@@ -9507,16 +9511,16 @@
   ],
   "outputs": {
     "calendar_observed.json": "34a0536e91b7d8b4ade8d927fe6411ff1eef9e89b56185ee5d1eb95b1298c8e6",
-    "classifications.csv": "7a5f7186a17446c80dee03a8a7056f197b2f548d7b09e5aafb590dde2b1334b4",
-    "classifications.json": "c9c9cdb4a7aa955034c60bab1a13676e0a6578154db4ff63d955ae8573d9f954",
-    "classifications.parquet": "150634430062f43602a3eb5e60b85a38b1342f1b17464893f0710d6898bc7154",
-    "identity_review.json": "a8eeb0a93dec80c4c3849c09f7a48efeb7807e41d79acdc572055eaed67eaa47",
+    "classifications.csv": "1f1852461a7a5c23e89b7a946e202c53a4c17aecbdf835f01a2e2bb8c3781391",
+    "classifications.json": "ec8df9568172ffbc298ec9006a6d47e15c0d0219e4b0407d24b5118f359b6150",
+    "classifications.parquet": "76210049e5c5bfd7211ab050970f439d203bb05dcf3b998111d86675fc2ac336",
+    "identity_review.json": "3b37c5196de1e540ed64787662b2ed798e0860a97a64895aa32d589d2acd892f",
     "prelisting_history_review.json": "886003cabf5a1ec180bd8eefffb888ceef2fe4287455f16e70d96df1a245e921",
     "profiles.json": "f38a4c52219fb9efd978245c6aaaf1e24b6e3d7fc312ecfd6c282b1f32d7e2fe",
-    "quality_audit.json": "b6b132b12dd24cfe5aff1663d6942c80ae72207b378af44fa5719ff16aee6f13",
-    "review_queue.csv": "6ae9e26770e7356d8c2a25752338c3f30eb6725b54a1fd38c33e4e0acd18d384",
-    "review_queue.json": "77db0cd32a9b4b741915df30346ad3d7b16a68f4d69c6a65c449e8154232b2fc",
-    "summary.json": "3fd4b6532c9d6be199888d0acf365f17daf3a1f757a0c11b000c8cf1e07350cc"
+    "quality_audit.json": "ac0fa983305adfb8f60eed7b755a3017e938951b2297be3dd85fa1f19239e03e",
+    "review_queue.csv": "ae342672bc73337160bbfe60de9d53c88130b8f4da6db301000d5a58572688f1",
+    "review_queue.json": "36b1a984e1670cca32a9cc3f0601777012fe9aa6de8f1a6a30967ea29125088c",
+    "summary.json": "57b54e0f3f6784fb8ba60e12fe4ea21b6653272fb488bbbe0de622e6135b2552"
   },
-  "version": "V3.0.0"
+  "version": "V3.1.1"
 }

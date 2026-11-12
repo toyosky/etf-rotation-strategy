@@ -737,22 +737,6 @@
     "symbol": "159098"
   },
   {
-    "auxiliary_index_name": "巴西BOVESPA",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159100.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:IBOVESPA",
-    "name": "巴西ETF华夏",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=21",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=7"
-    ],
-    "symbol": "159100"
-  },
-  {
     "auxiliary_index_name": "国证港股通科技指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159101.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -2455,9 +2439,7 @@
     "name": "标普油气ETF嘉实",
     "observed_on": "2026-11-12",
     "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
-      "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
-      "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED"
+      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
     ],
     "source_url": [
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=45",
@@ -2765,8 +2747,7 @@
     "name": "美国50ETF汇添富",
     "observed_on": "2026-11-12",
     "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
-      "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED"
+      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
     ],
     "source_url": [
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
@@ -3918,23 +3899,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=39"
     ],
     "symbol": "159980"
-  },
-  {
-    "auxiliary_index_name": "易盛郑商所能源化工指数A",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159981.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:000201",
-    "name": "能源化工ETF建信",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
-      "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=71",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=39"
-    ],
-    "symbol": "159981"
   },
   {
     "auxiliary_index_name": "大商所豆粕期货价格指数",
@@ -9138,15 +9102,16 @@
   {
     "auxiliary_index_name": null,
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_501018.html",
-    "confidence": "UNVERIFIED",
+    "confidence": "HIGH_OFFICIAL_FUND_MANDATE",
     "exact_index_key": null,
     "name": "南方原油LOF",
     "observed_on": "2026-11-12",
     "reasons": [
-      "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX"
+      "OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED"
     ],
     "source_url": [
-      "https://query.sse.com.cn/commonQuery.do?sqlId=COMMON_JJZWZ_JJLB_L&type=inParams&CATEGORY=F000"
+      "https://query.sse.com.cn/commonQuery.do?sqlId=COMMON_JJZWZ_JJLB_L&type=inParams&CATEGORY=F000",
+      "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-05-21/501018_20260521_JW26.pdf"
     ],
     "symbol": "501018"
   },

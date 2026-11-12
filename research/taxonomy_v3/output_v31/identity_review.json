@@ -252,12 +252,6 @@
     "symbol": "159098"
   },
   {
-    "candidate_name": "巴西BOVESPA",
-    "official_code": "IBOVESPA",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159100"
-  },
-  {
     "candidate_name": "国证港股通科技指数",
     "official_code": "987008",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -1252,12 +1246,6 @@
     "official_code": "IMCI",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159980"
-  },
-  {
-    "candidate_name": "易盛郑商所能源化工指数A",
-    "official_code": "000201",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159981"
   },
   {
     "candidate_name": "大商所豆粕期货价格指数",
