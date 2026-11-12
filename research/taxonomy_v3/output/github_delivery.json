@@ -1,0 +1,19 @@
+{
+  "repository": "toyosky/etf-rotation-strategy",
+  "code_commit": "fac6dedeb79fbeca710ff09b1e3fc7677cc3678b",
+  "code_branch": "research/taxonomy-v3-20261112",
+  "pull_request": "https://github.com/toyosky/etf-rotation-strategy/pull/5",
+  "pull_request_draft": true,
+  "archive_branch": "research/taxonomy-v3-evidence-20261112",
+  "archive_commit": "8037109205eb36a3514c5f14d8f2f8c2dba3d351",
+  "archive_path": "research/taxonomy_v3/archive/taxonomy-v3-evidence-20261112.tar.gz",
+  "archive_bytes": 48023109,
+  "archive_sha256": "1c21c656a1de052f8263b453ed800c7146dd919bc8825bde8a5a906bc9bbeb8d",
+  "archive_git_blob_sha": "3095af1bc8033a6c8b596c5d2bfb93868134372c",
+  "remote_archive_size_and_blob_verified_via_github_api": true,
+  "release_upload_attempt": "HTTP 401 Bad credentials at uploads.github.com; no new Release published",
+  "fallback_delivery": "independent Git archive branch pushed and verified",
+  "tests_environment": "managed cloud Python 3.12; not a GitHub Actions test run",
+  "production_metadata_writes": 0,
+  "production_trading_or_schedule_changes": 0
+}
