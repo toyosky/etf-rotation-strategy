@@ -177,6 +177,36 @@ function renderMap(history){
     svg.appendChild(c);
   });
 
+  // Start and end markers are based on the selected date window, not the entire archive.
+  // Draw last so they remain visible over overlapping historical points.
+  const first=recent[0],last=recent[recent.length-1];
+  if(first && last){
+    const sx=X(first.breadth_pct),sy=Y(first.gap_percentile);
+    const ex=X(last.breadth_pct),ey=Y(last.gap_percentile);
+    const overlap=recent.length>1 && Math.hypot(sx-ex,sy-ey)<32;
+    // Separate coincident start/end markers with a short leader line.
+    const mx=overlap?sx-25:sx,my=overlap?sy+22:sy;
+    if(overlap)svg.appendChild(el('line',{x1:sx,y1:sy,x2:mx,y2:my,class:'start-leader'}));
+    const start=el('path',{d:`M ${mx} ${my-12} L ${mx+12} ${my} L ${mx} ${my+12} L ${mx-12} ${my} Z`,class:'start-diamond'});
+    svg.appendChild(start);
+    const startLabel=el('text',{
+      x:Math.min(W-pad.r-66,Math.max(pad.l+66,mx)),
+      y:my<pad.t+34?my+33:my-20,
+      'text-anchor':'middle',class:'state-endpoint-label start-label'
+    });
+    startLabel.textContent=`起点 ${first.date.slice(5)}`;
+    svg.appendChild(startLabel);
+    if(recent.length>1){
+      const endLabel=el('text',{
+        x:Math.min(W-pad.r-66,Math.max(pad.l+66,ex)),
+        y:ey<pad.t+34?ey+38:ey-24,
+        'text-anchor':'middle',class:'state-endpoint-label end-label'
+      });
+      endLabel.textContent=`终点 ${last.date.slice(5)}`;
+      svg.appendChild(endLabel);
+    }
+  }
+
   function showTip(e,p,persist=false){
     tip.innerHTML=`<b>${p.date} · ${LABELS[p.quadrant]||p.quadrant}</b><span>Breadth ${pct(p.breadth_pct)} (${p.breadth_count}/${p.breadth_total})</span><span>Gap ${pct(p.gap_percentile)} 分位 · raw ${fmtScore(p.gap_raw)}</span><span>Top1 ${name(p.top1)}</span><span>Top2 ${name(p.top2)}</span>`;
     tip.style.display='block';
