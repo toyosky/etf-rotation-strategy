@@ -1071,22 +1071,6 @@
     "symbol": "159506"
   },
   {
-    "auxiliary_index_name": "纳斯达克科技市值加权指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159509.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:NDXTMC",
-    "name": "纳指科技ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=47",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=20"
-    ],
-    "symbol": "159509"
-  },
-  {
     "auxiliary_index_name": "纳斯达克100指数",
     "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159513.html",
     "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
@@ -1134,22 +1118,6 @@
       "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=21"
     ],
     "symbol": "159518"
-  },
-  {
-    "auxiliary_index_name": "标普500消费精选指数",
-    "auxiliary_source_url": "https://fundf10.eastmoney.com/jbgk_159529.html",
-    "confidence": "MEDIUM_OFFICIAL_CODE_AUXILIARY_NAME",
-    "exact_index_key": "SZSE_FITTED_CODE:SP5CSSUP",
-    "name": "标普消费ETF景顺",
-    "observed_on": "2026-11-12",
-    "reasons": [
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED"
-    ],
-    "source_url": [
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=43",
-      "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1105&TABKEY=tab1&tab1PAGENO=21"
-    ],
-    "symbol": "159529"
   },
   {
     "auxiliary_index_name": "恒生港股通红利低波动指数",

@@ -64,20 +64,20 @@
     "archive_symbols": 2003,
     "archive_symbols_missing_legacy_metadata": 0,
     "dedup_comparison": {
-      "approved_archive_symbols": 1404,
-      "broad_sector_groups": 34,
-      "exact_index_groups": 415,
-      "fine_exposure_groups": 415,
+      "approved_archive_symbols": 1406,
+      "broad_sector_groups": 36,
+      "exact_index_groups": 417,
+      "fine_exposure_groups": 417,
       "raw_archive_symbols": 2003,
       "verified_archive_symbols": 1607,
       "warning": "Partial verified subsets; unknowns are exclusions, never deduplication savings"
     },
-    "exact_index_groups": 418,
+    "exact_index_groups": 420,
     "execution_verified_count": 0,
-    "fine_exposure_groups": 418,
-    "fully_classified_current": 1475,
+    "fine_exposure_groups": 420,
+    "fully_classified_current": 1477,
     "historical_classifications_before_capture": 0,
-    "index_code_count": 1566,
+    "index_code_count": 1564,
     "legacy_coverage": {
       "risk_bucket": 2026,
       "style_sector": 1585,
@@ -86,12 +86,12 @@
     "legacy_current_count": 2026,
     "legacy_historical_safe_flags": 17,
     "legacy_review": 424,
-    "legal_mandates_verified_count": 7,
+    "legal_mandates_verified_count": 9,
     "legal_non_passive_mandates_count": 1,
-    "needs_review": 672,
+    "needs_review": 670,
     "no_verified_tracking_identity": 463,
     "official_current_listed": 2123,
-    "official_full_name_count": 1584,
+    "official_full_name_count": 1586,
     "official_identity_candidate_groups": 516,
     "officially_verified_index_identity": 1684,
     "officially_verified_index_identity_pct": 78.44,
@@ -106,12 +106,12 @@
       "NOT_IN_CAPTURED_OFFICIAL_LISTS": 24,
       "OFFICIALLY_VERIFIED_NON_INDEX_REFERENCE_EXCLUDED": 2,
       "OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED": 1,
-      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 121,
+      "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED": 119,
       "OFFICIAL_FITTED_CODE_MISSING": 180,
       "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX": 150
     },
     "sector_level1_count": 13,
-    "sector_level2_count": 64,
+    "sector_level2_count": 66,
     "snapshot_date": "2026-11-12",
     "total_funds": 2147
   },
@@ -121,9 +121,9 @@
     "approved": 770
   },
   "overlap_after": {
-    "name_only": 118,
+    "name_only": 120,
     "verified": 1684,
-    "approved": 1475
+    "approved": 1477
   },
   "previously_approved_regressions": 0,
   "verified_non_index_identity_corrections": [
@@ -135,9 +135,9 @@
       "legal_evidence": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467474.PDF"
     }
   ],
-  "changed_count": 1210,
-  "moved_from_review": 705,
-  "newly_approved_in_archive": 671,
+  "changed_count": 1212,
+  "moved_from_review": 707,
+  "newly_approved_in_archive": 673,
   "changes": [
     {
       "symbol": "158000",
@@ -3234,6 +3234,17 @@
       "new_reasons": []
     },
     {
+      "symbol": "159509",
+      "name": "纳指科技ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:NDXTMC",
+      "new_exact": "INDEX_NAME:5b95a18cfbf9ffa48c7e",
+      "old_index_name": "纳斯达克科技市值加权指数",
+      "new_index_name": "纳斯达克科技市值加权指数（价格指数）",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
       "symbol": "159510",
       "name": "沪深300价值ETF华夏",
       "old_exact": "SZSE_FITTED_CODE:931586",
@@ -3374,6 +3385,17 @@
       "new_exact": "CSI:399974",
       "old_index_name": "中证国有企业改革指数",
       "new_index_name": "中证国有企业改革指数",
+      "old_needs_review": true,
+      "new_needs_review": false,
+      "new_reasons": []
+    },
+    {
+      "symbol": "159529",
+      "name": "标普消费ETF景顺",
+      "old_exact": "SZSE_FITTED_CODE:SP5CSSUP",
+      "new_exact": "INDEX_NAME:3378605e507a6322115c",
+      "old_index_name": "标普500消费精选指数",
+      "new_index_name": "标普500消费精选指数",
       "old_needs_review": true,
       "new_needs_review": false,
       "new_reasons": []

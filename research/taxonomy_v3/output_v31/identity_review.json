@@ -300,12 +300,6 @@
     "symbol": "159506"
   },
   {
-    "candidate_name": "纳斯达克科技市值加权指数",
-    "official_code": "NDXTMC",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159509"
-  },
-  {
     "candidate_name": "纳斯达克100指数",
     "official_code": "NDX",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
@@ -316,12 +310,6 @@
     "official_code": "SPSIOP",
     "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
     "symbol": "159518"
-  },
-  {
-    "candidate_name": "标普500消费精选指数",
-    "official_code": "SP5CSSUP",
-    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
-    "symbol": "159529"
   },
   {
     "candidate_name": "恒生港股通红利低波动指数",
