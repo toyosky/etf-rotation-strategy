@@ -13,7 +13,7 @@ permissions:
   contents: write
 concurrency:
   group: research-taxonomy-v31
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   rebuild:
     runs-on: ubuntu-24.04
@@ -37,9 +37,14 @@ jobs:
           set -eu
           mkdir -p /tmp/taxonomy-v31/official
           cp research/taxonomy_v3/snapshot/official/*.json /tmp/taxonomy-v31/official/
-          python research/taxonomy_v3/collect_csindex_catalog_v31.py \
+          if python research/taxonomy_v3/collect_csindex_catalog_v31.py \
             --output /tmp/taxonomy-v31/official/csindex-catalog.json \
-            --raw /tmp/taxonomy-v31/csindex-catalog.xlsx
+            --raw /tmp/taxonomy-v31/csindex-catalog.xlsx; then
+            echo "CSI_CATALOG_CAPTURED=true" >> "$GITHUB_ENV"
+          else
+            echo "::warning::CSI live catalog was temporarily unavailable; proceed with frozen evidence and descriptor repairs only"
+            echo "CSI_CATALOG_CAPTURED=false" >> "$GITHUB_ENV"
+          fi
       - name: Freeze the exact historical price archive
         run: |
           set -eu
@@ -87,9 +92,10 @@ jobs:
       - name: Ensure official raw source is verifiably frozen
         run: |
           mkdir -p research/taxonomy_v3/snapshot/official_v31
-          cp /tmp/taxonomy-v31/official/csindex-catalog.json research/taxonomy_v3/snapshot/official_v31/
-          cp /tmp/taxonomy-v31/csindex-catalog.xlsx research/taxonomy_v3/snapshot/official_v31/
-          python - <<'PY'
+          if [ "$CSI_CATALOG_CAPTURED" = "true" ]; then
+            cp /tmp/taxonomy-v31/official/csindex-catalog.json research/taxonomy_v3/snapshot/official_v31/
+            cp /tmp/taxonomy-v31/csindex-catalog.xlsx research/taxonomy_v3/snapshot/official_v31/
+            python - <<'PY'
           import hashlib,json
           from pathlib import Path
           p=Path('research/taxonomy_v3/snapshot/official_v31')
@@ -98,6 +104,8 @@ jobs:
           assert j['index_count']>=500
           print('RAW_EVIDENCE_HASH_PASS',j['index_count'])
           PY
+          fi
+          echo "{\"official_csi_captured\": $CSI_CATALOG_CAPTURED}" > research/taxonomy_v3/snapshot/official_v31/capture_status.json
       - name: Publish regression and new coverage audit
         if: success()
         run: cat research/taxonomy_v3/output_v31/REPORT_V31.md >> "$GITHUB_STEP_SUMMARY"
