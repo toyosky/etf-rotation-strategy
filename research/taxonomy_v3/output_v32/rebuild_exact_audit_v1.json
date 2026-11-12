@@ -1,0 +1,283 @@
+{
+  "contract": "ETF_EXACT_REBUILD_EXPLORATORY_V1",
+  "source": {
+    "sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "as_of": "2026-11-11",
+    "source_rows": 1439205,
+    "source_symbols": 2003,
+    "taxonomy_date": "2026-11-12"
+  },
+  "not_historical_pit": true,
+  "not_executable_backtest": true,
+  "skipped_symbols": {
+    "insufficient_postlisting_history": 281,
+    "outside_verified_equity": 567
+  },
+  "metrics": {
+    "ALL": {
+      "TRAIN": {
+        "events": 5486,
+        "signal_days": 637,
+        "forward10_observed": 5479,
+        "mean_candidates_per_signal_day": 8.61,
+        "event_net10_pct": -0.197,
+        "day_equal_net10_pct": 0.064,
+        "median_net10_pct": -0.12,
+        "win_pct": 43.69
+      },
+      "VALID": {
+        "events": 4993,
+        "signal_days": 361,
+        "forward10_observed": 4893,
+        "mean_candidates_per_signal_day": 13.83,
+        "event_net10_pct": 0.421,
+        "day_equal_net10_pct": -0.103,
+        "median_net10_pct": 0.15,
+        "win_pct": 50.36
+      },
+      "2025": {
+        "events": 2408,
+        "signal_days": 184,
+        "forward10_observed": 2405,
+        "mean_candidates_per_signal_day": 13.09,
+        "event_net10_pct": 1.451,
+        "day_equal_net10_pct": 1.052,
+        "median_net10_pct": 1.393,
+        "win_pct": 60.58
+      },
+      "2026": {
+        "events": 2585,
+        "signal_days": 177,
+        "forward10_observed": 2488,
+        "mean_candidates_per_signal_day": 14.6,
+        "event_net10_pct": -0.575,
+        "day_equal_net10_pct": -1.362,
+        "median_net10_pct": -0.919,
+        "win_pct": 40.47
+      }
+    },
+    "EXACT_PRE": {
+      "TRAIN": {
+        "events": 2586,
+        "signal_days": 549,
+        "forward10_observed": 2583,
+        "mean_candidates_per_signal_day": 4.71,
+        "event_net10_pct": -0.224,
+        "day_equal_net10_pct": 0.202,
+        "median_net10_pct": -0.12,
+        "win_pct": 43.55,
+        "d5_mature_events": 2585,
+        "d5_survival_pct": 90.64,
+        "d10_mature_events": 2584,
+        "d10_survival_pct": 77.13
+      },
+      "VALID": {
+        "events": 1993,
+        "signal_days": 321,
+        "forward10_observed": 1944,
+        "mean_candidates_per_signal_day": 6.21,
+        "event_net10_pct": 0.471,
+        "day_equal_net10_pct": -0.188,
+        "median_net10_pct": 0.484,
+        "win_pct": 52.01,
+        "d5_mature_events": 1952,
+        "d5_survival_pct": 91.24,
+        "d10_mature_events": 1945,
+        "d10_survival_pct": 84.01
+      },
+      "2025": {
+        "events": 1018,
+        "signal_days": 162,
+        "forward10_observed": 1016,
+        "mean_candidates_per_signal_day": 6.28,
+        "event_net10_pct": 1.321,
+        "day_equal_net10_pct": 0.916,
+        "median_net10_pct": 1.23,
+        "win_pct": 59.55,
+        "d5_mature_events": 1017,
+        "d5_survival_pct": 95.08,
+        "d10_mature_events": 1016,
+        "d10_survival_pct": 90.26
+      },
+      "2026": {
+        "events": 975,
+        "signal_days": 159,
+        "forward10_observed": 928,
+        "mean_candidates_per_signal_day": 6.13,
+        "event_net10_pct": -0.46,
+        "day_equal_net10_pct": -1.374,
+        "median_net10_pct": -0.608,
+        "win_pct": 43.75,
+        "d5_mature_events": 935,
+        "d5_survival_pct": 87.06,
+        "d10_mature_events": 929,
+        "d10_survival_pct": 77.18
+      }
+    },
+    "BROAD_PRE": {
+      "TRAIN": {
+        "events": 354,
+        "signal_days": 245,
+        "forward10_observed": 352,
+        "mean_candidates_per_signal_day": 1.44,
+        "event_net10_pct": 0.07,
+        "day_equal_net10_pct": 0.269,
+        "median_net10_pct": -0.758,
+        "win_pct": 43.75
+      },
+      "VALID": {
+        "events": 202,
+        "signal_days": 129,
+        "forward10_observed": 194,
+        "mean_candidates_per_signal_day": 1.57,
+        "event_net10_pct": 0.771,
+        "day_equal_net10_pct": 0.179,
+        "median_net10_pct": 0.426,
+        "win_pct": 51.03
+      },
+      "2025": {
+        "events": 103,
+        "signal_days": 64,
+        "forward10_observed": 101,
+        "mean_candidates_per_signal_day": 1.61,
+        "event_net10_pct": 1.759,
+        "day_equal_net10_pct": 1.574,
+        "median_net10_pct": 1.295,
+        "win_pct": 59.41
+      },
+      "2026": {
+        "events": 99,
+        "signal_days": 65,
+        "forward10_observed": 93,
+        "mean_candidates_per_signal_day": 1.52,
+        "event_net10_pct": -0.302,
+        "day_equal_net10_pct": -1.263,
+        "median_net10_pct": -0.53,
+        "win_pct": 41.94
+      }
+    }
+  },
+  "age_cohorts": {
+    "TRAIN": {
+      "01-02": {
+        "events": 5632,
+        "signal_days": 715,
+        "forward10_observed": 5626,
+        "mean_candidates_per_signal_day": 7.88,
+        "event_net10_pct": -0.065,
+        "day_equal_net10_pct": -0.026,
+        "median_net10_pct": -0.12,
+        "win_pct": 44.05,
+        "mean_r2": 0.04
+      },
+      "03-05": {
+        "events": 8026,
+        "signal_days": 748,
+        "forward10_observed": 8015,
+        "mean_candidates_per_signal_day": 10.73,
+        "event_net10_pct": -0.364,
+        "day_equal_net10_pct": 0.091,
+        "median_net10_pct": -0.74,
+        "win_pct": 41.43,
+        "mean_r2": 0.224
+      },
+      "06-10": {
+        "events": 12060,
+        "signal_days": 793,
+        "forward10_observed": 12044,
+        "mean_candidates_per_signal_day": 15.21,
+        "event_net10_pct": -0.373,
+        "day_equal_net10_pct": 0.124,
+        "median_net10_pct": -0.948,
+        "win_pct": 40.13,
+        "mean_r2": 0.462
+      },
+      "11-20": {
+        "events": 18257,
+        "signal_days": 850,
+        "forward10_observed": 18241,
+        "mean_candidates_per_signal_day": 21.48,
+        "event_net10_pct": -0.039,
+        "day_equal_net10_pct": -0.227,
+        "median_net10_pct": -0.12,
+        "win_pct": 42.05,
+        "mean_r2": 0.552
+      },
+      "21+": {
+        "events": 24298,
+        "signal_days": 875,
+        "forward10_observed": 24214,
+        "mean_candidates_per_signal_day": 27.77,
+        "event_net10_pct": -0.711,
+        "day_equal_net10_pct": -0.458,
+        "median_net10_pct": -0.966,
+        "win_pct": 37.65,
+        "mean_r2": 0.437
+      }
+    },
+    "VALID": {
+      "01-02": {
+        "events": 4521,
+        "signal_days": 389,
+        "forward10_observed": 4407,
+        "mean_candidates_per_signal_day": 11.62,
+        "event_net10_pct": 0.174,
+        "day_equal_net10_pct": -0.39,
+        "median_net10_pct": -0.059,
+        "win_pct": 49.9,
+        "mean_r2": 0.043
+      },
+      "03-05": {
+        "events": 6284,
+        "signal_days": 402,
+        "forward10_observed": 6153,
+        "mean_candidates_per_signal_day": 15.63,
+        "event_net10_pct": 0.492,
+        "day_equal_net10_pct": -0.237,
+        "median_net10_pct": -0.12,
+        "win_pct": 49.42,
+        "mean_r2": 0.275
+      },
+      "06-10": {
+        "events": 9486,
+        "signal_days": 413,
+        "forward10_observed": 9364,
+        "mean_candidates_per_signal_day": 22.97,
+        "event_net10_pct": 0.314,
+        "day_equal_net10_pct": 0.001,
+        "median_net10_pct": -0.12,
+        "win_pct": 47.85,
+        "mean_r2": 0.511
+      },
+      "11-20": {
+        "events": 15674,
+        "signal_days": 425,
+        "forward10_observed": 15441,
+        "mean_candidates_per_signal_day": 36.88,
+        "event_net10_pct": 0.46,
+        "day_equal_net10_pct": 0.537,
+        "median_net10_pct": 0.315,
+        "win_pct": 50.93,
+        "mean_r2": 0.559
+      },
+      "21+": {
+        "events": 31197,
+        "signal_days": 449,
+        "forward10_observed": 31080,
+        "mean_candidates_per_signal_day": 69.48,
+        "event_net10_pct": 0.708,
+        "day_equal_net10_pct": 0.024,
+        "median_net10_pct": 0.395,
+        "win_pct": 51.07,
+        "mean_r2": 0.518
+      }
+    }
+  },
+  "taxonomy_audit": {
+    "eligible_symbol_days": 627885,
+    "eligible_symbols": 1045,
+    "exact_indices": 364,
+    "broad_groups": 33,
+    "subsector_unknown_symbols": 0
+  }
+}
