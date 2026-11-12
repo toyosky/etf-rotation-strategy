@@ -1,4 +1,5 @@
 name: Research Full-Market Multiwindow Rebuild Backtest
+run-name: Full-market OLS window research v1 (cashlike excluded)
 on:
   workflow_dispatch:
   push:
