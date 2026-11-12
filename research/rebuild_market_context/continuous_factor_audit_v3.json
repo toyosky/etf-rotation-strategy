@@ -1,0 +1,1304 @@
+{
+  "contract": "ETF_REBUILD_MARKET_CONTINUOUS_V3_RESEARCH_ONLY",
+  "source": {
+    "original_rows": 1439205,
+    "valid_rows": 1439205,
+    "raw_symbols": 2003,
+    "duplicates": 0,
+    "as_of": "2026-11-11",
+    "sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "current_metadata_count": 2026
+  },
+  "quality": {
+    "raw_eligible_symbol_days": 689495,
+    "representative_group_days": 139731,
+    "representative_symbols": 281,
+    "distinct_proxy_groups": 158,
+    "raw_symbol_qualified_events": 17432,
+    "representative_before_group_cooldown": 3581,
+    "distinct_group_events": 3566,
+    "skipped_symbols": {
+      "metadata_missing": 0,
+      "not_equity": 88,
+      "unsupported_index_group": 404,
+      "cash_or_leveraged": 0,
+      "short_or_illiquid": 362
+    },
+    "narrow_classification_warning": "Underlying_key is a coarse 2026 taxonomy, not exact tracked-index identity."
+  },
+  "checks": {
+    "regional_benchmark_rows": 12642,
+    "regional_benchmark_missing": 0,
+    "v1_reconciled_high_low_diff_pp": 1.8109,
+    "peer_diffusion_definition": "Excludes ALL current-taxonomy groups in target sector, not only target ETF."
+  },
+  "date_counts": {
+    "train_days": 552,
+    "train_events": 2037,
+    "test_days": 295,
+    "test_events": 1474,
+    "test_months": 22,
+    "test_2025_days": 159,
+    "test_2026_days": 136
+  },
+  "definitions": {
+    "outcome_raw": "Mean next-open to 10-session open gross multiplied by 0.9994^2 per event, averaged equally per date",
+    "outcome_excess": "Same event return less contemporaneous same-region representative ETF median net return; day-equal, post-hoc",
+    "diffusion_level": "15-day qualified rebuilding themes in rolling 5 sessions as percent of currently eligible themes",
+    "diffusion_delta5_pp": "Diffusion today minus diffusion 5 market sessions ago, in percentage points",
+    "breadth_delta5_pp": "Positive 15-day OLS ratio today minus 5 market sessions ago, in percentage points",
+    "unit": "Coefficient is future 10-session outcome in percentage points per given feature scale; controlled effect is association, not causal",
+    "controls": "Trend breadth, same-day past 10-session market ETF median return, event own past 10-session return; time-split 2021-24 and 2025-26",
+    "cluster": "Months resampled, preserving all signal-day correlated events and return overlap",
+    "time_varying_universe": "Eligibility requires 200 prior prices, 60-session >=3m amount, no zero volume, current-taxonomy proxy grouping"
+  },
+  "bands_out_of_sample": [
+    {
+      "range_pct": "[0,10)",
+      "training_days": 231,
+      "validation_days": 147,
+      "validation_events": 331,
+      "validation_net10_day_equal": {
+        "n": 147,
+        "mean_pct": 0.054,
+        "median_pct": -0.12,
+        "win_pct": 43.54
+      },
+      "validation_excess10_day_equal": {
+        "n": 147,
+        "mean_pct": -0.2248,
+        "median_pct": -0.066,
+        "win_pct": 47.62
+      },
+      "validation_2025": {
+        "n": 79,
+        "mean_pct": 0.0407,
+        "median_pct": -0.0015,
+        "win_pct": 49.37
+      },
+      "validation_2026": {
+        "n": 68,
+        "mean_pct": -0.5332,
+        "median_pct": -0.4062,
+        "win_pct": 45.59
+      }
+    },
+    {
+      "range_pct": "[10,20)",
+      "training_days": 132,
+      "validation_days": 67,
+      "validation_events": 340,
+      "validation_net10_day_equal": {
+        "n": 67,
+        "mean_pct": 0.7851,
+        "median_pct": 0.5241,
+        "win_pct": 56.72
+      },
+      "validation_excess10_day_equal": {
+        "n": 67,
+        "mean_pct": 0.7259,
+        "median_pct": -0.227,
+        "win_pct": 47.76
+      },
+      "validation_2025": {
+        "n": 30,
+        "mean_pct": 0.7373,
+        "median_pct": -0.5054,
+        "win_pct": 43.33
+      },
+      "validation_2026": {
+        "n": 37,
+        "mean_pct": 0.7166,
+        "median_pct": 0.0273,
+        "win_pct": 51.35
+      }
+    },
+    {
+      "range_pct": "[20,30)",
+      "training_days": 87,
+      "validation_days": 28,
+      "validation_events": 218,
+      "validation_net10_day_equal": {
+        "n": 28,
+        "mean_pct": -0.1525,
+        "median_pct": 0.7387,
+        "win_pct": 60.71
+      },
+      "validation_excess10_day_equal": {
+        "n": 28,
+        "mean_pct": 0.4912,
+        "median_pct": 0.8886,
+        "win_pct": 64.29
+      },
+      "validation_2025": {
+        "n": 17,
+        "mean_pct": 0.5818,
+        "median_pct": 0.7364,
+        "win_pct": 58.82
+      },
+      "validation_2026": {
+        "n": 11,
+        "mean_pct": 0.3513,
+        "median_pct": 1.0268,
+        "win_pct": 72.73
+      }
+    },
+    {
+      "range_pct": "[30,40)",
+      "training_days": 47,
+      "validation_days": 23,
+      "validation_events": 251,
+      "validation_net10_day_equal": {
+        "n": 23,
+        "mean_pct": -3.7008,
+        "median_pct": -3.0145,
+        "win_pct": 30.43
+      },
+      "validation_excess10_day_equal": {
+        "n": 23,
+        "mean_pct": -1.6478,
+        "median_pct": -1.2067,
+        "win_pct": 21.74
+      },
+      "validation_2025": {
+        "n": 10,
+        "mean_pct": -2.1343,
+        "median_pct": -1.2435,
+        "win_pct": 0.0
+      },
+      "validation_2026": {
+        "n": 13,
+        "mean_pct": -1.2737,
+        "median_pct": -0.3004,
+        "win_pct": 38.46
+      }
+    },
+    {
+      "range_pct": "[40,50)",
+      "training_days": 24,
+      "validation_days": 12,
+      "validation_events": 69,
+      "validation_net10_day_equal": {
+        "n": 12,
+        "mean_pct": -0.538,
+        "median_pct": -0.5662,
+        "win_pct": 50.0
+      },
+      "validation_excess10_day_equal": {
+        "n": 12,
+        "mean_pct": -1.1055,
+        "median_pct": -0.5663,
+        "win_pct": 16.67
+      },
+      "validation_2025": {
+        "n": 9,
+        "mean_pct": -1.2328,
+        "median_pct": -0.5755,
+        "win_pct": 11.11
+      },
+      "validation_2026": {
+        "n": 3,
+        "mean_pct": -0.7237,
+        "median_pct": -0.2668,
+        "win_pct": 33.33
+      }
+    },
+    {
+      "range_pct": "[50,100]",
+      "training_days": 31,
+      "validation_days": 18,
+      "validation_events": 265,
+      "validation_net10_day_equal": {
+        "n": 18,
+        "mean_pct": 2.4741,
+        "median_pct": 2.2983,
+        "win_pct": 77.78
+      },
+      "validation_excess10_day_equal": {
+        "n": 18,
+        "mean_pct": 0.0304,
+        "median_pct": 0.3304,
+        "win_pct": 55.56
+      },
+      "validation_2025": {
+        "n": 14,
+        "mean_pct": -0.1345,
+        "median_pct": 0.0166,
+        "win_pct": 50.0
+      },
+      "validation_2026": {
+        "n": 4,
+        "mean_pct": 0.6075,
+        "median_pct": 0.8818,
+        "win_pct": 75.0
+      }
+    }
+  ],
+  "continuous_day_equal": {
+    "rebuild_diffusion5_pct": {
+      "scale": 10,
+      "train_nonnull": 552,
+      "test_nonnull": 295,
+      "training_range": [
+        1.9824,
+        12.2642,
+        50.96
+      ],
+      "validation_range": [
+        1.5004,
+        10.0,
+        51.1278
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 552,
+          "slope_pp_per_unit": 0.0339,
+          "mean_x": 17.6923
+        },
+        "excess_univariate": {
+          "n_days": 552,
+          "slope_pp_per_unit": 0.081,
+          "mean_x": 17.6923
+        },
+        "excess_adjusted": {
+          "n_days": 552,
+          "slope_pp_per_unit": 0.17603,
+          "mean_x": 17.6923
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.06222,
+          "mean_x": 16.2046
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.08027,
+          "mean_x": 16.2046
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.03941,
+          "mean_x": 16.2046
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.03573,
+            "mean_x": 17.7403
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.13899,
+            "mean_x": 17.7403
+          },
+          "excess_adjusted": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.14327,
+            "mean_x": 17.7403
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.05284,
+            "mean_x": 14.4093
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.02502,
+            "mean_x": 14.4093
+          },
+          "excess_adjusted": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.35757,
+            "mean_x": 14.4093
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.37667,
+            0.15451
+          ],
+          "p_nonpositive": 0.7506,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.22803,
+            0.29184
+          ],
+          "p_nonpositive": 0.3919,
+          "valid_draws": 1600
+        }
+      }
+    },
+    "diffusion_lag1_pct": {
+      "scale": 10,
+      "train_nonnull": 551,
+      "test_nonnull": 295,
+      "training_range": [
+        0.8333,
+        11.1111,
+        49.0098
+      ],
+      "validation_range": [
+        0.764,
+        8.1633,
+        51.1278
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 551,
+          "slope_pp_per_unit": 0.07316,
+          "mean_x": 15.8547
+        },
+        "excess_univariate": {
+          "n_days": 551,
+          "slope_pp_per_unit": 0.1124,
+          "mean_x": 15.8547
+        },
+        "excess_adjusted": {
+          "n_days": 551,
+          "slope_pp_per_unit": 0.20942,
+          "mean_x": 15.8547
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.09798,
+          "mean_x": 14.7716
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.05733,
+          "mean_x": 14.7716
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.07568,
+          "mean_x": 14.7716
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.00113,
+            "mean_x": 15.9955
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.13862,
+            "mean_x": 15.9955
+          },
+          "excess_adjusted": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.14572,
+            "mean_x": 15.9955
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.15898,
+            "mean_x": 13.3408
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.08902,
+            "mean_x": 13.3408
+          },
+          "excess_adjusted": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.54089,
+            "mean_x": 13.3408
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.38144,
+            0.20502
+          ],
+          "p_nonpositive": 0.6462,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.21247,
+            0.39792
+          ],
+          "p_nonpositive": 0.2938,
+          "valid_draws": 1600
+        }
+      }
+    },
+    "diffusion_delta5_pp": {
+      "scale": 10,
+      "train_nonnull": 547,
+      "test_nonnull": 295,
+      "training_range": [
+        -24.1005,
+        4.708,
+        41.4033
+      ],
+      "validation_range": [
+        -32.2847,
+        4.0984,
+        44.0463
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.03665,
+          "mean_x": 6.6602
+        },
+        "excess_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": 0.02228,
+          "mean_x": 6.6602
+        },
+        "excess_adjusted": {
+          "n_days": 547,
+          "slope_pp_per_unit": 0.05172,
+          "mean_x": 6.6602
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.15866,
+          "mean_x": 5.3374
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.02783,
+          "mean_x": 5.3374
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.06763,
+          "mean_x": 5.3374
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.23492,
+            "mean_x": 6.7442
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.039,
+            "mean_x": 6.7442
+          },
+          "excess_adjusted": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.01096,
+            "mean_x": 6.7442
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.0924,
+            "mean_x": 3.6927
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.00378,
+            "mean_x": 3.6927
+          },
+          "excess_adjusted": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.05768,
+            "mean_x": 3.6927
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.21187,
+            0.19535
+          ],
+          "p_nonpositive": 0.4263,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.165,
+            0.21979
+          ],
+          "p_nonpositive": 0.295,
+          "valid_draws": 1600
+        }
+      }
+    },
+    "trend_breadth15_pct": {
+      "scale": 10,
+      "train_nonnull": 552,
+      "test_nonnull": 295,
+      "training_range": [
+        12.7754,
+        46.266,
+        94.3227
+      ],
+      "validation_range": [
+        11.1009,
+        59.3985,
+        91.3043
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 552,
+          "slope_pp_per_unit": -0.13836,
+          "mean_x": 51.2705
+        },
+        "excess_univariate": {
+          "n_days": 552,
+          "slope_pp_per_unit": -0.02374,
+          "mean_x": 51.2705
+        },
+        "excess_adjusted": null
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.00659,
+          "mean_x": 56.768
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.10435,
+          "mean_x": 56.768
+        },
+        "excess_adjusted": null
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.17658,
+            "mean_x": 65.2735
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.15965,
+            "mean_x": 65.2735
+          },
+          "excess_adjusted": null
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.07827,
+            "mean_x": 46.8241
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.09649,
+            "mean_x": 46.8241
+          },
+          "excess_adjusted": null
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.32615,
+            0.11106
+          ],
+          "p_nonpositive": 0.8306,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "ci95_pp": null
+        }
+      }
+    },
+    "breadth_delta5_pp": {
+      "scale": 10,
+      "train_nonnull": 547,
+      "test_nonnull": 295,
+      "training_range": [
+        -34.2661,
+        10.4187,
+        59.5841
+      ],
+      "validation_range": [
+        -33.0653,
+        3.1777,
+        55.8157
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.04117,
+          "mean_x": 11.5423
+        },
+        "excess_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.0177,
+          "mean_x": 11.5423
+        },
+        "excess_adjusted": {
+          "n_days": 547,
+          "slope_pp_per_unit": 0.00872,
+          "mean_x": 11.5423
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.01898,
+          "mean_x": 6.6971
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.12327,
+          "mean_x": 6.6971
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "slope_pp_per_unit": -0.06378,
+          "mean_x": 6.6971
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.02159,
+            "mean_x": 9.2881
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.13593,
+            "mean_x": 9.2881
+          },
+          "excess_adjusted": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.11498,
+            "mean_x": 9.2881
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.12089,
+            "mean_x": 3.6679
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.11462,
+            "mean_x": 3.6679
+          },
+          "excess_adjusted": {
+            "n_days": 136,
+            "slope_pp_per_unit": -0.00795,
+            "mean_x": 3.6679
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.30267,
+            0.05874
+          ],
+          "p_nonpositive": 0.9187,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.26328,
+            0.11762
+          ],
+          "p_nonpositive": 0.75,
+          "valid_draws": 1600
+        }
+      }
+    },
+    "persistence_d5_pct": {
+      "scale": 10,
+      "train_nonnull": 547,
+      "test_nonnull": 295,
+      "training_range": [
+        41.6161,
+        69.2308,
+        97.8439
+      ],
+      "validation_range": [
+        35.6579,
+        80.6818,
+        97.4104
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.16899,
+          "mean_x": 69.8917
+        },
+        "excess_univariate": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.06487,
+          "mean_x": 69.8917
+        },
+        "excess_adjusted": {
+          "n_days": 547,
+          "slope_pp_per_unit": -0.08175,
+          "mean_x": 69.8917
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.23178,
+          "mean_x": 75.5194
+        },
+        "excess_univariate": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.11633,
+          "mean_x": 75.5194
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "slope_pp_per_unit": 0.18243,
+          "mean_x": 75.5194
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.11381,
+            "mean_x": 82.4396
+          },
+          "excess_univariate": {
+            "n_days": 159,
+            "slope_pp_per_unit": -0.03682,
+            "mean_x": 82.4396
+          },
+          "excess_adjusted": {
+            "n_days": 159,
+            "slope_pp_per_unit": 0.13568,
+            "mean_x": 82.4396
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.04371,
+            "mean_x": 67.4288
+          },
+          "excess_univariate": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.1646,
+            "mean_x": 67.4288
+          },
+          "excess_adjusted": {
+            "n_days": 136,
+            "slope_pp_per_unit": 0.19935,
+            "mean_x": 67.4288
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.15974,
+            0.43814
+          ],
+          "p_nonpositive": 0.2256,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 295,
+          "months": 22,
+          "ci95_pp": [
+            -0.11884,
+            0.49139
+          ],
+          "p_nonpositive": 0.1169,
+          "valid_draws": 1600
+        }
+      }
+    },
+    "sector_rs10_pp": {
+      "scale": 1,
+      "train_nonnull": 309,
+      "test_nonnull": 212,
+      "training_range": [
+        -1.3637,
+        0.4185,
+        3.6302
+      ],
+      "validation_range": [
+        -2.2284,
+        0.6397,
+        7.0845
+      ],
+      "train": {
+        "raw_univariate": {
+          "n_days": 309,
+          "slope_pp_per_unit": 0.38393,
+          "mean_x": 0.7507
+        },
+        "excess_univariate": {
+          "n_days": 309,
+          "slope_pp_per_unit": 0.17844,
+          "mean_x": 0.7507
+        },
+        "excess_adjusted": {
+          "n_days": 309,
+          "slope_pp_per_unit": 0.21758,
+          "mean_x": 0.7507
+        }
+      },
+      "validation": {
+        "raw_univariate": {
+          "n_days": 212,
+          "slope_pp_per_unit": -0.11031,
+          "mean_x": 1.1851
+        },
+        "excess_univariate": {
+          "n_days": 212,
+          "slope_pp_per_unit": -0.02236,
+          "mean_x": 1.1851
+        },
+        "excess_adjusted": {
+          "n_days": 212,
+          "slope_pp_per_unit": 0.06322,
+          "mean_x": 1.1851
+        }
+      },
+      "by_year": {
+        "2025": {
+          "raw_univariate": {
+            "n_days": 113,
+            "slope_pp_per_unit": -0.18515,
+            "mean_x": 0.5791
+          },
+          "excess_univariate": {
+            "n_days": 113,
+            "slope_pp_per_unit": -0.12053,
+            "mean_x": 0.5791
+          },
+          "excess_adjusted": {
+            "n_days": 113,
+            "slope_pp_per_unit": -0.10922,
+            "mean_x": 0.5791
+          }
+        },
+        "2026": {
+          "raw_univariate": {
+            "n_days": 99,
+            "slope_pp_per_unit": 0.05228,
+            "mean_x": 1.8769
+          },
+          "excess_univariate": {
+            "n_days": 99,
+            "slope_pp_per_unit": 0.03604,
+            "mean_x": 1.8769
+          },
+          "excess_adjusted": {
+            "n_days": 99,
+            "slope_pp_per_unit": 0.13303,
+            "mean_x": 1.8769
+          }
+        }
+      },
+      "month_bootstrap": {
+        "excess_univariate": {
+          "n_days": 212,
+          "months": 22,
+          "ci95_pp": [
+            -0.37603,
+            0.22257
+          ],
+          "p_nonpositive": 0.575,
+          "valid_draws": 1600
+        },
+        "excess_adjusted": {
+          "n_days": 212,
+          "months": 22,
+          "ci95_pp": [
+            -0.19907,
+            0.25513
+          ],
+          "p_nonpositive": 0.3494,
+          "valid_draws": 1600
+        }
+      }
+    }
+  },
+  "out_of_sample_models": {
+    "00_baseline_constant": {
+      "train_n": 552,
+      "validation_n": 295,
+      "full": {
+        "rmse_pp": 3.63898,
+        "mae_pp": 2.5299,
+        "oos_r2_vs_train_mean": 0.0,
+        "correlation": null
+      },
+      "2025": {
+        "rmse_pp": 2.89819,
+        "mae_pp": 2.13457,
+        "oos_r2_vs_train_mean": 0.0,
+        "correlation": null
+      },
+      "2026": {
+        "rmse_pp": 4.34785,
+        "mae_pp": 2.9921,
+        "oos_r2_vs_train_mean": 0.0,
+        "correlation": null
+      }
+    },
+    "01_market_price_controls": {
+      "full": {
+        "rmse_pp": 3.71383,
+        "mae_pp": 2.57045,
+        "correlation": -0.11152,
+        "oos_r2_vs_train_mean": -0.04156
+      },
+      "2025": {
+        "rmse_pp": 3.01429,
+        "mae_pp": 2.13413,
+        "correlation": -0.19704,
+        "oos_r2_vs_train_mean": -0.08172
+      },
+      "2026": {
+        "rmse_pp": 4.39261,
+        "mae_pp": 3.08057,
+        "correlation": -0.04903,
+        "oos_r2_vs_train_mean": -0.02069
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.57723,
+        "market_ret10_past": 0.68814,
+        "price_ret10": -0.44031,
+        "slope_delta": 0.04979,
+        "persistence_d5_pct": -0.13214,
+        "cn_share": 0.22841,
+        "hk_share": 0.05159
+      }
+    },
+    "02_plus_diffusion_level": {
+      "full": {
+        "rmse_pp": 3.7061,
+        "mae_pp": 2.56312,
+        "correlation": -0.09322,
+        "oos_r2_vs_train_mean": -0.03723
+      },
+      "2025": {
+        "rmse_pp": 3.01938,
+        "mae_pp": 2.1417,
+        "correlation": -0.19798,
+        "oos_r2_vs_train_mean": -0.08538
+      },
+      "2026": {
+        "rmse_pp": 4.37433,
+        "mae_pp": 3.05581,
+        "correlation": -0.0156,
+        "oos_r2_vs_train_mean": -0.01221
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.72655,
+        "market_ret10_past": 0.68198,
+        "price_ret10": -0.46886,
+        "slope_delta": 0.08337,
+        "persistence_d5_pct": -0.04127,
+        "cn_share": 0.20896,
+        "hk_share": 0.04029,
+        "rebuild_diffusion5_pct": 0.22475
+      }
+    },
+    "03_plus_diffusion_velocity": {
+      "full": {
+        "rmse_pp": 3.71209,
+        "mae_pp": 2.56862,
+        "correlation": -0.10913,
+        "oos_r2_vs_train_mean": -0.04059
+      },
+      "2025": {
+        "rmse_pp": 3.01224,
+        "mae_pp": 2.13207,
+        "correlation": -0.19548,
+        "oos_r2_vs_train_mean": -0.08025
+      },
+      "2026": {
+        "rmse_pp": 4.39107,
+        "mae_pp": 3.079,
+        "correlation": -0.04642,
+        "oos_r2_vs_train_mean": -0.01998
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.58403,
+        "market_ret10_past": 0.68766,
+        "price_ret10": -0.44199,
+        "slope_delta": 0.05057,
+        "persistence_d5_pct": -0.12506,
+        "cn_share": 0.22568,
+        "hk_share": 0.04951,
+        "diffusion_delta5_pp": 0.02132
+      }
+    },
+    "04_plus_breadth_velocity": {
+      "full": {
+        "rmse_pp": 3.71719,
+        "mae_pp": 2.57147,
+        "correlation": -0.1122,
+        "oos_r2_vs_train_mean": -0.04345
+      },
+      "2025": {
+        "rmse_pp": 3.00889,
+        "mae_pp": 2.12569,
+        "correlation": -0.17916,
+        "oos_r2_vs_train_mean": -0.07785
+      },
+      "2026": {
+        "rmse_pp": 4.40311,
+        "mae_pp": 3.09264,
+        "correlation": -0.0627,
+        "oos_r2_vs_train_mean": -0.02558
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.51065,
+        "market_ret10_past": 0.69804,
+        "price_ret10": -0.4434,
+        "slope_delta": 0.05958,
+        "persistence_d5_pct": -0.18057,
+        "cn_share": 0.23701,
+        "hk_share": 0.05839,
+        "breadth_delta5_pp": -0.11833
+      }
+    },
+    "05_level_and_velocity": {
+      "full": {
+        "rmse_pp": 3.71827,
+        "mae_pp": 2.57523,
+        "correlation": -0.10394,
+        "oos_r2_vs_train_mean": -0.04405
+      },
+      "2025": {
+        "rmse_pp": 3.04918,
+        "mae_pp": 2.17574,
+        "correlation": -0.22101,
+        "oos_r2_vs_train_mean": -0.10691
+      },
+      "2026": {
+        "rmse_pp": 4.37256,
+        "mae_pp": 3.04229,
+        "correlation": -0.01086,
+        "oos_r2_vs_train_mean": -0.0114
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.80922,
+        "market_ret10_past": 0.68112,
+        "price_ret10": -0.47992,
+        "slope_delta": 0.11133,
+        "persistence_d5_pct": -0.02748,
+        "cn_share": 0.22104,
+        "hk_share": 0.05336,
+        "rebuild_diffusion5_pct": 0.47582,
+        "diffusion_delta5_pp": -0.26389
+      }
+    },
+    "06_lagged_diffusion_and_velocity": {
+      "full": {
+        "rmse_pp": 3.71509,
+        "mae_pp": 2.57511,
+        "correlation": -0.10019,
+        "oos_r2_vs_train_mean": -0.04227
+      },
+      "2025": {
+        "rmse_pp": 3.03362,
+        "mae_pp": 2.16419,
+        "correlation": -0.20157,
+        "oos_r2_vs_train_mean": -0.09564
+      },
+      "2026": {
+        "rmse_pp": 4.37935,
+        "mae_pp": 3.05552,
+        "correlation": -0.02098,
+        "oos_r2_vs_train_mean": -0.01454
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.77553,
+        "market_ret10_past": 0.67273,
+        "price_ret10": -0.49498,
+        "slope_delta": 0.13496,
+        "persistence_d5_pct": -0.05007,
+        "cn_share": 0.22859,
+        "hk_share": 0.06068,
+        "diffusion_lag1_pct": 0.37361,
+        "diffusion_delta5_pp": -0.12014
+      }
+    },
+    "07_all_context": {
+      "full": {
+        "rmse_pp": 3.71073,
+        "mae_pp": 2.56264,
+        "correlation": -0.09249,
+        "oos_r2_vs_train_mean": -0.03982
+      },
+      "2025": {
+        "rmse_pp": 3.01935,
+        "mae_pp": 2.13951,
+        "correlation": -0.17975,
+        "oos_r2_vs_train_mean": -0.08536
+      },
+      "2026": {
+        "rmse_pp": 4.38286,
+        "mae_pp": 3.05732,
+        "correlation": -0.02431,
+        "oos_r2_vs_train_mean": -0.01617
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.71121,
+        "market_ret10_past": 0.70071,
+        "price_ret10": -0.50125,
+        "slope_delta": 0.14284,
+        "persistence_d5_pct": -0.08596,
+        "cn_share": 0.22118,
+        "hk_share": 0.05441,
+        "rebuild_diffusion5_pct": 0.49671,
+        "diffusion_delta5_pp": -0.12,
+        "breadth_delta5_pp": -0.28038
+      }
+    }
+  },
+  "nonlinear_oos_check": {
+    "linear": {
+      "full": {
+        "rmse_pp": 3.7061,
+        "mae_pp": 2.56312,
+        "correlation": -0.09322,
+        "oos_r2_vs_train_mean": -0.03723
+      },
+      "2025": {
+        "rmse_pp": 3.01938,
+        "mae_pp": 2.1417,
+        "correlation": -0.19798,
+        "oos_r2_vs_train_mean": -0.08538
+      },
+      "2026": {
+        "rmse_pp": 4.37433,
+        "mae_pp": 3.05581,
+        "correlation": -0.0156,
+        "oos_r2_vs_train_mean": -0.01221
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.72655,
+        "market_ret10_past": 0.68198,
+        "price_ret10": -0.46886,
+        "slope_delta": 0.08337,
+        "persistence_d5_pct": -0.04127,
+        "cn_share": 0.20896,
+        "hk_share": 0.04029,
+        "rebuild_diffusion5_pct": 0.22475
+      }
+    },
+    "quadratic": {
+      "full": {
+        "rmse_pp": 3.70759,
+        "mae_pp": 2.56587,
+        "correlation": -0.09335,
+        "oos_r2_vs_train_mean": -0.03806
+      },
+      "2025": {
+        "rmse_pp": 3.02103,
+        "mae_pp": 2.14103,
+        "correlation": -0.2009,
+        "oos_r2_vs_train_mean": -0.08657
+      },
+      "2026": {
+        "rmse_pp": 4.37573,
+        "mae_pp": 3.06257,
+        "correlation": -0.0152,
+        "oos_r2_vs_train_mean": -0.01286
+      },
+      "train_n": 552,
+      "validation_n": 295,
+      "coefficients": {
+        "intercept": 0.28908,
+        "trend_breadth15_pct": -0.71481,
+        "market_ret10_past": 0.68176,
+        "price_ret10": -0.46455,
+        "slope_delta": 0.07202,
+        "persistence_d5_pct": -0.04864,
+        "cn_share": 0.21014,
+        "hk_share": 0.04403,
+        "rebuild_diffusion5_pct": 0.16639,
+        "diffusion_square": 0.0406
+      }
+    },
+    "delta_rmse_pp": -0.00149,
+    "quadratic_coef": 0.0406,
+    "basis": "(diffusion_standardized_on_train)**2 minus train mean squared; frozen before validation"
+  },
+  "caveats": [
+    "Current classifications underlie proxy grouping; 2021-2025 taxonomy not point-in-time; incomplete delisted instruments.",
+    "Using a cross-sectional future median as a reference outcome is not a realistic investable strategy benchmark.",
+    "Same-date events are correlated, and 10-session holding periods overlap; daily results have month-block bootstrap only.",
+    "Continuous linear slopes can be misleading if dose response is nonlinear; bands and OOS quadratic sensitivity must be consulted.",
+    "This is signal-event evaluation with next-session open, not a fully-funded portfolio. No historical QDII/LOF premium or intraday veto.",
+    "Multiple features and variants tested retrospectively; select new rules only after a fresh walk-forward period."
+  ]
+}
