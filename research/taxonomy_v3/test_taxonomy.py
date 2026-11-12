@@ -258,3 +258,14 @@ def test_v31_index_descriptor_filling_does_not_override_verified_details():
 def test_v31_unknown_index_remains_unclassified():
     x=supplemental_labels_v31("某全新专项指数",economic_labels("某全新专项指数"))
     assert not x['region_primary'] and not x['exposure_type'] and not x['sector_level1']
+
+
+def test_v31_index_name_boundary_regressions():
+    def parse(name):
+        return supplemental_labels_v31(name,economic_labels(name))
+    assert parse("中证港股通信息技术综合指数")['sector_level2']=="INFORMATION_TECHNOLOGY"
+    assert parse("中证港股通非银行金融主题指数")['sector_level2']=="NON_BANK_FINANCIALS"
+    assert parse("中证海外中国互联网30指数")['region_primary']=="CN_OFFSHORE"
+    assert parse("S&P Oil & Gas Exploration & Production Select Industry")['region_primary']=="US"
+    assert parse("S&P Oil & Gas Exploration & Production Select Industry")['sector_level2']=="OIL_GAS_EQUITY"
+    assert parse("中证港股通信息技术综合指数")['region_primary']=="HK"
