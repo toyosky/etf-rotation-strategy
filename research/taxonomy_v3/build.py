@@ -137,6 +137,12 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
     # full name only via registry, otherwise the auxiliary profile is explicit.
     # A bridge supported solely by an auxiliary page is a candidate, not a
     # verified code/name merge. Unresolved bridges go to identity_review.json.
+    # Fund-specific mandates: strictly curated from published issuer documents;
+    # no benchmark-as-tracking-index substitution and no historical backdating.
+    mandates = json.loads(Path(__file__).with_name('fund_contract_evidence_v31.json').read_text())
+    mandate_by_symbol = {r["symbol"]:r for r in mandates}
+    if len(mandate_by_symbol) != len(mandates):
+        raise ValueError("Duplicate manual mandate symbol")
     records, reviews, identity_review = [], [], []
     for symbol in symbols:
         legacy = current.get(symbol, {})
@@ -156,7 +162,7 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             valid_from=snapshot_date, valid_to=None, known_from=next_day,
             listing_date=None, delisting_date=None, listing_known_from=None,
             confidence='UNVERIFIED', needs_review=True, classification_reason=[],
-            classification_version='V3.0.0', historical_scope='CURRENT_SNAPSHOT_ONLY',
+            classification_version='V3.1.1', historical_scope='CURRENT_SNAPSHOT_ONLY',
             legacy_underlying_key=legacy.get('underlying_key'), legacy_risk_bucket=legacy.get('risk_bucket'),
             legacy_style_sector=legacy.get('style_sector'),
             auxiliary_index_name=aux_index, auxiliary_source_url=prof.get('source_url'),
@@ -165,6 +171,7 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             legacy_listed_flag=legacy.get('current_exchange_listed'),
             quote_currency=None, settlement_mechanism=None, replication_method=None,
             premium_sensitive=True, execution_attributes_verified=False,
+            legal_mandate_verified=False, mandate_document_url=None, mandate_published_date=None,
             **coverage.get(symbol, dict(first_bar=None, last_bar=None, bar_count=0)))
         reasons = []
         registry = None
@@ -255,6 +262,68 @@ def build(metadata: list[dict], profiles: dict, official: Path, archive: pd.Data
             # Research proxy only: domestic-equity classification does not certify
             # any T+0/settlement/currency flags; those remain NULL/unverified.
             rec['premium_sensitive'] = False
+        if symbol in mandate_by_symbol:
+            d = mandate_by_symbol[symbol]
+            # A documented fund-specific identity is stronger than a
+            # third-party name bridge. The evidence is current and must
+            # never be extrapolated before the current captured snapshot.
+            if d["source_date"] > snapshot_date:
+                raise ValueError(f"Future-dated legal evidence: {symbol}")
+            if not rec["current_exchange_listed_verified"]:
+                raise ValueError(f"Mandate without official current listing: {symbol}")
+            rec["legal_mandate_verified"] = True
+            rec["mandate_document_url"] = d["source_url"]
+            rec["mandate_published_date"] = d["source_date"]
+            rec["source_date"] = d["source_date"]
+            rec["source_url"].append(d["source_url"])
+            rec["classification_source"].append(d["kind"])
+            rec["confidence"] = "HIGH_OFFICIAL_FUND_MANDATE"
+            rec["region_primary"] = d["region_primary"]
+            rec["exposure_type"] = d["exposure_type"]
+            rec["sector_level1"] = d["sector_level1"]
+            rec["sector_level2"] = d["sector_level2"]
+            rec["tracking_mode"] = d["tracking_mode"]
+            rec["risk_bucket"] = "|".join((d["region_primary"],
+                                        d["exposure_type"],d["sector_level1"]))
+            if d.get("replication_method"):
+                rec["replication_method"] = d["replication_method"]
+            if d["kind"] in {"OFFICIAL_PASSIVE_INDEX_MANDATE",
+                              "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE"}:
+                if not d.get("index_name"):
+                    raise ValueError(f"Passive mandate has no tracked legal index: {symbol}")
+                # Do not assert that an exchange 'fitted code' is the
+                # index compiler's canonical ID: legal-name key is safer.
+                rec["index_name"] = d["index_name"]
+                rec["index_code"] = None
+                rec["index_provider"] = None
+                rec["exact_index_key"] = name_key(d["index_name"])
+                rec["exact_index_verified"] = True
+                rec["exposure_id"] = "EXPOSURE:"+rec["exact_index_key"]
+                rec["exposure_name"] = d["index_name"]
+                rec["exposure_parent"] = d["sector_level1"]
+                reasons = [x for x in reasons if x not in {
+                    "OFFICIAL_CODE_NAME_LINK_NOT_VERIFIED",
+                    "INDEX_ECONOMIC_REGION_OR_ASSET_NOT_VERIFIED",
+                    "INDEX_SECTOR_CLASSIFICATION_NOT_VERIFIED",
+                    "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX"}]
+                identity_review = [x for x in identity_review if x['symbol'] != symbol]
+            else:
+                if d.get("index_name") is not None:
+                    raise ValueError(f"Non-index mandate cannot create tracked index: {symbol}")
+                rec["index_name"] = None
+                rec["index_code"] = None
+                rec["index_provider"] = None
+                rec["exact_index_key"] = None
+                rec["exact_index_verified"] = False
+                rec["exposure_id"] = "NON_PASSIVE:GLOBAL_CRUDE_OIL_FOF"
+                rec["exposure_name"] = "全球原油基金中基金（非被动指数）"
+                rec["exposure_parent"] = "COMMODITY"
+                rec["performance_benchmark"] = d.get("performance_benchmark")
+                reasons = [x for x in reasons if x != "OFFICIAL_LIST_HAS_NO_TRACKED_INDEX"]
+                reasons.append("OFFICIALLY_VERIFIED_NON_PASSIVE_STRATEGY_EXCLUDED")
+            # Missing settlement/premium/quote attributes are NOT invented.
+            rec["classification_reason"].append(
+                "Official fund mandate recorded with document date; not automatically historical-PIT qualified")
         rec['needs_review'] = bool(reasons)
         rec['classification_reason'] += reasons + [
             'Distinct indices retained as distinct fine exposures; cross-index equivalence unapproved',
@@ -366,6 +435,8 @@ def main():
         sector_level2_count=len({r['sector_level2'] for r in verified if r['sector_level2']}),
         fully_classified_current=len(complete), needs_review=len(reviews),
         execution_verified_count=sum(r['execution_attributes_verified'] for r in records),
+        legal_mandates_verified_count=sum(r.get('legal_mandate_verified',False) for r in records),
+        legal_non_passive_mandates_count=sum(r.get('tracking_mode')=='ACTIVE_QDII_FOF' for r in records),
         no_verified_tracking_identity=sum(not r['exact_index_verified'] for r in records),
         historical_classifications_before_capture=0,
         review_reasons=dict(Counter(x for r in reviews for x in r['reasons'])),
@@ -384,11 +455,11 @@ def main():
     dump(out/'summary.json', summary)
     # Full input digests plus deterministic output manifest; no wall-clock build
     # timestamp so repeated identical frozen inputs produce identical artifacts.
-    files = [args.metadata, args.bars, Path(__file__).with_name('index_aliases.json')] + sorted(Path(__file__).parent.glob('*.py')) + sorted(args.profiles.glob('*.json')) + sorted(args.official.glob('*.json'))
+    files = [args.metadata, args.bars, Path(__file__).with_name('index_aliases.json'), Path(__file__).with_name('fund_contract_evidence_v31.json')] + sorted(Path(__file__).parent.glob('*.py')) + sorted(args.profiles.glob('*.json')) + sorted(args.official.glob('*.json'))
     output_names = ['classifications.json','classifications.csv','classifications.parquet','review_queue.json',
         'review_queue.csv','identity_review.json','quality_audit.json','profiles.json','calendar_observed.json',
         'prelisting_history_review.json','summary.json']
-    dump(out/'manifest.json', dict(version='V3.0.0', inputs=[dict(name=p.name, sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in files],
+    dump(out/'manifest.json', dict(version='V3.1.1', inputs=[dict(name=p.name, sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in files],
         outputs={name:hashlib.sha256((out/name).read_bytes()).hexdigest() for name in output_names}))
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
