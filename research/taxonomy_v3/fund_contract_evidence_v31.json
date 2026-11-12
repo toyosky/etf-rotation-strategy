@@ -1,0 +1,49 @@
+[
+  {
+    "symbol": "159981",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-03-30/1225041054.PDF",
+    "source_date": "2026-03-30",
+    "source_document": "建信能源化工期货ETF2025年年度报告 §2.2",
+    "index_name": "易盛郑商所能源化工指数A",
+    "region_primary": "CN",
+    "exposure_type": "COMMODITY_FUTURES",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "ENERGY_CHEMICAL_FUTURES",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "2025 annual report states futures-index replication and benchmark 易盛郑商所能源化工指数A收益率; SZSE fitted code retained separately and not asserted as official global index code",
+    "execution_attributes_verified": false
+  },
+  {
+    "symbol": "159100",
+    "kind": "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-07-21/1225433022.PDF",
+    "source_date": "2026-07-21",
+    "source_document": "华夏布拉德斯科巴西伊博维斯帕ETF（QDII）2026年第2季度报告 §2",
+    "index_name": "巴西伊博维斯帕指数",
+    "region_primary": "BR",
+    "exposure_type": "EQUITY",
+    "sector_level1": "MULTI_SECTOR",
+    "sector_level2": "BROAD",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "TARGET_ETF_FOF",
+    "proof": "Official fund quarterly report confirms 159100 fund and objective of close tracking target ETF/index; benchmark Brazilian Ibovespa index, not simply a name guess",
+    "execution_attributes_verified": false
+  },
+  {
+    "symbol": "501018",
+    "kind": "OFFICIAL_NON_INDEX_QDII_FOF_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-05-21/501018_20260521_JW26.pdf",
+    "source_date": "2026-05-21",
+    "source_document": "南方原油证券投资基金（A类份额）基金产品资料概要",
+    "index_name": null,
+    "region_primary": "GLOBAL",
+    "exposure_type": "COMMODITY_FOF",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "CRUDE_OIL_FOF",
+    "tracking_mode": "ACTIVE_QDII_FOF",
+    "performance_benchmark": "60% WTI原油价格收益率 + 40% Brent原油价格收益率",
+    "proof": "Official summary identifies QDII-FOF; >=80% fund assets in public funds and >=80% noncash assets in crude-oil funds, benchmark is not a legally tracked index",
+    "execution_attributes_verified": false
+  }
+]
