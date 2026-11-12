@@ -113,8 +113,11 @@
         <div><span class="kicker">HISTORICAL CHECK</span><h2>这些指标有预测价值吗？</h2></div>
         <p>2021–2024 年固定分位阈值，2025–2026 年样本外检验；未来 10 日次日开盘到开盘净收益。</p>
       </div>
-      <div class="rc-audit" id="rc-audit">正在载入验证结果…</div>
-      <p class="rc-caution">这只是分组统计，不是组合收益或可直接交易的回测。基金存续样本、历史主题分类、同月相关性和溢价缺失等限制尚未消除。尤其 D5 存续率目前尚未验证收益优势。</p>
+      <p class="rc-caution">V1 原始统计按 ETF 事件加权；高扩散时期会集中产生大量同日信号，不能把这些信号当成独立样本。</p>
+      <div class="rc-audit" id="rc-audit">正在载入初始验证结果…</div>
+      <h3 style="margin:26px 0 10px">V2：控制同日聚集与地区市场收益</h3>
+      <div class="rc-audit" id="rc-audit-v2">正在载入深入审计结果…</div>
+      <p class="rc-caution" id="rc-audit-caveat">严格验证尚未证明扩散率带来稳定超额收益。高低组按月份重抽样的区间可能跨越零；只用于市场环境观察，不直接转换为交易许可。</p>
     </section>
 
     <section class="section">
@@ -124,7 +127,8 @@
       <div class="rc-links">
         <a href="./data/rebuild-market-context-latest.json">最新指标 JSON</a>
         <a href="./research/rebuild_market_context/indicators_v1.json">验证数据 JSON</a>
-        <a href="./research/rebuild_market_context/README_RESULTS.md">计算报告</a>
+        <a href="./research/rebuild_market_context/README_RESULTS.md">初版计算报告</a>
+        <a href="./research/rebuild_market_context/diffusion_deep_audit_v2.md">扩散率深度审计 V2</a>
         <a href="./state-map.html">返回原有 Top1 状态图</a>
       </div>
     </section>
@@ -133,7 +137,7 @@
   <script>
   (function(){
     "use strict";
-    var state={latest:null,full:null,days:20,region:"CN"};
+    var state={latest:null,full:null,v2:null,days:20,region:"CN"};
     var labels={CONSUMER:"消费",HEALTHCARE:"医药",MATERIALS:"材料",CHINA_GROWTH:"成长",TECHNOLOGY:"科技",
       INDUSTRIALS:"工业",DEFENSE:"军工",CASH_FLOW:"现金流",GROWTH:"成长风格",ENERGY:"能源",
       BROAD:"宽基",DIVIDEND:"红利",SOFTWARE_AI:"软件与AI",BANKS:"银行",SEMICONDUCTOR:"半导体",
@@ -225,12 +229,39 @@
         var x=d[pair[0]];if(!x)return;
         var el=document.createElement("div"),label=document.createElement("small"),
           value=document.createElement("strong"),desc=document.createElement("p");
-        label.textContent=pair[1]+" · 高组减低组";
+        label.textContent=pair[1]+" · ETF事件加权（V1）";
         value.textContent=fmtSigned(x.high_minus_low_net10_pp);
-        value.style.color=x.high_minus_low_net10_pp>0?"#61d9aa":"#ff889c";
+        value.style.color="#e9c36f";
         desc.textContent="高组 "+x.high.n+" 次 / "+x.high.mean_net10_pct.toFixed(2)+"% ；低组 "+x.low.n+" 次 / "+x.low.mean_net10_pct.toFixed(2)+"%";
         el.append(label,value,desc);box.appendChild(el);
       });
+    }
+    function renderDeepAudit(){
+      var d=state.v2&&state.v2.features;
+      var box=byId("rc-audit-v2");box.replaceChildren();
+      if(!d||!d.rebuild_diffusion5_pct){box.textContent="深度审计文件暂不可用。";return;}
+      var x=d.rebuild_diffusion5_pct;
+      var cards=[
+        ["交易日等权：高减低",x.validation_equal_day_net10.diff_pp,"每个信号日仅计一次"],
+        ["地区超额收益：日等权",x.validation_excess_equal_day.diff_pp,"减去当日地区 ETF 代理组中位收益"],
+        ["前一日扩散率：日等权",d.diffusion_lag1_pct.validation_equal_day_net10.diff_pp,"检验信号是否仅出现在同日同步反弹"]
+      ];
+      cards.forEach(function(pair){
+        var el=document.createElement("div"),label=document.createElement("small"),
+          value=document.createElement("strong"),desc=document.createElement("p");
+        label.textContent=pair[0];
+        value.textContent=fmtSigned(pair[1]);
+        value.style.color="#e9c36f";
+        desc.textContent=pair[2];
+        el.append(label,value,desc);box.appendChild(el);
+      });
+      var boot=x.bootstrap_months.equal_day_excess;
+      var stale=state.latest&&state.latest.as_of!==state.v2.asof;
+      byId("rc-audit-caveat").textContent="V2 截止 "+state.v2.asof+
+        (stale?"（不同于当前最新行情日期；审计口径尚未重新运行）":"")+
+        "。日等权地区超额差距的月度区块重抽样 95% 区间为 "+
+        boot.ci95_diff_pp.map(function(v){return Number(v).toFixed(2)+" pp";}).join(" 至 ")+
+        "，跨越零；因此不支持把扩散率直接升级为自动买入规则。";
     }
     document.querySelectorAll("#rc-presets button").forEach(function(b){
       b.addEventListener("click",function(){
@@ -249,8 +280,9 @@
     var suffix="?v="+Date.now();
     Promise.all([
       fetch("./data/rebuild-market-context-latest.json"+suffix).then(function(r){if(!r.ok)throw new Error("latest HTTP "+r.status);return r.json();}),
-      fetch("./research/rebuild_market_context/indicators_v1.json"+suffix).then(function(r){if(!r.ok)throw new Error("validation HTTP "+r.status);return r.json();}).catch(function(){return null;})
-    ]).then(function(z){state.latest=z[0];state.full=z[1];renderCards();renderCharts();renderSectors();renderAudit();}).catch(reportError);
+      fetch("./research/rebuild_market_context/indicators_v1.json"+suffix).then(function(r){if(!r.ok)throw new Error("validation HTTP "+r.status);return r.json();}).catch(function(){return null;}),
+      fetch("./research/rebuild_market_context/diffusion_deep_audit_v2.json"+suffix).then(function(r){if(!r.ok)throw new Error("audit V2 HTTP "+r.status);return r.json();}).catch(function(){return null;})
+    ]).then(function(z){state.latest=z[0];state.full=z[1];state.v2=z[2];renderCards();renderCharts();renderSectors();renderAudit();renderDeepAudit();}).catch(reportError);
   })();
   </script>
 </body>
