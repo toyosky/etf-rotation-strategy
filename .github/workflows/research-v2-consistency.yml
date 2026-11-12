@@ -1,0 +1,35 @@
+name: Research V2 Accounting Consistency
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/taxonomy-rebuild-validation-20261112
+    paths:
+      - 'research/taxonomy_v3/audit_v2_consistency_v1.py'
+      - '.github/workflows/research-v2-consistency.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check V2 arithmetic and research estimands
+        run: python research/taxonomy_v3/audit_v2_consistency_v1.py
+      - name: Publish audit
+        run: cat research/taxonomy_v3/output_v32/drawdown_rebuild_v2_consistency_audit.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit research-only report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/taxonomy_v3/output_v32/drawdown_rebuild_v2_consistency_audit.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'research: archive V2 consistency and estimand audit'
+          git pull --rebase origin research/taxonomy-rebuild-validation-20261112
+          git push origin HEAD:research/taxonomy-rebuild-validation-20261112
