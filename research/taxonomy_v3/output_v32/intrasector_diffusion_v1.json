@@ -769,11 +769,7 @@
         "alive_only": {
           "base_n": 3,
           "expanded_n": 34,
-          "expanded_minus_singleton_pp": 1.4026,
-          "month_bootstrap_ci95_pp": [
-            -3.5336,
-            5.4982
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "matched_date": {
           "paired_dates": 0
@@ -796,38 +792,22 @@
         "raw10": {
           "base_n": 3,
           "expanded_n": 22,
-          "expanded_minus_singleton_pp": -0.4605,
-          "month_bootstrap_ci95_pp": [
-            -3.6422,
-            4.1188
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "sector_excess10": {
           "base_n": 3,
           "expanded_n": 22,
-          "expanded_minus_singleton_pp": -1.3158,
-          "month_bootstrap_ci95_pp": [
-            -5.4981,
-            3.9059
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "region_excess10": {
           "base_n": 3,
           "expanded_n": 22,
-          "expanded_minus_singleton_pp": -1.2024,
-          "month_bootstrap_ci95_pp": [
-            -5.4659,
-            3.6638
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "alive_only": {
           "base_n": 2,
           "expanded_n": 20,
-          "expanded_minus_singleton_pp": 0.8879,
-          "month_bootstrap_ci95_pp": [
-            -3.3694,
-            4.8331
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "matched_date": {
           "paired_dates": 0
@@ -850,34 +830,22 @@
         "raw10": {
           "base_n": 2,
           "expanded_n": 19,
-          "expanded_minus_singleton_pp": 3.6945,
-          "month_bootstrap_ci95_pp": [
-            -2.172,
-            11.0822
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "sector_excess10": {
           "base_n": 2,
           "expanded_n": 19,
-          "expanded_minus_singleton_pp": -0.536,
-          "month_bootstrap_ci95_pp": [
-            -4.4,
-            3.6882
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "region_excess10": {
           "base_n": 2,
           "expanded_n": 19,
-          "expanded_minus_singleton_pp": -0.0149,
-          "month_bootstrap_ci95_pp": [
-            -6.0308,
-            7.1385
-          ]
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "alive_only": {
           "base_n": 1,
           "expanded_n": 14,
-          "expanded_minus_singleton_pp": 2.5267
+          "not_estimated_reason": "FEWER_THAN_5_EACH"
         },
         "matched_date": {
           "paired_dates": 0
@@ -913,7 +881,7 @@
       "r2_gate_and_alive": {
         "base_n": 1,
         "expanded_n": 18,
-        "expanded_minus_singleton_pp": -2.095
+        "not_estimated_reason": "FEWER_THAN_5_EACH"
       },
       "r2_gate_sample": 19,
       "primary_sample": 47
@@ -940,7 +908,7 @@
       "r2_gate_and_alive": {
         "base_n": 1,
         "expanded_n": 26,
-        "expanded_minus_singleton_pp": -2.2179
+        "not_estimated_reason": "FEWER_THAN_5_EACH"
       },
       "r2_gate_sample": 28,
       "primary_sample": 48
@@ -1147,5 +1115,147 @@
       "subsectors": "ENERGY_EQUITY/OIL_GAS_EQUITY",
       "leader_alive": true
     }
-  ]
+  ],
+  "nested_label_sensitivity": {
+    "5": {
+      "cohorts": {
+        "1": {
+          "episodes": 15,
+          "leader_available": 15,
+          "leader_alive_pct": 80.0,
+          "net10_n": 14,
+          "net10_mean_pct": -1.984,
+          "net10_win_pct": 42.86,
+          "excess_sector10_n": 14,
+          "excess_sector10_mean_pct": -0.749,
+          "excess_region10_n": 14,
+          "excess_region10_mean_pct": -1.212,
+          "survive5_n": 15,
+          "survive5_mean_pct": 60.0,
+          "survive10_n": 14,
+          "survive10_mean_pct": 35.714
+        },
+        "2": {
+          "episodes": 9,
+          "leader_available": 9,
+          "leader_alive_pct": 100.0,
+          "net10_n": 9,
+          "net10_mean_pct": 2.479,
+          "net10_win_pct": 77.78,
+          "excess_sector10_n": 9,
+          "excess_sector10_mean_pct": 1.314,
+          "excess_region10_n": 9,
+          "excess_region10_mean_pct": 1.3,
+          "survive5_n": 9,
+          "survive5_mean_pct": 66.667,
+          "survive10_n": 9,
+          "survive10_mean_pct": 55.556
+        },
+        "3+": {
+          "episodes": 17,
+          "leader_available": 17,
+          "leader_alive_pct": 100.0,
+          "net10_n": 17,
+          "net10_mean_pct": 2.343,
+          "net10_win_pct": 58.82,
+          "excess_sector10_n": 17,
+          "excess_sector10_mean_pct": 0.845,
+          "excess_region10_n": 17,
+          "excess_region10_mean_pct": 1.547,
+          "survive5_n": 17,
+          "survive5_mean_pct": 100.0,
+          "survive10_n": 17,
+          "survive10_mean_pct": 88.235
+        }
+      },
+      "raw10": {
+        "base_n": 14,
+        "expanded_n": 26,
+        "expanded_minus_singleton_pp": 4.3742,
+        "month_bootstrap_ci95_pp": [
+          1.1111,
+          7.4612
+        ]
+      },
+      "sector_excess10": {
+        "base_n": 14,
+        "expanded_n": 26,
+        "expanded_minus_singleton_pp": 1.7564,
+        "month_bootstrap_ci95_pp": [
+          -0.4264,
+          4.1887
+        ]
+      }
+    },
+    "10": {
+      "cohorts": {
+        "1": {
+          "episodes": 5,
+          "leader_available": 5,
+          "leader_alive_pct": 40.0,
+          "net10_n": 5,
+          "net10_mean_pct": -2.275,
+          "net10_win_pct": 20.0,
+          "excess_sector10_n": 5,
+          "excess_sector10_mean_pct": 1.004,
+          "excess_region10_n": 5,
+          "excess_region10_mean_pct": 1.228,
+          "survive5_n": 5,
+          "survive5_mean_pct": 0.0,
+          "survive10_n": 5,
+          "survive10_mean_pct": 0.0
+        },
+        "2": {
+          "episodes": 10,
+          "leader_available": 10,
+          "leader_alive_pct": 70.0,
+          "net10_n": 9,
+          "net10_mean_pct": -0.599,
+          "net10_win_pct": 33.33,
+          "excess_sector10_n": 9,
+          "excess_sector10_mean_pct": 0.489,
+          "excess_region10_n": 9,
+          "excess_region10_mean_pct": -1.521,
+          "survive5_n": 9,
+          "survive5_mean_pct": 55.556,
+          "survive10_n": 9,
+          "survive10_mean_pct": 55.556
+        },
+        "3+": {
+          "episodes": 27,
+          "leader_available": 27,
+          "leader_alive_pct": 85.19,
+          "net10_n": 27,
+          "net10_mean_pct": 0.478,
+          "net10_win_pct": 48.15,
+          "excess_sector10_n": 27,
+          "excess_sector10_mean_pct": 0.798,
+          "excess_region10_n": 27,
+          "excess_region10_mean_pct": 0.444,
+          "survive5_n": 27,
+          "survive5_mean_pct": 74.074,
+          "survive10_n": 27,
+          "survive10_mean_pct": 70.37
+        }
+      },
+      "raw10": {
+        "base_n": 5,
+        "expanded_n": 36,
+        "expanded_minus_singleton_pp": 2.483,
+        "month_bootstrap_ci95_pp": [
+          -2.8831,
+          6.4641
+        ]
+      },
+      "sector_excess10": {
+        "base_n": 5,
+        "expanded_n": 36,
+        "expanded_minus_singleton_pp": -0.2835,
+        "month_bootstrap_ci95_pp": [
+          -4.5416,
+          3.3294
+        ]
+      }
+    }
+  }
 }
