@@ -128,9 +128,16 @@ def build_daily(bars, taxonomy):
                     qualifies.add(j)
                     break
         streak = np.zeros(n, dtype=int)
+        confirmed = np.zeros(n, dtype=bool)
+        confirmed_alive = False
         for i in range(n):
             if np.isfinite(beta[i]) and beta[i]>0:
                 streak[i] = 1+(streak[i-1] if i else 0)
+            else:
+                confirmed_alive = False
+            if i in qualifies:
+                confirmed_alive = True
+            confirmed[i] = confirmed_alive
         fwd = np.full(n, np.nan)
         for i in range(n-11):
             if ids[i+11]-ids[i] == 11:
@@ -148,11 +155,11 @@ def build_daily(bars, taxonomy):
                 str(m.region_primary)+'|'+str(m.sector_level1),
                 None if pd.isna(m.sector_level2) else str(m.sector_level2),
                 float(prior_amount[i]), i in qualifies, int(streak[i]),
-                float(beta[i]),float(r2[i]),float(fwd[i]),
+                bool(confirmed[i]),float(beta[i]),float(r2[i]),float(fwd[i]),
                 float(survival[5][i]),float(survival[10][i])
             ))
     cols = ['date','symbol','exact_key','broad_key','subsector',
-            'prior_amount','signal','positive_streak','slope','r2',
+            'prior_amount','signal','positive_streak','confirmed','slope','r2',
             'net10','survive5','survive10']
     daily = pd.DataFrame(rows,columns=cols)
     if daily.empty: raise RuntimeError('No eligible symbols')
@@ -181,6 +188,26 @@ def make_variants(daily):
     return result
 
 
+def paired_months(a,b):
+    """Difference in matched calendar-date equal-weight returns, with month blocks."""
+    x = a.groupby('date').net10.mean().to_frame('a')
+    y = b.groupby('date').net10.mean().to_frame('b')
+    both = x.join(y,how='inner').dropna()
+    both = both.loc[both.index>=SPLIT]
+    if both.empty:
+        return {'paired_dates':0}
+    z = both.a-both.b
+    months = z.groupby(z.index.to_period('M'))
+    sums = months.sum().to_numpy(float)
+    counts = months.size().to_numpy(int)
+    rng = np.random.default_rng(20261112)
+    draws = rng.integers(0,len(sums),size=(2000,len(sums)))
+    boot = 100*sums[draws].sum(axis=1)/counts[draws].sum(axis=1)
+    return {'paired_dates':int(len(z)),
+            'mean_difference_pp':round(float(z.mean()*100),4),
+            'month_block_ci95_pp':[round(float(v),4) for v in np.quantile(boot,[.025,.975])]}
+
+
 def build_report(daily,modes,source,skipped):
     result = {'contract':'ETF_EXACT_REBUILD_EXPLORATORY_V1',
               'source':source,
@@ -192,6 +219,18 @@ def build_report(daily,modes,source,skipped):
                   'exact_indices':int(daily.exact_key.nunique()),
                   'broad_groups':int(daily.broad_key.nunique()),
                   'subsector_unknown_symbols':int(daily.loc[daily.subsector.isna(),'symbol'].nunique())}}
+    result['paired_vs_all_valid'] = {
+        mode:paired_months(modes[mode][1],modes['ALL'][1])
+        for mode in ('EXACT_PRE','BROAD_PRE')}
+    # Audit how many distinct official indices each broad sector would erase.
+    grouped = daily[['broad_key','exact_key','subsector']].drop_duplicates()
+    rank = (grouped.groupby('broad_key').agg(
+                exact_indices=('exact_key','nunique'),
+                subsectors=('subsector','nunique'))
+            .sort_values('exact_indices',ascending=False).head(12))
+    result['broad_group_compression_top12'] = [
+        {'broad_group':key,'exact_indices':int(v.exact_indices),
+         'verified_subsectors':int(v.subsectors)} for key,v in rank.iterrows()]
     for mode,(_,ev) in modes.items():
         result['metrics'][mode] = {}
         for name,frame in [('TRAIN',ev.loc[ev.date<SPLIT]),
@@ -208,7 +247,7 @@ def build_report(daily,modes,source,skipped):
             result['metrics'][mode][name] = obj
     # Daily observations of ongoing positive OLS, NOT independent events.
     positive = modes['EXACT_PRE'][0]
-    positive = positive.loc[positive.positive_streak>0].copy()
+    positive = positive.loc[positive.confirmed & (positive.positive_streak>0)].copy()
     positive['age_bucket'] = positive.positive_streak.map(age_bucket)
     for name,g in [('TRAIN',positive.loc[positive.date<SPLIT]),
                    ('VALID',positive.loc[positive.date>=SPLIT])]:
@@ -216,6 +255,9 @@ def build_report(daily,modes,source,skipped):
         for age,frame in g.groupby('age_bucket'):
             obj = summarize(frame)
             obj['mean_r2'] = round(float(frame.r2.mean()),3)
+            strict = summarize(frame.loc[frame.r2>=0.5])
+            obj['r2_ge_0_5_observations'] = strict['events']
+            obj['r2_ge_0_5_day_equal_net10_pct'] = strict.get('day_equal_net10_pct')
             result['age_cohorts'][name][age] = obj
     lines = ['# ETF精确指数去重与重建持续性 V1（探索性）','',
        '冻结分类：2026-11-12；冻结行情截止：'+source['as_of']+'。','',
@@ -231,23 +273,39 @@ def build_report(daily,modes,source,skipped):
             mode,v['events'],v['signal_days'],
             v.get('mean_candidates_per_signal_day','—'),
             ('{:+.3f}%'.format(val) if val is not None else '—')))
+    lines += ['','## 相同日期配对（相对 ALL 的日等权10日净收益差）','',
+               '| 比较 | 共同交易日 | 差值百分点 | 月份区块95%区间 |',
+               '|---|---:|---:|---:|']
+    for mode,obj in result['paired_vs_all_valid'].items():
+        interval=obj.get('month_block_ci95_pp')
+        label='['+', '.join('{:+.3f}'.format(t) for t in interval)+']' if interval else '—'
+        lines.append('| {} | {} | {:+.4f} | {} |'.format(
+            mode,obj.get('paired_dates',0),obj.get('mean_difference_pp',float('nan')),label))
+    lines += ['','## 粗行业会合并最多不同指数的分组','',
+              '| 区域×行业 | 精确指数 | 已确认细分标签 |',
+              '|---|---:|---:|']
+    for x in result['broad_group_compression_top12']:
+        lines.append('| {} | {} | {} |'.format(
+            x['broad_group'],x['exact_indices'],x['verified_subsectors']))
     lines += ['','## 精确指数重建事件存续（完整成熟样本）','']
     for name in ('TRAIN','VALID'):
         obj = result['metrics']['EXACT_PRE'][name]
         lines.append('{}：D5 {}%（{}事件），D10 {}%（{}事件）。'.format(
             name,obj['d5_survival_pct'],obj['d5_mature_events'],
             obj['d10_survival_pct'],obj['d10_mature_events']))
-    lines += ['','## 26日正斜率连续天数与之后10日表现（2025–2026日截面）','',
-       '| 已连续天数 | 基金日观察 | 10日净收益（日等权） |',
-       '|---|---:|---:|']
+    lines += ['','## 已确认且未中断重建：连续正斜率天数与之后10日表现（2025–2026）','',
+       '| 已连续天数 | 基金日观察 | 日等权10日净收益 | R²≥0.5样本数 |',
+       '|---|---:|---:|---:|']
     for age,obj in sorted(result['age_cohorts']['VALID'].items()):
         value = obj.get('day_equal_net10_pct')
-        lines.append('| {} | {} | {} |'.format(
-            age,obj['events'],('{:+.3f}%'.format(value) if value is not None else '—')))
+        lines.append('| {} | {} | {} | {} |'.format(
+            age,obj['events'],('{:+.3f}%'.format(value) if value is not None else '—'),
+            obj['r2_ge_0_5_observations']))
     lines += ['','## 审计边界','',
        '- 历史分类并非当时可知；退市基金及变更合同历史尚缺。不能据此确定历史策略收益。',
        '- 部分产品尚缺完整交易属性、NAV公布时点、溢价与盘中拦截证据。',
        '- 事件收益使用次一开盘到第11根开盘，单边6bp；是重叠事件研究，不是仓位回测。',
+       '- 只有此前在该基金完成1–3日确认且自此β持续为正的观察才进入持续期分组；代表切换仍需单独核查。',
        '- 正斜率持续天数是当日已知量，事后分组不能被误读为独立或因果预测。',
        '- 粗行业去重仅作敏感性；不同指数不能未经官方证据直接合并。',
        '- 后续需同日匹配、月份区块置信区间，以及2026-11-13以后的真正前瞻影子记录。',
