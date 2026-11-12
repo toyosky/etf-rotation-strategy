@@ -52,3 +52,9 @@
 - 已调用GitHub Releases API枚举当前可见的全部三个Release标签及资产：`research-data-fullmarket-current`、`research-data-fullmarket-20261020`、`research-data-fullmarket-20260917`。现存parquet的摘要分别是 `7a218407...` 与 `006ca6e0...`；旧 `9d55f6e0...` **未在可见Release资产中找到**。这不是证明旧字节不存在于Actions artifacts或其他备份；后者仍需核实。
 - 已新增 `pin_research_archive_asset_v2.py`（提交 `2106914a`）：通过GitHub Release asset id `740827992` 而非可变tag下载候选新版本，双重核验API元数据digest/size与实际字节SHA256，再写入包含行数、日期范围、字段、asset创建时间的manifest。旧哈希不被覆盖；新版本显式标记非PIT与尚未恢复旧归档。
 - **本轮仅完成脚本提交及Release资产枚举，没有运行新脚本或产生新行情回测；不可把候选版本当已验收数据。** 下一轮：在Actions执行下载/manifest脚本，核对结果；进一步搜索旧Actions artifacts，若旧字节仍不可恢复，则冻结新版本、在新版本完整重跑V1/V2/载体连续性与一致性，再做同口径收益比较。
+
+## 2026-11-13 第8轮：固定资产ID失效的独立根因核查
+- 实际核验 Actions [43317447328](https://github.com/toyosky/etf-rotation-strategy/actions/runs/43317447328)：Python自检通过，但在访问 GitHub Release asset ID `740827992` 的元数据时 HTTP 404；尚未进入 Parquet 字节校验，不能把该失败描述为行情哈希不一致。
+- 同日查询当前 Release API：`research-data-fullmarket-current` 已换为资产 ID `741069813`，创建时间 `2026-11-12T21:01:05Z`，大小仍为 `17166998` 字节，API声明 SHA256 `7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644`。这表明 current 标签资产会被再次替换，即使摘要相同，旧资产 ID 也不再有效。
+- 已在研究脚本 `pin_research_archive_asset_v2.py` 将候选 ID 改为 `741069813`（提交 `4370144bcfe9631745788262085439f9997b36e4`）；仍严格要求元数据与实际下载字节 SHA256 一致，不自动信任 current 标签。**该新 ID 尚未在 Actions 成功验收**，不能声称已冻结新行情。
+- 后续应核对该提交触发的工作流与 manifest；若新 ID 在下载前又失效，需改为在研究独立 Release 中复制并固定已核验的候选字节，禁止继续依赖 main 持续更新的 current 标签。旧 `9d55f6e0...` 数据仍未恢复；旧版统计与新归档不可直接混用。
