@@ -5,6 +5,10 @@ on:
       - research/taxonomy-v3-20261112
     paths:
       - 'research/taxonomy_v3/build.py'
+      - 'research/taxonomy_v3/model.py'
+      - 'research/taxonomy_v3/test_taxonomy.py'
+      - 'research/taxonomy_v3/collect_cnindex_extra_v31.py'
+      - 'research/taxonomy_v3/fund_contract_evidence_v31.json'
       - 'research/taxonomy_v3/collect_csindex_catalog_v31.py'
       - 'research/taxonomy_v3/summarize_v31.py'
       - '.github/workflows/research-taxonomy-v31.yml'
@@ -88,6 +92,17 @@ jobs:
               (p/(r["symbol"]+".json")).write_text(json.dumps(r,ensure_ascii=False))
           print("Reconstituted frozen auxiliary facts:",len(data))
           PY
+      - name: Verify remaining national Shenzhen/Guozheng index codes
+        run: |
+          set -eu
+          if ls research/taxonomy_v3/snapshot/official_v31/cnindex-*.json >/dev/null 2>&1; then
+            cp research/taxonomy_v3/snapshot/official_v31/cnindex-*.json /tmp/taxonomy-v31/official/
+            echo "Using frozen source-verified Guozheng index responses"
+          else
+            python research/taxonomy_v3/collect_cnindex_extra_v31.py \
+              --classifications research/taxonomy_v3/output_v31/classifications.json \
+              --output /tmp/taxonomy-v31/official --max-workers 5
+          fi
       - name: Rebuild official verified classification and audit
         run: |
           python -m research.taxonomy_v3.build \
@@ -108,6 +123,19 @@ jobs:
       - name: Ensure official raw source is verifiably frozen
         run: |
           mkdir -p research/taxonomy_v3/snapshot/official_v31
+          if ls /tmp/taxonomy-v31/official/cnindex-*.json >/dev/null 2>&1; then
+            # Existing original source rows are archived under snapshot/official,
+            # do not republish them in the V3.1 delta directory.
+            for src in /tmp/taxonomy-v31/official/cnindex-*.json; do
+              base="$(basename "$src")"
+              if [ ! -e "research/taxonomy_v3/snapshot/official/$base" ]; then
+                cp "$src" "research/taxonomy_v3/snapshot/official_v31/$base"
+              fi
+            done
+          fi
+          if [ -f /tmp/taxonomy-v31/capture-cnindex-extra-status.json ]; then
+            cp /tmp/taxonomy-v31/capture-cnindex-extra-status.json research/taxonomy_v3/snapshot/official_v31/
+          fi
           if [ "$CSI_CATALOG_CAPTURED" = "true" ]; then
             cp /tmp/taxonomy-v31/official/csindex-catalog.json research/taxonomy_v3/snapshot/official_v31/
             cp /tmp/taxonomy-v31/csindex-catalog.xlsx research/taxonomy_v3/snapshot/official_v31/
