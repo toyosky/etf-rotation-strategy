@@ -66,6 +66,36 @@ def registry_inputs(root: Path):
                 raise ValueError(f"official registry code conflict: {code}")
             by_code[code] = rec
             by_name[normalize_name(r['indexFullName'])].add(code)
+    # V3.1: CSI publishes an official index-code/full-name catalog.  This
+    # exact bridge is evidence from the compiler, never a fund-name guess.
+    # Never replace a contradictory registry mapping silently.
+    csi = root/'csindex-catalog.json'
+    if csi.exists():
+        source = json.loads(csi.read_text())
+        if source.get('provider') != 'CSI' or len(source['payload'].get('indices',[])) < 500:
+            raise ValueError('Invalid/incomplete official CSI catalog')
+        observed = source.get('observed_at')
+        if not observed or not source.get('raw_sha256'):
+            raise ValueError('CSI provenance fields missing')
+        seen_codes = {}
+        for idx in source['payload']['indices']:
+            code, name = str(idx['index_code']), str(idx['index_name'])
+            if not code or not name:
+                raise ValueError('Blank official CSI index entry')
+            if code in seen_codes and seen_codes[code] != name:
+                raise ValueError(f'Conflicting CSI code mapping: {code}')
+            seen_codes[code] = name
+            prior = by_code.get(code)
+            if prior and normalize_name(prior['index_name']) != normalize_name(name):
+                # A bare code can collide across index vendors; preserve the
+                # registry already known to this V3 snapshot, quarantine
+                # this potential bridge instead of overwriting it.
+                continue
+            if not prior:
+                by_code[code] = dict(key=f'CSI:{code}', index_code=code,
+                    index_name=name, index_provider='CSI',
+                    source_url=source['source_url'])
+            by_name[normalize_name(name)].add(code)
     aliases = json.loads(Path(__file__).with_name('index_aliases.json').read_text())
     for a in aliases:
         rec = dict(key=a['canonical_key'], index_code=a['index_code'], index_name=a['index_name'],
