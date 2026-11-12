@@ -410,9 +410,11 @@ def test():
     assert expansion_state(a,dates[7])['n']==3
     assert not specific('PHARMA_BROAD')
     x=pd.DataFrame([
-        {'date':dates[0],'tier':'1','month':'2026-01','net10':.01,'broad':'A','year':2026},
-        {'date':dates[1],'tier':'2','month':'2026-01','net10':.03,'broad':'A','year':2026}])
+        {'date':dates[i],'tier':'1' if i<5 else '2',
+         'month':'2026-01','net10':.01 if i<5 else .03,
+         'broad':'A','year':2026} for i in range(10)])
     assert bootstrap_difference(x)['expanded_minus_singleton_pp']==2.
+    assert bootstrap_difference(x.iloc[:6]).get('not_estimated_reason')=='FEWER_THAN_5_EACH'
     print('SELF_TEST_PASS')
 
 
