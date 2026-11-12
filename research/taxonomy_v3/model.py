@@ -181,6 +181,8 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
     # granular 3rd-level industry or collapsing distinct index identities.
     sector=out.get("sector_level1")
     sub=out.get("sector_level2")
+    if not sector and "S&POIL&GAS" in u:
+        sector,sub="ENERGY","OIL_GAS_EQUITY"
     if not sector:
         sector_rules=[
           ("TECHNOLOGY","INDUSTRIAL_IOT",("工业互联网","物联网")),
