@@ -22,6 +22,10 @@ UNSPECIFIC = {'BROAD','FACTOR','MEDICAL_MIXED','BIOPHARMA_MIXED',
               'PHARMA_BROAD','HEALTHCARE_BROAD','FINANCIAL_BROAD',
               'CONSUMER_BROAD','TECHNOLOGY_BROAD','UTILITIES_BROAD',
               'MATERIALS','MEDICAL_MIXED','OTHER','SECTOR_OTHER'}
+# Conservative sensitivity: umbrella labels may contain narrower subsectors.
+HIERARCHY_AGGREGATES = frozenset({
+    'ENERGY_EQUITY','NON_BANK_FINANCIALS','INFORMATION_TECHNOLOGY','EQUIPMENT'
+})
 
 
 def specific(sub):
@@ -93,14 +97,16 @@ def expansion_state(episode, observation):
             'third_date':sorted(first.values())[2] if n>=3 else None}
 
 
-def checkpoints(episodes, daily, exact_daily, calendar):
+def checkpoints(episodes, daily, exact_daily, calendar,
+                excluded_subsectors=frozenset()):
     date_to_index={d:i for i,d in enumerate(calendar)}
     lookup=daily.set_index(['date','symbol'],verify_integrity=True)
     ref=exact_daily.copy()
     ref['region']=ref.broad_key.str.split('|',n=1).str[0]
     # Dynamic eligibility: only sub-sector opportunities already eligible on the
     # pioneer DATE may enter the comparison. No future listings/counts as peers.
-    specific_today=ref.loc[ref.subsector.map(specific)]
+    specific_today=ref.loc[
+        ref.subsector.map(specific) & ~ref.subsector.isin(excluded_subsectors)]
     possible={
         key:set(g.subsector.dropna())
         for key,g in specific_today.groupby(['date','broad_key'])
@@ -175,7 +181,8 @@ def bootstrap_difference(df,metric='net10'):
     d['expanded']=d.tier!='1'
     g0=d.loc[~d.expanded];g1=d.loc[d.expanded]
     out={'base_n':len(g0),'expanded_n':len(g1)}
-    if not len(g0) or not len(g1):
+    if min(len(g0),len(g1))<5:
+        out['not_estimated_reason']='FEWER_THAN_5_EACH'
         return out
     out['expanded_minus_singleton_pp']=round(float((g1[metric].mean()-g0[metric].mean())*100),4)
     month=d.groupby(['month','expanded'])[metric].agg(['sum','count']).unstack(fill_value=0)
@@ -338,6 +345,18 @@ def report(r):
             fmt(z['potential_2plus_sector_excess'].get('expanded_minus_singleton_pp')),
             z['r2_gate_sample'],
             fmt(z['r2_gate_and_alive'].get('expanded_minus_singleton_pp'))))
+    lines+=['','## 排除可能包含其他细分的上位标签（保守敏感性）','',
+            '额外排除ENERGY_EQUITY、NON_BANK_FINANCIALS、INFORMATION_TECHNOLOGY、EQUIPMENT；只用于这次实验，不修改正式分类身份。','',
+            '| 检查点 | 未扩散样本 | 扩散样本 | 净收益差pp | 同行业超额差pp |',
+            '|---|---:|---:|---:|---:|']
+    for k in ['5','10']:
+        n=r['nested_label_sensitivity'][k]
+        raw=n['raw10'];sub=n['sector_excess10']
+        fmt=lambda z:'—' if z is None else f'{z:+.3f}'
+        lines.append('| {} | {} | {} | {} | {} |'.format(
+            k,raw['base_n'],raw['expanded_n'],
+            fmt(raw.get('expanded_minus_singleton_pp')),
+            fmt(sub.get('expanded_minus_singleton_pp'))))
     lines+=['','## 2025与2026分别观察','',
             '| 检查点 | 年份 | 扩散组收益差pp | 月份区块95%区间 |',
             '|---|---|---:|---:|']
@@ -362,6 +381,8 @@ def report(r):
            '- 扩散需要等待后续5或10日才观察；不能把扩散后收益冒充最初入场的收益，亦不能把已经夭折的先行者当作可执行买入。',
            '- 行业超额是事后同地区同行业ETF平均未来收益的相对比较，不是可投资基准。',
            '- 事件时间与行业市场状态关联，月份抽样不消除因果混杂；地区行业×年度条件组仅是弱控制，需新的前瞻数据复核。',
+           '- 本实验试验多种窗口和分组，95%月份区块区间没有多重检验调整，小样本区间勉强不跨零不能作为已验证交易优势。',
+           '- R²≥0.5条件组若仅有1个对照样本，收益差标为不可估计，不以此推论正式OLS信号。',
            '- 缺失报价、溢价/NAV公布时点、退市基金、盘中拦截与实际仓位约束均未完整入模。',
            '',
            '## 近期确认的扩散事件（静态分类回溯，仅展示）']
@@ -429,6 +450,20 @@ def main():
     source={'archive_sha256':digest,'as_of':str(pd.to_datetime(bars.date).max().date()),
             'taxonomy_date':summary['snapshot_date']}
     result=analyze(observed,episodes,diag,source)
+    nested_events=event.loc[~event.subsector.isin(HIERARCHY_AGGREGATES)]
+    nested_episodes=build_episodes(nested_events,dates)
+    nested_observed,_=checkpoints(nested_episodes,daily,exact_daily,dates,
+                                  excluded_subsectors=HIERARCHY_AGGREGATES)
+    result['nested_label_sensitivity']={}
+    for offset in CHECKPOINTS:
+        section=nested_observed.loc[(nested_observed.checkpoint==offset)&
+                (nested_observed.date>=base.SPLIT)&
+                (nested_observed.start_eligible_subsectors>=3)]
+        result['nested_label_sensitivity'][str(offset)]={
+            'cohorts':{tier:describe(section.loc[section.tier==tier])
+                       for tier in ('1','2','3+')},
+            'raw10':bootstrap_difference(section),
+            'sector_excess10':bootstrap_difference(section,'excess_sector10')}
     md=report(result)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
