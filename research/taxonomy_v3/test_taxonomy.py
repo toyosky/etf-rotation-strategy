@@ -311,6 +311,14 @@ def test_v31_actual_fund_mandates_if_rebuilt():
     assert silver['exposure_id']=='FUTURES_CONTRACT:SHFE_SILVER_MAIN'
     assert silver['exact_index_key'] is None
     assert silver['exposure_type']=='COMMODITY_FUTURES'
+    tech=rows['159509']
+    assert tech['legal_mandate_verified'] and tech['index_name']=='纳斯达克科技市值加权指数'
+    assert tech['region_primary']=='US' and tech['sector_level2']=='NASDAQ_100_TECHNOLOGY'
+    consumer=rows['159529']
+    assert consumer['legal_mandate_verified'] and consumer['index_name']=='标普500消费精选指数'
+    assert consumer['region_primary']=='US' and consumer['sector_level2']=='SP500_CONSUMER_SELECT_15_60'
+    assert all(not x['needs_review'] for x in [tech,consumer])
+    assert all(not x['execution_attributes_verified'] for x in [tech,consumer])
     assert all(x['known_from']=='2026-11-13' for x in [meal,city,gold,silver])
     assert all(x['execution_attributes_verified'] is False for x in [meal,city,gold,silver])
 
