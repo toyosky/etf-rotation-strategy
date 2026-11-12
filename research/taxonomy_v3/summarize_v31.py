@@ -42,7 +42,7 @@ def main():
       previously_approved_regressions=0,
       changed_count=len(changes),
       moved_from_review=sum(a["needs_review"] and not revised[sym]["needs_review"] for sym,a in orig.items()),
-      newly_approved_in_archive=sum(a["needs_review"] and not revised[sym]["needs_review"] and revised[sym]["bar_count"]
+      newly_approved_in_archive=sum(a["needs_review"] and not revised[sym]["needs_review"] and bool(revised[sym]["bar_count"])
                                       for sym,a in orig.items()),
       changes=changes,
       alert="Exact-index equivalence only. Cross-index exposure overlap, historical PIT and execution certification remain unresolved.")
