@@ -44,7 +44,7 @@ def economic_labels(index_name: str) -> dict:
     asset = None
     if "期货" in n:
         asset = "COMMODITY_FUTURES"
-    elif any(x in n for x in ("债", "国开", "政策性金融")):
+    elif any(x in n for x in ("债", "国开", "政策性金融", "短融")):
         asset = "BOND"
     elif any(x in n for x in ("上海金", "黄金现货", "黄金9999", "Au99.99")):
         asset = "COMMODITY_SPOT"
@@ -177,8 +177,8 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
     sub=out.get("sector_level2")
     if not sector:
         sector_rules=[
-          ("TECHNOLOGY","INTERNET",("互联网",)),
           ("TECHNOLOGY","INDUSTRIAL_IOT",("工业互联网","物联网")),
+          ("TECHNOLOGY","INTERNET",("互联网",)),
           ("TECHNOLOGY","DATA",("大数据","计算机","信息安全","虚拟现实")),
           ("TECHNOLOGY","ELECTRONICS",("电子50","中证电子指数")),
           ("MATERIALS","RARE_METALS",("稀有金属",)),
@@ -187,6 +187,7 @@ def supplemental_labels_v31(index_name: str, base: dict) -> dict:
           ("CONSUMER","AGRICULTURE",("农牧渔","农牧主题")),
           ("INDUSTRIALS","GRID_EQUIPMENT",("电网设备",)),
           ("INDUSTRIALS","EQUIPMENT",("装备产业",)),
+          ("ENERGY","OIL_GAS_EQUITY",("S&P Oil & Gas","S&P OIL & GAS")),
           ("ENERGY","ENERGY_EQUITY",("中证能源","全指能源")),
           ("FINANCIALS","SECURITIES",("证券龙头",)),
           ("MULTI_SECTOR","LOW_CARBON",("碳中和","低碳经济","环保产业")),
