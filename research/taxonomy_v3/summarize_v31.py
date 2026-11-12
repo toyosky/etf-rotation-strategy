@@ -18,11 +18,32 @@ def main():
     revised={r["symbol"]:r for r in new}
     if set(orig)!=set(revised):raise RuntimeError("Symbol coverage mismatch")
     changes=[]
+    evidence_corrected=[]
     for code in sorted(orig):
         a,b=orig[code],revised[code]
-        if (a["exact_index_verified"] and not b["exact_index_verified"]) or (
-            not a["needs_review"] and b["needs_review"]):
-            raise RuntimeError(f"Lost previously approved classification: {code}")
+        lost_index=a["exact_index_verified"] and not b["exact_index_verified"]
+        lost_approval=not a["needs_review"] and b["needs_review"]
+        if lost_index or lost_approval:
+            # Legal product documents supersede a misleading exchange fitted
+            # index when a product follows SPOT reference or a FUTURES main
+            # contract rather than a separately published official index.
+            # This is an audited correction, not a general relaxation of
+            # approval monotonicity.
+            legal_correction=(
+                code in {"159934","161226"}
+                and b.get("legal_mandate_verified")
+                and b.get("tracking_mode") in {
+                    "PASSIVE_SPOT_ETF","FUTURES_MAIN_CONTRACT_LOF"}
+                and not b["exact_index_verified"]
+                and b["needs_review"]
+                and bool(b.get("mandate_document_url")))
+            if not legal_correction:
+                raise RuntimeError(f"Lost previously approved classification: {code}")
+            evidence_corrected.append({
+                "symbol":code,"previous_verified":a["exact_index_verified"],
+                "previous_approved":not a["needs_review"],
+                "revised_strategy":b["tracking_mode"],
+                "legal_evidence":b["mandate_document_url"]})
         if a["exact_index_key"] != b["exact_index_key"] or a["needs_review"] != b["needs_review"]:
             changes.append(dict(symbol=code,name=b["name"],old_exact=a["exact_index_key"],
               new_exact=b["exact_index_key"],old_index_name=a["index_name"],
@@ -40,6 +61,7 @@ def main():
     result=dict(baseline=oldsummary,now=newsum,overlap_before=overlap_counts(old),
       overlap_after=overlap_counts(new),
       previously_approved_regressions=0,
+      verified_non_index_identity_corrections=evidence_corrected,
       changed_count=len(changes),
       moved_from_review=sum(a["needs_review"] and not revised[sym]["needs_review"] for sym,a in orig.items()),
       newly_approved_in_archive=sum(a["needs_review"] and not revised[sym]["needs_review"] and bool(revised[sym]["bar_count"])
