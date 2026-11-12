@@ -1,0 +1,1279 @@
+{
+  "contract": "REBUILD_UNIVERSE_EXTREME_VALUE_RESEARCH_V1",
+  "source": {
+    "original_rows": 1439205,
+    "valid_rows": 1439205,
+    "raw_symbols": 2003,
+    "duplicates": 0,
+    "as_of": "2026-11-11",
+    "sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "current_metadata_count": 2026
+  },
+  "common_universe": "Equity ETFs/LOFs with current identifiable proxy & sector, 200 historical bars, previous 60d amount >=3m, positive turnover, D1-D3 slope crossing/R² improvement, D2 no <-3%, 20-bar symbol cooldown.",
+  "carrier_selection": "Each date select ETF with highest *prior* date trailing 60d traded amount, before observing date-t rebuild; only that carrier may signal. Separate group-wide 20 market-day event cooldown.",
+  "classification": "EXPOSURE_PRE groups by (region_primary, underlying_key); SECTOR_PRE groups by (region_primary, style_sector). BOTH are current labels, NOT proven true historical PIT or exact index identity. Broad keys collapse distinct subthemes.",
+  "alternatives": "EXPOSURE_POST first forms signal events across every carrier then keeps highest lagged-turnover qualified ETF per exposure, which retains cross-carrier multiple-testing and is only a sensitivity.",
+  "source_counts": {
+    "eligible_symbol_days": 689495,
+    "candidate_signal_events_all": 17080,
+    "eligible_symbols": 1148,
+    "current_proxy_count": 158,
+    "current_sector_count": 72,
+    "skipped": {
+      "insufficient_eligibility": 362,
+      "invalid_proxy_sector": 404,
+      "not_equity_etflof": 88
+    }
+  },
+  "variants": {
+    "ALL": {
+      "events": 17080,
+      "symbols": 1104,
+      "exposures": 157,
+      "sectors": 72,
+      "selection": {
+        "slope_delta": {
+          "TRAIN": {
+            "days": 700,
+            "events": 8580,
+            "per_day_candidates_mean": 12.257,
+            "per_day_candidates_median": 5.0,
+            "per_day_candidates_p95": 47.0,
+            "per_day_exposures_mean": 5.627,
+            "per_day_sectors_mean": 4.794,
+            "daily_equal_weight": {
+              "n": 700,
+              "average_pct": -0.366,
+              "median_pct": -0.7033,
+              "win_pct": 41.0,
+              "p10_pct": -5.588
+            },
+            "top1": {
+              "n": 700,
+              "average_pct": -0.4376,
+              "median_pct": -0.9159,
+              "win_pct": 41.14,
+              "p10_pct": -6.894
+            },
+            "top3": {
+              "n": 700,
+              "average_pct": -0.4159,
+              "median_pct": -0.9321,
+              "win_pct": 41.43,
+              "p10_pct": -6.096
+            },
+            "top1_unique_symbols": 314,
+            "max_signal_slope_p95": 0.0034904,
+            "max_signal_ret10_p95": 9.901
+          },
+          "VALID": {
+            "days": 379,
+            "events": 8500,
+            "per_day_candidates_mean": 22.427,
+            "per_day_candidates_median": 9.0,
+            "per_day_candidates_p95": 107.3,
+            "per_day_exposures_mean": 8.169,
+            "per_day_sectors_mean": 6.485,
+            "daily_equal_weight": {
+              "n": 379,
+              "average_pct": 0.0906,
+              "median_pct": 0.3255,
+              "win_pct": 53.03,
+              "p10_pct": -4.351
+            },
+            "top1": {
+              "n": 379,
+              "average_pct": 0.3522,
+              "median_pct": -0.12,
+              "win_pct": 45.91,
+              "p10_pct": -6.631
+            },
+            "top3": {
+              "n": 379,
+              "average_pct": 0.1818,
+              "median_pct": 0.3299,
+              "win_pct": 51.72,
+              "p10_pct": -6.098
+            },
+            "top1_unique_symbols": 252,
+            "max_signal_slope_p95": 0.0043833,
+            "max_signal_ret10_p95": 11.723
+          },
+          "2025": {
+            "days": 208,
+            "events": 4267,
+            "per_day_candidates_mean": 20.514,
+            "per_day_candidates_median": 8.0,
+            "per_day_candidates_p95": 99.65,
+            "per_day_exposures_mean": 7.947,
+            "per_day_sectors_mean": 6.361,
+            "daily_equal_weight": {
+              "n": 208,
+              "average_pct": 0.8003,
+              "median_pct": 1.0734,
+              "win_pct": 63.46,
+              "p10_pct": -3.33
+            },
+            "top1": {
+              "n": 208,
+              "average_pct": 1.3233,
+              "median_pct": 1.1605,
+              "win_pct": 54.33,
+              "p10_pct": -4.974
+            },
+            "top3": {
+              "n": 208,
+              "average_pct": 1.1946,
+              "median_pct": 0.9941,
+              "win_pct": 61.54,
+              "p10_pct": -3.761
+            },
+            "top1_unique_symbols": 154,
+            "max_signal_slope_p95": 0.0033204,
+            "max_signal_ret10_p95": 10.165
+          },
+          "2026": {
+            "days": 171,
+            "events": 4233,
+            "per_day_candidates_mean": 24.754,
+            "per_day_candidates_median": 12.0,
+            "per_day_candidates_p95": 106.5,
+            "per_day_exposures_mean": 8.439,
+            "per_day_sectors_mean": 6.637,
+            "daily_equal_weight": {
+              "n": 171,
+              "average_pct": -0.7726,
+              "median_pct": -1.1566,
+              "win_pct": 40.35,
+              "p10_pct": -5.558
+            },
+            "top1": {
+              "n": 171,
+              "average_pct": -0.829,
+              "median_pct": -1.295,
+              "win_pct": 35.67,
+              "p10_pct": -8.657
+            },
+            "top3": {
+              "n": 171,
+              "average_pct": -1.0501,
+              "median_pct": -1.2978,
+              "win_pct": 39.77,
+              "p10_pct": -7.6
+            },
+            "top1_unique_symbols": 148,
+            "max_signal_slope_p95": 0.0046905,
+            "max_signal_ret10_p95": 12.587
+          }
+        },
+        "price_ret10": {
+          "TRAIN": {
+            "days": 700,
+            "events": 8580,
+            "per_day_candidates_mean": 12.257,
+            "per_day_candidates_median": 5.0,
+            "per_day_candidates_p95": 47.0,
+            "per_day_exposures_mean": 5.627,
+            "per_day_sectors_mean": 4.794,
+            "daily_equal_weight": {
+              "n": 700,
+              "average_pct": -0.366,
+              "median_pct": -0.7033,
+              "win_pct": 41.0,
+              "p10_pct": -5.588
+            },
+            "top1": {
+              "n": 700,
+              "average_pct": -0.4656,
+              "median_pct": -0.9455,
+              "win_pct": 40.29,
+              "p10_pct": -6.978
+            },
+            "top3": {
+              "n": 700,
+              "average_pct": -0.4044,
+              "median_pct": -0.7938,
+              "win_pct": 40.71,
+              "p10_pct": -6.175
+            },
+            "top1_unique_symbols": 325,
+            "max_signal_slope_p95": 0.0034904,
+            "max_signal_ret10_p95": 9.901
+          },
+          "VALID": {
+            "days": 379,
+            "events": 8500,
+            "per_day_candidates_mean": 22.427,
+            "per_day_candidates_median": 9.0,
+            "per_day_candidates_p95": 107.3,
+            "per_day_exposures_mean": 8.169,
+            "per_day_sectors_mean": 6.485,
+            "daily_equal_weight": {
+              "n": 379,
+              "average_pct": 0.0906,
+              "median_pct": 0.3255,
+              "win_pct": 53.03,
+              "p10_pct": -4.351
+            },
+            "top1": {
+              "n": 379,
+              "average_pct": 0.2534,
+              "median_pct": -0.12,
+              "win_pct": 46.17,
+              "p10_pct": -6.761
+            },
+            "top3": {
+              "n": 379,
+              "average_pct": 0.262,
+              "median_pct": 0.3743,
+              "win_pct": 52.77,
+              "p10_pct": -5.904
+            },
+            "top1_unique_symbols": 261,
+            "max_signal_slope_p95": 0.0043833,
+            "max_signal_ret10_p95": 11.723
+          },
+          "2025": {
+            "days": 208,
+            "events": 4267,
+            "per_day_candidates_mean": 20.514,
+            "per_day_candidates_median": 8.0,
+            "per_day_candidates_p95": 99.65,
+            "per_day_exposures_mean": 7.947,
+            "per_day_sectors_mean": 6.361,
+            "daily_equal_weight": {
+              "n": 208,
+              "average_pct": 0.8003,
+              "median_pct": 1.0734,
+              "win_pct": 63.46,
+              "p10_pct": -3.33
+            },
+            "top1": {
+              "n": 208,
+              "average_pct": 1.1183,
+              "median_pct": 0.8475,
+              "win_pct": 53.37,
+              "p10_pct": -4.214
+            },
+            "top3": {
+              "n": 208,
+              "average_pct": 1.1291,
+              "median_pct": 1.0661,
+              "win_pct": 60.58,
+              "p10_pct": -3.631
+            },
+            "top1_unique_symbols": 158,
+            "max_signal_slope_p95": 0.0033204,
+            "max_signal_ret10_p95": 10.165
+          },
+          "2026": {
+            "days": 171,
+            "events": 4233,
+            "per_day_candidates_mean": 24.754,
+            "per_day_candidates_median": 12.0,
+            "per_day_candidates_p95": 106.5,
+            "per_day_exposures_mean": 8.439,
+            "per_day_sectors_mean": 6.637,
+            "daily_equal_weight": {
+              "n": 171,
+              "average_pct": -0.7726,
+              "median_pct": -1.1566,
+              "win_pct": 40.35,
+              "p10_pct": -5.558
+            },
+            "top1": {
+              "n": 171,
+              "average_pct": -0.7986,
+              "median_pct": -1.028,
+              "win_pct": 37.43,
+              "p10_pct": -8.909
+            },
+            "top3": {
+              "n": 171,
+              "average_pct": -0.7927,
+              "median_pct": -1.1739,
+              "win_pct": 43.27,
+              "p10_pct": -7.798
+            },
+            "top1_unique_symbols": 147,
+            "max_signal_slope_p95": 0.0046905,
+            "max_signal_ret10_p95": 12.587
+          }
+        }
+      }
+    },
+    "EXPOSURE_PRE": {
+      "events": 3503,
+      "symbols": 250,
+      "exposures": 157,
+      "sectors": 71,
+      "selection": {
+        "slope_delta": {
+          "TRAIN": {
+            "days": 551,
+            "events": 2030,
+            "per_day_candidates_mean": 3.684,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 11.5,
+            "per_day_exposures_mean": 3.684,
+            "per_day_sectors_mean": 3.053,
+            "daily_equal_weight": {
+              "n": 551,
+              "average_pct": -0.1341,
+              "median_pct": -0.4899,
+              "win_pct": 42.11,
+              "p10_pct": -5.514
+            },
+            "top1": {
+              "n": 551,
+              "average_pct": -0.1905,
+              "median_pct": -0.12,
+              "win_pct": 41.02,
+              "p10_pct": -6.669
+            },
+            "top3": {
+              "n": 551,
+              "average_pct": -0.1588,
+              "median_pct": -0.6413,
+              "win_pct": 41.38,
+              "p10_pct": -5.815
+            },
+            "top1_unique_symbols": 137,
+            "max_signal_slope_p95": 0.0032847,
+            "max_signal_ret10_p95": 9.589
+          },
+          "VALID": {
+            "days": 295,
+            "events": 1473,
+            "per_day_candidates_mean": 4.993,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 17.0,
+            "per_day_exposures_mean": 4.993,
+            "per_day_sectors_mean": 3.898,
+            "daily_equal_weight": {
+              "n": 295,
+              "average_pct": 0.0348,
+              "median_pct": -0.081,
+              "win_pct": 49.49,
+              "p10_pct": -4.681
+            },
+            "top1": {
+              "n": 295,
+              "average_pct": 0.2118,
+              "median_pct": -0.12,
+              "win_pct": 48.14,
+              "p10_pct": -6.371
+            },
+            "top3": {
+              "n": 295,
+              "average_pct": 0.151,
+              "median_pct": -0.0112,
+              "win_pct": 49.83,
+              "p10_pct": -5.251
+            },
+            "top1_unique_symbols": 120,
+            "max_signal_slope_p95": 0.0038483,
+            "max_signal_ret10_p95": 10.748
+          },
+          "2025": {
+            "days": 159,
+            "events": 813,
+            "per_day_candidates_mean": 5.113,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 19.1,
+            "per_day_exposures_mean": 5.113,
+            "per_day_sectors_mean": 4.013,
+            "daily_equal_weight": {
+              "n": 159,
+              "average_pct": 0.8941,
+              "median_pct": 0.9205,
+              "win_pct": 58.49,
+              "p10_pct": -3.629
+            },
+            "top1": {
+              "n": 159,
+              "average_pct": 1.3956,
+              "median_pct": 1.1605,
+              "win_pct": 55.35,
+              "p10_pct": -4.866
+            },
+            "top3": {
+              "n": 159,
+              "average_pct": 1.0613,
+              "median_pct": 0.7933,
+              "win_pct": 55.35,
+              "p10_pct": -3.968
+            },
+            "top1_unique_symbols": 86,
+            "max_signal_slope_p95": 0.0029562,
+            "max_signal_ret10_p95": 9.218
+          },
+          "2026": {
+            "days": 136,
+            "events": 660,
+            "per_day_candidates_mean": 4.853,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 15.25,
+            "per_day_exposures_mean": 4.853,
+            "per_day_sectors_mean": 3.765,
+            "daily_equal_weight": {
+              "n": 136,
+              "average_pct": -0.9699,
+              "median_pct": -1.0994,
+              "win_pct": 38.97,
+              "p10_pct": -5.488
+            },
+            "top1": {
+              "n": 136,
+              "average_pct": -1.1722,
+              "median_pct": -1.2808,
+              "win_pct": 39.71,
+              "p10_pct": -8.783
+            },
+            "top3": {
+              "n": 136,
+              "average_pct": -0.9133,
+              "median_pct": -1.0092,
+              "win_pct": 43.38,
+              "p10_pct": -7.183
+            },
+            "top1_unique_symbols": 87,
+            "max_signal_slope_p95": 0.0045573,
+            "max_signal_ret10_p95": 11.963
+          }
+        },
+        "price_ret10": {
+          "TRAIN": {
+            "days": 551,
+            "events": 2030,
+            "per_day_candidates_mean": 3.684,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 11.5,
+            "per_day_exposures_mean": 3.684,
+            "per_day_sectors_mean": 3.053,
+            "daily_equal_weight": {
+              "n": 551,
+              "average_pct": -0.1341,
+              "median_pct": -0.4899,
+              "win_pct": 42.11,
+              "p10_pct": -5.514
+            },
+            "top1": {
+              "n": 551,
+              "average_pct": -0.2178,
+              "median_pct": -0.12,
+              "win_pct": 42.11,
+              "p10_pct": -6.913
+            },
+            "top3": {
+              "n": 551,
+              "average_pct": -0.1185,
+              "median_pct": -0.4787,
+              "win_pct": 42.83,
+              "p10_pct": -5.607
+            },
+            "top1_unique_symbols": 137,
+            "max_signal_slope_p95": 0.0032847,
+            "max_signal_ret10_p95": 9.589
+          },
+          "VALID": {
+            "days": 295,
+            "events": 1473,
+            "per_day_candidates_mean": 4.993,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 17.0,
+            "per_day_exposures_mean": 4.993,
+            "per_day_sectors_mean": 3.898,
+            "daily_equal_weight": {
+              "n": 295,
+              "average_pct": 0.0348,
+              "median_pct": -0.081,
+              "win_pct": 49.49,
+              "p10_pct": -4.681
+            },
+            "top1": {
+              "n": 295,
+              "average_pct": 0.2157,
+              "median_pct": -0.12,
+              "win_pct": 48.81,
+              "p10_pct": -6.987
+            },
+            "top3": {
+              "n": 295,
+              "average_pct": 0.187,
+              "median_pct": 0.1326,
+              "win_pct": 50.51,
+              "p10_pct": -5.095
+            },
+            "top1_unique_symbols": 118,
+            "max_signal_slope_p95": 0.0038483,
+            "max_signal_ret10_p95": 10.748
+          },
+          "2025": {
+            "days": 159,
+            "events": 813,
+            "per_day_candidates_mean": 5.113,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 19.1,
+            "per_day_exposures_mean": 5.113,
+            "per_day_sectors_mean": 4.013,
+            "daily_equal_weight": {
+              "n": 159,
+              "average_pct": 0.8941,
+              "median_pct": 0.9205,
+              "win_pct": 58.49,
+              "p10_pct": -3.629
+            },
+            "top1": {
+              "n": 159,
+              "average_pct": 1.0966,
+              "median_pct": 0.9097,
+              "win_pct": 52.2,
+              "p10_pct": -5.282
+            },
+            "top3": {
+              "n": 159,
+              "average_pct": 1.0211,
+              "median_pct": 0.7933,
+              "win_pct": 56.6,
+              "p10_pct": -4.11
+            },
+            "top1_unique_symbols": 83,
+            "max_signal_slope_p95": 0.0029562,
+            "max_signal_ret10_p95": 9.218
+          },
+          "2026": {
+            "days": 136,
+            "events": 660,
+            "per_day_candidates_mean": 4.853,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 15.25,
+            "per_day_exposures_mean": 4.853,
+            "per_day_sectors_mean": 3.765,
+            "daily_equal_weight": {
+              "n": 136,
+              "average_pct": -0.9699,
+              "median_pct": -1.0994,
+              "win_pct": 38.97,
+              "p10_pct": -5.488
+            },
+            "top1": {
+              "n": 136,
+              "average_pct": -0.8141,
+              "median_pct": -0.5863,
+              "win_pct": 44.85,
+              "p10_pct": -8.783
+            },
+            "top3": {
+              "n": 136,
+              "average_pct": -0.7882,
+              "median_pct": -0.8681,
+              "win_pct": 43.38,
+              "p10_pct": -7.083
+            },
+            "top1_unique_symbols": 86,
+            "max_signal_slope_p95": 0.0045573,
+            "max_signal_ret10_p95": 11.963
+          }
+        }
+      }
+    },
+    "SECTOR_PRE": {
+      "events": 1941,
+      "symbols": 149,
+      "exposures": 94,
+      "sectors": 72,
+      "selection": {
+        "slope_delta": {
+          "TRAIN": {
+            "days": 474,
+            "events": 1213,
+            "per_day_candidates_mean": 2.559,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 7.0,
+            "per_day_exposures_mean": 2.513,
+            "per_day_sectors_mean": 2.559,
+            "daily_equal_weight": {
+              "n": 474,
+              "average_pct": -0.1109,
+              "median_pct": -0.2864,
+              "win_pct": 43.88,
+              "p10_pct": -5.048
+            },
+            "top1": {
+              "n": 474,
+              "average_pct": -0.1999,
+              "median_pct": -0.12,
+              "win_pct": 40.3,
+              "p10_pct": -6.472
+            },
+            "top3": {
+              "n": 474,
+              "average_pct": -0.0913,
+              "median_pct": -0.3298,
+              "win_pct": 43.88,
+              "p10_pct": -5.266
+            },
+            "top1_unique_symbols": 92,
+            "max_signal_slope_p95": 0.0032375,
+            "max_signal_ret10_p95": 9.468
+          },
+          "VALID": {
+            "days": 244,
+            "events": 728,
+            "per_day_candidates_mean": 2.984,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 9.0,
+            "per_day_exposures_mean": 2.939,
+            "per_day_sectors_mean": 2.984,
+            "daily_equal_weight": {
+              "n": 244,
+              "average_pct": 0.149,
+              "median_pct": -0.0738,
+              "win_pct": 48.77,
+              "p10_pct": -4.673
+            },
+            "top1": {
+              "n": 244,
+              "average_pct": 0.3423,
+              "median_pct": 0.4522,
+              "win_pct": 52.05,
+              "p10_pct": -6.15
+            },
+            "top3": {
+              "n": 244,
+              "average_pct": 0.2566,
+              "median_pct": -0.0265,
+              "win_pct": 49.18,
+              "p10_pct": -4.673
+            },
+            "top1_unique_symbols": 79,
+            "max_signal_slope_p95": 0.0034185,
+            "max_signal_ret10_p95": 10.19
+          },
+          "2025": {
+            "days": 139,
+            "events": 417,
+            "per_day_candidates_mean": 3.0,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 9.0,
+            "per_day_exposures_mean": 2.942,
+            "per_day_sectors_mean": 3.0,
+            "daily_equal_weight": {
+              "n": 139,
+              "average_pct": 0.7578,
+              "median_pct": 0.7276,
+              "win_pct": 56.83,
+              "p10_pct": -4.293
+            },
+            "top1": {
+              "n": 139,
+              "average_pct": 1.1613,
+              "median_pct": 1.1605,
+              "win_pct": 56.83,
+              "p10_pct": -4.491
+            },
+            "top3": {
+              "n": 139,
+              "average_pct": 0.8886,
+              "median_pct": 0.7562,
+              "win_pct": 56.83,
+              "p10_pct": -4.275
+            },
+            "top1_unique_symbols": 62,
+            "max_signal_slope_p95": 0.0029618,
+            "max_signal_ret10_p95": 9.218
+          },
+          "2026": {
+            "days": 105,
+            "events": 311,
+            "per_day_candidates_mean": 2.962,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 8.0,
+            "per_day_exposures_mean": 2.933,
+            "per_day_sectors_mean": 2.962,
+            "daily_equal_weight": {
+              "n": 105,
+              "average_pct": -0.657,
+              "median_pct": -0.9593,
+              "win_pct": 38.1,
+              "p10_pct": -5.236
+            },
+            "top1": {
+              "n": 105,
+              "average_pct": -0.7418,
+              "median_pct": -0.5956,
+              "win_pct": 45.71,
+              "p10_pct": -7.11
+            },
+            "top3": {
+              "n": 105,
+              "average_pct": -0.5801,
+              "median_pct": -0.9593,
+              "win_pct": 39.05,
+              "p10_pct": -5.524
+            },
+            "top1_unique_symbols": 58,
+            "max_signal_slope_p95": 0.0042133,
+            "max_signal_ret10_p95": 11.19
+          }
+        },
+        "price_ret10": {
+          "TRAIN": {
+            "days": 474,
+            "events": 1213,
+            "per_day_candidates_mean": 2.559,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 7.0,
+            "per_day_exposures_mean": 2.513,
+            "per_day_sectors_mean": 2.559,
+            "daily_equal_weight": {
+              "n": 474,
+              "average_pct": -0.1109,
+              "median_pct": -0.2864,
+              "win_pct": 43.88,
+              "p10_pct": -5.048
+            },
+            "top1": {
+              "n": 474,
+              "average_pct": -0.2413,
+              "median_pct": -0.12,
+              "win_pct": 41.77,
+              "p10_pct": -6.705
+            },
+            "top3": {
+              "n": 474,
+              "average_pct": -0.1002,
+              "median_pct": -0.2864,
+              "win_pct": 43.46,
+              "p10_pct": -5.108
+            },
+            "top1_unique_symbols": 94,
+            "max_signal_slope_p95": 0.0032375,
+            "max_signal_ret10_p95": 9.468
+          },
+          "VALID": {
+            "days": 244,
+            "events": 728,
+            "per_day_candidates_mean": 2.984,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 9.0,
+            "per_day_exposures_mean": 2.939,
+            "per_day_sectors_mean": 2.984,
+            "daily_equal_weight": {
+              "n": 244,
+              "average_pct": 0.149,
+              "median_pct": -0.0738,
+              "win_pct": 48.77,
+              "p10_pct": -4.673
+            },
+            "top1": {
+              "n": 244,
+              "average_pct": 0.3229,
+              "median_pct": 0.3757,
+              "win_pct": 52.05,
+              "p10_pct": -6.741
+            },
+            "top3": {
+              "n": 244,
+              "average_pct": 0.1936,
+              "median_pct": -0.0596,
+              "win_pct": 48.36,
+              "p10_pct": -4.993
+            },
+            "top1_unique_symbols": 78,
+            "max_signal_slope_p95": 0.0034185,
+            "max_signal_ret10_p95": 10.19
+          },
+          "2025": {
+            "days": 139,
+            "events": 417,
+            "per_day_candidates_mean": 3.0,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 9.0,
+            "per_day_exposures_mean": 2.942,
+            "per_day_sectors_mean": 3.0,
+            "daily_equal_weight": {
+              "n": 139,
+              "average_pct": 0.7578,
+              "median_pct": 0.7276,
+              "win_pct": 56.83,
+              "p10_pct": -4.293
+            },
+            "top1": {
+              "n": 139,
+              "average_pct": 0.9503,
+              "median_pct": 0.8404,
+              "win_pct": 53.96,
+              "p10_pct": -5.236
+            },
+            "top3": {
+              "n": 139,
+              "average_pct": 0.7722,
+              "median_pct": 0.7276,
+              "win_pct": 55.4,
+              "p10_pct": -4.419
+            },
+            "top1_unique_symbols": 62,
+            "max_signal_slope_p95": 0.0029618,
+            "max_signal_ret10_p95": 9.218
+          },
+          "2026": {
+            "days": 105,
+            "events": 311,
+            "per_day_candidates_mean": 2.962,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 8.0,
+            "per_day_exposures_mean": 2.933,
+            "per_day_sectors_mean": 2.962,
+            "daily_equal_weight": {
+              "n": 105,
+              "average_pct": -0.657,
+              "median_pct": -0.9593,
+              "win_pct": 38.1,
+              "p10_pct": -5.236
+            },
+            "top1": {
+              "n": 105,
+              "average_pct": -0.5077,
+              "median_pct": -0.12,
+              "win_pct": 49.52,
+              "p10_pct": -7.217
+            },
+            "top3": {
+              "n": 105,
+              "average_pct": -0.5723,
+              "median_pct": -0.7403,
+              "win_pct": 39.05,
+              "p10_pct": -5.406
+            },
+            "top1_unique_symbols": 55,
+            "max_signal_slope_p95": 0.0042133,
+            "max_signal_ret10_p95": 11.19
+          }
+        }
+      }
+    },
+    "EXPOSURE_POST": {
+      "events": 3816,
+      "symbols": 582,
+      "exposures": 157,
+      "sectors": 71,
+      "selection": {
+        "slope_delta": {
+          "TRAIN": {
+            "days": 566,
+            "events": 2202,
+            "per_day_candidates_mean": 3.89,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 12.0,
+            "per_day_exposures_mean": 3.89,
+            "per_day_sectors_mean": 3.27,
+            "daily_equal_weight": {
+              "n": 566,
+              "average_pct": -0.2527,
+              "median_pct": -0.5741,
+              "win_pct": 41.7,
+              "p10_pct": -4.986
+            },
+            "top1": {
+              "n": 566,
+              "average_pct": -0.2085,
+              "median_pct": -0.12,
+              "win_pct": 41.34,
+              "p10_pct": -5.901
+            },
+            "top3": {
+              "n": 566,
+              "average_pct": -0.22,
+              "median_pct": -0.638,
+              "win_pct": 41.52,
+              "p10_pct": -5.39
+            },
+            "top1_unique_symbols": 229,
+            "max_signal_slope_p95": 0.0033442,
+            "max_signal_ret10_p95": 9.47
+          },
+          "VALID": {
+            "days": 308,
+            "events": 1614,
+            "per_day_candidates_mean": 5.24,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 17.0,
+            "per_day_exposures_mean": 5.24,
+            "per_day_sectors_mean": 4.136,
+            "daily_equal_weight": {
+              "n": 308,
+              "average_pct": 0.1415,
+              "median_pct": -0.12,
+              "win_pct": 49.03,
+              "p10_pct": -4.558
+            },
+            "top1": {
+              "n": 308,
+              "average_pct": 0.5621,
+              "median_pct": -0.12,
+              "win_pct": 48.38,
+              "p10_pct": -6.113
+            },
+            "top3": {
+              "n": 308,
+              "average_pct": 0.2248,
+              "median_pct": -0.0936,
+              "win_pct": 48.38,
+              "p10_pct": -5.104
+            },
+            "top1_unique_symbols": 188,
+            "max_signal_slope_p95": 0.0037597,
+            "max_signal_ret10_p95": 10.638
+          },
+          "2025": {
+            "days": 161,
+            "events": 887,
+            "per_day_candidates_mean": 5.509,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 20.0,
+            "per_day_exposures_mean": 5.509,
+            "per_day_sectors_mean": 4.323,
+            "daily_equal_weight": {
+              "n": 161,
+              "average_pct": 0.9847,
+              "median_pct": 0.9827,
+              "win_pct": 58.39,
+              "p10_pct": -3.445
+            },
+            "top1": {
+              "n": 161,
+              "average_pct": 1.8179,
+              "median_pct": 1.1443,
+              "win_pct": 57.14,
+              "p10_pct": -4.34
+            },
+            "top3": {
+              "n": 161,
+              "average_pct": 1.1191,
+              "median_pct": 0.7848,
+              "win_pct": 57.14,
+              "p10_pct": -3.785
+            },
+            "top1_unique_symbols": 108,
+            "max_signal_slope_p95": 0.0028877,
+            "max_signal_ret10_p95": 9.184
+          },
+          "2026": {
+            "days": 147,
+            "events": 727,
+            "per_day_candidates_mean": 4.946,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 14.7,
+            "per_day_exposures_mean": 4.946,
+            "per_day_sectors_mean": 3.932,
+            "daily_equal_weight": {
+              "n": 147,
+              "average_pct": -0.782,
+              "median_pct": -0.7495,
+              "win_pct": 38.78,
+              "p10_pct": -5.093
+            },
+            "top1": {
+              "n": 147,
+              "average_pct": -0.8133,
+              "median_pct": -1.0363,
+              "win_pct": 38.78,
+              "p10_pct": -7.456
+            },
+            "top3": {
+              "n": 147,
+              "average_pct": -0.7546,
+              "median_pct": -0.7495,
+              "win_pct": 38.78,
+              "p10_pct": -5.844
+            },
+            "top1_unique_symbols": 120,
+            "max_signal_slope_p95": 0.0044559,
+            "max_signal_ret10_p95": 11.25
+          }
+        },
+        "price_ret10": {
+          "TRAIN": {
+            "days": 566,
+            "events": 2202,
+            "per_day_candidates_mean": 3.89,
+            "per_day_candidates_median": 2.0,
+            "per_day_candidates_p95": 12.0,
+            "per_day_exposures_mean": 3.89,
+            "per_day_sectors_mean": 3.27,
+            "daily_equal_weight": {
+              "n": 566,
+              "average_pct": -0.2527,
+              "median_pct": -0.5741,
+              "win_pct": 41.7,
+              "p10_pct": -4.986
+            },
+            "top1": {
+              "n": 566,
+              "average_pct": -0.2644,
+              "median_pct": -0.12,
+              "win_pct": 41.52,
+              "p10_pct": -6.528
+            },
+            "top3": {
+              "n": 566,
+              "average_pct": -0.2314,
+              "median_pct": -0.5948,
+              "win_pct": 42.23,
+              "p10_pct": -5.305
+            },
+            "top1_unique_symbols": 225,
+            "max_signal_slope_p95": 0.0033442,
+            "max_signal_ret10_p95": 9.47
+          },
+          "VALID": {
+            "days": 308,
+            "events": 1614,
+            "per_day_candidates_mean": 5.24,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 17.0,
+            "per_day_exposures_mean": 5.24,
+            "per_day_sectors_mean": 4.136,
+            "daily_equal_weight": {
+              "n": 308,
+              "average_pct": 0.1415,
+              "median_pct": -0.12,
+              "win_pct": 49.03,
+              "p10_pct": -4.558
+            },
+            "top1": {
+              "n": 308,
+              "average_pct": 0.5427,
+              "median_pct": -0.12,
+              "win_pct": 48.7,
+              "p10_pct": -6.229
+            },
+            "top3": {
+              "n": 308,
+              "average_pct": 0.28,
+              "median_pct": -0.0547,
+              "win_pct": 49.68,
+              "p10_pct": -5.052
+            },
+            "top1_unique_symbols": 191,
+            "max_signal_slope_p95": 0.0037597,
+            "max_signal_ret10_p95": 10.638
+          },
+          "2025": {
+            "days": 161,
+            "events": 887,
+            "per_day_candidates_mean": 5.509,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 20.0,
+            "per_day_exposures_mean": 5.509,
+            "per_day_sectors_mean": 4.323,
+            "daily_equal_weight": {
+              "n": 161,
+              "average_pct": 0.9847,
+              "median_pct": 0.9827,
+              "win_pct": 58.39,
+              "p10_pct": -3.445
+            },
+            "top1": {
+              "n": 161,
+              "average_pct": 1.3068,
+              "median_pct": 0.8135,
+              "win_pct": 52.8,
+              "p10_pct": -4.34
+            },
+            "top3": {
+              "n": 161,
+              "average_pct": 1.1414,
+              "median_pct": 0.788,
+              "win_pct": 58.39,
+              "p10_pct": -3.714
+            },
+            "top1_unique_symbols": 119,
+            "max_signal_slope_p95": 0.0028877,
+            "max_signal_ret10_p95": 9.184
+          },
+          "2026": {
+            "days": 147,
+            "events": 727,
+            "per_day_candidates_mean": 4.946,
+            "per_day_candidates_median": 3.0,
+            "per_day_candidates_p95": 14.7,
+            "per_day_exposures_mean": 4.946,
+            "per_day_sectors_mean": 3.932,
+            "daily_equal_weight": {
+              "n": 147,
+              "average_pct": -0.782,
+              "median_pct": -0.7495,
+              "win_pct": 38.78,
+              "p10_pct": -5.093
+            },
+            "top1": {
+              "n": 147,
+              "average_pct": -0.2943,
+              "median_pct": -0.545,
+              "win_pct": 44.22,
+              "p10_pct": -7.456
+            },
+            "top3": {
+              "n": 147,
+              "average_pct": -0.6635,
+              "median_pct": -0.6843,
+              "win_pct": 40.14,
+              "p10_pct": -5.844
+            },
+            "top1_unique_symbols": 113,
+            "max_signal_slope_p95": 0.0044559,
+            "max_signal_ret10_p95": 11.25
+          }
+        }
+      }
+    }
+  },
+  "same_date_matched": {
+    "slope_delta": {
+      "EXPOSURE_PRE": {
+        "matched_days": 295,
+        "all_diff_pp": -0.1887,
+        "all_ci95_pp": [
+          -0.6375,
+          0.1777
+        ],
+        "top1_diff_pp": -0.2013,
+        "top1_ci95_pp": [
+          -0.9109,
+          0.4933
+        ],
+        "top3_diff_pp": -0.141,
+        "top3_ci95_pp": [
+          -0.5333,
+          0.3125
+        ]
+      },
+      "SECTOR_PRE": {
+        "matched_days": 244,
+        "all_diff_pp": -0.0535,
+        "all_ci95_pp": [
+          -0.4046,
+          0.3068
+        ],
+        "top1_diff_pp": 0.0351,
+        "top1_ci95_pp": [
+          -0.6729,
+          0.805
+        ],
+        "top3_diff_pp": 0.0325,
+        "top3_ci95_pp": [
+          -0.5644,
+          0.7071
+        ]
+      },
+      "EXPOSURE_POST": {
+        "matched_days": 308,
+        "all_diff_pp": -0.1378,
+        "all_ci95_pp": [
+          -0.4495,
+          0.1086
+        ],
+        "top1_diff_pp": -0.0407,
+        "top1_ci95_pp": [
+          -0.7821,
+          0.6978
+        ],
+        "top3_diff_pp": -0.14,
+        "top3_ci95_pp": [
+          -0.5706,
+          0.3363
+        ]
+      }
+    },
+    "price_ret10": {
+      "EXPOSURE_PRE": {
+        "matched_days": 295,
+        "all_diff_pp": -0.1887,
+        "all_ci95_pp": [
+          -0.6375,
+          0.1777
+        ],
+        "top1_diff_pp": -0.1599,
+        "top1_ci95_pp": [
+          -0.6279,
+          0.3012
+        ],
+        "top3_diff_pp": -0.2246,
+        "top3_ci95_pp": [
+          -0.7348,
+          0.2547
+        ]
+      },
+      "SECTOR_PRE": {
+        "matched_days": 244,
+        "all_diff_pp": -0.0535,
+        "all_ci95_pp": [
+          -0.4046,
+          0.3068
+        ],
+        "top1_diff_pp": 0.0537,
+        "top1_ci95_pp": [
+          -0.4552,
+          0.5475
+        ],
+        "top3_diff_pp": -0.1505,
+        "top3_ci95_pp": [
+          -0.7239,
+          0.4482
+        ]
+      },
+      "EXPOSURE_POST": {
+        "matched_days": 308,
+        "all_diff_pp": -0.1378,
+        "all_ci95_pp": [
+          -0.4495,
+          0.1086
+        ],
+        "top1_diff_pp": 0.0938,
+        "top1_ci95_pp": [
+          -0.4562,
+          0.6609
+        ],
+        "top3_diff_pp": -0.1813,
+        "top3_ci95_pp": [
+          -0.6584,
+          0.2422
+        ]
+      }
+    }
+  },
+  "date_coverage": {
+    "ALL": {
+      "train_dates": 700,
+      "valid_dates": 379,
+      "recent_dates": 13
+    },
+    "EXPOSURE_PRE": {
+      "train_dates": 551,
+      "valid_dates": 295,
+      "recent_dates": 9
+    },
+    "SECTOR_PRE": {
+      "train_dates": 474,
+      "valid_dates": 244,
+      "recent_dates": 6
+    },
+    "EXPOSURE_POST": {
+      "train_dates": 566,
+      "valid_dates": 308,
+      "recent_dates": 10
+    }
+  },
+  "caveats": [
+    "Current-taxonomy exposure keys are coarse; e.g., medical devices and biotech share CHINA_HEALTHCARE, and STAR_MARKET merges unrelated sector ETFs.",
+    "A single ETF per sector can erase true cross-subsector exposures; sector uniqueness is a stress test, not default recommended production rule.",
+    "Current metadata valid_from mostly 2026-09, thus 2021-2026 grouping is not historically verifiable PIT. Delisted ETFs missing; no guaranteed investable historical backtest.",
+    "All variants intentionally use the same universe eligible with known keys: this is NOT a full 2003 ETF comparison.",
+    "Fixed rank slope_delta or past 10d return is a diagnostic, NOT a trained optimal signal. Daily same-date return comparisons do not recreate funded overlapping open positions.",
+    "No NAV premium filters, 09:31/14:05 intraday execution restrictions, LOF share class anomalies, or price adjustment source splice repairs.",
+    "We estimate slope maximum across candidate pools as extreme-value diagnostic; it does not alone prove the best forecast is overfit."
+  ]
+}
