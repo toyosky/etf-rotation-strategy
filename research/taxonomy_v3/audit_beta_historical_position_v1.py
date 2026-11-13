@@ -69,7 +69,7 @@ def summarize(x):
 def analyze(d):
     variants,_=base.pools(d)
     top=base.rank_top(variants["EXACT_PRE"])
-    top=top.loc[(top.date>=pd.Timestamp("2025-01-01"))&top.net10.notna()].copy()
+    top=top.loc[(top.date>=pd.Timestamp("2021-01-01"))&top.net10.notna()].copy()
     top["pct95"]=top.beta_pct252>=95
     top["pct90"]=top.beta_pct252>=90
     top["burst5"]=top.ret5>=.10
@@ -81,8 +81,8 @@ def analyze(d):
     top["year"]=top.date.dt.year
     out={"contract":"ETF_TOP1_BETA_HISTORICAL_POSITION_V1",
       "notes":["Static 2026 taxonomy is NOT PIT","252 trailing observed beta values, current excluded; minimum 126","Returns are overlapping 10d event outcomes, not portfolio NAV","Signal date close; next open to day11 open; costs inherited from base","Predefined descriptive cuts are not optimized trading thresholds"],
-      "sample":{"top1_dates":len(top),"with_percentile":int(top.beta_pct252.notna().sum())},
-      "year":{str(y):summarize(z) for y,z in top.groupby("year")},
+      "sample":{"top1_dates":len(top),"with_percentile":int(top.beta_pct252.notna().sum()),"first_date":str(top.date.min().date()),"last_date":str(top.date.max().date())},
+      "year":{str(y):{**summarize(z),"with_percentile":int(z.beta_pct252.notna().sum()),"unique_funds":int(z.symbol.nunique()),"unique_indices":int(z.exact_key.nunique())} for y,z in top.groupby("year")},
       "percentile_buckets":{},"conditional":{},"paired_filter":{}}
     valid=top.loc[top.beta_pct252.notna()].copy()
     valid["bucket"]=pd.cut(valid.beta_pct252,[-.001,50,80,90,95,100.001],labels=["0-50","50-80","80-90","90-95","95-100"])
@@ -126,7 +126,7 @@ def main():
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+"\n")
     report=a.output.with_suffix(".md")
-    lines=["# β历史位置与价格路径：独立审计V1","","数据SHA: "+sha,"历史分类非PIT；后10日收益重叠，非实际组合回测。","","## 样本",json.dumps(result["sample"],ensure_ascii=False),"","## 分年历史β分位",json.dumps(result["percentile_buckets"],ensure_ascii=False,indent=2),"","## 价格路径条件和月份区块区间",json.dumps(result["conditional"],ensure_ascii=False,indent=2),"","## Top1候选更换",json.dumps(result["paired_filter"],ensure_ascii=False,indent=2)]
+    lines=["# β历史位置与价格路径：独立审计V1","","数据SHA: "+sha,"历史分类非PIT；后10日收益重叠，非实际组合回测。","","## 样本",json.dumps(result["sample"],ensure_ascii=False),"","## 全部年份Top1样本覆盖",json.dumps(result["year"],ensure_ascii=False,indent=2),"","## 分年历史β分位",json.dumps(result["percentile_buckets"],ensure_ascii=False,indent=2),"","## 价格路径条件和月份区块区间",json.dumps(result["conditional"],ensure_ascii=False,indent=2),"","## Top1候选更换",json.dumps(result["paired_filter"],ensure_ascii=False,indent=2)]
     report.write_text("\n".join(lines)+"\n")
     print("AUDIT_PASS",json.dumps(result["sample"]))
 if __name__=="__main__":main()
