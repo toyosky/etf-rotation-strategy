@@ -89,7 +89,8 @@ def test():
     dates=list(train_days)+[pd.Timestamp("2022-06-01"),pd.Timestamp("2023-06-01")]
     v=pd.DataFrame({"date":dates,
                     "symbol":["A"]*len(dates),
-                    "slope":[.01]*len(dates),
+                    "slope":[.01]*len(dates), "r2":[.8]*len(dates),
+                    "prior_amount":[10_000_000.0]*len(dates),
                     "net10":[.02]*len(dates)})
     wf, t=prior_year_p99(v,v)
     assert t["2021"] is None and t["2022"]["prior_observations"]==120
