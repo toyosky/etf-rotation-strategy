@@ -85,17 +85,19 @@ def paired(a,b,lower,upper):
             "positive_diff_days_pct":round(float((delta>0).mean()*100),2)}
 
 def test():
-    v=pd.DataFrame({"date":pd.to_datetime(["2021-06-01","2022-06-01","2023-06-01","2024-06-01"]),
-                    "symbol":["A","A","A","A"],"slope":[.01,.02,.03,.04],
-                    "net10":[.01,.02,.03,.04]})
-    ef=v.copy()
-    wf, t=prior_year_p99(v,ef)
-    assert "2021" in t and t["2021"] is None
+    train_days=pd.date_range("2021-01-04",periods=120,freq="B")
+    dates=list(train_days)+[pd.Timestamp("2022-06-01"),pd.Timestamp("2023-06-01")]
+    v=pd.DataFrame({"date":dates,
+                    "symbol":["A"]*len(dates),
+                    "slope":[.01]*len(dates),
+                    "net10":[.02]*len(dates)})
+    wf, t=prior_year_p99(v,v)
+    assert t["2021"] is None and t["2022"]["prior_observations"]==120
     assert wf.date.dt.year.min()==2022
     a=selected(v)
-    z=paired(a,a,2021,2024)
+    z=paired(a,a,2021,2023)
     assert z["diff_pp"]==0 and z["changed_days"]==0
-    assert describe(_period(a,2021,2021))["days"]==1
+    assert describe(_period(a,2021,2021))["days"]==120
     print("SELF_TEST_PASS")
 
 def main():
