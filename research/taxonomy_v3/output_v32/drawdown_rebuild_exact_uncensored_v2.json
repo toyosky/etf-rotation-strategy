@@ -1,0 +1,324 @@
+{
+  "contract": "ETF_DRAWDOWN_REBUILD_EXACT_UNCENSORED_V2",
+  "source": {
+    "sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "as_of": "2026-11-11",
+    "taxonomy_snapshot": "2026-11-12",
+    "historical_pit": false,
+    "eligible_funds": 1045,
+    "exact_indices": 364,
+    "excluded_symbols": {
+      "insufficient_postlisting_history": 281,
+      "outside_verified_equity": 567
+    }
+  },
+  "censoring": {
+    "calendar_censored_n": 130,
+    "missing_future_quotes_n": 3,
+    "mature_valid_n": 1837,
+    "all_events_before_censor": 1970
+  },
+  "stats": {
+    "TRAIN": {
+      "episodes": 1074,
+      "already_in_confirmed_rebuild": 97,
+      "new_rebuild_eligible_episodes": 977,
+      "new_rebuild_within20": 673,
+      "new_rebuild_within20_pct": 68.88,
+      "rebuild_within20_total_pct": 63.97,
+      "delay_median": 11.0,
+      "rebound_before_confirmation_median_pct": 2.439,
+      "trigger_ret5_median_pct": 4.545,
+      "d10_n": 1074,
+      "d10_mean_pct": 1.007,
+      "d10_p10_pct": -6.343,
+      "d10_win_pct": 48.51,
+      "d20_n": 1074,
+      "d20_mean_pct": 1.756,
+      "bad3_blocked_pct": 3.72
+    },
+    "VALID": {
+      "episodes": 763,
+      "already_in_confirmed_rebuild": 44,
+      "new_rebuild_eligible_episodes": 719,
+      "new_rebuild_within20": 521,
+      "new_rebuild_within20_pct": 72.46,
+      "rebuild_within20_total_pct": 69.46,
+      "delay_median": 12.0,
+      "rebound_before_confirmation_median_pct": 4.167,
+      "trigger_ret5_median_pct": 4.79,
+      "d10_n": 763,
+      "d10_mean_pct": 0.722,
+      "d10_p10_pct": -8.443,
+      "d10_win_pct": 52.82,
+      "d20_n": 763,
+      "d20_mean_pct": 0.898,
+      "bad3_blocked_pct": 3.8
+    },
+    "2025": {
+      "episodes": 277,
+      "already_in_confirmed_rebuild": 3,
+      "new_rebuild_eligible_episodes": 274,
+      "new_rebuild_within20": 258,
+      "new_rebuild_within20_pct": 94.16,
+      "rebuild_within20_total_pct": 93.5,
+      "delay_median": 14.0,
+      "rebound_before_confirmation_median_pct": 3.947,
+      "trigger_ret5_median_pct": 5.0,
+      "d10_n": 277,
+      "d10_mean_pct": 1.963,
+      "d10_p10_pct": -2.024,
+      "d10_win_pct": 57.76,
+      "d20_n": 277,
+      "d20_mean_pct": 5.138,
+      "bad3_blocked_pct": 0.36
+    },
+    "2026": {
+      "episodes": 486,
+      "already_in_confirmed_rebuild": 41,
+      "new_rebuild_eligible_episodes": 445,
+      "new_rebuild_within20": 263,
+      "new_rebuild_within20_pct": 59.1,
+      "rebuild_within20_total_pct": 55.76,
+      "delay_median": 10.0,
+      "rebound_before_confirmation_median_pct": 4.375,
+      "trigger_ret5_median_pct": 4.715,
+      "d10_n": 486,
+      "d10_mean_pct": 0.015,
+      "d10_p10_pct": -12.28,
+      "d10_win_pct": 50.0,
+      "d20_n": 486,
+      "d20_mean_pct": -1.519,
+      "bad3_blocked_pct": 5.76
+    },
+    "VALID_BAD3": {
+      "episodes": 29,
+      "already_in_confirmed_rebuild": 7,
+      "new_rebuild_eligible_episodes": 22,
+      "new_rebuild_within20": 8,
+      "new_rebuild_within20_pct": 36.36,
+      "rebuild_within20_total_pct": 31.03,
+      "delay_median": 12.0,
+      "rebound_before_confirmation_median_pct": 10.309,
+      "trigger_ret5_median_pct": 4.377,
+      "d10_n": 29,
+      "d10_mean_pct": 2.969,
+      "d10_p10_pct": -2.374,
+      "d10_win_pct": 82.76,
+      "d20_n": 29,
+      "d20_mean_pct": 0.053,
+      "bad3_blocked_pct": 100.0
+    },
+    "VALID_CLEAR": {
+      "episodes": 734,
+      "already_in_confirmed_rebuild": 37,
+      "new_rebuild_eligible_episodes": 697,
+      "new_rebuild_within20": 513,
+      "new_rebuild_within20_pct": 73.6,
+      "rebuild_within20_total_pct": 70.98,
+      "delay_median": 12.0,
+      "rebound_before_confirmation_median_pct": 4.124,
+      "trigger_ret5_median_pct": 4.839,
+      "d10_n": 734,
+      "d10_mean_pct": 0.633,
+      "d10_p10_pct": -8.452,
+      "d10_win_pct": 51.63,
+      "d20_n": 734,
+      "d20_mean_pct": 0.931,
+      "bad3_blocked_pct": 0.0
+    }
+  },
+  "new_rebuild_ci": {
+    "TRAIN": {
+      "n": 977,
+      "months": 46,
+      "estimate_pct": 68.884,
+      "month_block_ci95_pct": [
+        58.931,
+        77.854
+      ]
+    },
+    "VALID": {
+      "n": 719,
+      "months": 19,
+      "estimate_pct": 72.462,
+      "month_block_ci95_pct": [
+        57.24,
+        86.818
+      ]
+    },
+    "2025": {
+      "n": 274,
+      "months": 9,
+      "estimate_pct": 94.161,
+      "month_block_ci95_pct": [
+        82.414,
+        97.369
+      ]
+    },
+    "2026": {
+      "n": 445,
+      "months": 10,
+      "estimate_pct": 59.101,
+      "month_block_ci95_pct": [
+        43.451,
+        72.513
+      ]
+    },
+    "VALID_BAD3": {
+      "n": 22,
+      "months": 3,
+      "ci95_pct": null
+    },
+    "VALID_CLEAR": {
+      "n": 697,
+      "months": 19,
+      "estimate_pct": 73.601,
+      "month_block_ci95_pct": [
+        58.117,
+        87.272
+      ]
+    }
+  },
+  "hindsight_only": {
+    "TRAIN": {
+      "new_rebuild_n": 673,
+      "no_new_rebuild_n": 304,
+      "new_rebuild_mean_pct": 2.922,
+      "no_new_rebuild_mean_pct": -3.584,
+      "difference_pp": 6.505,
+      "warning": "Future 20-day labels must never be used as signal-date trading rules"
+    },
+    "VALID": {
+      "new_rebuild_n": 521,
+      "no_new_rebuild_n": 198,
+      "new_rebuild_mean_pct": 2.702,
+      "no_new_rebuild_mean_pct": -4.884,
+      "difference_pp": 7.586,
+      "warning": "Future 20-day labels must never be used as signal-date trading rules"
+    },
+    "2025": {
+      "new_rebuild_n": 258,
+      "no_new_rebuild_n": 16,
+      "new_rebuild_mean_pct": 2.32,
+      "no_new_rebuild_mean_pct": -4.47,
+      "difference_pp": 6.79,
+      "warning": "Future 20-day labels must never be used as signal-date trading rules"
+    },
+    "2026": {
+      "new_rebuild_n": 263,
+      "no_new_rebuild_n": 182,
+      "new_rebuild_mean_pct": 3.077,
+      "no_new_rebuild_mean_pct": -4.92,
+      "difference_pp": 7.997,
+      "warning": "Future 20-day labels must never be used as signal-date trading rules"
+    }
+  },
+  "examples": [
+    {
+      "symbol": "517520",
+      "date": "2025-01-07",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 9
+    },
+    {
+      "symbol": "560860",
+      "date": "2025-01-09",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 7
+    },
+    {
+      "symbol": "159530",
+      "date": "2025-01-10",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 11
+    },
+    {
+      "symbol": "512480",
+      "date": "2025-01-10",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 15
+    },
+    {
+      "symbol": "562500",
+      "date": "2025-01-10",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 10
+    },
+    {
+      "symbol": "159516",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 14
+    },
+    {
+      "symbol": "159573",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 13
+    },
+    {
+      "symbol": "159586",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 12
+    },
+    {
+      "symbol": "159725",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 13
+    },
+    {
+      "symbol": "159755",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 12
+    },
+    {
+      "symbol": "159836",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 14
+    },
+    {
+      "symbol": "159851",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 13
+    },
+    {
+      "symbol": "159852",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 13
+    },
+    {
+      "symbol": "512670",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 15
+    },
+    {
+      "symbol": "512720",
+      "date": "2025-01-14",
+      "already_confirmed": false,
+      "rebuild_within20": true,
+      "delay": 13
+    }
+  ]
+}

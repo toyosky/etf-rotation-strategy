@@ -1,0 +1,252 @@
+{
+  "contract": "ETF_TAXONOMY_TOP1_EXTREME_V1",
+  "research_only": true,
+  "historical_taxonomy_pit": false,
+  "source": {
+    "archive_sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "as_of": "2026-11-11",
+    "taxonomy_date": "2026-11-12"
+  },
+  "skipped": {
+    "insufficient_postlisting_history": 281,
+    "outside_verified_equity": 567
+  },
+  "sample": {
+    "eligible_funds": 1045,
+    "exact_indices": 364,
+    "train_p99_slope_bps": 182.853
+  },
+  "variants": {
+    "ALL": {
+      "days": 424,
+      "avg_daily_candidates": 169.57,
+      "median_daily_candidates": 115.0,
+      "max_slope_p95_bps": 161.06,
+      "top1_avg_slope_bps": 86.74,
+      "top1_avg_r2": 0.784,
+      "top1_net10_mean_pct": 0.808,
+      "top1_net10_median_pct": 0.113,
+      "top1_net10_p10_pct": -8.751,
+      "top1_net10_p05_pct": -12.506,
+      "top1_win_pct": 50.0,
+      "top1_unique_funds": 103,
+      "top1_unique_indices": 75,
+      "top1_top10_fund_share_pct": 39.15
+    },
+    "EXACT_PRE": {
+      "days": 413,
+      "avg_daily_candidates": 72.94,
+      "median_daily_candidates": 57.0,
+      "max_slope_p95_bps": 159.78,
+      "top1_avg_slope_bps": 87.32,
+      "top1_avg_r2": 0.783,
+      "top1_net10_mean_pct": 1.009,
+      "top1_net10_median_pct": 0.574,
+      "top1_net10_p10_pct": -8.792,
+      "top1_net10_p05_pct": -12.399,
+      "top1_win_pct": 51.57,
+      "top1_unique_funds": 75,
+      "top1_unique_indices": 74,
+      "top1_top10_fund_share_pct": 49.39
+    },
+    "QUALITY_PRE": {
+      "days": 414,
+      "avg_daily_candidates": 50.21,
+      "median_daily_candidates": 39.0,
+      "max_slope_p95_bps": 158.53,
+      "top1_avg_slope_bps": 83.93,
+      "top1_avg_r2": 0.772,
+      "top1_net10_mean_pct": 0.739,
+      "top1_net10_median_pct": 0.13,
+      "top1_net10_p10_pct": -8.79,
+      "top1_net10_p05_pct": -12.724,
+      "top1_win_pct": 50.24,
+      "top1_unique_funds": 69,
+      "top1_unique_indices": 69,
+      "top1_top10_fund_share_pct": 54.35
+    },
+    "TRAIN_P99_CAP": {
+      "days": 413,
+      "avg_daily_candidates": 72.9,
+      "median_daily_candidates": 57.0,
+      "max_slope_p95_bps": 157.54,
+      "top1_avg_slope_bps": 85.79,
+      "top1_avg_r2": 0.784,
+      "top1_net10_mean_pct": 1.082,
+      "top1_net10_median_pct": 0.637,
+      "top1_net10_p10_pct": -8.692,
+      "top1_net10_p05_pct": -12.045,
+      "top1_win_pct": 51.82,
+      "top1_unique_funds": 76,
+      "top1_unique_indices": 75,
+      "top1_top10_fund_share_pct": 47.94
+    }
+  },
+  "year": {
+    "ALL": {
+      "2025": {
+        "days": 230,
+        "top1_net10_pct": 1.675,
+        "top1_p10_pct": -6.843
+      },
+      "2026": {
+        "days": 194,
+        "top1_net10_pct": -0.218,
+        "top1_p10_pct": -11.825
+      }
+    },
+    "EXACT_PRE": {
+      "2025": {
+        "days": 224,
+        "top1_net10_pct": 2.005,
+        "top1_p10_pct": -6.096
+      },
+      "2026": {
+        "days": 189,
+        "top1_net10_pct": -0.171,
+        "top1_p10_pct": -11.616
+      }
+    },
+    "QUALITY_PRE": {
+      "2025": {
+        "days": 226,
+        "top1_net10_pct": 1.507,
+        "top1_p10_pct": -6.912
+      },
+      "2026": {
+        "days": 188,
+        "top1_net10_pct": -0.184,
+        "top1_p10_pct": -11.151
+      }
+    },
+    "TRAIN_P99_CAP": {
+      "2025": {
+        "days": 224,
+        "top1_net10_pct": 2.005,
+        "top1_p10_pct": -6.096
+      },
+      "2026": {
+        "days": 189,
+        "top1_net10_pct": -0.012,
+        "top1_p10_pct": -11.363
+      }
+    }
+  },
+  "matched_vs_all": {
+    "EXACT_PRE": {
+      "paired_days": 413,
+      "mean_return_diff_pp": 0.1372,
+      "month_block_ci95_pp": [
+        -0.0491,
+        0.3694
+      ],
+      "same_fund_pct": 65.13,
+      "same_index_pct": 87.65,
+      "slope_p95_drop_bps": 5.4
+    },
+    "QUALITY_PRE": {
+      "paired_days": 412,
+      "mean_return_diff_pp": -0.1558,
+      "month_block_ci95_pp": [
+        -0.8506,
+        0.4637
+      ],
+      "same_fund_pct": 46.84,
+      "same_index_pct": 66.99,
+      "slope_p95_drop_bps": 24.08
+    },
+    "TRAIN_P99_CAP": {
+      "paired_days": 413,
+      "mean_return_diff_pp": 0.2101,
+      "month_block_ci95_pp": [
+        -0.0167,
+        0.468
+      ],
+      "same_fund_pct": 62.95,
+      "same_index_pct": 84.99,
+      "slope_p95_drop_bps": 8.78
+    }
+  },
+  "matched_vs_exact": {
+    "QUALITY_PRE": {
+      "paired_days": 412,
+      "mean_return_diff_pp": -0.2933,
+      "month_block_ci95_pp": [
+        -0.937,
+        0.2554
+      ],
+      "same_fund_pct": 73.79,
+      "same_index_pct": 73.79,
+      "slope_p95_drop_bps": 21.13
+    },
+    "TRAIN_P99_CAP": {
+      "paired_days": 413,
+      "mean_return_diff_pp": 0.0729,
+      "month_block_ci95_pp": [
+        -0.0074,
+        0.2014
+      ],
+      "same_fund_pct": 97.09,
+      "same_index_pct": 97.09,
+      "slope_p95_drop_bps": 0.0
+    }
+  },
+  "extreme_slope": {
+    "lower_50pct": {
+      "n": 207,
+      "net10_pct": 0.085,
+      "p10_pct": -7.557,
+      "win_pct": 45.89
+    },
+    "middle_40pct": {
+      "n": 164,
+      "net10_pct": 3.374,
+      "p10_pct": -7.917,
+      "win_pct": 63.41
+    },
+    "highest_10pct": {
+      "n": 42,
+      "net10_pct": -3.671,
+      "p10_pct": -14.969,
+      "win_pct": 33.33
+    }
+  },
+  "extreme_slope_by_year": {
+    "oos_median_slope_bps": 75.214,
+    "oos_p90_slope_bps": 149.517,
+    "2025": {
+      "lower_50pct": {
+        "n": 120,
+        "net10_mean_pct": 0.446,
+        "net10_p10_pct": -5.961
+      },
+      "middle_40pct": {
+        "n": 87,
+        "net10_mean_pct": 4.271,
+        "net10_p10_pct": -7.402
+      },
+      "highest_10pct": {
+        "n": 17,
+        "net10_mean_pct": 1.409,
+        "net10_p10_pct": -4.225
+      }
+    },
+    "2026": {
+      "lower_50pct": {
+        "n": 87,
+        "net10_mean_pct": -0.413,
+        "net10_p10_pct": -9.096
+      },
+      "middle_40pct": {
+        "n": 77,
+        "net10_mean_pct": 2.361,
+        "net10_p10_pct": -8.969
+      },
+      "highest_10pct": {
+        "n": 25,
+        "net10_mean_pct": -7.126,
+        "net10_p10_pct": -17.973
+      }
+    }
+  }
+}

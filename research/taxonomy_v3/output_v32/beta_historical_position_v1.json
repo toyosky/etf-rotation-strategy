@@ -1,0 +1,793 @@
+{
+  "contract": "ETF_TOP1_BETA_HISTORICAL_POSITION_V1",
+  "notes": [
+    "Static 2026 taxonomy is NOT PIT",
+    "252 trailing observed beta values, current excluded; minimum 126",
+    "Returns are overlapping 10d event outcomes, not portfolio NAV",
+    "Signal date close; next open to day11 open; costs inherited from base",
+    "Predefined descriptive cuts are not optimized trading thresholds"
+  ],
+  "sample": {
+    "top1_dates": 1285,
+    "with_percentile": 897,
+    "first_date": "2021-01-04",
+    "last_date": "2026-10-28"
+  },
+  "year": {
+    "2021": {
+      "n": 231,
+      "mean10_pct": -0.254,
+      "p10_pct": -8.047,
+      "win_pct": 45.45,
+      "with_percentile": 97,
+      "unique_funds": 32,
+      "unique_indices": 32
+    },
+    "2022": {
+      "n": 189,
+      "mean10_pct": -0.34,
+      "p10_pct": -7.21,
+      "win_pct": 42.86,
+      "with_percentile": 92,
+      "unique_funds": 33,
+      "unique_indices": 32
+    },
+    "2023": {
+      "n": 215,
+      "mean10_pct": 0.216,
+      "p10_pct": -5.86,
+      "win_pct": 49.3,
+      "with_percentile": 173,
+      "unique_funds": 35,
+      "unique_indices": 34
+    },
+    "2024": {
+      "n": 236,
+      "mean10_pct": 0.78,
+      "p10_pct": -6.903,
+      "win_pct": 44.07,
+      "with_percentile": 197,
+      "unique_funds": 51,
+      "unique_indices": 51
+    },
+    "2025": {
+      "n": 224,
+      "mean10_pct": 2.005,
+      "p10_pct": -6.096,
+      "win_pct": 57.59,
+      "with_percentile": 194,
+      "unique_funds": 42,
+      "unique_indices": 42
+    },
+    "2026": {
+      "n": 190,
+      "mean10_pct": -0.164,
+      "p10_pct": -11.591,
+      "win_pct": 44.74,
+      "with_percentile": 144,
+      "unique_funds": 45,
+      "unique_indices": 45
+    }
+  },
+  "percentile_buckets": {
+    "2021:50-80": {
+      "n": 18,
+      "mean10_pct": -1.419,
+      "p10_pct": -5.252,
+      "win_pct": 22.22
+    },
+    "2021:80-90": {
+      "n": 21,
+      "mean10_pct": -0.668,
+      "p10_pct": -4.018,
+      "win_pct": 42.86
+    },
+    "2021:90-95": {
+      "n": 20,
+      "mean10_pct": -0.087,
+      "p10_pct": -5.574,
+      "win_pct": 40.0
+    },
+    "2021:95-100": {
+      "n": 38,
+      "mean10_pct": -0.504,
+      "p10_pct": -12.53,
+      "win_pct": 47.37
+    },
+    "2022:50-80": {
+      "n": 11,
+      "mean10_pct": 1.723,
+      "p10_pct": -3.007,
+      "win_pct": 63.64
+    },
+    "2022:80-90": {
+      "n": 24,
+      "mean10_pct": -2.484,
+      "p10_pct": -12.177,
+      "win_pct": 33.33
+    },
+    "2022:90-95": {
+      "n": 10,
+      "mean10_pct": -2.137,
+      "p10_pct": -7.226,
+      "win_pct": 40.0
+    },
+    "2022:95-100": {
+      "n": 47,
+      "mean10_pct": -1.955,
+      "p10_pct": -7.147,
+      "win_pct": 29.79
+    },
+    "2023:50-80": {
+      "n": 12,
+      "mean10_pct": 0.392,
+      "p10_pct": -2.692,
+      "win_pct": 50.0
+    },
+    "2023:80-90": {
+      "n": 35,
+      "mean10_pct": 1.057,
+      "p10_pct": -5.789,
+      "win_pct": 51.43
+    },
+    "2023:90-95": {
+      "n": 34,
+      "mean10_pct": 1.247,
+      "p10_pct": -3.327,
+      "win_pct": 70.59
+    },
+    "2023:95-100": {
+      "n": 92,
+      "mean10_pct": -0.625,
+      "p10_pct": -7.849,
+      "win_pct": 38.04
+    },
+    "2024:50-80": {
+      "n": 9,
+      "mean10_pct": 14.708,
+      "p10_pct": -1.627,
+      "win_pct": 66.67
+    },
+    "2024:80-90": {
+      "n": 43,
+      "mean10_pct": -1.174,
+      "p10_pct": -6.813,
+      "win_pct": 39.53
+    },
+    "2024:90-95": {
+      "n": 60,
+      "mean10_pct": -0.09,
+      "p10_pct": -7.676,
+      "win_pct": 43.33
+    },
+    "2024:95-100": {
+      "n": 85,
+      "mean10_pct": 0.871,
+      "p10_pct": -7.109,
+      "win_pct": 43.53
+    },
+    "2025:50-80": {
+      "n": 18,
+      "mean10_pct": -0.703,
+      "p10_pct": -8.153,
+      "win_pct": 55.56
+    },
+    "2025:80-90": {
+      "n": 67,
+      "mean10_pct": 0.112,
+      "p10_pct": -7.997,
+      "win_pct": 47.76
+    },
+    "2025:90-95": {
+      "n": 50,
+      "mean10_pct": 7.172,
+      "p10_pct": -0.859,
+      "win_pct": 80.0
+    },
+    "2025:95-100": {
+      "n": 59,
+      "mean10_pct": 0.247,
+      "p10_pct": -6.373,
+      "win_pct": 44.07
+    },
+    "2026:50-80": {
+      "n": 23,
+      "mean10_pct": 1.581,
+      "p10_pct": -8.127,
+      "win_pct": 52.17
+    },
+    "2026:80-90": {
+      "n": 21,
+      "mean10_pct": 0.059,
+      "p10_pct": -13.958,
+      "win_pct": 47.62
+    },
+    "2026:90-95": {
+      "n": 24,
+      "mean10_pct": 1.962,
+      "p10_pct": -5.424,
+      "win_pct": 62.5
+    },
+    "2026:95-100": {
+      "n": 76,
+      "mean10_pct": 0.539,
+      "p10_pct": -9.702,
+      "win_pct": 44.74
+    }
+  },
+  "conditional": {
+    "pct95": {
+      "n_high": 398,
+      "n_low": 499,
+      "high_mean_pct": -0.089,
+      "low_mean_pct": 0.985,
+      "difference_pp": -1.074,
+      "month_block_ci95_pp": [
+        -2.913,
+        0.784
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 38,
+          "n_low": 59,
+          "high_mean_pct": -0.504,
+          "low_mean_pct": -0.7,
+          "difference_pp": 0.196,
+          "month_block_ci95_pp": [
+            -3.718,
+            9.085
+          ]
+        },
+        "2022": {
+          "n_high": 47,
+          "n_low": 45,
+          "high_mean_pct": -1.955,
+          "low_mean_pct": -1.379,
+          "difference_pp": -0.576,
+          "month_block_ci95_pp": [
+            -4.318,
+            3.732
+          ]
+        },
+        "2023": {
+          "n_high": 92,
+          "n_low": 81,
+          "high_mean_pct": -0.625,
+          "low_mean_pct": 1.038,
+          "difference_pp": -1.663,
+          "month_block_ci95_pp": [
+            -3.4,
+            0.677
+          ]
+        },
+        "2024": {
+          "n_high": 85,
+          "n_low": 112,
+          "high_mean_pct": 0.871,
+          "low_mean_pct": 0.683,
+          "difference_pp": 0.188,
+          "month_block_ci95_pp": [
+            -4.084,
+            4.934
+          ]
+        },
+        "2025": {
+          "n_high": 59,
+          "n_low": 135,
+          "high_mean_pct": 0.247,
+          "low_mean_pct": 2.618,
+          "difference_pp": -2.371,
+          "month_block_ci95_pp": [
+            -6.409,
+            0.87
+          ]
+        },
+        "2026": {
+          "n_high": 77,
+          "n_low": 67,
+          "high_mean_pct": 0.579,
+          "low_mean_pct": 1.21,
+          "difference_pp": -0.631,
+          "month_block_ci95_pp": [
+            -4.144,
+            4.436
+          ]
+        }
+      }
+    },
+    "pct90": {
+      "n_high": 595,
+      "n_low": 302,
+      "high_mean_pct": 0.64,
+      "low_mean_pct": 0.251,
+      "difference_pp": 0.389,
+      "month_block_ci95_pp": [
+        -1.264,
+        2.113
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 58,
+          "n_low": 39,
+          "high_mean_pct": -0.36,
+          "low_mean_pct": -1.015,
+          "difference_pp": 0.655,
+          "month_block_ci95_pp": [
+            -3.341,
+            7.145
+          ]
+        },
+        "2022": {
+          "n_high": 57,
+          "n_low": 35,
+          "high_mean_pct": -1.987,
+          "low_mean_pct": -1.162,
+          "difference_pp": -0.824,
+          "month_block_ci95_pp": [
+            -3.848,
+            2.52
+          ]
+        },
+        "2023": {
+          "n_high": 126,
+          "n_low": 47,
+          "high_mean_pct": -0.12,
+          "low_mean_pct": 0.887,
+          "difference_pp": -1.007,
+          "month_block_ci95_pp": [
+            -2.723,
+            1.165
+          ]
+        },
+        "2024": {
+          "n_high": 145,
+          "n_low": 52,
+          "high_mean_pct": 0.473,
+          "low_mean_pct": 1.575,
+          "difference_pp": -1.101,
+          "month_block_ci95_pp": [
+            -5.331,
+            3.408
+          ]
+        },
+        "2025": {
+          "n_high": 109,
+          "n_low": 85,
+          "high_mean_pct": 3.423,
+          "low_mean_pct": -0.06,
+          "difference_pp": 3.484,
+          "month_block_ci95_pp": [
+            -1.023,
+            7.541
+          ]
+        },
+        "2026": {
+          "n_high": 100,
+          "n_low": 44,
+          "high_mean_pct": 0.881,
+          "low_mean_pct": 0.855,
+          "difference_pp": 0.026,
+          "month_block_ci95_pp": [
+            -3.614,
+            4.462
+          ]
+        }
+      }
+    },
+    "burst5": {
+      "n_high": 107,
+      "n_low": 790,
+      "high_mean_pct": 1.976,
+      "low_mean_pct": 0.31,
+      "difference_pp": 1.666,
+      "month_block_ci95_pp": [
+        -1.744,
+        5.273
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 8,
+          "n_low": 89,
+          "high_mean_pct": 6.721,
+          "low_mean_pct": -1.284,
+          "difference_pp": 8.005,
+          "month_block_ci95_pp": [
+            -9.977,
+            16.602
+          ]
+        },
+        "2022": {
+          "n_high": 2,
+          "n_low": 90,
+          "insufficient": true
+        },
+        "2023": {
+          "n_high": 15,
+          "n_low": 158,
+          "high_mean_pct": -0.861,
+          "low_mean_pct": 0.25,
+          "difference_pp": -1.111,
+          "month_block_ci95_pp": [
+            -6.042,
+            2.418
+          ]
+        },
+        "2024": {
+          "n_high": 20,
+          "n_low": 177,
+          "high_mean_pct": 6.107,
+          "low_mean_pct": 0.16,
+          "difference_pp": 5.947,
+          "month_block_ci95_pp": [
+            -5.7,
+            21.341
+          ]
+        },
+        "2025": {
+          "n_high": 30,
+          "n_low": 164,
+          "high_mean_pct": 3.526,
+          "low_mean_pct": 1.599,
+          "difference_pp": 1.927,
+          "month_block_ci95_pp": [
+            -3.984,
+            8.517
+          ]
+        },
+        "2026": {
+          "n_high": 32,
+          "n_low": 112,
+          "high_mean_pct": -1.861,
+          "low_mean_pct": 1.654,
+          "difference_pp": -3.515,
+          "month_block_ci95_pp": [
+            -8.851,
+            1.254
+          ]
+        }
+      }
+    },
+    "prior_deep": {
+      "n_high": 9,
+      "n_low": 888,
+      "high_mean_pct": -0.762,
+      "low_mean_pct": 0.522,
+      "difference_pp": -1.284,
+      "month_block_ci95_pp": [
+        -2.933,
+        4.742
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 7,
+          "n_low": 90,
+          "high_mean_pct": -1.595,
+          "low_mean_pct": -0.548,
+          "difference_pp": -1.047,
+          "month_block_ci95_pp": [
+            -5.052,
+            2.584
+          ]
+        },
+        "2022": {
+          "n_high": 0,
+          "n_low": 92,
+          "insufficient": true
+        },
+        "2023": {
+          "n_high": 1,
+          "n_low": 172,
+          "insufficient": true
+        },
+        "2024": {
+          "n_high": 0,
+          "n_low": 197,
+          "insufficient": true
+        },
+        "2025": {
+          "n_high": 0,
+          "n_low": 194,
+          "insufficient": true
+        },
+        "2026": {
+          "n_high": 1,
+          "n_low": 143,
+          "insufficient": true
+        }
+      }
+    },
+    "decelerating": {
+      "n_high": 293,
+      "n_low": 604,
+      "high_mean_pct": 0.612,
+      "low_mean_pct": 0.459,
+      "difference_pp": 0.154,
+      "month_block_ci95_pp": [
+        -1.352,
+        1.88
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 26,
+          "n_low": 71,
+          "high_mean_pct": -1.959,
+          "low_mean_pct": -0.134,
+          "difference_pp": -1.825,
+          "month_block_ci95_pp": [
+            -7.063,
+            1.596
+          ]
+        },
+        "2022": {
+          "n_high": 15,
+          "n_low": 77,
+          "high_mean_pct": -1.254,
+          "low_mean_pct": -1.754,
+          "difference_pp": 0.5,
+          "month_block_ci95_pp": [
+            -2.238,
+            5.038
+          ]
+        },
+        "2023": {
+          "n_high": 63,
+          "n_low": 110,
+          "high_mean_pct": 0.427,
+          "low_mean_pct": -0.003,
+          "difference_pp": 0.43,
+          "month_block_ci95_pp": [
+            -1.593,
+            2.113
+          ]
+        },
+        "2024": {
+          "n_high": 75,
+          "n_low": 122,
+          "high_mean_pct": 0.9,
+          "low_mean_pct": 0.68,
+          "difference_pp": 0.22,
+          "month_block_ci95_pp": [
+            -1.597,
+            3.504
+          ]
+        },
+        "2025": {
+          "n_high": 71,
+          "n_low": 123,
+          "high_mean_pct": 0.492,
+          "low_mean_pct": 2.708,
+          "difference_pp": -2.216,
+          "month_block_ci95_pp": [
+            -4.656,
+            0.773
+          ]
+        },
+        "2026": {
+          "n_high": 43,
+          "n_low": 101,
+          "high_mean_pct": 2.786,
+          "low_mean_pct": 0.058,
+          "difference_pp": 2.727,
+          "month_block_ci95_pp": [
+            -4.739,
+            9.656
+          ]
+        }
+      }
+    },
+    "high_and_burst": {
+      "n_high": 91,
+      "n_low": 806,
+      "high_mean_pct": 2.079,
+      "low_mean_pct": 0.331,
+      "difference_pp": 1.747,
+      "month_block_ci95_pp": [
+        -2.266,
+        5.866
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 7,
+          "n_low": 90,
+          "high_mean_pct": 7.432,
+          "low_mean_pct": -1.25,
+          "difference_pp": 8.682,
+          "month_block_ci95_pp": [
+            -9.977,
+            20.237
+          ]
+        },
+        "2022": {
+          "n_high": 1,
+          "n_low": 91,
+          "insufficient": true
+        },
+        "2023": {
+          "n_high": 15,
+          "n_low": 158,
+          "high_mean_pct": -0.861,
+          "low_mean_pct": 0.25,
+          "difference_pp": -1.111,
+          "month_block_ci95_pp": [
+            -6.042,
+            2.418
+          ]
+        },
+        "2024": {
+          "n_high": 20,
+          "n_low": 177,
+          "high_mean_pct": 6.107,
+          "low_mean_pct": 0.16,
+          "difference_pp": 5.947,
+          "month_block_ci95_pp": [
+            -5.7,
+            21.341
+          ]
+        },
+        "2025": {
+          "n_high": 25,
+          "n_low": 169,
+          "high_mean_pct": 3.715,
+          "low_mean_pct": 1.628,
+          "difference_pp": 2.087,
+          "month_block_ci95_pp": [
+            -5.013,
+            9.677
+          ]
+        },
+        "2026": {
+          "n_high": 23,
+          "n_low": 121,
+          "high_mean_pct": -2.894,
+          "low_mean_pct": 1.589,
+          "difference_pp": -4.483,
+          "month_block_ci95_pp": [
+            -8.904,
+            -0.25
+          ]
+        }
+      }
+    },
+    "high_and_decelerating": {
+      "n_high": 150,
+      "n_low": 747,
+      "high_mean_pct": 0.305,
+      "low_mean_pct": 0.55,
+      "difference_pp": -0.244,
+      "month_block_ci95_pp": [
+        -2.015,
+        1.812
+      ],
+      "by_year": {
+        "2021": {
+          "n_high": 13,
+          "n_low": 84,
+          "high_mean_pct": -2.178,
+          "low_mean_pct": -0.383,
+          "difference_pp": -1.796,
+          "month_block_ci95_pp": [
+            -5.98,
+            2.631
+          ]
+        },
+        "2022": {
+          "n_high": 4,
+          "n_low": 88,
+          "insufficient": true
+        },
+        "2023": {
+          "n_high": 37,
+          "n_low": 136,
+          "high_mean_pct": -0.441,
+          "low_mean_pct": 0.315,
+          "difference_pp": -0.756,
+          "month_block_ci95_pp": [
+            -2.641,
+            0.799
+          ]
+        },
+        "2024": {
+          "n_high": 41,
+          "n_low": 156,
+          "high_mean_pct": -0.137,
+          "low_mean_pct": 1.001,
+          "difference_pp": -1.138,
+          "month_block_ci95_pp": [
+            -6.424,
+            3.433
+          ]
+        },
+        "2025": {
+          "n_high": 26,
+          "n_low": 168,
+          "high_mean_pct": 1.771,
+          "low_mean_pct": 1.916,
+          "difference_pp": -0.145,
+          "month_block_ci95_pp": [
+            -2.567,
+            2.273
+          ]
+        },
+        "2026": {
+          "n_high": 29,
+          "n_low": 115,
+          "high_mean_pct": 1.843,
+          "low_mean_pct": 0.628,
+          "difference_pp": 1.216,
+          "month_block_ci95_pp": [
+            -4.266,
+            10.53
+          ]
+        }
+      }
+    },
+    "high_and_deep": {
+      "n_high": 1,
+      "n_low": 896,
+      "insufficient": true,
+      "by_year": {
+        "2021": {
+          "n_high": 0,
+          "n_low": 97,
+          "insufficient": true
+        },
+        "2022": {
+          "n_high": 0,
+          "n_low": 92,
+          "insufficient": true
+        },
+        "2023": {
+          "n_high": 1,
+          "n_low": 172,
+          "insufficient": true
+        },
+        "2024": {
+          "n_high": 0,
+          "n_low": 197,
+          "insufficient": true
+        },
+        "2025": {
+          "n_high": 0,
+          "n_low": 194,
+          "insufficient": true
+        },
+        "2026": {
+          "n_high": 0,
+          "n_low": 144,
+          "insufficient": true
+        }
+      }
+    }
+  },
+  "paired_filter": {
+    "pct95": {
+      "matched_dates": 876,
+      "changed_dates": 377,
+      "mean_delta_pp": -0.097,
+      "warning": "Only high-percentile Top1 dates eligible for flag; all candidate rows retained otherwise; candidate ban applied per date"
+    },
+    "high_and_burst": {
+      "matched_dates": 895,
+      "changed_dates": 89,
+      "mean_delta_pp": -0.24,
+      "warning": "Only high-percentile Top1 dates eligible for flag; all candidate rows retained otherwise; candidate ban applied per date"
+    },
+    "high_and_decelerating": {
+      "matched_dates": 893,
+      "changed_dates": 146,
+      "mean_delta_pp": 0.025,
+      "warning": "Only high-percentile Top1 dates eligible for flag; all candidate rows retained otherwise; candidate ban applied per date"
+    },
+    "high_and_deep": {
+      "matched_dates": 897,
+      "changed_dates": 1,
+      "mean_delta_pp": -0.003,
+      "warning": "Only high-percentile Top1 dates eligible for flag; all candidate rows retained otherwise; candidate ban applied per date"
+    }
+  },
+  "source": {
+    "sha256": "7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644",
+    "as_of": "2026-11-12",
+    "taxonomy_pit": false
+  }
+}
