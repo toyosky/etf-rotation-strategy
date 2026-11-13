@@ -6,6 +6,7 @@ on:
       - research/taxonomy-rebuild-validation-20261112
     paths:
       - '.github/workflows/research-pinned-archive-v2.yml'
+      - 'research/taxonomy_v3/pin_research_archive_asset_v2.py'
 permissions:
   contents: write
 concurrency:
