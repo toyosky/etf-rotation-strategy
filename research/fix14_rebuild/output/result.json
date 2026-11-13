@@ -1,0 +1,5659 @@
+{
+  "run": "fix14_original_wols26_20261113",
+  "source": {
+    "file_sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "archive_all_symbols": 2003,
+    "archive_all_rows": 1439205,
+    "pool": [
+      "159934",
+      "159985",
+      "161226",
+      "513100",
+      "159957",
+      "159509",
+      "513290",
+      "159529",
+      "159981",
+      "501018",
+      "513530",
+      "511380",
+      "164824",
+      "512800"
+    ],
+    "cash_comparator": "511220",
+    "coverage": {
+      "159509": {
+        "rows": 789,
+        "first": "2023-08-08",
+        "last": "2026-11-11"
+      },
+      "159529": {
+        "rows": 664,
+        "first": "2024-02-02",
+        "last": "2026-11-11"
+      },
+      "159934": {
+        "rows": 3137,
+        "first": "2013-12-16",
+        "last": "2026-11-11"
+      },
+      "159957": {
+        "rows": 2146,
+        "first": "2018-01-04",
+        "last": "2026-11-11"
+      },
+      "159981": {
+        "rows": 1650,
+        "first": "2020-01-17",
+        "last": "2026-11-11"
+      },
+      "159985": {
+        "rows": 1680,
+        "first": "2019-12-05",
+        "last": "2026-11-11"
+      },
+      "161226": {
+        "rows": 2726,
+        "first": "2015-08-17",
+        "last": "2026-11-11"
+      },
+      "164824": {
+        "rows": 2006,
+        "first": "2018-08-01",
+        "last": "2026-11-11"
+      },
+      "501018": {
+        "rows": 2517,
+        "first": "2016-06-28",
+        "last": "2026-11-11"
+      },
+      "511220": {
+        "rows": 2852,
+        "first": "2014-12-16",
+        "last": "2026-09-16"
+      },
+      "511380": {
+        "rows": 1566,
+        "first": "2020-04-07",
+        "last": "2026-09-16"
+      },
+      "512800": {
+        "rows": 2250,
+        "first": "2017-08-03",
+        "last": "2026-11-11"
+      },
+      "513100": {
+        "rows": 3279,
+        "first": "2013-05-15",
+        "last": "2026-11-11"
+      },
+      "513290": {
+        "rows": 1017,
+        "first": "2022-08-29",
+        "last": "2026-11-11"
+      },
+      "513530": {
+        "rows": 1103,
+        "first": "2022-04-25",
+        "last": "2026-11-11"
+      }
+    },
+    "panel_risk_rows": 17086,
+    "panel_dates": 1397,
+    "signal_raw": 397,
+    "signal_first": "2021-01-05",
+    "signal_last": "2026-10-12",
+    "signals_by_symbol": {
+      "159509": {
+        "all_crossings": 20,
+        "qualified_no_cooldown": 17
+      },
+      "159529": {
+        "all_crossings": 12,
+        "qualified_no_cooldown": 11
+      },
+      "159934": {
+        "all_crossings": 83,
+        "qualified_no_cooldown": 76
+      },
+      "159957": {
+        "all_crossings": 47,
+        "qualified_no_cooldown": 44
+      },
+      "159981": {
+        "all_crossings": 44,
+        "qualified_no_cooldown": 39
+      },
+      "159985": {
+        "all_crossings": 41,
+        "qualified_no_cooldown": 36
+      },
+      "161226": {
+        "all_crossings": 72,
+        "qualified_no_cooldown": 68
+      },
+      "164824": {
+        "all_crossings": 48,
+        "qualified_no_cooldown": 43
+      },
+      "501018": {
+        "all_crossings": 55,
+        "qualified_no_cooldown": 49
+      },
+      "511380": {
+        "all_crossings": 42,
+        "qualified_no_cooldown": 38
+      },
+      "512800": {
+        "all_crossings": 56,
+        "qualified_no_cooldown": 54
+      },
+      "513100": {
+        "all_crossings": 77,
+        "qualified_no_cooldown": 71
+      },
+      "513290": {
+        "all_crossings": 30,
+        "qualified_no_cooldown": 26
+      },
+      "513530": {
+        "all_crossings": 30,
+        "qualified_no_cooldown": 25
+      }
+    }
+  },
+  "definition": "26 weighted OLS close crossing from <=0 to >0, first D1-D3 R2 rising above prior day and crossing date, 20 same-symbol cooldown",
+  "transaction": "T close signal, T+1 open to T+(H+1) open, 0.06% per side",
+  "risk_baseline": "same-date equal-weight other currently trading eligible fixed-pool members (net fee for each carrier)",
+  "cash_baseline": "511220 risk-free/protection comparator, net same fees",
+  "unmatched_limits": "2021-2026 current fixed pool retrospectively applied; assumes future bars for evaluation; no QDII NAV premiums, delisted correction or actual intraday execution",
+  "no_cooldown_signal_count": 397,
+  "cooldown_events": 330,
+  "baseline_peers": {
+    "all": {
+      "n": 322,
+      "dates": 271,
+      "months": 67,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.056,
+        "baseline_mean_pct": 0.175,
+        "excess_mean_pp": -0.231,
+        "excess_median_pp": -0.199,
+        "signal_win_rate_pct": 42.2,
+        "beat_baseline_pct": 46.3,
+        "ci95_month_pp": [
+          -0.537,
+          0.078
+        ],
+        "day_equal_excess_pp": -0.219,
+        "day_equal_ci95_pp": [
+          -0.545,
+          0.161
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.34,
+        "baseline_mean_pct": 0.388,
+        "excess_mean_pp": -0.047,
+        "excess_median_pp": -0.232,
+        "signal_win_rate_pct": 46.9,
+        "beat_baseline_pct": 46.6,
+        "ci95_month_pp": [
+          -0.475,
+          0.398
+        ],
+        "day_equal_excess_pp": 0.021,
+        "day_equal_ci95_pp": [
+          -0.48,
+          0.553
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.033,
+        "baseline_mean_pct": 0.941,
+        "excess_mean_pp": 0.093,
+        "excess_median_pp": -0.327,
+        "signal_win_rate_pct": 52.2,
+        "beat_baseline_pct": 47.8,
+        "ci95_month_pp": [
+          -0.489,
+          0.752
+        ],
+        "day_equal_excess_pp": 0.209,
+        "day_equal_ci95_pp": [
+          -0.506,
+          0.979
+        ]
+      }
+    },
+    "train_2021_24": {
+      "n": 218,
+      "dates": 191,
+      "months": 48,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.076,
+        "baseline_mean_pct": 0.182,
+        "excess_mean_pp": -0.106,
+        "excess_median_pp": -0.17,
+        "signal_win_rate_pct": 41.7,
+        "beat_baseline_pct": 46.8,
+        "ci95_month_pp": [
+          -0.457,
+          0.287
+        ],
+        "day_equal_excess_pp": -0.037,
+        "day_equal_ci95_pp": [
+          -0.435,
+          0.356
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.479,
+        "baseline_mean_pct": 0.313,
+        "excess_mean_pp": 0.167,
+        "excess_median_pp": 0.014,
+        "signal_win_rate_pct": 49.1,
+        "beat_baseline_pct": 50.0,
+        "ci95_month_pp": [
+          -0.315,
+          0.705
+        ],
+        "day_equal_excess_pp": 0.283,
+        "day_equal_ci95_pp": [
+          -0.267,
+          0.824
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.273,
+        "baseline_mean_pct": 0.82,
+        "excess_mean_pp": 0.452,
+        "excess_median_pp": 0.26,
+        "signal_win_rate_pct": 55.5,
+        "beat_baseline_pct": 51.8,
+        "ci95_month_pp": [
+          -0.217,
+          1.125
+        ],
+        "day_equal_excess_pp": 0.555,
+        "day_equal_ci95_pp": [
+          -0.15,
+          1.317
+        ]
+      }
+    },
+    "test_2025_26": {
+      "n": 104,
+      "dates": 80,
+      "months": 19,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.333,
+        "baseline_mean_pct": 0.161,
+        "excess_mean_pp": -0.494,
+        "excess_median_pp": -0.242,
+        "signal_win_rate_pct": 43.3,
+        "beat_baseline_pct": 45.2,
+        "ci95_month_pp": [
+          -1.001,
+          0.042
+        ],
+        "day_equal_excess_pp": -0.654,
+        "day_equal_ci95_pp": [
+          -1.22,
+          -0.044
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.049,
+        "baseline_mean_pct": 0.544,
+        "excess_mean_pp": -0.496,
+        "excess_median_pp": -0.929,
+        "signal_win_rate_pct": 42.3,
+        "beat_baseline_pct": 39.4,
+        "ci95_month_pp": [
+          -1.236,
+          0.339
+        ],
+        "day_equal_excess_pp": -0.605,
+        "day_equal_ci95_pp": [
+          -1.555,
+          0.515
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.532,
+        "baseline_mean_pct": 1.193,
+        "excess_mean_pp": -0.661,
+        "excess_median_pp": -1.831,
+        "signal_win_rate_pct": 45.2,
+        "beat_baseline_pct": 39.4,
+        "ci95_month_pp": [
+          -1.687,
+          0.739
+        ],
+        "day_equal_excess_pp": -0.616,
+        "day_equal_ci95_pp": [
+          -1.978,
+          1.13
+        ]
+      }
+    },
+    "years": {
+      "2021": {
+        "n": 45,
+        "dates": 42,
+        "months": 12,
+        "symbols": 10,
+        "5": {
+          "signal_mean_pct": -0.256,
+          "baseline_mean_pct": -0.057,
+          "excess_mean_pp": -0.198,
+          "excess_median_pp": -0.43,
+          "signal_win_rate_pct": 42.2,
+          "beat_baseline_pct": 48.9,
+          "ci95_month_pp": [
+            -0.739,
+            0.234
+          ],
+          "day_equal_excess_pp": -0.164,
+          "day_equal_ci95_pp": [
+            -0.737,
+            0.302
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.301,
+          "baseline_mean_pct": 0.27,
+          "excess_mean_pp": 0.031,
+          "excess_median_pp": 0.335,
+          "signal_win_rate_pct": 51.1,
+          "beat_baseline_pct": 53.3,
+          "ci95_month_pp": [
+            -1.133,
+            1.208
+          ],
+          "day_equal_excess_pp": 0.087,
+          "day_equal_ci95_pp": [
+            -1.224,
+            1.335
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.77,
+          "baseline_mean_pct": 0.869,
+          "excess_mean_pp": 0.901,
+          "excess_median_pp": 1.328,
+          "signal_win_rate_pct": 57.8,
+          "beat_baseline_pct": 55.6,
+          "ci95_month_pp": [
+            -0.233,
+            2.097
+          ],
+          "day_equal_excess_pp": 1.011,
+          "day_equal_ci95_pp": [
+            -0.287,
+            2.211
+          ]
+        }
+      },
+      "2022": {
+        "n": 47,
+        "dates": 44,
+        "months": 12,
+        "symbols": 11,
+        "5": {
+          "signal_mean_pct": -0.624,
+          "baseline_mean_pct": -0.414,
+          "excess_mean_pp": -0.21,
+          "excess_median_pp": -0.284,
+          "signal_win_rate_pct": 34.0,
+          "beat_baseline_pct": 44.7,
+          "ci95_month_pp": [
+            -1.083,
+            0.838
+          ],
+          "day_equal_excess_pp": -0.198,
+          "day_equal_ci95_pp": [
+            -1.161,
+            0.915
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.083,
+          "baseline_mean_pct": -0.21,
+          "excess_mean_pp": 0.293,
+          "excess_median_pp": 0.722,
+          "signal_win_rate_pct": 46.8,
+          "beat_baseline_pct": 55.3,
+          "ci95_month_pp": [
+            -0.821,
+            1.561
+          ],
+          "day_equal_excess_pp": 0.33,
+          "day_equal_ci95_pp": [
+            -0.832,
+            1.525
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.726,
+          "baseline_mean_pct": 0.191,
+          "excess_mean_pp": 0.536,
+          "excess_median_pp": 0.98,
+          "signal_win_rate_pct": 59.6,
+          "beat_baseline_pct": 55.3,
+          "ci95_month_pp": [
+            -1.028,
+            2.439
+          ],
+          "day_equal_excess_pp": 0.546,
+          "day_equal_ci95_pp": [
+            -1.175,
+            2.412
+          ]
+        }
+      },
+      "2023": {
+        "n": 58,
+        "dates": 51,
+        "months": 12,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.4,
+          "baseline_mean_pct": 0.171,
+          "excess_mean_pp": 0.229,
+          "excess_median_pp": 0.265,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 56.9,
+          "ci95_month_pp": [
+            -0.305,
+            0.828
+          ],
+          "day_equal_excess_pp": 0.224,
+          "day_equal_ci95_pp": [
+            -0.365,
+            0.88
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.716,
+          "baseline_mean_pct": 0.34,
+          "excess_mean_pp": 0.376,
+          "excess_median_pp": -0.084,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 48.3,
+          "ci95_month_pp": [
+            -0.524,
+            1.428
+          ],
+          "day_equal_excess_pp": 0.492,
+          "day_equal_ci95_pp": [
+            -0.485,
+            1.601
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.89,
+          "baseline_mean_pct": 0.7,
+          "excess_mean_pp": 0.19,
+          "excess_median_pp": -0.352,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 44.8,
+          "ci95_month_pp": [
+            -0.978,
+            1.563
+          ],
+          "day_equal_excess_pp": 0.253,
+          "day_equal_ci95_pp": [
+            -1.137,
+            1.808
+          ]
+        }
+      },
+      "2024": {
+        "n": 68,
+        "dates": 54,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.504,
+          "baseline_mean_pct": 0.762,
+          "excess_mean_pp": -0.258,
+          "excess_median_pp": -0.584,
+          "signal_win_rate_pct": 39.7,
+          "beat_baseline_pct": 38.2,
+          "ci95_month_pp": [
+            -0.995,
+            0.626
+          ],
+          "day_equal_excess_pp": -0.054,
+          "day_equal_ci95_pp": [
+            -0.879,
+            0.859
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.67,
+          "baseline_mean_pct": 0.68,
+          "excess_mean_pp": -0.01,
+          "excess_median_pp": -0.16,
+          "signal_win_rate_pct": 48.5,
+          "beat_baseline_pct": 45.6,
+          "ci95_month_pp": [
+            -0.833,
+            0.926
+          ],
+          "day_equal_excess_pp": 0.199,
+          "day_equal_ci95_pp": [
+            -0.803,
+            1.162
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.647,
+          "baseline_mean_pct": 1.325,
+          "excess_mean_pp": 0.322,
+          "excess_median_pp": 0.557,
+          "signal_win_rate_pct": 55.9,
+          "beat_baseline_pct": 52.9,
+          "ci95_month_pp": [
+            -0.767,
+            1.572
+          ],
+          "day_equal_excess_pp": 0.492,
+          "day_equal_ci95_pp": [
+            -0.909,
+            1.911
+          ]
+        }
+      },
+      "2025": {
+        "n": 60,
+        "dates": 47,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": -0.799,
+          "baseline_mean_pct": 0.208,
+          "excess_mean_pp": -1.007,
+          "excess_median_pp": -1.065,
+          "signal_win_rate_pct": 36.7,
+          "beat_baseline_pct": 38.3,
+          "ci95_month_pp": [
+            -1.417,
+            -0.512
+          ],
+          "day_equal_excess_pp": -1.001,
+          "day_equal_ci95_pp": [
+            -1.591,
+            -0.341
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.13,
+          "baseline_mean_pct": 0.814,
+          "excess_mean_pp": -0.944,
+          "excess_median_pp": -0.876,
+          "signal_win_rate_pct": 43.3,
+          "beat_baseline_pct": 38.3,
+          "ci95_month_pp": [
+            -1.699,
+            -0.116
+          ],
+          "day_equal_excess_pp": -1.028,
+          "day_equal_ci95_pp": [
+            -2.054,
+            0.102
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.225,
+          "baseline_mean_pct": 1.423,
+          "excess_mean_pp": -0.198,
+          "excess_median_pp": -0.442,
+          "signal_win_rate_pct": 55.0,
+          "beat_baseline_pct": 46.7,
+          "ci95_month_pp": [
+            -1.642,
+            1.49
+          ],
+          "day_equal_excess_pp": -0.187,
+          "day_equal_ci95_pp": [
+            -2.054,
+            2.03
+          ]
+        }
+      },
+      "2026": {
+        "n": 44,
+        "dates": 33,
+        "months": 7,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.303,
+          "baseline_mean_pct": 0.097,
+          "excess_mean_pp": 0.206,
+          "excess_median_pp": 0.554,
+          "signal_win_rate_pct": 52.3,
+          "beat_baseline_pct": 54.5,
+          "ci95_month_pp": [
+            -0.6,
+            0.995
+          ],
+          "day_equal_excess_pp": -0.159,
+          "day_equal_ci95_pp": [
+            -1.157,
+            0.895
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.292,
+          "baseline_mean_pct": 0.177,
+          "excess_mean_pp": 0.115,
+          "excess_median_pp": -1.421,
+          "signal_win_rate_pct": 40.9,
+          "beat_baseline_pct": 40.9,
+          "ci95_month_pp": [
+            -1.101,
+            2.29
+          ],
+          "day_equal_excess_pp": -0.002,
+          "day_equal_ci95_pp": [
+            -1.777,
+            2.629
+          ]
+        },
+        "20": {
+          "signal_mean_pct": -0.414,
+          "baseline_mean_pct": 0.88,
+          "excess_mean_pp": -1.293,
+          "excess_median_pp": -2.226,
+          "signal_win_rate_pct": 31.8,
+          "beat_baseline_pct": 29.5,
+          "ci95_month_pp": [
+            -2.751,
+            0.967
+          ],
+          "day_equal_excess_pp": -1.226,
+          "day_equal_ci95_pp": [
+            -3.001,
+            1.603
+          ]
+        }
+      }
+    }
+  },
+  "baseline_cash": {
+    "all": {
+      "n": 322,
+      "dates": 271,
+      "months": 67,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.056,
+        "baseline_mean_pct": -0.102,
+        "excess_mean_pp": 0.046,
+        "excess_median_pp": 0.0,
+        "signal_win_rate_pct": 42.2,
+        "beat_baseline_pct": 42.2,
+        "ci95_month_pp": [
+          -0.386,
+          0.479
+        ],
+        "day_equal_excess_pp": -0.004,
+        "day_equal_ci95_pp": [
+          -0.42,
+          0.475
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.34,
+        "baseline_mean_pct": -0.036,
+        "excess_mean_pp": 0.377,
+        "excess_median_pp": 0.0,
+        "signal_win_rate_pct": 46.9,
+        "beat_baseline_pct": 46.9,
+        "ci95_month_pp": [
+          -0.174,
+          0.945
+        ],
+        "day_equal_excess_pp": 0.384,
+        "day_equal_ci95_pp": [
+          -0.238,
+          0.997
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.033,
+        "baseline_mean_pct": 0.094,
+        "excess_mean_pp": 0.94,
+        "excess_median_pp": 0.516,
+        "signal_win_rate_pct": 52.2,
+        "beat_baseline_pct": 51.6,
+        "ci95_month_pp": [
+          0.158,
+          1.688
+        ],
+        "day_equal_excess_pp": 0.99,
+        "day_equal_ci95_pp": [
+          0.199,
+          1.785
+        ]
+      }
+    },
+    "train_2021_24": {
+      "n": 218,
+      "dates": 191,
+      "months": 48,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.076,
+        "baseline_mean_pct": -0.103,
+        "excess_mean_pp": 0.18,
+        "excess_median_pp": 0.0,
+        "signal_win_rate_pct": 41.7,
+        "beat_baseline_pct": 42.2,
+        "ci95_month_pp": [
+          -0.293,
+          0.716
+        ],
+        "day_equal_excess_pp": 0.158,
+        "day_equal_ci95_pp": [
+          -0.349,
+          0.658
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.479,
+        "baseline_mean_pct": -0.022,
+        "excess_mean_pp": 0.502,
+        "excess_median_pp": 0.0,
+        "signal_win_rate_pct": 49.1,
+        "beat_baseline_pct": 48.2,
+        "ci95_month_pp": [
+          -0.196,
+          1.201
+        ],
+        "day_equal_excess_pp": 0.589,
+        "day_equal_ci95_pp": [
+          -0.021,
+          1.2
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.273,
+        "baseline_mean_pct": 0.129,
+        "excess_mean_pp": 1.144,
+        "excess_median_pp": 0.977,
+        "signal_win_rate_pct": 55.5,
+        "beat_baseline_pct": 55.0,
+        "ci95_month_pp": [
+          0.278,
+          1.966
+        ],
+        "day_equal_excess_pp": 1.207,
+        "day_equal_ci95_pp": [
+          0.415,
+          2.021
+        ]
+      }
+    },
+    "test_2025_26": {
+      "n": 104,
+      "dates": 80,
+      "months": 19,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.333,
+        "baseline_mean_pct": -0.1,
+        "excess_mean_pp": -0.233,
+        "excess_median_pp": 0.0,
+        "signal_win_rate_pct": 43.3,
+        "beat_baseline_pct": 42.3,
+        "ci95_month_pp": [
+          -1.051,
+          0.521
+        ],
+        "day_equal_excess_pp": -0.392,
+        "day_equal_ci95_pp": [
+          -1.336,
+          0.463
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.049,
+        "baseline_mean_pct": -0.066,
+        "excess_mean_pp": 0.115,
+        "excess_median_pp": -0.165,
+        "signal_win_rate_pct": 42.3,
+        "beat_baseline_pct": 44.2,
+        "ci95_month_pp": [
+          -0.943,
+          1.135
+        ],
+        "day_equal_excess_pp": -0.105,
+        "day_equal_ci95_pp": [
+          -1.493,
+          1.241
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.532,
+        "baseline_mean_pct": 0.021,
+        "excess_mean_pp": 0.511,
+        "excess_median_pp": -0.051,
+        "signal_win_rate_pct": 45.2,
+        "beat_baseline_pct": 44.2,
+        "ci95_month_pp": [
+          -0.818,
+          1.985
+        ],
+        "day_equal_excess_pp": 0.472,
+        "day_equal_ci95_pp": [
+          -1.107,
+          2.168
+        ]
+      }
+    },
+    "years": {
+      "2021": {
+        "n": 45,
+        "dates": 42,
+        "months": 12,
+        "symbols": 10,
+        "5": {
+          "signal_mean_pct": -0.256,
+          "baseline_mean_pct": 0.004,
+          "excess_mean_pp": -0.259,
+          "excess_median_pp": -0.11,
+          "signal_win_rate_pct": 42.2,
+          "beat_baseline_pct": 40.0,
+          "ci95_month_pp": [
+            -0.754,
+            0.098
+          ],
+          "day_equal_excess_pp": -0.178,
+          "day_equal_ci95_pp": [
+            -0.704,
+            0.232
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.301,
+          "baseline_mean_pct": 0.073,
+          "excess_mean_pp": 0.227,
+          "excess_median_pp": 0.0,
+          "signal_win_rate_pct": 51.1,
+          "beat_baseline_pct": 48.9,
+          "ci95_month_pp": [
+            -0.713,
+            1.086
+          ],
+          "day_equal_excess_pp": 0.272,
+          "day_equal_ci95_pp": [
+            -0.711,
+            1.171
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.77,
+          "baseline_mean_pct": 0.229,
+          "excess_mean_pp": 1.541,
+          "excess_median_pp": 1.267,
+          "signal_win_rate_pct": 57.8,
+          "beat_baseline_pct": 53.3,
+          "ci95_month_pp": [
+            0.475,
+            2.542
+          ],
+          "day_equal_excess_pp": 1.499,
+          "day_equal_ci95_pp": [
+            0.449,
+            2.594
+          ]
+        }
+      },
+      "2022": {
+        "n": 47,
+        "dates": 44,
+        "months": 12,
+        "symbols": 11,
+        "5": {
+          "signal_mean_pct": -0.624,
+          "baseline_mean_pct": -0.087,
+          "excess_mean_pp": -0.537,
+          "excess_median_pp": -0.555,
+          "signal_win_rate_pct": 34.0,
+          "beat_baseline_pct": 34.0,
+          "ci95_month_pp": [
+            -1.606,
+            0.479
+          ],
+          "day_equal_excess_pp": -0.552,
+          "day_equal_ci95_pp": [
+            -1.658,
+            0.545
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.083,
+          "baseline_mean_pct": -0.07,
+          "excess_mean_pp": 0.153,
+          "excess_median_pp": 0.0,
+          "signal_win_rate_pct": 46.8,
+          "beat_baseline_pct": 46.8,
+          "ci95_month_pp": [
+            -0.869,
+            1.33
+          ],
+          "day_equal_excess_pp": 0.098,
+          "day_equal_ci95_pp": [
+            -0.918,
+            1.264
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.726,
+          "baseline_mean_pct": -0.085,
+          "excess_mean_pp": 0.811,
+          "excess_median_pp": 0.945,
+          "signal_win_rate_pct": 59.6,
+          "beat_baseline_pct": 61.7,
+          "ci95_month_pp": [
+            -0.78,
+            2.62
+          ],
+          "day_equal_excess_pp": 0.712,
+          "day_equal_ci95_pp": [
+            -0.966,
+            2.644
+          ]
+        }
+      },
+      "2023": {
+        "n": 58,
+        "dates": 51,
+        "months": 12,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.4,
+          "baseline_mean_pct": -0.144,
+          "excess_mean_pp": 0.544,
+          "excess_median_pp": 0.468,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 55.2,
+          "ci95_month_pp": [
+            0.077,
+            1.111
+          ],
+          "day_equal_excess_pp": 0.512,
+          "day_equal_ci95_pp": [
+            -0.03,
+            1.153
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.716,
+          "baseline_mean_pct": -0.054,
+          "excess_mean_pp": 0.77,
+          "excess_median_pp": 0.068,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            0.047,
+            1.857
+          ],
+          "day_equal_excess_pp": 0.85,
+          "day_equal_ci95_pp": [
+            0.016,
+            1.972
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.89,
+          "baseline_mean_pct": 0.281,
+          "excess_mean_pp": 0.609,
+          "excess_median_pp": 0.088,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -0.507,
+            1.901
+          ],
+          "day_equal_excess_pp": 0.688,
+          "day_equal_ci95_pp": [
+            -0.424,
+            2.059
+          ]
+        }
+      },
+      "2024": {
+        "n": 68,
+        "dates": 54,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.504,
+          "baseline_mean_pct": -0.151,
+          "excess_mean_pp": 0.655,
+          "excess_median_pp": -0.281,
+          "signal_win_rate_pct": 39.7,
+          "beat_baseline_pct": 38.2,
+          "ci95_month_pp": [
+            -0.561,
+            1.935
+          ],
+          "day_equal_excess_pp": 0.664,
+          "day_equal_ci95_pp": [
+            -0.554,
+            1.883
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.67,
+          "baseline_mean_pct": -0.025,
+          "excess_mean_pp": 0.696,
+          "excess_median_pp": 0.0,
+          "signal_win_rate_pct": 48.5,
+          "beat_baseline_pct": 47.1,
+          "ci95_month_pp": [
+            -1.177,
+            2.404
+          ],
+          "day_equal_excess_pp": 0.99,
+          "day_equal_ci95_pp": [
+            -0.754,
+            2.436
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.647,
+          "baseline_mean_pct": 0.08,
+          "excess_mean_pp": 1.567,
+          "excess_median_pp": 1.344,
+          "signal_win_rate_pct": 55.9,
+          "beat_baseline_pct": 55.9,
+          "ci95_month_pp": [
+            -0.544,
+            3.415
+          ],
+          "day_equal_excess_pp": 1.872,
+          "day_equal_ci95_pp": [
+            -0.334,
+            3.636
+          ]
+        }
+      },
+      "2025": {
+        "n": 60,
+        "dates": 47,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": -0.799,
+          "baseline_mean_pct": -0.085,
+          "excess_mean_pp": -0.714,
+          "excess_median_pp": -0.332,
+          "signal_win_rate_pct": 36.7,
+          "beat_baseline_pct": 35.0,
+          "ci95_month_pp": [
+            -1.501,
+            -0.04
+          ],
+          "day_equal_excess_pp": -0.831,
+          "day_equal_ci95_pp": [
+            -1.867,
+            0.053
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.13,
+          "baseline_mean_pct": -0.05,
+          "excess_mean_pp": -0.08,
+          "excess_median_pp": 0.0,
+          "signal_win_rate_pct": 43.3,
+          "beat_baseline_pct": 45.0,
+          "ci95_month_pp": [
+            -1.166,
+            0.978
+          ],
+          "day_equal_excess_pp": -0.295,
+          "day_equal_ci95_pp": [
+            -1.614,
+            1.132
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.225,
+          "baseline_mean_pct": -0.003,
+          "excess_mean_pp": 1.228,
+          "excess_median_pp": 1.11,
+          "signal_win_rate_pct": 55.0,
+          "beat_baseline_pct": 53.3,
+          "ci95_month_pp": [
+            -0.12,
+            2.877
+          ],
+          "day_equal_excess_pp": 1.166,
+          "day_equal_ci95_pp": [
+            -0.497,
+            3.181
+          ]
+        }
+      },
+      "2026": {
+        "n": 44,
+        "dates": 33,
+        "months": 7,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.303,
+          "baseline_mean_pct": -0.12,
+          "excess_mean_pp": 0.422,
+          "excess_median_pp": 0.515,
+          "signal_win_rate_pct": 52.3,
+          "beat_baseline_pct": 52.3,
+          "ci95_month_pp": [
+            -1.149,
+            1.646
+          ],
+          "day_equal_excess_pp": 0.232,
+          "day_equal_ci95_pp": [
+            -1.468,
+            1.683
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.292,
+          "baseline_mean_pct": -0.088,
+          "excess_mean_pp": 0.38,
+          "excess_median_pp": -0.645,
+          "signal_win_rate_pct": 40.9,
+          "beat_baseline_pct": 43.2,
+          "ci95_month_pp": [
+            -1.826,
+            2.603
+          ],
+          "day_equal_excess_pp": 0.166,
+          "day_equal_ci95_pp": [
+            -2.663,
+            3.155
+          ]
+        },
+        "20": {
+          "signal_mean_pct": -0.414,
+          "baseline_mean_pct": 0.053,
+          "excess_mean_pp": -0.466,
+          "excess_median_pp": -1.209,
+          "signal_win_rate_pct": 31.8,
+          "beat_baseline_pct": 31.8,
+          "ci95_month_pp": [
+            -3.343,
+            1.969
+          ],
+          "day_equal_excess_pp": -0.517,
+          "day_equal_ci95_pp": [
+            -3.319,
+            2.427
+          ]
+        }
+      }
+    }
+  },
+  "rank1_on_signal_dates": {
+    "all": {
+      "n": 271,
+      "dates": 271,
+      "months": 67,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.027,
+        "baseline_mean_pct": 0.123,
+        "excess_mean_pp": -0.096,
+        "excess_median_pp": -0.171,
+        "signal_win_rate_pct": 42.8,
+        "beat_baseline_pct": 46.9,
+        "ci95_month_pp": [
+          -0.465,
+          0.288
+        ],
+        "day_equal_excess_pp": -0.096,
+        "day_equal_ci95_pp": [
+          -0.447,
+          0.286
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.465,
+        "baseline_mean_pct": 0.337,
+        "excess_mean_pp": 0.128,
+        "excess_median_pp": -0.013,
+        "signal_win_rate_pct": 49.8,
+        "beat_baseline_pct": 49.8,
+        "ci95_month_pp": [
+          -0.43,
+          0.664
+        ],
+        "day_equal_excess_pp": 0.128,
+        "day_equal_ci95_pp": [
+          -0.426,
+          0.665
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.17,
+        "baseline_mean_pct": 0.89,
+        "excess_mean_pp": 0.28,
+        "excess_median_pp": -0.315,
+        "signal_win_rate_pct": 53.5,
+        "beat_baseline_pct": 48.0,
+        "ci95_month_pp": [
+          -0.481,
+          1.049
+        ],
+        "day_equal_excess_pp": 0.28,
+        "day_equal_ci95_pp": [
+          -0.491,
+          1.07
+        ]
+      }
+    },
+    "train_2021_24": {
+      "n": 191,
+      "dates": 191,
+      "months": 48,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.231,
+        "baseline_mean_pct": 0.109,
+        "excess_mean_pp": 0.123,
+        "excess_median_pp": -0.111,
+        "signal_win_rate_pct": 42.9,
+        "beat_baseline_pct": 47.6,
+        "ci95_month_pp": [
+          -0.281,
+          0.547
+        ],
+        "day_equal_excess_pp": 0.123,
+        "day_equal_ci95_pp": [
+          -0.303,
+          0.546
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.721,
+        "baseline_mean_pct": 0.294,
+        "excess_mean_pp": 0.427,
+        "excess_median_pp": 0.323,
+        "signal_win_rate_pct": 52.4,
+        "beat_baseline_pct": 52.9,
+        "ci95_month_pp": [
+          -0.078,
+          0.964
+        ],
+        "day_equal_excess_pp": 0.427,
+        "day_equal_ci95_pp": [
+          -0.101,
+          0.962
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.505,
+        "baseline_mean_pct": 0.791,
+        "excess_mean_pp": 0.714,
+        "excess_median_pp": 0.213,
+        "signal_win_rate_pct": 57.1,
+        "beat_baseline_pct": 51.8,
+        "ci95_month_pp": [
+          -0.04,
+          1.453
+        ],
+        "day_equal_excess_pp": 0.714,
+        "day_equal_ci95_pp": [
+          0.021,
+          1.457
+        ]
+      }
+    },
+    "test_2025_26": {
+      "n": 80,
+      "dates": 80,
+      "months": 19,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.461,
+        "baseline_mean_pct": 0.156,
+        "excess_mean_pp": -0.617,
+        "excess_median_pp": -0.287,
+        "signal_win_rate_pct": 42.5,
+        "beat_baseline_pct": 45.0,
+        "ci95_month_pp": [
+          -1.266,
+          0.058
+        ],
+        "day_equal_excess_pp": -0.617,
+        "day_equal_ci95_pp": [
+          -1.267,
+          0.052
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -0.144,
+        "baseline_mean_pct": 0.44,
+        "excess_mean_pp": -0.584,
+        "excess_median_pp": -0.7,
+        "signal_win_rate_pct": 43.8,
+        "beat_baseline_pct": 42.5,
+        "ci95_month_pp": [
+          -1.815,
+          0.674
+        ],
+        "day_equal_excess_pp": -0.584,
+        "day_equal_ci95_pp": [
+          -1.775,
+          0.672
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.372,
+        "baseline_mean_pct": 1.128,
+        "excess_mean_pp": -0.756,
+        "excess_median_pp": -1.659,
+        "signal_win_rate_pct": 45.0,
+        "beat_baseline_pct": 38.8,
+        "ci95_month_pp": [
+          -2.3,
+          1.136
+        ],
+        "day_equal_excess_pp": -0.756,
+        "day_equal_ci95_pp": [
+          -2.354,
+          1.088
+        ]
+      }
+    },
+    "years": {
+      "2021": {
+        "n": 42,
+        "dates": 42,
+        "months": 12,
+        "symbols": 10,
+        "5": {
+          "signal_mean_pct": -0.098,
+          "baseline_mean_pct": -0.008,
+          "excess_mean_pp": -0.089,
+          "excess_median_pp": -0.116,
+          "signal_win_rate_pct": 45.2,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -0.715,
+            0.377
+          ],
+          "day_equal_excess_pp": -0.089,
+          "day_equal_ci95_pp": [
+            -0.677,
+            0.393
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.493,
+          "baseline_mean_pct": 0.257,
+          "excess_mean_pp": 0.236,
+          "excess_median_pp": 0.418,
+          "signal_win_rate_pct": 52.4,
+          "beat_baseline_pct": 54.8,
+          "ci95_month_pp": [
+            -0.971,
+            1.408
+          ],
+          "day_equal_excess_pp": 0.236,
+          "day_equal_ci95_pp": [
+            -1.085,
+            1.414
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 2.001,
+          "baseline_mean_pct": 0.714,
+          "excess_mean_pp": 1.287,
+          "excess_median_pp": 1.832,
+          "signal_win_rate_pct": 59.5,
+          "beat_baseline_pct": 57.1,
+          "ci95_month_pp": [
+            -0.085,
+            2.668
+          ],
+          "day_equal_excess_pp": 1.287,
+          "day_equal_ci95_pp": [
+            -0.119,
+            2.551
+          ]
+        }
+      },
+      "2022": {
+        "n": 44,
+        "dates": 44,
+        "months": 12,
+        "symbols": 11,
+        "5": {
+          "signal_mean_pct": -0.515,
+          "baseline_mean_pct": -0.431,
+          "excess_mean_pp": -0.084,
+          "excess_median_pp": -0.18,
+          "signal_win_rate_pct": 36.4,
+          "beat_baseline_pct": 47.7,
+          "ci95_month_pp": [
+            -0.972,
+            0.926
+          ],
+          "day_equal_excess_pp": -0.084,
+          "day_equal_ci95_pp": [
+            -1.021,
+            0.98
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.27,
+          "baseline_mean_pct": -0.302,
+          "excess_mean_pp": 0.572,
+          "excess_median_pp": 0.976,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 59.1,
+          "ci95_month_pp": [
+            -0.452,
+            1.718
+          ],
+          "day_equal_excess_pp": 0.572,
+          "day_equal_ci95_pp": [
+            -0.462,
+            1.656
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.712,
+          "baseline_mean_pct": 0.094,
+          "excess_mean_pp": 0.618,
+          "excess_median_pp": 1.063,
+          "signal_win_rate_pct": 59.1,
+          "beat_baseline_pct": 56.8,
+          "ci95_month_pp": [
+            -1.156,
+            2.616
+          ],
+          "day_equal_excess_pp": 0.618,
+          "day_equal_ci95_pp": [
+            -1.186,
+            2.571
+          ]
+        }
+      },
+      "2023": {
+        "n": 51,
+        "dates": 51,
+        "months": 12,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.397,
+          "baseline_mean_pct": 0.169,
+          "excess_mean_pp": 0.227,
+          "excess_median_pp": 0.267,
+          "signal_win_rate_pct": 49.0,
+          "beat_baseline_pct": 54.9,
+          "ci95_month_pp": [
+            -0.285,
+            0.814
+          ],
+          "day_equal_excess_pp": 0.227,
+          "day_equal_ci95_pp": [
+            -0.28,
+            0.773
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.687,
+          "baseline_mean_pct": 0.339,
+          "excess_mean_pp": 0.347,
+          "excess_median_pp": -0.154,
+          "signal_win_rate_pct": 49.0,
+          "beat_baseline_pct": 47.1,
+          "ci95_month_pp": [
+            -0.437,
+            1.35
+          ],
+          "day_equal_excess_pp": 0.347,
+          "day_equal_ci95_pp": [
+            -0.453,
+            1.372
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.928,
+          "baseline_mean_pct": 0.747,
+          "excess_mean_pp": 0.182,
+          "excess_median_pp": -0.442,
+          "signal_win_rate_pct": 49.0,
+          "beat_baseline_pct": 41.2,
+          "ci95_month_pp": [
+            -0.898,
+            1.505
+          ],
+          "day_equal_excess_pp": 0.182,
+          "day_equal_ci95_pp": [
+            -0.908,
+            1.508
+          ]
+        }
+      },
+      "2024": {
+        "n": 54,
+        "dates": 54,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.94,
+          "baseline_mean_pct": 0.582,
+          "excess_mean_pp": 0.358,
+          "excess_median_pp": -0.27,
+          "signal_win_rate_pct": 40.7,
+          "beat_baseline_pct": 38.9,
+          "ci95_month_pp": [
+            -0.663,
+            1.311
+          ],
+          "day_equal_excess_pp": 0.358,
+          "day_equal_ci95_pp": [
+            -0.66,
+            1.33
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 1.298,
+          "baseline_mean_pct": 0.766,
+          "excess_mean_pp": 0.531,
+          "excess_median_pp": 0.574,
+          "signal_win_rate_pct": 57.4,
+          "beat_baseline_pct": 51.9,
+          "ci95_month_pp": [
+            -0.516,
+            1.52
+          ],
+          "day_equal_excess_pp": 0.531,
+          "day_equal_ci95_pp": [
+            -0.612,
+            1.519
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 2.31,
+          "baseline_mean_pct": 1.46,
+          "excess_mean_pp": 0.85,
+          "excess_median_pp": 0.92,
+          "signal_win_rate_pct": 61.1,
+          "beat_baseline_pct": 53.7,
+          "ci95_month_pp": [
+            -0.558,
+            2.18
+          ],
+          "day_equal_excess_pp": 0.85,
+          "day_equal_ci95_pp": [
+            -0.666,
+            2.203
+          ]
+        }
+      },
+      "2025": {
+        "n": 47,
+        "dates": 47,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": -0.864,
+          "baseline_mean_pct": 0.076,
+          "excess_mean_pp": -0.94,
+          "excess_median_pp": -0.92,
+          "signal_win_rate_pct": 38.3,
+          "beat_baseline_pct": 40.4,
+          "ci95_month_pp": [
+            -1.564,
+            -0.231
+          ],
+          "day_equal_excess_pp": -0.94,
+          "day_equal_ci95_pp": [
+            -1.599,
+            -0.222
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.162,
+          "baseline_mean_pct": 0.674,
+          "excess_mean_pp": -0.836,
+          "excess_median_pp": -0.676,
+          "signal_win_rate_pct": 44.7,
+          "beat_baseline_pct": 42.6,
+          "ci95_month_pp": [
+            -1.874,
+            0.282
+          ],
+          "day_equal_excess_pp": -0.836,
+          "day_equal_ci95_pp": [
+            -1.883,
+            0.336
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.944,
+          "baseline_mean_pct": 1.369,
+          "excess_mean_pp": -0.426,
+          "excess_median_pp": -0.735,
+          "signal_win_rate_pct": 53.2,
+          "beat_baseline_pct": 42.6,
+          "ci95_month_pp": [
+            -2.334,
+            1.888
+          ],
+          "day_equal_excess_pp": -0.426,
+          "day_equal_ci95_pp": [
+            -2.399,
+            1.773
+          ]
+        }
+      },
+      "2026": {
+        "n": 33,
+        "dates": 33,
+        "months": 7,
+        "symbols": 12,
+        "5": {
+          "signal_mean_pct": 0.113,
+          "baseline_mean_pct": 0.27,
+          "excess_mean_pp": -0.158,
+          "excess_median_pp": 0.216,
+          "signal_win_rate_pct": 48.5,
+          "beat_baseline_pct": 51.5,
+          "ci95_month_pp": [
+            -1.389,
+            0.992
+          ],
+          "day_equal_excess_pp": -0.158,
+          "day_equal_ci95_pp": [
+            -1.36,
+            0.999
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.119,
+          "baseline_mean_pct": 0.105,
+          "excess_mean_pp": -0.225,
+          "excess_median_pp": -1.376,
+          "signal_win_rate_pct": 42.4,
+          "beat_baseline_pct": 42.4,
+          "ci95_month_pp": [
+            -2.769,
+            2.586
+          ],
+          "day_equal_excess_pp": -0.225,
+          "day_equal_ci95_pp": [
+            -2.73,
+            2.728
+          ]
+        },
+        "20": {
+          "signal_mean_pct": -0.442,
+          "baseline_mean_pct": 0.784,
+          "excess_mean_pp": -1.226,
+          "excess_median_pp": -1.957,
+          "signal_win_rate_pct": 33.3,
+          "beat_baseline_pct": 33.3,
+          "ci95_month_pp": [
+            -3.913,
+            1.989
+          ],
+          "day_equal_excess_pp": -1.226,
+          "day_equal_ci95_pp": [
+            -3.922,
+            2.095
+          ]
+        }
+      }
+    }
+  },
+  "matched": {
+    "nearest_any_14": {
+      "match_rate": 0.994,
+      "results": {
+        "all": {
+          "n": 328,
+          "dates": 278,
+          "months": 69,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": -0.004,
+            "baseline_mean_pct": -0.075,
+            "excess_mean_pp": 0.07,
+            "excess_median_pp": -0.102,
+            "signal_win_rate_pct": 42.1,
+            "beat_baseline_pct": 45.7,
+            "ci95_month_pp": [
+              -0.353,
+              0.542
+            ],
+            "day_equal_excess_pp": 0.059,
+            "day_equal_ci95_pp": [
+              -0.354,
+              0.509
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.388,
+            "baseline_mean_pct": 0.361,
+            "excess_mean_pp": 0.027,
+            "excess_median_pp": 0.056,
+            "signal_win_rate_pct": 47.9,
+            "beat_baseline_pct": 50.3,
+            "ci95_month_pp": [
+              -0.524,
+              0.544
+            ],
+            "day_equal_excess_pp": 0.104,
+            "day_equal_ci95_pp": [
+              -0.448,
+              0.643
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.138,
+            "baseline_mean_pct": 0.594,
+            "excess_mean_pp": 0.544,
+            "excess_median_pp": 0.172,
+            "signal_win_rate_pct": 53.4,
+            "beat_baseline_pct": 50.9,
+            "ci95_month_pp": [
+              -0.293,
+              1.407
+            ],
+            "day_equal_excess_pp": 0.616,
+            "day_equal_ci95_pp": [
+              -0.27,
+              1.572
+            ]
+          }
+        },
+        "train_2021_24": {
+          "n": 218,
+          "dates": 191,
+          "months": 48,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": 0.076,
+            "baseline_mean_pct": -0.112,
+            "excess_mean_pp": 0.188,
+            "excess_median_pp": -0.038,
+            "signal_win_rate_pct": 41.7,
+            "beat_baseline_pct": 46.3,
+            "ci95_month_pp": [
+              -0.318,
+              0.773
+            ],
+            "day_equal_excess_pp": 0.19,
+            "day_equal_ci95_pp": [
+              -0.266,
+              0.651
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.479,
+            "baseline_mean_pct": 0.422,
+            "excess_mean_pp": 0.058,
+            "excess_median_pp": 0.004,
+            "signal_win_rate_pct": 49.1,
+            "beat_baseline_pct": 50.0,
+            "ci95_month_pp": [
+              -0.484,
+              0.608
+            ],
+            "day_equal_excess_pp": 0.169,
+            "day_equal_ci95_pp": [
+              -0.405,
+              0.743
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.273,
+            "baseline_mean_pct": 0.691,
+            "excess_mean_pp": 0.582,
+            "excess_median_pp": 0.282,
+            "signal_win_rate_pct": 55.5,
+            "beat_baseline_pct": 50.5,
+            "ci95_month_pp": [
+              -0.263,
+              1.458
+            ],
+            "day_equal_excess_pp": 0.66,
+            "day_equal_ci95_pp": [
+              -0.263,
+              1.587
+            ]
+          }
+        },
+        "test_2025_26": {
+          "n": 110,
+          "dates": 87,
+          "months": 21,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": -0.165,
+            "baseline_mean_pct": -0.002,
+            "excess_mean_pp": -0.163,
+            "excess_median_pp": -0.222,
+            "signal_win_rate_pct": 42.7,
+            "beat_baseline_pct": 44.5,
+            "ci95_month_pp": [
+              -0.915,
+              0.668
+            ],
+            "day_equal_excess_pp": -0.227,
+            "day_equal_ci95_pp": [
+              -1.1,
+              0.745
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.207,
+            "baseline_mean_pct": 0.24,
+            "excess_mean_pp": -0.033,
+            "excess_median_pp": 0.388,
+            "signal_win_rate_pct": 45.5,
+            "beat_baseline_pct": 50.9,
+            "ci95_month_pp": [
+              -1.069,
+              1.052
+            ],
+            "day_equal_excess_pp": -0.038,
+            "day_equal_ci95_pp": [
+              -1.315,
+              1.293
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 0.871,
+            "baseline_mean_pct": 0.403,
+            "excess_mean_pp": 0.468,
+            "excess_median_pp": 0.123,
+            "signal_win_rate_pct": 49.1,
+            "beat_baseline_pct": 51.8,
+            "ci95_month_pp": [
+              -1.306,
+              2.392
+            ],
+            "day_equal_excess_pp": 0.52,
+            "day_equal_ci95_pp": [
+              -1.614,
+              2.7
+            ]
+          }
+        },
+        "years": {
+          "2021": {
+            "n": 45,
+            "dates": 42,
+            "months": 12,
+            "symbols": 10,
+            "5": {
+              "signal_mean_pct": -0.256,
+              "baseline_mean_pct": -0.37,
+              "excess_mean_pp": 0.114,
+              "excess_median_pp": 0.044,
+              "signal_win_rate_pct": 42.2,
+              "beat_baseline_pct": 51.1,
+              "ci95_month_pp": [
+                -0.527,
+                0.794
+              ],
+              "day_equal_excess_pp": 0.099,
+              "day_equal_ci95_pp": [
+                -0.599,
+                0.837
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.301,
+              "baseline_mean_pct": 0.648,
+              "excess_mean_pp": -0.347,
+              "excess_median_pp": -0.296,
+              "signal_win_rate_pct": 51.1,
+              "beat_baseline_pct": 46.7,
+              "ci95_month_pp": [
+                -1.52,
+                0.834
+              ],
+              "day_equal_excess_pp": -0.348,
+              "day_equal_ci95_pp": [
+                -1.664,
+                0.897
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.77,
+              "baseline_mean_pct": 0.801,
+              "excess_mean_pp": 0.97,
+              "excess_median_pp": 0.871,
+              "signal_win_rate_pct": 57.8,
+              "beat_baseline_pct": 55.6,
+              "ci95_month_pp": [
+                -0.201,
+                2.29
+              ],
+              "day_equal_excess_pp": 0.974,
+              "day_equal_ci95_pp": [
+                -0.249,
+                2.415
+              ]
+            }
+          },
+          "2022": {
+            "n": 47,
+            "dates": 44,
+            "months": 12,
+            "symbols": 11,
+            "5": {
+              "signal_mean_pct": -0.624,
+              "baseline_mean_pct": -0.605,
+              "excess_mean_pp": -0.019,
+              "excess_median_pp": 0.0,
+              "signal_win_rate_pct": 34.0,
+              "beat_baseline_pct": 48.9,
+              "ci95_month_pp": [
+                -1.084,
+                0.846
+              ],
+              "day_equal_excess_pp": 0.043,
+              "day_equal_ci95_pp": [
+                -0.968,
+                0.871
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.083,
+              "baseline_mean_pct": -0.351,
+              "excess_mean_pp": 0.434,
+              "excess_median_pp": 1.085,
+              "signal_win_rate_pct": 46.8,
+              "beat_baseline_pct": 61.7,
+              "ci95_month_pp": [
+                -0.895,
+                1.739
+              ],
+              "day_equal_excess_pp": 0.461,
+              "day_equal_ci95_pp": [
+                -0.884,
+                1.72
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.726,
+              "baseline_mean_pct": -0.647,
+              "excess_mean_pp": 1.374,
+              "excess_median_pp": 2.851,
+              "signal_win_rate_pct": 59.6,
+              "beat_baseline_pct": 66.0,
+              "ci95_month_pp": [
+                -0.435,
+                3.54
+              ],
+              "day_equal_excess_pp": 1.371,
+              "day_equal_ci95_pp": [
+                -0.537,
+                3.613
+              ]
+            }
+          },
+          "2023": {
+            "n": 58,
+            "dates": 51,
+            "months": 12,
+            "symbols": 13,
+            "5": {
+              "signal_mean_pct": 0.4,
+              "baseline_mean_pct": 0.165,
+              "excess_mean_pp": 0.235,
+              "excess_median_pp": 0.0,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 44.8,
+              "ci95_month_pp": [
+                -0.299,
+                0.835
+              ],
+              "day_equal_excess_pp": 0.28,
+              "day_equal_ci95_pp": [
+                -0.31,
+                0.929
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.716,
+              "baseline_mean_pct": 0.701,
+              "excess_mean_pp": 0.015,
+              "excess_median_pp": -0.255,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 46.6,
+              "ci95_month_pp": [
+                -0.66,
+                0.888
+              ],
+              "day_equal_excess_pp": 0.225,
+              "day_equal_ci95_pp": [
+                -0.545,
+                1.09
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.89,
+              "baseline_mean_pct": 0.858,
+              "excess_mean_pp": 0.032,
+              "excess_median_pp": -0.549,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 41.4,
+              "ci95_month_pp": [
+                -0.877,
+                1.139
+              ],
+              "day_equal_excess_pp": 0.123,
+              "day_equal_ci95_pp": [
+                -0.825,
+                1.237
+              ]
+            }
+          },
+          "2024": {
+            "n": 68,
+            "dates": 54,
+            "months": 12,
+            "symbols": 14,
+            "5": {
+              "signal_mean_pct": 0.504,
+              "baseline_mean_pct": 0.164,
+              "excess_mean_pp": 0.34,
+              "excess_median_pp": -0.404,
+              "signal_win_rate_pct": 39.7,
+              "beat_baseline_pct": 42.6,
+              "ci95_month_pp": [
+                -0.958,
+                1.803
+              ],
+              "day_equal_excess_pp": 0.294,
+              "day_equal_ci95_pp": [
+                -0.95,
+                1.576
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.67,
+              "baseline_mean_pct": 0.568,
+              "excess_mean_pp": 0.102,
+              "excess_median_pp": -0.116,
+              "signal_win_rate_pct": 48.5,
+              "beat_baseline_pct": 47.1,
+              "ci95_month_pp": [
+                -0.997,
+                1.259
+              ],
+              "day_equal_excess_pp": 0.281,
+              "day_equal_ci95_pp": [
+                -0.978,
+                1.353
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.647,
+              "baseline_mean_pct": 1.4,
+              "excess_mean_pp": 0.248,
+              "excess_median_pp": -0.614,
+              "signal_win_rate_pct": 55.9,
+              "beat_baseline_pct": 44.1,
+              "ci95_month_pp": [
+                -1.895,
+                2.263
+              ],
+              "day_equal_excess_pp": 0.343,
+              "day_equal_ci95_pp": [
+                -2.093,
+                2.598
+              ]
+            }
+          },
+          "2025": {
+            "n": 60,
+            "dates": 47,
+            "months": 12,
+            "symbols": 14,
+            "5": {
+              "signal_mean_pct": -0.799,
+              "baseline_mean_pct": -0.092,
+              "excess_mean_pp": -0.707,
+              "excess_median_pp": -0.354,
+              "signal_win_rate_pct": 36.7,
+              "beat_baseline_pct": 41.7,
+              "ci95_month_pp": [
+                -1.401,
+                0.128
+              ],
+              "day_equal_excess_pp": -0.77,
+              "day_equal_ci95_pp": [
+                -1.757,
+                0.314
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.13,
+              "baseline_mean_pct": -0.137,
+              "excess_mean_pp": 0.008,
+              "excess_median_pp": 0.206,
+              "signal_win_rate_pct": 43.3,
+              "beat_baseline_pct": 50.0,
+              "ci95_month_pp": [
+                -0.882,
+                1.025
+              ],
+              "day_equal_excess_pp": -0.086,
+              "day_equal_ci95_pp": [
+                -1.263,
+                1.26
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.225,
+              "baseline_mean_pct": -0.557,
+              "excess_mean_pp": 1.782,
+              "excess_median_pp": 0.715,
+              "signal_win_rate_pct": 55.0,
+              "beat_baseline_pct": 58.3,
+              "ci95_month_pp": [
+                -0.173,
+                3.744
+              ],
+              "day_equal_excess_pp": 1.715,
+              "day_equal_ci95_pp": [
+                -0.518,
+                4.041
+              ]
+            }
+          },
+          "2026": {
+            "n": 50,
+            "dates": 40,
+            "months": 9,
+            "symbols": 14,
+            "5": {
+              "signal_mean_pct": 0.597,
+              "baseline_mean_pct": 0.107,
+              "excess_mean_pp": 0.49,
+              "excess_median_pp": -0.079,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 48.0,
+              "ci95_month_pp": [
+                -0.843,
+                2.282
+              ],
+              "day_equal_excess_pp": 0.412,
+              "day_equal_ci95_pp": [
+                -1.024,
+                2.241
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.61,
+              "baseline_mean_pct": 0.692,
+              "excess_mean_pp": -0.081,
+              "excess_median_pp": 0.388,
+              "signal_win_rate_pct": 48.0,
+              "beat_baseline_pct": 52.0,
+              "ci95_month_pp": [
+                -2.168,
+                2.738
+              ],
+              "day_equal_excess_pp": 0.019,
+              "day_equal_ci95_pp": [
+                -2.484,
+                2.961
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.445,
+              "baseline_mean_pct": 1.554,
+              "excess_mean_pp": -1.108,
+              "excess_median_pp": -0.652,
+              "signal_win_rate_pct": 42.0,
+              "beat_baseline_pct": 44.0,
+              "ci95_month_pp": [
+                -3.945,
+                2.216
+              ],
+              "day_equal_excess_pp": -0.884,
+              "day_equal_ci95_pp": [
+                -4.643,
+                2.933
+              ]
+            }
+          }
+        }
+      },
+      "avg_abs_past_momentum_gap_pp": {
+        "ret5": 1.824,
+        "ret10": 2.418,
+        "ret26": 3.315
+      }
+    },
+    "momentum_caliper": {
+      "match_rate": 0.755,
+      "results": {
+        "all": {
+          "n": 249,
+          "dates": 221,
+          "months": 66,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": 0.039,
+            "baseline_mean_pct": -0.074,
+            "excess_mean_pp": 0.113,
+            "excess_median_pp": -0.059,
+            "signal_win_rate_pct": 43.0,
+            "beat_baseline_pct": 45.4,
+            "ci95_month_pp": [
+              -0.394,
+              0.635
+            ],
+            "day_equal_excess_pp": 0.206,
+            "day_equal_ci95_pp": [
+              -0.32,
+              0.805
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.524,
+            "baseline_mean_pct": 0.377,
+            "excess_mean_pp": 0.147,
+            "excess_median_pp": 0.103,
+            "signal_win_rate_pct": 48.6,
+            "beat_baseline_pct": 50.6,
+            "ci95_month_pp": [
+              -0.48,
+              0.79
+            ],
+            "day_equal_excess_pp": 0.258,
+            "day_equal_ci95_pp": [
+              -0.342,
+              0.887
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.114,
+            "baseline_mean_pct": 0.599,
+            "excess_mean_pp": 0.515,
+            "excess_median_pp": 0.156,
+            "signal_win_rate_pct": 54.6,
+            "beat_baseline_pct": 51.0,
+            "ci95_month_pp": [
+              -0.504,
+              1.466
+            ],
+            "day_equal_excess_pp": 0.589,
+            "day_equal_ci95_pp": [
+              -0.441,
+              1.551
+            ]
+          }
+        },
+        "train_2021_24": {
+          "n": 173,
+          "dates": 156,
+          "months": 47,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": 0.075,
+            "baseline_mean_pct": -0.076,
+            "excess_mean_pp": 0.151,
+            "excess_median_pp": -0.108,
+            "signal_win_rate_pct": 42.2,
+            "beat_baseline_pct": 44.5,
+            "ci95_month_pp": [
+              -0.428,
+              0.799
+            ],
+            "day_equal_excess_pp": 0.279,
+            "day_equal_ci95_pp": [
+              -0.35,
+              0.991
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.454,
+            "baseline_mean_pct": 0.436,
+            "excess_mean_pp": 0.018,
+            "excess_median_pp": -0.024,
+            "signal_win_rate_pct": 48.0,
+            "beat_baseline_pct": 49.1,
+            "ci95_month_pp": [
+              -0.574,
+              0.636
+            ],
+            "day_equal_excess_pp": 0.175,
+            "day_equal_ci95_pp": [
+              -0.469,
+              0.83
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.214,
+            "baseline_mean_pct": 0.717,
+            "excess_mean_pp": 0.497,
+            "excess_median_pp": 0.0,
+            "signal_win_rate_pct": 56.6,
+            "beat_baseline_pct": 49.7,
+            "ci95_month_pp": [
+              -0.566,
+              1.548
+            ],
+            "day_equal_excess_pp": 0.63,
+            "day_equal_ci95_pp": [
+              -0.392,
+              1.705
+            ]
+          }
+        },
+        "test_2025_26": {
+          "n": 76,
+          "dates": 65,
+          "months": 19,
+          "symbols": 14,
+          "5": {
+            "signal_mean_pct": -0.042,
+            "baseline_mean_pct": -0.071,
+            "excess_mean_pp": 0.028,
+            "excess_median_pp": -0.045,
+            "signal_win_rate_pct": 44.7,
+            "beat_baseline_pct": 47.4,
+            "ci95_month_pp": [
+              -0.839,
+              1.099
+            ],
+            "day_equal_excess_pp": 0.03,
+            "day_equal_ci95_pp": [
+              -1.05,
+              1.122
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.683,
+            "baseline_mean_pct": 0.242,
+            "excess_mean_pp": 0.441,
+            "excess_median_pp": 0.602,
+            "signal_win_rate_pct": 50.0,
+            "beat_baseline_pct": 53.9,
+            "ci95_month_pp": [
+              -1.128,
+              1.963
+            ],
+            "day_equal_excess_pp": 0.459,
+            "day_equal_ci95_pp": [
+              -1.205,
+              1.994
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 0.886,
+            "baseline_mean_pct": 0.329,
+            "excess_mean_pp": 0.557,
+            "excess_median_pp": 0.172,
+            "signal_win_rate_pct": 50.0,
+            "beat_baseline_pct": 53.9,
+            "ci95_month_pp": [
+              -1.605,
+              2.659
+            ],
+            "day_equal_excess_pp": 0.493,
+            "day_equal_ci95_pp": [
+              -1.937,
+              2.768
+            ]
+          }
+        },
+        "years": {
+          "2021": {
+            "n": 35,
+            "dates": 34,
+            "months": 12,
+            "symbols": 10,
+            "5": {
+              "signal_mean_pct": -0.29,
+              "baseline_mean_pct": -0.752,
+              "excess_mean_pp": 0.462,
+              "excess_median_pp": 0.107,
+              "signal_win_rate_pct": 42.9,
+              "beat_baseline_pct": 54.3,
+              "ci95_month_pp": [
+                -0.742,
+                2.015
+              ],
+              "day_equal_excess_pp": 0.485,
+              "day_equal_ci95_pp": [
+                -0.742,
+                2.115
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.129,
+              "baseline_mean_pct": 0.136,
+              "excess_mean_pp": -0.007,
+              "excess_median_pp": -0.296,
+              "signal_win_rate_pct": 45.7,
+              "beat_baseline_pct": 45.7,
+              "ci95_month_pp": [
+                -1.584,
+                1.774
+              ],
+              "day_equal_excess_pp": -0.047,
+              "day_equal_ci95_pp": [
+                -1.764,
+                1.859
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.673,
+              "baseline_mean_pct": -0.265,
+              "excess_mean_pp": 1.938,
+              "excess_median_pp": 1.087,
+              "signal_win_rate_pct": 60.0,
+              "beat_baseline_pct": 57.1,
+              "ci95_month_pp": [
+                -0.372,
+                4.337
+              ],
+              "day_equal_excess_pp": 1.826,
+              "day_equal_ci95_pp": [
+                -0.54,
+                4.226
+              ]
+            }
+          },
+          "2022": {
+            "n": 32,
+            "dates": 30,
+            "months": 11,
+            "symbols": 11,
+            "5": {
+              "signal_mean_pct": -0.698,
+              "baseline_mean_pct": -0.36,
+              "excess_mean_pp": -0.339,
+              "excess_median_pp": -0.154,
+              "signal_win_rate_pct": 34.4,
+              "beat_baseline_pct": 43.8,
+              "ci95_month_pp": [
+                -1.802,
+                0.997
+              ],
+              "day_equal_excess_pp": -0.256,
+              "day_equal_ci95_pp": [
+                -1.56,
+                0.945
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.335,
+              "baseline_mean_pct": -0.818,
+              "excess_mean_pp": 0.483,
+              "excess_median_pp": 0.962,
+              "signal_win_rate_pct": 40.6,
+              "beat_baseline_pct": 59.4,
+              "ci95_month_pp": [
+                -1.17,
+                2.203
+              ],
+              "day_equal_excess_pp": 0.614,
+              "day_equal_ci95_pp": [
+                -1.094,
+                2.265
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.315,
+              "baseline_mean_pct": -0.95,
+              "excess_mean_pp": 1.265,
+              "excess_median_pp": 2.281,
+              "signal_win_rate_pct": 62.5,
+              "beat_baseline_pct": 65.6,
+              "ci95_month_pp": [
+                -0.661,
+                3.488
+              ],
+              "day_equal_excess_pp": 1.3,
+              "day_equal_ci95_pp": [
+                -0.634,
+                3.495
+              ]
+            }
+          },
+          "2023": {
+            "n": 51,
+            "dates": 46,
+            "months": 12,
+            "symbols": 13,
+            "5": {
+              "signal_mean_pct": 0.278,
+              "baseline_mean_pct": 0.107,
+              "excess_mean_pp": 0.171,
+              "excess_median_pp": -0.008,
+              "signal_win_rate_pct": 49.0,
+              "beat_baseline_pct": 41.2,
+              "ci95_month_pp": [
+                -0.3,
+                0.671
+              ],
+              "day_equal_excess_pp": 0.19,
+              "day_equal_ci95_pp": [
+                -0.301,
+                0.747
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.644,
+              "baseline_mean_pct": 0.841,
+              "excess_mean_pp": -0.198,
+              "excess_median_pp": -0.39,
+              "signal_win_rate_pct": 51.0,
+              "beat_baseline_pct": 45.1,
+              "ci95_month_pp": [
+                -0.735,
+                0.559
+              ],
+              "day_equal_excess_pp": -0.003,
+              "day_equal_ci95_pp": [
+                -0.577,
+                0.69
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.884,
+              "baseline_mean_pct": 0.883,
+              "excess_mean_pp": 0.001,
+              "excess_median_pp": -0.468,
+              "signal_win_rate_pct": 49.0,
+              "beat_baseline_pct": 39.2,
+              "ci95_month_pp": [
+                -1.437,
+                1.395
+              ],
+              "day_equal_excess_pp": 0.047,
+              "day_equal_ci95_pp": [
+                -1.406,
+                1.418
+              ]
+            }
+          },
+          "2024": {
+            "n": 55,
+            "dates": 46,
+            "months": 12,
+            "symbols": 14,
+            "5": {
+              "signal_mean_pct": 0.568,
+              "baseline_mean_pct": 0.35,
+              "excess_mean_pp": 0.218,
+              "excess_median_pp": -0.45,
+              "signal_win_rate_pct": 40.0,
+              "beat_baseline_pct": 41.8,
+              "ci95_month_pp": [
+                -0.985,
+                1.659
+              ],
+              "day_equal_excess_pp": 0.564,
+              "day_equal_ci95_pp": [
+                -0.872,
+                2.396
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.945,
+              "baseline_mean_pct": 0.98,
+              "excess_mean_pp": -0.036,
+              "excess_median_pp": -0.059,
+              "signal_win_rate_pct": 50.9,
+              "beat_baseline_pct": 49.1,
+              "ci95_month_pp": [
+                -0.952,
+                0.919
+              ],
+              "day_equal_excess_pp": 0.231,
+              "day_equal_ci95_pp": [
+                -0.81,
+                1.147
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.751,
+              "baseline_mean_pct": 2.158,
+              "excess_mean_pp": -0.407,
+              "excess_median_pp": -0.566,
+              "signal_win_rate_pct": 58.2,
+              "beat_baseline_pct": 45.5,
+              "ci95_month_pp": [
+                -2.682,
+                1.832
+              ],
+              "day_equal_excess_pp": -0.109,
+              "day_equal_ci95_pp": [
+                -2.266,
+                2.137
+              ]
+            }
+          },
+          "2025": {
+            "n": 43,
+            "dates": 36,
+            "months": 11,
+            "symbols": 14,
+            "5": {
+              "signal_mean_pct": -0.521,
+              "baseline_mean_pct": -0.199,
+              "excess_mean_pp": -0.322,
+              "excess_median_pp": -0.044,
+              "signal_win_rate_pct": 41.9,
+              "beat_baseline_pct": 46.5,
+              "ci95_month_pp": [
+                -1.24,
+                0.903
+              ],
+              "day_equal_excess_pp": -0.374,
+              "day_equal_ci95_pp": [
+                -1.711,
+                0.958
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.239,
+              "baseline_mean_pct": -0.313,
+              "excess_mean_pp": 0.552,
+              "excess_median_pp": 0.983,
+              "signal_win_rate_pct": 48.8,
+              "beat_baseline_pct": 58.1,
+              "ci95_month_pp": [
+                -0.542,
+                2.045
+              ],
+              "day_equal_excess_pp": 0.511,
+              "day_equal_ci95_pp": [
+                -0.929,
+                2.193
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.093,
+              "baseline_mean_pct": -1.066,
+              "excess_mean_pp": 2.159,
+              "excess_median_pp": 2.539,
+              "signal_win_rate_pct": 55.8,
+              "beat_baseline_pct": 62.8,
+              "ci95_month_pp": [
+                -0.335,
+                4.964
+              ],
+              "day_equal_excess_pp": 2.123,
+              "day_equal_ci95_pp": [
+                -0.466,
+                5.017
+              ]
+            }
+          },
+          "2026": {
+            "n": 33,
+            "dates": 29,
+            "months": 8,
+            "symbols": 13,
+            "5": {
+              "signal_mean_pct": 0.582,
+              "baseline_mean_pct": 0.097,
+              "excess_mean_pp": 0.485,
+              "excess_median_pp": -0.054,
+              "signal_win_rate_pct": 48.5,
+              "beat_baseline_pct": 48.5,
+              "ci95_month_pp": [
+                -1.231,
+                2.349
+              ],
+              "day_equal_excess_pp": 0.532,
+              "day_equal_ci95_pp": [
+                -1.292,
+                2.534
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 1.262,
+              "baseline_mean_pct": 0.965,
+              "excess_mean_pp": 0.297,
+              "excess_median_pp": -0.227,
+              "signal_win_rate_pct": 51.5,
+              "beat_baseline_pct": 48.5,
+              "ci95_month_pp": [
+                -3.228,
+                3.25
+              ],
+              "day_equal_excess_pp": 0.394,
+              "day_equal_ci95_pp": [
+                -3.539,
+                3.16
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.616,
+              "baseline_mean_pct": 2.147,
+              "excess_mean_pp": -1.531,
+              "excess_median_pp": -0.473,
+              "signal_win_rate_pct": 42.4,
+              "beat_baseline_pct": 42.4,
+              "ci95_month_pp": [
+                -5.968,
+                1.32
+              ],
+              "day_equal_excess_pp": -1.53,
+              "day_equal_ci95_pp": [
+                -6.258,
+                1.86
+              ]
+            }
+          }
+        }
+      },
+      "avg_abs_past_momentum_gap_pp": {
+        "ret5": 1.104,
+        "ret10": 1.669,
+        "ret26": 2.781
+      }
+    },
+    "risk_group_only": {
+      "match_rate": 0.473,
+      "results": {
+        "all": {
+          "n": 156,
+          "dates": 147,
+          "months": 61,
+          "symbols": 11,
+          "5": {
+            "signal_mean_pct": 0.122,
+            "baseline_mean_pct": 0.044,
+            "excess_mean_pp": 0.078,
+            "excess_median_pp": -0.295,
+            "signal_win_rate_pct": 39.7,
+            "beat_baseline_pct": 43.6,
+            "ci95_month_pp": [
+              -0.625,
+              0.891
+            ],
+            "day_equal_excess_pp": 0.101,
+            "day_equal_ci95_pp": [
+              -0.643,
+              0.929
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.265,
+            "baseline_mean_pct": 0.278,
+            "excess_mean_pp": -0.014,
+            "excess_median_pp": -0.141,
+            "signal_win_rate_pct": 44.2,
+            "beat_baseline_pct": 48.7,
+            "ci95_month_pp": [
+              -0.804,
+              0.821
+            ],
+            "day_equal_excess_pp": -0.006,
+            "day_equal_ci95_pp": [
+              -0.84,
+              0.787
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.348,
+            "baseline_mean_pct": 0.969,
+            "excess_mean_pp": 0.38,
+            "excess_median_pp": -0.133,
+            "signal_win_rate_pct": 53.2,
+            "beat_baseline_pct": 47.4,
+            "ci95_month_pp": [
+              -0.964,
+              1.773
+            ],
+            "day_equal_excess_pp": 0.423,
+            "day_equal_ci95_pp": [
+              -0.912,
+              1.881
+            ]
+          }
+        },
+        "train_2021_24": {
+          "n": 104,
+          "dates": 97,
+          "months": 42,
+          "symbols": 11,
+          "5": {
+            "signal_mean_pct": 0.29,
+            "baseline_mean_pct": -0.058,
+            "excess_mean_pp": 0.348,
+            "excess_median_pp": -0.176,
+            "signal_win_rate_pct": 39.4,
+            "beat_baseline_pct": 45.2,
+            "ci95_month_pp": [
+              -0.525,
+              1.473
+            ],
+            "day_equal_excess_pp": 0.416,
+            "day_equal_ci95_pp": [
+              -0.54,
+              1.654
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.415,
+            "baseline_mean_pct": 0.441,
+            "excess_mean_pp": -0.026,
+            "excess_median_pp": -0.087,
+            "signal_win_rate_pct": 46.2,
+            "beat_baseline_pct": 49.0,
+            "ci95_month_pp": [
+              -0.996,
+              0.898
+            ],
+            "day_equal_excess_pp": 0.086,
+            "day_equal_ci95_pp": [
+              -0.872,
+              1.11
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.284,
+            "baseline_mean_pct": 1.047,
+            "excess_mean_pp": 0.237,
+            "excess_median_pp": -0.068,
+            "signal_win_rate_pct": 54.8,
+            "beat_baseline_pct": 48.1,
+            "ci95_month_pp": [
+              -1.258,
+              1.678
+            ],
+            "day_equal_excess_pp": 0.402,
+            "day_equal_ci95_pp": [
+              -0.993,
+              1.909
+            ]
+          }
+        },
+        "test_2025_26": {
+          "n": 52,
+          "dates": 50,
+          "months": 19,
+          "symbols": 11,
+          "5": {
+            "signal_mean_pct": -0.215,
+            "baseline_mean_pct": 0.247,
+            "excess_mean_pp": -0.462,
+            "excess_median_pp": -0.334,
+            "signal_win_rate_pct": 40.4,
+            "beat_baseline_pct": 40.4,
+            "ci95_month_pp": [
+              -1.743,
+              0.439
+            ],
+            "day_equal_excess_pp": -0.512,
+            "day_equal_ci95_pp": [
+              -1.784,
+              0.395
+            ]
+          },
+          "10": {
+            "signal_mean_pct": -0.037,
+            "baseline_mean_pct": -0.047,
+            "excess_mean_pp": 0.01,
+            "excess_median_pp": -0.247,
+            "signal_win_rate_pct": 40.4,
+            "beat_baseline_pct": 48.1,
+            "ci95_month_pp": [
+              -1.554,
+              1.72
+            ],
+            "day_equal_excess_pp": -0.185,
+            "day_equal_ci95_pp": [
+              -1.688,
+              1.365
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.478,
+            "baseline_mean_pct": 0.812,
+            "excess_mean_pp": 0.666,
+            "excess_median_pp": -0.427,
+            "signal_win_rate_pct": 50.0,
+            "beat_baseline_pct": 46.2,
+            "ci95_month_pp": [
+              -2.007,
+              3.592
+            ],
+            "day_equal_excess_pp": 0.462,
+            "day_equal_ci95_pp": [
+              -1.958,
+              3.551
+            ]
+          }
+        },
+        "years": {
+          "2021": {
+            "n": 20,
+            "dates": 20,
+            "months": 10,
+            "symbols": 7,
+            "5": {
+              "signal_mean_pct": -0.429,
+              "baseline_mean_pct": -0.444,
+              "excess_mean_pp": 0.014,
+              "excess_median_pp": -0.104,
+              "signal_win_rate_pct": 35.0,
+              "beat_baseline_pct": 45.0,
+              "ci95_month_pp": [
+                -1.393,
+                1.897
+              ],
+              "day_equal_excess_pp": 0.014,
+              "day_equal_ci95_pp": [
+                -1.446,
+                1.918
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.434,
+              "baseline_mean_pct": 1.027,
+              "excess_mean_pp": -1.461,
+              "excess_median_pp": -1.643,
+              "signal_win_rate_pct": 40.0,
+              "beat_baseline_pct": 40.0,
+              "ci95_month_pp": [
+                -3.291,
+                0.427
+              ],
+              "day_equal_excess_pp": -1.461,
+              "day_equal_ci95_pp": [
+                -3.249,
+                0.415
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 1.821,
+              "baseline_mean_pct": 1.133,
+              "excess_mean_pp": 0.687,
+              "excess_median_pp": 1.591,
+              "signal_win_rate_pct": 55.0,
+              "beat_baseline_pct": 60.0,
+              "ci95_month_pp": [
+                -0.896,
+                2.97
+              ],
+              "day_equal_excess_pp": 0.687,
+              "day_equal_ci95_pp": [
+                -0.958,
+                3.025
+              ]
+            }
+          },
+          "2022": {
+            "n": 20,
+            "dates": 20,
+            "months": 9,
+            "symbols": 8,
+            "5": {
+              "signal_mean_pct": -0.783,
+              "baseline_mean_pct": -0.3,
+              "excess_mean_pp": -0.483,
+              "excess_median_pp": -0.38,
+              "signal_win_rate_pct": 25.0,
+              "beat_baseline_pct": 45.0,
+              "ci95_month_pp": [
+                -1.91,
+                1.212
+              ],
+              "day_equal_excess_pp": -0.483,
+              "day_equal_ci95_pp": [
+                -1.915,
+                1.341
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.567,
+              "baseline_mean_pct": -0.979,
+              "excess_mean_pp": 0.413,
+              "excess_median_pp": 1.426,
+              "signal_win_rate_pct": 35.0,
+              "beat_baseline_pct": 60.0,
+              "ci95_month_pp": [
+                -1.731,
+                3.017
+              ],
+              "day_equal_excess_pp": 0.413,
+              "day_equal_ci95_pp": [
+                -1.835,
+                3.119
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.922,
+              "baseline_mean_pct": -0.343,
+              "excess_mean_pp": 1.265,
+              "excess_median_pp": 1.696,
+              "signal_win_rate_pct": 60.0,
+              "beat_baseline_pct": 55.0,
+              "ci95_month_pp": [
+                -2.319,
+                5.793
+              ],
+              "day_equal_excess_pp": 1.265,
+              "day_equal_ci95_pp": [
+                -2.5,
+                6.005
+              ]
+            }
+          },
+          "2023": {
+            "n": 23,
+            "dates": 21,
+            "months": 11,
+            "symbols": 9,
+            "5": {
+              "signal_mean_pct": 0.501,
+              "baseline_mean_pct": 0.539,
+              "excess_mean_pp": -0.037,
+              "excess_median_pp": -0.246,
+              "signal_win_rate_pct": 60.9,
+              "beat_baseline_pct": 43.5,
+              "ci95_month_pp": [
+                -1.068,
+                1.191
+              ],
+              "day_equal_excess_pp": 0.033,
+              "day_equal_ci95_pp": [
+                -1.161,
+                1.338
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.354,
+              "baseline_mean_pct": 0.325,
+              "excess_mean_pp": 0.03,
+              "excess_median_pp": -0.213,
+              "signal_win_rate_pct": 47.8,
+              "beat_baseline_pct": 47.8,
+              "ci95_month_pp": [
+                -1.182,
+                1.787
+              ],
+              "day_equal_excess_pp": 0.114,
+              "day_equal_ci95_pp": [
+                -1.138,
+                1.803
+              ]
+            },
+            "20": {
+              "signal_mean_pct": -0.48,
+              "baseline_mean_pct": 0.578,
+              "excess_mean_pp": -1.058,
+              "excess_median_pp": -0.398,
+              "signal_win_rate_pct": 39.1,
+              "beat_baseline_pct": 34.8,
+              "ci95_month_pp": [
+                -3.074,
+                1.665
+              ],
+              "day_equal_excess_pp": -1.036,
+              "day_equal_ci95_pp": [
+                -3.308,
+                1.82
+              ]
+            }
+          },
+          "2024": {
+            "n": 41,
+            "dates": 36,
+            "months": 12,
+            "symbols": 11,
+            "5": {
+              "signal_mean_pct": 1.047,
+              "baseline_mean_pct": -0.086,
+              "excess_mean_pp": 1.133,
+              "excess_median_pp": -0.401,
+              "signal_win_rate_pct": 36.6,
+              "beat_baseline_pct": 46.3,
+              "ci95_month_pp": [
+                -0.535,
+                3.471
+              ],
+              "day_equal_excess_pp": 1.363,
+              "day_equal_ci95_pp": [
+                -0.611,
+                4.147
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 1.342,
+              "baseline_mean_pct": 0.913,
+              "excess_mean_pp": 0.429,
+              "excess_median_pp": -0.173,
+              "signal_win_rate_pct": 53.7,
+              "beat_baseline_pct": 48.8,
+              "ci95_month_pp": [
+                -1.139,
+                1.94
+              ],
+              "day_equal_excess_pp": 0.747,
+              "day_equal_ci95_pp": [
+                -0.819,
+                2.138
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 2.188,
+              "baseline_mean_pct": 1.947,
+              "excess_mean_pp": 0.241,
+              "excess_median_pp": -0.315,
+              "signal_win_rate_pct": 61.0,
+              "beat_baseline_pct": 46.3,
+              "ci95_month_pp": [
+                -2.656,
+                2.679
+              ],
+              "day_equal_excess_pp": 0.603,
+              "day_equal_ci95_pp": [
+                -2.385,
+                2.943
+              ]
+            }
+          },
+          "2025": {
+            "n": 26,
+            "dates": 24,
+            "months": 10,
+            "symbols": 11,
+            "5": {
+              "signal_mean_pct": -1.33,
+              "baseline_mean_pct": -0.235,
+              "excess_mean_pp": -1.095,
+              "excess_median_pp": -0.478,
+              "signal_win_rate_pct": 26.9,
+              "beat_baseline_pct": 34.6,
+              "ci95_month_pp": [
+                -3.459,
+                0.368
+              ],
+              "day_equal_excess_pp": -1.252,
+              "day_equal_ci95_pp": [
+                -3.718,
+                0.261
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.997,
+              "baseline_mean_pct": -0.177,
+              "excess_mean_pp": -0.82,
+              "excess_median_pp": -1.161,
+              "signal_win_rate_pct": 30.8,
+              "beat_baseline_pct": 42.3,
+              "ci95_month_pp": [
+                -3.189,
+                0.795
+              ],
+              "day_equal_excess_pp": -1.296,
+              "day_equal_ci95_pp": [
+                -3.385,
+                0.194
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.778,
+              "baseline_mean_pct": -0.109,
+              "excess_mean_pp": 0.887,
+              "excess_median_pp": 0.768,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 53.8,
+              "ci95_month_pp": [
+                -2.227,
+                4.295
+              ],
+              "day_equal_excess_pp": 0.481,
+              "day_equal_ci95_pp": [
+                -2.529,
+                4.355
+              ]
+            }
+          },
+          "2026": {
+            "n": 26,
+            "dates": 26,
+            "months": 9,
+            "symbols": 10,
+            "5": {
+              "signal_mean_pct": 0.9,
+              "baseline_mean_pct": 0.729,
+              "excess_mean_pp": 0.172,
+              "excess_median_pp": -0.284,
+              "signal_win_rate_pct": 53.8,
+              "beat_baseline_pct": 46.2,
+              "ci95_month_pp": [
+                -0.903,
+                1.21
+              ],
+              "day_equal_excess_pp": 0.172,
+              "day_equal_ci95_pp": [
+                -0.845,
+                1.337
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 0.923,
+              "baseline_mean_pct": 0.083,
+              "excess_mean_pp": 0.84,
+              "excess_median_pp": 0.658,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 53.8,
+              "ci95_month_pp": [
+                -1.416,
+                4.555
+              ],
+              "day_equal_excess_pp": 0.84,
+              "day_equal_ci95_pp": [
+                -1.247,
+                4.355
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 2.178,
+              "baseline_mean_pct": 1.733,
+              "excess_mean_pp": 0.445,
+              "excess_median_pp": -1.652,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 38.5,
+              "ci95_month_pp": [
+                -3.747,
+                5.775
+              ],
+              "day_equal_excess_pp": 0.445,
+              "day_equal_ci95_pp": [
+                -3.774,
+                5.815
+              ]
+            }
+          }
+        }
+      },
+      "avg_abs_past_momentum_gap_pp": {
+        "ret5": 2.934,
+        "ret10": 4.136,
+        "ret26": 5.277
+      }
+    },
+    "risk_group_and_caliper": {
+      "match_rate": 0.239,
+      "results": {
+        "all": {
+          "n": 79,
+          "dates": 74,
+          "months": 43,
+          "symbols": 11,
+          "5": {
+            "signal_mean_pct": 0.16,
+            "baseline_mean_pct": 0.165,
+            "excess_mean_pp": -0.004,
+            "excess_median_pp": -0.49,
+            "signal_win_rate_pct": 39.2,
+            "beat_baseline_pct": 38.0,
+            "ci95_month_pp": [
+              -1.262,
+              1.436
+            ],
+            "day_equal_excess_pp": 0.042,
+            "day_equal_ci95_pp": [
+              -1.326,
+              1.609
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.472,
+            "baseline_mean_pct": 0.534,
+            "excess_mean_pp": -0.062,
+            "excess_median_pp": -0.319,
+            "signal_win_rate_pct": 45.6,
+            "beat_baseline_pct": 46.8,
+            "ci95_month_pp": [
+              -1.343,
+              1.208
+            ],
+            "day_equal_excess_pp": -0.047,
+            "day_equal_ci95_pp": [
+              -1.307,
+              1.303
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.252,
+            "baseline_mean_pct": 1.701,
+            "excess_mean_pp": -0.449,
+            "excess_median_pp": -0.078,
+            "signal_win_rate_pct": 54.4,
+            "beat_baseline_pct": 48.1,
+            "ci95_month_pp": [
+              -2.349,
+              1.285
+            ],
+            "day_equal_excess_pp": -0.42,
+            "day_equal_ci95_pp": [
+              -2.321,
+              1.381
+            ]
+          }
+        },
+        "train_2021_24": {
+          "n": 54,
+          "dates": 50,
+          "months": 30,
+          "symbols": 11,
+          "5": {
+            "signal_mean_pct": 0.581,
+            "baseline_mean_pct": 0.242,
+            "excess_mean_pp": 0.339,
+            "excess_median_pp": -0.665,
+            "signal_win_rate_pct": 38.9,
+            "beat_baseline_pct": 37.0,
+            "ci95_month_pp": [
+              -1.105,
+              2.071
+            ],
+            "day_equal_excess_pp": 0.494,
+            "day_equal_ci95_pp": [
+              -1.125,
+              2.722
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.684,
+            "baseline_mean_pct": 0.93,
+            "excess_mean_pp": -0.246,
+            "excess_median_pp": -0.405,
+            "signal_win_rate_pct": 48.1,
+            "beat_baseline_pct": 44.4,
+            "ci95_month_pp": [
+              -1.762,
+              1.1
+            ],
+            "day_equal_excess_pp": -0.123,
+            "day_equal_ci95_pp": [
+              -1.646,
+              1.265
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 1.728,
+            "baseline_mean_pct": 1.822,
+            "excess_mean_pp": -0.094,
+            "excess_median_pp": -0.068,
+            "signal_win_rate_pct": 57.4,
+            "beat_baseline_pct": 48.1,
+            "ci95_month_pp": [
+              -2.599,
+              2.188
+            ],
+            "day_equal_excess_pp": 0.133,
+            "day_equal_ci95_pp": [
+              -2.067,
+              2.353
+            ]
+          }
+        },
+        "test_2025_26": {
+          "n": 25,
+          "dates": 24,
+          "months": 13,
+          "symbols": 10,
+          "5": {
+            "signal_mean_pct": -0.748,
+            "baseline_mean_pct": -0.002,
+            "excess_mean_pp": -0.745,
+            "excess_median_pp": -0.247,
+            "signal_win_rate_pct": 40.0,
+            "beat_baseline_pct": 40.0,
+            "ci95_month_pp": [
+              -3.114,
+              0.97
+            ],
+            "day_equal_excess_pp": -0.899,
+            "day_equal_ci95_pp": [
+              -3.677,
+              0.84
+            ]
+          },
+          "10": {
+            "signal_mean_pct": 0.014,
+            "baseline_mean_pct": -0.32,
+            "excess_mean_pp": 0.335,
+            "excess_median_pp": 0.216,
+            "signal_win_rate_pct": 40.0,
+            "beat_baseline_pct": 52.0,
+            "ci95_month_pp": [
+              -2.405,
+              2.796
+            ],
+            "day_equal_excess_pp": 0.112,
+            "day_equal_ci95_pp": [
+              -2.538,
+              2.921
+            ]
+          },
+          "20": {
+            "signal_mean_pct": 0.225,
+            "baseline_mean_pct": 1.44,
+            "excess_mean_pp": -1.215,
+            "excess_median_pp": -0.306,
+            "signal_win_rate_pct": 48.0,
+            "beat_baseline_pct": 48.0,
+            "ci95_month_pp": [
+              -3.996,
+              1.052
+            ],
+            "day_equal_excess_pp": -1.572,
+            "day_equal_ci95_pp": [
+              -4.248,
+              0.539
+            ]
+          }
+        },
+        "years": {
+          "2021": {
+            "n": 8,
+            "dates": 8,
+            "months": 5,
+            "symbols": 4,
+            "5": {
+              "signal_mean_pct": -1.087,
+              "baseline_mean_pct": -0.368,
+              "excess_mean_pp": -0.72,
+              "excess_median_pp": -0.554,
+              "signal_win_rate_pct": 25.0,
+              "beat_baseline_pct": 37.5,
+              "ci95_month_pp": [
+                -4.169,
+                0.932
+              ],
+              "day_equal_excess_pp": -0.72,
+              "day_equal_ci95_pp": [
+                -4.169,
+                0.935
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -0.518,
+              "baseline_mean_pct": -0.042,
+              "excess_mean_pp": -0.475,
+              "excess_median_pp": 0.368,
+              "signal_win_rate_pct": 25.0,
+              "beat_baseline_pct": 50.0,
+              "ci95_month_pp": [
+                -5.433,
+                2.218
+              ],
+              "day_equal_excess_pp": -0.475,
+              "day_equal_ci95_pp": [
+                -5.227,
+                2.206
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 2.397,
+              "baseline_mean_pct": 0.101,
+              "excess_mean_pp": 2.296,
+              "excess_median_pp": 2.269,
+              "signal_win_rate_pct": 37.5,
+              "beat_baseline_pct": 75.0,
+              "ci95_month_pp": [
+                -1.387,
+                4.658
+              ],
+              "day_equal_excess_pp": 2.296,
+              "day_equal_ci95_pp": [
+                -1.669,
+                4.658
+              ]
+            }
+          },
+          "2022": {
+            "n": 7,
+            "dates": 7,
+            "months": 6,
+            "symbols": 5,
+            "5": {
+              "signal_mean_pct": -1.478,
+              "baseline_mean_pct": 0.191,
+              "excess_mean_pp": -1.669,
+              "excess_median_pp": -2.164,
+              "signal_win_rate_pct": 42.9,
+              "beat_baseline_pct": 28.6,
+              "ci95_month_pp": [
+                -4.363,
+                2.352
+              ],
+              "day_equal_excess_pp": -1.669,
+              "day_equal_ci95_pp": [
+                -4.28,
+                2.258
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -2.432,
+              "baseline_mean_pct": 0.826,
+              "excess_mean_pp": -3.259,
+              "excess_median_pp": -6.119,
+              "signal_win_rate_pct": 28.6,
+              "beat_baseline_pct": 28.6,
+              "ci95_month_pp": [
+                -7.069,
+                1.477
+              ],
+              "day_equal_excess_pp": -3.259,
+              "day_equal_ci95_pp": [
+                -7.004,
+                1.735
+              ]
+            },
+            "20": {
+              "signal_mean_pct": -1.517,
+              "baseline_mean_pct": 1.845,
+              "excess_mean_pp": -3.361,
+              "excess_median_pp": -3.313,
+              "signal_win_rate_pct": 57.1,
+              "beat_baseline_pct": 42.9,
+              "ci95_month_pp": [
+                -8.81,
+                2.531
+              ],
+              "day_equal_excess_pp": -3.361,
+              "day_equal_ci95_pp": [
+                -9.009,
+                2.987
+              ]
+            }
+          },
+          "2023": {
+            "n": 14,
+            "dates": 13,
+            "months": 9,
+            "symbols": 7,
+            "5": {
+              "signal_mean_pct": 0.443,
+              "baseline_mean_pct": 0.204,
+              "excess_mean_pp": 0.239,
+              "excess_median_pp": -0.123,
+              "signal_win_rate_pct": 57.1,
+              "beat_baseline_pct": 42.9,
+              "ci95_month_pp": [
+                -0.995,
+                1.853
+              ],
+              "day_equal_excess_pp": 0.468,
+              "day_equal_ci95_pp": [
+                -0.89,
+                1.933
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 1.186,
+              "baseline_mean_pct": 0.212,
+              "excess_mean_pp": 0.974,
+              "excess_median_pp": 1.676,
+              "signal_win_rate_pct": 64.3,
+              "beat_baseline_pct": 57.1,
+              "ci95_month_pp": [
+                -0.931,
+                4.134
+              ],
+              "day_equal_excess_pp": 1.496,
+              "day_equal_ci95_pp": [
+                -0.173,
+                4.03
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.265,
+              "baseline_mean_pct": 0.175,
+              "excess_mean_pp": 0.09,
+              "excess_median_pp": -0.129,
+              "signal_win_rate_pct": 50.0,
+              "beat_baseline_pct": 35.7,
+              "ci95_month_pp": [
+                -2.188,
+                3.895
+              ],
+              "day_equal_excess_pp": 0.626,
+              "day_equal_ci95_pp": [
+                -1.598,
+                4.079
+              ]
+            }
+          },
+          "2024": {
+            "n": 25,
+            "dates": 22,
+            "months": 10,
+            "symbols": 10,
+            "5": {
+              "signal_mean_pct": 1.768,
+              "baseline_mean_pct": 0.473,
+              "excess_mean_pp": 1.296,
+              "excess_median_pp": -0.679,
+              "signal_win_rate_pct": 32.0,
+              "beat_baseline_pct": 36.0,
+              "ci95_month_pp": [
+                -1.292,
+                4.505
+              ],
+              "day_equal_excess_pp": 1.639,
+              "day_equal_ci95_pp": [
+                -1.436,
+                5.906
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 1.66,
+              "baseline_mean_pct": 1.672,
+              "excess_mean_pp": -0.012,
+              "excess_median_pp": -0.592,
+              "signal_win_rate_pct": 52.0,
+              "beat_baseline_pct": 40.0,
+              "ci95_month_pp": [
+                -1.957,
+                2.024
+              ],
+              "day_equal_excess_pp": 0.046,
+              "day_equal_ci95_pp": [
+                -1.982,
+                1.916
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 3.242,
+              "baseline_mean_pct": 3.288,
+              "excess_mean_pp": -0.046,
+              "excess_median_pp": -0.401,
+              "signal_win_rate_pct": 68.0,
+              "beat_baseline_pct": 48.0,
+              "ci95_month_pp": [
+                -4.519,
+                4.093
+              ],
+              "day_equal_excess_pp": 0.168,
+              "day_equal_ci95_pp": [
+                -4.304,
+                4.488
+              ]
+            }
+          },
+          "2025": {
+            "n": 14,
+            "dates": 13,
+            "months": 7,
+            "symbols": 9,
+            "5": {
+              "signal_mean_pct": -1.535,
+              "baseline_mean_pct": -0.281,
+              "excess_mean_pp": -1.254,
+              "excess_median_pp": -0.186,
+              "signal_win_rate_pct": 28.6,
+              "beat_baseline_pct": 42.9,
+              "ci95_month_pp": [
+                -6.166,
+                0.684
+              ],
+              "day_equal_excess_pp": -1.578,
+              "day_equal_ci95_pp": [
+                -6.723,
+                0.429
+              ]
+            },
+            "10": {
+              "signal_mean_pct": -1.26,
+              "baseline_mean_pct": -0.741,
+              "excess_mean_pp": -0.519,
+              "excess_median_pp": -0.085,
+              "signal_win_rate_pct": 21.4,
+              "beat_baseline_pct": 50.0,
+              "ci95_month_pp": [
+                -4.211,
+                1.146
+              ],
+              "day_equal_excess_pp": -0.995,
+              "day_equal_ci95_pp": [
+                -4.487,
+                0.667
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.191,
+              "baseline_mean_pct": -0.507,
+              "excess_mean_pp": 0.698,
+              "excess_median_pp": 2.07,
+              "signal_win_rate_pct": 57.1,
+              "beat_baseline_pct": 64.3,
+              "ci95_month_pp": [
+                -3.157,
+                3.137
+              ],
+              "day_equal_excess_pp": 0.186,
+              "day_equal_ci95_pp": [
+                -3.561,
+                2.639
+              ]
+            }
+          },
+          "2026": {
+            "n": 11,
+            "dates": 11,
+            "months": 6,
+            "symbols": 7,
+            "5": {
+              "signal_mean_pct": 0.254,
+              "baseline_mean_pct": 0.352,
+              "excess_mean_pp": -0.097,
+              "excess_median_pp": -0.321,
+              "signal_win_rate_pct": 54.5,
+              "beat_baseline_pct": 36.4,
+              "ci95_month_pp": [
+                -2.339,
+                2.145
+              ],
+              "day_equal_excess_pp": -0.097,
+              "day_equal_ci95_pp": [
+                -2.37,
+                2.121
+              ]
+            },
+            "10": {
+              "signal_mean_pct": 1.636,
+              "baseline_mean_pct": 0.216,
+              "excess_mean_pp": 1.421,
+              "excess_median_pp": 0.413,
+              "signal_win_rate_pct": 63.6,
+              "beat_baseline_pct": 54.5,
+              "ci95_month_pp": [
+                -3.051,
+                6.306
+              ],
+              "day_equal_excess_pp": 1.421,
+              "day_equal_ci95_pp": [
+                -3.043,
+                6.119
+              ]
+            },
+            "20": {
+              "signal_mean_pct": 0.268,
+              "baseline_mean_pct": 3.919,
+              "excess_mean_pp": -3.651,
+              "excess_median_pp": -3.825,
+              "signal_win_rate_pct": 36.4,
+              "beat_baseline_pct": 27.3,
+              "ci95_month_pp": [
+                -7.678,
+                -0.918
+              ],
+              "day_equal_excess_pp": -3.651,
+              "day_equal_ci95_pp": [
+                -7.714,
+                -0.842
+              ]
+            }
+          }
+        }
+      },
+      "avg_abs_past_momentum_gap_pp": {
+        "ret5": 1.293,
+        "ret10": 1.762,
+        "ret26": 3.225
+      }
+    }
+  },
+  "exclude_2026_seam": {
+    "all": {
+      "n": 298,
+      "dates": 253,
+      "months": 64,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.063,
+        "baseline_mean_pct": 0.237,
+        "excess_mean_pp": -0.3,
+        "excess_median_pp": -0.257,
+        "signal_win_rate_pct": 41.3,
+        "beat_baseline_pct": 44.6,
+        "ci95_month_pp": [
+          -0.603,
+          0.046
+        ],
+        "day_equal_excess_pp": -0.236,
+        "day_equal_ci95_pp": [
+          -0.586,
+          0.111
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.386,
+        "baseline_mean_pct": 0.456,
+        "excess_mean_pp": -0.07,
+        "excess_median_pp": -0.232,
+        "signal_win_rate_pct": 47.7,
+        "beat_baseline_pct": 46.3,
+        "ci95_month_pp": [
+          -0.516,
+          0.381
+        ],
+        "day_equal_excess_pp": 0.041,
+        "day_equal_ci95_pp": [
+          -0.452,
+          0.597
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.231,
+        "baseline_mean_pct": 0.945,
+        "excess_mean_pp": 0.286,
+        "excess_median_pp": -0.024,
+        "signal_win_rate_pct": 54.0,
+        "beat_baseline_pct": 49.7,
+        "ci95_month_pp": [
+          -0.291,
+          0.938
+        ],
+        "day_equal_excess_pp": 0.4,
+        "day_equal_ci95_pp": [
+          -0.301,
+          1.201
+        ]
+      }
+    },
+    "train_2021_24": {
+      "n": 218,
+      "dates": 191,
+      "months": 48,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.076,
+        "baseline_mean_pct": 0.182,
+        "excess_mean_pp": -0.106,
+        "excess_median_pp": -0.17,
+        "signal_win_rate_pct": 41.7,
+        "beat_baseline_pct": 46.8,
+        "ci95_month_pp": [
+          -0.457,
+          0.287
+        ],
+        "day_equal_excess_pp": -0.037,
+        "day_equal_ci95_pp": [
+          -0.435,
+          0.356
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.479,
+        "baseline_mean_pct": 0.313,
+        "excess_mean_pp": 0.167,
+        "excess_median_pp": 0.014,
+        "signal_win_rate_pct": 49.1,
+        "beat_baseline_pct": 50.0,
+        "ci95_month_pp": [
+          -0.315,
+          0.705
+        ],
+        "day_equal_excess_pp": 0.283,
+        "day_equal_ci95_pp": [
+          -0.267,
+          0.824
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.273,
+        "baseline_mean_pct": 0.82,
+        "excess_mean_pp": 0.452,
+        "excess_median_pp": 0.26,
+        "signal_win_rate_pct": 55.5,
+        "beat_baseline_pct": 51.8,
+        "ci95_month_pp": [
+          -0.217,
+          1.125
+        ],
+        "day_equal_excess_pp": 0.555,
+        "day_equal_ci95_pp": [
+          -0.15,
+          1.317
+        ]
+      }
+    },
+    "test_2025_26": {
+      "n": 80,
+      "dates": 62,
+      "months": 16,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.443,
+        "baseline_mean_pct": 0.385,
+        "excess_mean_pp": -0.829,
+        "excess_median_pp": -0.921,
+        "signal_win_rate_pct": 40.0,
+        "beat_baseline_pct": 38.8,
+        "ci95_month_pp": [
+          -1.329,
+          -0.338
+        ],
+        "day_equal_excess_pp": -0.848,
+        "day_equal_ci95_pp": [
+          -1.454,
+          -0.224
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.13,
+        "baseline_mean_pct": 0.846,
+        "excess_mean_pp": -0.716,
+        "excess_median_pp": -0.998,
+        "signal_win_rate_pct": 43.8,
+        "beat_baseline_pct": 36.2,
+        "ci95_month_pp": [
+          -1.53,
+          0.284
+        ],
+        "day_equal_excess_pp": -0.704,
+        "day_equal_ci95_pp": [
+          -1.744,
+          0.666
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.118,
+        "baseline_mean_pct": 1.283,
+        "excess_mean_pp": -0.166,
+        "excess_median_pp": -1.256,
+        "signal_win_rate_pct": 50.0,
+        "beat_baseline_pct": 43.8,
+        "ci95_month_pp": [
+          -1.412,
+          1.468
+        ],
+        "day_equal_excess_pp": -0.078,
+        "day_equal_ci95_pp": [
+          -1.676,
+          2.043
+        ]
+      }
+    },
+    "years": {
+      "2021": {
+        "n": 45,
+        "dates": 42,
+        "months": 12,
+        "symbols": 10,
+        "5": {
+          "signal_mean_pct": -0.256,
+          "baseline_mean_pct": -0.057,
+          "excess_mean_pp": -0.198,
+          "excess_median_pp": -0.43,
+          "signal_win_rate_pct": 42.2,
+          "beat_baseline_pct": 48.9,
+          "ci95_month_pp": [
+            -0.739,
+            0.234
+          ],
+          "day_equal_excess_pp": -0.164,
+          "day_equal_ci95_pp": [
+            -0.737,
+            0.302
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.301,
+          "baseline_mean_pct": 0.27,
+          "excess_mean_pp": 0.031,
+          "excess_median_pp": 0.335,
+          "signal_win_rate_pct": 51.1,
+          "beat_baseline_pct": 53.3,
+          "ci95_month_pp": [
+            -1.133,
+            1.208
+          ],
+          "day_equal_excess_pp": 0.087,
+          "day_equal_ci95_pp": [
+            -1.224,
+            1.335
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.77,
+          "baseline_mean_pct": 0.869,
+          "excess_mean_pp": 0.901,
+          "excess_median_pp": 1.328,
+          "signal_win_rate_pct": 57.8,
+          "beat_baseline_pct": 55.6,
+          "ci95_month_pp": [
+            -0.233,
+            2.097
+          ],
+          "day_equal_excess_pp": 1.011,
+          "day_equal_ci95_pp": [
+            -0.287,
+            2.211
+          ]
+        }
+      },
+      "2022": {
+        "n": 47,
+        "dates": 44,
+        "months": 12,
+        "symbols": 11,
+        "5": {
+          "signal_mean_pct": -0.624,
+          "baseline_mean_pct": -0.414,
+          "excess_mean_pp": -0.21,
+          "excess_median_pp": -0.284,
+          "signal_win_rate_pct": 34.0,
+          "beat_baseline_pct": 44.7,
+          "ci95_month_pp": [
+            -1.083,
+            0.838
+          ],
+          "day_equal_excess_pp": -0.198,
+          "day_equal_ci95_pp": [
+            -1.161,
+            0.915
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.083,
+          "baseline_mean_pct": -0.21,
+          "excess_mean_pp": 0.293,
+          "excess_median_pp": 0.722,
+          "signal_win_rate_pct": 46.8,
+          "beat_baseline_pct": 55.3,
+          "ci95_month_pp": [
+            -0.821,
+            1.561
+          ],
+          "day_equal_excess_pp": 0.33,
+          "day_equal_ci95_pp": [
+            -0.832,
+            1.525
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.726,
+          "baseline_mean_pct": 0.191,
+          "excess_mean_pp": 0.536,
+          "excess_median_pp": 0.98,
+          "signal_win_rate_pct": 59.6,
+          "beat_baseline_pct": 55.3,
+          "ci95_month_pp": [
+            -1.028,
+            2.439
+          ],
+          "day_equal_excess_pp": 0.546,
+          "day_equal_ci95_pp": [
+            -1.175,
+            2.412
+          ]
+        }
+      },
+      "2023": {
+        "n": 58,
+        "dates": 51,
+        "months": 12,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.4,
+          "baseline_mean_pct": 0.171,
+          "excess_mean_pp": 0.229,
+          "excess_median_pp": 0.265,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 56.9,
+          "ci95_month_pp": [
+            -0.305,
+            0.828
+          ],
+          "day_equal_excess_pp": 0.224,
+          "day_equal_ci95_pp": [
+            -0.365,
+            0.88
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.716,
+          "baseline_mean_pct": 0.34,
+          "excess_mean_pp": 0.376,
+          "excess_median_pp": -0.084,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 48.3,
+          "ci95_month_pp": [
+            -0.524,
+            1.428
+          ],
+          "day_equal_excess_pp": 0.492,
+          "day_equal_ci95_pp": [
+            -0.485,
+            1.601
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.89,
+          "baseline_mean_pct": 0.7,
+          "excess_mean_pp": 0.19,
+          "excess_median_pp": -0.352,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 44.8,
+          "ci95_month_pp": [
+            -0.978,
+            1.563
+          ],
+          "day_equal_excess_pp": 0.253,
+          "day_equal_ci95_pp": [
+            -1.137,
+            1.808
+          ]
+        }
+      },
+      "2024": {
+        "n": 68,
+        "dates": 54,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.504,
+          "baseline_mean_pct": 0.762,
+          "excess_mean_pp": -0.258,
+          "excess_median_pp": -0.584,
+          "signal_win_rate_pct": 39.7,
+          "beat_baseline_pct": 38.2,
+          "ci95_month_pp": [
+            -0.995,
+            0.626
+          ],
+          "day_equal_excess_pp": -0.054,
+          "day_equal_ci95_pp": [
+            -0.879,
+            0.859
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.67,
+          "baseline_mean_pct": 0.68,
+          "excess_mean_pp": -0.01,
+          "excess_median_pp": -0.16,
+          "signal_win_rate_pct": 48.5,
+          "beat_baseline_pct": 45.6,
+          "ci95_month_pp": [
+            -0.833,
+            0.926
+          ],
+          "day_equal_excess_pp": 0.199,
+          "day_equal_ci95_pp": [
+            -0.803,
+            1.162
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.647,
+          "baseline_mean_pct": 1.325,
+          "excess_mean_pp": 0.322,
+          "excess_median_pp": 0.557,
+          "signal_win_rate_pct": 55.9,
+          "beat_baseline_pct": 52.9,
+          "ci95_month_pp": [
+            -0.767,
+            1.572
+          ],
+          "day_equal_excess_pp": 0.492,
+          "day_equal_ci95_pp": [
+            -0.909,
+            1.911
+          ]
+        }
+      },
+      "2025": {
+        "n": 60,
+        "dates": 47,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": -0.799,
+          "baseline_mean_pct": 0.208,
+          "excess_mean_pp": -1.007,
+          "excess_median_pp": -1.065,
+          "signal_win_rate_pct": 36.7,
+          "beat_baseline_pct": 38.3,
+          "ci95_month_pp": [
+            -1.417,
+            -0.512
+          ],
+          "day_equal_excess_pp": -1.001,
+          "day_equal_ci95_pp": [
+            -1.591,
+            -0.341
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.13,
+          "baseline_mean_pct": 0.814,
+          "excess_mean_pp": -0.944,
+          "excess_median_pp": -0.876,
+          "signal_win_rate_pct": 43.3,
+          "beat_baseline_pct": 38.3,
+          "ci95_month_pp": [
+            -1.699,
+            -0.116
+          ],
+          "day_equal_excess_pp": -1.028,
+          "day_equal_ci95_pp": [
+            -2.054,
+            0.102
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.225,
+          "baseline_mean_pct": 1.423,
+          "excess_mean_pp": -0.198,
+          "excess_median_pp": -0.442,
+          "signal_win_rate_pct": 55.0,
+          "beat_baseline_pct": 46.7,
+          "ci95_month_pp": [
+            -1.642,
+            1.49
+          ],
+          "day_equal_excess_pp": -0.187,
+          "day_equal_ci95_pp": [
+            -2.054,
+            2.03
+          ]
+        }
+      },
+      "2026": {
+        "n": 20,
+        "dates": 15,
+        "months": 4,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.624,
+          "baseline_mean_pct": 0.919,
+          "excess_mean_pp": -0.295,
+          "excess_median_pp": -0.497,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 40.0,
+          "ci95_month_pp": [
+            -2.348,
+            1.151
+          ],
+          "day_equal_excess_pp": -0.366,
+          "day_equal_ci95_pp": [
+            -2.348,
+            1.34
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.907,
+          "baseline_mean_pct": 0.941,
+          "excess_mean_pp": -0.034,
+          "excess_median_pp": -1.797,
+          "signal_win_rate_pct": 45.0,
+          "beat_baseline_pct": 30.0,
+          "ci95_month_pp": [
+            -2.459,
+            9.096
+          ],
+          "day_equal_excess_pp": 0.312,
+          "day_equal_ci95_pp": [
+            -2.459,
+            9.096
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.796,
+          "baseline_mean_pct": 0.865,
+          "excess_mean_pp": -0.069,
+          "excess_median_pp": -2.205,
+          "signal_win_rate_pct": 35.0,
+          "beat_baseline_pct": 35.0,
+          "ci95_month_pp": [
+            -3.246,
+            10.393
+          ],
+          "day_equal_excess_pp": 0.262,
+          "day_equal_ci95_pp": [
+            -3.246,
+            10.393
+          ]
+        }
+      }
+    }
+  },
+  "no_cooldown": {
+    "all": {
+      "n": 387,
+      "dates": 323,
+      "months": 67,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.0,
+        "baseline_mean_pct": 0.174,
+        "excess_mean_pp": -0.174,
+        "excess_median_pp": -0.171,
+        "signal_win_rate_pct": 42.6,
+        "beat_baseline_pct": 47.3,
+        "ci95_month_pp": [
+          -0.471,
+          0.125
+        ],
+        "day_equal_excess_pp": -0.181,
+        "day_equal_ci95_pp": [
+          -0.494,
+          0.169
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.344,
+        "baseline_mean_pct": 0.432,
+        "excess_mean_pp": -0.088,
+        "excess_median_pp": -0.224,
+        "signal_win_rate_pct": 48.8,
+        "beat_baseline_pct": 47.0,
+        "ci95_month_pp": [
+          -0.454,
+          0.303
+        ],
+        "day_equal_excess_pp": -0.047,
+        "day_equal_ci95_pp": [
+          -0.502,
+          0.431
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.066,
+        "baseline_mean_pct": 1.016,
+        "excess_mean_pp": 0.05,
+        "excess_median_pp": -0.339,
+        "signal_win_rate_pct": 53.2,
+        "beat_baseline_pct": 47.3,
+        "ci95_month_pp": [
+          -0.484,
+          0.629
+        ],
+        "day_equal_excess_pp": 0.098,
+        "day_equal_ci95_pp": [
+          -0.575,
+          0.783
+        ]
+      }
+    },
+    "train_2021_24": {
+      "n": 267,
+      "dates": 231,
+      "months": 48,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": 0.027,
+        "baseline_mean_pct": 0.197,
+        "excess_mean_pp": -0.17,
+        "excess_median_pp": -0.171,
+        "signal_win_rate_pct": 41.2,
+        "beat_baseline_pct": 47.2,
+        "ci95_month_pp": [
+          -0.522,
+          0.207
+        ],
+        "day_equal_excess_pp": -0.135,
+        "day_equal_ci95_pp": [
+          -0.511,
+          0.234
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.353,
+        "baseline_mean_pct": 0.387,
+        "excess_mean_pp": -0.034,
+        "excess_median_pp": -0.038,
+        "signal_win_rate_pct": 49.8,
+        "beat_baseline_pct": 49.1,
+        "ci95_month_pp": [
+          -0.473,
+          0.444
+        ],
+        "day_equal_excess_pp": 0.044,
+        "day_equal_ci95_pp": [
+          -0.482,
+          0.528
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.076,
+        "baseline_mean_pct": 0.887,
+        "excess_mean_pp": 0.189,
+        "excess_median_pp": -0.224,
+        "signal_win_rate_pct": 54.7,
+        "beat_baseline_pct": 49.1,
+        "ci95_month_pp": [
+          -0.434,
+          0.804
+        ],
+        "day_equal_excess_pp": 0.24,
+        "day_equal_ci95_pp": [
+          -0.42,
+          0.919
+        ]
+      }
+    },
+    "test_2025_26": {
+      "n": 120,
+      "dates": 92,
+      "months": 19,
+      "symbols": 14,
+      "5": {
+        "signal_mean_pct": -0.06,
+        "baseline_mean_pct": 0.121,
+        "excess_mean_pp": -0.181,
+        "excess_median_pp": -0.156,
+        "signal_win_rate_pct": 45.8,
+        "beat_baseline_pct": 47.5,
+        "ci95_month_pp": [
+          -0.636,
+          0.354
+        ],
+        "day_equal_excess_pp": -0.299,
+        "day_equal_ci95_pp": [
+          -0.918,
+          0.33
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.325,
+        "baseline_mean_pct": 0.532,
+        "excess_mean_pp": -0.207,
+        "excess_median_pp": -0.672,
+        "signal_win_rate_pct": 46.7,
+        "beat_baseline_pct": 42.5,
+        "ci95_month_pp": [
+          -0.869,
+          0.583
+        ],
+        "day_equal_excess_pp": -0.276,
+        "day_equal_ci95_pp": [
+          -1.191,
+          0.72
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.045,
+        "baseline_mean_pct": 1.303,
+        "excess_mean_pp": -0.258,
+        "excess_median_pp": -1.256,
+        "signal_win_rate_pct": 50.0,
+        "beat_baseline_pct": 43.3,
+        "ci95_month_pp": [
+          -1.297,
+          1.092
+        ],
+        "day_equal_excess_pp": -0.261,
+        "day_equal_ci95_pp": [
+          -1.618,
+          1.382
+        ]
+      }
+    },
+    "years": {
+      "2021": {
+        "n": 54,
+        "dates": 50,
+        "months": 12,
+        "symbols": 10,
+        "5": {
+          "signal_mean_pct": -0.192,
+          "baseline_mean_pct": 0.008,
+          "excess_mean_pp": -0.2,
+          "excess_median_pp": -0.116,
+          "signal_win_rate_pct": 44.4,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -0.633,
+            0.235
+          ],
+          "day_equal_excess_pp": -0.165,
+          "day_equal_ci95_pp": [
+            -0.631,
+            0.281
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.156,
+          "baseline_mean_pct": 0.33,
+          "excess_mean_pp": -0.174,
+          "excess_median_pp": -0.112,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -1.266,
+            0.98
+          ],
+          "day_equal_excess_pp": -0.148,
+          "day_equal_ci95_pp": [
+            -1.367,
+            1.01
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.398,
+          "baseline_mean_pct": 0.961,
+          "excess_mean_pp": 0.437,
+          "excess_median_pp": -0.018,
+          "signal_win_rate_pct": 57.4,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -0.452,
+            1.444
+          ],
+          "day_equal_excess_pp": 0.421,
+          "day_equal_ci95_pp": [
+            -0.78,
+            1.497
+          ]
+        }
+      },
+      "2022": {
+        "n": 59,
+        "dates": 55,
+        "months": 12,
+        "symbols": 11,
+        "5": {
+          "signal_mean_pct": -0.716,
+          "baseline_mean_pct": -0.315,
+          "excess_mean_pp": -0.401,
+          "excess_median_pp": -0.284,
+          "signal_win_rate_pct": 30.5,
+          "beat_baseline_pct": 44.1,
+          "ci95_month_pp": [
+            -1.014,
+            0.375
+          ],
+          "day_equal_excess_pp": -0.413,
+          "day_equal_ci95_pp": [
+            -1.118,
+            0.416
+          ]
+        },
+        "10": {
+          "signal_mean_pct": -0.132,
+          "baseline_mean_pct": -0.049,
+          "excess_mean_pp": -0.083,
+          "excess_median_pp": 0.323,
+          "signal_win_rate_pct": 47.5,
+          "beat_baseline_pct": 55.9,
+          "ci95_month_pp": [
+            -1.081,
+            0.947
+          ],
+          "day_equal_excess_pp": -0.081,
+          "day_equal_ci95_pp": [
+            -1.135,
+            0.958
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 0.274,
+          "baseline_mean_pct": 0.301,
+          "excess_mean_pp": -0.027,
+          "excess_median_pp": -0.242,
+          "signal_win_rate_pct": 54.2,
+          "beat_baseline_pct": 47.5,
+          "ci95_month_pp": [
+            -1.398,
+            1.604
+          ],
+          "day_equal_excess_pp": -0.03,
+          "day_equal_ci95_pp": [
+            -1.563,
+            1.553
+          ]
+        }
+      },
+      "2023": {
+        "n": 73,
+        "dates": 62,
+        "months": 12,
+        "symbols": 13,
+        "5": {
+          "signal_mean_pct": 0.45,
+          "baseline_mean_pct": 0.222,
+          "excess_mean_pp": 0.228,
+          "excess_median_pp": 0.169,
+          "signal_win_rate_pct": 46.6,
+          "beat_baseline_pct": 54.8,
+          "ci95_month_pp": [
+            -0.443,
+            0.943
+          ],
+          "day_equal_excess_pp": 0.24,
+          "day_equal_ci95_pp": [
+            -0.416,
+            0.932
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.762,
+          "baseline_mean_pct": 0.426,
+          "excess_mean_pp": 0.337,
+          "excess_median_pp": -0.239,
+          "signal_win_rate_pct": 52.1,
+          "beat_baseline_pct": 45.2,
+          "ci95_month_pp": [
+            -0.422,
+            1.26
+          ],
+          "day_equal_excess_pp": 0.51,
+          "day_equal_ci95_pp": [
+            -0.277,
+            1.409
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.056,
+          "baseline_mean_pct": 0.905,
+          "excess_mean_pp": 0.152,
+          "excess_median_pp": -0.315,
+          "signal_win_rate_pct": 52.1,
+          "beat_baseline_pct": 46.6,
+          "ci95_month_pp": [
+            -0.829,
+            1.258
+          ],
+          "day_equal_excess_pp": 0.339,
+          "day_equal_ci95_pp": [
+            -0.763,
+            1.591
+          ]
+        }
+      },
+      "2024": {
+        "n": 81,
+        "dates": 64,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.333,
+          "baseline_mean_pct": 0.675,
+          "excess_mean_pp": -0.342,
+          "excess_median_pp": -0.529,
+          "signal_win_rate_pct": 42.0,
+          "beat_baseline_pct": 40.7,
+          "ci95_month_pp": [
+            -1.154,
+            0.576
+          ],
+          "day_equal_excess_pp": -0.235,
+          "day_equal_ci95_pp": [
+            -1.191,
+            0.716
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.469,
+          "baseline_mean_pct": 0.707,
+          "excess_mean_pp": -0.239,
+          "excess_median_pp": -0.095,
+          "signal_win_rate_pct": 49.4,
+          "beat_baseline_pct": 46.9,
+          "ci95_month_pp": [
+            -0.971,
+            0.668
+          ],
+          "day_equal_excess_pp": -0.149,
+          "day_equal_ci95_pp": [
+            -1.15,
+            0.799
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.462,
+          "baseline_mean_pct": 1.247,
+          "excess_mean_pp": 0.215,
+          "excess_median_pp": 0.4,
+          "signal_win_rate_pct": 55.6,
+          "beat_baseline_pct": 51.9,
+          "ci95_month_pp": [
+            -1.017,
+            1.494
+          ],
+          "day_equal_excess_pp": 0.236,
+          "day_equal_ci95_pp": [
+            -1.354,
+            1.767
+          ]
+        }
+      },
+      "2025": {
+        "n": 74,
+        "dates": 57,
+        "months": 12,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": -0.263,
+          "baseline_mean_pct": 0.208,
+          "excess_mean_pp": -0.47,
+          "excess_median_pp": -0.585,
+          "signal_win_rate_pct": 41.9,
+          "beat_baseline_pct": 41.9,
+          "ci95_month_pp": [
+            -0.97,
+            0.132
+          ],
+          "day_equal_excess_pp": -0.461,
+          "day_equal_ci95_pp": [
+            -1.187,
+            0.313
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.391,
+          "baseline_mean_pct": 0.846,
+          "excess_mean_pp": -0.456,
+          "excess_median_pp": -0.485,
+          "signal_win_rate_pct": 50.0,
+          "beat_baseline_pct": 41.9,
+          "ci95_month_pp": [
+            -1.095,
+            0.266
+          ],
+          "day_equal_excess_pp": -0.512,
+          "day_equal_ci95_pp": [
+            -1.542,
+            0.424
+          ]
+        },
+        "20": {
+          "signal_mean_pct": 1.837,
+          "baseline_mean_pct": 1.611,
+          "excess_mean_pp": 0.226,
+          "excess_median_pp": 0.102,
+          "signal_win_rate_pct": 59.5,
+          "beat_baseline_pct": 50.0,
+          "ci95_month_pp": [
+            -1.053,
+            1.682
+          ],
+          "day_equal_excess_pp": 0.127,
+          "day_equal_ci95_pp": [
+            -1.419,
+            2.014
+          ]
+        }
+      },
+      "2026": {
+        "n": 46,
+        "dates": 35,
+        "months": 7,
+        "symbols": 14,
+        "5": {
+          "signal_mean_pct": 0.267,
+          "baseline_mean_pct": -0.018,
+          "excess_mean_pp": 0.284,
+          "excess_median_pp": 0.819,
+          "signal_win_rate_pct": 52.2,
+          "beat_baseline_pct": 56.5,
+          "ci95_month_pp": [
+            -0.505,
+            1.119
+          ],
+          "day_equal_excess_pp": -0.035,
+          "day_equal_ci95_pp": [
+            -1.094,
+            1.067
+          ]
+        },
+        "10": {
+          "signal_mean_pct": 0.218,
+          "baseline_mean_pct": 0.026,
+          "excess_mean_pp": 0.193,
+          "excess_median_pp": -1.038,
+          "signal_win_rate_pct": 41.3,
+          "beat_baseline_pct": 43.5,
+          "ci95_month_pp": [
+            -1.101,
+            2.215
+          ],
+          "day_equal_excess_pp": 0.107,
+          "day_equal_ci95_pp": [
+            -1.758,
+            2.51
+          ]
+        },
+        "20": {
+          "signal_mean_pct": -0.229,
+          "baseline_mean_pct": 0.808,
+          "excess_mean_pp": -1.037,
+          "excess_median_pp": -1.937,
+          "signal_win_rate_pct": 34.8,
+          "beat_baseline_pct": 32.6,
+          "ci95_month_pp": [
+            -2.751,
+            1.538
+          ],
+          "day_equal_excess_pp": -0.892,
+          "day_equal_ci95_pp": [
+            -3.0,
+            2.272
+          ]
+        }
+      }
+    }
+  },
+  "per_symbol": {
+    "159509": {
+      "n": 14,
+      "dates": 14,
+      "months": 14,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 1.318,
+        "baseline_mean_pct": 0.42,
+        "excess_mean_pp": 0.898,
+        "excess_median_pp": 0.465,
+        "signal_win_rate_pct": 50.0,
+        "beat_baseline_pct": 50.0,
+        "ci95_month_pp": [
+          -1.62,
+          3.389
+        ],
+        "day_equal_excess_pp": 0.898,
+        "day_equal_ci95_pp": [
+          -1.612,
+          3.263
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 2.437,
+        "baseline_mean_pct": 0.486,
+        "excess_mean_pp": 1.951,
+        "excess_median_pp": -0.475,
+        "signal_win_rate_pct": 50.0,
+        "beat_baseline_pct": 42.9,
+        "ci95_month_pp": [
+          -0.783,
+          4.944
+        ],
+        "day_equal_excess_pp": 1.951,
+        "day_equal_ci95_pp": [
+          -0.809,
+          4.909
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 5.158,
+        "baseline_mean_pct": 1.204,
+        "excess_mean_pp": 3.954,
+        "excess_median_pp": 1.56,
+        "signal_win_rate_pct": 64.3,
+        "beat_baseline_pct": 57.1,
+        "ci95_month_pp": [
+          -0.933,
+          9.294
+        ],
+        "day_equal_excess_pp": 3.954,
+        "day_equal_ci95_pp": [
+          -0.732,
+          9.355
+        ]
+      }
+    },
+    "159529": {
+      "n": 10,
+      "dates": 10,
+      "months": 10,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -1.838,
+        "baseline_mean_pct": 0.181,
+        "excess_mean_pp": -2.019,
+        "excess_median_pp": -1.793,
+        "signal_win_rate_pct": 20.0,
+        "beat_baseline_pct": 30.0,
+        "ci95_month_pp": [
+          -3.783,
+          -0.253
+        ],
+        "day_equal_excess_pp": -2.019,
+        "day_equal_ci95_pp": [
+          -3.864,
+          -0.217
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -1.416,
+        "baseline_mean_pct": 0.36,
+        "excess_mean_pp": -1.776,
+        "excess_median_pp": -1.39,
+        "signal_win_rate_pct": 40.0,
+        "beat_baseline_pct": 20.0,
+        "ci95_month_pp": [
+          -3.693,
+          0.255
+        ],
+        "day_equal_excess_pp": -1.776,
+        "day_equal_ci95_pp": [
+          -3.82,
+          0.282
+        ]
+      },
+      "20": {
+        "signal_mean_pct": -2.021,
+        "baseline_mean_pct": 1.382,
+        "excess_mean_pp": -3.404,
+        "excess_median_pp": -2.972,
+        "signal_win_rate_pct": 20.0,
+        "beat_baseline_pct": 30.0,
+        "ci95_month_pp": [
+          -6.525,
+          -0.345
+        ],
+        "day_equal_excess_pp": -3.404,
+        "day_equal_ci95_pp": [
+          -6.495,
+          -0.408
+        ]
+      }
+    },
+    "159934": {
+      "n": 27,
+      "dates": 27,
+      "months": 27,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.111,
+        "baseline_mean_pct": -0.072,
+        "excess_mean_pp": 0.183,
+        "excess_median_pp": 0.044,
+        "signal_win_rate_pct": 55.6,
+        "beat_baseline_pct": 51.9,
+        "ci95_month_pp": [
+          -0.528,
+          0.907
+        ],
+        "day_equal_excess_pp": 0.183,
+        "day_equal_ci95_pp": [
+          -0.494,
+          0.895
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.704,
+        "baseline_mean_pct": 0.238,
+        "excess_mean_pp": 0.466,
+        "excess_median_pp": 0.054,
+        "signal_win_rate_pct": 48.1,
+        "beat_baseline_pct": 51.9,
+        "ci95_month_pp": [
+          -0.582,
+          1.579
+        ],
+        "day_equal_excess_pp": 0.466,
+        "day_equal_ci95_pp": [
+          -0.661,
+          1.628
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.252,
+        "baseline_mean_pct": 0.72,
+        "excess_mean_pp": 0.532,
+        "excess_median_pp": 0.147,
+        "signal_win_rate_pct": 59.3,
+        "beat_baseline_pct": 51.9,
+        "ci95_month_pp": [
+          -1.221,
+          2.444
+        ],
+        "day_equal_excess_pp": 0.532,
+        "day_equal_ci95_pp": [
+          -1.22,
+          2.379
+        ]
+      }
+    },
+    "159957": {
+      "n": 26,
+      "dates": 26,
+      "months": 26,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.395,
+        "baseline_mean_pct": 0.28,
+        "excess_mean_pp": 0.115,
+        "excess_median_pp": -1.542,
+        "signal_win_rate_pct": 26.9,
+        "beat_baseline_pct": 30.8,
+        "ci95_month_pp": [
+          -2.256,
+          3.97
+        ],
+        "day_equal_excess_pp": 0.115,
+        "day_equal_ci95_pp": [
+          -2.222,
+          4.077
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -0.385,
+        "baseline_mean_pct": 0.907,
+        "excess_mean_pp": -1.292,
+        "excess_median_pp": -2.805,
+        "signal_win_rate_pct": 34.6,
+        "beat_baseline_pct": 34.6,
+        "ci95_month_pp": [
+          -3.353,
+          1.287
+        ],
+        "day_equal_excess_pp": -1.292,
+        "day_equal_ci95_pp": [
+          -3.305,
+          1.102
+        ]
+      },
+      "20": {
+        "signal_mean_pct": -0.599,
+        "baseline_mean_pct": 1.26,
+        "excess_mean_pp": -1.859,
+        "excess_median_pp": -2.952,
+        "signal_win_rate_pct": 46.2,
+        "beat_baseline_pct": 38.5,
+        "ci95_month_pp": [
+          -5.438,
+          2.023
+        ],
+        "day_equal_excess_pp": -1.859,
+        "day_equal_ci95_pp": [
+          -5.311,
+          1.96
+        ]
+      }
+    },
+    "159981": {
+      "n": 28,
+      "dates": 28,
+      "months": 28,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -0.674,
+        "baseline_mean_pct": 0.175,
+        "excess_mean_pp": -0.849,
+        "excess_median_pp": -0.894,
+        "signal_win_rate_pct": 32.1,
+        "beat_baseline_pct": 42.9,
+        "ci95_month_pp": [
+          -2.089,
+          0.416
+        ],
+        "day_equal_excess_pp": -0.849,
+        "day_equal_ci95_pp": [
+          -2.114,
+          0.397
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -0.284,
+        "baseline_mean_pct": 0.14,
+        "excess_mean_pp": -0.424,
+        "excess_median_pp": -1.409,
+        "signal_win_rate_pct": 32.1,
+        "beat_baseline_pct": 25.0,
+        "ci95_month_pp": [
+          -2.398,
+          1.903
+        ],
+        "day_equal_excess_pp": -0.424,
+        "day_equal_ci95_pp": [
+          -2.41,
+          1.99
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.678,
+        "baseline_mean_pct": 0.48,
+        "excess_mean_pp": 1.198,
+        "excess_median_pp": -0.172,
+        "signal_win_rate_pct": 42.9,
+        "beat_baseline_pct": 50.0,
+        "ci95_month_pp": [
+          -1.526,
+          4.384
+        ],
+        "day_equal_excess_pp": 1.198,
+        "day_equal_ci95_pp": [
+          -1.502,
+          4.342
+        ]
+      }
+    },
+    "159985": {
+      "n": 25,
+      "dates": 25,
+      "months": 25,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.277,
+        "baseline_mean_pct": -0.009,
+        "excess_mean_pp": 0.286,
+        "excess_median_pp": -0.078,
+        "signal_win_rate_pct": 48.0,
+        "beat_baseline_pct": 48.0,
+        "ci95_month_pp": [
+          -0.846,
+          1.708
+        ],
+        "day_equal_excess_pp": 0.286,
+        "day_equal_ci95_pp": [
+          -0.97,
+          1.686
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.464,
+        "baseline_mean_pct": 0.864,
+        "excess_mean_pp": -0.4,
+        "excess_median_pp": -0.699,
+        "signal_win_rate_pct": 48.0,
+        "beat_baseline_pct": 44.0,
+        "ci95_month_pp": [
+          -2.391,
+          1.549
+        ],
+        "day_equal_excess_pp": -0.4,
+        "day_equal_ci95_pp": [
+          -2.379,
+          1.571
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 1.349,
+        "baseline_mean_pct": 1.885,
+        "excess_mean_pp": -0.536,
+        "excess_median_pp": -1.206,
+        "signal_win_rate_pct": 52.0,
+        "beat_baseline_pct": 44.0,
+        "ci95_month_pp": [
+          -3.183,
+          2.333
+        ],
+        "day_equal_excess_pp": -0.536,
+        "day_equal_ci95_pp": [
+          -3.18,
+          2.11
+        ]
+      }
+    },
+    "161226": {
+      "n": 29,
+      "dates": 29,
+      "months": 29,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -0.396,
+        "baseline_mean_pct": 0.349,
+        "excess_mean_pp": -0.745,
+        "excess_median_pp": -1.367,
+        "signal_win_rate_pct": 24.1,
+        "beat_baseline_pct": 34.5,
+        "ci95_month_pp": [
+          -1.977,
+          0.632
+        ],
+        "day_equal_excess_pp": -0.745,
+        "day_equal_ci95_pp": [
+          -2.0,
+          0.74
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.066,
+        "baseline_mean_pct": 0.73,
+        "excess_mean_pp": -0.663,
+        "excess_median_pp": -1.879,
+        "signal_win_rate_pct": 41.4,
+        "beat_baseline_pct": 34.5,
+        "ci95_month_pp": [
+          -2.336,
+          1.055
+        ],
+        "day_equal_excess_pp": -0.663,
+        "day_equal_ci95_pp": [
+          -2.254,
+          1.131
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.935,
+        "baseline_mean_pct": 0.973,
+        "excess_mean_pp": -0.038,
+        "excess_median_pp": 1.061,
+        "signal_win_rate_pct": 58.6,
+        "beat_baseline_pct": 51.7,
+        "ci95_month_pp": [
+          -2.46,
+          2.617
+        ],
+        "day_equal_excess_pp": -0.038,
+        "day_equal_ci95_pp": [
+          -2.433,
+          2.793
+        ]
+      }
+    },
+    "164824": {
+      "n": 24,
+      "dates": 24,
+      "months": 24,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -0.351,
+        "baseline_mean_pct": 0.529,
+        "excess_mean_pp": -0.881,
+        "excess_median_pp": -0.067,
+        "signal_win_rate_pct": 45.8,
+        "beat_baseline_pct": 45.8,
+        "ci95_month_pp": [
+          -2.932,
+          0.44
+        ],
+        "day_equal_excess_pp": -0.881,
+        "day_equal_ci95_pp": [
+          -3.148,
+          0.48
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -0.369,
+        "baseline_mean_pct": 0.14,
+        "excess_mean_pp": -0.509,
+        "excess_median_pp": -0.355,
+        "signal_win_rate_pct": 37.5,
+        "beat_baseline_pct": 45.8,
+        "ci95_month_pp": [
+          -2.038,
+          1.006
+        ],
+        "day_equal_excess_pp": -0.509,
+        "day_equal_ci95_pp": [
+          -2.028,
+          0.864
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.381,
+        "baseline_mean_pct": 1.095,
+        "excess_mean_pp": -0.714,
+        "excess_median_pp": -0.01,
+        "signal_win_rate_pct": 54.2,
+        "beat_baseline_pct": 50.0,
+        "ci95_month_pp": [
+          -3.181,
+          1.77
+        ],
+        "day_equal_excess_pp": -0.714,
+        "day_equal_ci95_pp": [
+          -3.199,
+          1.736
+        ]
+      }
+    },
+    "501018": {
+      "n": 21,
+      "dates": 21,
+      "months": 21,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -1.317,
+        "baseline_mean_pct": -0.07,
+        "excess_mean_pp": -1.247,
+        "excess_median_pp": -1.472,
+        "signal_win_rate_pct": 38.1,
+        "beat_baseline_pct": 33.3,
+        "ci95_month_pp": [
+          -2.757,
+          0.205
+        ],
+        "day_equal_excess_pp": -1.247,
+        "day_equal_ci95_pp": [
+          -2.772,
+          0.228
+        ]
+      },
+      "10": {
+        "signal_mean_pct": -1.895,
+        "baseline_mean_pct": 0.355,
+        "excess_mean_pp": -2.249,
+        "excess_median_pp": -2.01,
+        "signal_win_rate_pct": 47.6,
+        "beat_baseline_pct": 42.9,
+        "ci95_month_pp": [
+          -4.896,
+          0.386
+        ],
+        "day_equal_excess_pp": -2.249,
+        "day_equal_ci95_pp": [
+          -5.007,
+          0.145
+        ]
+      },
+      "20": {
+        "signal_mean_pct": -0.087,
+        "baseline_mean_pct": 1.092,
+        "excess_mean_pp": -1.178,
+        "excess_median_pp": -1.112,
+        "signal_win_rate_pct": 47.6,
+        "beat_baseline_pct": 42.9,
+        "ci95_month_pp": [
+          -4.052,
+          1.672
+        ],
+        "day_equal_excess_pp": -1.178,
+        "day_equal_ci95_pp": [
+          -3.969,
+          1.778
+        ]
+      }
+    },
+    "511380": {
+      "n": 25,
+      "dates": 25,
+      "months": 25,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -0.543,
+        "baseline_mean_pct": -0.205,
+        "excess_mean_pp": -0.338,
+        "excess_median_pp": -0.292,
+        "signal_win_rate_pct": 28.0,
+        "beat_baseline_pct": 40.0,
+        "ci95_month_pp": [
+          -0.853,
+          0.168
+        ],
+        "day_equal_excess_pp": -0.338,
+        "day_equal_ci95_pp": [
+          -0.841,
+          0.167
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.08,
+        "baseline_mean_pct": 0.454,
+        "excess_mean_pp": -0.374,
+        "excess_median_pp": -0.24,
+        "signal_win_rate_pct": 44.0,
+        "beat_baseline_pct": 44.0,
+        "ci95_month_pp": [
+          -1.13,
+          0.433
+        ],
+        "day_equal_excess_pp": -0.374,
+        "day_equal_ci95_pp": [
+          -1.118,
+          0.453
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.383,
+        "baseline_mean_pct": 1.217,
+        "excess_mean_pp": -0.833,
+        "excess_median_pp": -1.473,
+        "signal_win_rate_pct": 52.0,
+        "beat_baseline_pct": 36.0,
+        "ci95_month_pp": [
+          -2.351,
+          0.674
+        ],
+        "day_equal_excess_pp": -0.833,
+        "day_equal_ci95_pp": [
+          -2.371,
+          0.687
+        ]
+      }
+    },
+    "512800": {
+      "n": 29,
+      "dates": 29,
+      "months": 29,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.66,
+        "baseline_mean_pct": 0.226,
+        "excess_mean_pp": 0.434,
+        "excess_median_pp": 0.549,
+        "signal_win_rate_pct": 58.6,
+        "beat_baseline_pct": 62.1,
+        "ci95_month_pp": [
+          -0.218,
+          1.145
+        ],
+        "day_equal_excess_pp": 0.434,
+        "day_equal_ci95_pp": [
+          -0.247,
+          1.134
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 0.96,
+        "baseline_mean_pct": -0.031,
+        "excess_mean_pp": 0.991,
+        "excess_median_pp": 1.305,
+        "signal_win_rate_pct": 58.6,
+        "beat_baseline_pct": 69.0,
+        "ci95_month_pp": [
+          0.157,
+          1.886
+        ],
+        "day_equal_excess_pp": 0.991,
+        "day_equal_ci95_pp": [
+          0.133,
+          1.805
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 0.713,
+        "baseline_mean_pct": -0.212,
+        "excess_mean_pp": 0.925,
+        "excess_median_pp": 0.747,
+        "signal_win_rate_pct": 55.2,
+        "beat_baseline_pct": 58.6,
+        "ci95_month_pp": [
+          -0.462,
+          2.404
+        ],
+        "day_equal_excess_pp": 0.925,
+        "day_equal_ci95_pp": [
+          -0.481,
+          2.329
+        ]
+      }
+    },
+    "513100": {
+      "n": 25,
+      "dates": 25,
+      "months": 25,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.347,
+        "baseline_mean_pct": 0.177,
+        "excess_mean_pp": 0.17,
+        "excess_median_pp": 1.68,
+        "signal_win_rate_pct": 56.0,
+        "beat_baseline_pct": 68.0,
+        "ci95_month_pp": [
+          -1.662,
+          1.641
+        ],
+        "day_equal_excess_pp": 0.17,
+        "day_equal_ci95_pp": [
+          -1.577,
+          1.679
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 1.485,
+        "baseline_mean_pct": 0.06,
+        "excess_mean_pp": 1.426,
+        "excess_median_pp": 2.048,
+        "signal_win_rate_pct": 60.0,
+        "beat_baseline_pct": 68.0,
+        "ci95_month_pp": [
+          -0.402,
+          3.28
+        ],
+        "day_equal_excess_pp": 1.426,
+        "day_equal_ci95_pp": [
+          -0.44,
+          3.221
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 2.874,
+        "baseline_mean_pct": 0.768,
+        "excess_mean_pp": 2.106,
+        "excess_median_pp": 2.93,
+        "signal_win_rate_pct": 64.0,
+        "beat_baseline_pct": 56.0,
+        "ci95_month_pp": [
+          -0.113,
+          4.43
+        ],
+        "day_equal_excess_pp": 2.106,
+        "day_equal_ci95_pp": [
+          -0.18,
+          4.457
+        ]
+      }
+    },
+    "513290": {
+      "n": 18,
+      "dates": 18,
+      "months": 18,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": -0.023,
+        "baseline_mean_pct": 0.458,
+        "excess_mean_pp": -0.481,
+        "excess_median_pp": -0.59,
+        "signal_win_rate_pct": 50.0,
+        "beat_baseline_pct": 38.9,
+        "ci95_month_pp": [
+          -2.013,
+          1.296
+        ],
+        "day_equal_excess_pp": -0.481,
+        "day_equal_ci95_pp": [
+          -2.167,
+          1.335
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 1.165,
+        "baseline_mean_pct": 0.694,
+        "excess_mean_pp": 0.471,
+        "excess_median_pp": -0.869,
+        "signal_win_rate_pct": 44.4,
+        "beat_baseline_pct": 44.4,
+        "ci95_month_pp": [
+          -2.399,
+          4.216
+        ],
+        "day_equal_excess_pp": 0.471,
+        "day_equal_ci95_pp": [
+          -2.416,
+          4.009
+        ]
+      },
+      "20": {
+        "signal_mean_pct": -0.02,
+        "baseline_mean_pct": 1.286,
+        "excess_mean_pp": -1.306,
+        "excess_median_pp": -3.206,
+        "signal_win_rate_pct": 38.9,
+        "beat_baseline_pct": 38.9,
+        "ci95_month_pp": [
+          -3.577,
+          1.407
+        ],
+        "day_equal_excess_pp": -1.306,
+        "day_equal_ci95_pp": [
+          -3.552,
+          1.315
+        ]
+      }
+    },
+    "513530": {
+      "n": 21,
+      "dates": 21,
+      "months": 21,
+      "symbols": 1,
+      "5": {
+        "signal_mean_pct": 0.685,
+        "baseline_mean_pct": 0.156,
+        "excess_mean_pp": 0.529,
+        "excess_median_pp": 0.417,
+        "signal_win_rate_pct": 52.4,
+        "beat_baseline_pct": 61.9,
+        "ci95_month_pp": [
+          -0.507,
+          1.543
+        ],
+        "day_equal_excess_pp": 0.529,
+        "day_equal_ci95_pp": [
+          -0.502,
+          1.492
+        ]
+      },
+      "10": {
+        "signal_mean_pct": 1.704,
+        "baseline_mean_pct": 0.121,
+        "excess_mean_pp": 1.583,
+        "excess_median_pp": 1.681,
+        "signal_win_rate_pct": 71.4,
+        "beat_baseline_pct": 71.4,
+        "ci95_month_pp": [
+          0.105,
+          3.004
+        ],
+        "day_equal_excess_pp": 1.583,
+        "day_equal_ci95_pp": [
+          0.089,
+          3.017
+        ]
+      },
+      "20": {
+        "signal_mean_pct": 2.17,
+        "baseline_mean_pct": 0.732,
+        "excess_mean_pp": 1.438,
+        "excess_median_pp": 0.609,
+        "signal_win_rate_pct": 57.1,
+        "beat_baseline_pct": 52.4,
+        "ci95_month_pp": [
+          -0.978,
+          4.066
+        ],
+        "day_equal_excess_pp": 1.438,
+        "day_equal_ci95_pp": [
+          -0.891,
+          4.091
+        ]
+      }
+    }
+  }
+}
