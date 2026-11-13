@@ -1,0 +1,27 @@
+{
+  "contract": "RESEARCH_MARKET_ARCHIVE_V2_CANDIDATE",
+  "repo": "toyosky/etf-rotation-strategy",
+  "asset_id": 741069813,
+  "asset_created_at": "2026-11-12T21:01:05Z",
+  "sha256": "7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644",
+  "bytes": 17166998,
+  "rows": 1441181,
+  "date_min": "1998-04-07 00:00:00",
+  "date_max": "2026-11-12 00:00:00",
+  "columns": [
+    "symbol",
+    "date",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "amount",
+    "instrument_type",
+    "ingested_on"
+  ],
+  "old_archive_sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+  "old_archive_restored": false,
+  "pit_taxonomy": false,
+  "warning": "New candidate version only. Do not splice with old V2 results or use in production."
+}
