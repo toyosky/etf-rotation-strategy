@@ -33,7 +33,8 @@ def prior_year_p99(qualified_all, exact):
         if year == YEARS[0]:
             thresholds[str(year)] = None
             continue
-        prior = qualified_all.loc[qualified_all.date < pd.Timestamp(year=year,month=1,day=1), 'slope'].dropna()
+        training_end_year=min(year, 2025)  # 2025/26 share the pre-2025 frozen cap of the original study
+        prior = qualified_all.loc[qualified_all.date < pd.Timestamp(year=training_end_year,month=1,day=1), 'slope'].dropna()
         cap = float(prior.quantile(.99))
         if not np.isfinite(cap) or cap <= 0 or len(prior) < 100:
             raise ValueError(f"Insufficient preceding years for {year} p99: {len(prior)}")
@@ -178,7 +179,7 @@ def main():
             "caveats":[
               "2026 taxonomy retrospectively assigned to 2021-2026; not historical PIT.",
               "Selected Top1 net10 is a daily overlapping event outcome, NOT a funded strategy.",
-              "P99_WALK_FORWARD uses prior calendar years only; no P99 entry for 2021.",
+              "P99_WALK_FORWARD uses prior years for 2022-24 then freezes the 2021-24 cutoff for 2025-26; none for 2021.",
               "The 2025-26 cutoffs exactly match prior 2021-24 TRAIN_P99_CAP.",
               "No point-in-time NAV premium, delisted funds, or intraday executable filters.",
               "Bootstrap resamples calendar month blocks; no multiple-test adjustment."]}
