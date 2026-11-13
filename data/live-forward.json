@@ -4,7 +4,7 @@
   "pricing": "Tencent HFQ daily bars",
   "cost_per_side": 0.0006,
   "execution_model": "signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close",
-  "generated_from_market_data_through": "2026-11-12",
+  "generated_from_market_data_through": "2026-11-13",
   "backtest_reference": {
     "period": "2015-01-26 → 2026-09-15",
     "baseline": {
@@ -27,7 +27,7 @@
     }
   },
   "latest": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "target": "511220",
     "target_name": "城投债/现金",
     "model_target": "511220",
@@ -42,87 +42,94 @@
     "decision": "VOID_HOLD_ROUTED",
     "quadrant": "DEFENSIVE_VOID",
     "breadth_pct": 42.857142857142854,
-    "gap_percentile": 30.555555555555557,
+    "gap_percentile": 3.5714285714285716,
     "target_score": 0.0,
     "cash_score": 0.0,
     "carrier_score": 0.0,
-    "completed_through": "2026-11-12",
-    "performance_signal_through": "2026-11-10"
+    "completed_through": "2026-11-13",
+    "performance_signal_through": "2026-11-11",
+    "raw_top1": "513290",
+    "raw_top1_name": "纳指生物",
+    "raw_top1_score": 2.188513083834609,
+    "raw_top1_qualifies_cash": true,
+    "v1_target": "513290",
+    "v1_target_name": "纳指生物",
+    "simulation_disclaimer": "Model NAV may include hypothetical fills without dated premium clearance; not actual performance."
   },
   "summary": {
     "baseline": {
-      "total_return": 0.0055910082033179265,
-      "mdd": -0.0982005141388177,
-      "sessions": 36,
-      "switches": 1,
-      "turnover_sides": 2
+      "total_return": -0.07328100946111504,
+      "mdd": -0.15853091626752192,
+      "sessions": 37,
+      "switches": 5,
+      "turnover_sides": 10
     },
     "original": {
-      "total_return": -0.13136467346698144,
+      "total_return": -0.13526281255389105,
       "mdd": -0.21259533101448125,
-      "sessions": 36,
+      "sessions": 37,
       "switches": 10,
       "turnover_sides": 20
     },
     "freeze_cash": {
       "total_return": -0.07713775986078852,
       "mdd": -0.15853091626752158,
-      "sessions": 36,
+      "sessions": 37,
       "switches": 5,
       "turnover_sides": 10
     }
   },
   "mark_to_market": {
     "baseline": {
-      "valuation_date": "2026-11-12",
+      "valuation_date": "2026-11-13",
       "available": true,
-      "signal_date": "2026-11-11",
-      "execution_date": "2026-11-12",
+      "signal_date": "2026-11-12",
+      "execution_date": "2026-11-13",
       "target": "511220",
       "target_name": "城投债/现金",
       "decision": "VOID_HOLD_ROUTED",
       "sides": 0,
       "open": 1.458,
-      "close": 1.458,
-      "gross_return": 0.0,
-      "provisional_return": 0.0,
-      "official_nav": 1.005591008203318,
-      "mtm_nav": 1.005591008203318,
-      "mtm_total_return": 0.0055910082033179265
+      "close": 1.455,
+      "gross_return": -0.002057613168724215,
+      "provisional_return": -0.002057613168724215,
+      "official_nav": 0.926718990538885,
+      "mtm_nav": 0.9248121613402454,
+      "mtm_total_return": -0.07518783865975465
     },
     "original": {
-      "valuation_date": "2026-11-12",
+      "valuation_date": "2026-11-13",
       "available": true,
-      "signal_date": "2026-11-11",
-      "execution_date": "2026-11-12",
+      "signal_date": "2026-11-12",
+      "execution_date": "2026-11-13",
       "target": "164824",
       "target_name": "印度",
       "decision": "BASE",
       "sides": 0,
-      "open": 1.337,
-      "close": 1.326,
-      "gross_return": -0.008227374719521285,
-      "provisional_return": -0.008227374719521285,
-      "official_nav": 0.8686353265330186,
-      "mtm_nav": 0.8614887382070177,
-      "mtm_total_return": -0.13851126179298234
+      "open": 1.331,
+      "close": 1.314,
+      "gross_return": -0.012772351615326749,
+      "provisional_return": -0.012772351615326749,
+      "official_nav": 0.864737187446109,
+      "mtm_nav": 0.8536924600331985,
+      "mtm_total_return": -0.14630753996680146
     },
     "freeze_cash": {
-      "valuation_date": "2026-11-12",
+      "valuation_date": "2026-11-13",
       "available": true,
-      "signal_date": "2026-11-11",
-      "execution_date": "2026-11-12",
+      "signal_date": "2026-11-12",
+      "execution_date": "2026-11-13",
       "target": "511220",
       "target_name": "城投债/现金",
       "decision": "VOID_HOLD_ROUTED",
       "sides": 0,
       "open": 1.458,
-      "close": 1.458,
-      "gross_return": 0.0,
-      "provisional_return": 0.0,
+      "close": 1.455,
+      "gross_return": -0.002057613168724215,
+      "provisional_return": -0.002057613168724215,
       "official_nav": 0.9228622401392115,
-      "mtm_nav": 0.9228622401392115,
-      "mtm_total_return": -0.07713775986078852
+      "mtm_nav": 0.9209633466409827,
+      "mtm_total_return": -0.07903665335901733
     }
   },
   "series": {
@@ -136,7 +143,10 @@
         "daily_return": 0.0208098987626546,
         "nav": 1.0208098987626546,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-15",
@@ -147,7 +157,10 @@
         "daily_return": -0.006060606060605989,
         "nav": 1.014623172103487,
         "drawdown": -0.006060606060605989,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-16",
@@ -158,7 +171,10 @@
         "daily_return": -0.022172949002217335,
         "nav": 0.9921259842519685,
         "drawdown": -0.028099173553718937,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-17",
@@ -169,7 +185,10 @@
         "daily_return": -0.02154195011337867,
         "nav": 0.9707536557930259,
         "drawdown": -0.04903581267217627,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-18",
@@ -180,7 +199,10 @@
         "daily_return": -0.005214368482039378,
         "nav": 0.9656917885264342,
         "drawdown": -0.053994490358126646,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-21",
@@ -191,7 +213,10 @@
         "daily_return": -0.002329644729178848,
         "nav": 0.9634420697412823,
         "drawdown": -0.056198347107437985,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-22",
@@ -202,7 +227,10 @@
         "daily_return": -0.0005837711617047159,
         "nav": 0.9628796400449943,
         "drawdown": -0.0567493112947659,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-23",
@@ -213,7 +241,10 @@
         "daily_return": 0.01869158878504673,
         "nav": 0.9808773903262091,
         "drawdown": -0.03911845730027552,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-24",
@@ -224,7 +255,10 @@
         "daily_return": 0.01834862385321112,
         "nav": 0.9988751406074241,
         "drawdown": -0.02148760330578503,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-28",
@@ -235,7 +269,10 @@
         "daily_return": 0.003941441441441373,
         "nav": 1.0028121484814398,
         "drawdown": -0.01763085399449027,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-29",
@@ -246,73 +283,94 @@
         "daily_return": 0.05047672462142461,
         "nav": 1.0534308211473566,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "CONFIRMED_OVERRIDE",
+        "execution_filter": "PREMIUM10",
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-30",
         "execution_date": "2026-10-08",
         "valuation_date": "2026-10-09",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.024025627335824806,
-        "nav": 1.078740157480315,
-        "drawdown": 0.0,
-        "status": "settled"
+        "target": "159509",
+        "target_name": "纳指科技",
+        "daily_return": -0.013039878419452866,
+        "nav": 1.0396942113162908,
+        "drawdown": -0.013039878419452755,
+        "status": "settled",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-08",
         "execution_date": "2026-10-09",
         "valuation_date": "2026-10-12",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.02294056308654835,
-        "nav": 1.0539932508436447,
-        "drawdown": -0.02294056308654846,
-        "status": "settled"
+        "target": "159509",
+        "target_name": "纳指科技",
+        "daily_return": 0.03906490310673649,
+        "nav": 1.0803097649419966,
+        "drawdown": 0.0,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-09",
         "execution_date": "2026-10-12",
         "valuation_date": "2026-10-13",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.0005336179295625243,
-        "nav": 1.0534308211473566,
-        "drawdown": -0.023461939520333708,
-        "status": "settled"
+        "target": "159509",
+        "target_name": "纳指科技",
+        "daily_return": -0.09177027827116635,
+        "nav": 0.9811694371942112,
+        "drawdown": -0.09177027827116635,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-12",
         "execution_date": "2026-10-13",
         "valuation_date": "2026-10-14",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.009076348104644971,
-        "nav": 1.062992125984252,
-        "drawdown": -0.014598540145985384,
-        "status": "settled"
+        "target": "513100",
+        "target_name": "纳指100",
+        "daily_return": 0.0021686340640811874,
+        "nav": 0.983297234658346,
+        "drawdown": -0.08980066035861423,
+        "status": "settled",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-13",
         "execution_date": "2026-10-14",
         "valuation_date": "2026-10-15",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.023809523809523725,
-        "nav": 1.0376827896512937,
-        "drawdown": -0.03806047966631909,
-        "status": "settled"
+        "target": "513100",
+        "target_name": "纳指100",
+        "daily_return": -0.021848739495798353,
+        "nav": 0.9618134295313568,
+        "drawdown": -0.10968736861968664,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-14",
         "execution_date": "2026-10-15",
         "valuation_date": "2026-10-16",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.008672086720867167,
-        "nav": 1.0286839145106863,
-        "drawdown": -0.04640250260688217,
-        "status": "settled"
+        "target": "513100",
+        "target_name": "纳指100",
+        "daily_return": 0.009450171821305808,
+        "nav": 0.9709027317004676,
+        "drawdown": -0.10127376127846366,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-15",
@@ -320,175 +378,223 @@
         "valuation_date": "2026-10-19",
         "target": "159981",
         "target_name": "能源化工",
-        "daily_return": 0.01585565882996187,
-        "nav": 1.0449943757030373,
-        "drawdown": -0.031282586027111425,
-        "status": "settled"
+        "daily_return": 0.014636632039366049,
+        "nav": 0.9851134777303827,
+        "drawdown": -0.08811943601817307,
+        "status": "settled",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-10-16",
         "execution_date": "2026-10-19",
         "valuation_date": "2026-10-20",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.02099031216361691,
-        "nav": 1.0230596175478066,
-        "drawdown": -0.05161626694473409,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.003407011070110544,
+        "nav": 0.9884697702543253,
+        "drawdown": -0.08501264884206838,
+        "status": "settled",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-19",
         "execution_date": "2026-10-20",
         "valuation_date": "2026-10-21",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.00604727872457389,
-        "nav": 1.016872890888639,
-        "drawdown": -0.05735140771637115,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.005509641873278293,
+        "nav": 0.9939158846909882,
+        "drawdown": -0.0799713962186086,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-20",
         "execution_date": "2026-10-21",
         "valuation_date": "2026-10-22",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.0011061946902655162,
-        "nav": 1.017997750281215,
-        "drawdown": -0.056308654848800765,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.004566210045662267,
+        "nav": 0.9984543133882076,
+        "drawdown": -0.07577035236572538,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-21",
         "execution_date": "2026-10-22",
         "valuation_date": "2026-10-23",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.019889502762431066,
-        "nav": 1.0382452193475817,
-        "drawdown": -0.037539103232533844,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.020454545454545503,
+        "nav": 1.0188772425256936,
+        "drawdown": -0.05686565502775165,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-22",
         "execution_date": "2026-10-23",
         "valuation_date": "2026-10-26",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.022751895991332427,
-        "nav": 1.061867266591676,
-        "drawdown": -0.01564129301355599,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.011135857461024523,
+        "nav": 1.0302233142687414,
+        "drawdown": -0.046363045395544034,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-23",
         "execution_date": "2026-10-26",
         "valuation_date": "2026-10-27",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.004237288135593209,
-        "nav": 1.0663667041619798,
-        "drawdown": -0.011470281543274341,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.0,
+        "nav": 1.0302233142687414,
+        "drawdown": -0.046363045395544034,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-26",
         "execution_date": "2026-10-27",
         "valuation_date": "2026-10-28",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.0015822784810125556,
-        "nav": 1.064679415073116,
-        "drawdown": -0.013034410844629751,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.017621145374449254,
+        "nav": 1.0483770290576178,
+        "drawdown": -0.029558869984011804,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-27",
         "execution_date": "2026-10-28",
         "valuation_date": "2026-10-29",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.019017432646592836,
-        "nav": 1.0849268841394828,
-        "drawdown": 0.0,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.01298701298701288,
+        "nav": 1.061992315149275,
+        "drawdown": -0.0169557384253628,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-28",
         "execution_date": "2026-10-29",
         "valuation_date": "2026-10-30",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.00414722654224986,
-        "nav": 1.080427446569179,
-        "drawdown": -0.004147226542249971,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.008547008547008517,
+        "nav": 1.0529154577548367,
+        "drawdown": -0.025357826131128913,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-29",
         "execution_date": "2026-10-30",
         "valuation_date": "2026-11-02",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.012493492972410314,
-        "nav": 1.0939257592800902,
-        "drawdown": 0.0,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.020689655172413834,
+        "nav": 1.0311310000081848,
+        "drawdown": -0.0455228366249677,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-30",
         "execution_date": "2026-11-02",
         "valuation_date": "2026-11-03",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.03856041131105392,
-        "nav": 1.051743532058493,
-        "drawdown": -0.03856041131105392,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.053257042253521125,
+        "nav": 0.9762160127718335,
+        "drawdown": -0.09635546724485278,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-02",
         "execution_date": "2026-11-03",
         "valuation_date": "2026-11-04",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.004812834224598772,
-        "nav": 1.0568053993250843,
-        "drawdown": -0.03393316195372775,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.01859600185960031,
+        "nav": 0.9943697275607101,
+        "drawdown": -0.07955129183332044,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-03",
         "execution_date": "2026-11-04",
         "valuation_date": "2026-11-05",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": -0.06652474720596058,
-        "nav": 0.9865016872890888,
-        "drawdown": -0.0982005141388177,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.08580556823368313,
+        "nav": 0.9090472680529906,
+        "drawdown": -0.15853091626752192,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-04",
         "execution_date": "2026-11-05",
         "valuation_date": "2026-11-06",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.0136830102622576,
-        "nav": 0.9999999999999999,
-        "drawdown": -0.08586118251928043,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": 0.039940089865202255,
+        "nav": 0.9453546976307436,
+        "drawdown": -0.12492256544445735,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-05",
         "execution_date": "2026-11-06",
         "valuation_date": "2026-11-09",
-        "target": "159981",
-        "target_name": "能源化工",
-        "daily_return": 0.009561304836895435,
-        "nav": 1.0095613048368952,
-        "drawdown": -0.07712082262210829,
-        "status": "settled"
+        "target": "501018",
+        "target_name": "原油",
+        "daily_return": -0.015842534805569075,
+        "nav": 0.9303778829299204,
+        "drawdown": -0.13878601015897163,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-06",
@@ -497,9 +603,12 @@
         "target": "511220",
         "target_name": "城投债/现金",
         "daily_return": -0.0011999999999999789,
-        "nav": 1.008349831271091,
-        "drawdown": -0.07822827763496165,
-        "status": "settled"
+        "nav": 0.9292614294704046,
+        "drawdown": -0.13981946694678082,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       },
       {
         "signal_date": "2026-11-09",
@@ -508,9 +617,12 @@
         "target": "511220",
         "target_name": "城投债/现金",
         "daily_return": -0.001367989056087593,
-        "nav": 1.0069704197372045,
-        "drawdown": -0.07948925126336803,
-        "status": "settled"
+        "nav": 0.9279902100046448,
+        "drawdown": -0.14099618450225715,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       },
       {
         "signal_date": "2026-11-10",
@@ -519,9 +631,26 @@
         "target": "511220",
         "target_name": "城投债/现金",
         "daily_return": -0.00136986301369868,
-        "nav": 1.005591008203318,
-        "drawdown": -0.0807502248917743,
-        "status": "settled"
+        "nav": 0.926718990538885,
+        "drawdown": -0.14217290205773359,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
+      },
+      {
+        "signal_date": "2026-11-11",
+        "execution_date": "2026-11-12",
+        "valuation_date": "2026-11-13",
+        "target": "511220",
+        "target_name": "城投债/现金",
+        "daily_return": 0.0,
+        "nav": 0.926718990538885,
+        "drawdown": -0.14217290205773359,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       }
     ],
     "original": [
@@ -534,7 +663,10 @@
         "daily_return": 0.0208098987626546,
         "nav": 1.0208098987626546,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-15",
@@ -545,7 +677,10 @@
         "daily_return": -0.03250142450142446,
         "nav": 0.9876321229077134,
         "drawdown": -0.03250142450142446,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-09-16",
@@ -556,7 +691,10 @@
         "daily_return": -0.023346341463414633,
         "nav": 0.9645745261260729,
         "drawdown": -0.05508897661038148,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-17",
@@ -567,7 +705,10 @@
         "daily_return": -0.02154195011337867,
         "nav": 0.9437957098036291,
         "drawdown": -0.07544420273782215,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-18",
@@ -578,7 +719,10 @@
         "daily_return": -0.005214368482039378,
         "nav": 0.9388744112009452,
         "drawdown": -0.08026517734695282,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-21",
@@ -589,7 +733,10 @@
         "daily_return": -0.002329644729178848,
         "nav": 0.93668716737753,
         "drawdown": -0.08240783272878871,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-22",
@@ -600,7 +747,10 @@
         "daily_return": -0.0005837711617047159,
         "nav": 0.9361403564216761,
         "drawdown": -0.08294349657424782,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-23",
@@ -611,7 +761,10 @@
         "daily_return": 0.004684909983633467,
         "nav": 0.9405260897235582,
         "drawdown": -0.07864716940579253,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-24",
@@ -622,7 +775,10 @@
         "daily_return": -0.0013016596160103644,
         "nav": 0.9393018448947609,
         "drawdown": -0.07984645717747385,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-28",
@@ -633,7 +789,10 @@
         "daily_return": 0.024763766699250622,
         "nav": 0.9625624966419104,
         "drawdown": -0.05705998951552793,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-29",
@@ -644,7 +803,10 @@
         "daily_return": 0.04610492845786962,
         "nav": 1.006941371685814,
         "drawdown": -0.01358580779207852,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-30",
@@ -655,7 +817,10 @@
         "daily_return": -0.011854103343465039,
         "nav": 0.9950049846050399,
         "drawdown": -0.025278863565971865,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-08",
@@ -666,7 +831,10 @@
         "daily_return": 0.03906490310673649,
         "nav": 1.0338747579193557,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-09",
@@ -677,7 +845,10 @@
         "daily_return": -0.09177027827116635,
         "nav": 0.9389957836875616,
         "drawdown": -0.09177027827116635,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-12",
@@ -688,7 +859,10 @@
         "daily_return": 0.0021686340640811874,
         "nav": 0.9410321219300951,
         "drawdown": -0.08980066035861423,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-13",
@@ -699,7 +873,10 @@
         "daily_return": -0.021848739495798353,
         "nav": 0.9204717562408661,
         "drawdown": -0.10968736861968664,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-14",
@@ -710,7 +887,10 @@
         "daily_return": 0.009450171821305808,
         "nav": 0.9291703724940014,
         "drawdown": -0.10127376127846377,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-15",
@@ -721,7 +901,10 @@
         "daily_return": 0.014636632039366049,
         "nav": 0.9427702973380767,
         "drawdown": -0.08811943601817318,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-10-16",
@@ -732,7 +915,10 @@
         "daily_return": 0.003407011070110544,
         "nav": 0.945982326177679,
         "drawdown": -0.0850126488420685,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-19",
@@ -743,7 +929,10 @@
         "daily_return": -0.013174330042313054,
         "nav": 0.9335196427984191,
         "drawdown": -0.09706699419076492,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159529"
       },
       {
         "signal_date": "2026-10-20",
@@ -754,7 +943,10 @@
         "daily_return": -0.01927194860813697,
         "nav": 0.9155289002177216,
         "drawdown": -0.11446827267531112,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159529"
       },
       {
         "signal_date": "2026-10-21",
@@ -765,7 +957,10 @@
         "daily_return": -0.0021834061135371785,
         "nav": 0.9135299288198663,
         "drawdown": -0.11640174806248293,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159529"
       },
       {
         "signal_date": "2026-10-22",
@@ -776,7 +971,10 @@
         "daily_return": 0.009922494432071272,
         "nav": 0.9225944244521118,
         "drawdown": -0.10763424932744514,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-23",
@@ -787,7 +985,10 @@
         "daily_return": 0.0,
         "nav": 0.9225944244521118,
         "drawdown": -0.10763424932744514,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-26",
@@ -798,7 +999,10 @@
         "daily_return": 0.017621145374449254,
         "nav": 0.9388515949270388,
         "drawdown": -0.09190974270766439,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-27",
@@ -809,7 +1013,10 @@
         "daily_return": 0.01298701298701288,
         "nav": 0.951044472783234,
         "drawdown": -0.08011636274282907,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-28",
@@ -820,7 +1027,10 @@
         "daily_return": -0.008547008547008517,
         "nav": 0.9429158875457705,
         "drawdown": -0.0879786160527194,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-29",
@@ -831,7 +1041,10 @@
         "daily_return": -0.020689655172413834,
         "nav": 0.923407282975858,
         "drawdown": -0.10684802399645632,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-30",
@@ -842,7 +1055,10 @@
         "daily_return": -0.053257042253521125,
         "nav": 0.8742293422892036,
         "drawdown": -0.15441465652129283,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-02",
@@ -853,7 +1069,10 @@
         "daily_return": 0.01859600185960031,
         "nav": 0.8904865127641307,
         "drawdown": -0.13869014990151207,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-03",
@@ -864,7 +1083,10 @@
         "daily_return": -0.08580556823368313,
         "nav": 0.8140778115319736,
         "drawdown": -0.21259533101448125,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-04",
@@ -875,7 +1097,10 @@
         "daily_return": 0.039940089865202255,
         "nav": 0.8465921524818277,
         "drawdown": -0.18114631777491985,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-05",
@@ -886,7 +1111,10 @@
         "daily_return": 0.014208484848484915,
         "nav": 0.858620944253212,
         "drawdown": -0.16951164763789872,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513290"
       },
       {
         "signal_date": "2026-11-06",
@@ -897,7 +1125,10 @@
         "daily_return": 0.009393333333333365,
         "nav": 0.8666862569895639,
         "drawdown": -0.16171059371471064,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "164824"
       },
       {
         "signal_date": "2026-11-09",
@@ -908,7 +1139,10 @@
         "daily_return": 0.002248875562218755,
         "nav": 0.8686353265330186,
         "drawdown": -0.1598253851548488,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "164824"
       },
       {
         "signal_date": "2026-11-10",
@@ -919,7 +1153,24 @@
         "daily_return": 0.0,
         "nav": 0.8686353265330186,
         "drawdown": -0.1598253851548488,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "164824"
+      },
+      {
+        "signal_date": "2026-11-11",
+        "execution_date": "2026-11-12",
+        "valuation_date": "2026-11-13",
+        "target": "164824",
+        "target_name": "印度",
+        "daily_return": -0.004487658937920691,
+        "nav": 0.864737187446109,
+        "drawdown": -0.16359580227457282,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "164824"
       }
     ],
     "freeze_cash": [
@@ -932,7 +1183,10 @@
         "daily_return": 0.0208098987626546,
         "nav": 1.0208098987626546,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-15",
@@ -943,7 +1197,10 @@
         "daily_return": -0.006060606060605989,
         "nav": 1.014623172103487,
         "drawdown": -0.006060606060605989,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-16",
@@ -954,7 +1211,10 @@
         "daily_return": -0.022172949002217335,
         "nav": 0.9921259842519685,
         "drawdown": -0.028099173553718937,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-17",
@@ -965,7 +1225,10 @@
         "daily_return": -0.02154195011337867,
         "nav": 0.9707536557930259,
         "drawdown": -0.04903581267217627,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-18",
@@ -976,7 +1239,10 @@
         "daily_return": -0.005214368482039378,
         "nav": 0.9656917885264342,
         "drawdown": -0.053994490358126646,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-21",
@@ -987,7 +1253,10 @@
         "daily_return": -0.002329644729178848,
         "nav": 0.9634420697412823,
         "drawdown": -0.056198347107437985,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-22",
@@ -998,7 +1267,10 @@
         "daily_return": -0.0005837711617047159,
         "nav": 0.9628796400449943,
         "drawdown": -0.0567493112947659,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-23",
@@ -1009,7 +1281,10 @@
         "daily_return": 0.01869158878504673,
         "nav": 0.9808773903262091,
         "drawdown": -0.03911845730027552,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-24",
@@ -1020,7 +1295,10 @@
         "daily_return": 0.01834862385321112,
         "nav": 0.9988751406074241,
         "drawdown": -0.02148760330578503,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-28",
@@ -1031,7 +1309,10 @@
         "daily_return": 0.003941441441441373,
         "nav": 1.0028121484814398,
         "drawdown": -0.01763085399449027,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-09-29",
@@ -1042,7 +1323,10 @@
         "daily_return": 0.04484960254372017,
         "nav": 1.0477878747668465,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-09-30",
@@ -1053,7 +1337,10 @@
         "daily_return": -0.011854103343465039,
         "nav": 1.0353672890173307,
         "drawdown": -0.01185410334346515,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-08",
@@ -1064,7 +1351,10 @@
         "daily_return": 0.03906490310673649,
         "nav": 1.0758138118426772,
         "drawdown": 0.0,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-09",
@@ -1075,7 +1365,10 @@
         "daily_return": -0.09177027827116635,
         "nav": 0.9770860789619106,
         "drawdown": -0.09177027827116635,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159509"
       },
       {
         "signal_date": "2026-10-12",
@@ -1086,7 +1379,10 @@
         "daily_return": 0.0021686340640811874,
         "nav": 0.9792050211162869,
         "drawdown": -0.08980066035861411,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-13",
@@ -1097,7 +1393,10 @@
         "daily_return": -0.021848739495798353,
         "nav": 0.9578106256969394,
         "drawdown": -0.10968736861968653,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-14",
@@ -1108,7 +1407,10 @@
         "daily_return": 0.009450171821305808,
         "nav": 0.9668621006820479,
         "drawdown": -0.10127376127846366,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "513100"
       },
       {
         "signal_date": "2026-10-15",
@@ -1119,7 +1421,10 @@
         "daily_return": 0.014636632039366049,
         "nav": 0.9810137054825395,
         "drawdown": -0.08811943601817307,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "159981"
       },
       {
         "signal_date": "2026-10-16",
@@ -1130,7 +1435,10 @@
         "daily_return": 0.003407011070110544,
         "nav": 0.9843560300370487,
         "drawdown": -0.08501264884206827,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-19",
@@ -1141,7 +1449,10 @@
         "daily_return": 0.005509641873278293,
         "nav": 0.9897794792383549,
         "drawdown": -0.0799713962186086,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-20",
@@ -1152,7 +1463,10 @@
         "daily_return": 0.004566210045662267,
         "nav": 0.9942990202394434,
         "drawdown": -0.07577035236572538,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-21",
@@ -1163,7 +1477,10 @@
         "daily_return": 0.020454545454545503,
         "nav": 1.0146369547443412,
         "drawdown": -0.05686565502775143,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-22",
@@ -1174,7 +1491,10 @@
         "daily_return": 0.011135857461024523,
         "nav": 1.0259358072470621,
         "drawdown": -0.04636304539554381,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-23",
@@ -1185,7 +1505,10 @@
         "daily_return": 0.0,
         "nav": 1.0259358072470621,
         "drawdown": -0.04636304539554381,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-26",
@@ -1196,7 +1519,10 @@
         "daily_return": 0.017621145374449254,
         "nav": 1.0440139712514156,
         "drawdown": -0.029558869984011582,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-27",
@@ -1207,7 +1533,10 @@
         "daily_return": 0.01298701298701288,
         "nav": 1.0575725942546805,
         "drawdown": -0.016955738425362576,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-28",
@@ -1218,7 +1547,10 @@
         "daily_return": -0.008547008547008517,
         "nav": 1.048533512252504,
         "drawdown": -0.02535782613112858,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-29",
@@ -1229,7 +1561,10 @@
         "daily_return": -0.020689655172413834,
         "nav": 1.0268397154472797,
         "drawdown": -0.045522836624967256,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-10-30",
@@ -1240,7 +1575,10 @@
         "daily_return": -0.053257042253521125,
         "nav": 0.9721532693341103,
         "drawdown": -0.09635546724485244,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-02",
@@ -1251,7 +1589,10 @@
         "daily_return": 0.01859600185960031,
         "nav": 0.9902314333384639,
         "drawdown": -0.0795512918333201,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-03",
@@ -1262,7 +1603,10 @@
         "daily_return": -0.08580556823368313,
         "nav": 0.9052640625180025,
         "drawdown": -0.15853091626752158,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-04",
@@ -1273,7 +1617,10 @@
         "daily_return": 0.039940089865202255,
         "nav": 0.9414203905267096,
         "drawdown": -0.12492256544445701,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-05",
@@ -1284,7 +1631,10 @@
         "daily_return": -0.015842534805569075,
         "nav": 0.9265059052231177,
         "drawdown": -0.1387860101589714,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "501018"
       },
       {
         "signal_date": "2026-11-06",
@@ -1295,7 +1645,10 @@
         "daily_return": -0.0011999999999999789,
         "nav": 0.92539409813685,
         "drawdown": -0.1398194669467805,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       },
       {
         "signal_date": "2026-11-09",
@@ -1306,7 +1659,10 @@
         "daily_return": -0.001367989056087593,
         "nav": 0.9241281691380308,
         "drawdown": -0.14099618450225693,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       },
       {
         "signal_date": "2026-11-10",
@@ -1317,7 +1673,24 @@
         "daily_return": -0.00136986301369868,
         "nav": 0.9228622401392115,
         "drawdown": -0.14217290205773336,
-        "status": "settled"
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
+      },
+      {
+        "signal_date": "2026-11-11",
+        "execution_date": "2026-11-12",
+        "valuation_date": "2026-11-13",
+        "target": "511220",
+        "target_name": "城投债/现金",
+        "daily_return": 0.0,
+        "nav": 0.9228622401392115,
+        "drawdown": -0.14217290205773336,
+        "status": "settled",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "model_target": "511220"
       }
     ]
   },
@@ -1329,7 +1702,10 @@
         "from": null,
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "VOID_ENTER_FREEZE_PREV"
+        "decision": "VOID_ENTER_FREEZE_PREV",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-09-29",
@@ -1347,12 +1723,59 @@
         "audit_only": true
       },
       {
+        "signal_date": "2026-09-30",
+        "execution_date": "2026-10-08",
+        "from": "159981",
+        "to": "159509",
+        "to_name": "纳指科技",
+        "decision": "BASE",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "note": "Model-only switch to 159509; date-specific premium clearance and broker fill not confirmed. Do not treat as an actual trade."
+      },
+      {
+        "signal_date": "2026-10-12",
+        "execution_date": "2026-10-13",
+        "from": "159509",
+        "to": "513100",
+        "to_name": "纳指100",
+        "decision": "BASE",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "note": "Model-only switch to 513100; date-specific premium clearance and broker fill not confirmed. Do not treat as an actual trade."
+      },
+      {
+        "signal_date": "2026-10-15",
+        "execution_date": "2026-10-16",
+        "from": "513100",
+        "to": "159981",
+        "to_name": "能源化工",
+        "decision": "BASE",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "note": "Model-only switch to 159981; date-specific premium clearance and broker fill not confirmed. Do not treat as an actual trade."
+      },
+      {
+        "signal_date": "2026-10-16",
+        "execution_date": "2026-10-19",
+        "from": "159981",
+        "to": "501018",
+        "to_name": "原油",
+        "decision": "BASE",
+        "execution_status": "MODEL_SWITCH_UNVERIFIED",
+        "execution_filter": "PREMIUM_UNVERIFIED",
+        "note": "Model-only switch to 501018; date-specific premium clearance and broker fill not confirmed. Do not treat as an actual trade."
+      },
+      {
         "signal_date": "2026-11-06",
         "execution_date": "2026-11-09",
-        "from": "159981",
+        "from": "501018",
         "to": "511220",
         "to_name": "城投债/现金",
-        "decision": "VOID_DEEP_INVALID_TO_CASH"
+        "decision": "VOID_DEEP_INVALID_TO_CASH",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       }
     ],
     "original": [
@@ -1362,7 +1785,10 @@
         "from": null,
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-09-15",
@@ -1370,7 +1796,10 @@
         "from": "159981",
         "to": "501018",
         "to_name": "原油",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-09-16",
@@ -1378,7 +1807,10 @@
         "from": "501018",
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-09-23",
@@ -1386,7 +1818,10 @@
         "from": "159981",
         "to": "159509",
         "to_name": "纳指科技",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-12",
@@ -1394,7 +1829,10 @@
         "from": "159509",
         "to": "513100",
         "to_name": "纳指100",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-15",
@@ -1402,7 +1840,10 @@
         "from": "513100",
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-16",
@@ -1410,7 +1851,10 @@
         "from": "159981",
         "to": "501018",
         "to_name": "原油",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-19",
@@ -1418,7 +1862,10 @@
         "from": "501018",
         "to": "159529",
         "to_name": "标普消费",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-22",
@@ -1426,7 +1873,10 @@
         "from": "159529",
         "to": "501018",
         "to_name": "原油",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-11-05",
@@ -1434,7 +1884,10 @@
         "from": "501018",
         "to": "513290",
         "to_name": "纳指生物",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-11-06",
@@ -1442,7 +1895,21 @@
         "from": "513290",
         "to": "164824",
         "to_name": "印度",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
+      },
+      {
+        "signal_date": "2026-11-13",
+        "execution_date": "next trading day",
+        "from": "164824",
+        "to": "513290",
+        "to_name": "纳指生物",
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       }
     ],
     "freeze_cash": [
@@ -1452,7 +1919,10 @@
         "from": null,
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "VOID_ENTER_FREEZE_PREV"
+        "decision": "VOID_ENTER_FREEZE_PREV",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-09-29",
@@ -1460,7 +1930,10 @@
         "from": "159981",
         "to": "159509",
         "to_name": "纳指科技",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-12",
@@ -1468,7 +1941,10 @@
         "from": "159509",
         "to": "513100",
         "to_name": "纳指100",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-15",
@@ -1476,7 +1952,10 @@
         "from": "513100",
         "to": "159981",
         "to_name": "能源化工",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-10-16",
@@ -1484,7 +1963,10 @@
         "from": "159981",
         "to": "501018",
         "to_name": "原油",
-        "decision": "BASE"
+        "decision": "BASE",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       },
       {
         "signal_date": "2026-11-06",
@@ -1492,7 +1974,10 @@
         "from": "501018",
         "to": "511220",
         "to_name": "城投债/现金",
-        "decision": "VOID_INVALID_TO_CASH"
+        "decision": "VOID_INVALID_TO_CASH",
+        "execution_status": "MODEL",
+        "execution_filter": null,
+        "note": null
       }
     ]
   },
@@ -1787,12 +2272,19 @@
         "daily_return": -0.006966773847802865,
         "drawdown": -0.0907752698724239,
         "status": "close"
+      },
+      {
+        "date": "2026-11-13",
+        "nav": 0.9136476426799006,
+        "daily_return": -0.0064759848893686245,
+        "drawdown": -0.09666339548577041,
+        "status": "close"
       }
     ],
     "mark_to_market": {
-      "valuation_date": "2026-11-12",
-      "nav": 0.9196029776674938,
-      "total_return": -0.08039702233250623
+      "valuation_date": "2026-11-13",
+      "nav": 0.9136476426799006,
+      "total_return": -0.08635235732009938
     }
   },
   "notes": [
@@ -1800,6 +2292,6 @@
     "Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.",
     "Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.",
     "Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.",
-    "Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium10 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills."
+    "Confirmed overrides affect their dates only. Later unverified model switches remain hypothetical; model NAV is not a verified execution record. Backfilled premium is not point-in-time clearance."
   ]
 }
