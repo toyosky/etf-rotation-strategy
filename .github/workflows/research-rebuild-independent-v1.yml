@@ -56,7 +56,8 @@ jobs:
             --out research/rebuild_independent_value/no_turnover_floor
       - name: Publish report to workflow summary
         if: success()
-        run: cat research/rebuild_independent_value/REPORT.md >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          cat research/rebuild_independent_value/REPORT.md >> "$GITHUB_STEP_SUMMARY"
           echo '---' >> "$GITHUB_STEP_SUMMARY"
           cat research/rebuild_independent_value/no_turnover_floor/REPORT.md >> "$GITHUB_STEP_SUMMARY"
       - name: Commit research reports only
