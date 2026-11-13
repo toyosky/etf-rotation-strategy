@@ -58,3 +58,9 @@
 - 同日查询当前 Release API：`research-data-fullmarket-current` 已换为资产 ID `741069813`，创建时间 `2026-11-12T21:01:05Z`，大小仍为 `17166998` 字节，API声明 SHA256 `7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644`。这表明 current 标签资产会被再次替换，即使摘要相同，旧资产 ID 也不再有效。
 - 已在研究脚本 `pin_research_archive_asset_v2.py` 将候选 ID 改为 `741069813`（提交 `4370144bcfe9631745788262085439f9997b36e4`）；仍严格要求元数据与实际下载字节 SHA256 一致，不自动信任 current 标签。**该新 ID 尚未在 Actions 成功验收**，不能声称已冻结新行情。
 - 后续应核对该提交触发的工作流与 manifest；若新 ID 在下载前又失效，需改为在研究独立 Release 中复制并固定已核验的候选字节，禁止继续依赖 main 持续更新的 current 标签。旧 `9d55f6e0...` 数据仍未恢复；旧版统计与新归档不可直接混用。
+
+## 2026-11-13 第9轮：修复验证脚本更新未触发工作流的问题
+- 复核当前 Release API：asset `741069813` 仍存在，摘要 `7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644`、大小 `17,166,998` 字节；**仅确认API元数据，未验证下载字节及Parquet内容**。
+- 找到上轮新资产ID修复后未自动重跑的具体原因：`.github/workflows/research-pinned-archive-v2.yml` 的 `push.paths` 只监听工作流YAML，不监听 `pin_research_archive_asset_v2.py`，因此只更新脚本不会触发工作流。已修正为同时监听脚本路径，提交 `cc68065ea0df8c5a172abf805f5090125ccedff7`。
+- 自动触发的 Actions [43335752852](https://github.com/toyosky/etf-rotation-strategy/actions/runs/43335752852) 创建时为 `queued`；不得预先认定归档已验收。下轮必须读取最终日志与manifest，核对 SHA256、行数、日期范围及 schema，失败则追踪错误而不是放松门禁。
+- 即便此工作流成功，它也仅证明可变 `current` 标签当前候选字节的来源与内容；真正不可变的独立归档、旧 `9d55f6e0...` 恢复、历史回测重算仍未完成。研究继续，main/实盘保持不变。
