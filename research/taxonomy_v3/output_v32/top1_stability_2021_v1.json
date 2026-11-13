@@ -1,0 +1,822 @@
+{
+  "contract": "ETF_TAXONOMY_TOP1_STABILITY_2021_V1",
+  "research_only": true,
+  "historical_taxonomy_pit": false,
+  "not_funded_portfolio_backtest": true,
+  "source": {
+    "archive_sha256": "9d55f6e0a511be72609e799b19d04c1b44e2555374298bceef102a0481a067fb",
+    "last_data_date": "2026-11-11 00:00:00",
+    "source_rows": 1439205,
+    "taxonomy_snapshot": "2026-11-12"
+  },
+  "frozen_baseline_reproduced": true,
+  "original_pre2025_p99_bps": 182.8532,
+  "annual_p99_thresholds": {
+    "2021": null,
+    "2022": {
+      "cap_slope_bps": 97.6752,
+      "prior_observations": 8714
+    },
+    "2023": {
+      "cap_slope_bps": 98.9316,
+      "prior_observations": 20135
+    },
+    "2024": {
+      "cap_slope_bps": 95.7282,
+      "prior_observations": 33112
+    },
+    "2025": {
+      "cap_slope_bps": 182.8532,
+      "prior_observations": 52780
+    },
+    "2026": {
+      "cap_slope_bps": 182.8532,
+      "prior_observations": 52780
+    }
+  },
+  "eligible_funds": 1045,
+  "annual": {
+    "ALL": {
+      "2021": {
+        "days": 232,
+        "mean_pct": -0.4057,
+        "median_pct": -0.12,
+        "p10_pct": -8.0133,
+        "win_pct": 44.83,
+        "distinct_funds": 36
+      },
+      "2022": {
+        "days": 193,
+        "mean_pct": -0.4508,
+        "median_pct": -1.2422,
+        "p10_pct": -7.1467,
+        "win_pct": 41.45,
+        "distinct_funds": 42
+      },
+      "2023": {
+        "days": 216,
+        "mean_pct": 0.3511,
+        "median_pct": 0.6287,
+        "p10_pct": -6.3359,
+        "win_pct": 50.93,
+        "distinct_funds": 51
+      },
+      "2024": {
+        "days": 236,
+        "mean_pct": 0.883,
+        "median_pct": -0.12,
+        "p10_pct": -7.2615,
+        "win_pct": 45.76,
+        "distinct_funds": 58
+      },
+      "2025": {
+        "days": 230,
+        "mean_pct": 1.6745,
+        "median_pct": 0.9629,
+        "p10_pct": -6.8432,
+        "win_pct": 54.35,
+        "distinct_funds": 54
+      },
+      "2026": {
+        "days": 194,
+        "mean_pct": -0.2185,
+        "median_pct": -1.1646,
+        "p10_pct": -11.8252,
+        "win_pct": 44.85,
+        "distinct_funds": 61
+      }
+    },
+    "EXACT_PRE": {
+      "2021": {
+        "days": 231,
+        "mean_pct": -0.2538,
+        "median_pct": -0.12,
+        "p10_pct": -8.047,
+        "win_pct": 45.45,
+        "distinct_funds": 32
+      },
+      "2022": {
+        "days": 189,
+        "mean_pct": -0.34,
+        "median_pct": -0.9003,
+        "p10_pct": -7.2102,
+        "win_pct": 42.86,
+        "distinct_funds": 33
+      },
+      "2023": {
+        "days": 215,
+        "mean_pct": 0.2163,
+        "median_pct": -0.12,
+        "p10_pct": -5.8603,
+        "win_pct": 49.3,
+        "distinct_funds": 35
+      },
+      "2024": {
+        "days": 236,
+        "mean_pct": 0.7799,
+        "median_pct": -0.7433,
+        "p10_pct": -6.903,
+        "win_pct": 44.07,
+        "distinct_funds": 51
+      },
+      "2025": {
+        "days": 224,
+        "mean_pct": 2.0048,
+        "median_pct": 1.2879,
+        "p10_pct": -6.0963,
+        "win_pct": 57.59,
+        "distinct_funds": 42
+      },
+      "2026": {
+        "days": 189,
+        "mean_pct": -0.1711,
+        "median_pct": -0.9987,
+        "p10_pct": -11.6162,
+        "win_pct": 44.44,
+        "distinct_funds": 45
+      }
+    },
+    "QUALITY_PRE": {
+      "2021": {
+        "days": 222,
+        "mean_pct": -0.236,
+        "median_pct": -0.12,
+        "p10_pct": -6.5067,
+        "win_pct": 45.95,
+        "distinct_funds": 32
+      },
+      "2022": {
+        "days": 183,
+        "mean_pct": -0.4498,
+        "median_pct": -0.9003,
+        "p10_pct": -7.0883,
+        "win_pct": 39.89,
+        "distinct_funds": 27
+      },
+      "2023": {
+        "days": 215,
+        "mean_pct": 0.476,
+        "median_pct": 0.6091,
+        "p10_pct": -5.8603,
+        "win_pct": 50.23,
+        "distinct_funds": 32
+      },
+      "2024": {
+        "days": 230,
+        "mean_pct": 0.6013,
+        "median_pct": -1.4791,
+        "p10_pct": -7.7032,
+        "win_pct": 43.91,
+        "distinct_funds": 44
+      },
+      "2025": {
+        "days": 226,
+        "mean_pct": 1.5065,
+        "median_pct": 0.957,
+        "p10_pct": -6.9122,
+        "win_pct": 54.42,
+        "distinct_funds": 37
+      },
+      "2026": {
+        "days": 188,
+        "mean_pct": -0.1837,
+        "median_pct": -0.8064,
+        "p10_pct": -11.1511,
+        "win_pct": 45.21,
+        "distinct_funds": 46
+      }
+    },
+    "P99_WALK_FORWARD": {
+      "2021": {
+        "days": 0,
+        "note": "no prior-year P99 training"
+      },
+      "2022": {
+        "days": 189,
+        "mean_pct": -0.3403,
+        "median_pct": -0.9003,
+        "p10_pct": -7.2102,
+        "win_pct": 40.74,
+        "distinct_funds": 40
+      },
+      "2023": {
+        "days": 215,
+        "mean_pct": -0.197,
+        "median_pct": -0.12,
+        "p10_pct": -6.7535,
+        "win_pct": 47.44,
+        "distinct_funds": 40
+      },
+      "2024": {
+        "days": 233,
+        "mean_pct": 0.118,
+        "median_pct": -1.0534,
+        "p10_pct": -7.2292,
+        "win_pct": 40.34,
+        "distinct_funds": 76
+      },
+      "2025": {
+        "days": 224,
+        "mean_pct": 2.0048,
+        "median_pct": 1.2879,
+        "p10_pct": -6.0963,
+        "win_pct": 57.59,
+        "distinct_funds": 42
+      },
+      "2026": {
+        "days": 189,
+        "mean_pct": -0.0117,
+        "median_pct": -0.9961,
+        "p10_pct": -11.3631,
+        "win_pct": 44.97,
+        "distinct_funds": 47
+      }
+    }
+  },
+  "periods": {
+    "ALL": {
+      "2021-2024": {
+        "days": 877,
+        "mean_pct": 0.1176,
+        "median_pct": -0.12,
+        "p10_pct": -7.1361,
+        "win_pct": 45.84,
+        "distinct_funds": 143
+      },
+      "2025-2026": {
+        "days": 424,
+        "mean_pct": 0.8084,
+        "median_pct": 0.1134,
+        "p10_pct": -8.7507,
+        "win_pct": 50.0,
+        "distinct_funds": 103
+      },
+      "2021-2026": {
+        "days": 1301,
+        "mean_pct": 0.3427,
+        "median_pct": -0.12,
+        "p10_pct": -7.803,
+        "win_pct": 47.19,
+        "distinct_funds": 205
+      },
+      "2022-2026": {
+        "days": 1069,
+        "mean_pct": 0.5051,
+        "median_pct": -0.12,
+        "p10_pct": -7.7445,
+        "win_pct": 47.71,
+        "distinct_funds": 187
+      },
+      "2023-2024": {
+        "days": 452,
+        "mean_pct": 0.6288,
+        "median_pct": -0.12,
+        "p10_pct": -6.8737,
+        "win_pct": 48.23,
+        "distinct_funds": 95
+      }
+    },
+    "EXACT_PRE": {
+      "2021-2024": {
+        "days": 871,
+        "mean_pct": 0.1236,
+        "median_pct": -0.12,
+        "p10_pct": -6.9494,
+        "win_pct": 45.46,
+        "distinct_funds": 105
+      },
+      "2025-2026": {
+        "days": 413,
+        "mean_pct": 1.009,
+        "median_pct": 0.5736,
+        "p10_pct": -8.7924,
+        "win_pct": 51.57,
+        "distinct_funds": 75
+      },
+      "2021-2026": {
+        "days": 1284,
+        "mean_pct": 0.4084,
+        "median_pct": -0.12,
+        "p10_pct": -7.5835,
+        "win_pct": 47.43,
+        "distinct_funds": 146
+      },
+      "2022-2026": {
+        "days": 1053,
+        "mean_pct": 0.5537,
+        "median_pct": -0.12,
+        "p10_pct": -7.4765,
+        "win_pct": 47.86,
+        "distinct_funds": 134
+      },
+      "2023-2024": {
+        "days": 451,
+        "mean_pct": 0.5112,
+        "median_pct": -0.12,
+        "p10_pct": -6.7297,
+        "win_pct": 46.56,
+        "distinct_funds": 72
+      }
+    },
+    "QUALITY_PRE": {
+      "2021-2024": {
+        "days": 850,
+        "mean_pct": 0.1246,
+        "median_pct": -0.12,
+        "p10_pct": -6.9553,
+        "win_pct": 45.18,
+        "distinct_funds": 83
+      },
+      "2025-2026": {
+        "days": 414,
+        "mean_pct": 0.739,
+        "median_pct": 0.1297,
+        "p10_pct": -8.7897,
+        "win_pct": 50.24,
+        "distinct_funds": 69
+      },
+      "2021-2026": {
+        "days": 1264,
+        "mean_pct": 0.3259,
+        "median_pct": -0.12,
+        "p10_pct": -7.3857,
+        "win_pct": 46.84,
+        "distinct_funds": 120
+      },
+      "2022-2026": {
+        "days": 1042,
+        "mean_pct": 0.4456,
+        "median_pct": -0.12,
+        "p10_pct": -7.5876,
+        "win_pct": 47.02,
+        "distinct_funds": 113
+      },
+      "2023-2024": {
+        "days": 445,
+        "mean_pct": 0.5408,
+        "median_pct": -0.12,
+        "p10_pct": -6.9354,
+        "win_pct": 46.97,
+        "distinct_funds": 60
+      }
+    },
+    "P99_WALK_FORWARD": {
+      "2021-2024": {
+        "days": 637,
+        "mean_pct": -0.1243,
+        "median_pct": -0.5361,
+        "p10_pct": -7.1361,
+        "win_pct": 42.86,
+        "distinct_funds": 114
+      },
+      "2025-2026": {
+        "days": 413,
+        "mean_pct": 1.082,
+        "median_pct": 0.6367,
+        "p10_pct": -8.692,
+        "win_pct": 51.82,
+        "distinct_funds": 76
+      },
+      "2021-2026": {
+        "days": 1050,
+        "mean_pct": 0.3502,
+        "median_pct": -0.12,
+        "p10_pct": -7.8551,
+        "win_pct": 46.38,
+        "distinct_funds": 156
+      },
+      "2022-2026": {
+        "days": 1050,
+        "mean_pct": 0.3502,
+        "median_pct": -0.12,
+        "p10_pct": -7.8551,
+        "win_pct": 46.38,
+        "distinct_funds": 156
+      },
+      "2023-2024": {
+        "days": 448,
+        "mean_pct": -0.0331,
+        "median_pct": -0.12,
+        "p10_pct": -6.9846,
+        "win_pct": 43.75,
+        "distinct_funds": 95
+      }
+    }
+  },
+  "paired": {
+    "EXACT_PRE_vs_ALL": {
+      "periods": {
+        "2021-2024": {
+          "days": 870,
+          "diff_pp": -0.0119,
+          "ci95_pp": [
+            -0.1594,
+            0.135
+          ],
+          "changed_days": 219,
+          "same_fund_pct": 74.83,
+          "diff_on_changed_days_pp": -0.0473,
+          "positive_diff_days_pct": 12.41
+        },
+        "2025-2026": {
+          "days": 413,
+          "diff_pp": 0.1372,
+          "ci95_pp": [
+            -0.0466,
+            0.3502
+          ],
+          "changed_days": 144,
+          "same_fund_pct": 65.13,
+          "diff_on_changed_days_pp": 0.3935,
+          "positive_diff_days_pct": 17.43
+        },
+        "2021-2026": {
+          "days": 1283,
+          "diff_pp": 0.0361,
+          "ci95_pp": [
+            -0.0827,
+            0.1612
+          ],
+          "changed_days": 363,
+          "same_fund_pct": 71.71,
+          "diff_on_changed_days_pp": 0.1276,
+          "positive_diff_days_pct": 14.03
+        },
+        "2022-2026": {
+          "days": 1053,
+          "diff_pp": 0.0072,
+          "ci95_pp": [
+            -0.122,
+            0.1353
+          ],
+          "changed_days": 333,
+          "same_fund_pct": 68.38,
+          "diff_on_changed_days_pp": 0.0228,
+          "positive_diff_days_pct": 15.29
+        },
+        "2023-2024": {
+          "days": 451,
+          "diff_pp": -0.0955,
+          "ci95_pp": [
+            -0.2604,
+            0.0533
+          ],
+          "changed_days": 141,
+          "same_fund_pct": 68.74,
+          "diff_on_changed_days_pp": -0.3055,
+          "positive_diff_days_pct": 13.3
+        }
+      },
+      "years": {
+        "2021": {
+          "days": 230,
+          "diff_pp": 0.1684,
+          "ci95_pp": [
+            -0.0699,
+            0.5321
+          ],
+          "changed_days": 30,
+          "same_fund_pct": 86.96,
+          "diff_on_changed_days_pp": 1.2907,
+          "positive_diff_days_pct": 8.26
+        },
+        "2022": {
+          "days": 189,
+          "diff_pp": -0.0317,
+          "ci95_pp": [
+            -0.4589,
+            0.3649
+          ],
+          "changed_days": 48,
+          "same_fund_pct": 74.6,
+          "diff_on_changed_days_pp": -0.125,
+          "positive_diff_days_pct": 15.34
+        },
+        "2023": {
+          "days": 215,
+          "diff_pp": -0.0872,
+          "ci95_pp": [
+            -0.3306,
+            0.0763
+          ],
+          "changed_days": 74,
+          "same_fund_pct": 65.58,
+          "diff_on_changed_days_pp": -0.2533,
+          "positive_diff_days_pct": 16.28
+        },
+        "2024": {
+          "days": 236,
+          "diff_pp": -0.1031,
+          "ci95_pp": [
+            -0.3346,
+            0.1119
+          ],
+          "changed_days": 67,
+          "same_fund_pct": 71.61,
+          "diff_on_changed_days_pp": -0.3632,
+          "positive_diff_days_pct": 10.59
+        },
+        "2025": {
+          "days": 224,
+          "diff_pp": 0.2337,
+          "ci95_pp": [
+            0.0002,
+            0.5154
+          ],
+          "changed_days": 86,
+          "same_fund_pct": 61.61,
+          "diff_on_changed_days_pp": 0.6087,
+          "positive_diff_days_pct": 19.64
+        },
+        "2026": {
+          "days": 189,
+          "diff_pp": 0.0228,
+          "ci95_pp": [
+            -0.2319,
+            0.3512
+          ],
+          "changed_days": 58,
+          "same_fund_pct": 69.31,
+          "diff_on_changed_days_pp": 0.0744,
+          "positive_diff_days_pct": 14.81
+        }
+      }
+    },
+    "QUALITY_PRE_vs_EXACT_PRE": {
+      "periods": {
+        "2021-2024": {
+          "days": 850,
+          "diff_pp": 0.0099,
+          "ci95_pp": [
+            -0.643,
+            0.6529
+          ],
+          "changed_days": 349,
+          "same_fund_pct": 58.94,
+          "diff_on_changed_days_pp": 0.024,
+          "positive_diff_days_pct": 21.41
+        },
+        "2025-2026": {
+          "days": 412,
+          "diff_pp": -0.2933,
+          "ci95_pp": [
+            -0.9154,
+            0.2603
+          ],
+          "changed_days": 108,
+          "same_fund_pct": 73.79,
+          "diff_on_changed_days_pp": -1.119,
+          "positive_diff_days_pct": 10.44
+        },
+        "2021-2026": {
+          "days": 1262,
+          "diff_pp": -0.0891,
+          "ci95_pp": [
+            -0.5545,
+            0.3684
+          ],
+          "changed_days": 457,
+          "same_fund_pct": 63.79,
+          "diff_on_changed_days_pp": -0.2461,
+          "positive_diff_days_pct": 17.83
+        },
+        "2022-2026": {
+          "days": 1040,
+          "diff_pp": -0.1259,
+          "ci95_pp": [
+            -0.5956,
+            0.3291
+          ],
+          "changed_days": 351,
+          "same_fund_pct": 66.25,
+          "diff_on_changed_days_pp": -0.3731,
+          "positive_diff_days_pct": 16.06
+        },
+        "2023-2024": {
+          "days": 445,
+          "diff_pp": 0.0007,
+          "ci95_pp": [
+            -0.8597,
+            0.8077
+          ],
+          "changed_days": 138,
+          "same_fund_pct": 68.99,
+          "diff_on_changed_days_pp": 0.0023,
+          "positive_diff_days_pct": 15.73
+        }
+      },
+      "years": {
+        "2021": {
+          "days": 222,
+          "diff_pp": 0.0832,
+          "ci95_pp": [
+            -1.5904,
+            1.5963
+          ],
+          "changed_days": 106,
+          "same_fund_pct": 52.25,
+          "diff_on_changed_days_pp": 0.1743,
+          "positive_diff_days_pct": 26.13
+        },
+        "2022": {
+          "days": 183,
+          "diff_pp": -0.0569,
+          "ci95_pp": [
+            -0.9773,
+            0.8946
+          ],
+          "changed_days": 105,
+          "same_fund_pct": 42.62,
+          "diff_on_changed_days_pp": -0.0992,
+          "positive_diff_days_pct": 29.51
+        },
+        "2023": {
+          "days": 215,
+          "diff_pp": 0.2597,
+          "ci95_pp": [
+            -0.0755,
+            0.6199
+          ],
+          "changed_days": 65,
+          "same_fund_pct": 69.77,
+          "diff_on_changed_days_pp": 0.859,
+          "positive_diff_days_pct": 16.74
+        },
+        "2024": {
+          "days": 230,
+          "diff_pp": -0.2414,
+          "ci95_pp": [
+            -1.828,
+            1.2379
+          ],
+          "changed_days": 73,
+          "same_fund_pct": 68.26,
+          "diff_on_changed_days_pp": -0.7605,
+          "positive_diff_days_pct": 14.78
+        },
+        "2025": {
+          "days": 224,
+          "diff_pp": -0.4997,
+          "ci95_pp": [
+            -1.3344,
+            0.1252
+          ],
+          "changed_days": 58,
+          "same_fund_pct": 74.11,
+          "diff_on_changed_days_pp": -1.9298,
+          "positive_diff_days_pct": 8.48
+        },
+        "2026": {
+          "days": 188,
+          "diff_pp": -0.0475,
+          "ci95_pp": [
+            -1.0765,
+            0.8199
+          ],
+          "changed_days": 50,
+          "same_fund_pct": 73.4,
+          "diff_on_changed_days_pp": -0.1784,
+          "positive_diff_days_pct": 12.77
+        }
+      }
+    },
+    "P99_WALK_FORWARD_vs_EXACT_PRE": {
+      "periods": {
+        "2021-2024": {
+          "days": 637,
+          "diff_pp": -0.3784,
+          "ci95_pp": [
+            -0.8576,
+            -0.0219
+          ],
+          "changed_days": 91,
+          "same_fund_pct": 85.71,
+          "diff_on_changed_days_pp": -2.6489,
+          "positive_diff_days_pct": 6.12
+        },
+        "2025-2026": {
+          "days": 413,
+          "diff_pp": 0.0729,
+          "ci95_pp": [
+            -0.0069,
+            0.2042
+          ],
+          "changed_days": 12,
+          "same_fund_pct": 97.09,
+          "diff_on_changed_days_pp": 2.51,
+          "positive_diff_days_pct": 1.69
+        },
+        "2021-2026": {
+          "days": 1050,
+          "diff_pp": -0.2009,
+          "ci95_pp": [
+            -0.4924,
+            0.0267
+          ],
+          "changed_days": 103,
+          "same_fund_pct": 90.19,
+          "diff_on_changed_days_pp": -2.0479,
+          "positive_diff_days_pct": 4.38
+        },
+        "2022-2026": {
+          "days": 1050,
+          "diff_pp": -0.2009,
+          "ci95_pp": [
+            -0.4924,
+            0.0267
+          ],
+          "changed_days": 103,
+          "same_fund_pct": 90.19,
+          "diff_on_changed_days_pp": -2.0479,
+          "positive_diff_days_pct": 4.38
+        },
+        "2023-2024": {
+          "days": 448,
+          "diff_pp": -0.5379,
+          "ci95_pp": [
+            -1.1607,
+            -0.0666
+          ],
+          "changed_days": 58,
+          "same_fund_pct": 87.05,
+          "diff_on_changed_days_pp": -4.1549,
+          "positive_diff_days_pct": 4.69
+        }
+      },
+      "years": {
+        "2021": {
+          "days": 0,
+          "note": "no prior-year training"
+        },
+        "2022": {
+          "days": 189,
+          "diff_pp": -0.0004,
+          "ci95_pp": [
+            -0.3683,
+            0.46
+          ],
+          "changed_days": 33,
+          "same_fund_pct": 82.54,
+          "diff_on_changed_days_pp": -0.002,
+          "positive_diff_days_pct": 9.52
+        },
+        "2023": {
+          "days": 215,
+          "diff_pp": -0.4133,
+          "ci95_pp": [
+            -1.1396,
+            0.0
+          ],
+          "changed_days": 10,
+          "same_fund_pct": 95.35,
+          "diff_on_changed_days_pp": -8.8862,
+          "positive_diff_days_pct": 0.47
+        },
+        "2024": {
+          "days": 233,
+          "diff_pp": -0.6529,
+          "ci95_pp": [
+            -1.7157,
+            -0.0126
+          ],
+          "changed_days": 48,
+          "same_fund_pct": 79.4,
+          "diff_on_changed_days_pp": -3.1692,
+          "positive_diff_days_pct": 8.58
+        },
+        "2025": {
+          "days": 224,
+          "diff_pp": 0.0,
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "changed_days": 0,
+          "same_fund_pct": 100.0,
+          "diff_on_changed_days_pp": 0.0,
+          "positive_diff_days_pct": 0.0
+        },
+        "2026": {
+          "days": 189,
+          "diff_pp": 0.1594,
+          "ci95_pp": [
+            -0.0163,
+            0.413
+          ],
+          "changed_days": 12,
+          "same_fund_pct": 93.65,
+          "diff_on_changed_days_pp": 2.51,
+          "positive_diff_days_pct": 3.7
+        }
+      }
+    }
+  },
+  "caveats": [
+    "2026 taxonomy retrospectively assigned to 2021-2026; not historical PIT.",
+    "Selected Top1 net10 is a daily overlapping event outcome, NOT a funded strategy.",
+    "P99_WALK_FORWARD uses prior years for 2022-24 then freezes the 2021-24 cutoff for 2025-26; none for 2021.",
+    "The 2025-26 cutoffs exactly match prior 2021-24 TRAIN_P99_CAP.",
+    "No point-in-time NAV premium, delisted funds, or intraday executable filters.",
+    "Bootstrap resamples calendar month blocks; no multiple-test adjustment."
+  ]
+}
