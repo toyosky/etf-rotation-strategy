@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'automation/build_fundamental_audit_trigger.py'
+      - 'automation/build_live_forward.py'
+      - 'automation/test_live_forward_execution.py'
       - 'automation/notify_rebuild_candidates.py'
       - 'automation/test_daily_notification.py'
       - 'automation/build_daily_premium_snapshot.py'
@@ -55,7 +57,7 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 pyarrow
+        run: python -m pip install numpy pandas sqlalchemy psycopg2-binary boto3 pyarrow scipy tabulate
 
       - name: Compile trigger and daily market-wide scanner
         run: python -m py_compile automation/build_fundamental_audit_trigger.py automation/refresh_full_market_rebuild.py automation/notify_rebuild_candidates.py
@@ -63,7 +65,7 @@ jobs:
       - name: Validate daily notification and category audit scope
         run: |
           python -m py_compile automation/build_category_audit_scope.py
-          python -m unittest automation.test_daily_notification automation.test_category_audit_scope
+          python -m unittest automation.test_daily_notification automation.test_category_audit_scope automation.test_live_forward_execution
 
       - name: Build fundamental-audit trigger
         run: python automation/build_fundamental_audit_trigger.py

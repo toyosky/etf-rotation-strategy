@@ -63,7 +63,9 @@ jobs:
           python -m pip install --requirement automation/requirements-tencent-daily.txt
           python -m pip install tabulate scipy
       - name: Run unit checks
-        run: python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
+        run: |
+          python -m unittest discover -s automation -p "test_tencent_daily_sync.py"
+          python -m unittest automation.test_live_forward_execution
       - name: Fetch Tencent HFQ bars and upsert Supabase
         run: |
           for attempt in 1 2 3; do

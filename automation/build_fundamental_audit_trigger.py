@@ -124,14 +124,26 @@ def current_holding_from_live(live: dict) -> dict:
 
 def next_target_from_live(live: dict) -> dict:
     latest = live.get("latest") or {}
+    if "raw_top1" not in latest or "v1_target" not in latest:
+        raise ValueError("Live snapshot lacks independent raw OLS/V1 fields; do not mislabel defensive target as Top1")
     target = latest.get("target")
+    raw_top1 = latest.get("raw_top1")
+    strategy = latest.get("model_target")
+    v1 = latest.get("v1_target")
     return {
         "symbol": target,
         "name": NAMES.get(target, "现金") if target else "现金",
-        "model_target": latest.get("model_target"),
-        "model_target_name": latest.get("model_target_name") or (NAMES.get(latest.get("model_target"), "现金") if latest.get("model_target") else "现金"),
+        "model_target": raw_top1,
+        "model_target_name": NAMES.get(raw_top1, "无有效风险资产Top1") if raw_top1 else "无有效风险资产Top1",
+        "raw_top1_score": latest.get("raw_top1_score"),
+        "raw_top1_qualifies_cash": latest.get("raw_top1_qualifies_cash"),
+        "v1_target": v1,
+        "v1_target_name": NAMES.get(v1, "现金") if v1 else "现金",
+        "strategy_model_target": strategy,
+        "strategy_model_target_name": NAMES.get(strategy, "现金") if strategy else "现金",
         "holding_target": latest.get("holding_target"),
         "execution_status": latest.get("execution_status"),
+        "execution_filter": latest.get("execution_filter"),
         "signal_date": latest.get("date"),
         "decision": latest.get("decision"),
     }
@@ -249,6 +261,9 @@ def main() -> None:
     watches.sort(key=lambda x: (x["raw_positive_rank"] is None, x["raw_positive_rank"] or 999))
 
     live = load_live()
+    live_date = str((live.get("latest") or {}).get("date") or "")
+    if live_date != latest_market_date.strftime("%Y-%m-%d"):
+        raise RuntimeError(f"Live OLS data stale: {live_date} != market {latest_market_date:%Y-%m-%d}; refuse PushPlus")
     payload = {
         "version": "fundamental-audit-trigger-v1",
         "market_data_date": latest_market_date.strftime("%Y-%m-%d"),

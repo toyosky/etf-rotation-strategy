@@ -21,6 +21,8 @@ def validate_and_sort(current: dict, market: dict) -> list[dict]:
         raise ValueError("Production and full-market dates differ")
     if str(target.get("signal_date")) != day:
         raise ValueError("Next-day OLS signal is stale; no notification")
+    if "v1_target" not in target or "strategy_model_target" not in target:
+        raise ValueError("Missing raw OLS / V1 / defensive route separation; no notification")
     if market.get("data_quality_gate") != "PASS":
         raise ValueError("Full-market quality gate failed; no partial-as-complete notification")
     if market.get("listed_requested", 0) < 1200:
@@ -56,6 +58,10 @@ def build_report(previous: dict, current: dict, market: dict, test: bool = False
     model = tgt.get("model_target")
     execution = tgt.get("symbol")
     model_name = tgt.get("model_target_name") or ""
+    v1 = tgt.get("v1_target")
+    v1_name = tgt.get("v1_target_name") or ""
+    strategy = tgt.get("strategy_model_target")
+    strategy_name = tgt.get("strategy_model_target_name") or ""
     execution_name = tgt.get("name") or ""
     coverage = float(market["asof_coverage"])
     count = int(market["symbols_with_asof_close"])
@@ -79,12 +85,15 @@ def build_report(previous: dict, current: dict, market: dict, test: bool = False
         f"全市场有效行情：{count}/{listed}，覆盖率 {coverage:.1%}",
         f"未取得当日行情：{listed-count} 只，不视为无重建信号。",
         "",
-        "## 固定候选池 OLS Top1（下一交易日）",
-        f"- 模型首选：**{model+' '+model_name if model else '现金/无模型首选'}**",
-        f"- 执行层目标：**{execution+' '+execution_name if execution else '现金/无执行目标'}**",
-        f"- 决策：{tgt.get('decision') or '未提供'}；执行状态：{tgt.get('execution_status') or '未提供'}",
+        "## 固定候选池 OLS 与防御执行（下一交易日）",
+        f"- 原始 OLS 风险资产 Top1：**{model+' '+model_name if model else '无有效正趋势Top1'}**；Score {tgt.get('raw_top1_score') if tgt.get('raw_top1_score') is not None else '—'}",
+        f"- 是否跑赢城投债门槛：{'是' if tgt.get('raw_top1_qualifies_cash') else '否/未确认'}",
+        f"- V1 过滤后目标：**{v1+' '+v1_name if v1 else '现金/无目标'}**",
+        f"- 防御状态调整后目标：**{strategy+' '+strategy_name if strategy else '现金/无目标'}**",
+        f"- 模型模拟路径：**{execution+' '+execution_name if execution else '现金/无目标'}**",
+        f"- 决策：{tgt.get('decision') or '未提供'}；执行核验状态：{tgt.get('execution_status') or '未提供'}",
         premium_line,
-        "- 两项可能不同：模型首选未经全部溢价和执行层过滤；均不代表用户实际持仓。",
+        "- 原始 Top1、V1、防御调整与模拟执行并非同一信号；模拟净值可包含未验证溢价的假设成交，不代表实际买入或可交易许可。",
         "",
         "## 全市场 R² 趋势重建合格候选（按首次合格日期由新到旧）",
         f"- 当前合格：**{len(rows)} 只**；不以成交额、上市年限过滤，仅保留风险提示。",
@@ -110,7 +119,7 @@ def build_report(previous: dict, current: dict, market: dict, test: bool = False
             f"R² {r2txt} | annual {annualtxt} | 翻正 {row['cross_date']}{caveat}"
         )
     body.extend(["", "重建仅为研究候选；交易前检查交易所盘口、基金净值时点、溢价、消息与真实底层资产。"])
-    title = f"{extra}ETF日报 {day}｜OLS {model or '现金'}｜全市场重建 {len(rows)}"
+    title = f"{extra}ETF日报 {day}｜原始Top1 {model or '无'}｜策略 {strategy or '现金'}｜重建 {len(rows)}"
     return title, "\n".join(body)
 
 

@@ -109,9 +109,9 @@ def apply_execution_overrides(path,key,overrides):
         q.at[idx,'premium_limit']=item.get('premium_limit',PREMIUM_LIMIT)
         q.at[idx,'execution_status']='CONFIRMED_OVERRIDE'
         audit.append(dict(item))
-    # Once an execution decision has been confirmed, later switches must not be
-    # treated as filled without an independently confirmed execution record.
-    # A missing premium quote is NOT evidence that the premium is acceptable.
+    # Point-in-time confirmed vetoes apply only to their signal date.
+    # Later unverified switches remain model-only, not actual confirmed fills.
+    # Do not mutate later model targets into a permanent incumbent freeze.
     confirmed_dates={pd.Timestamp(item['signal_date']) for item in (overrides.get(key) or [])}
     anchored=False
     prev=None
@@ -121,19 +121,26 @@ def apply_execution_overrides(path,key,overrides):
         if date in confirmed_dates:
             anchored=True
         elif anchored and cur != prev and needs_premium_check(cur):
-            q.at[idx,'target']=prev
-            q.at[idx,'route_decision']='PREMIUM_UNVERIFIED_KEEP_INCUMBENT'
             q.at[idx,'execution_filter']='PREMIUM_UNVERIFIED'
             q.at[idx,'execution_note']=(
-                f'Unconfirmed switch to {cur}; no date-specific premium clearance or '
-                f'broker fill. Keep prior holding {prev or "cash"}.'
+                f'Model-only switch to {cur}; date-specific premium clearance '
+                f'and broker fill not confirmed. Do not treat as an actual trade.'
             )
             q.at[idx,'premium_limit']=PREMIUM_LIMIT
-            q.at[idx,'execution_status']='UNVERIFIED_HOLD'
-            cur=prev
+            q.at[idx,'execution_status']='MODEL_SWITCH_UNVERIFIED'
         q.at[idx,'sides']=s8m.side_count(prev,cur)
         prev=cur
     return q,audit
+
+def ranked_raw_top1(raw_score, date, members):
+    """Positive risk-asset OLS Top1 before V1/Void/premium. Excludes defensive cash."""
+    vals=[(s,score(raw_score,date,s)) for s in members if s!=CASH]
+    vals=[(s,v) for s,v in vals if v is not None and v>0]
+    if not vals:
+        return None,None
+    vals.sort(key=lambda p:(-p[1],p[0]))
+    return vals[0]
+
 
 def fmt_exec(v,last):
     return v.strftime('%Y-%m-%d') if pd.notna(v) and pd.Timestamp(v)<=last else 'next trading day'
@@ -207,7 +214,9 @@ def main():
         eq=(1+q.net_ret).cumprod() if len(q) else pd.Series(dtype=float)
         peak=np.maximum.accumulate(eq.to_numpy()) if len(q) else np.array([])
         dd=eq.to_numpy()/peak-1 if len(q) else np.array([])
-        series[key]=[{'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':r.execution_date.strftime('%Y-%m-%d'),'valuation_date':r.return_end_date.strftime('%Y-%m-%d'),'target':None if pd.isna(r.target) else str(r.target),'target_name':NAMES.get(str(r.target),'') if pd.notna(r.target) else '现金','daily_return':float(r.net_ret),'nav':float(eq.iloc[i]),'drawdown':float(dd[i]),'status':'settled'} for i,r in enumerate(q.itertuples(index=False))]
+        series[key]=[{'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':r.execution_date.strftime('%Y-%m-%d'),'valuation_date':r.return_end_date.strftime('%Y-%m-%d'),'target':None if pd.isna(r.target) else str(r.target),'target_name':NAMES.get(str(r.target),'') if pd.notna(r.target) else '现金','daily_return':float(r.net_ret),'nav':float(eq.iloc[i]),'drawdown':float(dd[i]),'status':'settled','execution_status':getattr(r,'execution_status','MODEL'),
+                            'execution_filter':getattr(r,'execution_filter',None),
+                            'model_target':None if pd.isna(getattr(r,'model_target',None)) else str(getattr(r,'model_target'))} for i,r in enumerate(q.itertuples(index=False))]
         targets=q.target.where(q.target.notna(),'__CASH__').astype(str).tolist()
         switches=sum(a!=b for a,b in zip(targets[1:],targets[:-1]))
         official_nav=float(eq.iloc[-1]) if len(eq) else 1.0
@@ -217,7 +226,10 @@ def main():
         for r in pf.itertuples(index=False):
             t=None if pd.isna(r.target) else str(r.target)
             if t!=prev:
-                ev.append({'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':fmt_exec(r.execution_date,latest_d),'from':prev,'to':t,'to_name':NAMES.get(t,'现金') if t else '现金','decision':getattr(r,'route_decision','BASE')})
+                ev.append({'signal_date':r.signal_date.strftime('%Y-%m-%d'),'execution_date':fmt_exec(r.execution_date,latest_d),'from':prev,'to':t,'to_name':NAMES.get(t,'现金') if t else '现金','decision':getattr(r,'route_decision','BASE'),
+                           'execution_status':getattr(r,'execution_status','MODEL'),
+                           'execution_filter':getattr(r,'execution_filter',None),
+                           'note':getattr(r,'execution_note',None)})
             prev=t
         events[key]=ev
         for item in execution_audit.get(key,[]):
@@ -252,7 +264,21 @@ def main():
         execution_note=f'{target} {NAMES.get(target,"")} 是收盘候选；下一交易日开盘前必须通过 Premium{PREMIUM_LIMIT * 100:.0f}，且净值配对可用。当前持仓仍为 {holding_target or "现金"} {holding_name if holding_target else ""}'.strip()
     latest={'date':latest_d.strftime('%Y-%m-%d'),'target':target,'target_name':NAMES.get(target,'现金') if target else '现金','model_target':model_target,'model_target_name':NAMES.get(model_target,'现金') if model_target else '现金','holding_target':holding_target,'holding_target_name':holding_name,'execution_status':execution_status,'execution_note':execution_note,'execution_filter':getattr(lr,'execution_filter',None),'premium_pct':clean(getattr(lr,'premium_pct',np.nan)),'premium_limit':clean(getattr(lr,'premium_limit',np.nan)),'decision':str(getattr(lr,'route_decision','BASE')),'quadrant':str(mrow.get('quadrant_511220','')),'breadth_pct':float(mrow.get('breadth_511220',np.nan))*100 if pd.notna(mrow.get('breadth_511220',np.nan)) and float(mrow.get('breadth_511220'))<=1.0 else clean(mrow.get('breadth_511220')),'gap_percentile':clean(mrow.get('gap_percentile')),'target_score':score(raw_score,latest_d,target) if target else None,'cash_score':score(raw_score,latest_d,CASH),'carrier_score':score(raw_score,latest_d,CARRIER),'completed_through':latest_d.strftime('%Y-%m-%d'),'performance_signal_through':completed_signal_max.strftime('%Y-%m-%d')}
 
-    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'series':series,'events':events,'execution_audit':execution_audit,'benchmark':build_benchmark(bars,latest_d),'notes':['Forward model tracking, not broker-confirmed fills.','Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Production baseline execution is corrected by data/execution-overrides.json for confirmed point-in-time execution decisions such as Premium10 blocks. Latest unconfirmed switches are labeled PENDING_PREMIUM_CHECK rather than treated as fills.']}
+    raw_top1,raw_top1_score=ranked_raw_top1(raw_score,latest_d,s8m.MAIN_RISK)
+    v1_row=v1[v1.signal_date==latest_d].iloc[-1]
+    v1_target=None if pd.isna(v1_row.target) else str(v1_row.target)
+    cash_raw_score=score(raw_score,latest_d,CASH)
+    latest.update({
+        'raw_top1':raw_top1,
+        'raw_top1_name':NAMES.get(raw_top1,'') if raw_top1 else None,
+        'raw_top1_score':raw_top1_score,
+        'raw_top1_qualifies_cash':(raw_top1_score is not None and
+                                  cash_raw_score is not None and raw_top1_score>cash_raw_score),
+        'v1_target':v1_target,
+        'v1_target_name':NAMES.get(v1_target,'现金') if v1_target else '现金',
+        'simulation_disclaimer':'Model NAV may include hypothetical fills without dated premium clearance; not actual performance.',
+    })
+    payload={'version':'Void Route Baseline v1','tracking_start':'2026-09-14','pricing':'Tencent HFQ daily bars','cost_per_side':COST,'execution_model':'signal at close; execute next trading-day open; settled return measured to following trading-day open; latest execution day also marked to latest close','generated_from_market_data_through':latest_d.strftime('%Y-%m-%d'),'backtest_reference':BACKTEST_REFERENCE,'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'series':series,'events':events,'execution_audit':execution_audit,'benchmark':build_benchmark(bars,latest_d),'notes':['Forward model tracking, not broker-confirmed fills.','Settled NAV preserves the frozen backtest open-to-open convention; mark_to_market adds the latest observable execution-day open-to-close move without rewriting settled history.','Tracking inherits the strategy state existing at the start date; no artificial re-entry cost is charged solely because the dashboard starts on 2026-09-14.','Frozen baseline: pre-Void incumbent freeze; Deepen1 + incumbent invalidation; healthy 513500 else 511220.','Confirmed overrides affect their dates only. Later unverified model switches remain hypothetical; model NAV is not a verified execution record. Backfilled premium is not point-in-time clearance.']}
     OUT.parent.mkdir(parents=True,exist_ok=True); OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'latest':latest,'summary':summaries,'mark_to_market':mark_to_market,'benchmark':payload['benchmark']},ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
