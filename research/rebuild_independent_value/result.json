@@ -12,6 +12,7 @@
     "signal_panel": 6476,
     "eligible_control_panel": 197737,
     "classification_known_from": "2026-11-13",
+    "turnover_floor_cny": 3000000,
     "is_history_point_in_time_safe": false
   },
   "signal_definition": "weighted OLS26 slope crosses +, R2 first improves within 1-3 sessions, per-symbol 20-session cooldown",
