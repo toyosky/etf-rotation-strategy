@@ -198,7 +198,7 @@ def main():
     for y in YEARS:
         r=annual
         def val(k):
-            v=r[k][str(y)]["mean_pct"]
+            v=r[k][str(y)].get("mean_pct")
             return "—" if v is None else f"{v:+.3f}"
         lines.append(f"| {y} | {val('ALL')} | {val('EXACT_PRE')} | {val('QUALITY_PRE')} | {val('P99_WALK_FORWARD')} |")
     lines.extend(["","## 同日配对：每年平均收益差（百分点）","",
