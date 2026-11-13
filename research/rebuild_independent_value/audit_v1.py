@@ -21,7 +21,7 @@ FEATURES = ("ret5", "ret10", "ret26")
 SEED = 20261113
 
 
-def prepare(bars_path, taxonomy_path):
+def prepare(bars_path, taxonomy_path, min_turnover):
     sha = hashlib.sha256(Path(bars_path).read_bytes()).hexdigest()
     tax = pd.read_parquet(taxonomy_path)
     required = {"symbol", "classification_status", "exact_index_key",
@@ -90,7 +90,7 @@ def prepare(bars_path, taxonomy_path):
     for key, data in arr.items():
         bars[key] = data
     bars["signal"] = sig
-    bars = bars[(bars.turn60 >= 3_000_000) & (bars.amount > 0) &
+    bars = bars[(bars.turn60 >= min_turnover) & (bars.amount > 0) &
                 bars[list(FEATURES)].notna().all(axis=1)].copy()
     # One representative per *identical official index* on each signal date.
     # Representative selection only uses turnover known by T-1.
@@ -109,7 +109,7 @@ def prepare(bars_path, taxonomy_path):
                 panel_symbols=int(bars.symbol.nunique()),
                 first_panel=str(bars.date.min().date()), last_panel=str(bars.date.max().date()),
                 signal_panel=int(bars.signal.sum()), eligible_control_panel=int((bars.age > 20).sum()),
-                classification_known_from="2026-11-13",
+                classification_known_from="2026-11-13", turnover_floor_cny=min_turnover,
                 is_history_point_in_time_safe=False)
     return bars, info
 
@@ -199,10 +199,11 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--bars", required=True)
     p.add_argument("--taxonomy", required=True)
+    p.add_argument("--min-turnover", type=float, default=3_000_000)
     p.add_argument("--out", default="research/rebuild_independent_value")
     a = p.parse_args()
     root = Path(a.out); root.mkdir(parents=True, exist_ok=True)
-    panel, coverage = prepare(a.bars, a.taxonomy)
+    panel, coverage = prepare(a.bars, a.taxonomy, a.min_turnover)
     out = {"version": "v1_predeclared_caliper_20261113", "coverage": coverage,
            "signal_definition": "weighted OLS26 slope crosses +, R2 first improves within 1-3 sessions, per-symbol 20-session cooldown",
            "entry_exit": "T+1 open to T+h+1 open; six basis points each side",
