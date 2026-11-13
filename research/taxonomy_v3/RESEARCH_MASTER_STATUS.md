@@ -64,3 +64,9 @@
 - 找到上轮新资产ID修复后未自动重跑的具体原因：`.github/workflows/research-pinned-archive-v2.yml` 的 `push.paths` 只监听工作流YAML，不监听 `pin_research_archive_asset_v2.py`，因此只更新脚本不会触发工作流。已修正为同时监听脚本路径，提交 `cc68065ea0df8c5a172abf805f5090125ccedff7`。
 - 自动触发的 Actions [43335752852](https://github.com/toyosky/etf-rotation-strategy/actions/runs/43335752852) 创建时为 `queued`；不得预先认定归档已验收。下轮必须读取最终日志与manifest，核对 SHA256、行数、日期范围及 schema，失败则追踪错误而不是放松门禁。
 - 即便此工作流成功，它也仅证明可变 `current` 标签当前候选字节的来源与内容；真正不可变的独立归档、旧 `9d55f6e0...` 恢复、历史回测重算仍未完成。研究继续，main/实盘保持不变。
+
+## 2026-11-13 第10轮：新版行情校验通过，发现版本口径差异
+- 核验 Actions 43335752852 最终状态 `completed/success`，并直接读取已提交的 `output_v32/research_market_archive_v2_manifest.json`：资产 ID 741069813，SHA256 `7a218407280309b475998668ccd3d232cfc67efda307f97db3f76fef7324b644`，17,166,998 字节，1,441,181 行，最大日期 2026-11-12。
+- 旧版研究记录为 1,439,205 行，最大日期 2026-11-11，SHA256 `9d55f6e0...7fb`；新版多 1,976 行。由于缺少旧字节，不能假定差异仅为新增一日；禁止混用两版本统计。
+- 归档审计报告 `output_v32/archive_v2_validation_20261113.md`；新版通过来源与内容校验，但**尚未复制到独立不可变Release**，载体连续性回测仍需新版本完整重跑。
+- 下一轮优先旧数据恢复或独立冻结新版本后启动同版本重算；保持 main/实盘不变。
