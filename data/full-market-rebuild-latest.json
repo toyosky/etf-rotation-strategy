@@ -8,7 +8,7 @@
   "requested_for_update": 50,
   "symbols_with_asof_close": 1974,
   "asof_coverage": 0.9752964426877471,
-  "refresh_rows": 861,
+  "refresh_rows": 846,
   "refresh_batches": {
     "jobs": 5,
     "existing": 27,
@@ -31,13 +31,19 @@
   "query_batch_errors": [
     {
       "symbols": [
-        "512390"
+        "165512"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006', 'message': '查询dayK线失败：fetch failed'}"
     },
     {
       "symbols": [
-        "165512"
+        "511980"
+      ],
+      "error": "{'code': 'SKILL_006', 'message': '查询dayK线失败：This operation was aborted'}"
+    },
+    {
+      "symbols": [
+        "512390"
       ],
       "error": "Empty Tencent kline response"
     },
@@ -75,13 +81,13 @@
       "symbols": [
         "165523"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "165524"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -135,7 +141,7 @@
       "symbols": [
         "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -171,19 +177,19 @@
       "symbols": [
         "164401"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "164402"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "165512"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -480,9 +486,9 @@
       "error": "Empty Tencent kline response"
     }
   ],
-  "query_error_count": 75,
+  "query_error_count": 76,
   "overlap_revision": {
-    "count": 861,
+    "count": 846,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
