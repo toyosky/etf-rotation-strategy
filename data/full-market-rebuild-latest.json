@@ -5,20 +5,20 @@
   "snapshot_symbols": 2003,
   "snapshot_rows": 1449064,
   "listed_requested": 2024,
-  "requested_for_update": 2024,
+  "requested_for_update": 57,
   "symbols_with_asof_close": 1967,
   "asof_coverage": 0.9718379446640316,
-  "refresh_rows": 32278,
+  "refresh_rows": 1056,
   "refresh_batches": {
-    "jobs": 169,
-    "existing": 2001,
+    "jobs": 5,
+    "existing": 34,
     "bootstrap": 23,
     "recovery": [
       {
         "round": 1,
         "remaining": 57,
-        "rows": 1595,
-        "batches": 23
+        "rows": 352,
+        "batches": 10
       },
       {
         "round": 2,
@@ -31,147 +31,9 @@
   "query_batch_errors": [
     {
       "symbols": [
-        "159687"
+        "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159688"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159701"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159703"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159663"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159641"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159805"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159806"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159706"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159717"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159824"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "159843"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160218"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160220"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160643"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160221"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "161810"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "161811"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "163418"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "163503"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160633"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "160635"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "161834"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "161837"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
@@ -181,91 +43,145 @@
     },
     {
       "symbols": [
-        "162715"
+        "164818"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "164905"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "164908"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165310"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165312"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165523"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "501032"
+        "165524"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "501047"
+        "165526"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162207"
+        "166802"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "167503"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "501023"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "160137"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "160420"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "160516"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "160634"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "160636"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "161628"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "161721"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
-        "162415"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "162509"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "501081"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "501058"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "501065"
+        "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "501070"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "501071"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "510760"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "510910"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "510270"
-      ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
-    },
-    {
-      "symbols": [
-        "510130"
+        "165512"
       ],
       "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
@@ -273,246 +189,300 @@
       "symbols": [
         "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "513080"
+        "160137"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "512500"
+        "160420"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "512770"
+        "160516"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "512960"
+        "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "515390"
+        "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "515100"
+        "161628"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "515200"
+        "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "513930"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516550"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516560"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "517130"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "517160"
+        "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516900"
+        "164818"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516910"
+        "164905"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "515580"
+        "164908"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "515710"
+        "165310"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516570"
+        "165312"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "516580"
+        "165523"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "530800"
+        "165524"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "530880"
+        "165526"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560580"
+        "166802"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560010"
+        "167503"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560020"
+        "501023"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560420"
+        "165512"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560450"
+        "512390"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "560290"
+        "160137"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561470"
+        "160420"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561490"
+        "160516"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "562010"
+        "160634"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "562030"
+        "160636"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561870"
+        "161628"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561680"
+        "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561800"
+        "161723"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561500"
+        "162107"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561580"
+        "163209"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "561600"
+        "164401"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "563570"
+        "164402"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "563750"
+        "164818"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "589210"
+        "164905"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "164908"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165310"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165312"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165523"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165524"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "165526"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "166802"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "167503"
+      ],
+      "error": "Empty Tencent kline response"
+    },
+    {
+      "symbols": [
+        "501023"
+      ],
+      "error": "Empty Tencent kline response"
     }
   ],
-  "query_error_count": 157,
+  "query_error_count": 75,
   "overlap_revision": {
-    "count": 30311,
+    "count": 1056,
     "median_abs_pct": 0.0,
     "over_1pct": 0,
     "over_5pct": 0
@@ -593,7 +563,7 @@
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
       "annual": 0.10754965552623919,
-      "r2": 0.11343232316741303,
+      "r2": 0.11343232316741281,
       "delta_r2_1": 0.100363407443258,
       "avg_amount60": 24276565.066666666,
       "strict_eligible": false,
@@ -610,8 +580,8 @@
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
       "annual": 0.09683417268913463,
-      "r2": 0.08899107657087213,
-      "delta_r2_1": 0.07974317881496595,
+      "r2": 0.08899107657087224,
+      "delta_r2_1": 0.07974317881496606,
       "avg_amount60": 6100109.316666666,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -628,7 +598,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.09500942891884367,
       "r2": 0.07368427329348615,
-      "delta_r2_1": 0.05824196269041948,
+      "delta_r2_1": 0.05824196269041981,
       "avg_amount60": 2201791.2666666666,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -643,9 +613,9 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
-      "annual": 0.08527152626435153,
-      "r2": 0.06037340669338709,
-      "delta_r2_1": 0.05138861957186913,
+      "annual": 0.08527152626435353,
+      "r2": 0.06037340669338698,
+      "delta_r2_1": 0.05138861957186902,
       "avg_amount60": 9283598.085106382,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -660,9 +630,9 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
-      "annual": 0.501126282757616,
-      "r2": 0.03378996772310816,
-      "delta_r2_1": 0.03140704805786387,
+      "annual": 0.5011262827575929,
+      "r2": 0.033789967723108605,
+      "delta_r2_1": 0.031407048057862985,
       "avg_amount60": 298669395.3333333,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -677,8 +647,8 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
-      "annual": 0.49466508911460094,
-      "r2": 0.03343710606854211,
+      "annual": 0.49466508911455453,
+      "r2": 0.033437106068542444,
       "delta_r2_1": 0.03196200300756502,
       "avg_amount60": 94428320.6,
       "strict_eligible": true,
@@ -695,8 +665,8 @@
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
       "annual": 0.000171719074836707,
-      "r2": 0.03224105793836107,
-      "delta_r2_1": 0.027392466930415083,
+      "r2": 0.032241057938361184,
+      "delta_r2_1": 0.02739246693041475,
       "avg_amount60": 989333.3666666667,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -713,7 +683,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.04913273904433457,
       "r2": 0.030998630381691372,
-      "delta_r2_1": 0.030996257631185742,
+      "delta_r2_1": 0.030996257631185298,
       "avg_amount60": 2580862.183333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -728,9 +698,9 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
-      "annual": 0.3094487075843917,
-      "r2": 0.013085122609339805,
-      "delta_r2_1": 0.013083322382480223,
+      "annual": 0.3094487075843715,
+      "r2": 0.01308512260934025,
+      "delta_r2_1": 0.013083322382480556,
       "avg_amount60": 182152941.05,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -746,8 +716,8 @@
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
       "annual": 0.040042051083019725,
-      "r2": 0.011437833700007838,
-      "delta_r2_1": 0.009648694857306683,
+      "r2": 0.011437833700007616,
+      "delta_r2_1": 0.009648694857304796,
       "avg_amount60": 359793.7166666667,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -762,9 +732,9 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-17",
       "cross_age_sessions": 1.0,
-      "annual": 0.030612990349021985,
-      "r2": 0.0063222745406184,
-      "delta_r2_1": 0.004997623936585538,
+      "annual": 0.030612990348974023,
+      "r2": 0.006322274540618289,
+      "delta_r2_1": 0.004997623936587203,
       "avg_amount60": 431809.6,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -779,9 +749,9 @@
       "first_qualified_date": "2026-11-18",
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
-      "annual": 0.0003296786889606107,
-      "r2": 0.13159013630643646,
-      "delta_r2_1": 0.12373137659990219,
+      "annual": 0.00032967868883693185,
+      "r2": 0.13159013630637917,
+      "delta_r2_1": 0.12373137659984457,
       "avg_amount60": 2138196.8333333335,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -797,8 +767,8 @@
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
       "annual": 0.00014969272712117565,
-      "r2": 0.03672447417219782,
-      "delta_r2_1": 0.02233974630901081,
+      "r2": 0.03672447417219793,
+      "delta_r2_1": 0.022339746316578202,
       "avg_amount60": 10769487.066666666,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -815,7 +785,7 @@
       "cross_age_sessions": 1.0,
       "annual": 0.025399028118112232,
       "r2": 0.01053923474811902,
-      "delta_r2_1": 0.009941325115540134,
+      "delta_r2_1": 0.009941325115540356,
       "avg_amount60": 39839.71666666667,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -831,8 +801,8 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.21843644029944365,
-      "r2": 0.24138921546407677,
-      "delta_r2_1": 0.13976451074479757,
+      "r2": 0.24138921546407688,
+      "delta_r2_1": 0.1397645107447979,
       "avg_amount60": 91727122.53333333,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -847,9 +817,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.17070084715920641,
-      "r2": 0.2391068058529826,
-      "delta_r2_1": 0.1351801805945736,
+      "annual": 0.17070084715921086,
+      "r2": 0.23910680585298294,
+      "delta_r2_1": 0.13518018059457404,
       "avg_amount60": 3970556.55,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -865,8 +835,8 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.18259206499864677,
-      "r2": 0.23549123505451608,
-      "delta_r2_1": 0.13923711559769525,
+      "r2": 0.23549123505451586,
+      "delta_r2_1": 0.13923711559769492,
       "avg_amount60": 34260147.81666667,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -881,7 +851,7 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.2715313185895256,
+      "annual": 0.2715313185895252,
       "r2": 0.21525925660403777,
       "delta_r2_1": 0.12974216385457304,
       "avg_amount60": 4243095.766666667,
@@ -900,7 +870,7 @@
       "cross_age_sessions": 2.0,
       "annual": 0.16705049051167808,
       "r2": 0.21334085066427744,
-      "delta_r2_1": 0.1321303042198847,
+      "delta_r2_1": 0.1321303042198846,
       "avg_amount60": 25824499.9,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -915,9 +885,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.24849917390634024,
-      "r2": 0.21258095404966404,
-      "delta_r2_1": 0.11461198459167665,
+      "annual": 0.24849917390634135,
+      "r2": 0.21258095404966437,
+      "delta_r2_1": 0.11461198459167687,
       "avg_amount60": 2423554.3833333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -932,9 +902,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.2489180639012547,
-      "r2": 0.20662713286398626,
-      "delta_r2_1": 0.11594489312373768,
+      "annual": 0.24891806390125604,
+      "r2": 0.20662713286398637,
+      "delta_r2_1": 0.11594489312373779,
       "avg_amount60": 10791916.886792453,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -949,9 +919,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.16785142470276626,
-      "r2": 0.1974468465938315,
-      "delta_r2_1": 0.13743466051084197,
+      "annual": 0.16785142470276493,
+      "r2": 0.19744684659383105,
+      "delta_r2_1": 0.1374346605108414,
       "avg_amount60": 320075190.56666666,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -966,9 +936,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.24042036617854623,
-      "r2": 0.19641207330119148,
-      "delta_r2_1": 0.0985948338327467,
+      "annual": 0.240420366178546,
+      "r2": 0.1964120733011916,
+      "delta_r2_1": 0.09859483383274681,
       "avg_amount60": 1991697.85,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -983,9 +953,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.25365757794698407,
-      "r2": 0.19567703517120005,
-      "delta_r2_1": 0.11224253498030157,
+      "annual": 0.2536575779469852,
+      "r2": 0.19567703517120016,
+      "delta_r2_1": 0.11224253498030168,
       "avg_amount60": 6080966.018518519,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1000,9 +970,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.14820390263292849,
+      "annual": 0.14820390263292627,
       "r2": 0.1956561194091182,
-      "delta_r2_1": 0.12208902267289867,
+      "delta_r2_1": 0.12208902267289856,
       "avg_amount60": 5377546.133333334,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1019,7 +989,7 @@
       "cross_age_sessions": 2.0,
       "annual": 0.16099634272597996,
       "r2": 0.19564921735369345,
-      "delta_r2_1": 0.13512678066107786,
+      "delta_r2_1": 0.1351267806610773,
       "avg_amount60": 55691052.85,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1034,9 +1004,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.25028291179599194,
-      "r2": 0.19418425929505423,
-      "delta_r2_1": 0.11257794456682313,
+      "annual": 0.2502829117959968,
+      "r2": 0.19418425929505467,
+      "delta_r2_1": 0.11257794456682368,
       "avg_amount60": 319357733.1,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1051,9 +1021,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.23404845461525436,
-      "r2": 0.19124345333434178,
-      "delta_r2_1": 0.11482079583379334,
+      "annual": 0.2340484546152546,
+      "r2": 0.1912434533343419,
+      "delta_r2_1": 0.11482079583379323,
       "avg_amount60": 5119709.45,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1068,9 +1038,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.14493485135055173,
-      "r2": 0.1911323090502356,
-      "delta_r2_1": 0.13126518688021704,
+      "annual": 0.14493485135055195,
+      "r2": 0.19113230905023548,
+      "delta_r2_1": 0.1312651868802166,
       "avg_amount60": 27326890.95,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1086,8 +1056,8 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.14697350696832312,
-      "r2": 0.18948759104091528,
-      "delta_r2_1": 0.13163933803161498,
+      "r2": 0.18948759104091495,
+      "delta_r2_1": 0.13163933803161465,
       "avg_amount60": 9376031.466666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1102,9 +1072,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.1413092470664239,
-      "r2": 0.18902825623664987,
-      "delta_r2_1": 0.1348072980247369,
+      "annual": 0.14130924706642167,
+      "r2": 0.18902825623664976,
+      "delta_r2_1": 0.13480729802473657,
       "avg_amount60": 6717372.95,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1120,8 +1090,8 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.1449300840729546,
-      "r2": 0.18833302523817408,
-      "delta_r2_1": 0.12340319935433286,
+      "r2": 0.1883330252381743,
+      "delta_r2_1": 0.12340319935433364,
       "avg_amount60": 10524081.333333334,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1136,9 +1106,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.13709415449791207,
-      "r2": 0.18797888014280517,
-      "delta_r2_1": 0.13186421959424488,
+      "annual": 0.1370941544979143,
+      "r2": 0.18797888014280484,
+      "delta_r2_1": 0.1318642195942441,
       "avg_amount60": 4656933.866666666,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1154,8 +1124,8 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.14921851250798923,
-      "r2": 0.18717839691409732,
-      "delta_r2_1": 0.06636209133972881,
+      "r2": 0.18717839691409743,
+      "delta_r2_1": 0.06636209133973003,
       "avg_amount60": 1058722.7833333334,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1170,8 +1140,8 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.23594655374196982,
-      "r2": 0.18336589721704488,
+      "annual": 0.23594655374197004,
+      "r2": 0.183365897217045,
       "delta_r2_1": 0.11001644911179809,
       "avg_amount60": 7530004.883333334,
       "strict_eligible": false,
@@ -1187,9 +1157,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.13945541835404596,
-      "r2": 0.1721358135174863,
-      "delta_r2_1": 0.1283327425371137,
+      "annual": 0.13945541835404818,
+      "r2": 0.1721358135174862,
+      "delta_r2_1": 0.1283327425371139,
       "avg_amount60": 7974585.316666666,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1204,9 +1174,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.13501256171196907,
-      "r2": 0.16626103453635344,
-      "delta_r2_1": 0.12095080357983423,
+      "annual": 0.1350125617119735,
+      "r2": 0.1662610345363532,
+      "delta_r2_1": 0.12095080357983479,
       "avg_amount60": 14084567.4,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1221,9 +1191,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.1352543881390671,
-      "r2": 0.1598250642197797,
-      "delta_r2_1": 0.11953158774899353,
+      "annual": 0.13525438813906931,
+      "r2": 0.15982506421977882,
+      "delta_r2_1": 0.11953158774899264,
       "avg_amount60": 3766379.066666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1238,9 +1208,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.128813031645868,
+      "annual": 0.1288130316458702,
       "r2": 0.15159966685263648,
-      "delta_r2_1": 0.11286643120864348,
+      "delta_r2_1": 0.11286643120864359,
       "avg_amount60": 7053383.233333333,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1255,9 +1225,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.1906617072868222,
-      "r2": 0.14193092187123924,
-      "delta_r2_1": 0.102201248644196,
+      "annual": 0.19066170728680376,
+      "r2": 0.14193092187123912,
+      "delta_r2_1": 0.10220124864419589,
       "avg_amount60": 3342135.95,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1272,9 +1242,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.11524538218898916,
-      "r2": 0.12129003163399588,
-      "delta_r2_1": 0.1005408204439372,
+      "annual": 0.11524538218899139,
+      "r2": 0.12129003163399521,
+      "delta_r2_1": 0.10054082044393642,
       "avg_amount60": 6931592.966666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1290,7 +1260,7 @@
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
       "annual": 0.10930695284196701,
-      "r2": 0.09327252494446181,
+      "r2": 0.09327252494446203,
       "delta_r2_1": 0.06007998478494503,
       "avg_amount60": 423375.98333333334,
       "strict_eligible": false,
@@ -1306,9 +1276,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.07143719411304938,
-      "r2": 0.08519227840469312,
-      "delta_r2_1": 0.06126435252888862,
+      "annual": 0.0714371941130163,
+      "r2": 0.0851922784046959,
+      "delta_r2_1": 0.061264352528888066,
       "avg_amount60": 354715025.0833333,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1323,9 +1293,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.06716101816033038,
-      "r2": 0.07473078585213666,
-      "delta_r2_1": 0.047741405272944126,
+      "annual": 0.06716101816031395,
+      "r2": 0.07473078585213533,
+      "delta_r2_1": 0.047741405272938575,
       "avg_amount60": 433304961.75,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1340,7 +1310,7 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.08098895414924745,
+      "annual": 0.08098895414924323,
       "r2": 0.07219173004738555,
       "delta_r2_1": 0.046390918024305505,
       "avg_amount60": 10124874.033333333,
@@ -1357,9 +1327,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.08160890297120527,
-      "r2": 0.07128504992160545,
-      "delta_r2_1": 0.053122223389681755,
+      "annual": 0.08160890297120105,
+      "r2": 0.07128504992160467,
+      "delta_r2_1": 0.05312222338967931,
       "avg_amount60": 3733396.8333333335,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1374,9 +1344,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-16",
       "cross_age_sessions": 2.0,
-      "annual": 0.06235716775878686,
-      "r2": 0.060865782641690624,
-      "delta_r2_1": 0.04317044825039684,
+      "annual": 0.062357167758770427,
+      "r2": 0.060865782641692956,
+      "delta_r2_1": 0.0431704482503914,
       "avg_amount60": 5909224.166666667,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1393,7 +1363,7 @@
       "cross_age_sessions": 2.0,
       "annual": 0.06418318324734518,
       "r2": 0.04909197145087041,
-      "delta_r2_1": 0.039613164078329044,
+      "delta_r2_1": 0.03961316407832893,
       "avg_amount60": 30402396.133333333,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1408,9 +1378,9 @@
       "first_qualified_date": "2026-11-17",
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
-      "annual": 0.00033575966450261063,
-      "r2": 0.120009040272546,
-      "delta_r2_1": 0.03776774715906861,
+      "annual": 0.00033575966437870974,
+      "r2": 0.12000904027245662,
+      "delta_r2_1": 0.037767747158978904,
       "avg_amount60": 11381004.416666666,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1425,9 +1395,9 @@
       "first_qualified_date": "2026-11-16",
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
-      "annual": 0.011771310253961165,
-      "r2": 0.5218154711630987,
-      "delta_r2_1": 0.09324382830072098,
+      "annual": 0.011771310253953393,
+      "r2": 0.5218154711631201,
+      "delta_r2_1": 0.09324382830074229,
       "avg_amount60": 24582340297.866665,
       "strict_eligible": true,
       "broad_eligible": true,
@@ -1443,8 +1413,8 @@
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
       "annual": 0.26074491761993035,
-      "r2": 0.31752601747943165,
-      "delta_r2_1": 0.11540759255191058,
+      "r2": 0.3175260174794319,
+      "delta_r2_1": 0.11540759255190969,
       "avg_amount60": 8423623.5,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1460,8 +1430,8 @@
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
       "annual": 0.00047268194352834136,
-      "r2": 0.1969723925182716,
-      "delta_r2_1": 0.05162073188553229,
+      "r2": 0.19697239251827137,
+      "delta_r2_1": 0.05162073188553207,
       "avg_amount60": 2352333.5833333335,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -1476,9 +1446,9 @@
       "first_qualified_date": "2026-11-16",
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
-      "annual": 0.2441325518118227,
-      "r2": 0.18606590010231305,
-      "delta_r2_1": 0.08764783094539375,
+      "annual": 0.24413255181181803,
+      "r2": 0.1860659001023135,
+      "delta_r2_1": 0.08764783094539497,
       "avg_amount60": 5159835.2,
       "strict_eligible": false,
       "broad_eligible": true,
@@ -1493,9 +1463,9 @@
       "first_qualified_date": "2026-11-16",
       "cross_date": "2026-11-13",
       "cross_age_sessions": 3.0,
-      "annual": 0.0007637979888626134,
-      "r2": 0.1399533576271087,
-      "delta_r2_1": 0.0674505881334716,
+      "annual": 0.0007637979887387125,
+      "r2": 0.13995335762967198,
+      "delta_r2_1": 0.06745058813468796,
       "avg_amount60": 23681578.016666666,
       "strict_eligible": true,
       "broad_eligible": true,
