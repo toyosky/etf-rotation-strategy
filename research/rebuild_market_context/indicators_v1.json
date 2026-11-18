@@ -1,20 +1,20 @@
 {
   "contract": "ETF_REBUILD_CONTEXT_V1_RESEARCH_ONLY",
   "source": {
-    "original_rows": 1447097,
-    "valid_rows": 1447097,
+    "original_rows": 1449064,
+    "valid_rows": 1449064,
     "raw_symbols": 2003,
     "duplicates": 0,
-    "as_of": "2026-11-17",
-    "sha256": "513daaa0a45c2b0b46385ec7714b370e57a6805f36aa73eb1bae104f749a8b7f",
+    "as_of": "2026-11-18",
+    "sha256": "3af7b07f749db4d6eeaa5e65df7220d7790bf1bca1ed3e9c7b97dbb074e3fc4d",
     "current_metadata_count": 2026
   },
   "quality": {
-    "raw_eligible_symbol_days": 693630,
-    "representative_group_days": 140335,
+    "raw_eligible_symbol_days": 694692,
+    "representative_group_days": 140485,
     "representative_symbols": 281,
     "distinct_proxy_groups": 158,
-    "raw_symbol_qualified_events": 17715,
+    "raw_symbol_qualified_events": 17718,
     "representative_before_group_cooldown": 3610,
     "distinct_group_events": 3595,
     "skipped_symbols": {
@@ -22,7 +22,7 @@
       "not_equity": 88,
       "unsupported_index_group": 404,
       "cash_or_leveraged": 0,
-      "short_or_illiquid": 360
+      "short_or_illiquid": 357
     },
     "narrow_classification_warning": "Underlying_key is a coarse 2026 taxonomy, not exact tracked-index identity."
   },
@@ -34,298 +34,286 @@
   },
   "signal_source": "15d weighted log OLS, first improvement R2 within D1-D3 after slope crosses 0, D2 filter, 20-session per-symbol and proxy cooldown",
   "latest_day": {
-    "date": "2026-11-17",
-    "active_proxies": 151,
-    "positive_proxies": 36,
-    "trend_breadth15_pct": 23.8411,
-    "new_rebuild_5d": 25,
-    "rebuild_diffusion5_pct": 16.5563,
-    "matured_cohorts20": 68,
-    "matured_success20": 50,
-    "persistence_d5_pct": 73.5294,
+    "date": "2026-11-18",
+    "active_proxies": 150,
+    "positive_proxies": 24,
+    "trend_breadth15_pct": 16.0,
+    "new_rebuild_5d": 12,
+    "rebuild_diffusion5_pct": 8.0,
+    "matured_cohorts20": 78,
+    "matured_success20": 49,
+    "persistence_d5_pct": 62.8205,
     "qualified_today": 0
   },
   "latest_top_sectors": [
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
       "sector": "CHINA_GROWTH",
-      "sector_median_ret10": 0.065166,
+      "sector_median_ret10": -0.013963,
       "proxy_count": 3,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 8.126774,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": 3.189332,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 100.0
     },
     {
-      "date": "2026-11-17",
-      "region": "HK",
-      "sector": "HEALTHCARE",
-      "sector_median_ret10": 0.05102,
-      "proxy_count": 3,
-      "region_median_ret10": 0.001381,
-      "sector_rs10_pp": 4.963919,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 100.0
-    },
-    {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "TECHNOLOGY",
-      "sector_median_ret10": 0.005523,
-      "proxy_count": 10,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 2.162488,
+      "sector": "CASH_FLOW",
+      "sector_median_ret10": -0.021579,
+      "proxy_count": 4,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": 2.427735,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 90.909091
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
       "sector": "CONSUMER",
-      "sector_median_ret10": -0.010011,
+      "sector_median_ret10": -0.025501,
       "proxy_count": 3,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.609074,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": 2.035589,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 81.818182
     },
     {
-      "date": "2026-11-17",
-      "region": "CN",
+      "date": "2026-11-18",
+      "region": "HK",
       "sector": "BROAD",
-      "sector_median_ret10": -0.010801,
-      "proxy_count": 15,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.530078,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 72.727273
-    },
-    {
-      "date": "2026-11-17",
-      "region": "CN",
-      "sector": "HEALTHCARE",
-      "sector_median_ret10": -0.012589,
-      "proxy_count": 4,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.351276,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 63.636364
-    },
-    {
-      "date": "2026-11-17",
-      "region": "US",
-      "sector": "BROAD",
-      "sector_median_ret10": -0.006179,
-      "proxy_count": 5,
-      "region_median_ret10": -0.009341,
-      "sector_rs10_pp": 0.316146,
+      "sector_median_ret10": -0.029713,
+      "proxy_count": 6,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": 1.228182,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 100.0
     },
     {
-      "date": "2026-11-17",
-      "region": "HK",
+      "date": "2026-11-18",
+      "region": "CN",
       "sector": "BROAD",
-      "sector_median_ret10": 0.0,
-      "proxy_count": 6,
-      "region_median_ret10": 0.001381,
-      "sector_rs10_pp": -0.138122,
+      "sector_median_ret10": -0.034211,
+      "proxy_count": 15,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": 1.164627,
       "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 66.666667
+      "sector_rs10_rank_pct": 72.727273
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
+      "region": "US",
+      "sector": "BROAD",
+      "sector_median_ret10": -0.01849,
+      "proxy_count": 5,
+      "region_median_ret10": -0.023231,
+      "sector_rs10_pp": 0.47407,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 100.0
+    },
+    {
+      "date": "2026-11-18",
       "region": "CN",
       "sector": "INDUSTRIALS",
-      "sector_median_ret10": -0.029207,
-      "proxy_count": 7,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -1.310537,
+      "sector_median_ret10": -0.04949,
+      "proxy_count": 6,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -0.363366,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 63.636364
+    },
+    {
+      "date": "2026-11-18",
+      "region": "CN",
+      "sector": "TECHNOLOGY",
+      "sector_median_ret10": -0.053741,
+      "proxy_count": 10,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -0.788459,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 54.545455
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
+      "region": "HK",
+      "sector": "TECHNOLOGY",
+      "sector_median_ret10": -0.052632,
+      "proxy_count": 3,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": -1.063683,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 66.666667
+    },
+    {
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "MATERIALS",
-      "sector_median_ret10": -0.030413,
-      "proxy_count": 6,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -1.431128,
+      "sector": "ENERGY",
+      "sector_median_ret10": -0.056948,
+      "proxy_count": 3,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -1.109081,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 45.454545
     },
     {
-      "date": "2026-11-17",
-      "region": "HK",
-      "sector": "TECHNOLOGY",
-      "sector_median_ret10": -0.018711,
-      "proxy_count": 3,
-      "region_median_ret10": 0.001381,
-      "sector_rs10_pp": -2.009223,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 33.333333
-    },
-    {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "CASH_FLOW",
-      "sector_median_ret10": -0.037844,
+      "sector": "HEALTHCARE",
+      "sector_median_ret10": -0.057135,
       "proxy_count": 4,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -2.174179,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -1.127821,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 36.363636
+    },
+    {
+      "date": "2026-11-18",
+      "region": "HK",
+      "sector": "HEALTHCARE",
+      "sector_median_ret10": -0.053521,
+      "proxy_count": 3,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": -1.152638,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 33.333333
     }
   ],
   "latest_bottom_sectors": [
     {
-      "date": "2026-11-17",
-      "region": "CN",
-      "sector": "CONSUMER",
-      "sector_median_ret10": -0.010011,
-      "proxy_count": 3,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.609074,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 81.818182
-    },
-    {
-      "date": "2026-11-17",
-      "region": "CN",
+      "date": "2026-11-18",
+      "region": "HK",
       "sector": "BROAD",
-      "sector_median_ret10": -0.010801,
-      "proxy_count": 15,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.530078,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 72.727273
-    },
-    {
-      "date": "2026-11-17",
-      "region": "CN",
-      "sector": "HEALTHCARE",
-      "sector_median_ret10": -0.012589,
-      "proxy_count": 4,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": 0.351276,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 63.636364
-    },
-    {
-      "date": "2026-11-17",
-      "region": "US",
-      "sector": "BROAD",
-      "sector_median_ret10": -0.006179,
-      "proxy_count": 5,
-      "region_median_ret10": -0.009341,
-      "sector_rs10_pp": 0.316146,
+      "sector_median_ret10": -0.029713,
+      "proxy_count": 6,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": 1.228182,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 100.0
     },
     {
-      "date": "2026-11-17",
-      "region": "HK",
+      "date": "2026-11-18",
+      "region": "CN",
       "sector": "BROAD",
-      "sector_median_ret10": 0.0,
-      "proxy_count": 6,
-      "region_median_ret10": 0.001381,
-      "sector_rs10_pp": -0.138122,
+      "sector_median_ret10": -0.034211,
+      "proxy_count": 15,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": 1.164627,
       "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 66.666667
+      "sector_rs10_rank_pct": 72.727273
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
+      "region": "US",
+      "sector": "BROAD",
+      "sector_median_ret10": -0.01849,
+      "proxy_count": 5,
+      "region_median_ret10": -0.023231,
+      "sector_rs10_pp": 0.47407,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 100.0
+    },
+    {
+      "date": "2026-11-18",
       "region": "CN",
       "sector": "INDUSTRIALS",
-      "sector_median_ret10": -0.029207,
-      "proxy_count": 7,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -1.310537,
+      "sector_median_ret10": -0.04949,
+      "proxy_count": 6,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -0.363366,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 63.636364
+    },
+    {
+      "date": "2026-11-18",
+      "region": "CN",
+      "sector": "TECHNOLOGY",
+      "sector_median_ret10": -0.053741,
+      "proxy_count": 10,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -0.788459,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 54.545455
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
+      "region": "HK",
+      "sector": "TECHNOLOGY",
+      "sector_median_ret10": -0.052632,
+      "proxy_count": 3,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": -1.063683,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 66.666667
+    },
+    {
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "MATERIALS",
-      "sector_median_ret10": -0.030413,
-      "proxy_count": 6,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -1.431128,
+      "sector": "ENERGY",
+      "sector_median_ret10": -0.056948,
+      "proxy_count": 3,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -1.109081,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 45.454545
     },
     {
-      "date": "2026-11-17",
-      "region": "HK",
-      "sector": "TECHNOLOGY",
-      "sector_median_ret10": -0.018711,
-      "proxy_count": 3,
-      "region_median_ret10": 0.001381,
-      "sector_rs10_pp": -2.009223,
-      "sector_strength_valid": true,
-      "sector_rs10_rank_pct": 33.333333
-    },
-    {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "CASH_FLOW",
-      "sector_median_ret10": -0.037844,
+      "sector": "HEALTHCARE",
+      "sector_median_ret10": -0.057135,
       "proxy_count": 4,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -2.174179,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -1.127821,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 36.363636
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
+      "region": "HK",
+      "sector": "HEALTHCARE",
+      "sector_median_ret10": -0.053521,
+      "proxy_count": 3,
+      "region_median_ret10": -0.041995,
+      "sector_rs10_pp": -1.152638,
+      "sector_strength_valid": true,
+      "sector_rs10_rank_pct": 33.333333
+    },
+    {
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "GROWTH",
-      "sector_median_ret10": -0.038867,
-      "proxy_count": 7,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -2.276483,
+      "sector": "MATERIALS",
+      "sector_median_ret10": -0.083893,
+      "proxy_count": 6,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -3.803615,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 27.272727
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "DEFENSE",
-      "sector_median_ret10": -0.047305,
-      "proxy_count": 5,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -3.120287,
+      "sector": "GROWTH",
+      "sector_median_ret10": -0.091002,
+      "proxy_count": 7,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -4.514525,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 18.181818
     },
     {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "region": "CN",
-      "sector": "ENERGY",
-      "sector_median_ret10": -0.063341,
-      "proxy_count": 3,
-      "region_median_ret10": -0.016102,
-      "sector_rs10_pp": -4.723895,
+      "sector": "DEFENSE",
+      "sector_median_ret10": -0.104119,
+      "proxy_count": 5,
+      "region_median_ret10": -0.045857,
+      "sector_rs10_pp": -5.82622,
       "sector_strength_valid": true,
       "sector_rs10_rank_pct": 9.090909
     }
   ],
   "history_120_sessions": [
-    {
-      "date": "2026-05-25",
-      "active_proxies": 141,
-      "positive_proxies": 47,
-      "trend_breadth15_pct": 33.3333,
-      "new_rebuild_5d": 4,
-      "rebuild_diffusion5_pct": 2.8369,
-      "matured_cohorts20": 22,
-      "matured_success20": 8,
-      "persistence_d5_pct": 36.3636,
-      "qualified_today": 2
-    },
     {
       "date": "2026-05-26",
       "active_proxies": 141,
@@ -1753,36 +1741,48 @@
       "matured_success20": 50,
       "persistence_d5_pct": 73.5294,
       "qualified_today": 0
+    },
+    {
+      "date": "2026-11-18",
+      "active_proxies": 150,
+      "positive_proxies": 24,
+      "trend_breadth15_pct": 16.0,
+      "new_rebuild_5d": 12,
+      "rebuild_diffusion5_pct": 8.0,
+      "matured_cohorts20": 78,
+      "matured_success20": 49,
+      "persistence_d5_pct": 62.8205,
+      "qualified_today": 0
     }
   ],
   "validation": {
-    "all_events": 3519,
+    "all_events": 3521,
     "train": {
       "n": 2037,
       "mean_net10_pct": -0.0049,
       "win10_pct": 40.8
     },
     "validation": {
-      "n": 1482,
-      "mean_net10_pct": 0.1024,
-      "win10_pct": 48.25
+      "n": 1484,
+      "mean_net10_pct": 0.0967,
+      "win10_pct": 48.18
     },
     "feature_tests": {
       "rebuild_diffusion5_pct": {
         "train_threshold_low": 11.6667,
         "train_threshold_high": 37.2549,
-        "test_coverage": 1482,
+        "test_coverage": 1484,
         "high": {
           "n": 396,
           "mean_net10_pct": 1.5723,
           "win10_pct": 61.62
         },
         "low": {
-          "n": 429,
-          "mean_net10_pct": -0.2355,
-          "win10_pct": 43.12
+          "n": 431,
+          "mean_net10_pct": -0.2535,
+          "win10_pct": 42.92
         },
-        "high_minus_low_net10_pp": 1.8078,
+        "high_minus_low_net10_pp": 1.8259,
         "year": {
           "2025": {
             "high": {
@@ -1803,9 +1803,9 @@
               "win10_pct": 46.79
             },
             "low": {
-              "n": 230,
-              "mean_net10_pct": -1.3841,
-              "win10_pct": 36.52
+              "n": 232,
+              "mean_net10_pct": -1.4077,
+              "win10_pct": 36.21
             }
           }
         }
@@ -1813,18 +1813,18 @@
       "persistence_d5_pct": {
         "train_threshold_low": 54.5455,
         "train_threshold_high": 73.4694,
-        "test_coverage": 1482,
+        "test_coverage": 1484,
         "high": {
           "n": 762,
           "mean_net10_pct": 0.1074,
           "win10_pct": 44.88
         },
         "low": {
-          "n": 315,
-          "mean_net10_pct": 0.7525,
-          "win10_pct": 53.97
+          "n": 317,
+          "mean_net10_pct": 0.7217,
+          "win10_pct": 53.63
         },
-        "high_minus_low_net10_pp": -0.6451,
+        "high_minus_low_net10_pp": -0.6143,
         "year": {
           "2025": {
             "high": {
@@ -1845,9 +1845,9 @@
               "win10_pct": 41.6
             },
             "low": {
-              "n": 258,
-              "mean_net10_pct": 0.5416,
-              "win10_pct": 50.0
+              "n": 260,
+              "mean_net10_pct": 0.5057,
+              "win10_pct": 49.62
             }
           }
         }
@@ -1855,18 +1855,18 @@
       "sector_rs10_pp": {
         "train_threshold_low": -0.2823,
         "train_threshold_high": 1.3445,
-        "test_coverage": 760,
+        "test_coverage": 762,
         "high": {
-          "n": 246,
-          "mean_net10_pct": -0.6121,
-          "win10_pct": 47.15
+          "n": 248,
+          "mean_net10_pct": -0.6404,
+          "win10_pct": 46.77
         },
         "low": {
           "n": 201,
           "mean_net10_pct": -0.2729,
           "win10_pct": 46.27
         },
-        "high_minus_low_net10_pp": -0.3392,
+        "high_minus_low_net10_pp": -0.3675,
         "year": {
           "2025": {
             "high": {
@@ -1882,9 +1882,9 @@
           },
           "2026": {
             "high": {
-              "n": 150,
-              "mean_net10_pct": -1.4537,
-              "win10_pct": 46.0
+              "n": 152,
+              "mean_net10_pct": -1.4888,
+              "win10_pct": 45.39
             },
             "low": {
               "n": 96,
