@@ -1,0 +1,5 @@
+variant,nonvoid_switches,total_switches,normal_rank_switches,old_invalid_switches,void_restorations,turnover_sides,repeat_within_3d,reversal_within_3d,repeat_rate_pct,model_cagr_pct,model_mdd_pct,sharpe,missing_pricing_days,single_day_returns_abs_gt15pct,different_target_days_vs_fixed
+fixed,196,207,107,45,40,408,89,27,45.41,58.942,-36.119,1.331,11,5,0
+z,200,211,107,52,39,418,91,30,45.5,64.297,-32.415,1.402,12,5,130
+rank,238,250,120,76,36,492,129,37,54.2,48.437,-31.342,1.2,10,4,166
+ols,161,172,85,38,37,342,54,29,33.54,42.994,-42.744,1.024,13,5,181
