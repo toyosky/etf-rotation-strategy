@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399438",
+  "observed_at": "2026-11-12T09:15:53.194879+00:00",
+  "sha256": "43524a2db4b46856d45f2d0c348bc48984dc732cd2b1faee21d6bf04df2d8d7c",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399438",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "绿色电力",
+      "indexename": "Green Electricity",
+      "indexfullename": "CNI Green Electricity Index",
+      "indexfullcname": "国证绿色电力指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

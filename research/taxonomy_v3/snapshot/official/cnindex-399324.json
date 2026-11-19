@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399324",
+  "observed_at": "2026-11-12T09:15:49.984106+00:00",
+  "sha256": "e961c94ef4d763d2012be3c4d3e9b36854dd842d50f79c394e0f2ec9c540e9f1",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399324",
+      "indextype": "104",
+      "indexsource": "1",
+      "indexname": "深证红利",
+      "indexename": "SZSE Dividend",
+      "indexfullename": "SZSE Dividend Index",
+      "indexfullcname": "深证红利指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "cni-factsheet-399702",
+  "source_url": "https://www.cnindex.com.cn/html2pdf/preview/jj_399702.pdf",
+  "observed_at": "2026-11-12T11:57:32.521221+00:00",
+  "status": "error",
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/html2pdf/preview/jj_399702.pdf"
+}

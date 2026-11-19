@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:53.774505+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "987024",
+      "indexename": "HKCCI",
+      "indexfullcname": "国证港股通消费主题指数",
+      "indexfullename": "CNI HK Connect Consumer Index",
+      "indexname": "港股通消费",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2014-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "423909c0531ae6eea13f2b14ea8a6625aaa9fafe936f16c05b36a222a8e981db",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=987024"
+}

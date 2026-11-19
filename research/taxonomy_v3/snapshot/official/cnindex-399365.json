@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399365",
+  "observed_at": "2026-11-12T09:15:51.910324+00:00",
+  "sha256": "1c1b1d503be79688c2dc32a42cc4d38f0f6e37c8587b60158d6479737ca64ee3",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399365",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "国证粮食",
+      "indexename": "CNI Grain",
+      "indexfullename": "CNI Grain Industry Index",
+      "indexfullcname": "国证粮食产业指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

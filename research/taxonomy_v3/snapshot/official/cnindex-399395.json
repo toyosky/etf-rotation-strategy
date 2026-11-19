@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399395",
+  "observed_at": "2026-11-12T09:15:52.123488+00:00",
+  "sha256": "cad8cfd70238b0b0e409335f6f808a3b2b62a4379ec201ddbc813e7dd4b1e65e",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399395",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证有色",
+      "indexename": "CNI Non-Ferrous",
+      "indexfullename": "CNI Non-Ferrous Metal Index",
+      "indexfullcname": "国证有色金属行业指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

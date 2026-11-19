@@ -1,0 +1,608 @@
+[
+  {
+    "table_name": "daily_bars",
+    "column_name": "symbol",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "open",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "high",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "low",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "close",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "volume",
+    "data_type": "double precision",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "amount",
+    "data_type": "double precision",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "instrument_type",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "daily_bars",
+    "column_name": "ingested_on",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "symbol",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "nav_date",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "unit_nav",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "cumulative_nav",
+    "data_type": "double precision",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "market_close",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "premium",
+    "data_type": "double precision",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "nav_daily_growth_pct",
+    "data_type": "double precision",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "subscription_status",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "redemption_status",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "source_nav",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "source_price",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "first_seen_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "first_seen_phase",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "pit_safe",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "backfilled",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "ingested_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "fund_premium_history",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "id",
+    "data_type": "bigint",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "symbol",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "product_type",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "asset_class",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "region_primary",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "region_tags",
+    "data_type": "ARRAY",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "exposure_level1",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "exposure_level2",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "underlying_key",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "risk_bucket",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "style_sector",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "is_qdii",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "nav_lag_days",
+    "data_type": "smallint",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "premium_sensitive",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "t0_flag",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "derivative_exposure",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "roll_cost_exposure",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "currency_exposure",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "leveraged_flag",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "inverse_flag",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "data_start_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "data_end_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "bars_count",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "label_scope",
+    "data_type": "text",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "historical_safe",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "valid_from",
+    "data_type": "date",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "valid_to",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "classification_method",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "confidence",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "needs_review",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "metadata_source",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "current_exchange_listed",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata",
+    "column_name": "has_daily_bars",
+    "data_type": "boolean",
+    "is_nullable": "NO"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "id",
+    "data_type": "bigint",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "symbol",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "product_type",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "asset_class",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "region_primary",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "region_tags",
+    "data_type": "ARRAY",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "exposure_level1",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "exposure_level2",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "underlying_key",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "risk_bucket",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "style_sector",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "is_qdii",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "nav_lag_days",
+    "data_type": "smallint",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "premium_sensitive",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "t0_flag",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "derivative_exposure",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "roll_cost_exposure",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "currency_exposure",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "leveraged_flag",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "inverse_flag",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "data_start_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "data_end_date",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "bars_count",
+    "data_type": "integer",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "label_scope",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "historical_safe",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "valid_from",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "valid_to",
+    "data_type": "date",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "classification_method",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "confidence",
+    "data_type": "numeric",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "needs_review",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "metadata_source",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "current_exchange_listed",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  },
+  {
+    "table_name": "instrument_metadata_current",
+    "column_name": "has_daily_bars",
+    "data_type": "boolean",
+    "is_nullable": "YES"
+  }
+]

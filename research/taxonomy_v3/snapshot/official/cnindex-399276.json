@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399276",
+  "observed_at": "2026-11-12T09:15:48.640948+00:00",
+  "sha256": "897f2882b1094983e74eafd06217a1d4ffd87bd0437d68c63a17c0111da526f7",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399276",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "创科技",
+      "indexename": "ChiNext Technology",
+      "indexfullename": "SZSE ChiNext Technology Index",
+      "indexfullcname": "创业板科技指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

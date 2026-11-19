@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:41:02.412668+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980080",
+      "indexename": "CNIG100",
+      "indexfullcname": "国证成长100指数",
+      "indexfullename": "CNI Growth 100 Index",
+      "indexname": "成长100",
+      "indexsource": "0",
+      "indextype": "202",
+      "jr": "2012-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "7945c9e817a19df94c2cc26b315752ddb4b6c14c47ddb1290e6c9676822ff104",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980080"
+}

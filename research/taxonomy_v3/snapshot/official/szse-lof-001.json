@@ -1,0 +1,195 @@
+{
+  "source_url": "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945_LOF&TABKEY=tab1&tab1PAGENO=1",
+  "observed_at": "2026-11-12T09:21:28.247871+00:00",
+  "sha256": "d631681a351c94f81e2b23bfa0e6908a213db100caa8f6fc6fa92405da80de9c",
+  "payload": [
+    {
+      "metadata": {
+        "catalogid": "1945_LOF",
+        "name": "LOF基金列表",
+        "excel": "xlsx",
+        "pagetype": "vertical",
+        "subname": "2026-11-12",
+        "tabkey": "tab1",
+        "pagesize": 10,
+        "pageno": 1,
+        "pagecount": 29,
+        "recordcount": 284,
+        "showrecordcount": false,
+        "header": "<table>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td class=\"link1\">\n\t\t\t\t\t\t\t\t(点击<u>代码</u>查询行情，点击<u>简称</u>查询公告)\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</table>",
+        "footer": "",
+        "reporttype": null,
+        "tabcss": null,
+        "conditions": [
+          {
+            "label": "代码或简称",
+            "name": "txtQueryKeyAndJC",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "/shortname/gethangqing?dataType=JJ&input=",
+            "options": null,
+            "property": null,
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          }
+        ],
+        "colStyle": {
+          "sys_key": {
+            "width": "10",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "kzjcurl": {
+            "width": "20",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "nhzs": {
+            "width": "15",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "dqgm": {
+            "width": "15",
+            "align": "right",
+            "group": "false",
+            "hidden": "0"
+          },
+          "glrmc": {
+            "width": "16",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "cxjqhq": {
+            "width": "12",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          },
+          "zxjjjz": {
+            "width": "12",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          }
+        },
+        "cols": {
+          "sys_key": "证券代码",
+          "kzjcurl": "证券简称",
+          "nhzs": "拟合指数",
+          "dqgm": "当前规模<br>（万份）<span class='tip'><span class='tipTxt'><i></i>该字段T日晚间更新的T日规模仅供参考，以T+1日早间更新的T日规模为准</span></span><br>（2026-11-11）",
+          "glrmc": "基金管理人",
+          "cxjqhq": "查询近期行情",
+          "zxjjjz": "最新基金净值"
+        },
+        "colspan": 0,
+        "notes": null,
+        "topHeader": "",
+        "hidden": "0",
+        "tablestyle": "main",
+        "refreshCondition": false
+      },
+      "data": [
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=162721'><u>162721</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=162721&name=广发积极FOF-LOF' title='点击简称查询公告'><u>广发积极FOF-LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=162721'></a>",
+          "nhzs": " ",
+          "dqgm": "169.45",
+          "glrmc": "广发基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=162721'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=162721'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=161133'><u>161133</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=161133&name=优势回报FOF-LOF' title='点击简称查询公告'><u>优势回报FOF-LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=161133'></a>",
+          "nhzs": " ",
+          "dqgm": "744.19",
+          "glrmc": "易方达基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=161133'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=161133'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=160326'><u>160326</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=160326&name=优选配置FOF-LOF' title='点击简称查询公告'><u>优选配置FOF-LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=160326'></a>",
+          "nhzs": " ",
+          "dqgm": "6,667.45",
+          "glrmc": "华夏基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=160326'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=160326'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=168203'><u>168203</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=168203&name=钢铁LOF' title='点击简称查询公告'><u>钢铁LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=168203'></a>",
+          "nhzs": "399440 国证钢铁",
+          "dqgm": "286.28",
+          "glrmc": "国联基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=168203'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=168203'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=168204'><u>168204</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=168204&name=煤炭LOF' title='点击简称查询公告'><u>煤炭LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=168204'></a>",
+          "nhzs": "399998 中证煤炭",
+          "dqgm": "1,031.64",
+          "glrmc": "国联基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=168204'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=168204'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=163418'><u>163418</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=163418&name=兴全合兴LOF' title='点击简称查询公告'><u>兴全合兴LOF</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=163418'></a>",
+          "nhzs": " ",
+          "dqgm": "18,363.59",
+          "glrmc": "兴证全球基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=163418'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=163418'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=162720'><u>162720</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=162720&name=广发创业板定开' title='点击简称查询公告'><u>广发创业板定开</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=162720'></a>",
+          "nhzs": " ",
+          "dqgm": "6,597.52",
+          "glrmc": "广发基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=162720'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=162720'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=160143'><u>160143</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=160143&name=创业板定开南方' title='点击简称查询公告'><u>创业板定开南方</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=160143'></a>",
+          "nhzs": " ",
+          "dqgm": "821.52",
+          "glrmc": "南方基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=160143'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=160143'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=160529'><u>160529</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=160529&name=创业板博时定开' title='点击简称查询公告'><u>创业板博时定开</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=160529'></a>",
+          "nhzs": " ",
+          "dqgm": "993.98",
+          "glrmc": "博时基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=160529'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=160529'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=161914'><u>161914</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/notice/index.html?stock=161914&name=创业板2年定开' title='点击简称查询公告'><u>创业板2年定开</u></a> <a href='javascript:void(0);' encode-open='/main/disclosure/ETFgg/sgshqd/index.shtml?txtJCorDH=161914'></a>",
+          "nhzs": " ",
+          "dqgm": "9,554.26",
+          "glrmc": "万家基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=161914'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=161914'>查看</a>"
+        }
+      ],
+      "error": null
+    }
+  ]
+}

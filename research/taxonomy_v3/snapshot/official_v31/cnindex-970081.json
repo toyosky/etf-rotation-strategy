@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:36.477665+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "970081",
+      "indexename": "CNTBI",
+      "indexfullcname": "创业板电池指数",
+      "indexfullename": "SZSE ChiNext Battery Index",
+      "indexname": "创业板电池",
+      "indexsource": "0",
+      "indextype": "103",
+      "jr": "2018-06-29",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "42888bc719eb7928cc374ed58dec50ac8e38a8b8dfe80a6c6a49332a298b0763",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=970081"
+}

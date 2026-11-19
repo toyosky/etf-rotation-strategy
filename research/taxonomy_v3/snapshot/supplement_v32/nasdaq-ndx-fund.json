@@ -1,0 +1,10 @@
+{
+  "id": "nasdaq-ndx-fund",
+  "source_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225258085.PDF",
+  "observed_at": "2026-11-12T11:57:32.520626+00:00",
+  "status": "ok",
+  "raw_path": "nasdaq-ndx-fund.pdf",
+  "raw_sha256": "c4a04d4ab7b4f4de801a27ed4e7dbfab357ece728d55b2538288d407f005a82d",
+  "text_path": "nasdaq-ndx-fund.txt",
+  "text_sha256": "0061d1f563d0382228942c632ea5800b3ff5bbc96176dac569313f4166d081e5"
+}

@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399439",
+  "observed_at": "2026-11-12T09:15:53.154144+00:00",
+  "sha256": "22f40a861d202f8907dbd3174a866299b58d5a9e028372f07676f75fff68deef",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399439",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "国证油气",
+      "indexename": "CNI Oil&Gas",
+      "indexfullename": "CNI Oil&Gas Index",
+      "indexfullcname": "国证石油天然气指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

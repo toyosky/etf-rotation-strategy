@@ -1,0 +1,195 @@
+{
+  "source_url": "https://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1945&TABKEY=tab1&tab1PAGENO=27",
+  "observed_at": "2026-11-12T09:06:44.055929+00:00",
+  "sha256": "55699b69b1d8028fb88f5ed0dd64344bd52f7f5d2972b304b455c84eb31d5a57",
+  "payload": [
+    {
+      "metadata": {
+        "catalogid": "1945",
+        "name": "ETF列表",
+        "excel": "xlsx",
+        "pagetype": "vertical",
+        "subname": "2026-11-12",
+        "tabkey": "tab1",
+        "pagesize": 10,
+        "pageno": 27,
+        "pagecount": 78,
+        "recordcount": 772,
+        "showrecordcount": false,
+        "header": "<table>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td class=\"link1\">\n\t\t\t\t\t\t\t\t(点击<u>代码</u>查询行情，点击<u>简称</u>查询公告，点击<img src='http://res.szse.cn/modules/report/images/xxzl.gif' width='14' height='14' align='absbottom' style='margin-bottom:2px;'>查询申购赎回清单)\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</table>",
+        "footer": "",
+        "reporttype": null,
+        "tabcss": null,
+        "conditions": [
+          {
+            "label": "代码或简称",
+            "name": "txtQueryKeyAndJC",
+            "hidden": "0",
+            "defaultValue": "",
+            "labelstyle": "1",
+            "required": "false",
+            "inputType": "text",
+            "typeAhead": "/shortname/gethangqing?dataType=%5Betffund%5D&input=",
+            "options": null,
+            "property": null,
+            "maxlength": null,
+            "otherProperties": null,
+            "clientvalidate": ""
+          }
+        ],
+        "colStyle": {
+          "sys_key": {
+            "width": "10",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "kzjcurl": {
+            "width": "20",
+            "align": "center",
+            "group": "false",
+            "hidden": "0"
+          },
+          "nhzs": {
+            "width": "14",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "dqgm": {
+            "width": "14",
+            "align": "right",
+            "group": "false",
+            "hidden": "0"
+          },
+          "glrmc": {
+            "width": "19",
+            "align": "left",
+            "group": "false",
+            "hidden": "0"
+          },
+          "cxjqhq": {
+            "width": "12",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          },
+          "zxjjjz": {
+            "width": "13",
+            "align": "center",
+            "group": "false",
+            "hidden": "3"
+          }
+        },
+        "cols": {
+          "sys_key": "证券代码",
+          "kzjcurl": "证券简称",
+          "nhzs": "拟合指数",
+          "dqgm": "当前规模<br>（万份）<span class='tip'><span class='tipTxt'><i></i>该字段T日晚间更新的T日规模仅供参考，以T+1日早间更新的T日规模为准</span></span><br>（2026-11-11）",
+          "glrmc": "基金管理人",
+          "cxjqhq": "查询近期行情",
+          "zxjjjz": "最新基金净值"
+        },
+        "colspan": 0,
+        "notes": null,
+        "topHeader": "",
+        "hidden": "0",
+        "tablestyle": "main",
+        "refreshCondition": false
+      },
+      "data": [
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159248'><u>159248</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159248&name=人工智能ETF万家' title='点击简称查询公告'><u>人工智能ETF万家</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159248'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "930713 ",
+          "dqgm": "15,109.56",
+          "glrmc": "万家基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159248'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159248'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159251'><u>159251</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159251&name=港股通科技ETF万家' title='点击简称查询公告'><u>港股通科技ETF万家</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159251'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "987008 ",
+          "dqgm": "23,778.77",
+          "glrmc": "万家基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159251'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159251'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159270'><u>159270</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159270&name=创业板200ETF南方' title='点击简称查询公告'><u>创业板200ETF南方</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159270'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "399019 创业200",
+          "dqgm": "9,076.36",
+          "glrmc": "南方基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159270'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159270'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159268'><u>159268</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159268&name=港股通消费ETF汇添富' title='点击简称查询公告'><u>港股通消费ETF汇添富</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159268'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "987024 ",
+          "dqgm": "37,505.50",
+          "glrmc": "汇添富基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159268'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159268'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159200'><u>159200</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159200&name=科创债ETF富国' title='点击简称查询公告'><u>科创债ETF富国</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159200'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "932160 ",
+          "dqgm": "19,896.26",
+          "glrmc": "富国基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159200'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159200'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159400'><u>159400</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159400&name=科创债ETF景顺' title='点击简称查询公告'><u>科创债ETF景顺</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159400'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "921130 ",
+          "dqgm": "7,418.73",
+          "glrmc": "景顺长城基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159400'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159400'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159600'><u>159600</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159600&name=科创债ETF嘉实' title='点击简称查询公告'><u>科创债ETF嘉实</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159600'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "932160 ",
+          "dqgm": "34,497.89",
+          "glrmc": "嘉实基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159600'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159600'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159700'><u>159700</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159700&name=科创债ETF南方' title='点击简称查询公告'><u>科创债ETF南方</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159700'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "932160 ",
+          "dqgm": "15,290.91",
+          "glrmc": "南方基金管理股份有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159700'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159700'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159311'><u>159311</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159311&name=数字经济ETF易方达' title='点击简称查询公告'><u>数字经济ETF易方达</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159311'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "931582 ",
+          "dqgm": "4,138.39",
+          "glrmc": "易方达基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159311'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159311'>查看</a>"
+        },
+        {
+          "sys_key": "<a href='http://www.szse.cn/market/trend/index.html?code=159246'><u>159246</u></a>",
+          "kzjcurl": "<a href='http://www.szse.cn/disclosure/fund/etf/index.html?stock=159246&name=创业板人工智能ETF富国' title='点击简称查询公告'><u>创业板人工智能ETF富国</u></a> <a href='http://www.szse.cn/disclosure/fund/currency/index.html?txtJCorDH=159246'><img src ='http://res.szse.cn/modules/report/images/xxzl.gif'/></a>",
+          "nhzs": "970070 CNTAI50",
+          "dqgm": "275,365.56",
+          "glrmc": "富国基金管理有限公司",
+          "cxjqhq": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1815_fund_child&TABKEY=tab1&txtDm=159246'>查看</a>",
+          "zxjjjz": "<a href='javascript:void(0);' a-back=1 a-param='/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1785_child&TABKEY=tab1&txtDm=159246'>查看</a>"
+        }
+      ],
+      "error": null
+    }
+  ]
+}

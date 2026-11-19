@@ -1,0 +1,78 @@
+{
+  "byte_identical_outputs": 13,
+  "database_writes": 0,
+  "failed_document_requests": [
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/html2pdf/preview/jj_399701.pdf",
+      "id": "cni-factsheet-399701"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/html2pdf/preview/jj_399702.pdf",
+      "id": "cni-factsheet-399702"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/docs/gz_399701.pdf",
+      "id": "cni-methodology-399701"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cnindex.com.cn/docs/gz_399702.pdf",
+      "id": "cni-methodology-399702"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsbioc.pdf",
+      "id": "hsi-hsbio"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsceic.pdf",
+      "id": "hsi-hscei"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hshcic.pdf",
+      "id": "hsi-hshci"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsic.pdf",
+      "id": "hsi-hsi"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsiiic.pdf",
+      "id": "hsi-hsiii"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsiscc.pdf",
+      "id": "hsi-hsisc"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hssc50c.pdf",
+      "id": "hsi-hssc50"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsscamc.pdf",
+      "id": "hsi-hsscam"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsscidc.pdf",
+      "id": "hsi-hsscid"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hsscitic.pdf",
+      "id": "hsi-hssciti"
+    },
+    {
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hstechc.pdf",
+      "id": "hsi-hstech"
+    }
+  ],
+  "full_manifest_identical": true,
+  "historical_strategy_backtest_run": false,
+  "official_csi_raw_hash_and_parsed_rows_verified": 2388,
+  "official_pdf_hashes_verified": 39,
+  "parquet_read_verified": true,
+  "production_logic_changes": 0,
+  "source_observation_date": "2026-11-12",
+  "status": "PASS",
+  "test_errors": 0,
+  "test_failures": 0,
+  "test_skipped": 0,
+  "unit_tests_passed": 44
+}

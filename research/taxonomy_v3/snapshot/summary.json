@@ -1,0 +1,15 @@
+[
+  {
+    "rows": 2026,
+    "symbols": 2026,
+    "listed": 1988,
+    "has_bars": 1090,
+    "underlying_covered": 2026,
+    "risk_covered": 2026,
+    "style_covered": 1585,
+    "review": 424,
+    "historical_safe": 17,
+    "earliest_valid_from": "2011-12-09",
+    "updated_at": "2026-09-11 15:57:47.368971+00"
+  }
+]

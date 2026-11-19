@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399007",
+  "observed_at": "2026-11-12T09:15:44.904994+00:00",
+  "sha256": "f036679e9b23da1ef99cb9a6f0cc577fafdf4fbb58db97328565184ed94d10d1",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399007",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "深证300",
+      "indexename": "SZSE 300",
+      "indexfullename": "SZSE 300 Index",
+      "indexfullcname": "深证300指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

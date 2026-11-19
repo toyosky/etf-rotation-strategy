@@ -1,0 +1,10 @@
+{
+  "id": "nasdaq-ndx-methodology",
+  "source_url": "https://indexes.nasdaq.com/docs/Methodology_NDX.pdf",
+  "observed_at": "2026-11-12T11:54:14.160779+00:00",
+  "status": "ok",
+  "raw_path": "nasdaq-ndx-methodology.pdf",
+  "raw_sha256": "30949663d86e59f3a26422e1e18102edabae347ea315a3a01b9fbb2a0097a70d",
+  "text_path": "nasdaq-ndx-methodology.txt",
+  "text_sha256": "c2155fc9a513800a979974e74c6998bcd9071641bc63a76c6538e22e4cac81ee"
+}

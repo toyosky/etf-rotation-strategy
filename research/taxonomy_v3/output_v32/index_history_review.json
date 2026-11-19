@@ -1,0 +1,53 @@
+[
+  {
+    "description": "Former name 恒生香港上市生物科技指数; index values rescaled 10x. Not a historical ETF-price adjustment instruction.",
+    "event_type": "INDEX_RENAME_AND_LEVEL_RESCALE",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsbio.json",
+        "required_tokens": [
+          "2024年12月9日起生效",
+          "历史指数值放大10倍"
+        ]
+      }
+    ],
+    "historical_publication_date_verified": false,
+    "index_key": "HSI:HSBIO",
+    "reported_effective_date": "2024-12-09",
+    "status": "HISTORICAL_ORIGINAL_ANNOUNCEMENT_REQUIRED"
+  },
+  {
+    "description": "Southbound eligibility added and count changed to 30; current universe must not be projected to earlier dates.",
+    "event_type": "INDEX_UNIVERSE_AND_CONSTITUENT_COUNT_CHANGE",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsbio.json",
+        "required_tokens": [
+          "2025年9月8日起生效",
+          "固定成份股数目为30"
+        ]
+      }
+    ],
+    "historical_publication_date_verified": false,
+    "index_key": "HSI:HSBIO",
+    "reported_effective_date": "2025-09-08",
+    "status": "HISTORICAL_ORIGINAL_ANNOUNCEMENT_REQUIRED"
+  },
+  {
+    "description": "Current price code HSBIO is evidenced; prior code is not stated here and remains unknown.",
+    "event_type": "INDEX_CODE_CHANGE",
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/hsi-methodology-hsbio.json",
+        "required_tokens": [
+          "2025年9月15日起生效",
+          "更改指数代码"
+        ]
+      }
+    ],
+    "historical_publication_date_verified": false,
+    "index_key": "HSI:HSBIO",
+    "reported_effective_date": "2025-09-15",
+    "status": "HISTORICAL_ORIGINAL_ANNOUNCEMENT_REQUIRED"
+  }
+]

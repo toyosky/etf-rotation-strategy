@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399441",
+  "observed_at": "2026-11-12T09:15:53.696561+00:00",
+  "sha256": "a6893a634212bbca5d6110ab928580ebd5e122b337011590517bd07724ade225",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399441",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "生物医药",
+      "indexename": "CNI Biomedicine",
+      "indexfullename": "CNI Biomedicine Index",
+      "indexfullcname": "国证生物医药指数",
+      "jr": "2009-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

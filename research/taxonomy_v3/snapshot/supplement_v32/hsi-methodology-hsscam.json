@@ -1,0 +1,10 @@
+{
+  "id": "hsi-methodology-hsscam",
+  "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsscam/IM_hsscam.pdf",
+  "observed_at": "2026-11-12T11:41:03.961079+00:00",
+  "status": "ok",
+  "raw_path": "hsi-methodology-hsscam.pdf",
+  "raw_sha256": "0ed2ebc8a4930adbd5fc36d56fdfcd43c68138238a2b392cd5bdfc0de56ba52c",
+  "text_path": "hsi-methodology-hsscam.txt",
+  "text_sha256": "98bd61b243c846e8679882939e34e55cd282be0bfd08f358b5a29b969bd01dba"
+}

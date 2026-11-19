@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399673",
+  "observed_at": "2026-11-12T09:15:54.333641+00:00",
+  "sha256": "8c90fb7e53a40fcda817acf4c30655ca4816b894cd1ebba6815e25a4c32da3ef",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399673",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "创业板50",
+      "indexename": "ChiNext 50",
+      "indexfullename": "SZSE ChiNext 50 Index",
+      "indexfullcname": "创业板50指数",
+      "jr": "2010-05-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

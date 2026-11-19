@@ -1,0 +1,450 @@
+[
+  {
+    "symbol": "159100",
+    "kind": "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-07-21/1225433022.PDF",
+    "source_date": "2026-07-21",
+    "source_document": "华夏布拉德斯科巴西伊博维斯帕ETF（QDII）2026年第2季度报告 §2",
+    "index_name": "巴西伊博维斯帕指数",
+    "region_primary": "BR",
+    "exposure_type": "EQUITY",
+    "sector_level1": "MULTI_SECTOR",
+    "sector_level2": "BROAD",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "TARGET_ETF_FOF",
+    "proof": "Official fund quarterly report confirms 159100 fund and objective of close tracking target ETF/index; benchmark Brazilian Ibovespa index, not simply a name guess",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/brazil-159100.json",
+        "required_tokens": [
+          "159100"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "159509",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-02-04/1224964360.PDF",
+    "source_date": "2026-02-04",
+    "source_document": "景顺长城纳斯达克科技市值加权ETF QDII基金产品资料概要 2026 §2",
+    "index_name": "纳斯达克科技市值加权指数（价格指数）",
+    "index_name_english": "Nasdaq-100 Technology Sector Market-Cap Weighted Index (price index)",
+    "region_primary": "US",
+    "exposure_type": "EQUITY",
+    "sector_level1": "TECHNOLOGY",
+    "sector_level2": "NASDAQ_100_TECHNOLOGY",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Official prospectus identifies Nasdaq-100 Technology Sector Market-Cap Weighted Index price index and passive benchmark; do not merge with Nasdaq-100 broad or unrelated technology indices",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-159509.json",
+        "required_tokens": [
+          "159509"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "159529",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-06-30/1225394408.PDF",
+    "source_date": "2026-06-30",
+    "source_document": "景顺长城标普消费精选ETF QDII基金产品资料概要 2026 §2",
+    "index_name": "标普500消费精选指数",
+    "index_name_english": "S&P 500 Consumer Select 15/60 Index",
+    "region_primary": "US",
+    "exposure_type": "EQUITY",
+    "sector_level1": "CONSUMER",
+    "sector_level2": "SP500_CONSUMER_SELECT_15_60",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Official prospectus identifies exact S&P 500 Consumer Select 15/60 index; is not S&P 500 broad and should not collapse into all US consumption funds",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-159529.json",
+        "required_tokens": [
+          "159529"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "159934",
+    "kind": "OFFICIAL_NON_INDEX_SPOT_ETF_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467474.PDF",
+    "source_date": "2026-08-11",
+    "source_document": "易方达黄金ETF2026基金产品资料概要 §2",
+    "index_name": null,
+    "region_primary": "CN",
+    "exposure_type": "COMMODITY_SPOT",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "GOLD_AU9999_SPOT",
+    "tracking_mode": "PASSIVE_SPOT_ETF",
+    "legal_exposure_id": "SPOT:SGE_AU9999",
+    "legal_exposure_name": "上海黄金交易所 Au99.99 现货合约",
+    "performance_benchmark": "上海黄金交易所Au99.99现货实盘合约收盘价",
+    "proof": "Official 2026 summary: >=95% of NAV invested in spot gold contracts; target spot contract reference price, not a CSI/SZSE published tracking index ID",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-159934.json",
+        "required_tokens": [
+          "159934"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "159981",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-03-30/1225041054.PDF",
+    "source_date": "2026-03-30",
+    "source_document": "建信能源化工期货ETF2025年年度报告 §2.2",
+    "index_name": "易盛郑商所能源化工指数A",
+    "region_primary": "CN",
+    "exposure_type": "COMMODITY_FUTURES",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "ENERGY_CHEMICAL_FUTURES",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "2025 annual report states futures-index replication and benchmark 易盛郑商所能源化工指数A收益率; SZSE fitted code retained separately and not asserted as official global index code",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-159981.json",
+        "required_tokens": [
+          "159981"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "159985",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-03-23/1225020370.PDF",
+    "source_date": "2026-03-23",
+    "source_document": "华夏饲料豆粕期货ETF 2026产品资料概要 §2",
+    "index_name": "大连商品交易所豆粕期货价格指数",
+    "region_primary": "CN",
+    "exposure_type": "COMMODITY_FUTURES",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "SOYBEAN_MEAL_FUTURES",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Legal issuer product summary explicitly names DCE soybean meal futures price index and requires futures holdings 90%-110% of fund NAV; keep roll exposure separate",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-159985.json",
+        "required_tokens": [
+          "159985"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "161226",
+    "kind": "OFFICIAL_NON_INDEX_FUTURES_LOF_MANDATE",
+    "source_url": "https://static.cninfo.com.cn/finalpage/2026-06-12/1225364199.PDF",
+    "source_date": "2026-06-12",
+    "source_document": "国投瑞银白银期货LOF A 2026基金产品资料概要 §2",
+    "index_name": null,
+    "region_primary": "CN",
+    "exposure_type": "COMMODITY_FUTURES",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "SILVER_FUTURES",
+    "tracking_mode": "FUTURES_MAIN_CONTRACT_LOF",
+    "legal_exposure_id": "FUTURES_CONTRACT:SHFE_SILVER_MAIN",
+    "legal_exposure_name": "上海期货交易所白银期货主力合约收益",
+    "performance_benchmark": "上海期货交易所白银期货主力合约收益率",
+    "proof": "Official 2026 fund summary says seeks daily NAV return equivalent to SHFE silver futures main contract; absence of distinct legally tracked published index code requires no exact_index_key",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-161226.json",
+        "required_tokens": [
+          "161226"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501018",
+    "kind": "OFFICIAL_NON_INDEX_QDII_FOF_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-05-21/501018_20260521_JW26.pdf",
+    "source_date": "2026-05-21",
+    "source_document": "南方原油证券投资基金（A类份额）基金产品资料概要",
+    "index_name": null,
+    "region_primary": "GLOBAL",
+    "exposure_type": "COMMODITY_FOF",
+    "sector_level1": "COMMODITY",
+    "sector_level2": "CRUDE_OIL_FOF",
+    "tracking_mode": "ACTIVE_QDII_FOF",
+    "performance_benchmark": "60% WTI原油价格收益率 + 40% Brent原油价格收益率",
+    "proof": "Official summary identifies QDII-FOF; >=80% fund assets in public funds and >=80% noncash assets in crude-oil funds, benchmark is not a legally tracked index",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-501018.json",
+        "required_tokens": [
+          "501018"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "511220",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2025-03-20/511220_20250320_DEON.pdf",
+    "source_date": "2025-03-20",
+    "source_document": "海富通上证城投债ETF基金合同 第十四部分 投资目标/业绩比较基准",
+    "index_name": "上证城投债指数",
+    "region_primary": "CN",
+    "exposure_type": "BOND",
+    "sector_level1": "FIXED_INCOME",
+    "sector_level2": "URBAN_INVESTMENT_BONDS",
+    "tracking_mode": "PASSIVE_INDEX",
+    "proof": "Official 2025 fund contract names 上证城投债指数 as investable bond tracking benchmark; legal product transformed 2019-04-24 from prior 上证可质押城投债 ETF; no retroactive index label pre conversion",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/mandate-511220.json",
+        "required_tokens": [
+          "上证城投债交易型开放式指数证券投资基金",
+          "上证城投债指数"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501005",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/501006_20260331_JB0N.pdf",
+    "source_date": "2026-03-31",
+    "source_document": "lof-precise-medical official periodic report §2",
+    "index_name": "中证精准医疗主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "MEDICAL_MIXED",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "A",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-precise-medical.json",
+        "required_tokens": [
+          "501005",
+          "501006",
+          "中证精准医疗主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501006",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/501006_20260331_JB0N.pdf",
+    "source_date": "2026-03-31",
+    "source_document": "lof-precise-medical official periodic report §2",
+    "index_name": "中证精准医疗主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "MEDICAL_MIXED",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "C",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-precise-medical.json",
+        "required_tokens": [
+          "501005",
+          "501006",
+          "中证精准医疗主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501007",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-10-27/501008_20261027_JG1M.pdf",
+    "source_date": "2026-10-27",
+    "source_document": "lof-digital-health official periodic report §2",
+    "index_name": "中证互联网医疗主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "MEDICAL_MIXED",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "A",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-digital-health.json",
+        "required_tokens": [
+          "501007",
+          "501008",
+          "中证互联网医疗主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501008",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-10-27/501008_20261027_JG1M.pdf",
+    "source_date": "2026-10-27",
+    "source_document": "lof-digital-health official periodic report §2",
+    "index_name": "中证互联网医疗主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "MEDICAL_MIXED",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "C",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-digital-health.json",
+        "required_tokens": [
+          "501007",
+          "501008",
+          "中证互联网医疗主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501009",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-04-22/501009_20260422_TKQG.pdf",
+    "source_date": "2026-04-22",
+    "source_document": "lof-biotech official periodic report §2",
+    "index_name": "中证生物科技主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "BIOTECH",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "A",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-biotech.json",
+        "required_tokens": [
+          "501009",
+          "501010",
+          "中证生物科技主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501010",
+    "kind": "OFFICIAL_PASSIVE_INDEX_MANDATE",
+    "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-04-22/501009_20260422_TKQG.pdf",
+    "source_date": "2026-04-22",
+    "source_document": "lof-biotech official periodic report §2",
+    "index_name": "中证生物科技主题指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "BIOTECH",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "FULL_REPLICATION",
+    "share_class": "C",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-biotech.json",
+        "required_tokens": [
+          "501009",
+          "501010",
+          "中证生物科技主题指数",
+          "被动式指数化投资"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "501011",
+    "kind": "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE",
+    "source_url": "https://99fund.com/announcement/zx/upload/2026/20260421/4ea0b1017cc74281acec90f0667e9d3d.pdf",
+    "source_date": "2026-04-21",
+    "source_document": "lof-tcm-feeder official periodic report §2",
+    "index_name": "中证中药指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "TCM",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "TARGET_ETF_FOF",
+    "share_class": "A",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-tcm-feeder.json",
+        "required_tokens": [
+          "501011",
+          "501012",
+          "中证中药指数",
+          "通过投资于目标ETF",
+          "紧密跟踪标的指数"
+        ]
+      }
+    ],
+    "reported_contract_effective_date": "2022-12-02",
+    "history_review_note": "2026 report states current contract took effect 2022-12-02; do not backdate current ETF-feeder mandate to first trading date."
+  },
+  {
+    "symbol": "501012",
+    "kind": "OFFICIAL_PASSIVE_INDEX_FOF_MANDATE",
+    "source_url": "https://99fund.com/announcement/zx/upload/2026/20260421/4ea0b1017cc74281acec90f0667e9d3d.pdf",
+    "source_date": "2026-04-21",
+    "source_document": "lof-tcm-feeder official periodic report §2",
+    "index_name": "中证中药指数",
+    "region_primary": "CN",
+    "exposure_type": "EQUITY",
+    "sector_level1": "HEALTHCARE",
+    "sector_level2": "TCM",
+    "tracking_mode": "PASSIVE_INDEX",
+    "replication_method": "TARGET_ETF_FOF",
+    "share_class": "C",
+    "proof": "Official report explicitly identifies both traded share classes and passive tracking objective; benchmark alone is not used as mandate proof.",
+    "execution_attributes_verified": false,
+    "evidence_documents": [
+      {
+        "manifest": "snapshot/supplement_v32/lof-tcm-feeder.json",
+        "required_tokens": [
+          "501011",
+          "501012",
+          "中证中药指数",
+          "通过投资于目标ETF",
+          "紧密跟踪标的指数"
+        ]
+      }
+    ],
+    "reported_contract_effective_date": "2022-12-02",
+    "history_review_note": "2026 report states current contract took effect 2022-12-02; do not backdate current ETF-feeder mandate to first trading date."
+  }
+]

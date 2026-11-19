@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399378",
+  "observed_at": "2026-11-12T09:15:52.501177+00:00",
+  "sha256": "64427f4f73026b2da9b3dbf57280c70f6b18f46a1a51538348e82f8d710b323d",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399378",
+      "indextype": "208",
+      "indexsource": "1",
+      "indexname": "ESG 300",
+      "indexename": "CNI ESG 300",
+      "indexfullename": "CNI ESG 300 Index",
+      "indexfullcname": "国证ESG 300指数",
+      "jr": "2010-06-30",
+      "realtimemarket": "1",
+      "showdetail": "0",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

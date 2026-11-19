@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399394",
+  "observed_at": "2026-11-12T09:21:36.573713+00:00",
+  "sha256": "e9b82ef2b083c52f74dbe61c492b9b85d88aeb5cab7c14c92b556ff59690e074",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399394",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证医药",
+      "indexename": "CNI Health Care",
+      "indexfullename": "CNI Health Care Index",
+      "indexfullcname": "国证医药卫生行业指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

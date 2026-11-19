@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399624",
+  "observed_at": "2026-11-12T09:15:54.851036+00:00",
+  "sha256": "c05a02598d4b2257a5dca469c72249bc121a24165ebeca0f7d79650b0f957d32",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399624",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "中创400",
+      "indexename": "SME-ChiNext 400",
+      "indexfullename": "SZSE SME-ChiNext 400 Index",
+      "indexfullcname": "中小创业企业400指数",
+      "jr": "2010-06-30",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

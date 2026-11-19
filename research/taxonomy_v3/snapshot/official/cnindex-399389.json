@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399389",
+  "observed_at": "2026-11-12T09:15:52.040336+00:00",
+  "sha256": "249ce803d2e050036c6f1f9bcf336eefdac1c21f465eaaab47cde7a09ff66162",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399389",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "国证通信",
+      "indexename": "CNI Communications",
+      "indexfullename": "CNI Communications Index",
+      "indexfullcname": "国证通信指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

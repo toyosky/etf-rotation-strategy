@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399266",
+  "observed_at": "2026-11-12T09:15:47.626203+00:00",
+  "sha256": "5ac9753cffc140800ffaa3b4f588088f0c1bc624b7c0e0030ad4837f01808619",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399266",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "创新能源",
+      "indexename": "ChiNext New Energy",
+      "indexfullename": "ChiNext New Energy Index",
+      "indexfullcname": "创业板新能源指数",
+      "jr": "2017-12-29",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

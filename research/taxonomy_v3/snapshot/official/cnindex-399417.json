@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399417",
+  "observed_at": "2026-11-12T09:21:36.187988+00:00",
+  "sha256": "a3b94a01ade44057b26edd2366558126b9f940f3eff8b36a954c7cd4c0875fb7",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399417",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "新能源车",
+      "indexename": "CNI New Energy Vehicles",
+      "indexfullename": "CNI New Energy Vehicles Index",
+      "indexfullcname": "国证新能源车指数",
+      "jr": "2010-06-30",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

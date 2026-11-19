@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399102",
+  "observed_at": "2026-11-12T09:15:47.649066+00:00",
+  "sha256": "332ff730405e0da27401df7ad68e31f0332793cd096cfc369970d7f3c46f7d47",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399102",
+      "indextype": "105",
+      "indexsource": "1",
+      "indexname": "创业板综",
+      "indexename": "ChiNext Composite",
+      "indexfullename": "ChiNext Composite Index",
+      "indexfullcname": "创业板综合指数",
+      "jr": "2010-05-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

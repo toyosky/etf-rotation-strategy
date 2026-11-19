@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:43.758905+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980076",
+      "indexename": "CNIGAI",
+      "indexfullcname": "国证通用航空产业指数",
+      "indexfullename": "CNI General Aviation Industry Index",
+      "indexname": "通用航空",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2012-06-29",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "fa5a0e2aed7430a314d5cae036d236aa233b54d3164823a7115d45b613065549",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980076"
+}

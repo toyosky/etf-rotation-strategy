@@ -1,0 +1,10 @@
+{
+  "id": "hsi-methodology-hsbio",
+  "source_url": "https://www.hsi.com.hk/content/dam/wpb/hsil/index/methodologies/zh_cn/hsbio/IM_hsbio.pdf",
+  "observed_at": "2026-11-12T11:41:03.953773+00:00",
+  "status": "ok",
+  "raw_path": "hsi-methodology-hsbio.pdf",
+  "raw_sha256": "2e2cae6c1cddef4bf870c8cd64c0bdc0fd06d5811133261a333fe60fb87fb287",
+  "text_path": "hsi-methodology-hsbio.txt",
+  "text_sha256": "04a4b181026b61dc868994225e5393aa8d8435a80366522e4ee4a06bb5ff911d"
+}

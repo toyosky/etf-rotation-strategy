@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399275",
+  "observed_at": "2026-11-12T09:15:49.508133+00:00",
+  "sha256": "140aebbfe50fccf0ac40f4e09ec6cecbc6071bb576296a361978a5c05d6cd620",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399275",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "创医药",
+      "indexename": "ChiNext Healthcare",
+      "indexfullename": "SZSE ChiNext Healthcare Index",
+      "indexfullcname": "创业板医药卫生指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

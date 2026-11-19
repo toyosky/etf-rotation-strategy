@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:37.352219+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980016",
+      "indexename": "Medical Health",
+      "indexfullcname": "国证公共卫生与医疗健康指数",
+      "indexfullename": "CNI Public Health and Medical Health Index",
+      "indexname": "医疗健康",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "de39eb87733f22dbbb5d53af04256123cf5a297022bcafadee9803e4b27817b2",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980016"
+}

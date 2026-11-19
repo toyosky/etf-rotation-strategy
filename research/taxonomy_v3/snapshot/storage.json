@@ -1,0 +1,743 @@
+[
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2021/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"1dab0dda431afa11c93b2ee37fec2835\"",
+      "size": 2113238,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:14:43.000Z",
+      "contentLength": 2113238,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2021/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"d9b4f228a1c03c39ebd755af2ab18acd\"",
+      "size": 2631553,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:14:52.000Z",
+      "contentLength": 2631553,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2021/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"89bdd3519308dc166fcc693d78de7d0f\"",
+      "size": 3281445,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:15:04.000Z",
+      "contentLength": 3281445,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2021/quarter=Q4/features.parquet",
+    "metadata": {
+      "eTag": "\"79d439363aee588db8e8b3ad316caae4\"",
+      "size": 3522386,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:15:16.000Z",
+      "contentLength": 3522386,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2022/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"f1120d4b95762765a90b66207f872db1\"",
+      "size": 3627740,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:15:29.000Z",
+      "contentLength": 3627740,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2022/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"b205a34e61d8b0504e3b4f08eaae3a04\"",
+      "size": 3982334,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:15:43.000Z",
+      "contentLength": 3982334,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2022/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"e5fb93ff1f7ce797ea9324144a3529ce\"",
+      "size": 4545023,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:15:59.000Z",
+      "contentLength": 4545023,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2022/quarter=Q4/features.parquet",
+    "metadata": {
+      "eTag": "\"e38c573f917b930419e9aa24da4620b4\"",
+      "size": 4466515,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:16:14.000Z",
+      "contentLength": 4466515,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2023/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"63f2602cf6d1221b14c026dca0e8469a\"",
+      "size": 4526119,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:16:30.000Z",
+      "contentLength": 4526119,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2023/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"6db1073aa6dd860eace81e457b17d0f3\"",
+      "size": 4709277,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:16:46.000Z",
+      "contentLength": 4709277,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2023/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"a77cd6838bc79ff14ed6ccfebd12baa2\"",
+      "size": 5267527,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:17:05.000Z",
+      "contentLength": 5267527,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2023/quarter=Q4/features.parquet",
+    "metadata": {
+      "eTag": "\"160356b44aa18edbd5e088d39722a941\"",
+      "size": 5214482,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:17:23.000Z",
+      "contentLength": 5214482,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2024/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"bed43af4ea184738eb47fd0c33b06061\"",
+      "size": 5526519,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:17:42.000Z",
+      "contentLength": 5526519,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2024/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"37446e8617417644bfe204e2e44e776b\"",
+      "size": 5791710,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:18:02.000Z",
+      "contentLength": 5791710,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2024/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"f3a3da6a7a580ea4429fe363d9c8c8a1\"",
+      "size": 6470932,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:18:25.000Z",
+      "contentLength": 6470932,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2024/quarter=Q4/features.parquet",
+    "metadata": {
+      "eTag": "\"798375486c0e2a4c98a7e2d39407aeed\"",
+      "size": 6862923,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:18:49.000Z",
+      "contentLength": 6862923,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2025/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"e09cd30de8968e16611622131f26f0bc\"",
+      "size": 6765351,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:19:12.000Z",
+      "contentLength": 6765351,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2025/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"6f5d6b341c1e826e4d01be28de400916\"",
+      "size": 7596818,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:19:39.000Z",
+      "contentLength": 7596818,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2025/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"9d825f1570ea226834f344162e9f237e-2\"",
+      "size": 9046238,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:19:40.000Z",
+      "contentLength": 9046238,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2025/quarter=Q4/features.parquet",
+    "metadata": {
+      "eTag": "\"1b01c76813475c0e917887aac61a0a90-2\"",
+      "size": 8435768,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:20:11.000Z",
+      "contentLength": 8435768,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2026/quarter=Q1/features.parquet",
+    "metadata": {
+      "eTag": "\"33d6234a35ba85748a8ebedcafd3c053\"",
+      "size": 7952778,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:21:07.000Z",
+      "contentLength": 7952778,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2026/quarter=Q2/features.parquet",
+    "metadata": {
+      "eTag": "\"8884abeef6d725949f3210c71abedaeb-2\"",
+      "size": 8582312,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:21:08.000Z",
+      "contentLength": 8582312,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/daily_features/year=2026/quarter=Q3/features.parquet",
+    "metadata": {
+      "eTag": "\"44e0b9047424d1476ad06667eefb5877\"",
+      "size": 7185321,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:22:02.000Z",
+      "contentLength": 7185321,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/episodes/ols_episodes.parquet",
+    "metadata": {
+      "eTag": "\"e91de1b6bcf2c41d482acbf49b9bad8d\"",
+      "size": 3518667,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:22:14.000Z",
+      "contentLength": 3518667,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "full_market_ols/manifest.json",
+    "metadata": {
+      "eTag": "\"19a5c47d466c677583c4d75e334cea78\"",
+      "size": 3856,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-09T06:22:15.000Z",
+      "contentLength": 3856,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "marginal_universe_value/v1/retention/manifest.json",
+    "metadata": {
+      "eTag": "\"4a27da50ea8cbee5ef2f18cdc895e056\"",
+      "size": 19637,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-13T00:06:25.000Z",
+      "contentLength": 19637,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "marginal_universe_value/v1/retention/retention_labels.parquet",
+    "metadata": {
+      "eTag": "\"b528299f81749ee40703e0ed5169d30d\"",
+      "size": 657543,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-13T00:06:25.000Z",
+      "contentLength": 657543,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/manifest.json",
+    "metadata": {
+      "eTag": "\"fb9e0c78035446606d14d339298a3d05\"",
+      "size": 71974,
+      "mimetype": "application/json; charset=utf-8",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:27:13.000Z",
+      "contentLength": 71974,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=1998/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"0b600a54a406ebe8554fbc2b852088db\"",
+      "size": 8953,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:16.000Z",
+      "contentLength": 8953,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=1999/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"a7277c7300ca86e48445c9fbe7298b21\"",
+      "size": 8870,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:17.000Z",
+      "contentLength": 8870,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2000/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"0dba120199e3808eb808326b514839fe\"",
+      "size": 8737,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:17.000Z",
+      "contentLength": 8737,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2001/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"119cc3804d8294a58bfa4bba088b129f\"",
+      "size": 8856,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:18.000Z",
+      "contentLength": 8856,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2002/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"0f6964f933273e2bc0b177e5e4b3aa6e\"",
+      "size": 8368,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:20.000Z",
+      "contentLength": 8368,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2003/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"12fb585060ed58ab01173a83a5e0276c\"",
+      "size": 8066,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:20.000Z",
+      "contentLength": 8066,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2004/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"4b07f655bd923240218007bab9d1cc5d\"",
+      "size": 8491,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:22.000Z",
+      "contentLength": 8491,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2005/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"2c42ad59bdf88841849396d844239907\"",
+      "size": 9604,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:22.000Z",
+      "contentLength": 9604,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2006/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"0d82b032bee3c5a45fc651d76d081c6f\"",
+      "size": 12493,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:23.000Z",
+      "contentLength": 12493,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2007/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"51f0e4828595b61d99717d3b7187d5a9\"",
+      "size": 17915,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:23.000Z",
+      "contentLength": 17915,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2008/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"2b1685b0adc028069811094e59786796\"",
+      "size": 18316,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:24.000Z",
+      "contentLength": 18316,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2009/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"4880d23754bbff78855fbe7953ccc567\"",
+      "size": 17568,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:24.000Z",
+      "contentLength": 17568,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2010/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"650de08eb94df4c3a58decb1f72487f3\"",
+      "size": 20614,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:25.000Z",
+      "contentLength": 20614,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2011/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"a1ba3ad663fde1cb3911f5fab0ee10d1\"",
+      "size": 27317,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:25.000Z",
+      "contentLength": 27317,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2012/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"264e4344f2c6982c660e77c794cfd120\"",
+      "size": 27555,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:26.000Z",
+      "contentLength": 27555,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2013/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"c82fcbd3b3acc6a22b701dc555769393\"",
+      "size": 49903,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:26.000Z",
+      "contentLength": 49903,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2014/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"2bcb45ffd55ae36f9727e05ee1b01c08\"",
+      "size": 67811,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:27.000Z",
+      "contentLength": 67811,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2015/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"1a5f701e1131bb93559fafa9a3c2d856\"",
+      "size": 97207,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:27.000Z",
+      "contentLength": 97207,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2016/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"44195a90dd82f59d2d8c8d4b949af47b\"",
+      "size": 105425,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:28.000Z",
+      "contentLength": 105425,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2017/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"3cc2bceed2cb5ef2647bba17512e5733\"",
+      "size": 130970,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:29.000Z",
+      "contentLength": 130970,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2018/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"50a9a4a509355351df160c7d1393c202\"",
+      "size": 302542,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:30.000Z",
+      "contentLength": 302542,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2019/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"fa809cc75c2470e0475f2bcb90788cd1\"",
+      "size": 491719,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:32.000Z",
+      "contentLength": 491719,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2020/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"1219996d691eb14ed124155b3e8a13cf\"",
+      "size": 816562,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:34.000Z",
+      "contentLength": 816562,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2021/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"7e4a5e3fc005b597e7d1ffe7a98ae931\"",
+      "size": 1289649,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:38.000Z",
+      "contentLength": 1289649,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2022/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"886e9459b81250525c128f01b20162e2\"",
+      "size": 1775420,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:43.000Z",
+      "contentLength": 1775420,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2023/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"94ccc6e45627f8e718d582597c45f390\"",
+      "size": 2096233,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:49.000Z",
+      "contentLength": 2096233,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2024/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"8b5fb231cd3ac5dd3cbf29fec86e6dc4\"",
+      "size": 2524047,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:26:56.000Z",
+      "contentLength": 2524047,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2025/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"99372afdf97ab72ace8e2e24a8a0f86d\"",
+      "size": 3177127,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:27:04.000Z",
+      "contentLength": 3177127,
+      "httpStatusCode": 200
+    }
+  },
+  {
+    "bucket_id": "etf-research-archive",
+    "name": "raw_daily_bars/frozen_20260917/year=2026/daily_bars.parquet",
+    "metadata": {
+      "eTag": "\"3c00559f919beaaae3af0e4d69dffb49\"",
+      "size": 2667441,
+      "mimetype": "application/octet-stream",
+      "cacheControl": "no-cache",
+      "lastModified": "2026-09-17T14:27:12.000Z",
+      "contentLength": 2667441,
+      "httpStatusCode": 200
+    }
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "csi-a100-dual-codes",
+  "source_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-06-11/561200_20260611_PEHQ.pdf",
+  "observed_at": "2026-11-12T11:54:14.158599+00:00",
+  "status": "ok",
+  "raw_path": "csi-a100-dual-codes.pdf",
+  "raw_sha256": "2dd9ca776d684556f5c24286ac8282db52ce119314b24c60696caabe1de4fdbc",
+  "text_path": "csi-a100-dual-codes.txt",
+  "text_sha256": "f4458f7b9ccad558bca556fb790775c31fa94d0352d989844893dc9af25ac9dd"
+}

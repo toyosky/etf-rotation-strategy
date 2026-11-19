@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399667",
+  "observed_at": "2026-11-12T09:15:55.222171+00:00",
+  "sha256": "e8fa1c466741b84d5969a8785eb258e37c3c69b8f0d3eacc25e3100051f8ab5a",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399667",
+      "indextype": "102",
+      "indexsource": "1",
+      "indexname": "创业成长",
+      "indexename": "ChiNextG",
+      "indexfullename": "SZSE ChiNext Growth Index",
+      "indexfullcname": "创业板成长指数",
+      "jr": "2012-06-29",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

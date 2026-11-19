@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399373",
+  "observed_at": "2026-11-12T09:15:51.691171+00:00",
+  "sha256": "c02418a4888b0db72b468a996a78496211ab016b59bfc1630b6c2a6017acd2fb",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399373",
+      "indextype": "202",
+      "indexsource": "1",
+      "indexname": "大盘价值",
+      "indexename": "CNILCV",
+      "indexfullename": "CNI Large Cap Value Index",
+      "indexfullcname": "国证大盘价值指数",
+      "jr": "2002-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399348",
+  "observed_at": "2026-11-12T09:15:50.728158+00:00",
+  "sha256": "91c476af2a40c033d5eee09001e4c75bb235203b05be8408a980fe1d175438bc",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399348",
+      "indextype": "102",
+      "indexsource": "1",
+      "indexname": "深证价值",
+      "indexename": "SZSE 300 Value",
+      "indexfullename": "SZSE 300 Value Index",
+      "indexfullcname": "深证300价值指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

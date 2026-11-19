@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399285",
+  "observed_at": "2026-11-12T09:15:49.798449+00:00",
+  "sha256": "a6db3ca88512d1f8108f6d052bf8168711187bb50c6e39b94317561b9820a44a",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399285",
+      "indextype": "103",
+      "indexsource": "1",
+      "indexname": "物联网50",
+      "indexename": "SZSE IOT 50",
+      "indexfullename": "SZSE Internet of Things 50 Index",
+      "indexfullcname": "深证物联网50指数",
+      "jr": "2012-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

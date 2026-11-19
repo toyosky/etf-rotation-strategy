@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-12T10:40:38.326881+00:00",
+  "payload": {
+    "code": 200,
+    "data": {
+      "dataSource": 0,
+      "indexcode": "980017",
+      "indexename": "CNI Chips",
+      "indexfullcname": "国证半导体芯片指数",
+      "indexfullename": "CNI Semiconductor Chips Index",
+      "indexname": "国证芯片",
+      "indexsource": "0",
+      "indextype": "203",
+      "jr": "2002-12-31",
+      "onlineIndexList": null,
+      "realtimemarket": "1",
+      "showdetail": "1"
+    },
+    "message": "根据指数code查询当前指数成功！",
+    "sampleDate": "",
+    "total": 0
+  },
+  "sha256": "9ed8b8ee9a2adc0f2e20191b2fe656d44a9c51797c6e5edbfad1be28f81ea4a6",
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=980017"
+}

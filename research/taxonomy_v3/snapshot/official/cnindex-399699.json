@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399699",
+  "observed_at": "2026-11-12T09:21:37.173176+00:00",
+  "sha256": "f36462f0b3df2d6ba11cee5f78c70a801dad91072b923c081c37d7233a0f62be",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399699",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "金融科技",
+      "indexename": "Fintech",
+      "indexfullename": "CNI Xiangmi Lake Fintech Index",
+      "indexfullcname": "国证香蜜湖金融科技指数",
+      "jr": "2017-05-26",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

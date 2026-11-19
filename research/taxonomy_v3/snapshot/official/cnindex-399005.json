@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399005",
+  "observed_at": "2026-11-12T09:15:45.247513+00:00",
+  "sha256": "9d59f1442337b913a92630012b57ee0401e27401416a9c65a091c30e5afe4b0f",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399005",
+      "indextype": "100",
+      "indexsource": "1",
+      "indexname": "中小100",
+      "indexename": "SME 100",
+      "indexfullename": "SZSE SME 100 Index",
+      "indexfullcname": "中小企业100指数",
+      "jr": "2005-06-07",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

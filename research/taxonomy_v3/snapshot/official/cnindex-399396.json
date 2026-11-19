@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399396",
+  "observed_at": "2026-11-12T09:15:52.658907+00:00",
+  "sha256": "e553c35054aed42e79a2cb22e8a6092d47b47173d31a7a99de5bd49212847150",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399396",
+      "indextype": "201",
+      "indexsource": "1",
+      "indexname": "国证食品",
+      "indexename": "CNI Food & Beverage",
+      "indexfullename": "CNI Food & Beverage Index",
+      "indexfullcname": "国证食品饮料行业指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}

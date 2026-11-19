@@ -1,0 +1,7 @@
+{
+  "id": "hsi-hshci",
+  "source_url": "https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hshcic.pdf",
+  "observed_at": "2026-11-12T11:39:42.560979+00:00",
+  "status": "error",
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.hsi.com.hk/static/uploads/contents/zh_cn/dl_centre/factsheets/hshcic.pdf"
+}

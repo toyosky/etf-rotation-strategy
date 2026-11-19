@@ -1,0 +1,308 @@
+[
+  {
+    "candidate_name": "标普港股通低波红利港币指数",
+    "official_code": "SPAHLVHP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "158039"
+  },
+  {
+    "candidate_name": "标普港股通低波红利指数",
+    "official_code": "SPAHLVHP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159117"
+  },
+  {
+    "candidate_name": "标普港股通低波红利指数",
+    "official_code": "SPAHLVHP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159118"
+  },
+  {
+    "candidate_name": "标普中国A股红利100指数",
+    "official_code": "SPCADMCP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159188"
+  },
+  {
+    "candidate_name": "标普港股通低波红利指数",
+    "official_code": "SPAHLVCP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159220"
+  },
+  {
+    "candidate_name": "中证港股通高股息投资港元指数",
+    "official_code": "930915",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159302"
+  },
+  {
+    "candidate_name": "富时沙特阿拉伯指数",
+    "official_code": "FSSAULM",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159329"
+  },
+  {
+    "candidate_name": "富时中国A股自由现金流聚焦指数",
+    "official_code": "FCFQCD",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159399"
+  },
+  {
+    "candidate_name": "标普生物科技精选行业指数",
+    "official_code": "SPSIBI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159502"
+  },
+  {
+    "candidate_name": "S&P Oil & Gas Exploration & Production Select Industry",
+    "official_code": "SPSIOP",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159518"
+  },
+  {
+    "candidate_name": "法兰克福DAX指数",
+    "official_code": "DAX",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159561"
+  },
+  {
+    "candidate_name": "MSCI USA 50 Index",
+    "official_code": "750108",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159577"
+  },
+  {
+    "candidate_name": "MSCI中国A50互联互通人民币指数",
+    "official_code": "746059",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159601"
+  },
+  {
+    "candidate_name": "MSCI中国A50互联互通人民币指数",
+    "official_code": "746059",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159602"
+  },
+  {
+    "candidate_name": "标准普尔500指数",
+    "official_code": "SPXNTR",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159612"
+  },
+  {
+    "candidate_name": "MSCI CHINA A RMB ESG UNIVERSAL INDEX",
+    "official_code": "721638",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159621"
+  },
+  {
+    "candidate_name": "中债-1-5年国开行债券全价(总值)指数",
+    "official_code": "CBA08303",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159649"
+  },
+  {
+    "candidate_name": "中债-0-3年国开行债券全价(总值)指数",
+    "official_code": "Y00198",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159650"
+  },
+  {
+    "candidate_name": "中债-0-3年国开行债券全价(总值)指数",
+    "official_code": "CBA11901",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159651"
+  },
+  {
+    "candidate_name": "标准普尔500指数",
+    "official_code": "SPXNTR",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159655"
+  },
+  {
+    "candidate_name": "富时亚太低碳精选指数",
+    "official_code": "GPCSP006",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159687"
+  },
+  {
+    "candidate_name": "中证港股通医药卫生综合港元指数",
+    "official_code": "930975",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159718"
+  },
+  {
+    "candidate_name": "富时中国国企开放共赢指数",
+    "official_code": "GPCCH003",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159719"
+  },
+  {
+    "candidate_name": "中证港股通消费主题港元指数",
+    "official_code": "931455",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159735"
+  },
+  {
+    "candidate_name": "中证港股通医药卫生综合港元指数",
+    "official_code": "930975",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159776"
+  },
+  {
+    "candidate_name": "黄金9999",
+    "official_code": "AU9999",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159812"
+  },
+  {
+    "candidate_name": "标普中国新经济行业指数",
+    "official_code": "SPNCSCHN",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159822"
+  },
+  {
+    "candidate_name": "上海金",
+    "official_code": "SHAU",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159830"
+  },
+  {
+    "candidate_name": "上海金",
+    "official_code": "SHAU",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159831"
+  },
+  {
+    "candidate_name": "上海金",
+    "official_code": "SHAU",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159834"
+  },
+  {
+    "candidate_name": "东京日经225指数",
+    "official_code": "N225",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159866"
+  },
+  {
+    "candidate_name": "深证基本面120指数",
+    "official_code": "399702",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159910"
+  },
+  {
+    "candidate_name": "深证基本面60指数",
+    "official_code": "399701",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159916"
+  },
+  {
+    "candidate_name": "黄金9999",
+    "official_code": "AU9999",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159937"
+  },
+  {
+    "candidate_name": "上期有色金属指数",
+    "official_code": "IMCI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "159980"
+  },
+  {
+    "candidate_name": "道琼斯美国精选REIT指数",
+    "official_code": "DWRTF",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "160140"
+  },
+  {
+    "candidate_name": "标普全球石油指数",
+    "official_code": "IN0006",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "160416"
+  },
+  {
+    "candidate_name": "中华交易服务沪深港300人民币指数",
+    "official_code": "CES300",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "160925"
+  },
+  {
+    "candidate_name": "中债新综合财富(总值)指数",
+    "official_code": "CBA00101",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161119"
+  },
+  {
+    "candidate_name": "恒生综合小型股指数",
+    "official_code": "HSSI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161124"
+  },
+  {
+    "candidate_name": "标准普尔500指数",
+    "official_code": "SPXNTR",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161125"
+  },
+  {
+    "candidate_name": "标普500医疗保健等权重指数",
+    "official_code": "SP50035",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161126"
+  },
+  {
+    "candidate_name": "标普生物科技精选行业指数",
+    "official_code": "SPSIBI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161127"
+  },
+  {
+    "candidate_name": "标普500信息科技指数",
+    "official_code": "SBI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "161128"
+  },
+  {
+    "candidate_name": "S&P Oil & Gas Exploration & Production Select Industry",
+    "official_code": "SPSIOPTR",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "162411"
+  },
+  {
+    "candidate_name": "标普美国品质消费股票指数",
+    "official_code": "SPCDSSI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "162415"
+  },
+  {
+    "candidate_name": "道琼斯美国石油开发与生产指数",
+    "official_code": "SOEPI",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "162719"
+  },
+  {
+    "candidate_name": null,
+    "official_code": "399927",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "163001"
+  },
+  {
+    "candidate_name": "中证800有色",
+    "official_code": "000823",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "165520"
+  },
+  {
+    "candidate_name": "中证800金融指数",
+    "official_code": "000974",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "165521"
+  },
+  {
+    "candidate_name": "恒生沪深港通大湾区综合指数",
+    "official_code": "HSBBAC",
+    "reason": "DO_NOT_MERGE_BY_AUXILIARY_NAME_ALONE",
+    "symbol": "167302"
+  }
+]

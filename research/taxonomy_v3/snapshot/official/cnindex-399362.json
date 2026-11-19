@@ -1,0 +1,25 @@
+{
+  "source_url": "https://www.cnindex.com.cn/index/selectIndexByCode?codeValue=399362",
+  "observed_at": "2026-11-12T09:15:51.129907+00:00",
+  "sha256": "71c2a2cc8e6cf06635e2122e23dba6e70931293f1ddc57c1f1251f9b71cdddfa",
+  "payload": {
+    "code": 200,
+    "message": "根据指数code查询当前指数成功！",
+    "data": {
+      "indexcode": "399362",
+      "indextype": "203",
+      "indexsource": "1",
+      "indexname": "民企100",
+      "indexename": "CNI POEs 100",
+      "indexfullename": "CNI Leading Private-Owned Enterprises 100 Index",
+      "indexfullcname": "国证民企领先100指数",
+      "jr": "2004-12-31",
+      "realtimemarket": "1",
+      "showdetail": "1",
+      "dataSource": 0,
+      "onlineIndexList": null
+    },
+    "total": 0,
+    "sampleDate": ""
+  }
+}
