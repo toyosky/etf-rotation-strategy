@@ -1,0 +1,159 @@
+{
+  "method": "Month-block bootstrap, 3500 deterministic resamples, overlapping ETF-day events, not preregistered",
+  "pairs": {
+    "highvol": {
+      "loss5": {
+        "aN": 24,
+        "bN": 35,
+        "pp": 24.048,
+        "ci": [
+          -3.846,
+          51.587
+        ]
+      },
+      "stdLoss2": {
+        "aN": 24,
+        "bN": 35,
+        "pp": 20.357,
+        "ci": [
+          -2.159,
+          44.318
+        ]
+      },
+      "return5": {
+        "aN": 24,
+        "bN": 35,
+        "pp": -3.032,
+        "ci": [
+          -8.111,
+          1.484
+        ]
+      }
+    },
+    "lowvol": {
+      "loss5": {
+        "aN": 12,
+        "bN": 76,
+        "pp": 4.386,
+        "ci": [
+          -7.5,
+          23.077
+        ]
+      },
+      "stdLoss2": {
+        "aN": 12,
+        "bN": 76,
+        "pp": -9.211,
+        "ci": [
+          -17.105,
+          -2.899
+        ]
+      },
+      "return5": {
+        "aN": 12,
+        "bN": 76,
+        "pp": -1.507,
+        "ci": [
+          -3.038,
+          0.129
+        ]
+      }
+    },
+    "highvolBigBreak": {
+      "loss5": {
+        "aN": 16,
+        "bN": 21,
+        "pp": 21.131,
+        "ci": [
+          -17.094,
+          53.333
+        ]
+      },
+      "stdLoss2": {
+        "aN": 16,
+        "bN": 21,
+        "pp": 19.94,
+        "ci": [
+          -16.667,
+          50.183
+        ]
+      },
+      "return5": {
+        "aN": 16,
+        "bN": 21,
+        "pp": -4.183,
+        "ci": [
+          -10.688,
+          2.911
+        ]
+      }
+    },
+    "highvolSmallBreak": {
+      "loss5": {
+        "aN": 8,
+        "bN": 14,
+        "pp": 23.214,
+        "ci": [
+          -11.111,
+          69.118
+        ]
+      },
+      "stdLoss2": {
+        "aN": 8,
+        "bN": 14,
+        "pp": 17.857,
+        "ci": [
+          0,
+          54.737
+        ]
+      },
+      "return5": {
+        "aN": 8,
+        "bN": 14,
+        "pp": -0.621,
+        "ci": [
+          -3.967,
+          3.091
+        ]
+      }
+    }
+  },
+  "groupSummary": {
+    "overall": {
+      "div": {
+        "n": 36,
+        "meanVolrank": 78.958,
+        "meanHi60": 3.141
+      },
+      "stable": {
+        "n": 111,
+        "meanVolrank": 52.59,
+        "meanHi60": 0.149
+      }
+    },
+    "highvol": {
+      "div": {
+        "n": 24,
+        "meanVolrank": 93.715,
+        "meanHi60": 3.806
+      },
+      "stable": {
+        "n": 35,
+        "meanVolrank": 89.929,
+        "meanHi60": 3.068
+      }
+    },
+    "lowvol": {
+      "div": {
+        "n": 12,
+        "meanVolrank": 49.444,
+        "meanHi60": 1.81
+      },
+      "stable": {
+        "n": 76,
+        "meanVolrank": 35.395,
+        "meanHi60": -1.195
+      }
+    }
+  }
+}
