@@ -1,6 +1,6 @@
 # D2 -3% Hard-Cutoff Study | 2021–2026
 
-Status: exploratory **research only**, no strategy rule modification. Signal window: 2021-01-01 to 2026-11-17. Daily bars have subsequently been updated through 2026-11-18; last date permits forward price marking.
+Status: exploratory **research only**, no strategy rule modification. Signal window for fully markable open-to-open returns: 2021-01-01 to 2026-11-16. Daily bars extend through 2026-11-18. The 2026-11-17 signal has no following T+2 open in this snapshot and is not included in the threshold sweep; the frozen 3% baseline is known to hold 511220 on Nov 17, so the reported baseline 196 non-Void switch count is unaffected.
 
 ## Main question
 
