@@ -1,0 +1,850 @@
+{
+  "sample": {
+    "n": 1324,
+    "withVolMetrics": 1324,
+    "periodN": {
+      "train2021-23_test2024-26": {
+        "train": 607,
+        "test": 717
+      },
+      "train2021-24_test2025-26": {
+        "train": 846,
+        "test": 478
+      },
+      "train2021-25_test2026": {
+        "train": 1159,
+        "test": 165
+      }
+    }
+  },
+  "checks": [
+    {
+      "outcome": "loss5",
+      "fold": "train2021-23_test2024-26",
+      "trainN": 607,
+      "trainRisk": 52,
+      "testN": 717,
+      "testRisk": 97,
+      "highTest": 81,
+      "highRisk": 20
+    },
+    {
+      "outcome": "loss5",
+      "fold": "train2021-24_test2025-26",
+      "trainN": 846,
+      "trainRisk": 72,
+      "testN": 478,
+      "testRisk": 77,
+      "highTest": 49,
+      "highRisk": 17
+    },
+    {
+      "outcome": "loss5",
+      "fold": "train2021-25_test2026",
+      "trainN": 1159,
+      "trainRisk": 101,
+      "testN": 165,
+      "testRisk": 48,
+      "highTest": 21,
+      "highRisk": 10
+    },
+    {
+      "outcome": "loss5entry",
+      "fold": "train2021-23_test2024-26",
+      "trainN": 607,
+      "trainRisk": 47,
+      "testN": 717,
+      "testRisk": 98,
+      "highTest": 81,
+      "highRisk": 19
+    },
+    {
+      "outcome": "loss5entry",
+      "fold": "train2021-24_test2025-26",
+      "trainN": 846,
+      "trainRisk": 67,
+      "testN": 478,
+      "testRisk": 78,
+      "highTest": 49,
+      "highRisk": 16
+    },
+    {
+      "outcome": "loss5entry",
+      "fold": "train2021-25_test2026",
+      "trainN": 1159,
+      "trainRisk": 96,
+      "testN": 165,
+      "testRisk": 49,
+      "highTest": 21,
+      "highRisk": 9
+    }
+  ],
+  "view": [
+    {
+      "fold": "train2021-23_test2024-26",
+      "outcome": "loss5",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 717,
+          "eventN": 97,
+          "brier": 0.1194,
+          "auc": 0.5,
+          "logLoss": 0.4099,
+          "predRate": 8.5667
+        },
+        "baseline": {
+          "n": 717,
+          "eventN": 97,
+          "brier": 0.0935,
+          "auc": 0.8434,
+          "logLoss": 0.3092,
+          "predRate": 14.161
+        },
+        "plusSingleAmount": {
+          "n": 717,
+          "eventN": 97,
+          "brier": 0.0938,
+          "auc": 0.8416,
+          "logLoss": 0.311,
+          "predRate": 14.0745
+        },
+        "plusPersistAmount": {
+          "n": 717,
+          "eventN": 97,
+          "brier": 0.0944,
+          "auc": 0.8409,
+          "logLoss": 0.3134,
+          "predRate": 14.0588
+        },
+        "plusBothAmount": {
+          "n": 717,
+          "eventN": 97,
+          "brier": 0.0944,
+          "auc": 0.8404,
+          "logLoss": 0.3136,
+          "predRate": 14.0363
+        }
+      }
+    },
+    {
+      "fold": "train2021-23_test2024-26",
+      "outcome": "loss5",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 81,
+          "eventN": 20,
+          "brier": 0.2119,
+          "auc": 0.5,
+          "logLoss": 0.6742,
+          "predRate": 8.5667
+        },
+        "baseline": {
+          "n": 81,
+          "eventN": 20,
+          "brier": 0.1049,
+          "auc": 0.9139,
+          "logLoss": 0.3338,
+          "predRate": 18.4243
+        },
+        "plusSingleAmount": {
+          "n": 81,
+          "eventN": 20,
+          "brier": 0.1049,
+          "auc": 0.9164,
+          "logLoss": 0.3305,
+          "predRate": 18.105
+        },
+        "plusPersistAmount": {
+          "n": 81,
+          "eventN": 20,
+          "brier": 0.1052,
+          "auc": 0.9139,
+          "logLoss": 0.3317,
+          "predRate": 17.9387
+        },
+        "plusBothAmount": {
+          "n": 81,
+          "eventN": 20,
+          "brier": 0.1053,
+          "auc": 0.9197,
+          "logLoss": 0.3309,
+          "predRate": 17.8879
+        }
+      }
+    },
+    {
+      "fold": "train2021-23_test2024-26",
+      "outcome": "loss5entry",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 717,
+          "eventN": 98,
+          "brier": 0.1215,
+          "auc": 0.5,
+          "logLoss": 0.4193,
+          "predRate": 7.743
+        },
+        "baseline": {
+          "n": 717,
+          "eventN": 98,
+          "brier": 0.0956,
+          "auc": 0.8551,
+          "logLoss": 0.3131,
+          "predRate": 13.7242
+        },
+        "plusSingleAmount": {
+          "n": 717,
+          "eventN": 98,
+          "brier": 0.0959,
+          "auc": 0.8524,
+          "logLoss": 0.3155,
+          "predRate": 13.6746
+        },
+        "plusPersistAmount": {
+          "n": 717,
+          "eventN": 98,
+          "brier": 0.0957,
+          "auc": 0.8542,
+          "logLoss": 0.3139,
+          "predRate": 13.7058
+        },
+        "plusBothAmount": {
+          "n": 717,
+          "eventN": 98,
+          "brier": 0.0959,
+          "auc": 0.8525,
+          "logLoss": 0.3153,
+          "predRate": 13.6788
+        }
+      }
+    },
+    {
+      "fold": "train2021-23_test2024-26",
+      "outcome": "loss5entry",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 81,
+          "eventN": 19,
+          "brier": 0.2042,
+          "auc": 0.5,
+          "logLoss": 0.6618,
+          "predRate": 7.743
+        },
+        "baseline": {
+          "n": 81,
+          "eventN": 19,
+          "brier": 0.1153,
+          "auc": 0.8786,
+          "logLoss": 0.3643,
+          "predRate": 19.3286
+        },
+        "plusSingleAmount": {
+          "n": 81,
+          "eventN": 19,
+          "brier": 0.116,
+          "auc": 0.8744,
+          "logLoss": 0.3675,
+          "predRate": 19.1147
+        },
+        "plusPersistAmount": {
+          "n": 81,
+          "eventN": 19,
+          "brier": 0.1153,
+          "auc": 0.8778,
+          "logLoss": 0.3655,
+          "predRate": 19.232
+        },
+        "plusBothAmount": {
+          "n": 81,
+          "eventN": 19,
+          "brier": 0.116,
+          "auc": 0.8752,
+          "logLoss": 0.3671,
+          "predRate": 19.1386
+        }
+      }
+    },
+    {
+      "fold": "train2021-24_test2025-26",
+      "outcome": "loss5",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 478,
+          "eventN": 77,
+          "brier": 0.1409,
+          "auc": 0.5,
+          "logLoss": 0.4715,
+          "predRate": 8.5106
+        },
+        "baseline": {
+          "n": 478,
+          "eventN": 77,
+          "brier": 0.1116,
+          "auc": 0.8518,
+          "logLoss": 0.3607,
+          "predRate": 17.7965
+        },
+        "plusSingleAmount": {
+          "n": 478,
+          "eventN": 77,
+          "brier": 0.1116,
+          "auc": 0.8529,
+          "logLoss": 0.3613,
+          "predRate": 17.8198
+        },
+        "plusPersistAmount": {
+          "n": 478,
+          "eventN": 77,
+          "brier": 0.1117,
+          "auc": 0.8531,
+          "logLoss": 0.3616,
+          "predRate": 17.8075
+        },
+        "plusBothAmount": {
+          "n": 478,
+          "eventN": 77,
+          "brier": 0.1116,
+          "auc": 0.8531,
+          "logLoss": 0.3616,
+          "predRate": 17.8198
+        }
+      }
+    },
+    {
+      "fold": "train2021-24_test2025-26",
+      "outcome": "loss5",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 49,
+          "eventN": 17,
+          "brier": 0.2951,
+          "auc": 0.5,
+          "logLoss": 0.9129,
+          "predRate": 8.5106
+        },
+        "baseline": {
+          "n": 49,
+          "eventN": 17,
+          "brier": 0.1186,
+          "auc": 0.9173,
+          "logLoss": 0.3695,
+          "predRate": 27.1569
+        },
+        "plusSingleAmount": {
+          "n": 49,
+          "eventN": 17,
+          "brier": 0.1184,
+          "auc": 0.921,
+          "logLoss": 0.3667,
+          "predRate": 27.0329
+        },
+        "plusPersistAmount": {
+          "n": 49,
+          "eventN": 17,
+          "brier": 0.118,
+          "auc": 0.9191,
+          "logLoss": 0.3667,
+          "predRate": 27.056
+        },
+        "plusBothAmount": {
+          "n": 49,
+          "eventN": 17,
+          "brier": 0.1182,
+          "auc": 0.921,
+          "logLoss": 0.366,
+          "predRate": 27.0115
+        }
+      }
+    },
+    {
+      "fold": "train2021-24_test2025-26",
+      "outcome": "loss5entry",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 478,
+          "eventN": 78,
+          "brier": 0.1436,
+          "auc": 0.5,
+          "logLoss": 0.4828,
+          "predRate": 7.9196
+        },
+        "baseline": {
+          "n": 478,
+          "eventN": 78,
+          "brier": 0.115,
+          "auc": 0.8586,
+          "logLoss": 0.3712,
+          "predRate": 17.6472
+        },
+        "plusSingleAmount": {
+          "n": 478,
+          "eventN": 78,
+          "brier": 0.1151,
+          "auc": 0.8574,
+          "logLoss": 0.3727,
+          "predRate": 17.6584
+        },
+        "plusPersistAmount": {
+          "n": 478,
+          "eventN": 78,
+          "brier": 0.115,
+          "auc": 0.8589,
+          "logLoss": 0.3706,
+          "predRate": 17.644
+        },
+        "plusBothAmount": {
+          "n": 478,
+          "eventN": 78,
+          "brier": 0.1151,
+          "auc": 0.8582,
+          "logLoss": 0.372,
+          "predRate": 17.6605
+        }
+      }
+    },
+    {
+      "fold": "train2021-24_test2025-26",
+      "outcome": "loss5entry",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 49,
+          "eventN": 16,
+          "brier": 0.2811,
+          "auc": 0.5,
+          "logLoss": 0.8836,
+          "predRate": 7.9196
+        },
+        "baseline": {
+          "n": 49,
+          "eventN": 16,
+          "brier": 0.1401,
+          "auc": 0.8845,
+          "logLoss": 0.4184,
+          "predRate": 27.5925
+        },
+        "plusSingleAmount": {
+          "n": 49,
+          "eventN": 16,
+          "brier": 0.1407,
+          "auc": 0.8826,
+          "logLoss": 0.4212,
+          "predRate": 27.5121
+        },
+        "plusPersistAmount": {
+          "n": 49,
+          "eventN": 16,
+          "brier": 0.1401,
+          "auc": 0.8826,
+          "logLoss": 0.4174,
+          "predRate": 27.6369
+        },
+        "plusBothAmount": {
+          "n": 49,
+          "eventN": 16,
+          "brier": 0.1411,
+          "auc": 0.8826,
+          "logLoss": 0.4204,
+          "predRate": 27.5698
+        }
+      }
+    },
+    {
+      "fold": "train2021-25_test2026",
+      "outcome": "loss5",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 165,
+          "eventN": 48,
+          "brier": 0.2478,
+          "auc": 0.5,
+          "logLoss": 0.7745,
+          "predRate": 8.7144
+        },
+        "baseline": {
+          "n": 165,
+          "eventN": 48,
+          "brier": 0.2044,
+          "auc": 0.7634,
+          "logLoss": 0.6247,
+          "predRate": 23.8931
+        },
+        "plusSingleAmount": {
+          "n": 165,
+          "eventN": 48,
+          "brier": 0.2046,
+          "auc": 0.7619,
+          "logLoss": 0.6245,
+          "predRate": 23.906
+        },
+        "plusPersistAmount": {
+          "n": 165,
+          "eventN": 48,
+          "brier": 0.2044,
+          "auc": 0.7628,
+          "logLoss": 0.6234,
+          "predRate": 23.912
+        },
+        "plusBothAmount": {
+          "n": 165,
+          "eventN": 48,
+          "brier": 0.2045,
+          "auc": 0.7621,
+          "logLoss": 0.6236,
+          "predRate": 23.914
+        }
+      }
+    },
+    {
+      "fold": "train2021-25_test2026",
+      "outcome": "loss5",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 21,
+          "eventN": 10,
+          "brier": 0.4008,
+          "auc": 0.5,
+          "logLoss": 1.2098,
+          "predRate": 8.7144
+        },
+        "baseline": {
+          "n": 21,
+          "eventN": 10,
+          "brier": 0.1978,
+          "auc": 0.8818,
+          "logLoss": 0.5823,
+          "predRate": 27.7912
+        },
+        "plusSingleAmount": {
+          "n": 21,
+          "eventN": 10,
+          "brier": 0.1993,
+          "auc": 0.8636,
+          "logLoss": 0.5881,
+          "predRate": 27.8413
+        },
+        "plusPersistAmount": {
+          "n": 21,
+          "eventN": 10,
+          "brier": 0.1993,
+          "auc": 0.8636,
+          "logLoss": 0.5884,
+          "predRate": 27.9678
+        },
+        "plusBothAmount": {
+          "n": 21,
+          "eventN": 10,
+          "brier": 0.1997,
+          "auc": 0.8545,
+          "logLoss": 0.5898,
+          "predRate": 27.9518
+        }
+      }
+    },
+    {
+      "fold": "train2021-25_test2026",
+      "outcome": "loss5entry",
+      "cohort": "broad",
+      "results": {
+        "constant": {
+          "n": 165,
+          "eventN": 49,
+          "brier": 0.2546,
+          "auc": 0.5,
+          "logLoss": 0.8005,
+          "predRate": 8.283
+        },
+        "baseline": {
+          "n": 165,
+          "eventN": 49,
+          "brier": 0.2182,
+          "auc": 0.7577,
+          "logLoss": 0.6642,
+          "predRate": 23.5315
+        },
+        "plusSingleAmount": {
+          "n": 165,
+          "eventN": 49,
+          "brier": 0.2178,
+          "auc": 0.7602,
+          "logLoss": 0.6599,
+          "predRate": 23.5612
+        },
+        "plusPersistAmount": {
+          "n": 165,
+          "eventN": 49,
+          "brier": 0.2183,
+          "auc": 0.7628,
+          "logLoss": 0.6577,
+          "predRate": 23.5975
+        },
+        "plusBothAmount": {
+          "n": 165,
+          "eventN": 49,
+          "brier": 0.2183,
+          "auc": 0.7628,
+          "logLoss": 0.6579,
+          "predRate": 23.5961
+        }
+      }
+    },
+    {
+      "fold": "train2021-25_test2026",
+      "outcome": "loss5entry",
+      "cohort": "high_positive",
+      "results": {
+        "constant": {
+          "n": 21,
+          "eventN": 9,
+          "brier": 0.3644,
+          "auc": 0.5,
+          "logLoss": 1.117,
+          "predRate": 8.283
+        },
+        "baseline": {
+          "n": 21,
+          "eventN": 9,
+          "brier": 0.2621,
+          "auc": 0.7407,
+          "logLoss": 0.7435,
+          "predRate": 26.9533
+        },
+        "plusSingleAmount": {
+          "n": 21,
+          "eventN": 9,
+          "brier": 0.2608,
+          "auc": 0.7315,
+          "logLoss": 0.7382,
+          "predRate": 27.0405
+        },
+        "plusPersistAmount": {
+          "n": 21,
+          "eventN": 9,
+          "brier": 0.2632,
+          "auc": 0.7407,
+          "logLoss": 0.7381,
+          "predRate": 27.5282
+        },
+        "plusBothAmount": {
+          "n": 21,
+          "eventN": 9,
+          "brier": 0.2633,
+          "auc": 0.7407,
+          "logLoss": 0.7383,
+          "predRate": 27.5247
+        }
+      }
+    }
+  ],
+  "coefs": {
+    "baseline": [
+      {
+        "name": "dev",
+        "weight": -0.024
+      },
+      {
+        "name": "r2",
+        "weight": 0.15
+      },
+      {
+        "name": "r2Delta3",
+        "weight": -0.265
+      },
+      {
+        "name": "betaDelta3",
+        "weight": 0.156
+      },
+      {
+        "name": "rv20",
+        "weight": 0.426
+      },
+      {
+        "name": "prev5",
+        "weight": 0.164
+      },
+      {
+        "name": "prev10",
+        "weight": 0.045
+      },
+      {
+        "name": "highClose",
+        "weight": 0.067
+      },
+      {
+        "name": "clv",
+        "weight": -0.008
+      },
+      {
+        "name": "eff10",
+        "weight": -0.394
+      },
+      {
+        "name": "logScore",
+        "weight": 0.263
+      }
+    ],
+    "plusSingleAmount": [
+      {
+        "name": "dev",
+        "weight": -0.003
+      },
+      {
+        "name": "r2",
+        "weight": 0.142
+      },
+      {
+        "name": "r2Delta3",
+        "weight": -0.279
+      },
+      {
+        "name": "betaDelta3",
+        "weight": 0.16
+      },
+      {
+        "name": "rv20",
+        "weight": 0.422
+      },
+      {
+        "name": "prev5",
+        "weight": 0.177
+      },
+      {
+        "name": "prev10",
+        "weight": 0.067
+      },
+      {
+        "name": "highClose",
+        "weight": 0.09
+      },
+      {
+        "name": "clv",
+        "weight": 0
+      },
+      {
+        "name": "eff10",
+        "weight": -0.395
+      },
+      {
+        "name": "logScore",
+        "weight": 0.279
+      },
+      {
+        "name": "logAmount20",
+        "weight": -0.128
+      }
+    ],
+    "plusPersistAmount": [
+      {
+        "name": "dev",
+        "weight": -0.017
+      },
+      {
+        "name": "r2",
+        "weight": 0.144
+      },
+      {
+        "name": "r2Delta3",
+        "weight": -0.286
+      },
+      {
+        "name": "betaDelta3",
+        "weight": 0.17
+      },
+      {
+        "name": "rv20",
+        "weight": 0.409
+      },
+      {
+        "name": "prev5",
+        "weight": 0.191
+      },
+      {
+        "name": "prev10",
+        "weight": 0.084
+      },
+      {
+        "name": "highClose",
+        "weight": 0.089
+      },
+      {
+        "name": "clv",
+        "weight": -0.003
+      },
+      {
+        "name": "eff10",
+        "weight": -0.391
+      },
+      {
+        "name": "logScore",
+        "weight": 0.291
+      },
+      {
+        "name": "logAmount5",
+        "weight": -0.17
+      }
+    ],
+    "plusBothAmount": [
+      {
+        "name": "dev",
+        "weight": -0.008
+      },
+      {
+        "name": "r2",
+        "weight": 0.142
+      },
+      {
+        "name": "r2Delta3",
+        "weight": -0.288
+      },
+      {
+        "name": "betaDelta3",
+        "weight": 0.169
+      },
+      {
+        "name": "rv20",
+        "weight": 0.41
+      },
+      {
+        "name": "prev5",
+        "weight": 0.192
+      },
+      {
+        "name": "prev10",
+        "weight": 0.087
+      },
+      {
+        "name": "highClose",
+        "weight": 0.095
+      },
+      {
+        "name": "clv",
+        "weight": 0
+      },
+      {
+        "name": "eff10",
+        "weight": -0.392
+      },
+      {
+        "name": "logScore",
+        "weight": 0.293
+      },
+      {
+        "name": "logAmount20",
+        "weight": -0.061
+      },
+      {
+        "name": "logAmount5",
+        "weight": -0.136
+      }
+    ]
+  }
+}
