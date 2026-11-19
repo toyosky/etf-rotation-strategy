@@ -1,0 +1,2964 @@
+{
+  "baseline": {
+    "name": "baseline_100",
+    "defensive": "cash",
+    "band": 0,
+    "minFee": false,
+    "CAGR_pct": 58.24662703523404,
+    "MDD_pct": -37.64251731845404,
+    "Sharpe": 1.3214644814401395,
+    "Calmar": 1.5473626947547143,
+    "terminal": 13.305306481854544,
+    "avgTargetRiskW": 1,
+    "avgRiskWeightAll": 0.9429978888106967,
+    "avgBondWeightAll": 0.05277973258268825,
+    "activeDays": 0,
+    "turnover": 411,
+    "tradeTickets": 411,
+    "rebalancesSame": 0,
+    "costSumPct": 24.660000000000096,
+    "upsideForgonePct": 0,
+    "downsideAvoidedPct": 0,
+    "yearly": {
+      "2021": {
+        "returnPct": 21.8579158081881,
+        "mddPct": -17.509470907957038,
+        "days": 242
+      },
+      "2022": {
+        "returnPct": 14.000655066767042,
+        "mddPct": -28.76759765985505,
+        "days": 242
+      },
+      "2023": {
+        "returnPct": 10.675701813131312,
+        "mddPct": -14.588047938394698,
+        "days": 242
+      },
+      "2024": {
+        "returnPct": 65.50074533799372,
+        "mddPct": -25.466318138840283,
+        "days": 242
+      },
+      "2025": {
+        "returnPct": 126.06508797779554,
+        "mddPct": -22.43047337293097,
+        "days": 243
+      },
+      "2026": {
+        "returnPct": 131.30128926587102,
+        "mddPct": -37.64251731845407,
+        "days": 210
+      }
+    },
+    "debug": [
+      {
+        "date": "2021-01-04",
+        "tradeWeight": 1,
+        "cost": 0.0006,
+        "riskTarget": "161226",
+        "w": 1,
+        "netFactor": 1.00970309283296,
+        "eq": 1.00970309283296
+      },
+      {
+        "date": "2021-01-05",
+        "tradeWeight": 2,
+        "cost": 0.0012,
+        "riskTarget": "159985",
+        "w": 1,
+        "netFactor": 0.99111692306924,
+        "eq": 1.0007338225820985
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "baseline_100",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 58.24662703523404,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3214644814401395,
+      "Calmar": 1.5473626947547143,
+      "terminal": 13.305306481854544,
+      "avgTargetRiskW": 1,
+      "avgRiskWeightAll": 0.9429978888106967,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 0,
+      "turnover": 411,
+      "tradeTickets": 411,
+      "rebalancesSame": 0,
+      "costSumPct": 24.660000000000096,
+      "upsideForgonePct": 0,
+      "downsideAvoidedPct": 0,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.8579158081881,
+          "mddPct": -17.509470907957038,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 14.000655066767042,
+          "mddPct": -28.76759765985505,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.675701813131312,
+          "mddPct": -14.588047938394698,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.50074533799372,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 126.06508797779554,
+          "mddPct": -22.43047337293097,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 60.11936776435181,
+      "MDD_pct": -37.67303980443728,
+      "Sharpe": 1.425751038255721,
+      "Calmar": 1.5958193996670984,
+      "terminal": 14.217925944950919,
+      "avgTargetRiskW": 0.9883826879271082,
+      "avgRiskWeightAll": 0.9322308233638295,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 51,
+      "turnover": 421.82800498817704,
+      "tradeTickets": 480,
+      "rebalancesSame": 69,
+      "costSumPct": 25.309680299290697,
+      "upsideForgonePct": 29.404699847999993,
+      "downsideAvoidedPct": 30.596747475000008,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.728986637696536,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 15.499414546201361,
+          "mddPct": -26.4630409662572,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 12.666584656464842,
+          "mddPct": -14.445933578116898,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 59.240466896048936,
+          "mddPct": -25.23334940588796,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 143.58073043468468,
+          "mddPct": -16.872518810573712,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 127.66355274084127,
+          "mddPct": -37.67303980443732,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 61.49737243467308,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3869206468078081,
+      "Calmar": 1.6337210371561504,
+      "terminal": 14.921823669497169,
+      "avgTargetRiskW": 0.9956719817767656,
+      "avgRiskWeightAll": 0.9389866291344129,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 19,
+      "turnover": 416.3433592570335,
+      "tradeTickets": 439,
+      "rebalancesSame": 28,
+      "costSumPct": 24.980601555422098,
+      "upsideForgonePct": 4.470347535000001,
+      "downsideAvoidedPct": 14.468815800000002,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.784116312688642,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.305590898064224,
+          "mddPct": -28.767597659855028,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.203007648240293,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 66.62922949194976,
+          "mddPct": -25.466318138840272,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 146.24390100880356,
+          "mddPct": -16.872518810573712,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 60.67019582345792,
+      "MDD_pct": -37.642517318454026,
+      "Sharpe": 1.372437846421041,
+      "Calmar": 1.6117465075513082,
+      "terminal": 14.495940732267133,
+      "avgTargetRiskW": 0.9968109339407748,
+      "avgRiskWeightAll": 0.9400422237860664,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 413.95620477549164,
+      "tradeTickets": 430,
+      "rebalancesSame": 19,
+      "costSumPct": 24.83737228652959,
+      "upsideForgonePct": 4.254520197000001,
+      "downsideAvoidedPct": 11.383867479000001,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.097003125454577,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.947919668275777,
+          "mddPct": -28.76759765985494,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.203007648240293,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 62.65178388623664,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 145.22675138229144,
+          "mddPct": -16.872518810573712,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to50",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 62.205266724461026,
+      "MDD_pct": -37.64251731845394,
+      "Sharpe": 1.403171596097999,
+      "Calmar": 1.652526747831644,
+      "terminal": 15.294416773777755,
+      "avgTargetRiskW": 0.9946848899012908,
+      "avgRiskWeightAll": 0.9380717804363125,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 415.95065482714443,
+      "tradeTickets": 430,
+      "rebalancesSame": 19,
+      "costSumPct": 24.957039289628753,
+      "upsideForgonePct": 7.090866995000001,
+      "downsideAvoidedPct": 18.973112465,
+      "yearly": {
+        "2021": {
+          "returnPct": 27.23078571257038,
+          "mddPct": -17.509448608755118,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.246302549503895,
+          "mddPct": -28.76759765985504,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.554431497417639,
+          "mddPct": -14.588047938394732,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 60.75730889918507,
+          "mddPct": -25.466318138840304,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 158.18621992607422,
+          "mddPct": -13.553441531894139,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z1_vol75_r2_to80",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 59.76194920299278,
+      "MDD_pct": -37.642517318454,
+      "Sharpe": 1.3549389978100763,
+      "Calmar": 1.5876182960190839,
+      "terminal": 14.039887109132616,
+      "avgTargetRiskW": 0.9966590736522395,
+      "avgRiskWeightAll": 0.9399014778325119,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 22,
+      "turnover": 414.1692859113739,
+      "tradeTickets": 440,
+      "rebalancesSame": 29,
+      "costSumPct": 24.850157154682524,
+      "upsideForgonePct": 4.191290627999999,
+      "downsideAvoidedPct": 8.538086071999999,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.43811804871654,
+          "mddPct": -17.509460204340144,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.298790171728282,
+          "mddPct": -28.767597659854992,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.027261707578795,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 63.570402349270694,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 138.9882729861695,
+          "mddPct": -18.725172953021918,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131927853367,
+          "mddPct": -37.64251731845398,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_ols_vol",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 59.81442878489245,
+      "MDD_pct": -37.455178019252344,
+      "Sharpe": 1.3929945010250697,
+      "Calmar": 1.596960205452694,
+      "terminal": 14.065912967724271,
+      "avgTargetRiskW": 0.991318615388183,
+      "avgRiskWeightAll": 0.9349518764716659,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 182,
+      "turnover": 418.9272801986328,
+      "tradeTickets": 649,
+      "rebalancesSame": 238,
+      "costSumPct": 25.135636811918054,
+      "upsideForgonePct": 18.59515131368133,
+      "downsideAvoidedPct": 20.565353506442303,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.778288986689102,
+          "mddPct": -17.50945712358928,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 14.064393872580405,
+          "mddPct": -27.802192141298864,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.59404518112237,
+          "mddPct": -14.453477641038159,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.563399401662465,
+          "mddPct": -25.361638765296192,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 139.74610492603384,
+          "mddPct": -18.35014700749117,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.10887189342066,
+          "mddPct": -37.45517801925232,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_confirmation",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 60.65798633938515,
+      "MDD_pct": -37.642517318454,
+      "Sharpe": 1.3733766257568514,
+      "Calmar": 1.611422154002649,
+      "terminal": 14.48973024916527,
+      "avgTargetRiskW": 0.9951666379156139,
+      "avgRiskWeightAll": 0.9385182703271383,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 28,
+      "turnover": 416.0763976866065,
+      "tradeTickets": 450,
+      "rebalancesSame": 39,
+      "costSumPct": 24.96458386119648,
+      "upsideForgonePct": 6.049175533106431,
+      "downsideAvoidedPct": 13.151676653997836,
+      "yearly": {
+        "2021": {
+          "returnPct": 26.24436914335224,
+          "mddPct": -17.509456488309926,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.619920780737925,
+          "mddPct": -28.767597659855117,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.102829610033949,
+          "mddPct": -14.58804793839481,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 61.29800327228341,
+          "mddPct": -25.466318138840272,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 145.8673448943257,
+          "mddPct": -16.86641841927581,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131615899495,
+          "mddPct": -37.64251731845404,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_z15_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 57.575648477332855,
+      "MDD_pct": -37.27559101684258,
+      "Sharpe": 1.3218304254562123,
+      "Calmar": 1.5445938456433301,
+      "terminal": 12.99029785024844,
+      "avgTargetRiskW": 0.9883826879270995,
+      "avgRiskWeightAll": 0.9322308233638196,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 406.6293239274678,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 24.397759435648048,
+      "upsideForgonePct": 14.210773591303905,
+      "downsideAvoidedPct": 10.497745233053687,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.75039546473534,
+          "mddPct": -17.322623527854407,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.911848694272289,
+          "mddPct": -28.43778472490941,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.562404364532863,
+          "mddPct": -14.426693942595692,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 64.74443333375433,
+          "mddPct": -25.208278816358842,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 124.17450938950844,
+          "mddPct": -22.178643497877925,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 129.39047299008877,
+          "mddPct": -37.27559101684257,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9883826879271082,
+          "cost": 0.0005930296127562648,
+          "riskTarget": "161226",
+          "w": 0.9883826879271082,
+          "netFactor": 1.0095904400002937,
+          "eq": 1.0095904400002937
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.9768825565839383,
+          "cost": 0.0011861295339503628,
+          "riskTarget": "159985",
+          "w": 0.9883826879271082,
+          "netFactor": 0.9912199447813009,
+          "eq": 1.0007261801888205
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_z15_r2_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 57.99670736951605,
+      "MDD_pct": -37.50600294622313,
+      "Sharpe": 1.3215997419272174,
+      "Calmar": 1.5463313286855151,
+      "terminal": 13.187248961958424,
+      "avgTargetRiskW": 0.9956719817767633,
+      "avgRiskWeightAll": 0.9389866291344093,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 409.3721975043045,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 24.562331850258307,
+      "upsideForgonePct": 5.294209769309475,
+      "downsideAvoidedPct": 3.910924694667189,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.81804818776907,
+          "mddPct": -17.43990446961482,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.96769628044674,
+          "mddPct": -28.644852244635576,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.633534643498542,
+          "mddPct": -14.527954890032646,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.21913848411644,
+          "mddPct": -25.37027545247725,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 125.35957781095526,
+          "mddPct": -22.336678373847917,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.58849635075666,
+          "mddPct": -37.50600294622305,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9956719817767656,
+          "cost": 0.0005974031890660593,
+          "riskTarget": "161226",
+          "w": 0.9956719817767656,
+          "netFactor": 1.0096611243257376,
+          "eq": 1.0096611243257376
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.9913879378068307,
+          "cost": 0.0011948327626840982,
+          "riskTarget": "159985",
+          "w": 0.9956719817767656,
+          "netFactor": 0.9911553032275734,
+          "eq": 1.0007309778381692
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_z15_r2_vol75_to70",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 58.0624818698966,
+      "MDD_pct": -37.54194891574938,
+      "Sharpe": 1.3215640246738491,
+      "Calmar": 1.5466027616253712,
+      "terminal": 13.218235754486454,
+      "avgTargetRiskW": 0.9968109339407909,
+      "avgRiskWeightAll": 0.940042223786083,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 409.800622820482,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 24.588037369228957,
+      "upsideForgonePct": 3.9009966721226164,
+      "downsideAvoidedPct": 2.8817339855441335,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.828561439948025,
+          "mddPct": -17.458216418289762,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.97638415521849,
+          "mddPct": -28.67716818005126,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.644636070464419,
+          "mddPct": -14.543771064129274,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.29326370547001,
+          "mddPct": -25.39556015440566,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 125.54510293553771,
+          "mddPct": -22.361364028434817,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.77596769627488,
+          "mddPct": -37.54194891574944,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9968109339407748,
+          "cost": 0.0005980865603644649,
+          "riskTarget": "161226",
+          "w": 0.9968109339407748,
+          "netFactor": 1.0096721686922108,
+          "eq": 1.0096721686922108
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.9936543066507473,
+          "cost": 0.0011961925839904484,
+          "riskTarget": "159985",
+          "w": 0.9968109339407748,
+          "netFactor": 0.9911452031307052,
+          "eq": 1.0007317267338607
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_z15_r2_vol75_to50",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 57.9396992739964,
+      "MDD_pct": -37.4748375576172,
+      "Sharpe": 1.321630767950656,
+      "Calmar": 1.5460960753976498,
+      "terminal": 13.16044044524548,
+      "avgTargetRiskW": 0.9946848899012587,
+      "avgRiskWeightAll": 0.9380717804362819,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 409.000863065317,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 24.540051783919015,
+      "upsideForgonePct": 6.501661120205051,
+      "downsideAvoidedPct": 4.802889975907392,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.80892412825852,
+          "mddPct": -17.42403122954226,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.960158409162982,
+          "mddPct": -28.6168367152706,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.623910633061318,
+          "mddPct": -14.514246260182961,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.15488618849345,
+          "mddPct": -25.34835608454514,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 125.19886764934971,
+          "mddPct": -22.315282545127502,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.42608235224273,
+          "mddPct": -37.474837557617235,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9946848899012908,
+          "cost": 0.0005968109339407745,
+          "riskTarget": "161226",
+          "w": 0.9946848899012908,
+          "netFactor": 1.00965155252848,
+          "eq": 1.00965155252848
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.9894237302768794,
+          "cost": 0.0011936542381661276,
+          "riskTarget": "159985",
+          "w": 0.9946848899012908,
+          "netFactor": 0.9911640566767546,
+          "eq": 1.0007303286341116
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_z1_vol75_r2_to80",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 58.053712189472726,
+      "MDD_pct": -37.53715699221186,
+      "Sharpe": 1.3215687819073376,
+      "Calmar": 1.5465665713979777,
+      "terminal": 13.21410084399468,
+      "avgTargetRiskW": 0.9966590736522372,
+      "avgRiskWeightAll": 0.9399014778325081,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 409.7435017661657,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 24.5846101059699,
+      "upsideForgonePct": 4.086758418415125,
+      "downsideAvoidedPct": 3.018959413427892,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.827160571306624,
+          "mddPct": -17.455775031153063,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.975226370572468,
+          "mddPct": -28.672859987573396,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.643156078366811,
+          "mddPct": -14.541662332277394,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.28338108951515,
+          "mddPct": -25.392189286440647,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 125.52036066143928,
+          "mddPct": -22.358072721732892,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.75096714974163,
+          "mddPct": -37.53715699221184,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9966590736522395,
+          "cost": 0.0005979954441913437,
+          "riskTarget": "161226",
+          "w": 0.9966590736522395,
+          "netFactor": 1.0096706961109414,
+          "eq": 1.0096706961109414
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.9933521256523759,
+          "cost": 0.0011960112753914255,
+          "riskTarget": "159985",
+          "w": 0.9966590736522395,
+          "netFactor": 0.9911465498080094,
+          "eq": 1.0007316268926107
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_continuous_ols_vol",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 58.24662703523404,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3214644814401395,
+      "Calmar": 1.5473626947547143,
+      "terminal": 13.305306481854544,
+      "avgTargetRiskW": 1,
+      "avgRiskWeightAll": 0.9429978888106967,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 0,
+      "turnover": 411,
+      "tradeTickets": 411,
+      "rebalancesSame": 0,
+      "costSumPct": 24.660000000000096,
+      "upsideForgonePct": 0,
+      "downsideAvoidedPct": 0,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.8579158081881,
+          "mddPct": -17.509470907957038,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 14.000655066767042,
+          "mddPct": -28.76759765985505,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.675701813131312,
+          "mddPct": -14.588047938394698,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.50074533799372,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 126.06508797779554,
+          "mddPct": -22.43047337293097,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "exposure_static_continuous_confirmation",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 58.24662703523404,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3214644814401395,
+      "Calmar": 1.5473626947547143,
+      "terminal": 13.305306481854544,
+      "avgTargetRiskW": 1,
+      "avgRiskWeightAll": 0.9429978888106967,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 0,
+      "turnover": 411,
+      "tradeTickets": 411,
+      "rebalancesSame": 0,
+      "costSumPct": 24.660000000000096,
+      "upsideForgonePct": 0,
+      "downsideAvoidedPct": 0,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.8579158081881,
+          "mddPct": -17.509470907957038,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 14.000655066767042,
+          "mddPct": -28.76759765985505,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.675701813131312,
+          "mddPct": -14.588047938394698,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 65.50074533799372,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 126.06508797779554,
+          "mddPct": -22.43047337293097,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "static_95",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 55.35585192520711,
+      "MDD_pct": -36.052092783932046,
+      "Sharpe": 1.3231076171895744,
+      "Calmar": 1.5354407372955199,
+      "terminal": 11.991545862930671,
+      "avgTargetRiskW": 0.9500000000000236,
+      "avgRiskWeightAll": 0.896657283603119,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 392.1591915833079,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 23.52955149499854,
+      "upsideForgonePct": 61.162054966500094,
+      "downsideAvoidedPct": 45.18147213050002,
+      "yearly": {
+        "2021": {
+          "returnPct": 21.38370649806682,
+          "mddPct": -16.70265034030586,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.610807652288903,
+          "mddPct": -27.34042728335814,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.185555007761415,
+          "mddPct": -13.892425385968743,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 62.23653003847161,
+          "mddPct": -24.350268222742944,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 117.99994528391488,
+          "mddPct": -21.345158759914096,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 123.13383708233809,
+          "mddPct": -36.05209278393203,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.95,
+          "cost": 0.00057,
+          "riskTarget": "161226",
+          "w": 0.95,
+          "netFactor": 1.0092182320057466,
+          "eq": 1.0092182320057466
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.900484941298885,
+          "cost": 0.001140290964779331,
+          "riskTarget": "159985",
+          "w": 0.95,
+          "netFactor": 0.9915603496157409,
+          "eq": 1.000700782966198
+        }
+      ]
+    },
+    {
+      "name": "static_90",
+      "defensive": "cash",
+      "band": 0,
+      "minFee": false,
+      "CAGR_pct": 52.458787042722086,
+      "MDD_pct": -34.43233176206956,
+      "Sharpe": 1.3249446527594178,
+      "Calmar": 1.5235328064685518,
+      "terminal": 10.783912934787867,
+      "avgTargetRiskW": 0.8999999999999986,
+      "avgRiskWeightAll": 0.8503166783954966,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 1317,
+      "turnover": 373.24064424370556,
+      "tradeTickets": 1341,
+      "rebalancesSame": 930,
+      "costSumPct": 22.394438654622316,
+      "upsideForgonePct": 122.32410993300007,
+      "downsideAvoidedPct": 90.3629442609999,
+      "yearly": {
+        "2021": {
+          "returnPct": 20.87990147993539,
+          "mddPct": -15.888911539883265,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.201227872747667,
+          "mddPct": -25.893183294816723,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 9.68889563164812,
+          "mddPct": -13.193770282798244,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.95063688205975,
+          "mddPct": -23.21988004875587,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 110.12246744061325,
+          "mddPct": -20.25604302695212,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 115.11649325012199,
+          "mddPct": -34.43233176206952,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 0.9,
+          "cost": 0.00054,
+          "riskTarget": "161226",
+          "w": 0.9,
+          "netFactor": 1.0087333402506977,
+          "eq": 1.0087333402506977
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 1.8009193054180597,
+          "cost": 0.0010805515832508356,
+          "riskTarget": "159985",
+          "w": 0.9,
+          "netFactor": 0.9920038522284869,
+          "eq": 1.0006673594000008
+        }
+      ]
+    }
+  ],
+  "band5": [
+    {
+      "name": "z15_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.88966345931681,
+      "MDD_pct": -37.6730398044373,
+      "Sharpe": 1.4207764209242284,
+      "Calmar": 1.5897220869408772,
+      "terminal": 14.103292834016493,
+      "avgTargetRiskW": 0.9883826879271082,
+      "avgRiskWeightAll": 0.9323040959431607,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 51,
+      "turnover": 421.77465743621633,
+      "tradeTickets": 473,
+      "rebalancesSame": 62,
+      "costSumPct": 25.306479446173057,
+      "upsideForgonePct": 29.404699847999993,
+      "downsideAvoidedPct": 30.596747475000008,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.747066299800878,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 15.523562914576905,
+          "mddPct": -26.463040966257132,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 12.666584656464842,
+          "mddPct": -14.445933578116898,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.95217271633308,
+          "mddPct": -25.23334940588797,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 141.96911165014942,
+          "mddPct": -17.431814675271497,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 127.66355274084127,
+          "mddPct": -37.67303980443732,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 61.499194941008795,
+      "MDD_pct": -37.64251731845398,
+      "Sharpe": 1.3869282164582424,
+      "Calmar": 1.6337694533213176,
+      "terminal": 14.922773246951097,
+      "avgTargetRiskW": 0.9956719817767656,
+      "avgRiskWeightAll": 0.9389941936093248,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 19,
+      "turnover": 416.3233448842654,
+      "tradeTickets": 437,
+      "rebalancesSame": 26,
+      "costSumPct": 24.979400693056014,
+      "upsideForgonePct": 4.470347535000001,
+      "downsideAvoidedPct": 14.468815800000002,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.784116312688642,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.305590898064224,
+          "mddPct": -28.767597659855028,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.203007648240293,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 66.66479110622447,
+          "mddPct": -25.466318138840272,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 146.2070262697839,
+          "mddPct": -16.884967054618173,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 60.672008995062065,
+      "MDD_pct": -37.64251731845407,
+      "Sharpe": 1.3724457732322497,
+      "Calmar": 1.6117946757327488,
+      "terminal": 14.49686320788388,
+      "avgTargetRiskW": 0.9968109339407748,
+      "avgRiskWeightAll": 0.9400497882609785,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 413.9361904027235,
+      "tradeTickets": 428,
+      "rebalancesSame": 17,
+      "costSumPct": 24.836171424163503,
+      "upsideForgonePct": 4.254520197000001,
+      "downsideAvoidedPct": 11.383867479000001,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.097003125454577,
+          "mddPct": -17.509455744499736,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.947919668275777,
+          "mddPct": -28.76759765985494,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.203007648240293,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 62.68649664351993,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 145.19002896025052,
+          "mddPct": -16.884967054618173,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to50",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 62.20776240098211,
+      "MDD_pct": -37.64251731845406,
+      "Sharpe": 1.4031918533098824,
+      "Calmar": 1.6525930472371746,
+      "terminal": 15.295743756591323,
+      "avgTargetRiskW": 0.9946848899012908,
+      "avgRiskWeightAll": 0.9380808679063144,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 415.92642858780584,
+      "tradeTickets": 428,
+      "rebalancesSame": 17,
+      "costSumPct": 24.95558571526844,
+      "upsideForgonePct": 7.090866995000001,
+      "downsideAvoidedPct": 18.973112465,
+      "yearly": {
+        "2021": {
+          "returnPct": 27.23078571257038,
+          "mddPct": -17.509448608755118,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.246302549503895,
+          "mddPct": -28.76759765985504,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.554431497417639,
+          "mddPct": -14.588047938394732,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 60.79871367800642,
+          "mddPct": -25.466318138840304,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 158.1421335337043,
+          "mddPct": -13.553441531894139,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z1_vol75_r2_to80",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.759255974531534,
+      "MDD_pct": -37.642517318454004,
+      "Sharpe": 1.354878740890074,
+      "Calmar": 1.5875467485070383,
+      "terminal": 14.038552543255234,
+      "avgTargetRiskW": 0.9966590736522395,
+      "avgRiskWeightAll": 0.9399147721610084,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 22,
+      "turnover": 414.1476946328497,
+      "tradeTickets": 437,
+      "rebalancesSame": 26,
+      "costSumPct": 24.848861677971083,
+      "upsideForgonePct": 4.191290627999999,
+      "downsideAvoidedPct": 8.538086071999999,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.43811804871654,
+          "mddPct": -17.509460204340144,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.298790171728282,
+          "mddPct": -28.767597659854992,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.027261707578795,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 63.57393742107917,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 138.96039148599493,
+          "mddPct": -18.734654858038336,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131927853367,
+          "mddPct": -37.64251731845398,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_ols_vol",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.44823760292548,
+      "MDD_pct": -37.51318904050876,
+      "Sharpe": 1.3849471492726788,
+      "Calmar": 1.584728974620901,
+      "terminal": 13.88513499451789,
+      "avgTargetRiskW": 0.991318615388183,
+      "avgRiskWeightAll": 0.9343952382964457,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 182,
+      "turnover": 416.1236750285801,
+      "tradeTickets": 494,
+      "rebalancesSame": 83,
+      "costSumPct": 24.96742050171487,
+      "upsideForgonePct": 18.59515131368133,
+      "downsideAvoidedPct": 20.565353506442303,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.375969753385764,
+          "mddPct": -17.42223210625127,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.961517548831793,
+          "mddPct": -27.862015220480064,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.46204656046439,
+          "mddPct": -14.576034519621539,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.147381496430526,
+          "mddPct": -25.439221755734152,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 139.242188498631,
+          "mddPct": -18.01459663755647,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.43624645067422,
+          "mddPct": -37.5131890405088,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_confirmation",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 60.81942393999873,
+      "MDD_pct": -37.64251731845394,
+      "Sharpe": 1.376497868051885,
+      "Calmar": 1.6157108576312589,
+      "terminal": 14.572024306813617,
+      "avgTargetRiskW": 0.9951666379156139,
+      "avgRiskWeightAll": 0.9385266130513944,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 28,
+      "turnover": 415.90755100936013,
+      "tradeTickets": 444,
+      "rebalancesSame": 33,
+      "costSumPct": 24.954453060561697,
+      "upsideForgonePct": 6.049175533106431,
+      "downsideAvoidedPct": 13.151676653997836,
+      "yearly": {
+        "2021": {
+          "returnPct": 26.336572935966984,
+          "mddPct": -17.509456488309926,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.619920780737925,
+          "mddPct": -28.767597659855117,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.102829610033949,
+          "mddPct": -14.58804793839481,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 61.29800327228341,
+          "mddPct": -25.466318138840272,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 147.08328262252022,
+          "mddPct": -16.40714461411915,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131615899495,
+          "mddPct": -37.64251731845404,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    }
+  ],
+  "band5_minFee": [
+    {
+      "name": "z15_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 59.86336608430882,
+      "MDD_pct": -37.67303980443734,
+      "Sharpe": 1.420341769544988,
+      "Calmar": 1.589024044650036,
+      "terminal": 14.09021787317114,
+      "avgTargetRiskW": 0.9883826879271082,
+      "avgRiskWeightAll": 0.9323040959431607,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 51,
+      "turnover": 421.77465743621633,
+      "tradeTickets": 473,
+      "rebalancesSame": 62,
+      "costSumPct": 25.39921231384321,
+      "upsideForgonePct": 29.404699847999993,
+      "downsideAvoidedPct": 30.596747475000008,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.676972733504176,
+          "mddPct": -17.51811751716239,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 15.508769442896408,
+          "mddPct": -26.46304096625721,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 12.648878321020508,
+          "mddPct": -14.445933578116833,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.94014116674886,
+          "mddPct": -25.233349405887985,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 141.96911165014942,
+          "mddPct": -17.431814675271497,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 127.66355274084127,
+          "mddPct": -37.67303980443732,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 61.482163754494024,
+      "MDD_pct": -37.642517318454004,
+      "Sharpe": 1.3866607181762873,
+      "Calmar": 1.6333170078493338,
+      "terminal": 14.9139014541167,
+      "avgTargetRiskW": 0.9956719817767656,
+      "avgRiskWeightAll": 0.9389941936093248,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 19,
+      "turnover": 416.3233448842654,
+      "tradeTickets": 437,
+      "rebalancesSame": 26,
+      "costSumPct": 25.038856695617923,
+      "upsideForgonePct": 4.470347535000001,
+      "downsideAvoidedPct": 14.468815800000002,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.72210786061828,
+          "mddPct": -17.51811751716239,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.29935416693122,
+          "mddPct": -28.767597659855106,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.199103112793175,
+          "mddPct": -14.588047938394766,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 66.66354383202182,
+          "mddPct": -25.46631813884026,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 146.2070262697839,
+          "mddPct": -16.884967054618173,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to70",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 60.66276920565201,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3722987550693027,
+      "Calmar": 1.6115492142156078,
+      "terminal": 14.492162843800223,
+      "avgTargetRiskW": 0.9968109339407748,
+      "avgRiskWeightAll": 0.9400497882609785,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 413.9361904027235,
+      "tradeTickets": 428,
+      "rebalancesSame": 17,
+      "costSumPct": 24.868592991583835,
+      "upsideForgonePct": 4.254520197000001,
+      "downsideAvoidedPct": 11.383867479000001,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.061227870227288,
+          "mddPct": -17.51811751716239,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.947585312978749,
+          "mddPct": -28.767597659855028,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.199081753477213,
+          "mddPct": -14.588047938394688,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 62.68649664351993,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 145.19002896025052,
+          "mddPct": -16.884967054618173,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to50",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 62.20748380632464,
+      "MDD_pct": -37.642517318454004,
+      "Sharpe": 1.403187443655838,
+      "Calmar": 1.65258564617377,
+      "terminal": 15.295595619587349,
+      "avgTargetRiskW": 0.9946848899012908,
+      "avgRiskWeightAll": 0.9380808679063144,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 14,
+      "turnover": 415.92642858780584,
+      "tradeTickets": 428,
+      "rebalancesSame": 17,
+      "costSumPct": 24.95655362848761,
+      "upsideForgonePct": 7.090866995000001,
+      "downsideAvoidedPct": 18.973112465,
+      "yearly": {
+        "2021": {
+          "returnPct": 27.229553501328585,
+          "mddPct": -17.510247517479982,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.246302549503895,
+          "mddPct": -28.76759765985504,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.554431497417639,
+          "mddPct": -14.588047938394732,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 60.79871367800642,
+          "mddPct": -25.466318138840304,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 158.1421335337043,
+          "mddPct": -13.553441531894139,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z1_vol75_r2_to80",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 59.712554467806655,
+      "MDD_pct": -37.642517318454004,
+      "Sharpe": 1.354147067457761,
+      "Calmar": 1.5863060900694055,
+      "terminal": 14.015427302012661,
+      "avgTargetRiskW": 0.9966590736522395,
+      "avgRiskWeightAll": 0.9399147721610084,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 22,
+      "turnover": 414.1476946328497,
+      "tradeTickets": 437,
+      "rebalancesSame": 26,
+      "costSumPct": 25.01369497988452,
+      "upsideForgonePct": 4.191290627999999,
+      "downsideAvoidedPct": 8.538086071999999,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.291088295893548,
+          "mddPct": -17.5222477423019,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.292540332704306,
+          "mddPct": -28.767597659855014,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.00593497956519,
+          "mddPct": -14.588047938394643,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 63.54034029678135,
+          "mddPct": -25.466318138840293,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 138.95940917565693,
+          "mddPct": -18.734654858038326,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131927853367,
+          "mddPct": -37.64251731845398,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_ols_vol",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 59.282905488659,
+      "MDD_pct": -37.51318904050878,
+      "Sharpe": 1.3823084469607898,
+      "Calmar": 1.5803216683242287,
+      "terminal": 13.804144005175354,
+      "avgTargetRiskW": 0.991318615388183,
+      "avgRiskWeightAll": 0.9343952382964457,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 182,
+      "turnover": 416.1236750285801,
+      "tradeTickets": 494,
+      "rebalancesSame": 83,
+      "costSumPct": 25.552343637832635,
+      "upsideForgonePct": 18.59515131368133,
+      "downsideAvoidedPct": 20.565353506442303,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.99116270638988,
+          "mddPct": -17.433031321133118,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.919967294941493,
+          "mddPct": -27.862015220480174,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.371213188765172,
+          "mddPct": -14.576034519621583,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.011035869050744,
+          "mddPct": -25.439221755734152,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 139.06673946605116,
+          "mddPct": -18.01459663755648,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 130.43624645067422,
+          "mddPct": -37.5131890405088,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_confirmation",
+      "defensive": "cash",
+      "band": 0.05,
+      "minFee": true,
+      "CAGR_pct": 60.76557466708981,
+      "MDD_pct": -37.64251731845402,
+      "Sharpe": 1.375661841511253,
+      "Calmar": 1.6142803137477697,
+      "terminal": 14.5445316015056,
+      "avgTargetRiskW": 0.9951666379156139,
+      "avgRiskWeightAll": 0.9385266130513944,
+      "avgBondWeightAll": 0.05277973258268825,
+      "activeDays": 28,
+      "turnover": 415.90755100936013,
+      "tradeTickets": 444,
+      "rebalancesSame": 33,
+      "costSumPct": 25.143270049655808,
+      "upsideForgonePct": 6.049175533106431,
+      "downsideAvoidedPct": 13.151676653997836,
+      "yearly": {
+        "2021": {
+          "returnPct": 26.187342690988345,
+          "mddPct": -17.518846362607686,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.588523696963705,
+          "mddPct": -28.767597659854992,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.097937585671925,
+          "mddPct": -14.588047938394656,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 61.25201162819476,
+          "mddPct": -25.466318138840236,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 147.0589425084886,
+          "mddPct": -16.40714461411915,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30131615899495,
+          "mddPct": -37.64251731845404,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012000000000000001,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    }
+  ],
+  "band5_bond": [
+    {
+      "name": "z15_to70",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.50217401088251,
+      "MDD_pct": -37.63038010828775,
+      "Sharpe": 1.4135259153498838,
+      "Calmar": 1.5812270256015217,
+      "terminal": 13.911641147017255,
+      "avgTargetRiskW": 0.9883826879271082,
+      "avgRiskWeightAll": 0.9323040959431607,
+      "avgBondWeightAll": 0.06347352545022536,
+      "activeDays": 51,
+      "turnover": 447.1290122421345,
+      "tradeTickets": 559,
+      "rebalancesSame": 2,
+      "costSumPct": 26.82774073452812,
+      "upsideForgonePct": 29.404699847999993,
+      "downsideAvoidedPct": 30.596747475000008,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.568125248096884,
+          "mddPct": -17.539167498430174,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 15.356603381488853,
+          "mddPct": -26.49049627347475,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 12.381987677796435,
+          "mddPct": -14.445933578116898,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 58.33684526723466,
+          "mddPct": -25.26037700339252,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 140.91851895613115,
+          "mddPct": -17.447380603826,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 127.65676867865214,
+          "mddPct": -37.630380108287774,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_to70",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 61.322554165584634,
+      "MDD_pct": -37.64251731845395,
+      "Sharpe": 1.384166556315306,
+      "Calmar": 1.6290768666398867,
+      "terminal": 14.830969168064996,
+      "avgTargetRiskW": 0.9956719817767656,
+      "avgRiskWeightAll": 0.9389941936093248,
+      "avgBondWeightAll": 0.056783427784060495,
+      "activeDays": 19,
+      "turnover": 426.6034010324355,
+      "tradeTickets": 471,
+      "rebalancesSame": 0,
+      "costSumPct": 25.596204061946214,
+      "upsideForgonePct": 4.470347535000001,
+      "downsideAvoidedPct": 14.468815800000002,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.603217438557003,
+          "mddPct": -17.539167498430174,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.224277239989245,
+          "mddPct": -28.767597659854992,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.122693616562529,
+          "mddPct": -14.588047938394745,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 66.36440341822671,
+          "mddPct": -25.46631813884026,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 145.8439344732099,
+          "mddPct": -16.90223587819073,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to70",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 60.5478915297021,
+      "MDD_pct": -37.64251731845396,
+      "Sharpe": 1.3705019857038094,
+      "Calmar": 1.6084974077974046,
+      "terminal": 14.433828152528612,
+      "avgTargetRiskW": 0.9968109339407748,
+      "avgRiskWeightAll": 0.9400497882609785,
+      "avgBondWeightAll": 0.055727833132406736,
+      "activeDays": 14,
+      "turnover": 421.1951962512982,
+      "tradeTickets": 452,
+      "rebalancesSame": 0,
+      "costSumPct": 25.271711775077982,
+      "upsideForgonePct": 4.254520197000001,
+      "downsideAvoidedPct": 11.383867479000001,
+      "yearly": {
+        "2021": {
+          "returnPct": 24.96052777350979,
+          "mddPct": -17.539167498430174,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.907679926289628,
+          "mddPct": -28.767597659855014,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.122693616562529,
+          "mddPct": -14.588047938394745,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 62.51195490326691,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 144.91707710856852,
+          "mddPct": -16.90223587819074,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z15_r2_vol75_to50",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 61.999496756267504,
+      "MDD_pct": -37.642517318454004,
+      "Sharpe": 1.399935764632337,
+      "Calmar": 1.6470603236163657,
+      "terminal": 15.185331602602401,
+      "avgTargetRiskW": 0.9946848899012908,
+      "avgRiskWeightAll": 0.9380808679063144,
+      "avgBondWeightAll": 0.05769675348707044,
+      "activeDays": 14,
+      "turnover": 427.99330996402045,
+      "tradeTickets": 452,
+      "rebalancesSame": 0,
+      "costSumPct": 25.67959859784131,
+      "upsideForgonePct": 7.090866995000001,
+      "downsideAvoidedPct": 18.973112465,
+      "yearly": {
+        "2021": {
+          "returnPct": 27.00021347546,
+          "mddPct": -17.558965225412273,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.179450758132937,
+          "mddPct": -28.76759765985508,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.420282657174452,
+          "mddPct": -14.588047938394777,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 60.510737517857116,
+          "mddPct": -25.46631813884033,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 157.66778262194646,
+          "mddPct": -13.553441531894139,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.30128926587102,
+          "mddPct": -37.64251731845407,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "z1_vol75_r2_to80",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.636120300681995,
+      "MDD_pct": -37.642517318454026,
+      "Sharpe": 1.352955421193259,
+      "Calmar": 1.5842755625550506,
+      "terminal": 13.977646924187841,
+      "avgTargetRiskW": 0.9966590736522395,
+      "avgRiskWeightAll": 0.9399147721610084,
+      "avgBondWeightAll": 0.05586284923237638,
+      "activeDays": 22,
+      "turnover": 421.3909139495553,
+      "tradeTickets": 473,
+      "rebalancesSame": 0,
+      "costSumPct": 25.283454836973405,
+      "upsideForgonePct": 4.191290627999999,
+      "downsideAvoidedPct": 8.538086071999999,
+      "yearly": {
+        "2021": {
+          "returnPct": 23.259632753116687,
+          "mddPct": -17.529268634939132,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.271920788016445,
+          "mddPct": -28.767597659855003,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 10.97377746293262,
+          "mddPct": -14.588047938394732,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 63.41780267328359,
+          "mddPct": -25.46631813884026,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 138.7247159059561,
+          "mddPct": -18.74616371480028,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.2457769564473,
+          "mddPct": -37.64251731845406,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_ols_vol",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 59.512468971107715,
+      "MDD_pct": -37.37002674136606,
+      "Sharpe": 1.387897511319243,
+      "Calmar": 1.5925187686641789,
+      "terminal": 13.916705162058028,
+      "avgTargetRiskW": 0.991318615388183,
+      "avgRiskWeightAll": 0.9349366958569671,
+      "avgBondWeightAll": 0.06084092553641733,
+      "activeDays": 182,
+      "turnover": 435.2830776371255,
+      "tradeTickets": 876,
+      "rebalancesSame": 46,
+      "costSumPct": 26.116984658227597,
+      "upsideForgonePct": 18.59515131368133,
+      "downsideAvoidedPct": 20.565353506442303,
+      "yearly": {
+        "2021": {
+          "returnPct": 25.754396497772625,
+          "mddPct": -17.535482663835523,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 13.96510544293388,
+          "mddPct": -27.824113914572912,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.433002200702713,
+          "mddPct": -14.506944649815612,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 57.96165173255774,
+          "mddPct": -25.36920462782636,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 138.5229059362541,
+          "mddPct": -18.028347770795584,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.2840922815844,
+          "mddPct": -37.37002674136606,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    },
+    {
+      "name": "continuous_confirmation",
+      "defensive": "bond",
+      "band": 0.05,
+      "minFee": false,
+      "CAGR_pct": 60.6295301534461,
+      "MDD_pct": -37.64251731845404,
+      "Sharpe": 1.3735476924568224,
+      "Calmar": 1.6106661953695325,
+      "terminal": 14.475264204879721,
+      "avgTargetRiskW": 0.9951666379156139,
+      "avgRiskWeightAll": 0.9385008717586675,
+      "avgBondWeightAll": 0.057276749634717246,
+      "activeDays": 28,
+      "turnover": 426.8668000714046,
+      "tradeTickets": 497,
+      "rebalancesSame": 12,
+      "costSumPct": 25.61200800428436,
+      "upsideForgonePct": 6.049175533106431,
+      "downsideAvoidedPct": 13.151676653997836,
+      "yearly": {
+        "2021": {
+          "returnPct": 26.030661383863208,
+          "mddPct": -17.537420665603364,
+          "days": 242
+        },
+        "2022": {
+          "returnPct": 12.554417352508484,
+          "mddPct": -28.76759765985506,
+          "days": 242
+        },
+        "2023": {
+          "returnPct": 11.01428592896616,
+          "mddPct": -14.588047938394721,
+          "days": 242
+        },
+        "2024": {
+          "returnPct": 61.03051935991404,
+          "mddPct": -25.466318138840283,
+          "days": 242
+        },
+        "2025": {
+          "returnPct": 146.839608192612,
+          "mddPct": -16.425901386843755,
+          "days": 243
+        },
+        "2026": {
+          "returnPct": 131.25217599210922,
+          "mddPct": -37.642517318454026,
+          "days": 210
+        }
+      },
+      "debug": [
+        {
+          "date": "2021-01-04",
+          "tradeWeight": 1,
+          "cost": 0.0006,
+          "riskTarget": "161226",
+          "w": 1,
+          "netFactor": 1.00970309283296,
+          "eq": 1.00970309283296
+        },
+        {
+          "date": "2021-01-05",
+          "tradeWeight": 2,
+          "cost": 0.0012,
+          "riskTarget": "159985",
+          "w": 1,
+          "netFactor": 0.99111692306924,
+          "eq": 1.0007338225820985
+        }
+      ]
+    }
+  ],
+  "baselineMin": {
+    "name": "baseline_100",
+    "defensive": "cash",
+    "band": 0.05,
+    "minFee": true,
+    "CAGR_pct": 58.24662703523404,
+    "MDD_pct": -37.64251731845404,
+    "Sharpe": 1.3214644814401395,
+    "Calmar": 1.5473626947547143,
+    "terminal": 13.305306481854544,
+    "avgTargetRiskW": 1,
+    "avgRiskWeightAll": 0.9429978888106967,
+    "avgBondWeightAll": 0.05277973258268825,
+    "activeDays": 0,
+    "turnover": 411,
+    "tradeTickets": 411,
+    "rebalancesSame": 0,
+    "costSumPct": 24.660000000000096,
+    "upsideForgonePct": 0,
+    "downsideAvoidedPct": 0,
+    "yearly": {
+      "2021": {
+        "returnPct": 21.8579158081881,
+        "mddPct": -17.509470907957038,
+        "days": 242
+      },
+      "2022": {
+        "returnPct": 14.000655066767042,
+        "mddPct": -28.76759765985505,
+        "days": 242
+      },
+      "2023": {
+        "returnPct": 10.675701813131312,
+        "mddPct": -14.588047938394698,
+        "days": 242
+      },
+      "2024": {
+        "returnPct": 65.50074533799372,
+        "mddPct": -25.466318138840283,
+        "days": 242
+      },
+      "2025": {
+        "returnPct": 126.06508797779554,
+        "mddPct": -22.43047337293097,
+        "days": 243
+      },
+      "2026": {
+        "returnPct": 131.30128926587102,
+        "mddPct": -37.64251731845407,
+        "days": 210
+      }
+    },
+    "debug": [
+      {
+        "date": "2021-01-04",
+        "tradeWeight": 1,
+        "cost": 0.0006,
+        "riskTarget": "161226",
+        "w": 1,
+        "netFactor": 1.00970309283296,
+        "eq": 1.00970309283296
+      },
+      {
+        "date": "2021-01-05",
+        "tradeWeight": 2,
+        "cost": 0.0012000000000000001,
+        "riskTarget": "159985",
+        "w": 1,
+        "netFactor": 0.99111692306924,
+        "eq": 1.0007338225820985
+      }
+    ]
+  },
+  "modelAvgTargetWeight": [
+    {
+      "name": "baseline_100",
+      "meanRiskW": 1
+    },
+    {
+      "name": "z15_to70",
+      "meanRiskW": 0.9883826879271082
+    },
+    {
+      "name": "z15_r2_to70",
+      "meanRiskW": 0.9956719817767656
+    },
+    {
+      "name": "z15_r2_vol75_to70",
+      "meanRiskW": 0.9968109339407748
+    },
+    {
+      "name": "z15_r2_vol75_to50",
+      "meanRiskW": 0.9946848899012908
+    },
+    {
+      "name": "z1_vol75_r2_to80",
+      "meanRiskW": 0.9966590736522395
+    },
+    {
+      "name": "continuous_ols_vol",
+      "meanRiskW": null
+    },
+    {
+      "name": "continuous_confirmation",
+      "meanRiskW": null
+    }
+  ]
+}
