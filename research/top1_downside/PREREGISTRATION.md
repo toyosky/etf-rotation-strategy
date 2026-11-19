@@ -7,13 +7,13 @@ Created 2026-11-20. Research branch only. No production strategy modifications.
 For the actual frozen Top1 executable holding at decision time t, do path, trend, volume, volatility and market-context features improve out-of-sample prediction of future adverse excursions, and can risk-based sizing improve realized portfolio drawdown without unacceptable opportunity cost?
 
 ## Dataset and audit gates
-- Primary: reconstruct the *executable* historical Top1 holding with the frozen 26-day half-life-10 log-price OLS, C2, Void and defensive routing. Distinguish original challenger, final target, actual human holdings.
+- Primary: reconstruct the *executable* historical Top1 holding with the correct period-specific 26-day half-life-10 log-price OLS, V1 / Void / defensive / premium and intraday execution routing. **Current production strategy has retired C2; no fictitious C2+Void hybrid.** Distinguish original challenger, final target, actual human holdings.
 - Secondary: all ETF down-day events, explicitly not equated to held Top1.
 - Verify as-of adjusted OHLC, volume units, ETF inception, gaps, splits, NAV/premium availability, slippage, delistings and survivorship. Current public.daily_bars coverage is only 19 symbols (2021–2026), not full market. Investigate historic Parquet/Release/Storage.
 - If executable historical holding cannot be reconstructed, do NOT claim primary validation.
 
 ## Outcomes and information cutoff
-End-of-day t features only; t+1 opening executable decision. At horizons 3, 5, 10 sessions: min subsequent executable-period low relative to execution price (MAE); binary loss thresholds 3%, 5%, 8%; conditional quantiles, duration to trough and recovery, missed rebounds. Explicitly label the alternative signal-close-relative descriptive outcome and never conflate it with executable MAE. Mark censored episodes.
+End-of-day t features only; target determination and purchase/sale execution must follow the period-specific code, including 09:31 gap gate, 14:00 sell and 14:05 buy (rather than assuming unconditional next-open purchases). At horizons 3, 5, 10 sessions: min subsequent executable-period low relative to execution price (MAE); binary loss thresholds 3%, 5%, 8%; conditional quantiles, duration to trough and recovery, missed rebounds. Explicitly label the alternative signal-close-relative descriptive outcome and never conflate it with executable MAE. Mark censored episodes.
 
 ## Prespecified feature blocks
 B0 OLS-only: beta, R², fitted deviation, score/gap where available.
@@ -40,3 +40,9 @@ Archive exact inputs, provenance, code, reproducible commands, year/event counts
 - Created isolated research branch research/top1-downside-20261120.
 - This file is the preregistration; no model fitting, historical execution reconstruction, or strategy performance result is claimed.
 - Next: audit historical data sources and frozen execution code, implement reproducible feature/label construction and chronological tests.
+
+## Execution 2 amendment (2026-11-20, before predictive fitting)
+- Audited production `strategy/main.py`: current strategy ID `FIXV2_V1_75_VOID_ROUTE_BANK14_INTRADAY_S1_PREMIUM10`; code header explicitly retires old C2. The initial generic C2 reference above has been corrected as a source-audit finding, not an outcome-based threshold optimization.
+- Daily-bar approximations and signal-close descriptive outcomes must not be called exact historical executable holdings. Minute data only begins 2026-09-14; premium history currently has 0 PIT-safe rows. See `audit/20261120_source_and_screen.md`.
+- Executed initial SQL exploration at `sql/exploratory_volume_path.sql`, but no OOS model has been fitted. Continue with reconstructability audit first.
+- GitHub research commits: 28c8b2ea (SQL diagnostic), a74fb5f4 (source audit), and this amendment.
