@@ -3,6 +3,27 @@
 Status: IN PROGRESS — design frozen before model experiments.
 Created 2026-11-20. Research branch only. No production strategy modifications.
 
+## 2026-11-20 explicit user correction — primary policy is continuous conditional withdrawal
+
+**This section supersedes any older reference to 100/70/40/0, 0/30/60/100 or fixed exit bands as the proposed dynamic risk control.** Earlier discrete pilots are historical experiments/baselines, not the requested final model.
+
+### Normal exposure and conditional action
+
+- When the frozen Top1 router authorizes a risk-asset holding, the *unmodified normal target* is 100% invested. High historical volatility alone must **not** lower ordinary exposure.
+- Add a downside-state gate G(t) constructed from at-time-t observable deterioration. If G(t)=false, exit weight E(t)=0 and the original authorized Top1 remains at 100% (or original frozen route remains applicable).
+- If G(t)=true, use a calibrated predictive *continuous* exit fraction E(t) in [0,1], with target risk-asset fraction H(t)=1-E(t). The model's decision is **how much to withdraw**, not a new baseline allocation.
+- Keep original V1, Void/defensive, premium and intraday execution rules authoritative. These may independently prohibit holding a risk ETF; the overlay cannot override them.
+
+### Candidate primary mathematical rule (to test, not adopted)
+
+- Estimate from an **as-of-t, properly purged chronological OOS** model the conditional future 5-session adverse-excursion distribution using actual executable-period reference price where possible. Let L_5=max(0,-MAE_5) and D_5(t)=Q_{0.90}(L_5|X_t) be the predicted 90th percentile loss severity, with X_t containing OLS/trend, price path, turnover, short/long realized/downside volatility and market context. Test q=0.8/0.9/0.95 and 3/5/10 sessions, and ES as independent risk measures.
+- Predetermine an absolute portfolio loss budget B for the risky sleeve. **1%, 2%, 3% are scenario values only**, not user-chosen live limits. For G(t)=true, primary candidate E(t)=clip(1-B/max(D_5(t),epsilon),0,1); for G(t)=false, E(t)=0. This produces continuous fractions, e.g. at B=2% and predicted D_5=3%, E=33.3%; D_5=5%, E=60%; D_5=8%, E=75%. These are **arithmetic examples, not forecasts or preset tiers**.
+- Do not claim B is a guaranteed realized-loss cap: quantile coverage, liquidity, execution slippage, overnight gaps and tail beyond q remain. An extreme tail may justify full exit through original router or independently justified hard constraint, but do not sneak in discretionary discrete thresholds.
+- Calibrate quantile predictions, compare pinball loss/coverage against OLS-only and vol-only models, check conditional risk beyond unconditional high-volatility scale. Select all model hyperparameters, G(t), q, B and trade hysteresis *inside training folds*, never on test outcomes. If OOS signal quality is insufficient, retain the original Top1 rules.
+- Return to 100% as G(t) clears / D_5 falls. Evaluate continuous re-entry and execution-aware no-trade bands/transaction cost controls versus delayed full re-entry; prevent turnover without converting the primary exit function into fixed bands.
+- Compare frozen 100% Top1 baseline against continuous budget-driven exit, simple stop, fixed exit, raw vol-only exit and alternative smooth nonlinear exit mapping. Report OOS full portfolio CAGR, MDD, Calmar, net results after costs, days with exits, average E(t), drawdown left-tail, missed rebounds and rebound delay. Evaluate per ETF/asset type/year and explicitly 501018 oil LOF vs 159981; distinguish underlying oil risk from secondary-market premium risk.
+- In the absence of PIT-executable 2021–2025 positions and premium, distinguish daily-bar *research proxies* from genuine executable Top1 portfolio tests. Historical data/auditing gates remain in force.
+
 ## Research question
 For the actual frozen Top1 executable holding at decision time t, do path, trend, volume, volatility and market-context features improve out-of-sample prediction of future adverse excursions, and can risk-based sizing improve realized portfolio drawdown without unacceptable opportunity cost?
 
@@ -28,7 +49,7 @@ No future index membership, delayed NAV, news or fundamentals allowed in X.
 - Baseline constant event-rate and OLS-only; sequential ablation B0, B0+B1, +B2, +B3, +B4; test interactions on training folds only.
 - Models: regularized logistic and quantile regression first; shallow gradient-boosted trees only as complexity check. Preprocessing and missing-value policy fit on train only.
 - Brier, log loss, PR-AUC, ROC-AUC secondary, calibration, pinball loss, risk stratification; cluster/block bootstrap for dependent events and uncertainty; control comparisons/multiple testing; by-year, by-asset, leave-one-ETF-out sensitivity.
-- Compare portfolio with unchanged frozen baseline, fixed fractional exposure, volatility targeting and fixed stop. Dynamic risk-based 100/70/40/0 sizing tested only after predictive OOS increment established; transaction costs, next-open fills, turnover, gap, rebound opportunity costs included. No production deployment without user approval.
+- Compare frozen 100% Top1 baseline with continuously sized conditional withdrawal E(t) as the primary candidate; fixed fractional exits, volatility targeting and fixed stops are **comparators only**. Run dynamic portfolio simulations only after predictive OOS increment is shown; include transaction costs, correct execution gates, turnover, gap and missed-rebound costs. No production deployment without user approval.
 
 ## Stop / acceptance criteria
 Archive exact inputs, provenance, code, reproducible commands, year/event counts, feature ablations, robustness and honest null results. Explicit decision: accepted, rejected or insufficient evidence. Stop automation after final report; if irrecoverable access/coverage failure, document limitation and stop rather than looping indefinitely.
