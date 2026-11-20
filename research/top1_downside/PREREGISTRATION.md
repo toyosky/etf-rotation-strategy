@@ -3,6 +3,38 @@
 Status: IN PROGRESS — design frozen before model experiments.
 Created 2026-11-20. Research branch only. No production strategy modifications.
 
+## 2026-11-20 unified overheating-and-decline withdrawal design (user-approved scope)
+
+**This section takes priority over prior downside-only event gates.** Current priority is a single conditional machine-learning downside-risk model for **partial withdrawals only**. Separate research on how/when to add exposure back comes **after** the withdrawal model is validated. Do not make an exit model look better by jointly optimizing re-entry on the test period.
+
+### Unified prediction target, rather than two separate sell signals
+
+For the frozen as-of-t **routable Top1 risk holding**, collect training examples on **all eligible held days**, not only observed down days: sharp rallies / possible overheating, normal rising trends, sideways phases and already-declining trends. Prevent selection bias from training solely on post-downturn samples. The one shared target is the conditional distribution of future executable-price adverse excursion (primarily 5-session maximum loss L5 and its Q90; secondary 3/10-session horizons, P(L>=3/5/8%), tail expected shortfall). Estimate and independently report missed upside / MFE of the same horizons. Old oversold-rebuild entry research and Top1 selection remain separate.
+
+Inputs, potentially interacting nonlinearly:
+- **Overheat/late-rally**: 5/10/20-day momentum and acceleration, historical beta percentile and its change, price-to-fitted 26-day OLS displacement, *positive* weighted residual z-score, upper-extension versus own volatility, R² trend structural deterioration, upside acceleration followed by path disorder, unusual volume/turnover.
+- **Active downside**: 1/3/5-day negative returns and streaks, 60-day return z-score (signed, continuously valued), *negative* OLS residual z-score, falling beta/R², volatility shock and expansion, abnormal volume/turnover, gaps, broad market context.
+- **Common controls**: raw vol and downside vol, asset/ETF differences, short-vs-long vol, time-point-in-time breadth/market regime, liquidity/premium availability, regime and overlapping event dependencies.
+- Avoid assuming rising fast guarantees reversal or that all red days warrant exit; the **same learner** must distinguish continued positive momentum from exhausted momentum, a normal volatile pullback from persistent worsening, and interpolate jointly.
+- Use continuous z-score (not only <=-1.5 or <=-1 buckets) in the main learner; the earlier bucketed model serves only as baseline.
+
+### Required ablations and OOS protocol
+
+Compare (i) OLS+volatility only, (ii) overheating-only features, (iii) active-decline-only features, (iv) **one unified model using both blocks**, (v) unified+volume+market controls. Models: quantile regression and regularized logistic as transparent baselines, shallow tree/gradient boosting only if worthwhile; all preprocessing, feature selection, tuning, calibration, model choice and comparisons performed within historical training folds. Primary OOS: expanding/rolling chronological train-test from 2021 to 2026, 10-session+ purge and embargo, and by year/asset class/ETF; block bootstrap and oil 501018/2026 event sensitivity; evaluate Q90 pinball/coverage, tail rates, false defensive withdrawals and missed subsequent rallies. **A gain in event calibration is not sufficient to recommend any withdrawal policy if full portfolio net returns and drawdowns worsen.**
+
+### Continuous 100%-baseline withdrawal; avoid the raw-volatility trap
+
+The frozen Top1 remains at 100% in ordinary permitted risk-asset holdings. The overlay returns a continuous E(t) in [0,1] **only when risk is elevated conditionally versus that fund's normal, point-in-time risk baseline** (e.g. conditional Q90 relative to a rolling ETF / asset-category + volatility regime baseline D_normal(t)), and the posterior/validated avoided-loss benefit sufficiently exceeds expected opportunity/transaction costs. A large unconditional Q90 for an intrinsically volatile ETF **must not** cause routine permanent reduction in holdings. Candidate smooth risk-budget mappings and baseline comparisons are evaluated in training-period frozen configurations; B=1/2/3% remain exploratory sensitivity values, not live targets.
+
+### Re-entry excluded from present research scope; limited bookkeeping only
+
+Because portfolio performance requires specifying how long withdrawn capital stays in cash, freeze a **mechanical nonoptimized 5-session holding window** for exit attribution, with predetermined 3/10-session sensitivity; independently preserve original Top1 switching/defensive routing as appropriate. These are temporary accounting conventions, **not** an optimized buy-back/add-to-position signal, and must not be presented to the user as a solved re-entry method. Do not tune re-entry or trade hysteresis jointly with the present exit predictor. The genuine re-entry optimization is a later separate phase.
+
+### Data credibility and deployment
+
+Use all as-of-available data, avoid hindsight ETF survivorship as far as possible, distinguish missing historical NAV/premium and 14:05 intraday execution from daily bar proxies. Existing earlier 2021–2026 trend/volatility/Z-score simple-group backtests are preliminary diagnostics and negative controls, **not** proof of a production ML strategy. No production edits, external notifications, actual holdings changes or rollout without explicit user approval.
+
+
 ## 2026-11-20 explicit user correction — primary policy is continuous conditional withdrawal
 
 **This section supersedes any older reference to 100/70/40/0, 0/30/60/100 or fixed exit bands as the proposed dynamic risk control.** Earlier discrete pilots are historical experiments/baselines, not the requested final model.
