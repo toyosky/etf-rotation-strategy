@@ -13,8 +13,8 @@ const bars=[
 const args={calendar,bars,decisionDate:'2026-01-29',executionDate:'2026-01-30',entryPrice:100,horizon:3};
 const r=forwardExcursion(args);
 assert.equal(r.status,'price_proxy_only');
-assert.equal(r.loss,0.2);
-assert.equal(r.favorable,0.2);
+assert.ok(Math.abs(r.loss-0.2)<1e-12);
+assert.ok(Math.abs(r.favorable-0.2)<1e-12);
 assert.equal(r.troughDate,'2026-02-02');
 assert.deepEqual(forwardExcursion({...args,bars:bars.filter(b=>b.date!=='2026-02-02')}).missing,['2026-02-02']);
 assert.equal(forwardExcursion({...args,decisionDate:'2026-01-28'}).status,'decision_date_absent');
