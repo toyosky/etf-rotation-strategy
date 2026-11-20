@@ -26,7 +26,7 @@ const auditProbabilities=function auditProbabilities(csv){
    const previousTp=tp,previousFp=fp;tp+=pos;fp+=neg;
    const rec=tp/nPos,precision=tp/(tp+fp);
    prec+=(rec-prevRecall)*precision;prevRecall=rec;
-   auc+=(previousFp/nNeg+fp/nNeg)/2*(rec-previousTp/nPos);
+   auc+=(previousTp/nPos+tp/nPos)/2*((fp-previousFp)/nNeg);
    i=j;
   }
   return {auroc:auc,averagePrecision:prec};
