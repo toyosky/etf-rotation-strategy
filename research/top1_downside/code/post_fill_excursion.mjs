@@ -18,6 +18,8 @@ export function executableExcursion({calendar, decisionDate, executionDate, hori
   if (!Array.isArray(entryMinutes) || !Array.isArray(laterDailyBars))
     throw new Error('arrays required');
   const minutes=entryMinutes.filter(b=>b.date===executionDate);
+  if (minutes.some(b=>!/^([01][0-9]|2[0-3]):[0-5][0-9]$/.test(b.time || '')))
+    return {status:'invalid_minute_timestamp'};
   if (new Set(minutes.map(b=>b.time)).size!==minutes.length)
     return {status:'duplicate_minute_times'};
   // Exclude the bar ending at fillTime: its high/low may precede the fill.
@@ -27,7 +29,7 @@ export function executableExcursion({calendar, decisionDate, executionDate, hori
   // feed could silently understate MAE and MFE. Do not issue a usable label.
   if (!Array.isArray(expectedPostFillMinuteTimes) || !expectedPostFillMinuteTimes.length ||
       new Set(expectedPostFillMinuteTimes).size!==expectedPostFillMinuteTimes.length ||
-      expectedPostFillMinuteTimes.some(t=>typeof t!=='string' || t<=fillTime || t>'15:00'))
+      expectedPostFillMinuteTimes.some(t=>typeof t!=='string' || !/^([01][0-9]|2[0-3]):[0-5][0-9]$/.test(t) || t<=fillTime || t>'15:00'))
     return {status:'minute_calendar_unverified'};
   const actualTimes=new Set(eligible.map(b=>b.time));
   if (actualTimes.size!==expectedPostFillMinuteTimes.length ||
