@@ -18,7 +18,7 @@ export function expandingPurgedSplits(rows, testWindows, {embargoSessions=0, min
     if(!validDate(start)||!validDate(end)||end<start) throw new Error('invalid test window');
     const test=rows.map((r,i)=>({r,i})).filter(({r})=>r.decisionDate>=start&&r.decisionDate<=end).map(({i})=>i);
     if (!test.length) return {start,end,status:'no_test',train:[],test:[]};
-    const firstDate=rows[test[0]].decisionDate;
+    const firstDate=test.reduce((earliest,i)=>rows[i].decisionDate<earliest?rows[i].decisionDate:earliest,rows[test[0]].decisionDate);
     const first=dates.indexOf(firstDate);
     const cutoffIndex=first-embargoSessions-1;
     const cutoff=cutoffIndex>=0?dates[cutoffIndex]:null;
