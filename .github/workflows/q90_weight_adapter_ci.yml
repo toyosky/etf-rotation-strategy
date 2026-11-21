@@ -1,0 +1,23 @@
+name: Q90 weight adapter CI (research only)
+on:
+  pull_request:
+    paths:
+      - 'strategy/main.py'
+      - 'tests/test_q90_weight_adapter.py'
+      - '.github/workflows/q90_weight_adapter_ci.yml'
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile strategy and test module
+        run: python -m py_compile strategy/main.py tests/test_q90_weight_adapter.py
+      - name: Unit test isolated weight execution adapters
+        run: python -m unittest discover -s tests -p 'test_q90_weight_adapter.py' -v
