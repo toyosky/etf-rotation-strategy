@@ -12,6 +12,9 @@ export function verifyIndependentMinuteClock({clock, bars, fillTime, executionDa
       !Array.isArray(clock.expectedTimes) || !clock.expectedTimes.length)
     return {status:'unverified_clock_provenance'};
   const expected=clock.expectedTimes;
+  // A fill outside continuous auction cannot be validated by this clock.
+  // A 15:00 fill would otherwise pass vacuously with zero post-fill bars.
+  if (!Array.isArray(bars)) return {status:'invalid_bars'};
   // Only the standard mainland ETF/LOF continuous-auction session is certified here.
   // Special sessions must be handled by a separately verified exchange calendar.
   if (clock.sessionType!=='regular_cn_a_share')
@@ -30,11 +33,14 @@ export function verifyIndependentMinuteClock({clock, bars, fillTime, executionDa
   if (!expected.some(t=>t<='11:30') || !expected.some(t=>t>='13:01') ||
       expected[expected.length-1]!=='15:00')
     return {status:'incomplete_session_clock'};
-  if (!Array.isArray(bars)) return {status:'invalid_bars'};
+  if (!canonical.includes(fillTime)) return {status:'fill_outside_verified_session'};
   const observed=bars.filter(b=>b.date===executionDate).map(b=>b.time);
   if (observed.some(t=>!TIME.test(t)) || new Set(observed).size!==observed.length)
     return {status:'invalid_observed_clock'};
+  if (observed.some(t=>!canonical.includes(t)))
+    return {status:'observed_outside_verified_session'};
   const post=expected.filter(t=>t>fillTime);
+  if (!post.length) return {status:'no_post_fill_session'};
   const actual=new Set(observed.filter(t=>t>fillTime));
   const missing=post.filter(t=>!actual.has(t));
   const unexpected=[...actual].filter(t=>!post.includes(t));
