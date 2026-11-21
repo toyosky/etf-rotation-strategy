@@ -12,8 +12,8 @@ assert.throws(()=>expandingPurgedSplits(rows,[],{embargoSessions:-1}),/invalid e
 const sparse=[{decisionDate:d[0],labelEndDate:d[0]},
  {decisionDate:d[1],labelEndDate:d[1]},
  {decisionDate:d[5],labelEndDate:d[6]}];
-assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2}).train,[]);
-assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2,marketCalendar:d}).train,[0,1]);
+assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2})[0].train,[]);
+assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2,marketCalendar:d})[0].train,[0,1]);
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:[d[0],d[1],d[1]]}),/invalid market calendar/);
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:d.slice(0,-1)}),/sample date missing/);
 assert.equal(expandingPurgedSplits(rows,[{start:'2027-01-01',end:'2027-01-31'}])[0].status,'no_test');
