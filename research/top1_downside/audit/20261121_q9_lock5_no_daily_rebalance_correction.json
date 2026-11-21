@@ -1,0 +1,44 @@
+{
+  "reason": "Q9 initial lock5 variant incorrectly rebalanced 5-day E to the original locked weight each day. This repairs execution: during 5-day hold, no trades if Void target unchanged; allow passive price drift.",
+  "stats": {
+    "cagr244": 0.5243169503951897,
+    "cagr252": 0.5455310949497703,
+    "nav": 11.606139616688127,
+    "mdd": -0.3759612153790971,
+    "tickets": 514,
+    "feeSum": 0.24497015153537385,
+    "turnSum": 408.28358589228907,
+    "years": {
+      "2021": {
+        "return": 0.2521022257674872,
+        "mdd": -0.13326447714244893,
+        "tickets": 61
+      },
+      "2022": {
+        "return": 0.18185341640571795,
+        "mdd": -0.2570455692686522,
+        "tickets": 72
+      },
+      "2023": {
+        "return": 0.1127475165900984,
+        "mdd": -0.14772620685879823,
+        "tickets": 72
+      },
+      "2024": {
+        "return": 0.4058834704410985,
+        "mdd": -0.24649554727334777,
+        "tickets": 105
+      },
+      "2025": {
+        "return": 1.0509824563183057,
+        "mdd": -0.17203157272295022,
+        "tickets": 101
+      },
+      "2026": {
+        "return": 1.4444236905428438,
+        "mdd": -0.3759612153790971,
+        "tickets": 103
+      }
+    }
+  }
+}
