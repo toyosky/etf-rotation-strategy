@@ -59,7 +59,8 @@ class Tests(unittest.TestCase):
         )
         self.env = {
             "g": self.g, "np": types.SimpleNamespace(isfinite=math.isfinite),
-            "RISK_POOL": {ETF, OTHER}, "Q90_SIZING_ENABLED": True,
+            "RISK_POOL": {ETF, OTHER}, "CASH_SIGNAL_SYMBOL": "511220.XSHG",
+            "Q90_SIZING_ENABLED": True,
             "Q90_MIN_E": 0.05, "Q90_CHANGE_BAND": 0.05,
             "Q90_WEIGHT_TOLERANCE": 0.005,
             "log": types.SimpleNamespace(info=self.log.append, warning=self.log.append),
@@ -146,6 +147,15 @@ class Tests(unittest.TestCase):
         self.call("execute_weight_buy_at_1405", context)
         self.assertEqual(self.orders, [])
         self.assertTrue(any("溢价阻止" in str(x) for x in self.log))
+
+    def test_0931_buy_veto_persists_at_1405(self):
+        context = FakeContext(7000)
+        self.g.pending_target_weight = 0.9
+        self.g.pending_buy_target = ETF
+        self.g.entry_blocked = True
+        self.g.entry_reason = "09:31跳空保护"
+        self.call("execute_weight_buy_at_1405", context)
+        self.assertEqual(self.orders, [])
 
     def test_void_freeze_no_order(self):
         context = FakeContext(7000)
