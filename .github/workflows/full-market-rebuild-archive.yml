@@ -1,0 +1,56 @@
+name: Full Market Rebuild - Frozen 1090 Asset Study
+on:
+  push:
+    branches:
+      - research/full-market-rebuild-v1
+    paths:
+      - 'research/full_market_rebuild/full_market_archive_study.py'
+      - '.github/workflows/full-market-rebuild-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  full-market-study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install offline research dependencies
+        run: python -m pip install numpy pandas boto3 pyarrow sqlalchemy psycopg2-binary
+      - name: Verify historical archive and compute all-market rebuild events
+        env:
+          SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
+          SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
+        run: |
+          python -m research.full_market_rebuild.full_market_archive_study \
+            --out research/full_market_rebuild/full_market_output
+      - name: Publish reproducible full-market event study outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-market-rebuild-study-${{ github.run_id }}
+          path: |
+            research/full_market_rebuild/full_market_output/full_market_report.json
+            research/full_market_rebuild/full_market_output/full_market_events.csv
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Preserve original frozen dataset in GitHub Research Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          TAG="research-data-fullmarket-20260917"
+          ARCHIVE="research/full_market_rebuild/full_market_output/frozen_20260917_source.tar.gz"
+          test -s "$ARCHIVE"
+          if gh release view "$TAG" --repo "$GH_REPO" >/dev/null 2>&1; then
+            echo "Existing frozen research snapshot kept unchanged:"
+            gh release view "$TAG" --repo "$GH_REPO" --json url
+          else
+            gh release create "$TAG" "$ARCHIVE" \
+              --repo "$GH_REPO" --target "$GITHUB_SHA" \
+              --title "Frozen full-market ETF historical bars (2026-09-17)" \
+              --notes "Private reproducibility snapshot copied from etf-research-archive/raw_daily_bars/frozen_20260917. Includes original manifest and 29 SHA256-validated yearly parquet files. Research use only; point-in-time and delisted-fund coverage NOT certified."
+          fi
