@@ -1,0 +1,171 @@
+{
+  "byyear": {
+    "2021": {
+      "n": 20,
+      "valid": 20,
+      "buy": 6,
+      "netWhenBuy": 0.003256625881375482,
+      "netWhenCash": 0.014399256953420972,
+      "meanE": 0.011347166396885947,
+      "top2LossVsPred": 0
+    },
+    "2022": {
+      "n": 10,
+      "valid": 10,
+      "buy": 7,
+      "netWhenBuy": 0.011380201241896244,
+      "netWhenCash": 0.053495425874465145,
+      "meanE": 0.0901479653274506,
+      "top2LossVsPred": 0.14285714285714285
+    },
+    "2023": {
+      "n": 20,
+      "valid": 20,
+      "buy": 11,
+      "netWhenBuy": -0.010908079776272539,
+      "netWhenCash": 0.007287790744276561,
+      "meanE": 0.13222735834748664,
+      "top2LossVsPred": 0.2727272727272727
+    },
+    "2024": {
+      "n": 18,
+      "valid": 18,
+      "buy": 8,
+      "netWhenBuy": 0.01654624923579486,
+      "netWhenCash": 0.007269691300583879,
+      "meanE": 0.11121625556641172,
+      "top2LossVsPred": 0
+    },
+    "2025": {
+      "n": 30,
+      "valid": 30,
+      "buy": 20,
+      "netWhenBuy": -0.001376043174376905,
+      "netWhenCash": -0.002622571913055207,
+      "meanE": 0.16646194435428646,
+      "top2LossVsPred": 0.15
+    },
+    "2026": {
+      "n": 21,
+      "valid": 18,
+      "buy": 12,
+      "netWhenBuy": 0.004818868377407688,
+      "netWhenCash": 0.014427042563287322,
+      "meanE": 0.22338184128333158,
+      "top2LossVsPred": 0.08333333333333333
+    }
+  },
+  "byRisk": {
+    "r_1.10_1.25": {
+      "n": 72,
+      "nBuy": 42,
+      "avgE": 0.058510134196871816,
+      "netAll": 0.003170432604380208,
+      "netBuy": -0.00227062803629347,
+      "netReject": 0.010787917501323362,
+      "spreadAll": -0.0007960939481729559,
+      "selectedRiskMAE": 0.022167344534423487,
+      "notSelectedRiskMAE": 0.01859902299871338
+    },
+    "r_1.25_1.40": {
+      "n": 26,
+      "nBuy": 11,
+      "avgE": 0.18204498299859864,
+      "netAll": 0.017007685375476235,
+      "netBuy": 0.014521244553508294,
+      "netReject": 0.018831075311586034,
+      "spreadAll": 0.011936919833708025,
+      "selectedRiskMAE": 0.013782775409713703,
+      "notSelectedRiskMAE": 0.017005433805824564
+    },
+    "r_above_1.40": {
+      "n": 18,
+      "nBuy": 11,
+      "avgE": 0.3946973482524009,
+      "netAll": 0.0017842395009596442,
+      "netBuy": 0.0070473204369069335,
+      "netReject": -0.006486316255528954,
+      "spreadAll": -0.011226932807086533,
+      "selectedRiskMAE": 0.01273218970638383,
+      "notSelectedRiskMAE": 0.022781614422951808
+    }
+  },
+  "byType": {
+    "passOpportunity": {
+      "nYes": 105,
+      "nNo": 11,
+      "yesE": 0.13275322566388664,
+      "noE": 0.1919420721794047,
+      "yesActualMAE": 0.018454818338312994,
+      "noActualMAE": 0.02340551447358434,
+      "yesNet": 0.003327274003935492,
+      "noNet": 0.03211122798925491,
+      "yesWin": 0.5142857142857142,
+      "noWin": 0.7272727272727273
+    },
+    "passRiskDbase": {
+      "nYes": 73,
+      "nNo": 43,
+      "yesE": 0.14315416857898133,
+      "noE": 0.13023714377711423,
+      "yesActualMAE": 0.018587942972384832,
+      "noActualMAE": 0.019495273203446496,
+      "yesNet": 0.007933479428948923,
+      "noNet": 0.002870773953064193,
+      "yesWin": 0.5616438356164384,
+      "noWin": 0.4883720930232558
+    },
+    "passJoint": {
+      "nYes": 64,
+      "nNo": 52,
+      "yesE": 0.14145579257051286,
+      "noE": 0.13456309161862934,
+      "yesActualMAE": 0.01910457948004468,
+      "noActualMAE": 0.018702374961719857,
+      "yesNet": 0.002216997458910024,
+      "noNet": 0.010782681556245954,
+      "yesWin": 0.515625,
+      "noWin": 0.5576923076923077
+    }
+  },
+  "corrG": {
+    "passRiskDbase": {
+      "selectedCorr60": 0.3942004087964336,
+      "rejectedCorr60": 0.2952140346822372,
+      "selectedSameDirectionalLoss5": 0.2602739726027397,
+      "rejectedSameDirectionalLoss5": 0.20930232558139536
+    },
+    "passJoint": {
+      "selectedCorr60": 0.4105412385056524,
+      "rejectedCorr60": 0.2922345013291172,
+      "selectedSameDirectionalLoss5": 0.296875,
+      "rejectedSameDirectionalLoss5": 0.17307692307692307
+    }
+  },
+  "positiveFraction": {
+    "2021": {
+      "RMSEImproves": false,
+      "riskExceed": 0.07883817427385892
+    },
+    "2022": {
+      "RMSEImproves": false,
+      "riskExceed": 0.07017543859649122
+    },
+    "2023": {
+      "RMSEImproves": false,
+      "riskExceed": 0.102803738317757
+    },
+    "2024": {
+      "RMSEImproves": false,
+      "riskExceed": 0.1091703056768559
+    },
+    "2025": {
+      "RMSEImproves": true,
+      "riskExceed": 0.1016949152542373
+    },
+    "2026": {
+      "RMSEImproves": false,
+      "riskExceed": 0.11864406779661017
+    }
+  }
+}
