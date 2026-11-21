@@ -11,7 +11,7 @@ const recentMinuteExecution=function recentMinuteExecution(inputs){
   const mTarget=l.target||null,archiveTarget=d.Void_target||null;
   if(mTarget!==archiveTarget&&d.date!=="20260929")throw Error("unexpected route discrepancy "+d.date);
   return {signal:d.date,execution:f.executionDate,asset:mTarget,void:d.Void_state==="DEFENSIVE_VOID",rawTop:d.Q90_raw_top,rawE:+d.Q90_E,
-   matched:!d.Void_state.includes("VOID")?mTarget===d.Q90_raw_top:false,override:mTarget!==archiveTarget};
+   matched:d.Void_state==="NON_VOID"?mTarget===d.Q90_raw_top:false,override:mTarget!==archiveTarget};
  });
  const modes=["baseline","daily5","s1_two_confirm_oneshot"],results={},streams={};
  const bank=20000,minLot=100,feeFn=amount=>Math.max(.0006*amount,5);
@@ -91,7 +91,6 @@ const recentMinuteExecution=function recentMinuteExecution(inputs){
      if(needsNew&&held)sellAll(held,at,"FORMAL_SWITCH");
      if(!r.asset){action="FORMAL_CASH";}else {
       const w=targetWeight;
-      if(held===r.asset&&w<nav1400?false:false){} // no-op; only compile-safe
       if(held===r.asset){
        const nowV=units*p(px(at,r.asset),"p1400"),nowNAV=cash+nowV;
        if(w<nowV/nowNAV-1e-8)sellPartial(r.asset,at,w,action);
@@ -130,7 +129,7 @@ const recentMinuteExecution=function recentMinuteExecution(inputs){
    signals:records.length,assetUniverse:[...new Set(records.map(x=>x.asset))],liveOverrideDates:records.filter(x=>x.override).map(x=>x.signal),
    model:"Initial cash ¥20,000, trade at 14:00 sell/14:05 buy checkpoint minute prices; 100-share lots, each side max(0.06%, ¥5), preflight 09:31 gap and minute 14:00/14:05 high drawdown ≥2%; only PIT-known Void/V1 routes, no historical premium PIT veto because NAV first_seen backfilled; trailing 1-minute last close MTM"},
   results};
- const csv=["signal,execution,formalTarget,heldEnd,void,override,baseline_NAV,daily_NAV,s1_NAV,baseline_act,daily_act,s1_act,daily_weight,daily_cash,s1_weight,s1_cash",
+ const csv=["signal,execution,formalTarget,void,override,baseline_NAV,daily_NAV,s1_NAV,baseline_act,daily_act,s1_act,daily_weight,daily_cash,s1_weight,s1_cash",
  ...records.map((r,i)=>[r.signal,r.execution,r.asset,+r.void,+r.override,
  streams.baseline.stream[i].nav,streams.daily5.stream[i].nav,streams.s1_two_confirm_oneshot.stream[i].nav,
  streams.baseline.stream[i].action,streams.daily5.stream[i].action,streams.s1_two_confirm_oneshot.stream[i].action,
