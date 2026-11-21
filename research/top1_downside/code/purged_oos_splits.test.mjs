@@ -7,13 +7,13 @@ assert.deepEqual(expandingPurgedSplits(rows,w)[0].train,[0,1,2]);
 assert.deepEqual(expandingPurgedSplits(rows,w,{embargoSessions:1})[0].train,[0,1]);
 assert.equal(expandingPurgedSplits(rows,[{start:d[0],end:d[1]}])[0].status,'insufficient_train');
 assert.throws(()=>expandingPurgedSplits(rows,[],{embargoSessions:-1}),/invalid embargo/);
-// Sparse sample dates: using observed samples as a calendar wrongly counts
-// Jan 6 -> Jan 12 as one session, omitting Jan 7/8/9.
+// A sparse Top1 sample list is not a market-session calendar: the two
+// approaches produce different eligibility for the same 2-session embargo.
 const sparse=[{decisionDate:d[0],labelEndDate:d[0]},
  {decisionDate:d[1],labelEndDate:d[1]},
  {decisionDate:d[5],labelEndDate:d[6]}];
-assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2}).train,[0]);
-assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2,marketCalendar:d}).train,[]);
+assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2}).train,[]);
+assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2,marketCalendar:d}).train,[0,1]);
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:[d[0],d[1],d[1]]}),/invalid market calendar/);
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:d.slice(0,-1)}),/sample date missing/);
 assert.equal(expandingPurgedSplits(rows,[{start:'2027-01-01',end:'2027-01-31'}])[0].status,'no_test');
