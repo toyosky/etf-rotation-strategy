@@ -54,7 +54,7 @@ const auditE0HighRisk=function auditE0HighRisk(prediction,voiddata){
   for(const key of Object.keys(ar[0]??{}))summary[key]={CI95:[quant(ar.map(x=>x[key]),.025),quant(ar.map(x=>x[key]),.975)],pPositive:avg(ar,x=>+(x[key]>0))};
   boot[scope]=summary;
  }
- return {comparison,bootstrap:boot,counts:{raw:q.length,good:good.length,actualEligible:allowed.length,notRisk:q.filter(x=>!x.s).length,invalidMissingLabels:q.filter(x=>x.s&&!Number.isFinite(x.loss)).length}};
+ return {comparison,bootstrap:boot,counts:{raw:q.length,good:good.length,actualEligible:allowed.length,notRisk:q.filter(x=>!x.s).length,invalidMissingLabels:q.filter(x=>x.s&&(x.loss===""||!Number.isFinite(+x.loss))).length}};
 };
 const files=process.argv.slice(2);if(files.length!==2)throw Error("Expected Q90 predictions and historical formal Void routes");
 console.log(JSON.stringify(auditE0HighRisk(...files.map(p=>fs.readFileSync(p,"utf8"))),null,2));
