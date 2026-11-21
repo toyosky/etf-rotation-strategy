@@ -1,0 +1,45 @@
+{
+  "out": {
+    "meanTotalExposure": {
+      "days": 1419,
+      "riskDays": 1317,
+      "avgDailyEAllDays": 0.038544332857350636,
+      "avgS1EAllDays": 0.05629548019396449,
+      "staticRiskHaircutDaily": 0.04152954314698599,
+      "staticRiskHaircutS1": 0.060655494605342156
+    },
+    "staticDailyMatched": {
+      "E": 0.04152954314698599,
+      "nav": 11.578033559310109,
+      "cagr": 0.523681574541494,
+      "mdd": -0.363518103782548,
+      "tickets": 411,
+      "fees": 0.23688478677223265,
+      "byYear": {
+        "2021": 0.22310848030015484,
+        "2022": 0.13815843313664278,
+        "2023": 0.12042807140929246,
+        "2024": 0.5442870520303,
+        "2025": 1.0665277412918899,
+        "2026": 1.3260221983984781
+      }
+    },
+    "staticS1Matched": {
+      "E": 0.060655494605342156,
+      "nav": 11.149180122073826,
+      "cagr": 0.5138247426541904,
+      "mdd": -0.3574899122625176,
+      "tickets": 411,
+      "fees": 0.23240959838641276,
+      "byYear": {
+        "2021": 0.2206494332768767,
+        "2022": 0.13650466647964965,
+        "2023": 0.1182019002007264,
+        "2024": 0.5327683848667437,
+        "2025": 1.0413555353855997,
+        "2026": 1.297023001154325
+      }
+    }
+  },
+  "disclaimer": "Post-outcome cash weight matched to Q9 observed mean; descriptive exposure comparison, not preregistered nor independent. Constant 4.13%/6.04% reduction whenever Void route is a risk ETF, even when Q90 unavailable; 5pp rebalance tolerance; 6bp side."
+}
