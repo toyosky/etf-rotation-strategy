@@ -1,0 +1,31 @@
+{
+  "original": {
+    "selected": 64,
+    "rest": 52,
+    "meanSelectedNet": 0.002216997458910024,
+    "meanRestNet": 0.010782681556245954,
+    "gap": -0.00856568409733593,
+    "meanSelectedEWeighted": 0.00012109961356033504,
+    "meanAllEWeighted": 0.0005080294447629464,
+    "selectedVersusCashEvent": 0.00021949304957810727,
+    "selectedDown5": 0.109375,
+    "rejectedDown5": 0.11538461538461539
+  },
+  "bands": {
+    "gap": {
+      "CI95": [
+        -0.022148340258836424,
+        0.004749856188472653
+      ],
+      "probPositive": 0.09833333333333333
+    },
+    "w": {
+      "CI95": [
+        -0.0005736697222656949,
+        0.0007756337748011659
+      ],
+      "probPositive": 0.6396666666666667
+    }
+  },
+  "method": "By year, 4-event circular block bootstrap 3000 draws; prior 2021-26 exploratory, cannot replace unseen data; signed differences compare selected v unselected, confidence intervals overlap 0."
+}
