@@ -12,6 +12,17 @@ export function verifyIndependentMinuteClock({clock, bars, fillTime, executionDa
       !Array.isArray(clock.expectedTimes) || !clock.expectedTimes.length)
     return {status:'unverified_clock_provenance'};
   const expected=clock.expectedTimes;
+  // Only the standard mainland ETF/LOF continuous-auction session is certified here.
+  // Special sessions must be handled by a separately verified exchange calendar.
+  if (clock.sessionType!=='regular_cn_a_share')
+    return {status:'unsupported_session_type'};
+  const canonical=[];
+  for (const [start,end] of [[9*60+31,11*60+30],[13*60+1,15*60]]) {
+    for(let minute=start;minute<=end;minute++)
+      canonical.push(`${String(Math.floor(minute/60)).padStart(2,'0')}:${String(minute%60).padStart(2,'0')}`);
+  }
+  if (expected.length!==canonical.length || expected.some((t,i)=>t!==canonical[i]))
+    return {status:'noncanonical_regular_session_clock',expectedCount:canonical.length,observedCount:expected.length};
   if (expected.some(t=>!TIME.test(t)) ||
       expected.some((t,i)=>i>0 && t<=expected[i-1]))
     return {status:'invalid_expected_clock'};
