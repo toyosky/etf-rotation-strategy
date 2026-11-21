@@ -23,4 +23,6 @@ assert.equal(executableExcursion({...input,fillTime:'15:00'}).status,'no_post_fi
 assert.equal(executableExcursion({...input,laterDailyBars:[]}).status,'missing_later_sessions');
 assert.equal(executableExcursion({...input,entryMinutes:[...input.entryMinutes,input.entryMinutes[0]]}).status,'duplicate_minute_times');
 assert.equal(executableExcursion({...input,calendar:input.calendar.slice(0,2)}).status,'right_censored');
+assert.equal(executableExcursion({...input,expectedPostFillMinuteTimes:['bad-time']}).status,'minute_calendar_unverified');
+assert.equal(executableExcursion({...input,entryMinutes:[...input.entryMinutes,bar('2026-11-17','not-a-time',99,101)]}).status,'invalid_minute_timestamp');
 console.log('post-fill excursion tests passed');
