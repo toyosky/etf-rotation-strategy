@@ -16,4 +16,7 @@ assert.equal(verifyIndependentMinuteClock({...args,clock:{...clock,expectedTimes
 assert.equal(verifyIndependentMinuteClock({...args,clock:{...clock,sessionType:'special'}}).status,'unsupported_session_type');
 assert.equal(verifyIndependentMinuteClock({...args,bars:bars.filter(x=>x.time!=='13:01')}).status,'clock_mismatch');
 assert.equal(verifyIndependentMinuteClock({...args,bars:[...bars,bars[1]]}).status,'invalid_observed_clock');
+assert.equal(verifyIndependentMinuteClock({...args,fillTime:'12:00'}).status,'fill_outside_verified_session');
+assert.equal(verifyIndependentMinuteClock({...args,fillTime:'15:00'}).status,'no_post_fill_session');
+assert.equal(verifyIndependentMinuteClock({...args,bars:[...bars,{date:clock.date,time:'12:01'}]}).status,'observed_outside_verified_session');
 console.log('independent minute clock gate synthetic tests passed');
