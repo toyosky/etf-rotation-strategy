@@ -12,7 +12,7 @@ const runFormalVoid=function runFormalVoid(inputs){
   if(v.missing==="1"&&v.target!==q.s)throw Error(`Missing gross cannot be repaired for ${date}`);
   const unclassified=t&&!riskSymbols.has(t)&&!["511220","513500"].includes(t);
   if(unclassified)throw Error(`Unknown formal route ${date} ${t}`);
-  return {date,year:date.slice(0,4),index:i,asset:t,void:v.state==="DEFENSIVE_VOID",decision:v.decision,compatible,rawTop:q.s,
+  return {date,year:date.slice(0,4),index:i,asset:t||null,void:v.state==="DEFENSIVE_VOID",decision:v.decision,compatible,rawTop:q.s,
    E:rawE,Ef:rawE>=.05?rawE:0,rawPositive:rawE>=.05,ret:repairedGross,rawRet:+v.gross,
    missing:v.missing==="1",v1:v.v1Decision,rawSourceRet:q.s===t?+q.ret:null};
  });
@@ -113,7 +113,7 @@ const runFormalVoid=function runFormalVoid(inputs){
    const year=d.year,y=yrs[year]??(yrs[year]={first:preNav,last:nav,peak:preNav,mdd:0,days:0,beginCash:0,endingCash:0,avgCash:0,tradeDays:0,q90Reduces:0,q90Restores:0,voidDays:0,voidEntries:0,voidRoute:0,fees:0});
    y.last=nav;y.peak=Math.max(y.peak,nav);y.mdd=Math.min(y.mdd,nav/y.peak-1);y.days++;y.avgCash+=actualCash;y.endingCash=actualCash;
    if(instruction.includes("REDUCE"))y.q90Reduces++;
-   if(instruction.includes("RESTORE"))y.q90Restores++;
+   if(instruction==="Q90_RESTORE"||instruction==="Q90_CONFIRMED_RESTORE")y.q90Restores++;
    if(d.void)y.voidDays++;
    if(enterVoid)y.voidEntries++;
    if(instruction==="FORMAL_VOID_ROUTE")y.voidRoute++;
