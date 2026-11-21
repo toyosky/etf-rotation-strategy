@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {expandingPurgedSplits} from './purged_oos_splits.mjs';
+const d=['2026-01-05','2026-01-06','2026-01-07','2026-01-08','2026-01-09','2026-01-12','2026-01-13'];
+const rows=d.map((date,i)=>({decisionDate:date,labelEndDate:d[Math.min(i+2,d.length-1)]}));
+const [a]=expandingPurgedSplits(rows,[{start:'2026-01-12',end:'2026-01-13'}]);
+assert.equal(a.status,'ready');
+assert.deepEqual(a.train,[0,1,2]);
+assert.deepEqual(a.test,[5,6]);
+const [b]=expandingPurgedSplits(rows,[{start:'2026-01-12',end:'2026-01-13'}],{embargoSessions:1});
+assert.deepEqual(b.train,[0,1]);
+assert.equal(expandingPurgedSplits(rows,[{start:'2026-01-05',end:'2026-01-06'}])[0].status,'insufficient_train');
+assert.throws(()=>expandingPurgedSplits(rows,[],{embargoSessions:-1}),/invalid embargo/);
+console.log('purged expanding OOS split tests passed');
