@@ -4,7 +4,7 @@ const bar=(date,time,low,high)=>({date,time,open:100,close:100,low,high});
 const input={
  calendar:['2026-11-16','2026-11-17','2026-11-18'],
  decisionDate:'2026-11-16',executionDate:'2026-11-17',
- horizon:2,entryPrice:100,fillTime:'09:35',
+ horizon:2,entryPrice:100,fillTime:'09:35',expectedPostFillMinuteTimes:['09:36'],
  priceBasis:'raw',minuteBasis:'raw',
  entryMinutes:[bar('2026-11-17','09:34',70,130),
    bar('2026-11-17','09:35',80,120),
@@ -16,6 +16,8 @@ assert.equal(result.status,'post_fill_price_path_proxy');
 assert.ok(Math.abs(result.loss-0.10)<1e-12);
 assert.ok(Math.abs(result.favorable-0.10)<1e-12);
 assert.equal(result.entrySessionMinuteCount,1);
+assert.equal(executableExcursion({...input,expectedPostFillMinuteTimes:undefined}).status,'minute_calendar_unverified');
+assert.equal(executableExcursion({...input,expectedPostFillMinuteTimes:['09:36','09:37']}).status,'incomplete_post_fill_minutes');
 assert.equal(executableExcursion({...input,priceBasis:'adjusted'}).status,'price_basis_unverified');
 assert.equal(executableExcursion({...input,fillTime:'15:00'}).status,'no_post_fill_minutes');
 assert.equal(executableExcursion({...input,laterDailyBars:[]}).status,'missing_later_sessions');
