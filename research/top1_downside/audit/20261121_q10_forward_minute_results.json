@@ -1,0 +1,496 @@
+{
+  "output": {
+    "period": {
+      "firstSignal": "20260914",
+      "lastSignal": "20261112",
+      "firstExecution": "2026-09-15",
+      "lastExecution": "2026-11-13",
+      "signals": 38,
+      "assetUniverse": [
+        "159981",
+        "159509",
+        "513100",
+        "501018",
+        "511220"
+      ],
+      "liveOverrideDates": [
+        "20260929"
+      ],
+      "model": "Initial cash ¥20,000, trade at 14:00 sell/14:05 buy checkpoint minute prices; 100-share lots, each side max(0.06%, ¥5), preflight 09:31 gap and minute 14:00/14:05 high drawdown ≥2%; only PIT-known Void/V1 routes, no historical premium PIT veto because NAV first_seen backfilled; trailing 1-minute last close MTM"
+    },
+    "results": {
+      "baseline": {
+        "totalReturn": -0.026335347999999925,
+        "NAV": 19473.29304,
+        "mdd": -0.14303645002432297,
+        "lowDate": "2026-11-05",
+        "fees": 135.90695999999997,
+        "tickets": 11,
+        "tradeActions": 11,
+        "buyVetoDays": 0,
+        "gapBlocked": 0,
+        "drawBlocked1400": 0,
+        "drawBlocked1405": 0,
+        "positiveQ90Days": 0,
+        "bought": 6,
+        "sold": 5,
+        "lastAsset": "511220",
+        "lastCashWeight": 0.04053207838955216
+      },
+      "daily5": {
+        "totalReturn": -0.01991714500000019,
+        "NAV": 19601.657099999997,
+        "mdd": -0.14309893218380298,
+        "lowDate": "2026-11-05",
+        "fees": 150.14289999999997,
+        "tickets": 16,
+        "tradeActions": 16,
+        "buyVetoDays": 0,
+        "gapBlocked": 0,
+        "drawBlocked1400": 0,
+        "drawBlocked1405": 0,
+        "positiveQ90Days": 6,
+        "bought": 8,
+        "sold": 8,
+        "lastAsset": "511220",
+        "lastCashWeight": 0.04681528175492861
+      },
+      "s1_two_confirm_oneshot": {
+        "totalReturn": -0.005510091000000328,
+        "NAV": 19889.798179999994,
+        "mdd": -0.1313914466061099,
+        "lowDate": "2026-11-05",
+        "fees": 137.80182,
+        "tickets": 14,
+        "tradeActions": 14,
+        "buyVetoDays": 2,
+        "gapBlocked": 0,
+        "drawBlocked1400": 0,
+        "drawBlocked1405": 2,
+        "positiveQ90Days": 6,
+        "bought": 6,
+        "sold": 8,
+        "lastAsset": "511220",
+        "lastCashWeight": 0.008436394300306287
+      }
+    }
+  },
+  "actions": {
+    "baseline": [
+      {
+        "date": "2026-09-15",
+        "signal": "20260914",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.772,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.90784
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.922,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.915839999999998
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "BUY",
+        "asset": "159509",
+        "units": 6500,
+        "price": 3.286,
+        "reason": "FORMAL_TARGET",
+        "fee": 12.815399999999999
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 6500,
+        "price": 3.232,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.6048
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "BUY",
+        "asset": "513100",
+        "units": 8900,
+        "price": 2.384,
+        "reason": "FORMAL_TARGET",
+        "fee": 12.730559999999999
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "SELL",
+        "asset": "513100",
+        "units": 8900,
+        "price": 2.356,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.581039999999998
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11400,
+        "price": 1.83,
+        "reason": "FORMAL_TARGET",
+        "fee": 12.517199999999999
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11400,
+        "price": 1.814,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.40776
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "BUY",
+        "asset": "501018",
+        "units": 9600,
+        "price": 2.157,
+        "reason": "FORMAL_TARGET",
+        "fee": 12.42432
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "SELL",
+        "asset": "501018",
+        "units": 9600,
+        "price": 2.035,
+        "reason": "FORMAL_SWITCH",
+        "fee": 11.721599999999999
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "BUY",
+        "asset": "511220",
+        "units": 1800,
+        "price": 10.445,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.2806
+      }
+    ],
+    "daily5": [
+      {
+        "date": "2026-09-15",
+        "signal": "20260914",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.772,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.90784
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.922,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.915839999999998
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "BUY",
+        "asset": "159509",
+        "units": 5300,
+        "price": 3.286,
+        "reason": "Q90_NEW_ETF",
+        "fee": 10.44948
+      },
+      {
+        "date": "2026-10-09",
+        "signal": "20261008",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 500,
+        "price": 3.308,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-12",
+        "signal": "20261009",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 1700,
+        "price": 3.251,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 3100,
+        "price": 3.232,
+        "reason": "FORMAL_SWITCH",
+        "fee": 6.01152
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "BUY",
+        "asset": "513100",
+        "units": 7400,
+        "price": 2.384,
+        "reason": "Q90_NEW_ETF",
+        "fee": 10.584959999999999
+      },
+      {
+        "date": "2026-10-14",
+        "signal": "20261013",
+        "side": "BUY",
+        "asset": "513100",
+        "units": 1500,
+        "price": 2.378,
+        "reason": "Q90_RESTORE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "SELL",
+        "asset": "513100",
+        "units": 8900,
+        "price": 2.356,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.581039999999998
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11500,
+        "price": 1.83,
+        "reason": "Q90_NEW_ETF",
+        "fee": 12.626999999999999
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11500,
+        "price": 1.814,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.516599999999999
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "BUY",
+        "asset": "501018",
+        "units": 9600,
+        "price": 2.157,
+        "reason": "Q90_NEW_ETF",
+        "fee": 12.42432
+      },
+      {
+        "date": "2026-10-28",
+        "signal": "20261027",
+        "side": "SELL",
+        "asset": "501018",
+        "units": 700,
+        "price": 2.362,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-30",
+        "signal": "20261029",
+        "side": "BUY",
+        "asset": "501018",
+        "units": 800,
+        "price": 2.321,
+        "reason": "Q90_RESTORE",
+        "fee": 5
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "SELL",
+        "asset": "501018",
+        "units": 9700,
+        "price": 2.035,
+        "reason": "FORMAL_SWITCH",
+        "fee": 11.843699999999998
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "BUY",
+        "asset": "511220",
+        "units": 1800,
+        "price": 10.445,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.2806
+      }
+    ],
+    "s1_two_confirm_oneshot": [
+      {
+        "date": "2026-09-15",
+        "signal": "20260914",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.772,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.90784
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11200,
+        "price": 1.922,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.915839999999998
+      },
+      {
+        "date": "2026-10-08",
+        "signal": "20260930",
+        "side": "BUY",
+        "asset": "159509",
+        "units": 5300,
+        "price": 3.286,
+        "reason": "Q90_NEW_ETF",
+        "fee": 10.44948
+      },
+      {
+        "date": "2026-10-09",
+        "signal": "20261008",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 500,
+        "price": 3.308,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-12",
+        "signal": "20261009",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 1700,
+        "price": 3.251,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "SELL",
+        "asset": "159509",
+        "units": 3100,
+        "price": 3.232,
+        "reason": "FORMAL_SWITCH",
+        "fee": 6.01152
+      },
+      {
+        "date": "2026-10-13",
+        "signal": "20261012",
+        "side": "BUY",
+        "asset": "513100",
+        "units": 7400,
+        "price": 2.384,
+        "reason": "Q90_NEW_ETF",
+        "fee": 10.584959999999999
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "SELL",
+        "asset": "513100",
+        "units": 7400,
+        "price": 2.356,
+        "reason": "FORMAL_SWITCH",
+        "fee": 10.460639999999998
+      },
+      {
+        "date": "2026-10-16",
+        "signal": "20261015",
+        "side": "BUY",
+        "asset": "159981",
+        "units": 11500,
+        "price": 1.83,
+        "reason": "Q90_NEW_ETF",
+        "fee": 12.626999999999999
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "SELL",
+        "asset": "159981",
+        "units": 11500,
+        "price": 1.814,
+        "reason": "FORMAL_SWITCH",
+        "fee": 12.516599999999999
+      },
+      {
+        "date": "2026-10-19",
+        "signal": "20261016",
+        "side": "BUY",
+        "asset": "501018",
+        "units": 9700,
+        "price": 2.157,
+        "reason": "Q90_NEW_ETF",
+        "fee": 12.55374
+      },
+      {
+        "date": "2026-10-28",
+        "signal": "20261027",
+        "side": "SELL",
+        "asset": "501018",
+        "units": 800,
+        "price": 2.362,
+        "reason": "Q90_REDUCE",
+        "fee": 5
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "SELL",
+        "asset": "501018",
+        "units": 8900,
+        "price": 2.035,
+        "reason": "FORMAL_SWITCH",
+        "fee": 10.8669
+      },
+      {
+        "date": "2026-11-09",
+        "signal": "20261106",
+        "side": "BUY",
+        "asset": "511220",
+        "units": 1900,
+        "price": 10.445,
+        "reason": "FORMAL_VOID_ROUTE",
+        "fee": 11.9073
+      }
+    ]
+  }
+}
