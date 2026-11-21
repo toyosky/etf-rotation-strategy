@@ -1088,6 +1088,11 @@ def execute_weight_buy_at_1405(context):
     if g.pending_preserve_shares:
         clear_pending()
         return
+    # Respect the 09:31 buy-side veto even if 14:05 prices later recover.
+    if g.entry_blocked:
+        log.warning("Q90 09:31买入保护仍有效：%s" % (g.entry_reason or "买入已阻断"))
+        clear_pending()
+        return
     amount = q90_target_value(context)
     if amount is None:
         log.warning("Q90 14:05无效目标金额，不发单")
