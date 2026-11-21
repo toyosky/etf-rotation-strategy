@@ -17,4 +17,11 @@ assert.deepEqual(expandingPurgedSplits(sparse,w,{embargoSessions:2,marketCalenda
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:[d[0],d[1],d[1]]}),/invalid market calendar/);
 assert.throws(()=>expandingPurgedSplits(sparse,w,{marketCalendar:d.slice(0,-1)}),/sample date missing/);
 assert.equal(expandingPurgedSplits(rows,[{start:'2027-01-01',end:'2027-01-31'}])[0].status,'no_test');
+// Row order is not guaranteed by upstream SQL; the cutoff must use the
+// earliest test decision date rather than the first matching array index.
+const unsorted=[rows[5],rows[0],rows[4],rows[1],rows[6],rows[2],rows[3]];
+const chronological=expandingPurgedSplits(rows,w,{marketCalendar:d})[0];
+const shuffled=expandingPurgedSplits(unsorted,w,{marketCalendar:d})[0];
+assert.equal(shuffled.cutoff,chronological.cutoff);
+assert.deepEqual(shuffled.train.map(i=>unsorted[i].decisionDate).sort(),chronological.train.map(i=>rows[i].decisionDate).sort());
 console.log('purged expanding OOS split tests passed');
