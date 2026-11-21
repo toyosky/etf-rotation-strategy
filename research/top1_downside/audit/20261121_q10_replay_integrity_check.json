@@ -1,0 +1,27 @@
+{
+  "counts": {
+    "dailyRows": 1419,
+    "entryVoid": 71,
+    "entryRiskPartial": 8,
+    "VoidOriginalRoute": 10,
+    "Q90ActionsWhileVoid": 0,
+    "Q90ValidNonVoid": 960,
+    "Q90Active5pct": 239,
+    "nonVoidDays": 974,
+    "mismatchedNonVoid": 11
+  },
+  "invariants": {
+    "historicalPeriodAligned": true,
+    "formalVoidEntryCount": true,
+    "formalVoidRouteCount": true,
+    "noQ90ActionsWhileVoid": true,
+    "priorQ90CashFrozen": true,
+    "expectedNonVoidCoverage": true,
+    "lastQ90Date": true,
+    "sourcePriceMissingRepaired": true,
+    "fullDailyTicketCount": true,
+    "fullVoidTicketCount": true,
+    "recentMinuteUsesConfirmedOverride": true
+  },
+  "note": "These checks validate archived research route and synthetic holdings/trades. They do not prove actual JoinQuant order fills or recover historically PIT Premium10 NAV."
+}
