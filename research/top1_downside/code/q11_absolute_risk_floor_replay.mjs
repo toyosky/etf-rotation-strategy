@@ -13,7 +13,7 @@ const runFormalVoid=function runFormalVoid(inputs){
   const unclassified=t&&!riskSymbols.has(t)&&!["511220","513500"].includes(t);
   if(unclassified)throw Error(`Unknown formal route ${date} ${t}`);
   return {date,year:date.slice(0,4),index:i,asset:t||null,void:v.state==="DEFENSIVE_VOID",decision:v.decision,compatible,rawTop:q.s,
-   E:rawE,Ef:rawE>=.05?rawE:0,rawPositive:rawE>=.05,ret:repairedGross,rawRet:+v.gross,
+   E:rawE,D:+q.D,Ef:rawE>=.05?rawE:0,rawPositive:rawE>=.05,ret:repairedGross,rawRet:+v.gross,
    missing:v.missing==="1",v1:v.v1Decision,rawSourceRet:q.s===t?+q.ret:null};
  });
  if(daily.length!==1419||daily[0].date!=="20210104"||daily.at(-1).date!=="20261112")throw Error("Data alignment failure");
@@ -77,7 +77,7 @@ const runFormalVoid=function runFormalVoid(inputs){
     confirm=0;
    }else {
     eligibleDays++;if(d.Ef>=.05)positiveDays++;
-    wantedE=(mode.floorD!==undefined && d.Ef===0 && d.E>=mode.floorD)?mode.floorE:d.Ef;
+    wantedE=(mode.floorD!==undefined && d.Ef===0 && d.D>=mode.floorD)?mode.floorE:d.Ef;
     if(d.asset!==asset){
      instruction="Q90_NEW_ETF";transact(d.asset,1-wantedE);assetSwitches++;confirm=0;q90Entries++;
     }else {
