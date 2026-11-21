@@ -6,6 +6,7 @@ Production feature flag remains False until signal feed, fill reconciliation and
 intraday execution are separately audited.
 """
 import ast
+import math
 import pathlib
 import types
 import unittest
@@ -57,7 +58,8 @@ class Tests(unittest.TestCase):
             entry_reason="",
         )
         self.env = {
-            "g": self.g, "RISK_POOL": {ETF, OTHER}, "Q90_SIZING_ENABLED": True,
+            "g": self.g, "np": types.SimpleNamespace(isfinite=math.isfinite),
+            "RISK_POOL": {ETF, OTHER}, "Q90_SIZING_ENABLED": True,
             "Q90_MIN_E": 0.05, "Q90_CHANGE_BAND": 0.05,
             "Q90_WEIGHT_TOLERANCE": 0.005,
             "log": types.SimpleNamespace(info=self.log.append, warning=self.log.append),
