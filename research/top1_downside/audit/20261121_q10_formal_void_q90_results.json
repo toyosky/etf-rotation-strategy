@@ -29,7 +29,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 0,
       "q90Decrease": 0,
       "q90Increase": 0,
@@ -126,7 +126,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 8,
       "q90Decrease": 106,
       "q90Increase": 100,
@@ -223,7 +223,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 10,
       "q90Decrease": 90,
       "q90Increase": 57,
@@ -243,7 +243,7 @@
           "voidEntries": 18,
           "voidRoute": 2,
           "q90Reduces": 11,
-          "q90Restores": 22,
+          "q90Restores": 9,
           "avgCash": 0.0540023386028195
         },
         "2022": {
@@ -254,7 +254,7 @@
           "voidEntries": 15,
           "voidRoute": 4,
           "q90Reduces": 8,
-          "q90Restores": 3,
+          "q90Restores": 1,
           "avgCash": 0.020861549803278836
         },
         "2023": {
@@ -265,7 +265,7 @@
           "voidEntries": 12,
           "voidRoute": 2,
           "q90Reduces": 9,
-          "q90Restores": 33,
+          "q90Restores": 14,
           "avgCash": 0.059492645413058154
         },
         "2024": {
@@ -276,7 +276,7 @@
           "voidEntries": 13,
           "voidRoute": 2,
           "q90Reduces": 17,
-          "q90Restores": 28,
+          "q90Restores": 9,
           "avgCash": 0.06567300168459629
         },
         "2025": {
@@ -287,7 +287,7 @@
           "voidEntries": 5,
           "voidRoute": 3,
           "q90Reduces": 29,
-          "q90Restores": 45,
+          "q90Restores": 18,
           "avgCash": 0.0974001028667305
         },
         "2026": {
@@ -298,7 +298,7 @@
           "voidEntries": 8,
           "voidRoute": 1,
           "q90Reduces": 16,
-          "q90Restores": 16,
+          "q90Restores": 6,
           "avgCash": 0.039294028050444345
         }
       }
@@ -320,7 +320,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 0,
       "q90Decrease": 0,
       "q90Increase": 0,
@@ -417,7 +417,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 8,
       "q90Decrease": 106,
       "q90Increase": 100,
@@ -514,7 +514,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 10,
       "q90Decrease": 90,
       "q90Increase": 57,
@@ -534,7 +534,7 @@
           "voidEntries": 18,
           "voidRoute": 2,
           "q90Reduces": 11,
-          "q90Restores": 22,
+          "q90Restores": 9,
           "avgCash": 0.05398321626261723
         },
         "2022": {
@@ -545,7 +545,7 @@
           "voidEntries": 15,
           "voidRoute": 4,
           "q90Reduces": 8,
-          "q90Restores": 3,
+          "q90Restores": 1,
           "avgCash": 0.020855264936728467
         },
         "2023": {
@@ -556,7 +556,7 @@
           "voidEntries": 12,
           "voidRoute": 2,
           "q90Reduces": 9,
-          "q90Restores": 33,
+          "q90Restores": 14,
           "avgCash": 0.059484521840448126
         },
         "2024": {
@@ -567,7 +567,7 @@
           "voidEntries": 13,
           "voidRoute": 2,
           "q90Reduces": 17,
-          "q90Restores": 28,
+          "q90Restores": 9,
           "avgCash": 0.06566823754382728
         },
         "2025": {
@@ -578,7 +578,7 @@
           "voidEntries": 5,
           "voidRoute": 3,
           "q90Reduces": 29,
-          "q90Restores": 45,
+          "q90Restores": 18,
           "avgCash": 0.09739510612167228
         },
         "2026": {
@@ -589,7 +589,7 @@
           "voidEntries": 8,
           "voidRoute": 1,
           "q90Reduces": 16,
-          "q90Restores": 16,
+          "q90Restores": 6,
           "avgCash": 0.03929402805044435
         }
       }
@@ -611,7 +611,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 0,
       "q90Decrease": 0,
       "q90Increase": 0,
@@ -708,7 +708,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 8,
       "q90Decrease": 106,
       "q90Increase": 100,
@@ -805,7 +805,7 @@
       "voidTrades": 0,
       "voidFreezeBreaches": 0,
       "voidEntries": 71,
-      "routeChangesInVoid": 12,
+      "routeChangesInVoid": 10,
       "voidEntersWithPreviousQ90Cash": 10,
       "q90Decrease": 90,
       "q90Increase": 57,
@@ -825,7 +825,7 @@
           "voidEntries": 18,
           "voidRoute": 2,
           "q90Reduces": 11,
-          "q90Restores": 22,
+          "q90Restores": 9,
           "avgCash": 0.053930667930767937
         },
         "2022": {
@@ -836,7 +836,7 @@
           "voidEntries": 15,
           "voidRoute": 4,
           "q90Reduces": 8,
-          "q90Restores": 3,
+          "q90Restores": 1,
           "avgCash": 0.020844611432547393
         },
         "2023": {
@@ -847,7 +847,7 @@
           "voidEntries": 12,
           "voidRoute": 2,
           "q90Reduces": 9,
-          "q90Restores": 33,
+          "q90Restores": 14,
           "avgCash": 0.05943035481566245
         },
         "2024": {
@@ -858,7 +858,7 @@
           "voidEntries": 13,
           "voidRoute": 2,
           "q90Reduces": 17,
-          "q90Restores": 28,
+          "q90Restores": 9,
           "avgCash": 0.06562818205589743
         },
         "2025": {
@@ -869,7 +869,7 @@
           "voidEntries": 5,
           "voidRoute": 3,
           "q90Reduces": 29,
-          "q90Restores": 45,
+          "q90Restores": 18,
           "avgCash": 0.09732867873237282
         },
         "2026": {
@@ -880,7 +880,7 @@
           "voidEntries": 8,
           "voidRoute": 1,
           "q90Reduces": 16,
-          "q90Restores": 16,
+          "q90Restores": 6,
           "avgCash": 0.03925402206608103
         }
       }
