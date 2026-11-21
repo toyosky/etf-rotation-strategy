@@ -1,0 +1,110 @@
+{
+  "yearly": {
+    "2021": {
+      "valid": 20,
+      "selectedR2": 20,
+      "selectedStrength": 5,
+      "selectedRebuild": 0,
+      "cashReturn": 0.23873726354938163,
+      "allReturn": 0.26111713229343114,
+      "r2Return": 0.26111713229343114,
+      "strengthReturn": 0.22188741274802148,
+      "rebuildReturn": 0.23873726354938163,
+      "q4Return": 0.2380371357959461
+    },
+    "2022": {
+      "valid": 10,
+      "selectedR2": 9,
+      "selectedStrength": 3,
+      "selectedRebuild": 1,
+      "cashReturn": 0.20627933302070622,
+      "allReturn": 0.2482204974773765,
+      "r2Return": 0.24842491191236293,
+      "strengthReturn": 0.2039062706837773,
+      "rebuildReturn": 0.20608181941300407,
+      "q4Return": 0.22591455983860897
+    },
+    "2023": {
+      "valid": 20,
+      "selectedR2": 15,
+      "selectedStrength": 2,
+      "selectedRebuild": 3,
+      "cashReturn": 0.2503498618823359,
+      "allReturn": 0.24558180495451642,
+      "r2Return": 0.24569782252897698,
+      "strengthReturn": 0.25495642121953477,
+      "rebuildReturn": 0.24979422878873092,
+      "q4Return": 0.22792423458855637
+    },
+    "2024": {
+      "valid": 18,
+      "selectedR2": 17,
+      "selectedStrength": 5,
+      "selectedRebuild": 0,
+      "cashReturn": 0.3773887688107431,
+      "allReturn": 0.41020575432870765,
+      "r2Return": 0.41013220222949864,
+      "strengthReturn": 0.38654552199247827,
+      "rebuildReturn": 0.3773887688107447,
+      "q4Return": 0.3992796234755307
+    },
+    "2025": {
+      "valid": 30,
+      "selectedR2": 26,
+      "selectedStrength": 7,
+      "selectedRebuild": 3,
+      "cashReturn": 1.057073978335234,
+      "allReturn": 0.9560211046158846,
+      "r2Return": 0.9626688189868802,
+      "strengthReturn": 1.0677003860378167,
+      "rebuildReturn": 1.0571875457460735,
+      "q4Return": 1.0095810359155983
+    },
+    "2026": {
+      "valid": 18,
+      "selectedR2": 13,
+      "selectedStrength": 3,
+      "selectedRebuild": 2,
+      "cashReturn": 1.1018251104791053,
+      "allReturn": 1.1810446099374325,
+      "r2Return": 1.173219881230417,
+      "strengthReturn": 1.11114349662025,
+      "rebuildReturn": 1.1182314519138545,
+      "q4Return": 1.153258061602254
+    }
+  },
+  "intervals": {
+    "r2AcceptedMinusRejectedNet": {
+      "observed": 0.004995580586751928,
+      "ci95": [
+        -0.005710407738582078,
+        0.015423912826856791
+      ],
+      "pPositive": 0.8091666666666667
+    },
+    "strengthAcceptedMinusRejectedNet": {
+      "observed": -0.005237139774971485,
+      "ci95": [
+        -0.024933702539463587,
+        0.014399282241516943
+      ],
+      "pPositive": 0.3075
+    },
+    "strengthAcceptedMinusRejectedTail5": {
+      "observed": 0.2140659340659341,
+      "ci95": [
+        0.05516596540439457,
+        0.39159384103204326
+      ],
+      "pPositive": 0.9966666666666667
+    }
+  },
+  "r2Groups": {
+    "nHigh": 100,
+    "nLow": 16,
+    "top2MAEHigh": -0.019271678373940268,
+    "top2MAELow": -0.016753046708641556,
+    "riskHigh": 0.13,
+    "riskLow": 0
+  }
+}
