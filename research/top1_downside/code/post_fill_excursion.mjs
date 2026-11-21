@@ -2,7 +2,7 @@
 // This deliberately conservative eligibility rule prevents pre-fill extrema leakage.
 // A minute-close fill is not proven executable by this helper.
 export function executableExcursion({calendar, decisionDate, executionDate, horizon,
-  entryPrice, fillTime, entryMinutes, laterDailyBars, priceBasis, minuteBasis}) {
+  entryPrice, fillTime, entryMinutes, laterDailyBars, priceBasis, minuteBasis, expectedPostFillMinuteTimes}) {
   if (!Number.isInteger(horizon) || horizon < 1) throw new Error('invalid horizon');
   if (!Number.isFinite(entryPrice) || entryPrice <= 0) throw new Error('invalid entry price');
   if (!Array.isArray(calendar) || new Set(calendar).size !== calendar.length ||
@@ -23,6 +23,16 @@ export function executableExcursion({calendar, decisionDate, executionDate, hori
   // Exclude the bar ending at fillTime: its high/low may precede the fill.
   const eligible=minutes.filter(b=>b.time>fillTime && b.time<='15:00');
   if (!eligible.length) return {status:'no_post_fill_minutes'};
+  // Without an independently verified complete session clock, a partial minute
+  // feed could silently understate MAE and MFE. Do not issue a usable label.
+  if (!Array.isArray(expectedPostFillMinuteTimes) || !expectedPostFillMinuteTimes.length ||
+      new Set(expectedPostFillMinuteTimes).size!==expectedPostFillMinuteTimes.length ||
+      expectedPostFillMinuteTimes.some(t=>typeof t!=='string' || t<=fillTime || t>'15:00'))
+    return {status:'minute_calendar_unverified'};
+  const actualTimes=new Set(eligible.map(b=>b.time));
+  if (actualTimes.size!==expectedPostFillMinuteTimes.length ||
+      expectedPostFillMinuteTimes.some(t=>!actualTimes.has(t)))
+    return {status:'incomplete_post_fill_minutes',expected:expectedPostFillMinuteTimes.length,observed:actualTimes.size};
   if (eligible.some(b=>!valid(b))) return {status:'invalid_minute_ohlc'};
   if (new Set(laterDailyBars.map(b=>b.date)).size!==laterDailyBars.length)
     return {status:'duplicate_daily_dates'};
