@@ -126,6 +126,14 @@ NEXT_DAY_PRICE_FLOOR = 0.97
 INTRADAY_HIGH_DRAWDOWN_LIMIT = 0.02
 INTRADAY_MINUTE_BAR_COUNT = 260
 
+# Q90 portfolio-weight execution ADAPTER (research branch only, OFF until PIT model feed is verified).
+# Enable only together with a same-day, same-symbol validated g.q90_signal injected BEFORE
+# finalize_next_day_plan_before_open. Never use raw Top1's Q90 to size a different V1/Void holding.
+Q90_SIZING_ENABLED = False
+Q90_MIN_E = 0.05
+Q90_CHANGE_BAND = 0.05
+Q90_WEIGHT_TOLERANCE = 0.005
+
 STRATEGY_STATE_VERSION = 1
 
 
@@ -200,6 +208,9 @@ def reset_state():
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+    g.pending_target_weight = 1.0
+    g.pending_preserve_shares = False
+    g.pending_buy_weight = None
 
     # 正常V1的后台状态；Void期间仍继续更新，Void退出后直接恢复。
     g.v1_current_target = None
@@ -268,6 +279,9 @@ def ensure_state():
         "entry_blocked": False,
         "entry_reason": None,
         "pending_buy_target": None,
+        "pending_target_weight": 1.0,
+        "pending_preserve_shares": False,
+        "pending_buy_weight": None,
 
         "v1_current_target": None,
         "v1_initialized": False,
@@ -924,6 +938,182 @@ def safe_target_value(symbol, value):
     except Exception as exc:
         return None, str(exc)
 
+
+
+def q90_actual_position_weight(context, target):
+    if target is None:
+        return 0.0
+    position = context.portfolio.positions.get(target)
+    total = finite_number(context.portfolio.total_value)
+    if not position or total is None or total <= 0:
+        return 0.0
+    value = finite_number(getattr(position, "value", None))
+    return max(0.0, min(1.0, value / total)) if value is not None else 0.0
+
+
+def q90_validate_signal_for_target(signal_date, target):
+    """Return target E only when a real PIT input matches the final routed ETF.
+
+    This is an explicit input boundary, NOT a fabricated Q90 model. Missing/stale
+    signals do not mean zero risk. A future feed must inject g.q90_signal as
+    {'date': 'YYYY-MM-DD', 'symbol': '159981.XSHE', 'E': 0.20}.
+    """
+    data = getattr(g, "q90_signal", None)
+    if not isinstance(data, dict) or target not in RISK_POOL:
+        return None
+    expected_date = str(signal_date)[:10]
+    if str(data.get("date", ""))[:10] != expected_date:
+        return None
+    if data.get("symbol") != target:
+        return None
+    E = finite_number(data.get("E"))
+    if E is None or E < 0 or E > 1:
+        return None
+    return E
+
+
+def build_q90_position_plan(context, signal_date, target, holdings):
+    """Return (target portfolio weight, do_not_trade_same_holding, reason).
+
+    Under an active Void freeze, the incumbent's actual ETF shares are held, not
+    automatically refilled to 100% just because Q90 is suspended.
+    """
+    if target is None:
+        return (0.0, False, "正式策略空仓")
+    if not Q90_SIZING_ENABLED:
+        return (1.0, False, "Q90仓位执行未启用")
+    if g.void_in_void and not g.void_routed and target in holdings:
+        return (q90_actual_position_weight(context, target), True, "Void冻结原ETF实际份额")
+    if g.void_in_void or target not in RISK_POOL:
+        return (1.0, False, "Void路由或非风险ETF，保持正式策略配置")
+    current = q90_actual_position_weight(context, target)
+    signal_e = q90_validate_signal_for_target(signal_date, target)
+    if signal_e is None:
+        if target in holdings:
+            return (current, True, "最终持仓缺同资产Q90预测，保留实际份额")
+        return (1.0, False, "新目标缺Q90预测，正式策略原配置")
+    desired_e = signal_e if signal_e >= Q90_MIN_E else 0.0
+    target_weight = 1.0 - desired_e
+    if target in holdings and abs(target_weight - current) < Q90_CHANGE_BAND:
+        return (current, True, "Q90目标与实际仓位差不足5个百分点，保持份额")
+    return (target_weight, False, "Q90同资产双向目标仓位")
+
+
+def q90_holding_matches_plan(context, target):
+    holdings = managed_holdings(context)
+    if target is None:
+        return not holdings
+    if holdings != [target]:
+        return False
+    if getattr(g, "pending_preserve_shares", False):
+        return True
+    actual = q90_actual_position_weight(context, target)
+    return abs(actual - g.pending_target_weight) < Q90_WEIGHT_TOLERANCE
+
+
+def q90_target_value(context):
+    amount = finite_number(context.portfolio.total_value)
+    if amount is None or amount <= 0:
+        return None
+    return max(0.0, min(amount, amount * g.pending_target_weight))
+
+
+def execute_weight_sells_at_1400(context):
+    """Optional sizing-aware SELL leg; original routine remains untouched when OFF."""
+    if g.pending_signal_date is None:
+        return
+    target = g.pending_target
+    holdings = managed_holdings(context)
+    if q90_holding_matches_plan(context, target):
+        clear_pending()
+        return
+    if target is not None and target not in holdings:
+        if not g.entry_checked:
+            g.entry_blocked = True
+            g.entry_reason = "09:31新标的预检查缺失"
+        if not g.entry_blocked:
+            reason = entry_preflight_reason(context, target, check_drawdown=True)
+            if reason:
+                g.entry_blocked = True
+                g.entry_reason = reason
+        if g.entry_blocked:
+            target = execution_veto_fallback(context, g.entry_reason or "目标受阻")
+            g.pending_target = target
+            holdings = managed_holdings(context)
+            if target in holdings:
+                g.pending_target_weight = q90_actual_position_weight(context, target)
+                g.pending_preserve_shares = True
+            else:
+                g.pending_target_weight = 1.0 if target else 0.0
+                g.pending_preserve_shares = False
+            if q90_holding_matches_plan(context, target):
+                clear_pending()
+                return
+
+    for symbol in holdings:
+        if symbol != target:
+            _, error = safe_target_value(symbol, 0)
+            if error:
+                log.warning("Q90 14:00旧仓卖出未成功：%s %s" % (display(symbol), error))
+
+    if target is None:
+        clear_pending()
+        return
+    if not g.pending_preserve_shares and target in holdings:
+        amount = q90_target_value(context)
+        if amount is None:
+            log.warning("Q90目标资金价值不可用，取消仓位修改")
+            clear_pending()
+            return
+        current = finite_number(context.portfolio.positions[target].value)
+        if current is not None and current > amount + context.portfolio.total_value * Q90_WEIGHT_TOLERANCE:
+            _, error = safe_target_value(target, amount)
+            if error:
+                log.warning("Q90 14:00部分减仓失败：%s %s" % (display(target), error))
+    # Buyer rechecks actual post-sell holdings at 14:05. Repricing does not assume a fill.
+    g.pending_buy_target = target
+    g.pending_buy_weight = g.pending_target_weight
+
+
+def execute_weight_buy_at_1405(context):
+    """Optional sizing-aware BUY leg, including same-symbol partial reentry."""
+    target = g.pending_buy_target
+    if target is None or g.pending_signal_date is None:
+        return
+    blockers = [symbol for symbol in managed_holdings(context) if symbol != target]
+    if blockers:
+        log.warning("Q90 14:05仍有旧仓未清，停止增加持仓：%s" % blockers)
+        clear_pending()
+        return
+    if g.pending_preserve_shares:
+        clear_pending()
+        return
+    amount = q90_target_value(context)
+    if amount is None:
+        log.warning("Q90 14:05无效目标金额，不发单")
+        clear_pending()
+        return
+    current = finite_number(getattr(context.portfolio.positions.get(target), "value", 0)) or 0.0
+    if current >= amount - context.portfolio.total_value * Q90_WEIGHT_TOLERANCE:
+        clear_pending()
+        return
+    reason = entry_preflight_reason(context, target)
+    if reason:
+        log.warning("Q90 14:05只阻止买入，不逆转已完成减仓：%s" % reason)
+        clear_pending()
+        return
+    price, error = current_price(target)
+    high = today_high(target, context, price) if price is not None else None
+    if high is None or 1.0 - price / high >= INTRADAY_HIGH_DRAWDOWN_LIMIT:
+        log.warning("Q90 14:05分钟高点保护：%s，取消本次买入" % (error or "回撤触发"))
+        clear_pending()
+        return
+    _, order_error = safe_target_value(target, amount)
+    if order_error:
+        log.warning("Q90 14:05仓位买入失败：%s" % order_error)
+    else:
+        log.info("Q90 14:05目标仓位：%s %.2f%%" % (display(target), g.pending_target_weight * 100))
+    clear_pending()
 
 def row_for_symbol(rows, symbol):
     for row in rows:
@@ -1688,6 +1878,10 @@ def finalize_next_day_plan_before_open(context):
         cash_raw = raw_score_from_row(rows, CASH_SIGNAL_SYMBOL)
         ranked_symbol = CASH_SIGNAL_SYMBOL if cash_raw is not None else None
     g.pending_target = target
+    (g.pending_target_weight, g.pending_preserve_shares, q90_weight_note) = build_q90_position_plan(
+        context, signal_date, target, holdings
+    )
+    g.pending_buy_weight = None
     g.pending_ranked = ranked_symbol
     g.pending_target_actual_close = actual_daily_close_on_date(target, signal_date) if target else None
     g.pending_exit_actual_closes = {
@@ -1732,7 +1926,7 @@ def finalize_next_day_plan_before_open(context):
         log.info("V1说明：%s" % g.v1_note)
     log.info("State Map：%s" % map_text)
     log.info("Void Route：%s | %s" % (g.void_decision, g.void_note))
-    log.info("最终目标：%s | 当前溢价剔除：%s | 净值待发布/滞后：%s" % (plan, premium_blocked, premium_pending))
+    log.info("最终目标：%s；仓位 %.2f%%（%s） | 当前溢价剔除：%s | 净值待发布/滞后：%s" % (plan, g.pending_target_weight * 100, q90_weight_note, premium_blocked, premium_pending))
     notify(
         context,
         "FixV2/V1 + Void Route：当日执行计划",
@@ -1838,7 +2032,8 @@ def check_gap_at_0931(context):
             log.warning("09:31计划退出仓急跌卖出%s：%.4f/%.4f < %.2f" % (display(symbol), price, close, NEXT_DAY_PRICE_FLOOR))
         elif error:
             log.warning("09:31旧仓价格不可用%s：%s" % (display(symbol), error))
-    if holdings_match_target(holdings, target):
+    if (q90_holding_matches_plan(context, target) if Q90_SIZING_ENABLED
+            else holdings_match_target(holdings, target)):
         g.entry_checked = True
         g.entry_reason = "当前持仓已等于最终目标，无需调仓"
         log.info(g.entry_reason)
@@ -1872,6 +2067,9 @@ def check_gap_at_0931(context):
 
 
 def execute_sells_at_1400(context):
+    if Q90_SIZING_ENABLED:
+        execute_weight_sells_at_1400(context)
+        return
     if g.pending_signal_date is None:
         return
     target = g.pending_target
@@ -1927,6 +2125,9 @@ def today_high(symbol, context, observed_price):
 
 
 def execute_buy_at_1405(context):
+    if Q90_SIZING_ENABLED:
+        execute_weight_buy_at_1405(context)
+        return
     target = g.pending_buy_target
     if target is None or g.pending_signal_date is None:
         return
@@ -1974,4 +2175,7 @@ def clear_pending():
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+    g.pending_buy_weight = None
+    g.pending_target_weight = 1.0
+    g.pending_preserve_shares = False
 
