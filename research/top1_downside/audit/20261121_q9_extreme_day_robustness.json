@@ -1,0 +1,155 @@
+{
+  "baseAnnualLogDiff": 0.022240936245092786,
+  "baselineCAGR": 0.5450155494377571,
+  "counterfactual": [
+    {
+      "exclusion": [
+        "20251224"
+      ],
+      "annualLogAdvantageAfterNeutralizing": -0.012687221589122605,
+      "cagrAfterNeutralizing": 0.5255374177647874,
+      "logDiffRemoved": 0.20312727855226081
+    },
+    {
+      "exclusion": [
+        "20251224",
+        "20241008"
+      ],
+      "annualLogAdvantageAfterNeutralizing": -0.03339332452364091,
+      "cagrAfterNeutralizing": 0.49427426893025483,
+      "logDiffRemoved": 0.3235451476673488
+    },
+    {
+      "exclusion": [
+        "20251224",
+        "20241008",
+        "20211019"
+      ],
+      "annualLogAdvantageAfterNeutralizing": -0.04482182752769007,
+      "cagrAfterNeutralizing": 0.4772941643617963,
+      "logDiffRemoved": 0.3900084499736839
+    },
+    {
+      "exclusion": [
+        "20251222",
+        "20240927"
+      ],
+      "annualLogAdvantageAfterNeutralizing": 0.06586548685540818,
+      "cagrAfterNeutralizing": 0.650204899166205,
+      "logDiffRemoved": -0.2537017922788424
+    },
+    {
+      "exclusion": "2026 all",
+      "annualLogAdvantageAfterNeutralizing": 0.0027130982185862417,
+      "cagrAfterNeutralizing": 0.549213019872641,
+      "logDiffRemoved": 0.11356558262136388
+    },
+    {
+      "exclusion": "2025 all",
+      "annualLogAdvantageAfterNeutralizing": 0.029231892999593733,
+      "cagrAfterNeutralizing": 0.5908458686880607,
+      "logDiffRemoved": -0.040656424732118224
+    }
+  ],
+  "largestPositive": [
+    {
+      "date": "20251224",
+      "year": "2025",
+      "grossRisk": 0.9461511895200255,
+      "baseRet": -0.1923076923,
+      "dailyRet": -0.010392443219706005,
+      "delta": 0.20312727855226081
+    },
+    {
+      "date": "20241008",
+      "year": "2024",
+      "grossRisk": 0.7254232380062885,
+      "baseRet": -0.15000000000000013,
+      "dailyRet": -0.04122711827808723,
+      "delta": 0.12041786911508802
+    },
+    {
+      "date": "20211019",
+      "year": "2021",
+      "grossRisk": 0.6371526052230404,
+      "baseRet": -0.09756097559999999,
+      "dailyRet": -0.03554379223109749,
+      "delta": 0.06646330230633504
+    },
+    {
+      "date": "20260129",
+      "year": "2026",
+      "grossRisk": 0.5070088650119612,
+      "baseRet": -0.09957627118644063,
+      "dailyRet": -0.04921912682313956,
+      "delta": 0.05441815640491719
+    },
+    {
+      "date": "20261009",
+      "year": "2026",
+      "grossRisk": 0.5366521550872397,
+      "baseRet": -0.09177027829999995,
+      "dailyRet": -0.04268129074405991,
+      "delta": 0.052639021466677476
+    },
+    {
+      "date": "20220309",
+      "year": "2022",
+      "grossRisk": 0.3891507445310312,
+      "baseRet": -0.09749629630000001,
+      "dailyRet": -0.05978903045255557,
+      "delta": 0.04093149174956879
+    }
+  ],
+  "largestNegative": [
+    {
+      "date": "20251222",
+      "year": "2025",
+      "grossRisk": 0.898937989708926,
+      "baseRet": 0.15613382900000006,
+      "dailyRet": 0.015605932700366809,
+      "delta": -0.1295961201774401
+    },
+    {
+      "date": "20240927",
+      "year": "2024",
+      "grossRisk": 0.45673746659135317,
+      "baseRet": 0.3425499999999999,
+      "dailyRet": 0.18585628683012612,
+      "delta": -0.1241056721014023
+    },
+    {
+      "date": "20251218",
+      "year": "2025",
+      "grossRisk": 0.6517185386364823,
+      "baseRet": 0.11111111110000005,
+      "dailyRet": 0.0386271833974523,
+      "delta": -0.06746069044704947
+    },
+    {
+      "date": "20251219",
+      "year": "2025",
+      "grossRisk": 0.6308379486855682,
+      "baseRet": 0.07600000000000007,
+      "dailyRet": 0.028314713429264282,
+      "delta": -0.04532920009020079
+    },
+    {
+      "date": "20240930",
+      "year": "2024",
+      "grossRisk": 0.8004573092675233,
+      "baseRet": 0.04651162789999996,
+      "dailyRet": 0.009031700135728071,
+      "delta": -0.036471215812820014
+    },
+    {
+      "date": "20240510",
+      "year": "2024",
+      "grossRisk": 0.5517887939544951,
+      "baseRet": 0.051470588199999945,
+      "dailyRet": 0.022937433095497894,
+      "delta": -0.027511419610616487
+    }
+  ],
+  "caveat": "Date-neutralization is a counterfactual contribution audit of frozen NAV differences; not an investable strategy and does not recalc Q90/Top1 after altering price paths."
+}
