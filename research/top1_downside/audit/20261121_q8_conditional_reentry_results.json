@@ -1,0 +1,1149 @@
+{
+  "meta": {
+    "first": "20210104",
+    "last": "20261112",
+    "allDays": 1419,
+    "events": 164,
+    "embargo5": 96,
+    "countForward5Missing": 1,
+    "check": {
+      "q7DailyN": 1419,
+      "q7Daily5EAdjusts": 331,
+      "reentryEventCount": 164,
+      "q7Daily5Buybacks": 165,
+      "dayListMatch": true
+    }
+  },
+  "eventOutcomes": {
+    "1": {
+      "n": 163,
+      "meanGross": 0.0029589860922116834,
+      "meanNetRoundTrip": 0.0017572107005563143,
+      "medianGross": 0,
+      "p05Gross": -0.03438042346407503,
+      "p10Gross": -0.023237855795995375,
+      "minGross": -0.15000000000000002,
+      "positiveGross": 0.4539877300613497,
+      "positiveNet": 0.4539877300613497,
+      "belowMinus3Gross": 0.05521472392638037,
+      "weightedGrossByDelta": 0.0009090998854976494,
+      "averageAccountGainIfImmediate": 0.00015197640093669282,
+      "weightedNetByDelta": -0.00029144557443369347,
+      "avgMinPath": -0.007824002819650818,
+      "negativeMinPath": 0.4110429447852761,
+      "meanDelta": 0.1671723903622533,
+      "totalDelta": 27.249099629047286
+    },
+    "3": {
+      "n": 163,
+      "meanGross": 0.013700048371459045,
+      "meanNetRoundTrip": 0.012491828342436138,
+      "medianGross": 0.005405405405405572,
+      "p05Gross": -0.04403259316971828,
+      "p10Gross": -0.03532690854119427,
+      "minGross": -0.2036034444202105,
+      "positiveGross": 0.5276073619631901,
+      "positiveNet": 0.5276073619631901,
+      "belowMinus3Gross": 0.12883435582822086,
+      "weightedGrossByDelta": 0.007422180804893551,
+      "averageAccountGainIfImmediate": 0.0012407837068548878,
+      "weightedNetByDelta": 0.006217727496410577,
+      "avgMinPath": -0.014816751090433915,
+      "negativeMinPath": 0.5766871165644172,
+      "meanDelta": 0.1671723903622533,
+      "totalDelta": 27.249099629047286
+    },
+    "5": {
+      "n": 163,
+      "meanGross": 0.01047623859080688,
+      "meanNetRoundTrip": 0.009269952847652363,
+      "medianGross": 0.004796340023612622,
+      "p05Gross": -0.0656060438509183,
+      "p10Gross": -0.04788850800731903,
+      "minGross": -0.1908069024118395,
+      "positiveGross": 0.5214723926380368,
+      "positiveNet": 0.5214723926380368,
+      "belowMinus3Gross": 0.2085889570552147,
+      "weightedGrossByDelta": 0.006285377668956036,
+      "averageAccountGainIfImmediate": 0.0010507416092489083,
+      "weightedNetByDelta": 0.005081606442354628,
+      "avgMinPath": -0.021035459103846188,
+      "negativeMinPath": 0.6809815950920245,
+      "meanDelta": 0.1671723903622533,
+      "totalDelta": 27.249099629047286
+    },
+    "10": {
+      "n": 163,
+      "meanGross": 0.017224570697480204,
+      "meanNetRoundTrip": 0.01601423595506169,
+      "medianGross": 0.01327487516745851,
+      "p05Gross": -0.08480856584287336,
+      "p10Gross": -0.07140093828764316,
+      "minGross": -0.2057919597745833,
+      "positiveGross": 0.5766871165644172,
+      "positiveNet": 0.5766871165644172,
+      "belowMinus3Gross": 0.26993865030674846,
+      "weightedGrossByDelta": 0.016498011820460814,
+      "averageAccountGainIfImmediate": 0.002758012072251144,
+      "weightedNetByDelta": 0.015288113013368493,
+      "avgMinPath": -0.03282745387956284,
+      "negativeMinPath": 0.8159509202453987,
+      "meanDelta": 0.1671723903622533,
+      "totalDelta": 27.249099629047286
+    }
+  },
+  "embargo5Outcomes": {
+    "1": {
+      "n": 95,
+      "meanGross": 0.0025187327404414643,
+      "meanNetRoundTrip": 0.0013172215007971493,
+      "medianGross": 0,
+      "p05Gross": -0.02944302875864573,
+      "p10Gross": -0.02217547596857947,
+      "minGross": -0.10395655546935612,
+      "positiveGross": 0.42105263157894735,
+      "positiveNet": 0.42105263157894735,
+      "belowMinus3Gross": 0.042105263157894736,
+      "weightedGrossByDelta": 0.0004385951065498906,
+      "averageAccountGainIfImmediate": 0.00007827417703653245,
+      "weightedNetByDelta": -0.0007616680505140889,
+      "avgMinPath": -0.007041098663912417,
+      "negativeMinPath": 0.45263157894736844,
+      "meanDelta": 0.17846568707129132,
+      "totalDelta": 16.954240271772676
+    },
+    "3": {
+      "n": 95,
+      "meanGross": 0.011611007107614178,
+      "meanNetRoundTrip": 0.010404040503349574,
+      "medianGross": 0.0045045045045044585,
+      "p05Gross": -0.04492112205890272,
+      "p10Gross": -0.03662995782590146,
+      "minGross": -0.2036034444202105,
+      "positiveGross": 0.5052631578947369,
+      "positiveNet": 0.5052631578947369,
+      "belowMinus3Gross": 0.14736842105263157,
+      "weightedGrossByDelta": 0.005581080809471666,
+      "averageAccountGainIfImmediate": 0.0009960314212627596,
+      "weightedNetByDelta": 0.004377732160985935,
+      "avgMinPath": -0.01546589474195129,
+      "negativeMinPath": 0.6421052631578947,
+      "meanDelta": 0.17846568707129132,
+      "totalDelta": 16.954240271772676
+    },
+    "5": {
+      "n": 95,
+      "meanGross": 0.011070077261828733,
+      "meanNetRoundTrip": 0.00986343521547161,
+      "medianGross": 0.010989010989010728,
+      "p05Gross": -0.06361412278128364,
+      "p10Gross": -0.047355089104339276,
+      "minGross": -0.1908069024118395,
+      "positiveGross": 0.5368421052631579,
+      "positiveNet": 0.5368421052631579,
+      "belowMinus3Gross": 0.21052631578947367,
+      "weightedGrossByDelta": 0.008181780550481473,
+      "averageAccountGainIfImmediate": 0.001460167087408204,
+      "weightedNetByDelta": 0.006976871482151154,
+      "avgMinPath": -0.021795564173842603,
+      "negativeMinPath": 0.6947368421052632,
+      "meanDelta": 0.17846568707129132,
+      "totalDelta": 16.954240271772676
+    },
+    "10": {
+      "n": 95,
+      "meanGross": 0.013683892121625716,
+      "meanNetRoundTrip": 0.01247568178635271,
+      "medianGross": 0.013257575757575468,
+      "p05Gross": -0.07900944556626072,
+      "p10Gross": -0.06513702705210814,
+      "minGross": -0.2057919597745833,
+      "positiveGross": 0.5473684210526316,
+      "positiveNet": 0.5473684210526316,
+      "belowMinus3Gross": 0.28421052631578947,
+      "weightedGrossByDelta": 0.0138733947705909,
+      "averageAccountGainIfImmediate": 0.002475924929744765,
+      "weightedNetByDelta": 0.012665070733728497,
+      "avgMinPath": -0.03291579907880355,
+      "negativeMinPath": 0.8105263157894737,
+      "meanDelta": 0.17846568707129132,
+      "totalDelta": 16.954240271772676
+    }
+  },
+  "byYear": {
+    "2021": {
+      "events": 23,
+      "embargo5": 14,
+      "meanDelta": 0.17062952086563876,
+      "gross1": {
+        "n": 23,
+        "meanGross": 0.0020600427016260795,
+        "meanNetRoundTrip": 0.0008588066760050581,
+        "medianGross": 0,
+        "p05Gross": -0.029792500910083695,
+        "p10Gross": -0.027960088691795934,
+        "minGross": -0.05102040816326525,
+        "positiveGross": 0.391304347826087,
+        "positiveNet": 0.391304347826087,
+        "belowMinus3Gross": 0.043478260869565216,
+        "weightedGrossByDelta": -0.00015928031867550776,
+        "averageAccountGainIfImmediate": -0.000027177924458928145,
+        "weightedNetByDelta": -0.0013591847504843607,
+        "avgMinPath": -0.009277157310621958,
+        "negativeMinPath": 0.4782608695652174,
+        "meanDelta": 0.17062952086563876,
+        "totalDelta": 3.9244789799096917
+      },
+      "gross3": {
+        "n": 23,
+        "meanGross": 0.006395824648622283,
+        "meanNetRoundTrip": 0.005191987153833072,
+        "medianGross": 0,
+        "p05Gross": -0.048314203730272544,
+        "p10Gross": -0.041264266900790214,
+        "minGross": -0.05797101449275355,
+        "positiveGross": 0.4782608695652174,
+        "positiveNet": 0.4782608695652174,
+        "belowMinus3Gross": 0.13043478260869565,
+        "weightedGrossByDelta": 0.002369021195731527,
+        "averageAccountGainIfImmediate": 0.00040422495154821307,
+        "weightedNetByDelta": 0.0011675997830140358,
+        "avgMinPath": -0.016453298545638973,
+        "negativeMinPath": 0.5652173913043478,
+        "meanDelta": 0.17062952086563876,
+        "totalDelta": 3.9244789799096917
+      },
+      "gross5": {
+        "n": 23,
+        "meanGross": -0.000028040769713116624,
+        "meanNetRoundTrip": -0.0012280239452513296,
+        "medianGross": -0.007692307692307332,
+        "p05Gross": -0.05960616605872574,
+        "p10Gross": -0.05621611697876836,
+        "minGross": -0.06595450680272119,
+        "positiveGross": 0.43478260869565216,
+        "positiveNet": 0.43478260869565216,
+        "belowMinus3Gross": 0.34782608695652173,
+        "weightedGrossByDelta": -0.008437130948802355,
+        "averageAccountGainIfImmediate": -0.001439623611274798,
+        "weightedNetByDelta": -0.00963206867023312,
+        "avgMinPath": -0.02569071742794387,
+        "negativeMinPath": 0.6521739130434783,
+        "meanDelta": 0.17062952086563876,
+        "totalDelta": 3.9244789799096917
+      },
+      "embargo5gross5": {
+        "n": 14,
+        "meanGross": 0.005953138638670007,
+        "meanNetRoundTrip": 0.004749566755486767,
+        "medianGross": 0.002910602910603133,
+        "p05Gross": -0.04265353560068504,
+        "p10Gross": -0.04082778497242603,
+        "minGross": -0.045754832395400014,
+        "positiveGross": 0.5,
+        "positiveNet": 0.5,
+        "belowMinus3Gross": 0.2857142857142857,
+        "weightedGrossByDelta": -0.005163364626577481,
+        "averageAccountGainIfImmediate": -0.0009727265564703875,
+        "weightedNetByDelta": -0.006360266607801582,
+        "avgMinPath": -0.01991598066345452,
+        "negativeMinPath": 0.6428571428571429,
+        "meanDelta": 0.1883900570305367,
+        "totalDelta": 2.637460798427514
+      }
+    },
+    "2022": {
+      "events": 11,
+      "embargo5": 6,
+      "meanDelta": 0.16304867426371247,
+      "gross1": {
+        "n": 11,
+        "meanGross": 0.005609186192818098,
+        "meanNetRoundTrip": 0.004405820681102341,
+        "medianGross": 0,
+        "p05Gross": -0.015257352941176472,
+        "p10Gross": -0.0117647058823529,
+        "minGross": -0.018750000000000044,
+        "positiveGross": 0.36363636363636365,
+        "positiveNet": 0.36363636363636365,
+        "belowMinus3Gross": 0,
+        "weightedGrossByDelta": 0.0034484132728533423,
+        "averageAccountGainIfImmediate": 0.0005622592124521274,
+        "weightedNetByDelta": 0.0022463442248895553,
+        "avgMinPath": -0.003802980587769723,
+        "negativeMinPath": 0.36363636363636365,
+        "meanDelta": 0.16304867426371247,
+        "totalDelta": 1.7935354169008373
+      },
+      "gross3": {
+        "n": 11,
+        "meanGross": 0.015764150537276825,
+        "meanNetRoundTrip": 0.014554692046954436,
+        "medianGross": 0.012344435307017676,
+        "p05Gross": -0.028278582034149957,
+        "p10Gross": -0.02083333333333337,
+        "minGross": -0.035723830734966544,
+        "positiveGross": 0.5454545454545454,
+        "positiveNet": 0.5454545454545454,
+        "belowMinus3Gross": 0.09090909090909091,
+        "weightedGrossByDelta": 0.009140276935637551,
+        "averageAccountGainIfImmediate": 0.0014903100367588912,
+        "weightedNetByDelta": 0.007934792769476128,
+        "avgMinPath": -0.010572878902768267,
+        "negativeMinPath": 0.6363636363636364,
+        "meanDelta": 0.16304867426371247,
+        "totalDelta": 1.7935354169008373
+      },
+      "gross5": {
+        "n": 11,
+        "meanGross": 0.02221924641238622,
+        "meanNetRoundTrip": 0.021005914864538774,
+        "medianGross": 0.012499999999999956,
+        "p05Gross": -0.05411922530900365,
+        "p10Gross": -0.03572383073496643,
+        "minGross": -0.07251461988304087,
+        "positiveGross": 0.6363636363636364,
+        "positiveNet": 0.6363636363636364,
+        "belowMinus3Gross": 0.2727272727272727,
+        "weightedGrossByDelta": 0.012240419005036501,
+        "averageAccountGainIfImmediate": 0.001995784091203552,
+        "weightedNetByDelta": 0.011033074753633456,
+        "avgMinPath": -0.02052751413509316,
+        "negativeMinPath": 0.7272727272727273,
+        "meanDelta": 0.16304867426371247,
+        "totalDelta": 1.7935354169008373
+      },
+      "embargo5gross5": {
+        "n": 6,
+        "meanGross": 0.016105926727106163,
+        "meanNetRoundTrip": 0.014896263171069865,
+        "medianGross": -0.010462184873949731,
+        "p05Gross": -0.06331692259602226,
+        "p10Gross": -0.05411922530900365,
+        "minGross": -0.07251461988304087,
+        "positiveGross": 0.5,
+        "positiveNet": 0.5,
+        "belowMinus3Gross": 0.5,
+        "weightedGrossByDelta": -0.006709119299905547,
+        "averageAccountGainIfImmediate": -0.0009593878235760406,
+        "weightedNetByDelta": -0.007905093828325658,
+        "avgMinPath": -0.02652266480322633,
+        "negativeMinPath": 0.6666666666666666,
+        "meanDelta": 0.14299757996396742,
+        "totalDelta": 0.8579854797838046
+      }
+    },
+    "2023": {
+      "events": 28,
+      "embargo5": 16,
+      "meanDelta": 0.15927055558020461,
+      "gross1": {
+        "n": 28,
+        "meanGross": 0.00004029880691933504,
+        "meanNetRoundTrip": -0.0011597253723648615,
+        "medianGross": 0,
+        "p05Gross": -0.02585747585747587,
+        "p10Gross": -0.016143011917659787,
+        "minGross": -0.027027027027027084,
+        "positiveGross": 0.4642857142857143,
+        "positiveNet": 0.4642857142857143,
+        "belowMinus3Gross": 0,
+        "weightedGrossByDelta": -0.0022499886865245703,
+        "averageAccountGainIfImmediate": -0.0003583569481519432,
+        "weightedNetByDelta": -0.003448638693312702,
+        "avgMinPath": -0.005025432539341742,
+        "negativeMinPath": 0.39285714285714285,
+        "meanDelta": 0.15927055558020461,
+        "totalDelta": 4.4595755562457295
+      },
+      "gross3": {
+        "n": 28,
+        "meanGross": 0.001146012624447103,
+        "meanNetRoundTrip": -0.000054674983127611654,
+        "medianGross": -0.0009708737864078665,
+        "p05Gross": -0.0342611946922292,
+        "p10Gross": -0.029468779123951416,
+        "minGross": -0.04273504273504258,
+        "positiveGross": 0.42857142857142855,
+        "positiveNet": 0.42857142857142855,
+        "belowMinus3Gross": 0.10714285714285714,
+        "weightedGrossByDelta": -0.002779308982217377,
+        "averageAccountGainIfImmediate": -0.0004426620857268147,
+        "weightedNetByDelta": -0.003977641396828088,
+        "avgMinPath": -0.010414474987731391,
+        "negativeMinPath": 0.6071428571428571,
+        "meanDelta": 0.15927055558020461,
+        "totalDelta": 4.4595755562457295
+      },
+      "gross5": {
+        "n": 28,
+        "meanGross": 0.004223420195334897,
+        "meanNetRoundTrip": 0.0030208861432176486,
+        "medianGross": -1.1102230246251565e-16,
+        "p05Gross": -0.034604355576222524,
+        "p10Gross": -0.030333145115753676,
+        "minGross": -0.0357142857142857,
+        "positiveGross": 0.42857142857142855,
+        "positiveNet": 0.42857142857142855,
+        "belowMinus3Gross": 0.10714285714285714,
+        "weightedGrossByDelta": 0.0031116833407548467,
+        "averageAccountGainIfImmediate": 0.0004955995344716916,
+        "weightedNetByDelta": 0.0019098163307503407,
+        "avgMinPath": -0.012243769360976074,
+        "negativeMinPath": 0.75,
+        "meanDelta": 0.15927055558020461,
+        "totalDelta": 4.4595755562457295
+      },
+      "embargo5gross5": {
+        "n": 16,
+        "meanGross": 0.01005427505624977,
+        "meanNetRoundTrip": 0.00884824249121599,
+        "medianGross": 0.007425742574257432,
+        "p05Gross": -0.030357142857142694,
+        "p10Gross": -0.02566502463054182,
+        "minGross": -0.0357142857142857,
+        "positiveGross": 0.5,
+        "positiveNet": 0.5,
+        "belowMinus3Gross": 0.0625,
+        "weightedGrossByDelta": 0.009182410191763026,
+        "averageAccountGainIfImmediate": 0.0014586212128538877,
+        "weightedNetByDelta": 0.007976900745647936,
+        "avgMinPath": -0.00976053020862118,
+        "negativeMinPath": 0.625,
+        "meanDelta": 0.15884949402089735,
+        "totalDelta": 2.5415919043343576
+      }
+    },
+    "2024": {
+      "events": 30,
+      "embargo5": 16,
+      "meanDelta": 0.16219608091115292,
+      "gross1": {
+        "n": 30,
+        "meanGross": -0.003879092633978909,
+        "meanNetRoundTrip": -0.005076765178398568,
+        "medianGross": 0,
+        "p05Gross": -0.033056741915802317,
+        "p10Gross": -0.02335447498238199,
+        "minGross": -0.15000000000000002,
+        "positiveGross": 0.3333333333333333,
+        "positiveNet": 0.3333333333333333,
+        "belowMinus3Gross": 0.06666666666666667,
+        "weightedGrossByDelta": -0.0007802335323367412,
+        "averageAccountGainIfImmediate": -0.00012655082114048472,
+        "weightedNetByDelta": -0.0019797653922173763,
+        "avgMinPath": -0.010357497457918079,
+        "negativeMinPath": 0.43333333333333335,
+        "meanDelta": 0.16219608091115292,
+        "totalDelta": 4.865882427334587
+      },
+      "gross3": {
+        "n": 30,
+        "meanGross": 0.017972157027563083,
+        "meanNetRoundTrip": 0.016761373733346522,
+        "medianGross": 0.006573611644683286,
+        "p05Gross": -0.04633294377353592,
+        "p10Gross": -0.03005012640349823,
+        "minGross": -0.13683501683501698,
+        "positiveGross": 0.5333333333333333,
+        "positiveNet": 0.5333333333333333,
+        "belowMinus3Gross": 0.1,
+        "weightedGrossByDelta": 0.009620319148219404,
+        "averageAccountGainIfImmediate": 0.001560378062955708,
+        "weightedNetByDelta": 0.00841454695673046,
+        "avgMinPath": -0.01491086701190956,
+        "negativeMinPath": 0.5333333333333333,
+        "meanDelta": 0.16219608091115292,
+        "totalDelta": 4.865882427334587
+      },
+      "gross5": {
+        "n": 30,
+        "meanGross": 0.0098356446990293,
+        "meanNetRoundTrip": 0.008629743312209847,
+        "medianGross": 0.013249135124134837,
+        "p05Gross": -0.05198863468197834,
+        "p10Gross": -0.040925366193908415,
+        "minGross": -0.16655968615633776,
+        "positiveGross": 0.5666666666666667,
+        "positiveNet": 0.5666666666666667,
+        "belowMinus3Gross": 0.23333333333333334,
+        "weightedGrossByDelta": 0.004860805736313023,
+        "averageAccountGainIfImmediate": 0.0007884036405004232,
+        "weightedNetByDelta": 0.003657889252871187,
+        "avgMinPath": -0.02145044851355583,
+        "negativeMinPath": 0.7,
+        "meanDelta": 0.16219608091115292,
+        "totalDelta": 4.865882427334587
+      },
+      "embargo5gross5": {
+        "n": 16,
+        "meanGross": 0.02645206427631002,
+        "meanNetRoundTrip": 0.025236193037744208,
+        "medianGross": 0.02167429721965708,
+        "p05Gross": -0.04521920037276622,
+        "p10Gross": -0.04013321764587835,
+        "minGross": -0.058951667801225294,
+        "positiveGross": 0.6875,
+        "positiveNet": 0.6875,
+        "belowMinus3Gross": 0.1875,
+        "weightedGrossByDelta": 0.013807764475694932,
+        "averageAccountGainIfImmediate": 0.0018787983999658132,
+        "weightedNetByDelta": 0.012599479817009483,
+        "avgMinPath": -0.016720079379509645,
+        "negativeMinPath": 0.6875,
+        "meanDelta": 0.13606825371862052,
+        "totalDelta": 2.1770920594979284
+      }
+    },
+    "2025": {
+      "events": 43,
+      "embargo5": 25,
+      "meanDelta": 0.15475307828137186,
+      "gross1": {
+        "n": 43,
+        "meanGross": 0.013113552218794296,
+        "meanNetRoundTrip": 0.01190568408746298,
+        "medianGross": 0.005319148936170137,
+        "p05Gross": -0.035682189542483644,
+        "p10Gross": -0.012661761931711023,
+        "minGross": -0.042857142857142705,
+        "positiveGross": 0.5581395348837209,
+        "positiveNet": 0.5581395348837209,
+        "belowMinus3Gross": 0.06976744186046512,
+        "weightedGrossByDelta": 0.008745104267339569,
+        "averageAccountGainIfImmediate": 0.0013533318052623593,
+        "weightedNetByDelta": 0.007539857204779118,
+        "avgMinPath": -0.005194527419412551,
+        "negativeMinPath": 0.32558139534883723,
+        "meanDelta": 0.15475307828137186,
+        "totalDelta": 6.654382366098989
+      },
+      "gross3": {
+        "n": 43,
+        "meanGross": 0.02696963531203642,
+        "meanNetRoundTrip": 0.025753453530849152,
+        "medianGross": 0.007518796992481036,
+        "p05Gross": -0.03688837828275512,
+        "p10Gross": -0.0315359059545105,
+        "minGross": -0.038674033149171394,
+        "positiveGross": 0.6046511627906976,
+        "positiveNet": 0.6046511627906976,
+        "belowMinus3Gross": 0.13953488372093023,
+        "weightedGrossByDelta": 0.015145963507498047,
+        "averageAccountGainIfImmediate": 0.0023438844763226468,
+        "weightedNetByDelta": 0.013936875929393494,
+        "avgMinPath": -0.010584299026190005,
+        "negativeMinPath": 0.5348837209302325,
+        "meanDelta": 0.15475307828137186,
+        "totalDelta": 6.654382366098989
+      },
+      "gross5": {
+        "n": 43,
+        "meanGross": 0.02286024951543502,
+        "meanNetRoundTrip": 0.021646533365725747,
+        "medianGross": 0.009836065573770592,
+        "p05Gross": -0.04739917866371335,
+        "p10Gross": -0.03194420396688691,
+        "minGross": -0.056673413501607595,
+        "positiveGross": 0.627906976744186,
+        "positiveNet": 0.627906976744186,
+        "belowMinus3Gross": 0.11627906976744186,
+        "weightedGrossByDelta": 0.015192657615081507,
+        "averageAccountGainIfImmediate": 0.0023511105332087883,
+        "weightedNetByDelta": 0.01398354202051243,
+        "avgMinPath": -0.014756415401232863,
+        "negativeMinPath": 0.5813953488372093,
+        "meanDelta": 0.15475307828137186,
+        "totalDelta": 6.654382366098989
+      },
+      "embargo5gross5": {
+        "n": 25,
+        "meanGross": 0.010847650048733098,
+        "meanNetRoundTrip": 0.009641141458703827,
+        "medianGross": 0.0024350649350648457,
+        "p05Gross": -0.04985193887464443,
+        "p10Gross": -0.04433093392395704,
+        "minGross": -0.056673413501607595,
+        "positiveGross": 0.52,
+        "positiveNet": 0.52,
+        "belowMinus3Gross": 0.16,
+        "weightedGrossByDelta": 0.004589768526371735,
+        "averageAccountGainIfImmediate": 0.0008521676443540666,
+        "weightedNetByDelta": 0.003387014665255872,
+        "avgMinPath": -0.019299076405995916,
+        "negativeMinPath": 0.72,
+        "meanDelta": 0.18566680203101982,
+        "totalDelta": 4.641670050775495
+      }
+    },
+    "2026": {
+      "events": 29,
+      "embargo5": 19,
+      "meanDelta": 0.19801954666306035,
+      "gross1": {
+        "n": 28,
+        "meanGross": -0.0026930582218008337,
+        "meanNetRoundTrip": -0.003891442386867779,
+        "medianGross": 0.00017357250032129512,
+        "p05Gross": -0.04259891271519189,
+        "p10Gross": -0.027434813248766707,
+        "minGross": -0.10395655546935612,
+        "positiveGross": 0.5,
+        "positiveNet": 0.5,
+        "belowMinus3Gross": 0.10714285714285714,
+        "weightedGrossByDelta": -0.004530579121914528,
+        "averageAccountGainIfImmediate": -0.0008982269344839153,
+        "weightedNetByDelta": -0.005727860774441404,
+        "avgMinPath": -0.012332262182837879,
+        "negativeMinPath": 0.5,
+        "meanDelta": 0.19825874580562308,
+        "totalDelta": 5.551244882557446
+      },
+      "gross3": {
+        "n": 28,
+        "meanGross": 0.006487531392517494,
+        "meanNetRoundTrip": 0.005283638873681947,
+        "medianGross": 0.005477946953660218,
+        "p05Gross": -0.08686168914350145,
+        "p10Gross": -0.05937338802314737,
+        "minGross": -0.2036034444202105,
+        "positiveGross": 0.5357142857142857,
+        "positiveNet": 0.5357142857142857,
+        "belowMinus3Gross": 0.17857142857142858,
+        "weightedGrossByDelta": 0.007449378442506113,
+        "averageAccountGainIfImmediate": 0.0014769044270427079,
+        "weightedNetByDelta": 0.006244908815440574,
+        "avgMinPath": -0.025940954468594426,
+        "negativeMinPath": 0.6428571428571429,
+        "meanDelta": 0.19825874580562308,
+        "totalDelta": 5.551244882557446
+      },
+      "gross5": {
+        "n": 28,
+        "meanGross": 0.0024122957808826013,
+        "meanNetRoundTrip": 0.0012108484034140349,
+        "medianGross": -0.002643181451429555,
+        "p05Gross": -0.10032513395043845,
+        "p10Gross": -0.08860287923562987,
+        "minGross": -0.1908069024118395,
+        "positiveGross": 0.42857142857142855,
+        "positiveNet": 0.42857142857142855,
+        "belowMinus3Gross": 0.2857142857142857,
+        "weightedGrossByDelta": 0.007890473611258867,
+        "averageAccountGainIfImmediate": 0.0015643554019805484,
+        "weightedNetByDelta": 0.006685739327092102,
+        "avgMinPath": -0.035400922065399194,
+        "negativeMinPath": 0.75,
+        "meanDelta": 0.19825874580562308,
+        "totalDelta": 5.551244882557446
+      },
+      "embargo5gross5": {
+        "n": 18,
+        "meanGross": 0.0009102865572460342,
+        "meanNetRoundTrip": -0.00029025961468833985,
+        "medianGross": -0.0027493187882011716,
+        "p05Gross": -0.1154529319134998,
+        "p10Gross": -0.09017148363279073,
+        "minGross": -0.1908069024118395,
+        "positiveGross": 0.5,
+        "positiveNet": 0.5,
+        "belowMinus3Gross": 0.2777777777777778,
+        "weightedGrossByDelta": 0.020346148180787744,
+        "averageAccountGainIfImmediate": 0.00463263706232523,
+        "weightedNetByDelta": 0.019133940491879282,
+        "avgMinPath": -0.0403584563804075,
+        "negativeMinPath": 0.7777777777777778,
+        "meanDelta": 0.2276911099418656,
+        "totalDelta": 4.09843997895358
+      }
+    }
+  },
+  "byType": {
+    "fullRestoration": {
+      "1": {
+        "n": 101,
+        "meanGross": 0.0058335579376697115,
+        "meanNetRoundTrip": 0.004630057802907067,
+        "medianGross": 0,
+        "p05Gross": -0.025974025974025983,
+        "p10Gross": -0.018750000000000044,
+        "minGross": -0.04675324675324688,
+        "positiveGross": 0.48514851485148514,
+        "positiveNet": 0.48514851485148514,
+        "belowMinus3Gross": 0.0297029702970297,
+        "weightedGrossByDelta": 0.002582489529488606,
+        "averageAccountGainIfImmediate": 0.00046011724108969157,
+        "weightedNetByDelta": 0.0013809400357708674,
+        "avgMinPath": -0.005598585648794628,
+        "negativeMinPath": 0.38613861386138615,
+        "meanDelta": 0.17816809548916376,
+        "totalDelta": 17.99497764440554
+      },
+      "3": {
+        "n": 101,
+        "meanGross": 0.00911690189240909,
+        "meanNetRoundTrip": 0.007911431751273597,
+        "medianGross": 0,
+        "p05Gross": -0.03861003861003842,
+        "p10Gross": -0.03076923076923077,
+        "minGross": -0.09692649108992324,
+        "positiveGross": 0.4752475247524752,
+        "positiveNet": 0.4752475247524752,
+        "belowMinus3Gross": 0.10891089108910891,
+        "weightedGrossByDelta": 0.0034380054034746535,
+        "averageAccountGainIfImmediate": 0.0006125428750185331,
+        "weightedNetByDelta": 0.0022359426002325185,
+        "avgMinPath": -0.012716942527649187,
+        "negativeMinPath": 0.5742574257425742,
+        "meanDelta": 0.17816809548916376,
+        "totalDelta": 17.99497764440554
+      },
+      "5": {
+        "n": 101,
+        "meanGross": 0.007175976024654329,
+        "meanNetRoundTrip": 0.0059716704390395,
+        "medianGross": 0,
+        "p05Gross": -0.06628402893999696,
+        "p10Gross": -0.048421926910298785,
+        "minGross": -0.1021551724137928,
+        "positiveGross": 0.49504950495049505,
+        "positiveNet": 0.49504950495049505,
+        "belowMinus3Gross": 0.2079207920792079,
+        "weightedGrossByDelta": 0.0018137616420842754,
+        "averageAccountGainIfImmediate": 0.00032315445744145367,
+        "weightedNetByDelta": 0.0006126733850989834,
+        "avgMinPath": -0.021014278421229392,
+        "negativeMinPath": 0.6831683168316832,
+        "meanDelta": 0.17816809548916376,
+        "totalDelta": 17.99497764440554
+      }
+    },
+    "partialRestoration": {
+      "1": {
+        "n": 62,
+        "meanGross": -0.0017237841721634902,
+        "meanNetRoundTrip": -0.0029227499016602344,
+        "medianGross": 0,
+        "p05Gross": -0.04222506303043205,
+        "p10Gross": -0.028905565978736635,
+        "minGross": -0.15000000000000002,
+        "positiveGross": 0.4032258064516129,
+        "positiveNet": 0.4032258064516129,
+        "belowMinus3Gross": 0.0967741935483871,
+        "weightedGrossByDelta": -0.002344867296259013,
+        "averageAccountGainIfImmediate": -0.0003499949676996445,
+        "weightedNetByDelta": -0.0035434603758812966,
+        "avgMinPath": -0.011449279178626225,
+        "negativeMinPath": 0.45161290322580644,
+        "meanDelta": 0.1492600320103506,
+        "totalDelta": 9.254121984641737
+      },
+      "3": {
+        "n": 62,
+        "meanGross": 0.021166141829266242,
+        "meanNetRoundTrip": 0.019953442144168658,
+        "medianGross": 0.008302840217203844,
+        "p05Gross": -0.04854734576757526,
+        "p10Gross": -0.04228098290598276,
+        "minGross": -0.2036034444202105,
+        "positiveGross": 0.6129032258064516,
+        "positiveNet": 0.6129032258064516,
+        "belowMinus3Gross": 0.16129032258064516,
+        "weightedGrossByDelta": 0.015169555153201236,
+        "averageAccountGainIfImmediate": 0.002264208287749595,
+        "weightedNetByDelta": 0.013960453420109294,
+        "avgMinPath": -0.018237406974970314,
+        "negativeMinPath": 0.5806451612903226,
+        "meanDelta": 0.1492600320103506,
+        "totalDelta": 9.254121984641737
+      },
+      "5": {
+        "n": 62,
+        "meanGross": 0.015852472771152162,
+        "meanNetRoundTrip": 0.01464296128748945,
+        "medianGross": 0.01041253828139066,
+        "p05Gross": -0.05969700781239086,
+        "p10Gross": -0.04091983547314162,
+        "minGross": -0.1908069024118395,
+        "positiveGross": 0.5645161290322581,
+        "positiveNet": 0.5645161290322581,
+        "belowMinus3Gross": 0.20967741935483872,
+        "weightedGrossByDelta": 0.014980598087647989,
+        "averageAccountGainIfImmediate": 0.002236004550096536,
+        "weightedNetByDelta": 0.01377160972879538,
+        "avgMinPath": -0.021069963119076784,
+        "negativeMinPath": 0.6774193548387096,
+        "meanDelta": 0.1492600320103506,
+        "totalDelta": 9.254121984641737
+      }
+    }
+  },
+  "confidence": {
+    "1": {
+      "meanEventNet": {
+        "CI95": [
+          -0.0029305781493593275,
+          0.00645422906111055
+        ],
+        "probPositive": 0.776
+      },
+      "deltaWeightedNet": {
+        "CI95": [
+          -0.004749012083420326,
+          0.003917806836838173
+        ],
+        "probPositive": 0.44866666666666666
+      },
+      "winRate": {
+        "CI95": [
+          0.384180790960452,
+          0.5217391304347826
+        ]
+      }
+    },
+    "3": {
+      "meanEventNet": {
+        "CI95": [
+          0.0031242099799538062,
+          0.022311125571643227
+        ],
+        "probPositive": 0.9963333333333333
+      },
+      "deltaWeightedNet": {
+        "CI95": [
+          -0.0008789284737883579,
+          0.01351551303366355
+        ],
+        "probPositive": 0.9593333333333334
+      },
+      "winRate": {
+        "CI95": [
+          0.4444444444444444,
+          0.6035530018761726
+        ]
+      }
+    },
+    "5": {
+      "meanEventNet": {
+        "CI95": [
+          -0.0011668237275765914,
+          0.019812445073553085
+        ],
+        "probPositive": 0.9606666666666667
+      },
+      "deltaWeightedNet": {
+        "CI95": [
+          -0.005275650434841597,
+          0.01630758590904761
+        ],
+        "probPositive": 0.8323333333333334
+      },
+      "winRate": {
+        "CI95": [
+          0.4303778289221327,
+          0.605891544117647
+        ]
+      }
+    },
+    "10": {
+      "meanEventNet": {
+        "CI95": [
+          -0.002897158820488535,
+          0.03838393378735167
+        ],
+        "probPositive": 0.945
+      },
+      "deltaWeightedNet": {
+        "CI95": [
+          -0.004584366476532411,
+          0.03851031169042473
+        ],
+        "probPositive": 0.9333333333333333
+      },
+      "winRate": {
+        "CI95": [
+          0.4705772607550483,
+          0.6807293591544091
+        ]
+      }
+    }
+  },
+  "portfolio": {
+    "base6bp": {
+      "locked": {
+        "cagr": 0.5132966247774193,
+        "mdd": -0.46649463734690644,
+        "meanCash": 0.0576462093278093,
+        "actions": 192,
+        "buyActions": 94,
+        "sellActions": 98,
+        "tickets": 664,
+        "totalFees": 0.3084040154107094,
+        "annual": {
+          "2021": 0.23873726354938163,
+          "2022": 0.20627933302070622,
+          "2023": 0.2503498618823359,
+          "2024": 0.3773887688107431,
+          "2025": 1.057073978335234,
+          "2026": 1.1018251104791053
+        }
+      },
+      "daily": {
+        "cagr": 0.5214273412523633,
+        "mdd": -0.45975104878380335,
+        "meanCash": 0.0435300076910165,
+        "actions": 331,
+        "buyActions": 165,
+        "sellActions": 166,
+        "tickets": 785,
+        "totalFees": 0.3282115759204112,
+        "annual": {
+          "2021": 0.25387125230533103,
+          "2022": 0.23287285912332578,
+          "2023": 0.26390597013737294,
+          "2024": 0.3778447733619337,
+          "2025": 0.930277273261223,
+          "2026": 1.2089678841547
+        }
+      },
+      "S1": {
+        "cagr": 0.521109351248888,
+        "mdd": -0.44009239848984105,
+        "meanCash": 0.06040254827134761,
+        "actions": 260,
+        "buyActions": 113,
+        "sellActions": 147,
+        "tickets": 734,
+        "totalFees": 0.32114968585969866,
+        "annual": {
+          "2021": 0.25711083742133356,
+          "2022": 0.21695131930006184,
+          "2023": 0.28148509386839904,
+          "2024": 0.39702284619962014,
+          "2025": 0.8341625149638965,
+          "2026": 1.282263569842622
+        }
+      },
+      "S2": {
+        "cagr": 0.517383461213466,
+        "mdd": -0.4367704611665567,
+        "meanCash": 0.06383173796948567,
+        "actions": 244,
+        "buyActions": 103,
+        "sellActions": 141,
+        "tickets": 719,
+        "totalFees": 0.3187546124624954,
+        "annual": {
+          "2021": 0.24508460009571587,
+          "2022": 0.2224235923372988,
+          "2023": 0.27530927695755136,
+          "2024": 0.3881173036231991,
+          "2025": 0.8328349273940632,
+          "2026": 1.2886939477071278
+        }
+      },
+      "S3": {
+        "cagr": 0.5226871547261607,
+        "mdd": -0.45422770535231893,
+        "meanCash": 0.07439196584772734,
+        "actions": 231,
+        "buyActions": 91,
+        "sellActions": 140,
+        "tickets": 704,
+        "totalFees": 0.31470920523430695,
+        "annual": {
+          "2021": 0.24501338723090704,
+          "2022": 0.21241706579246644,
+          "2023": 0.2588141891490865,
+          "2024": 0.41256141995704665,
+          "2025": 0.9322690232907658,
+          "2026": 1.2239410983191759
+        }
+      }
+    },
+    "minimum5yuan": {
+      "locked": {
+        "cagr": 0.510378162457831,
+        "mdd": -0.4665124566287985,
+        "meanCash": 0.0576462093278093,
+        "actions": 192,
+        "buyActions": 94,
+        "sellActions": 98,
+        "tickets": 664,
+        "totalFees": 0.31964030314635195,
+        "annual": {
+          "2021": 0.23226664925924867,
+          "2022": 0.20463630297109048,
+          "2023": 0.24776004228165283,
+          "2024": 0.3757360253492932,
+          "2025": 1.0543875755815684,
+          "2026": 1.1017297979768164
+        }
+      },
+      "daily": {
+        "cagr": 0.5180026120112353,
+        "mdd": -0.4597510487838027,
+        "meanCash": 0.0435300076910165,
+        "actions": 331,
+        "buyActions": 165,
+        "sellActions": 166,
+        "tickets": 785,
+        "totalFees": 0.3413555725619519,
+        "annual": {
+          "2021": 0.24674113767495887,
+          "2022": 0.23143499102551512,
+          "2023": 0.260543010713717,
+          "2024": 0.3757211788044619,
+          "2025": 0.9263643508792103,
+          "2026": 1.2089678841547027
+        }
+      },
+      "S1": {
+        "cagr": 0.5186087189827209,
+        "mdd": -0.44009239848984005,
+        "meanCash": 0.06040254827134761,
+        "actions": 260,
+        "buyActions": 113,
+        "sellActions": 147,
+        "tickets": 734,
+        "totalFees": 0.3307481835511772,
+        "annual": {
+          "2021": 0.25163952453562466,
+          "2022": 0.21556655034810213,
+          "2023": 0.2788593234221286,
+          "2024": 0.39596641368595464,
+          "2025": 0.8318520791993944,
+          "2026": 1.2822635698426268
+        }
+      },
+      "S2": {
+        "cagr": 0.5152500571263974,
+        "mdd": -0.43677046116655627,
+        "meanCash": 0.06383173796948567,
+        "actions": 244,
+        "buyActions": 103,
+        "sellActions": 141,
+        "tickets": 719,
+        "totalFees": 0.32696575001680034,
+        "annual": {
+          "2021": 0.24073900652384794,
+          "2022": 0.2210316023088632,
+          "2023": 0.27295026801308775,
+          "2024": 0.38714220298453594,
+          "2025": 0.8310168057868745,
+          "2026": 1.2886939477071295
+        }
+      },
+      "S3": {
+        "cagr": 0.5206247712146037,
+        "mdd": -0.4542277053523188,
+        "meanCash": 0.07439196584772734,
+        "actions": 231,
+        "buyActions": 91,
+        "sellActions": 140,
+        "tickets": 704,
+        "totalFees": 0.32263205090644703,
+        "annual": {
+          "2021": 0.24057373155706196,
+          "2022": 0.2112042914131027,
+          "2023": 0.25678974121866394,
+          "2024": 0.41144483078153193,
+          "2025": 0.9305138695318644,
+          "2026": 1.2239410983191763
+        }
+      }
+    },
+    "minimum5plus4bp": {
+      "locked": {
+        "cagr": 0.45756698396516904,
+        "mdd": -0.47923802988930686,
+        "meanCash": 0.0576462093278093,
+        "actions": 192,
+        "buyActions": 94,
+        "sellActions": 98,
+        "tickets": 664,
+        "totalFees": 0.5262463574647449,
+        "annual": {
+          "2021": 0.19845879298425917,
+          "2022": 0.1673079123140817,
+          "2023": 0.21546953363679866,
+          "2024": 0.3220873939495663,
+          "2025": 0.9775676771371964,
+          "2026": 1.0121002283677534
+        }
+      },
+      "daily": {
+        "cagr": 0.4613892100216346,
+        "mdd": -0.47413817262528346,
+        "meanCash": 0.0435300076910165,
+        "actions": 331,
+        "buyActions": 165,
+        "sellActions": 166,
+        "tickets": 785,
+        "totalFees": 0.5619623092623416,
+        "annual": {
+          "2021": 0.21066997004087162,
+          "2022": 0.19239597487404492,
+          "2023": 0.2249970376847783,
+          "2024": 0.3192601847703027,
+          "2025": 0.8482996223114994,
+          "2026": 1.1063187094059699
+        }
+      },
+      "S1": {
+        "cagr": 0.4633002529287147,
+        "mdd": -0.45445669441281233,
+        "meanCash": 0.06040254827134761,
+        "actions": 260,
+        "buyActions": 113,
+        "sellActions": 147,
+        "tickets": 734,
+        "totalFees": 0.546080695609633,
+        "annual": {
+          "2021": 0.21596690865577184,
+          "2022": 0.1772416636199614,
+          "2023": 0.24322308451465724,
+          "2024": 0.3401447287252113,
+          "2025": 0.7599014852681525,
+          "2026": 1.1803808335556658
+        }
+      },
+      "S2": {
+        "cagr": 0.4605166113445305,
+        "mdd": -0.4512181457820481,
+        "meanCash": 0.06383173796948567,
+        "actions": 244,
+        "buyActions": 103,
+        "sellActions": 141,
+        "tickets": 719,
+        "totalFees": 0.540503976799741,
+        "annual": {
+          "2021": 0.20563595845544635,
+          "2022": 0.18289242643008863,
+          "2023": 0.23762546147066788,
+          "2024": 0.3325956475664349,
+          "2025": 0.759928463362981,
+          "2026": 1.186530836428446
+        }
+      },
+      "S3": {
+        "cagr": 0.4664005849796582,
+        "mdd": -0.46780990207100126,
+        "meanCash": 0.07439196584772734,
+        "actions": 231,
+        "buyActions": 91,
+        "sellActions": 140,
+        "tickets": 704,
+        "totalFees": 0.5334066389286952,
+        "annual": {
+          "2021": 0.20540652921581448,
+          "2022": 0.17376735664157894,
+          "2023": 0.22200194028673348,
+          "2024": 0.3570546871721263,
+          "2025": 0.8573332350132907,
+          "2026": 1.1260807958370243
+        }
+      }
+    }
+  }
+}
