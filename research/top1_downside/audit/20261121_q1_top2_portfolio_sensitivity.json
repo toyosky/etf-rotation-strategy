@@ -6,7 +6,8 @@
     "eventN": 119,
     "paired": 116,
     "navUsesArchivedPrimaryRet": true,
-    "top2MissingH5FellBackToCash": true
+    "top2MissingH5FellBackToCash": true,
+    "subgroupInterpretation": "Realized within-five-day rank switch uses FUTURE rank states; for ex post diagnostics only, not a feature available at signal time."
   },
   "portfolio": {
     "full": {
@@ -152,15 +153,27 @@
   "subgroup": {
     "switch": {
       "n": 65,
-      "top2MinusTop1": null,
-      "top2NetCash": null,
-      "weightedTop2": null
+      "top2MinusTop1": 0.021265176378709026,
+      "top2NetCash": 0.006513767107752235,
+      "weightedTop2": 0.00026827538113399324
     },
     "noSwitch": {
       "n": 51,
-      "top2MinusTop1": null,
-      "top2NetCash": null,
-      "weightedTop2": null
+      "top2MinusTop1": -0.023374119681091918,
+      "top2NetCash": 0.005474361103747768,
+      "weightedTop2": 0.0008135983493880827
+    },
+    "top2BecomesTop1": {
+      "n": 44,
+      "top2MinusTop1": 0.03445634592321707,
+      "top2NetCash": 0.019698752880227446,
+      "weightedTop2": 0.0015210701291499358
+    },
+    "switchToOther": {
+      "n": 21,
+      "top2MinusTop1": -0.0063734645716888,
+      "top2NetCash": -0.02111191736791013,
+      "weightedTop2": -0.0023566279004232174
     }
   }
 }
