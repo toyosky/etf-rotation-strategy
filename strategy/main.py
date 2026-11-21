@@ -1040,6 +1040,11 @@ def execute_weight_sells_at_1400(context):
             target = execution_veto_fallback(context, g.entry_reason or "目标受阻")
             g.pending_target = target
             holdings = managed_holdings(context)
+            # Preserve the original Void defensive fallback: an otherwise valid
+            # 511220 route must still be able to buy after the rejected ETF.
+            # It receives a fresh 14:05 preflight and cannot bypass that check.
+            if target == CASH_SIGNAL_SYMBOL:
+                g.entry_blocked = False
             if target in holdings:
                 g.pending_target_weight = q90_actual_position_weight(context, target)
                 g.pending_preserve_shares = True
