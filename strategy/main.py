@@ -34,6 +34,13 @@
 重要：
 - 旧C2两日确认与动态C2 veto已退出主策略，避免形成未经验证的“C2 + Void”叠加版本。
 - 513500只作为Void失败后的跨池Carrier，不参与FixV2日常Top1竞争。
+
+五、M1 + Q90动态仓位适配器（默认关闭）
+- 正常市场按最终可执行ETF的同日、同标的Q90与M1概率信号计算目标仓位；
+- Void未路由时冻结账户实际份额与现金，暂停M1调仓；
+- Void防御路由优先于M1，沿用原513500/511220路由；
+- 缺少有效同标的预测时，不把缺失数据解释为零风险：旧仓保持份额，新风险标的禁止新开仓；
+- M1_POSITION_CONTROL_ENABLED=False，生产级逐ETF预测流水线和执行验收完成前不得开启。
 """
 
 import json
@@ -2194,11 +2201,6 @@ def check_gap_at_0931(context):
         g.entry_reason = "Void多持仓异常：冻结账户现状，不执行09:31自动交易"
         log.warning(g.entry_reason)
         return
-    if M1_POSITION_CONTROL_ENABLED and g.pending_target_weight <= 0:
-        g.entry_checked = True
-        g.entry_reason = "M1目标仓位为0：不执行买入预检查"
-        log.info(g.entry_reason)
-        return
     target = g.pending_target
     holdings = managed_holdings(context)
     for symbol in [item for item in holdings if item != target]:
@@ -2209,6 +2211,11 @@ def check_gap_at_0931(context):
             log.warning("09:31计划退出仓急跌卖出%s：%.4f/%.4f < %.2f" % (display(symbol), price, close, NEXT_DAY_PRICE_FLOOR))
         elif error:
             log.warning("09:31旧仓价格不可用%s：%s" % (display(symbol), error))
+    if M1_POSITION_CONTROL_ENABLED and g.pending_target_weight <= 0:
+        g.entry_checked = True
+        g.entry_reason = "M1目标仓位为0：不执行买入预检查"
+        log.info(g.entry_reason)
+        return
     if (m1_holding_matches_plan(context, target) if M1_POSITION_CONTROL_ENABLED
             else holdings_match_target(holdings, target)):
         g.entry_checked = True
