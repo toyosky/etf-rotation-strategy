@@ -979,7 +979,7 @@ def m1_compute_sizing(signal):
     n_recent_value = finite_number(signal.get("n_recent"))
     if any(x is None for x in (q90, normal_risk, p0, p_vol, recent_err, n_recent_value)):
         return None
-    if q90 <= 0 or normal_risk < 0:
+    if q90 <= 0 or normal_risk <= 0:
         return None
     if not (0.0 <= p0 <= 1.0 and 0.0 <= p_vol <= 1.0):
         return None
