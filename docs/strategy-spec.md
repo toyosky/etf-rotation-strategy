@@ -1,6 +1,6 @@
 # FixV2 + V1(75) + Void + M1动态仓位控制
 
-Strategy ID：\`FIXV2_V1_75_VOID_ROUTE_BANK14_INTRADAY_S1_PREMIUM10\`
+Strategy ID：`FIXV2_V1_75_VOID_ROUTE_BANK14_INTRADAY_S1_PREMIUM10`
 
 本文件描述正式选标/状态机规则，以及新增的M1仓位控制适配器。**M1_POSITION_CONTROL_ENABLED 当前默认为 False；本分支合入不代表M1已经进入实盘。** 生产启用前必须完成逐ETF预测流水线和影子验收。
 
@@ -30,9 +30,9 @@ Strategy ID：\`FIXV2_V1_75_VOID_ROUTE_BANK14_INTRADAY_S1_PREMIUM10\`
 ## 2. OLS 选标与 V1 换帅
 
 - 每只风险ETF及511220使用最近26个有效收盘价的加权log-price OLS。
-- \`LOOKBACK_DAYS=25\` 表示取26根价格；\`NOMINAL_HALF_LIFE=10\`，\`np.polyfit\`传入q，实际拟合损失权重为q²。
-- 年化趋势：\`exp(slope * 250) - 1\`。
-- 正向分数：\`annualized * R²\`；只有annualized>0且R²>0才产生正分。
+- `LOOKBACK_DAYS=25` 表示取26根价格；`NOMINAL_HALF_LIFE=10`，`np.polyfit`传入q，实际拟合损失权重为q²。
+- 年化趋势：`exp(slope * 250) - 1`。
+- 正向分数：`annualized * R²`；只有annualized>0且R²>0才产生正分。
 - 最近3个交易日任一单日跌幅严格低于-3%，该ETF不合格。
 - 风险候选必须严格战胜511220比较器；否则正常目标为空仓。
 - V1(75)：新Top1的252日成交额阻力分位达到75%以上，且其raw OLS score单日增量<=0时，若旧仓仍有效则拒绝纯排名换帅；旧仓失效时V1不得阻止退出。
@@ -68,31 +68,31 @@ Void Route Baseline v1：
 - n_recent：可用成熟误差样本数。
 
 M1概率：
-\`correction = 0\`，当n_recent<40；否则
-\`correction = clip(0.65 * recent_err, -0.12, +0.12)\`
-\`P_M1 = clip(P0 + correction, 0.005, 0.995)\`
+`correction = 0`，当n_recent<40；否则
+`correction = clip(0.65 * recent_err, -0.12, +0.12)`
+`P_M1 = clip(P0 + correction, 0.005, 0.995)`
 
 Q90基础减仓：
-\`E_Q = clip(1 - 1.10 * Dnormal / Q90, 0, 1)\`
+`E_Q = clip(1 - 1.10 * Dnormal / Q90, 0, 1)`
 
 概率倍率：
-\`M = clip(1 + 2 * (P_M1 - Pvol), 0, 1.8)\`
+`M = clip(1 + 2 * (P_M1 - Pvol), 0, 1.8)`
 
 最终减仓与目标仓位：
-\`E = clip(E_Q * M, 0, 1)\`
-\`target_weight = 1 - E\`
+`E = clip(E_Q * M, 0, 1)`
+`target_weight = 1 - E`
 
 不额外引入未经回测的5%最小减仓门槛或5个百分点目标变化带宽。0.5%仅作为执行完成度容差，不改变M1理论目标。
 
 ### 4.2 每日信号接口
 
-当前策略代码只实现M1计算与安全执行适配器，**没有生产级逐ETF模型预测生成器**。上游信号须在开盘前注入\`g.m1_risk_signal\`，且至少包含：
+当前策略代码只实现M1计算与安全执行适配器，**没有生产级逐ETF模型预测生成器**。上游信号须在开盘前注入`g.m1_risk_signal`，且至少包含：
 
-- \`date\`、\`data_asof\`：必须等于策略信号日；
-- \`symbol\`：必须等于V1、溢价及Void路由后最终可执行ETF；
-- \`scope\`：必须为\`per_asset_final_target\`；
-- \`model_version\`：非空版本号；
-- \`q90\`、\`normal_risk\`、\`p0\`、\`p_vol\`、\`recent_err\`、\`n_recent\`。
+- `date`、`data_asof`：必须等于策略信号日；
+- `symbol`：必须等于V1、溢价及Void路由后最终可执行ETF；
+- `scope`：必须为`per_asset_final_target`；
+- `model_version`：非空版本号；
+- `q90`、`normal_risk`、`p0`、`p_vol`、`recent_err`、`n_recent`。
 
 任何日期、标的、范围或数值校验失败均视为无效预测。不得使用其他ETF或raw Top1预测替代。
 
@@ -126,7 +126,7 @@ Q90基础减仓：
 
 ## 6. 启用门槛与当前状态
 
-当前\`M1_POSITION_CONTROL_ENABLED=False\`。以下事项完成前不得开启：
+当前`M1_POSITION_CONTROL_ENABLED=False`。以下事项完成前不得开启：
 1. 逐ETF、逐日、past-only的Q90/P0/Pvol预测及M1成熟误差数据生成；
 2. 证明信号适用于最终可执行ETF，而不只是raw OLS Top1研究代理；
 3. JoinQuant或本地券商执行层的部分成交、撤单、手数、资金、重启恢复及真实持仓对账测试；
