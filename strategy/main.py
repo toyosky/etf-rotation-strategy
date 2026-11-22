@@ -986,7 +986,7 @@ def m1_compute_sizing(signal):
     if not -1.0 <= recent_err <= 1.0:
         return None
     n_recent = int(round(n_recent_value))
-    if n_recent < 0 or abs(n_recent_value - n_recent) > 1e-9:
+    if n_recent < 0 or n_recent > 120 or abs(n_recent_value - n_recent) > 1e-9:
         return None
 
     if n_recent < M1_MIN_MATURED_SAMPLES:
@@ -1071,9 +1071,9 @@ def build_m1_position_plan(context, signal_date, target, holdings):
     Void, before a defensive route: freeze the actual account holdings and cash.
     Void route: retain the existing 513500/511220 routing authority; do not apply M1.
     """
-    if target is None:
-        return (None, 0.0, False, False, "正式策略目标为空仓", None)
     if not M1_POSITION_CONTROL_ENABLED:
+        if target is None:
+            return (None, 0.0, False, False, "正式策略目标为空仓", None)
         return (target, 1.0, False, False, "M1仓位控制未启用，沿用原全仓执行", None)
 
     if g.void_in_void and not g.void_routed:
@@ -1093,6 +1093,8 @@ def build_m1_position_plan(context, signal_date, target, holdings):
 
     if g.void_in_void and g.void_routed:
         return (target, 1.0, False, False, "Void防御路由优先，沿用既有路由仓位", None)
+    if target is None:
+        return (None, 0.0, False, False, "正式策略目标为空仓", None)
     if target not in RISK_POOL:
         return (target, 1.0, False, False, "现金/防御路由不套用风险ETF的M1仓位模型", None)
 
