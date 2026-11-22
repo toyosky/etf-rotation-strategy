@@ -15,7 +15,7 @@ import fs from 'node:fs';
 const args=process.argv.slice(2);
 if(args.length!==4)throw Error('Requires OHLC, Void replay, M1 results and original OOS CSV');
 const [ohlc,replay,cal,rawCsv]=args.map((path,i)=>i===3?fs.readFileSync(path,'utf8'):JSON.parse(fs.readFileSync(path,'utf8')));
-const byAsset=Object.groupBy(ohlc.rows,x=>x.symbol);
+const byAsset={};for(const bar of ohlc.rows)(byAsset[bar.symbol]??=[]).push(bar);
 const m1ByDate=new Map(cal.dailyPredictions.map(x=>[x.d,x]));
 const [header,...rawLines]=rawCsv.trim().split('\n');
 const fields=header.split(',');
