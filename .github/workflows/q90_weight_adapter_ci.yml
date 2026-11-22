@@ -8,21 +8,42 @@ on:
       - '.github/workflows/q90_weight_adapter_ci.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Compile strategy and M1 tests
-        run: python -m py_compile strategy/main.py tests/test_m1_position_control.py
-      - name: Unit test M1 sizing and execution adapter
-        run: python -m unittest discover -s tests -p 'test_m1_position_control.py' -v
-      - name: Install dependencies for existing regression tests
-        run: python -m pip install numpy pandas
-      - name: Run existing execution-protection regression tests
-        run: python -m unittest discover -s strategy -p 'test_execution_protection.py' -v
+      - name: Run checks and capture diagnostics
+        shell: bash
+        run: |
+          set +e
+          : > /tmp/m1-ci-diagnostics.txt
+          python -m py_compile strategy/main.py tests/test_m1_position_control.py >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "py_compile_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m unittest discover -s tests -p 'test_m1_position_control.py' -v >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "m1_tests_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m pip install numpy pandas >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "install_deps_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m unittest discover -s strategy -p 'test_execution_protection.py' -v >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "legacy_tests_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          cat /tmp/m1-ci-diagnostics.txt
+      - name: Upload test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1-position-control-ci-diagnostics
+          path: /tmp/m1-ci-diagnostics.txt
+          if-no-files-found: error
+      - name: Fail if any validation failed
+        if: always()
+        shell: bash
+        run: |
+          if grep -Eq '(_exit=)[1-9]' /tmp/m1-ci-diagnostics.txt; then
+            exit 1
+          fi
