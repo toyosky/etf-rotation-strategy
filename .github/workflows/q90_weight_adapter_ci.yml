@@ -22,5 +22,7 @@ jobs:
         run: python -m py_compile strategy/main.py tests/test_m1_position_control.py
       - name: Unit test M1 sizing and execution adapter
         run: python -m unittest discover -s tests -p 'test_m1_position_control.py' -v
+      - name: Install dependencies for existing regression tests
+        run: python -m pip install numpy pandas
       - name: Run existing execution-protection regression tests
-        run: python -m unittest strategy.test_execution_protection -v
+        run: python -m unittest discover -s strategy -p 'test_execution_protection.py' -v
