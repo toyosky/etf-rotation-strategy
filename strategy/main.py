@@ -2209,7 +2209,7 @@ def check_gap_at_0931(context):
             log.warning("09:31计划退出仓急跌卖出%s：%.4f/%.4f < %.2f" % (display(symbol), price, close, NEXT_DAY_PRICE_FLOOR))
         elif error:
             log.warning("09:31旧仓价格不可用%s：%s" % (display(symbol), error))
-    if (q90_holding_matches_plan(context, target) if Q90_SIZING_ENABLED
+    if (m1_holding_matches_plan(context, target) if M1_POSITION_CONTROL_ENABLED
             else holdings_match_target(holdings, target)):
         g.entry_checked = True
         g.entry_reason = "当前持仓已等于最终目标，无需调仓"
