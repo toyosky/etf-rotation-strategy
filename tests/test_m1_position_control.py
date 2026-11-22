@@ -149,12 +149,15 @@ class Tests(unittest.TestCase):
         result = self.call("m1_compute_sizing", signal)
         self.assertAlmostEqual(result["correction"], -0.12)
 
-    def test_invalid_q90_or_probability_rejected(self):
+    def test_invalid_q90_probability_or_sample_count_rejected(self):
         signal = valid_signal()
         signal["q90"] = 0
         self.assertIsNone(self.call("m1_compute_sizing", signal))
         signal = valid_signal()
         signal["p_vol"] = 1.2
+        self.assertIsNone(self.call("m1_compute_sizing", signal))
+        signal = valid_signal()
+        signal["n_recent"] = 121
         self.assertIsNone(self.call("m1_compute_sizing", signal))
 
     def test_signal_requires_exact_date_symbol_scope_and_data_asof(self):
@@ -224,6 +227,19 @@ class Tests(unittest.TestCase):
         self.assertAlmostEqual(plan[1], 0.70)
         self.assertTrue(plan[2])
         self.assertFalse(plan[3])
+
+    def test_void_with_missing_strategy_target_still_freezes_real_holding(self):
+        self.g.void_in_void = True
+        plan = self.call(
+            "build_m1_position_plan",
+            FakeContext({ETF: 7000}),
+            "2026-11-20",
+            None,
+            [ETF],
+        )
+        self.assertEqual(plan[0], ETF)
+        self.assertAlmostEqual(plan[1], 0.70)
+        self.assertTrue(plan[2])
 
     def test_void_without_holding_stays_in_cash(self):
         self.g.void_in_void = True
