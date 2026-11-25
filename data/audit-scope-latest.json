@@ -1,6 +1,6 @@
 {
   "version": "category-audit-scope-v1",
-  "as_of": "2026-11-20",
+  "as_of": "2026-11-25",
   "source_ols": "data/fundamental-audit-trigger.json:next_strategy_target.model_target",
   "source_rebuild": "data/full-market-rebuild-latest.json:qualified_candidates",
   "data_quality_gate": "PASS",
@@ -13,10 +13,10 @@
     "source": "user confirmed discretionary exits of 159981 and 159529",
     "note": "Actual holding is manually reported and may become stale; never use as automatic broker synchronization."
   },
-  "all_market_rebuild_count": 22,
-  "new_rebuild_count": 5,
-  "unique_symbols": 23,
-  "category_count": 23,
+  "all_market_rebuild_count": 2,
+  "new_rebuild_count": 0,
+  "unique_symbols": 3,
+  "category_count": 3,
   "categories": [
     {
       "category_id": "INDIA_EQUITY",
@@ -26,7 +26,7 @@
       "category_first_qualified_date": null,
       "category_onset_symbols": [],
       "qualification_cohorts": [],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-25",
       "ols_top1": "164824",
       "new_today_count": 0,
       "needs_review": false,
@@ -49,880 +49,80 @@
       ]
     },
     {
-      "category_id": "UNCLASSIFIED_159067",
-      "category_name": "待核实：绿色电力ETF鹏华",
+      "category_id": "UNCLASSIFIED_164509",
+      "category_name": "待核实：国富恒利债券LOF",
       "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
       "count": 1,
-      "category_first_qualified_date": "2026-11-20",
+      "category_first_qualified_date": "2026-11-24",
       "category_onset_symbols": [
-        "159067"
+        "164509"
       ],
       "qualification_cohorts": [
         {
-          "date": "2026-11-20",
+          "date": "2026-11-24",
           "count": 1,
           "symbols": [
-            "159067"
+            "164509"
           ]
         }
       ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 1,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159067",
-          "name": "绿色电力ETF鹏华",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-20",
-          "cross_date": "2026-11-19",
-          "annual": 0.042404359041324335,
-          "r2": 0.024605173556405124,
-          "new_today": true,
-          "category": "UNCLASSIFIED_159067",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_511100",
-      "category_name": "待核实：国债ETF华夏",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-20",
-      "category_onset_symbols": [
-        "511100"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-20",
-          "count": 1,
-          "symbols": [
-            "511100"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 1,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "511100",
-          "name": "国债ETF华夏",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-20",
-          "cross_date": "2026-11-19",
-          "annual": 0.027444933314572317,
-          "r2": 0.06254931107337203,
-          "new_today": true,
-          "category": "UNCLASSIFIED_511100",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_511600",
-      "category_name": "待核实：华安日日鑫ETF",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-20",
-      "category_onset_symbols": [
-        "511600"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-20",
-          "count": 1,
-          "symbols": [
-            "511600"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 1,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "511600",
-          "name": "华安日日鑫ETF",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-20",
-          "cross_date": "2026-11-19",
-          "annual": 0.0009790263098148344,
-          "r2": 0.17199095061816538,
-          "new_today": true,
-          "category": "UNCLASSIFIED_511600",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_511920",
-      "category_name": "待核实：货币ETF广发",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-20",
-      "category_onset_symbols": [
-        "511920"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-20",
-          "count": 1,
-          "symbols": [
-            "511920"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 1,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "511920",
-          "name": "货币ETF广发",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-20",
-          "cross_date": "2026-11-19",
-          "annual": 0.0003455204726874328,
-          "r2": 0.022324826507724715,
-          "new_today": true,
-          "category": "UNCLASSIFIED_511920",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_511970",
-      "category_name": "待核实：国寿货币ETF",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-20",
-      "category_onset_symbols": [
-        "511970"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-20",
-          "count": 1,
-          "symbols": [
-            "511970"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 1,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "511970",
-          "name": "国寿货币ETF",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-20",
-          "cross_date": "2026-11-18",
-          "annual": 0.00015432100140766458,
-          "r2": 0.026023431944816267,
-          "new_today": true,
-          "category": "UNCLASSIFIED_511970",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159046",
-      "category_name": "待核实：绿电ETF天弘",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "159046"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "159046"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-25",
       "ols_top1": null,
       "new_today_count": 0,
       "needs_review": true,
       "members": [
         {
-          "symbol": "159046",
-          "name": "绿电ETF天弘",
+          "symbol": "164509",
+          "name": "国富恒利债券LOF",
           "roles": [
             "REBUILD_QUALIFIED"
           ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.10025820531638008,
-          "r2": 0.1567084555811704,
+          "first_qualified_date": "2026-11-24",
+          "cross_date": "2026-11-20",
+          "annual": 0.009810404194253053,
+          "r2": 0.04171179638878497,
           "new_today": false,
-          "category": "UNCLASSIFIED_159046",
+          "category": "UNCLASSIFIED_164509",
           "classification_rule": "unclassified",
           "needs_review": true
         }
       ]
     },
     {
-      "category_id": "UNCLASSIFIED_159059",
-      "category_name": "待核实：电力ETF大成",
+      "category_id": "UNCLASSIFIED_501061",
+      "category_name": "待核实：金选300C类LOF",
       "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
       "count": 1,
-      "category_first_qualified_date": "2026-11-18",
+      "category_first_qualified_date": "2026-11-23",
       "category_onset_symbols": [
-        "159059"
+        "501061"
       ],
       "qualification_cohorts": [
         {
-          "date": "2026-11-18",
+          "date": "2026-11-23",
           "count": 1,
           "symbols": [
-            "159059"
+            "501061"
           ]
         }
       ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-25",
       "ols_top1": null,
       "new_today_count": 0,
       "needs_review": true,
       "members": [
         {
-          "symbol": "159059",
-          "name": "电力ETF大成",
+          "symbol": "501061",
+          "name": "金选300C类LOF",
           "roles": [
             "REBUILD_QUALIFIED"
           ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.1595336534994669,
-          "r2": 0.25866758430685344,
+          "first_qualified_date": "2026-11-23",
+          "cross_date": "2026-11-20",
+          "annual": 0.04240112807247565,
+          "r2": 0.01805578900372118,
           "new_today": false,
-          "category": "UNCLASSIFIED_159059",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159061",
-      "category_name": "待核实：绿色电力ETF南方",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "159061"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "159061"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159061",
-          "name": "绿色电力ETF南方",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.09389706173303458,
-          "r2": 0.12695342694860157,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159061",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159146",
-      "category_name": "待核实：电力ETF华宝",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "159146"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "159146"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159146",
-          "name": "电力ETF华宝",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.18423815130775711,
-          "r2": 0.32820011203400556,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159146",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159327",
-      "category_name": "待核实：半导体设备ETF万家",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "159327"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "159327"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159327",
-          "name": "半导体设备ETF万家",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.7871493311431954,
-          "r2": 0.07780790640814939,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159327",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159516",
-      "category_name": "待核实：半导体设备ETF国泰",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "159516"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "159516"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159516",
-          "name": "半导体设备ETF国泰",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.7614185951897119,
-          "r2": 0.07457731763873698,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159516",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159558",
-      "category_name": "待核实：半导体设备ETF易方达",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "159558"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "159558"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159558",
-          "name": "半导体设备ETF易方达",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.77359739373786,
-          "r2": 0.07592530858578461,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159558",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159582",
-      "category_name": "待核实：半导体ETF博时",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "159582"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "159582"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159582",
-          "name": "半导体ETF博时",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 1.02939267477376,
-          "r2": 0.1291163651124666,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159582",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159625",
-      "category_name": "待核实：绿色电力ETF嘉实",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "159625"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "159625"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159625",
-          "name": "绿色电力ETF嘉实",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.1095049454447532,
-          "r2": 0.17134517067836685,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159625",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_159669",
-      "category_name": "待核实：绿色电力ETF国泰",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "159669"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "159669"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "159669",
-          "name": "绿色电力ETF国泰",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.09237588363692817,
-          "r2": 0.13668586623863455,
-          "new_today": false,
-          "category": "UNCLASSIFIED_159669",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_510880",
-      "category_name": "待核实：红利ETF华泰柏瑞",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "510880"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "510880"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "510880",
-          "name": "红利ETF华泰柏瑞",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.09579646494921445,
-          "r2": 0.11690430986534128,
-          "new_today": false,
-          "category": "UNCLASSIFIED_510880",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_511820",
-      "category_name": "待核实：鹏华添利ETF",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "511820"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "511820"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "511820",
-          "name": "鹏华添利ETF",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.0005721361139183756,
-          "r2": 0.2720356887698502,
-          "new_today": false,
-          "category": "UNCLASSIFIED_511820",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_560780",
-      "category_name": "待核实：半导体设备ETF广发",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "560780"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "560780"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "560780",
-          "name": "半导体设备ETF广发",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.7905832203459182,
-          "r2": 0.07762956587084524,
-          "new_today": false,
-          "category": "UNCLASSIFIED_560780",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_561690",
-      "category_name": "待核实：300质量ETF农银",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "561690"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "561690"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "561690",
-          "name": "300质量ETF农银",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.23828435502527223,
-          "r2": 0.29550872620718716,
-          "new_today": false,
-          "category": "UNCLASSIFIED_561690",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_561980",
-      "category_name": "待核实：半导体设备ETF招商",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "561980"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "561980"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "561980",
-          "name": "半导体设备ETF招商",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 1.0984250436118308,
-          "r2": 0.13885309618031416,
-          "new_today": false,
-          "category": "UNCLASSIFIED_561980",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_562590",
-      "category_name": "待核实：半导体设备ETF华夏",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-19",
-      "category_onset_symbols": [
-        "562590"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-19",
-          "count": 1,
-          "symbols": [
-            "562590"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "562590",
-          "name": "半导体设备ETF华夏",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-19",
-          "cross_date": "2026-11-18",
-          "annual": 0.8034071149574402,
-          "r2": 0.08058029456237958,
-          "new_today": false,
-          "category": "UNCLASSIFIED_562590",
-          "classification_rule": "unclassified",
-          "needs_review": true
-        }
-      ]
-    },
-    {
-      "category_id": "UNCLASSIFIED_563960",
-      "category_name": "待核实：300质量ETF兴全",
-      "drivers": "核实基金实际指数与成分，暂不与其他标的合并审计",
-      "count": 1,
-      "category_first_qualified_date": "2026-11-18",
-      "category_onset_symbols": [
-        "563960"
-      ],
-      "qualification_cohorts": [
-        {
-          "date": "2026-11-18",
-          "count": 1,
-          "symbols": [
-            "563960"
-          ]
-        }
-      ],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-20",
-      "ols_top1": null,
-      "new_today_count": 0,
-      "needs_review": true,
-      "members": [
-        {
-          "symbol": "563960",
-          "name": "300质量ETF兴全",
-          "roles": [
-            "REBUILD_QUALIFIED"
-          ],
-          "first_qualified_date": "2026-11-18",
-          "cross_date": "2026-11-17",
-          "annual": 0.24875151983101507,
-          "r2": 0.3191569968815552,
-          "new_today": false,
-          "category": "UNCLASSIFIED_563960",
+          "category": "UNCLASSIFIED_501061",
           "classification_rule": "unclassified",
           "needs_review": true
         }
