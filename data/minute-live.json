@@ -1,7 +1,7 @@
 {
   "tracking_start": "2026-09-14",
   "performance_anchor": "2026-09-14 15:00 close",
-  "settled_through": "2026-11-20",
+  "settled_through": "2026-11-25",
   "cost_per_side": 0.0006,
   "execution_rules": {
     "09:31_drop_ratio": 0.97,
@@ -364,6 +364,30 @@
           "holding": "511220",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-11-23",
+          "nav": 0.9477835740265773,
+          "return": -0.0009622786759044821,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-24",
+          "nav": 0.9475097009075174,
+          "return": -0.0002889616644191628,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-25",
+          "nav": 0.9442232234787988,
+          "return": -0.0034685422487714668,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [
@@ -413,8 +437,8 @@
           "blocked": null
         }
       ],
-      "settled_return": -0.051303515576556435,
-      "latest_nav": 0.9486964844234436,
+      "settled_return": -0.055776776521201166,
+      "latest_nav": 0.9442232234787988,
       "latest_holding": "511220"
     },
     "original": {
@@ -771,6 +795,30 @@
           "holding": "164824",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-11-23",
+          "nav": 0.7789363985263816,
+          "return": -0.0007451564828614421,
+          "holding": "164824",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-24",
+          "nav": 0.7771938115050698,
+          "return": -0.0022371364653244186,
+          "holding": "164824",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-25",
+          "nav": 0.8085603778886824,
+          "return": 0.04035874439461873,
+          "holding": "164824",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [
@@ -883,8 +931,8 @@
           "blocked": null
         }
       ],
-      "settled_return": -0.22048273913318106,
-      "latest_nav": 0.7795172608668189,
+      "settled_return": -0.1914396221113176,
+      "latest_nav": 0.8085603778886824,
       "latest_holding": "164824"
     },
     "freeze_cash": {
@@ -1241,6 +1289,30 @@
           "holding": "511220",
           "status": "settled",
           "note": "hold"
+        },
+        {
+          "date": "2026-11-23",
+          "nav": 0.9910758650929448,
+          "return": -0.0009622786759044821,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-24",
+          "nav": 0.9907894821614018,
+          "return": -0.0002889616644191628,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
+        },
+        {
+          "date": "2026-11-25",
+          "nav": 0.9873528869828866,
+          "return": -0.0034685422487714668,
+          "holding": "511220",
+          "status": "settled",
+          "note": "hold"
         }
       ],
       "trades": [
@@ -1290,8 +1362,8 @@
           "blocked": null
         }
       ],
-      "settled_return": -0.007969525135245514,
-      "latest_nav": 0.9920304748647545,
+      "settled_return": -0.01264711301711341,
+      "latest_nav": 0.9873528869828866,
       "latest_holding": "511220"
     }
   },
