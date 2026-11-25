@@ -31,13 +31,13 @@
   "query_batch_errors": [
     {
       "symbols": [
-        "512390"
+        "165512"
       ],
       "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
-        "165512"
+        "512390"
       ],
       "error": "Empty Tencent kline response"
     },
@@ -69,7 +69,7 @@
       "symbols": [
         "165312"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -93,7 +93,7 @@
       "symbols": [
         "166802"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -147,31 +147,31 @@
       "symbols": [
         "161721"
       ],
-      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
+      "error": "Empty Tencent kline response"
     },
     {
       "symbols": [
         "161723"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "162107"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "163209"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
         "164401"
       ],
-      "error": "Empty Tencent kline response"
+      "error": "{'code': 'SKILL_006_2', 'message': '查询dayK线失败：error_type=2 suggest=2 msg=服务限频'}"
     },
     {
       "symbols": [
@@ -509,9 +509,9 @@
       "first_qualified_date": "2026-11-24",
       "cross_date": "2026-11-20",
       "cross_age_sessions": 3.0,
-      "annual": 0.009810404194245281,
-      "r2": 0.041711796388770206,
-      "delta_r2_1": 0.020258761592953922,
+      "annual": 0.009810404194253053,
+      "r2": 0.04171179638878497,
+      "delta_r2_1": 0.02025876159296436,
       "avg_amount60": 7406.383333333333,
       "strict_eligible": false,
       "broad_eligible": false,
@@ -526,9 +526,9 @@
       "first_qualified_date": "2026-11-23",
       "cross_date": "2026-11-20",
       "cross_age_sessions": 2.0,
-      "annual": 0.04240112807245944,
-      "r2": 0.018055789003725176,
-      "delta_r2_1": 0.004538833415318133,
+      "annual": 0.04240112807247565,
+      "r2": 0.01805578900372118,
+      "delta_r2_1": 0.0045388334153151355,
       "avg_amount60": 21021.283333333333,
       "strict_eligible": false,
       "broad_eligible": false,
