@@ -34,6 +34,13 @@
 重要：
 - 旧C2两日确认与动态C2 veto已退出主策略，避免形成未经验证的“C2 + Void”叠加版本。
 - 513500只作为Void失败后的跨池Carrier，不参与FixV2日常Top1竞争。
+
+五、M1 + Q90动态仓位适配器（默认关闭）
+- 正常市场按最终可执行ETF的同日、同标的Q90与M1概率信号计算目标仓位；
+- Void未路由时冻结账户实际份额与现金，暂停M1调仓；
+- Void防御路由优先于M1，沿用原513500/511220路由；
+- 缺少有效同标的预测时，不把缺失数据解释为零风险：旧仓保持份额，新风险标的禁止新开仓；
+- M1_POSITION_CONTROL_ENABLED=False，生产级逐ETF预测流水线和执行验收完成前不得开启。
 """
 
 import json
@@ -126,6 +133,19 @@ NEXT_DAY_PRICE_FLOOR = 0.97
 INTRADAY_HIGH_DRAWDOWN_LIMIT = 0.02
 INTRADAY_MINUTE_BAR_COUNT = 260
 
+# M1 dynamic position sizing adapter. OFF until a validated per-asset, point-in-time
+# signal feed exists for the FINAL executable ETF after V1/premium/Void routing.
+# The current archived M1 OOS study is a raw-Top1 proxy; it must not be reused for
+# another final ETF. Keep this disabled until the all-ETF feed is independently audited.
+M1_POSITION_CONTROL_ENABLED = False
+M1_LAMBDA = 0.65
+M1_MAX_PROBABILITY_CORRECTION = 0.12
+M1_MIN_MATURED_SAMPLES = 40
+M1_Q90_BASELINE_MULTIPLIER = 1.10
+M1_PROBABILITY_MULTIPLIER_SLOPE = 2.0
+M1_PROBABILITY_MULTIPLIER_MAX = 1.8
+M1_WEIGHT_TOLERANCE = 0.005
+
 STRATEGY_STATE_VERSION = 1
 
 
@@ -200,6 +220,12 @@ def reset_state():
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+    g.pending_target_weight = 1.0
+    g.pending_preserve_shares = False
+    g.pending_preserve_portfolio = False
+    g.pending_buy_weight = None
+    g.pending_m1_diagnostics = None
+    g.m1_risk_signal = None
 
     # 正常V1的后台状态；Void期间仍继续更新，Void退出后直接恢复。
     g.v1_current_target = None
@@ -268,6 +294,12 @@ def ensure_state():
         "entry_blocked": False,
         "entry_reason": None,
         "pending_buy_target": None,
+        "pending_target_weight": 1.0,
+        "pending_preserve_shares": False,
+        "pending_preserve_portfolio": False,
+        "pending_buy_weight": None,
+        "pending_m1_diagnostics": None,
+        "m1_risk_signal": None,
 
         "v1_current_target": None,
         "v1_initialized": False,
@@ -923,6 +955,321 @@ def safe_target_value(symbol, value):
         return order, None if order is not None else "订单未提交"
     except Exception as exc:
         return None, str(exc)
+
+
+
+def m1_clip(value, lower, upper):
+    return max(lower, min(upper, value))
+
+
+def m1_compute_sizing(signal):
+    """Apply the frozen M1 + Q90 sizing equations to one validated per-asset signal.
+
+    recent_err is mean(Y - P0) over matured risk signals. The 0.65 multiplier,
+    +/-12pp correction cap, 40-observation fallback, 1.10 Q90 baseline ratio,
+    and probability multiplier cap 1.8 are frozen research settings.
+    """
+    if not isinstance(signal, dict):
+        return None
+    q90 = finite_number(signal.get("q90"))
+    normal_risk = finite_number(signal.get("normal_risk"))
+    p0 = finite_number(signal.get("p0"))
+    p_vol = finite_number(signal.get("p_vol"))
+    recent_err = finite_number(signal.get("recent_err"))
+    n_recent_value = finite_number(signal.get("n_recent"))
+    if any(x is None for x in (q90, normal_risk, p0, p_vol, recent_err, n_recent_value)):
+        return None
+    if q90 <= 0 or normal_risk <= 0:
+        return None
+    if not (0.0 <= p0 <= 1.0 and 0.0 <= p_vol <= 1.0):
+        return None
+    if not -1.0 <= recent_err <= 1.0:
+        return None
+    n_recent = int(round(n_recent_value))
+    if n_recent < 0 or n_recent > 120 or abs(n_recent_value - n_recent) > 1e-9:
+        return None
+
+    if n_recent < M1_MIN_MATURED_SAMPLES:
+        correction = 0.0
+    else:
+        correction = m1_clip(
+            M1_LAMBDA * recent_err,
+            -M1_MAX_PROBABILITY_CORRECTION,
+            M1_MAX_PROBABILITY_CORRECTION,
+        )
+    p_m1 = m1_clip(p0 + correction, 0.005, 0.995)
+    base_e = m1_clip(1.0 - M1_Q90_BASELINE_MULTIPLIER * normal_risk / q90, 0.0, 1.0)
+    probability_multiplier = m1_clip(
+        1.0 + M1_PROBABILITY_MULTIPLIER_SLOPE * (p_m1 - p_vol),
+        0.0,
+        M1_PROBABILITY_MULTIPLIER_MAX,
+    )
+    e = m1_clip(base_e * probability_multiplier, 0.0, 1.0)
+    return {
+        "q90": q90,
+        "normal_risk": normal_risk,
+        "p0": p0,
+        "p_vol": p_vol,
+        "recent_err": recent_err,
+        "n_recent": n_recent,
+        "correction": correction,
+        "p_m1": p_m1,
+        "base_e": base_e,
+        "probability_multiplier": probability_multiplier,
+        "e": e,
+        "target_weight": 1.0 - e,
+    }
+
+
+def m1_validate_signal_for_target(signal_date, target):
+    """Accept only a same-date, same-symbol, per-asset final-target prediction.
+
+    Required g.m1_risk_signal contract:
+      date, data_asof, symbol, scope='per_asset_final_target', model_version,
+      q90, normal_risk, p0, p_vol, recent_err, n_recent.
+
+    No fallback to the raw OLS Top1 prediction is permitted after V1/Void routing.
+    """
+    data = getattr(g, "m1_risk_signal", None)
+    if not isinstance(data, dict) or target not in RISK_POOL:
+        return None
+    expected_date = str(signal_date)[:10]
+    if str(data.get("date", ""))[:10] != expected_date:
+        return None
+    if str(data.get("data_asof", ""))[:10] != expected_date:
+        return None
+    if data.get("symbol") != target:
+        return None
+    if data.get("scope") != "per_asset_final_target":
+        return None
+    if not isinstance(data.get("model_version"), str) or not data.get("model_version", "").strip():
+        return None
+    result = m1_compute_sizing(data)
+    if result is None:
+        return None
+    result["model_version"] = data["model_version"]
+    return result
+
+
+def m1_actual_position_weight(context, target):
+    if target is None:
+        return 0.0
+    position = context.portfolio.positions.get(target)
+    total = finite_number(context.portfolio.total_value)
+    if not position or total is None or total <= 0:
+        return 0.0
+    value = finite_number(getattr(position, "value", None))
+    return max(0.0, min(1.0, value / total)) if value is not None else 0.0
+
+
+def build_m1_position_plan(context, signal_date, target, holdings):
+    """Return (final target, weight, preserve shares, preserve portfolio, note, diagnostics).
+
+    Normal state: use M1 only for a same-day, same-symbol final-target signal.
+    Missing signal: preserve an existing same-symbol holding; never open a new
+    risk position at 100% by treating missing risk data as zero.
+    Void, before a defensive route: freeze the actual account holdings and cash.
+    Void route: retain the existing 513500/511220 routing authority; do not apply M1.
+    """
+    if not M1_POSITION_CONTROL_ENABLED:
+        if target is None:
+            return (None, 0.0, False, False, "正式策略目标为空仓", None)
+        return (target, 1.0, False, False, "M1仓位控制未启用，沿用原全仓执行", None)
+
+    if g.void_in_void and not g.void_routed:
+        if len(holdings) == 0:
+            return (None, 0.0, True, False, "Void冻结空仓，不自动建立新风险仓位", None)
+        if len(holdings) == 1:
+            actual_target = holdings[0]
+            actual_weight = m1_actual_position_weight(context, actual_target)
+            return (
+                actual_target, actual_weight, True, False,
+                "Void冻结账户实际持仓份额与现金，不运行M1调仓", None
+            )
+        return (
+            target, 0.0, False, True,
+            "Void期间发现多个策略持仓，冻结账户现状并停止自动调仓", None
+        )
+
+    if g.void_in_void and g.void_routed:
+        return (target, 1.0, False, False, "Void防御路由优先，沿用既有路由仓位", None)
+    if target is None:
+        return (None, 0.0, False, False, "正式策略目标为空仓", None)
+    if target not in RISK_POOL:
+        return (target, 1.0, False, False, "现金/防御路由不套用风险ETF的M1仓位模型", None)
+
+    diagnostics = m1_validate_signal_for_target(signal_date, target)
+    if diagnostics is None:
+        if target in holdings:
+            current_weight = m1_actual_position_weight(context, target)
+            return (
+                target, current_weight, True, False,
+                "缺少同日同标的有效M1预测，保持现有份额，不加不减", None
+            )
+        return (
+            target, 0.0, False, False,
+            "缺少同日同标的有效M1预测，禁止新开风险仓位", None
+        )
+    return (
+        target, diagnostics["target_weight"], False, False,
+        "M1动态仓位控制", diagnostics
+    )
+
+
+def m1_diagnostics_text(diagnostics):
+    if not isinstance(diagnostics, dict):
+        return "无（未应用M1预测）"
+    return (
+        "Q90=%.2f%% Dnormal=%.2f%% P0=%.2f%% PM1=%.2f%% Pvol=%.2f%% "
+        "基础减仓=%.2f%% 概率倍率=%.3f 最终减仓=%.2f%% 模型=%s"
+        % (
+            diagnostics["q90"] * 100,
+            diagnostics["normal_risk"] * 100,
+            diagnostics["p0"] * 100,
+            diagnostics["p_m1"] * 100,
+            diagnostics["p_vol"] * 100,
+            diagnostics["base_e"] * 100,
+            diagnostics["probability_multiplier"],
+            diagnostics["e"] * 100,
+            diagnostics.get("model_version", "NA"),
+        )
+    )
+
+
+def m1_holding_matches_plan(context, target):
+    if getattr(g, "pending_preserve_portfolio", False):
+        return True
+    holdings = managed_holdings(context)
+    if target is None:
+        return len(holdings) == 0
+    if holdings != [target]:
+        return False
+    if getattr(g, "pending_preserve_shares", False):
+        return True
+    actual = m1_actual_position_weight(context, target)
+    return abs(actual - g.pending_target_weight) < M1_WEIGHT_TOLERANCE
+
+
+def m1_target_value(context):
+    total = finite_number(context.portfolio.total_value)
+    if total is None or total <= 0:
+        return None
+    return max(0.0, min(total, total * g.pending_target_weight))
+
+
+def execute_m1_weight_sells_at_1400(context):
+    """M1-aware sell leg; order submission is not treated as a confirmed fill."""
+    if g.pending_signal_date is None:
+        return
+    if getattr(g, "pending_preserve_portfolio", False):
+        log.warning("M1：Void多持仓异常，冻结账户现状，本日不自动下单")
+        clear_pending()
+        return
+    target = g.pending_target
+    holdings = managed_holdings(context)
+    if m1_holding_matches_plan(context, target):
+        clear_pending()
+        return
+
+    if target is not None and target not in holdings and g.pending_target_weight > 0:
+        if not g.entry_checked:
+            g.entry_blocked = True
+            g.entry_reason = "09:31新标的预检查缺失"
+        if not g.entry_blocked:
+            reason = entry_preflight_reason(context, target, check_drawdown=True)
+            if reason:
+                g.entry_blocked = True
+                g.entry_reason = reason
+        if g.entry_blocked:
+            target = execution_veto_fallback(context, g.entry_reason or "目标受阻")
+            g.pending_target = target
+            holdings = managed_holdings(context)
+            if target in holdings:
+                g.pending_target_weight = m1_actual_position_weight(context, target)
+                g.pending_preserve_shares = True
+            else:
+                g.pending_target_weight = 1.0 if target in (CASH_SIGNAL_SYMBOL, US_CARRIER_SYMBOL) else 0.0
+                g.pending_preserve_shares = False
+            if target == CASH_SIGNAL_SYMBOL:
+                g.entry_blocked = False
+            if m1_holding_matches_plan(context, target):
+                clear_pending()
+                return
+
+    for symbol in holdings:
+        if symbol != target:
+            _, error = safe_target_value(symbol, 0)
+            if error:
+                log.warning("M1 14:00旧仓卖出未成功：%s %s" % (display(symbol), error))
+
+    if target is None:
+        clear_pending()
+        return
+    if not g.pending_preserve_shares and target in holdings:
+        amount = m1_target_value(context)
+        if amount is None:
+            log.warning("M1目标资金价值不可用，取消仓位修改")
+            clear_pending()
+            return
+        current = finite_number(context.portfolio.positions[target].value)
+        total = finite_number(context.portfolio.total_value)
+        if current is not None and total is not None and current > amount + total * M1_WEIGHT_TOLERANCE:
+            _, error = safe_target_value(target, amount)
+            if error:
+                log.warning("M1 14:00部分减仓失败：%s %s" % (display(target), error))
+    # The 14:05 leg re-reads actual holdings; an unfilled sell blocks a new ETF buy.
+    g.pending_buy_target = target
+    g.pending_buy_weight = g.pending_target_weight
+
+
+def execute_m1_weight_buy_at_1405(context):
+    """M1-aware buy/re-entry leg; never assumes the 14:00 sell filled."""
+    target = g.pending_buy_target
+    if target is None or g.pending_signal_date is None:
+        return
+    if getattr(g, "pending_preserve_portfolio", False) or g.pending_preserve_shares:
+        clear_pending()
+        return
+    if g.pending_target_weight <= 0:
+        log.info("M1目标仓位为0，不提交买单")
+        clear_pending()
+        return
+    blockers = [symbol for symbol in managed_holdings(context) if symbol != target]
+    if blockers:
+        log.warning("M1 14:05仍有旧仓未清，停止增加持仓：%s" % blockers)
+        clear_pending()
+        return
+    if g.entry_blocked:
+        log.warning("M1 09:31买入保护仍有效：%s" % (g.entry_reason or "买入已阻断"))
+        clear_pending()
+        return
+    amount = m1_target_value(context)
+    total = finite_number(context.portfolio.total_value)
+    if amount is None or total is None or total <= 0:
+        log.warning("M1 14:05无效目标金额，不发单")
+        clear_pending()
+        return
+    current = finite_number(getattr(context.portfolio.positions.get(target), "value", 0)) or 0.0
+    if current >= amount - total * M1_WEIGHT_TOLERANCE:
+        clear_pending()
+        return
+    reason = entry_preflight_reason(context, target)
+    if reason:
+        log.warning("M1 14:05只阻止买入，不逆转已完成减仓：%s" % reason)
+        clear_pending()
+        return
+    price, error = current_price(target)
+    high = today_high(target, context, price) if price is not None else None
+    if high is None or 1.0 - price / high >= INTRADAY_HIGH_DRAWDOWN_LIMIT:
+        log.warning("M1 14:05分钟高点保护：%s，取消本次买入" % (error or "回撤触发"))
+        clear_pending()
+        return
+    _, order_error = safe_target_value(target, amount)
+    if order_error:
+        log.warning("M1 14:05目标仓位买入失败：%s" % order_error)
+    else:
+        log.info("M1 14:05目标仓位：%s %.2f%%" % (display(target), g.pending_target_weight * 100))
+    clear_pending()
 
 
 def row_for_symbol(rows, symbol):
@@ -1611,6 +1958,10 @@ def build_raw_ranking_after_close(context):
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+    g.pending_target_weight = 1.0
+    g.pending_preserve_shares = False
+    g.pending_preserve_portfolio = False
+    g.pending_m1_diagnostics = None
     try:
         g.pending_map_snapshot = state_map_snapshot(trade_date, rows)
     except Exception as exc:
@@ -1688,6 +2039,16 @@ def finalize_next_day_plan_before_open(context):
         cash_raw = raw_score_from_row(rows, CASH_SIGNAL_SYMBOL)
         ranked_symbol = CASH_SIGNAL_SYMBOL if cash_raw is not None else None
     g.pending_target = target
+    (
+        target,
+        g.pending_target_weight,
+        g.pending_preserve_shares,
+        g.pending_preserve_portfolio,
+        m1_weight_note,
+        g.pending_m1_diagnostics,
+    ) = build_m1_position_plan(context, signal_date, target, holdings)
+    g.pending_target = target
+    g.pending_buy_weight = None
     g.pending_ranked = ranked_symbol
     g.pending_target_actual_close = actual_daily_close_on_date(target, signal_date) if target else None
     g.pending_exit_actual_closes = {
@@ -1732,7 +2093,11 @@ def finalize_next_day_plan_before_open(context):
         log.info("V1说明：%s" % g.v1_note)
     log.info("State Map：%s" % map_text)
     log.info("Void Route：%s | %s" % (g.void_decision, g.void_note))
-    log.info("最终目标：%s | 当前溢价剔除：%s | 净值待发布/滞后：%s" % (plan, premium_blocked, premium_pending))
+    m1_detail = m1_diagnostics_text(g.pending_m1_diagnostics)
+    log.info(
+        "最终目标：%s；目标仓位 %.2f%%（%s）；M1诊断：%s | 当前溢价剔除：%s | 净值待发布/滞后：%s"
+        % (plan, g.pending_target_weight * 100, m1_weight_note, m1_detail, premium_blocked, premium_pending)
+    )
     notify(
         context,
         "FixV2/V1 + Void Route：当日执行计划",
@@ -1743,6 +2108,8 @@ def finalize_next_day_plan_before_open(context):
         "<br><b>State Map：</b>%s"
         "<br><b>Void Route：</b>%s｜%s"
         "<br><b>最终目标：</b>%s"
+        "<br><b>目标仓位：</b>%.2f%%（%s）"
+        "<br><b>M1诊断：</b>%s"
         "<br><b>执行候选Top%d：</b><br>%s"
         "<br><b>确认溢价&gt;%.0f%%的过滤项：</b><br>%s"
         "<br><b>净值待发布/滞后：</b>%s"
@@ -1757,6 +2124,9 @@ def finalize_next_day_plan_before_open(context):
             g.void_decision,
             g.void_note or "",
             plan,
+            g.pending_target_weight * 100,
+            m1_weight_note,
+            m1_detail,
             RANK_LOG_TOP_N,
             execution_top3_html(rows),
             premium_limit_pct(),
@@ -1828,6 +2198,11 @@ def entry_preflight_reason(context, target, check_drawdown=False):
 def check_gap_at_0931(context):
     if g.pending_signal_date is None:
         return
+    if M1_POSITION_CONTROL_ENABLED and getattr(g, "pending_preserve_portfolio", False):
+        g.entry_checked = True
+        g.entry_reason = "Void多持仓异常：冻结账户现状，不执行09:31自动交易"
+        log.warning(g.entry_reason)
+        return
     target = g.pending_target
     holdings = managed_holdings(context)
     for symbol in [item for item in holdings if item != target]:
@@ -1838,7 +2213,13 @@ def check_gap_at_0931(context):
             log.warning("09:31计划退出仓急跌卖出%s：%.4f/%.4f < %.2f" % (display(symbol), price, close, NEXT_DAY_PRICE_FLOOR))
         elif error:
             log.warning("09:31旧仓价格不可用%s：%s" % (display(symbol), error))
-    if holdings_match_target(holdings, target):
+    if M1_POSITION_CONTROL_ENABLED and g.pending_target_weight <= 0:
+        g.entry_checked = True
+        g.entry_reason = "M1目标仓位为0：不执行买入预检查"
+        log.info(g.entry_reason)
+        return
+    if (m1_holding_matches_plan(context, target) if M1_POSITION_CONTROL_ENABLED
+            else holdings_match_target(holdings, target)):
         g.entry_checked = True
         g.entry_reason = "当前持仓已等于最终目标，无需调仓"
         log.info(g.entry_reason)
@@ -1872,6 +2253,9 @@ def check_gap_at_0931(context):
 
 
 def execute_sells_at_1400(context):
+    if M1_POSITION_CONTROL_ENABLED:
+        execute_m1_weight_sells_at_1400(context)
+        return
     if g.pending_signal_date is None:
         return
     target = g.pending_target
@@ -1927,6 +2311,9 @@ def today_high(symbol, context, observed_price):
 
 
 def execute_buy_at_1405(context):
+    if M1_POSITION_CONTROL_ENABLED:
+        execute_m1_weight_buy_at_1405(context)
+        return
     target = g.pending_buy_target
     if target is None or g.pending_signal_date is None:
         return
@@ -1974,4 +2361,9 @@ def clear_pending():
     g.entry_blocked = False
     g.entry_reason = None
     g.pending_buy_target = None
+    g.pending_buy_weight = None
+    g.pending_target_weight = 1.0
+    g.pending_preserve_shares = False
+    g.pending_preserve_portfolio = False
+    g.pending_m1_diagnostics = None
 

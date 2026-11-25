@@ -1,0 +1,49 @@
+name: M1 position sizing adapter CI (research only)
+on:
+  pull_request:
+    paths:
+      - 'strategy/main.py'
+      - 'tests/test_m1_position_control.py'
+      - 'docs/strategy-spec.md'
+      - '.github/workflows/q90_weight_adapter_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run checks and capture diagnostics
+        shell: bash
+        run: |
+          set +e
+          : > /tmp/m1-ci-diagnostics.txt
+          python -m py_compile strategy/main.py tests/test_m1_position_control.py >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "py_compile_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m unittest discover -s tests -p 'test_m1_position_control.py' -v >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "m1_tests_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m pip install numpy pandas >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "install_deps_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          python -m unittest discover -s strategy -p 'test_execution_protection.py' -v >> /tmp/m1-ci-diagnostics.txt 2>&1
+          echo "legacy_tests_exit=$?" >> /tmp/m1-ci-diagnostics.txt
+          cat /tmp/m1-ci-diagnostics.txt
+      - name: Upload test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1-position-control-ci-diagnostics
+          path: /tmp/m1-ci-diagnostics.txt
+          if-no-files-found: error
+      - name: Fail if any validation failed
+        if: always()
+        shell: bash
+        run: |
+          if grep -Eq '(_exit=)[1-9]' /tmp/m1-ci-diagnostics.txt; then
+            exit 1
+          fi
