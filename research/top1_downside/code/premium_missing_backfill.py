@@ -60,6 +60,47 @@ def raw_price(symbol, instrument_type, start_date, end_date):
     raise RuntimeError("Tencent raw day: " + "; ".join(dict.fromkeys(errors)))
 
 # Keep original Eastmoney DWJZ parser but disable alternate NAV source.
+def fetch_dwjz(symbol, start_date, end_date):
+    lo, hi = [pd.to_datetime(x).date().isoformat() for x in (start_date,end_date)]
+    url = "https://api.fund.eastmoney.com/f10/lsjz"
+    headers = {"User-Agent":UA,"Referer":f"https://fundf10.eastmoney.com/jjjz_{symbol}.html"}
+    seen = set()
+    rows = []
+    # Endpoint can silently cap pageSize at 20; request exactly 20 and
+    # advance until actual unique dates reach the reported TotalCount.
+    for page in range(1,100):
+        payload = get_json(url,{"fundCode":symbol,"pageIndex":page,"pageSize":20,
+                               "startDate":lo,"endDate":hi,"_":int(time.time()*1000)},headers)
+        if payload.get("ErrCode") not in (None,0,"0"):
+            raise RuntimeError("Eastmoney NAV error code")
+        block = payload.get("Data") or {}
+        records = block.get("LSJZList") or []
+        total = payload.get("TotalCount",block.get("TotalCount"))
+        if not records:
+            if total is not None and len(seen)<int(total):
+                raise RuntimeError("NAV pagination ended before TotalCount")
+            break
+        new = 0
+        for x in records:
+            d = str(x.get("FSRQ",""))
+            if not lo <= d <= hi: continue
+            if d in seen: continue
+            seen.add(d)
+            new += 1
+            nav = pd.to_numeric(x.get("DWJZ"),errors="coerce")
+            if pd.isna(nav) or not math.isfinite(float(nav)) or nav<=0: continue
+            rows.append({"nav_date":pd.to_datetime(d).date(),"unit_nav":float(nav),
+                         "cumulative_nav":pd.to_numeric(x.get("LJJZ"),errors="coerce"),
+                         "nav_daily_growth_pct":pd.to_numeric(x.get("JZZZL"),errors="coerce"),
+                         "subscription_status":x.get("SGZT"),"redemption_status":x.get("SHZT")})
+        if total is not None and len(seen)>=int(total): break
+        if not new: raise RuntimeError("NAV pagination repeated a page")
+        time.sleep(.15)
+    else:
+        raise RuntimeError("NAV pagination limit")
+    return pd.DataFrame(rows).sort_values("nav_date") if rows else pd.DataFrame()
+
+sync.fetch_nav = fetch_dwjz
 sync.tencent_nav_fallback = lambda *args: pd.DataFrame()
 sync.fetch_unadjusted_price = raw_price
 
