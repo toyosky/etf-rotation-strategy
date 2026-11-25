@@ -6,13 +6,69 @@ import argparse, json
 from pathlib import Path
 from sqlalchemy import create_engine, text, MetaData, Table
 from sqlalchemy.dialects.postgresql import insert
+from automation import premium_history_sync as sync
 from automation.premium_history_sync import db_url, load_universe, build_rows
+import pandas as pd
+import requests
+import math
+import time
+
+def get_json(url, params, headers):
+    last = None
+    for i in range(3):
+        try:
+            response = requests.get(url, params=params, headers=headers, timeout=(8,25))
+            response.raise_for_status()
+            payload = response.json()
+            if not isinstance(payload, dict):
+                raise ValueError("invalid JSON object")
+            return payload
+        except (requests.RequestException, ValueError) as exc:
+            last = type(exc).__name__
+            if i < 2: time.sleep(2**i)
+    raise RuntimeError("HTTP/JSON failure: " + str(last))
+
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36"
+
+def raw_price(symbol, instrument_type, start_date, end_date):
+    lo, hi = [pd.to_datetime(x).date().isoformat() for x in (start_date,end_date)]
+    code = sync.tencent_code(symbol)
+    errors = []
+    for host in ("web.ifzq.gtimg.cn", "web.ifzq.gtimg.com"):
+        for param in (f"{code},day,{lo},{hi},640", f"{code},day,{lo},{hi},640,"):
+            try:
+                payload = get_json(f"https://{host}/appstock/app/fqkline/get",
+                                   {"param":param},{"User-Agent":UA,"Referer":"https://gu.qq.com/"})
+                if payload.get("code") not in (0,"0",None):
+                    raise RuntimeError("Tencent error code")
+                block = (payload.get("data") or {}).get(code) or {}
+                raw = block.get("day")
+                if not isinstance(raw,list):
+                    raise RuntimeError("Tencent raw day missing; adjusted arrays rejected")
+                rows = [{"nav_date":pd.to_datetime(x[0]).date(),"market_close":float(x[2])}
+                        for x in raw if lo <= str(x[0]) <= hi]
+                if not rows: raise RuntimeError("Tencent no raw bars in range")
+                out = pd.DataFrame(rows)
+                if not out.market_close.map(lambda x: math.isfinite(x) and x>0).all():
+                    raise RuntimeError("Tencent invalid close")
+                if out.nav_date.duplicated().any():
+                    raise RuntimeError("Tencent duplicate dates")
+                out.attrs["source_price"]="tencent_fqkline_raw_day"
+                return out.sort_values("nav_date")
+            except (RuntimeError,ValueError,TypeError,IndexError) as exc:
+                errors.append(str(exc) if isinstance(exc,RuntimeError) else type(exc).__name__)
+    raise RuntimeError("Tencent raw day: " + "; ".join(dict.fromkeys(errors)))
+
+# Keep original Eastmoney DWJZ parser but disable alternate NAV source.
+sync.tencent_nav_fallback = lambda *args: pd.DataFrame()
+sync.fetch_unadjusted_price = raw_price
+
 
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--symbol",required=True)
-    p.add_argument("--start",default="20201201")
-    p.add_argument("--end",default="20261120")
+    p.add_argument("--start",default="20140101")
+    p.add_argument("--end",default="20261125")
     p.add_argument("--output",required=True)
     args=p.parse_args()
     eng=create_engine(db_url(),pool_pre_ping=True)
@@ -32,6 +88,7 @@ def main():
         try:
             if missing:
                 rows=build_rows(meta,lo,hi,"backfill")
+                for r in rows: r["source_nav"]="eastmoney_f10_lsjz_dwjz"
                 assert all(r["symbol"]==args.symbol and r["market_close"]>0 and r["unit_nav"]>0 and not r["pit_safe"] and r["backfilled"] and r["first_seen_at"] is None for r in rows)
                 inserted=0
                 with eng.begin() as conn:
@@ -43,6 +100,8 @@ def main():
         except Exception as exc:
             # Do not echo exception URLs or database secrets.
             seg["error_type"]=type(exc).__name__
+            if isinstance(exc,RuntimeError):
+                seg["error_detail"]=str(exc)[:300] if "://" not in str(exc) else "runtime error (URL suppressed)"
         report["segments"].append(seg)
         Path(args.output).write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
         print(json.dumps(seg,ensure_ascii=False),flush=True)
