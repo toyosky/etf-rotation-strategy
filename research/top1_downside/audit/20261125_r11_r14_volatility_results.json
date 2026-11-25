@@ -1,0 +1,1894 @@
+{
+  "coverage": {
+    "159509": {
+      "bars": 796,
+      "first": "20230808",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 771,
+        "20": 756
+      },
+      "common": {
+        "5": 494,
+        "20": 458
+      },
+      "extremeReturns": 0
+    },
+    "159529": {
+      "bars": 671,
+      "first": "20240202",
+      "last": "20261120",
+      "gaps": 4,
+      "eligible": {
+        "5": 614,
+        "20": 584
+      },
+      "common": {
+        "5": 334,
+        "20": 296
+      },
+      "extremeReturns": 0
+    },
+    "159934": {
+      "bars": 2399,
+      "first": "20170103",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1420,
+        "20": 1405
+      },
+      "extremeReturns": 0
+    },
+    "159957": {
+      "bars": 2153,
+      "first": "20180104",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1420,
+        "20": 1405
+      },
+      "extremeReturns": 1
+    },
+    "159981": {
+      "bars": 1657,
+      "first": "20200117",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1362,
+        "20": 1326
+      },
+      "extremeReturns": 0
+    },
+    "159985": {
+      "bars": 1687,
+      "first": "20191205",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1385,
+        "20": 1347
+      },
+      "extremeReturns": 0
+    },
+    "161226": {
+      "bars": 2397,
+      "first": "20170103",
+      "last": "20261120",
+      "gaps": 2,
+      "eligible": {
+        "5": 1388,
+        "20": 1358
+      },
+      "common": {
+        "5": 1386,
+        "20": 1356
+      },
+      "extremeReturns": 0
+    },
+    "164824": {
+      "bars": 2013,
+      "first": "20180801",
+      "last": "20261120",
+      "gaps": 1,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1420,
+        "20": 1405
+      },
+      "extremeReturns": 0
+    },
+    "501018": {
+      "bars": 2397,
+      "first": "20170103",
+      "last": "20261120",
+      "gaps": 2,
+      "eligible": {
+        "5": 1368,
+        "20": 1333
+      },
+      "common": {
+        "5": 1364,
+        "20": 1331
+      },
+      "extremeReturns": 0
+    },
+    "511380": {
+      "bars": 1607,
+      "first": "20200407",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1302,
+        "20": 1265
+      },
+      "extremeReturns": 0
+    },
+    "512800": {
+      "bars": 2257,
+      "first": "20170803",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1420,
+        "20": 1405
+      },
+      "common": {
+        "5": 1420,
+        "20": 1405
+      },
+      "extremeReturns": 0
+    },
+    "513100": {
+      "bars": 2398,
+      "first": "20170103",
+      "last": "20261120",
+      "gaps": 1,
+      "eligible": {
+        "5": 1394,
+        "20": 1364
+      },
+      "common": {
+        "5": 1392,
+        "20": 1362
+      },
+      "extremeReturns": 0
+    },
+    "513290": {
+      "bars": 1024,
+      "first": "20220829",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 999,
+        "20": 984
+      },
+      "common": {
+        "5": 714,
+        "20": 699
+      },
+      "extremeReturns": 0
+    },
+    "513530": {
+      "bars": 1110,
+      "first": "20220425",
+      "last": "20261120",
+      "gaps": 0,
+      "eligible": {
+        "5": 1085,
+        "20": 1070
+      },
+      "common": {
+        "5": 817,
+        "20": 781
+      },
+      "extremeReturns": 0
+    }
+  },
+  "fits": {
+    "159509": {
+      "months": 40,
+      "gFail": 13,
+      "hFail": {
+        "5": 15,
+        "20": 16
+      }
+    },
+    "159529": {
+      "months": 34,
+      "gFail": 14,
+      "hFail": {
+        "5": 17,
+        "20": 18
+      }
+    },
+    "159934": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "159957": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "159981": {
+      "months": 71,
+      "gFail": 1,
+      "hFail": {
+        "5": 3,
+        "20": 4
+      }
+    },
+    "159985": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 2,
+        "20": 3
+      }
+    },
+    "161226": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "164824": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "501018": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "511380": {
+      "months": 71,
+      "gFail": 4,
+      "hFail": {
+        "5": 6,
+        "20": 7
+      }
+    },
+    "512800": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "513100": {
+      "months": 71,
+      "gFail": 0,
+      "hFail": {
+        "5": 0,
+        "20": 0
+      }
+    },
+    "513290": {
+      "months": 52,
+      "gFail": 14,
+      "hFail": {
+        "5": 16,
+        "20": 16
+      }
+    },
+    "513530": {
+      "months": 56,
+      "gFail": 14,
+      "hFail": {
+        "5": 15,
+        "20": 16
+      }
+    }
+  },
+  "summaries": {
+    "5": {
+      "all": {
+        "n": 16230,
+        "assets": 14,
+        "metrics": {
+          "RV20": {
+            "qlikeDiffAssetEqual": 0,
+            "qlikeDiffPooled": 0,
+            "normalizedMSE": 3.1705250646779524,
+            "predActualRatio": 0.9934541037514608
+          },
+          "EWMA": {
+            "qlikeDiffAssetEqual": -0.052610605936142876,
+            "qlikeDiffPooled": -0.04573859928760911,
+            "normalizedMSE": 2.856081584427772,
+            "predActualRatio": 1.004292857441372
+          },
+          "GARCH": {
+            "qlikeDiffAssetEqual": -0.08103031812155803,
+            "qlikeDiffPooled": -0.06826486799118572,
+            "normalizedMSE": 2.8807822783360346,
+            "predActualRatio": 1.0219481249429794
+          },
+          "HAR_daily": {
+            "qlikeDiffAssetEqual": 6.925693782194835,
+            "qlikeDiffPooled": 8.168593401575801,
+            "normalizedMSE": 2.9127089786420397,
+            "predActualRatio": 1.0349769485769968
+          }
+        }
+      },
+      "years": {
+        "2021": {
+          "n": 2219,
+          "assets": 10,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.109997207920165,
+              "predActualRatio": 1.0039228491170167
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.01941691332436416,
+              "qlikeDiffPooled": -0.018431581907970066,
+              "normalizedMSE": 1.0284839952908162,
+              "predActualRatio": 1.0090464093145415
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.01739430166095994,
+              "qlikeDiffPooled": -0.011859584402079232,
+              "normalizedMSE": 1.1102114033604362,
+              "predActualRatio": 1.1181319621015429
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.006449587636513224,
+              "qlikeDiffPooled": -0.0013733642936409809,
+              "normalizedMSE": 1.071210595066391,
+              "predActualRatio": 1.117823461828778
+            }
+          }
+        },
+        "2022": {
+          "n": 2392,
+          "assets": 10,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.1217097528894233,
+              "predActualRatio": 1.0150945229945416
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.016479279676608186,
+              "qlikeDiffPooled": -0.016575204813107057,
+              "normalizedMSE": 1.0156198009855764,
+              "predActualRatio": 1.0148040176552229
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.031796361620531365,
+              "qlikeDiffPooled": -0.03249036722181667,
+              "normalizedMSE": 0.9215185935381534,
+              "predActualRatio": 1.0509081848474724
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.019828549290568435,
+              "qlikeDiffPooled": -0.02065559428509901,
+              "normalizedMSE": 0.974634913422227,
+              "predActualRatio": 1.0340251385178458
+            }
+          }
+        },
+        "2023": {
+          "n": 2565,
+          "assets": 12,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.8717636106827745,
+              "predActualRatio": 0.9723656929605041
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.06699434488586137,
+              "qlikeDiffPooled": -0.05776164753739676,
+              "normalizedMSE": 0.8016091987795818,
+              "predActualRatio": 0.9864278787705708
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.06774682179821857,
+              "qlikeDiffPooled": -0.057618577274470735,
+              "normalizedMSE": 0.8773200896718686,
+              "predActualRatio": 1.2601821687563814
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.04253952163781114,
+              "qlikeDiffPooled": -0.03583821563461931,
+              "normalizedMSE": 0.9733542904440613,
+              "predActualRatio": 1.3438515313154014
+            }
+          }
+        },
+        "2024": {
+          "n": 2947,
+          "assets": 13,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.6223621491306157,
+              "predActualRatio": 1.0047815453993236
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.04516616404743083,
+              "qlikeDiffPooled": -0.037902247660138486,
+              "normalizedMSE": 2.3707942100772295,
+              "predActualRatio": 1.029643862998942
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.06690966864818448,
+              "qlikeDiffPooled": -0.05952139386878975,
+              "normalizedMSE": 2.3544469717814596,
+              "predActualRatio": 1.0442920343280728
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.019332498478710394,
+              "qlikeDiffPooled": -0.014483228290033906,
+              "normalizedMSE": 2.4574127708406257,
+              "predActualRatio": 1.1253101531162675
+            }
+          }
+        },
+        "2025": {
+          "n": 3285,
+          "assets": 14,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 4.381080136814914,
+              "predActualRatio": 1.040819342623565
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.06277806551983041,
+              "qlikeDiffPooled": -0.06397791814464963,
+              "normalizedMSE": 3.944789510476124,
+              "predActualRatio": 1.0633946100044416
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.13975203835091723,
+              "qlikeDiffPooled": -0.13869091334305295,
+              "normalizedMSE": 3.7862504201764295,
+              "predActualRatio": 1.1179236733581752
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.12392061140606422,
+              "qlikeDiffPooled": -0.13121812756683862,
+              "normalizedMSE": 4.257062117067847,
+              "predActualRatio": 1.2037822337613073
+            }
+          }
+        },
+        "2026": {
+          "n": 2822,
+          "assets": 14,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.2985804526932305,
+              "predActualRatio": 0.9577149027197646
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.06887674758495098,
+              "qlikeDiffPooled": -0.06795389276333488,
+              "normalizedMSE": 1.196269216298314,
+              "predActualRatio": 0.9731204488420404
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.08341773561571021,
+              "qlikeDiffPooled": -0.07976774717997044,
+              "normalizedMSE": 1.273465072661254,
+              "predActualRatio": 0.9642925701789472
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 62.5996978928659,
+              "qlikeDiffPooled": 47.19857733182276,
+              "normalizedMSE": 1.2878586028703705,
+              "predActualRatio": 0.9348386738274462
+            }
+          }
+        }
+      },
+      "assets": {
+        "159509": {
+          "n": 494,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.7583065759739738,
+              "predActualRatio": 0.9764404010471537
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.057819038296331504,
+              "qlikeDiffPooled": -0.057819038296331504,
+              "normalizedMSE": 1.5686452638812187,
+              "predActualRatio": 0.9796234325203801
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.10375299634351909,
+              "qlikeDiffPooled": -0.10375299634351909,
+              "normalizedMSE": 1.484312851940417,
+              "predActualRatio": 1.052281992740442
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.08396203655254951,
+              "qlikeDiffPooled": -0.08396203655254951,
+              "normalizedMSE": 1.4544105332046315,
+              "predActualRatio": 1.101903594014255
+            }
+          }
+        },
+        "159529": {
+          "n": 334,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 3.221426803888142,
+              "predActualRatio": 1.0718713536553783
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.1316122396407885,
+              "qlikeDiffPooled": -0.1316122396407885,
+              "normalizedMSE": 2.9503850071999245,
+              "predActualRatio": 1.132835251395928
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.2371649308207587,
+              "qlikeDiffPooled": -0.2371649308207587,
+              "normalizedMSE": 2.844575748468994,
+              "predActualRatio": 1.2920163760832737
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.1298031737581075,
+              "qlikeDiffPooled": -0.1298031737581075,
+              "normalizedMSE": 3.678925804344811,
+              "predActualRatio": 1.6940662550439096
+            }
+          }
+        },
+        "159934": {
+          "n": 1420,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 7.763729797862721,
+              "predActualRatio": 0.9837570363137524
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.08803286948929026,
+              "qlikeDiffPooled": -0.08803286948929026,
+              "normalizedMSE": 6.676216092114015,
+              "predActualRatio": 0.9829644188510951
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.08708405151341382,
+              "qlikeDiffPooled": -0.08708405151341382,
+              "normalizedMSE": 7.731054316243358,
+              "predActualRatio": 1.0170760279690578
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.04869662069209715,
+              "qlikeDiffPooled": -0.04869662069209715,
+              "normalizedMSE": 7.242091929549381,
+              "predActualRatio": 0.884773552085096
+            }
+          }
+        },
+        "159957": {
+          "n": 1420,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 8.801946062836853,
+              "predActualRatio": 0.9849378021735881
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.031414011822912015,
+              "qlikeDiffPooled": -0.031414011822912015,
+              "normalizedMSE": 7.8553427515933425,
+              "predActualRatio": 0.9805635467443204
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.05393569091977192,
+              "qlikeDiffPooled": -0.05393569091977192,
+              "normalizedMSE": 7.957694051519283,
+              "predActualRatio": 0.9156557629322282
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 0.005927450148296888,
+              "qlikeDiffPooled": 0.005927450148296888,
+              "normalizedMSE": 7.742916793276365,
+              "predActualRatio": 0.9091987687718469
+            }
+          }
+        },
+        "159981": {
+          "n": 1362,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 3.062285239050791,
+              "predActualRatio": 0.9901185045352877
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.01584261120223037,
+              "qlikeDiffPooled": -0.01584261120223037,
+              "normalizedMSE": 2.8316210506454724,
+              "predActualRatio": 0.9854363343954662
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": 0.0029578812877914104,
+              "qlikeDiffPooled": 0.0029578812877914104,
+              "normalizedMSE": 2.8838856925268894,
+              "predActualRatio": 0.9165072347105283
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 0.04356003006644228,
+              "qlikeDiffPooled": 0.04356003006644228,
+              "normalizedMSE": 2.883394502480816,
+              "predActualRatio": 0.9439810886084395
+            }
+          }
+        },
+        "159985": {
+          "n": 1385,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.3760691324723715,
+              "predActualRatio": 1.0075226188695117
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.02172085799402208,
+              "qlikeDiffPooled": -0.02172085799402208,
+              "normalizedMSE": 1.3380001369471641,
+              "predActualRatio": 1.0097870436630227
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.05418027231460909,
+              "qlikeDiffPooled": -0.05418027231460909,
+              "normalizedMSE": 1.2844204121444143,
+              "predActualRatio": 1.0807104264102203
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.05971943679965091,
+              "qlikeDiffPooled": -0.05971943679965091,
+              "normalizedMSE": 1.2559077985493072,
+              "predActualRatio": 1.032219507286613
+            }
+          }
+        },
+        "161226": {
+          "n": 1386,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.277120417900435,
+              "predActualRatio": 0.9565106723167738
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.035422381457266845,
+              "qlikeDiffPooled": -0.035422381457266845,
+              "normalizedMSE": 2.362936275988344,
+              "predActualRatio": 1.0181965867699574
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.0021059721027934654,
+              "qlikeDiffPooled": -0.0021059721027934654,
+              "normalizedMSE": 2.510017802287686,
+              "predActualRatio": 0.883111317071777
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 0.006934061183150207,
+              "qlikeDiffPooled": 0.006934061183150207,
+              "normalizedMSE": 2.5211040535910625,
+              "predActualRatio": 0.908116021797104
+            }
+          }
+        },
+        "164824": {
+          "n": 1420,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.8839747621833496,
+              "predActualRatio": 0.9977431058164469
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.02946664612910836,
+              "qlikeDiffPooled": -0.02946664612910836,
+              "normalizedMSE": 2.5604533385647557,
+              "predActualRatio": 0.9985270150110114
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.0568023868184127,
+              "qlikeDiffPooled": -0.0568023868184127,
+              "normalizedMSE": 2.4483359937947067,
+              "predActualRatio": 1.0558337847175923
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.03352582650843799,
+              "qlikeDiffPooled": -0.03352582650843799,
+              "normalizedMSE": 2.4871779936140435,
+              "predActualRatio": 1.105361165265567
+            }
+          }
+        },
+        "501018": {
+          "n": 1364,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 3.3049781879891964,
+              "predActualRatio": 1.000297892446641
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.0697989543764692,
+              "qlikeDiffPooled": -0.0697989543764692,
+              "normalizedMSE": 2.898197435598569,
+              "predActualRatio": 1.0379434452857206
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.17499650702028463,
+              "qlikeDiffPooled": -0.17499650702028463,
+              "normalizedMSE": 2.548992983268143,
+              "predActualRatio": 1.0321966508958664
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 97.58615549205781,
+              "qlikeDiffPooled": 97.58615549205781,
+              "normalizedMSE": 2.8326490816076206,
+              "predActualRatio": 0.8933128104470565
+            }
+          }
+        },
+        "511380": {
+          "n": 1302,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.4924474484751498,
+              "predActualRatio": 0.9620149652503508
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.02935497303097899,
+              "qlikeDiffPooled": -0.02935497303097899,
+              "normalizedMSE": 1.3729450125281193,
+              "predActualRatio": 0.9571216068981484
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.03938300890228059,
+              "qlikeDiffPooled": -0.03938300890228059,
+              "normalizedMSE": 1.3421781090015392,
+              "predActualRatio": 0.8868112693153132
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.03172331615072838,
+              "qlikeDiffPooled": -0.03172331615072838,
+              "normalizedMSE": 1.3858302738538313,
+              "predActualRatio": 0.8986970774974113
+            }
+          }
+        },
+        "512800": {
+          "n": 1420,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.5699004056431278,
+              "predActualRatio": 1.003188435551333
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.0352747995963136,
+              "qlikeDiffPooled": -0.0352747995963136,
+              "normalizedMSE": 1.4000090996140815,
+              "predActualRatio": 1.0049027802427677
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.05458605148196363,
+              "qlikeDiffPooled": -0.05458605148196363,
+              "normalizedMSE": 1.3089447051174725,
+              "predActualRatio": 1.1024939247112657
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.04055449330641025,
+              "qlikeDiffPooled": -0.04055449330641025,
+              "normalizedMSE": 1.2938088541288322,
+              "predActualRatio": 1.103682657097507
+            }
+          }
+        },
+        "513100": {
+          "n": 1392,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.269531488020653,
+              "predActualRatio": 1.0054948650488817
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.04425055489320726,
+              "qlikeDiffPooled": -0.04425055489320726,
+              "normalizedMSE": 2.0768077206268143,
+              "predActualRatio": 1.0102004160773232
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.07031520395253661,
+              "qlikeDiffPooled": -0.07031520395253661,
+              "normalizedMSE": 2.018611674316307,
+              "predActualRatio": 1.0676852551965736
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.04457836421696517,
+              "qlikeDiffPooled": -0.04457836421696517,
+              "normalizedMSE": 2.032175913107759,
+              "predActualRatio": 1.0558473236525727
+            }
+          }
+        },
+        "513290": {
+          "n": 714,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.6755339375524696,
+              "predActualRatio": 0.9551251056010447
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.07021562009448823,
+              "qlikeDiffPooled": -0.07021562009448823,
+              "normalizedMSE": 1.501271636366941,
+              "predActualRatio": 0.944469791008046
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.08389284644798375,
+              "qlikeDiffPooled": -0.08389284644798375,
+              "normalizedMSE": 1.4552189389869612,
+              "predActualRatio": 0.8187330030627699
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.08210927466811388,
+              "qlikeDiffPooled": -0.08210927466811388,
+              "normalizedMSE": 1.4471680775102738,
+              "predActualRatio": 0.7460076566678786
+            }
+          }
+        },
+        "513530": {
+          "n": 817,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.9301006456421006,
+              "predActualRatio": 1.0133346938943075
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.07632292508259306,
+              "qlikeDiffPooled": -0.07632292508259306,
+              "normalizedMSE": 2.592311360320041,
+              "predActualRatio": 1.0175283353160216
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.11918241635127584,
+              "qlikeDiffPooled": -0.11918241635127584,
+              "normalizedMSE": 2.5127086170883155,
+              "predActualRatio": 1.1861607233848053
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.1281915400749485,
+              "qlikeDiffPooled": -0.1281915400749485,
+              "normalizedMSE": 2.520364092169816,
+              "predActualRatio": 1.212509801842698
+            }
+          }
+        }
+      },
+      "bootstrapDateEqual": {
+        "20": {
+          "RV20": {
+            "meanDateEqual": 0,
+            "ci95": [
+              0,
+              0
+            ]
+          },
+          "EWMA": {
+            "meanDateEqual": -0.04384655159984571,
+            "ci95": [
+              -0.058856890753389464,
+              -0.02831652695771261
+            ]
+          },
+          "GARCH": {
+            "meanDateEqual": -0.06506869468007564,
+            "ci95": [
+              -0.10053674438934652,
+              -0.035050124740324665
+            ]
+          },
+          "HAR_daily": {
+            "meanDateEqual": 6.6626094942730045,
+            "ci95": [
+              -0.07095933015152776,
+              20.096513784321335
+            ]
+          }
+        },
+        "40": {
+          "RV20": {
+            "meanDateEqual": 0,
+            "ci95": [
+              0,
+              0
+            ]
+          },
+          "EWMA": {
+            "meanDateEqual": -0.04384655159984571,
+            "ci95": [
+              -0.05775689777495117,
+              -0.03080474926934905
+            ]
+          },
+          "GARCH": {
+            "meanDateEqual": -0.06506869468007564,
+            "ci95": [
+              -0.10392239639314474,
+              -0.03745915530285516
+            ]
+          },
+          "HAR_daily": {
+            "meanDateEqual": 6.6626094942730045,
+            "ci95": [
+              -0.0827000882744872,
+              20.091170733116662
+            ]
+          }
+        }
+      }
+    },
+    "20": {
+      "all": {
+        "n": 15841,
+        "assets": 14,
+        "metrics": {
+          "RV20": {
+            "qlikeDiffAssetEqual": 0,
+            "qlikeDiffPooled": 0,
+            "normalizedMSE": 1.82738981602833,
+            "predActualRatio": 0.9760417289163215
+          },
+          "EWMA": {
+            "qlikeDiffAssetEqual": -0.08507070100958146,
+            "qlikeDiffPooled": -0.07549507579472978,
+            "normalizedMSE": 1.552817850849021,
+            "predActualRatio": 0.9898567290945571
+          },
+          "GARCH": {
+            "qlikeDiffAssetEqual": -0.13723993625765896,
+            "qlikeDiffPooled": -0.11617487525353207,
+            "normalizedMSE": 1.531081763371795,
+            "predActualRatio": 1.0312183425726238
+          },
+          "HAR_daily": {
+            "qlikeDiffAssetEqual": 29.1097101927393,
+            "qlikeDiffPooled": 35.10756030943645,
+            "normalizedMSE": 1.494713346232604,
+            "predActualRatio": 1.0320218133942085
+          }
+        }
+      },
+      "years": {
+        "2021": {
+          "n": 2140,
+          "assets": 10,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.6508222931877135,
+              "predActualRatio": 1.014004505841001
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.03010126702835918,
+              "qlikeDiffPooled": -0.02911264283249382,
+              "normalizedMSE": 0.5361095314905382,
+              "predActualRatio": 1.0213490818872377
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.023914260381155603,
+              "qlikeDiffPooled": -0.01912090098029971,
+              "normalizedMSE": 0.5952022928214336,
+              "predActualRatio": 1.2071764005548016
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.017458419472822527,
+              "qlikeDiffPooled": -0.011324162182712108,
+              "normalizedMSE": 0.5283408426577714,
+              "predActualRatio": 1.1818641549808766
+            }
+          }
+        },
+        "2022": {
+          "n": 2390,
+          "assets": 10,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.707120164169114,
+              "predActualRatio": 1.029832029888917
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.03274219818870288,
+              "qlikeDiffPooled": -0.0330615502816523,
+              "normalizedMSE": 0.58358000326971,
+              "predActualRatio": 1.029722235093693
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.056612029618950524,
+              "qlikeDiffPooled": -0.05726668554244582,
+              "normalizedMSE": 0.4988081557584413,
+              "predActualRatio": 1.0815051862859493
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.04003503486385714,
+              "qlikeDiffPooled": -0.04042734953427713,
+              "normalizedMSE": 0.5084954741377544,
+              "predActualRatio": 1.0641293069542932
+            }
+          }
+        },
+        "2023": {
+          "n": 2544,
+          "assets": 12,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.450773437860626,
+              "predActualRatio": 0.9596826870573977
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.06292343083116113,
+              "qlikeDiffPooled": -0.06586939471448075,
+              "normalizedMSE": 0.37928578660932355,
+              "predActualRatio": 0.9737889432016081
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.06579362041244222,
+              "qlikeDiffPooled": -0.06752894468721078,
+              "normalizedMSE": 0.5169630356364285,
+              "predActualRatio": 1.3507011732615848
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.03689212216339159,
+              "qlikeDiffPooled": -0.04179137397587815,
+              "normalizedMSE": 0.6295114611516662,
+              "predActualRatio": 1.4414012305656572
+            }
+          }
+        },
+        "2024": {
+          "n": 2926,
+          "assets": 13,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.4994964381694618,
+              "predActualRatio": 0.976949329880145
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.10947409374655724,
+              "qlikeDiffPooled": -0.08025740992955986,
+              "normalizedMSE": 1.204229950374916,
+              "predActualRatio": 0.991880864728928
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.16697909040905584,
+              "qlikeDiffPooled": -0.14126664613023535,
+              "normalizedMSE": 1.123257082057855,
+              "predActualRatio": 1.0332930819802781
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 78.37353144741304,
+              "qlikeDiffPooled": 84.30088570250952,
+              "normalizedMSE": 1.283320790594653,
+              "predActualRatio": 1.1556437540649465
+            }
+          }
+        },
+        "2025": {
+          "n": 3254,
+          "assets": 14,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.086926397843809,
+              "predActualRatio": 0.976870684782407
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.10970113594311304,
+              "qlikeDiffPooled": -0.11298230455940243,
+              "normalizedMSE": 1.7487288431641588,
+              "predActualRatio": 0.996804096690597
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.219541413887852,
+              "qlikeDiffPooled": -0.2191887655720593,
+              "normalizedMSE": 1.6468263418955496,
+              "predActualRatio": 1.1069598187632241
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.21394299026265395,
+              "qlikeDiffPooled": -0.2195648002131998,
+              "normalizedMSE": 1.5534499193473472,
+              "predActualRatio": 1.1567361604373882
+            }
+          }
+        },
+        "2026": {
+          "n": 2587,
+          "assets": 14,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.8018291176816629,
+              "predActualRatio": 0.9603334240161374
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.1078839048721911,
+              "qlikeDiffPooled": -0.1099922667900272,
+              "normalizedMSE": 0.72898060483449,
+              "predActualRatio": 0.9916779898645
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.13619984303149898,
+              "qlikeDiffPooled": -0.14076536811523177,
+              "normalizedMSE": 0.7542892916835026,
+              "predActualRatio": 0.9677016719532024
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 184.82747110609057,
+              "qlikeDiffPooled": 119.99076439272609,
+              "normalizedMSE": 0.8927483453768711,
+              "predActualRatio": 0.9244141496117361
+            }
+          }
+        }
+      },
+      "assets": {
+        "159509": {
+          "n": 458,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.0241737352885536,
+              "predActualRatio": 0.9301002180249905
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.07306093806816111,
+              "qlikeDiffPooled": -0.07306093806816111,
+              "normalizedMSE": 0.8502358959620177,
+              "predActualRatio": 0.9343892219317881
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.14855392659484254,
+              "qlikeDiffPooled": -0.14855392659484254,
+              "normalizedMSE": 0.7173775261111068,
+              "predActualRatio": 1.0538882272404118
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.15058430540594256,
+              "qlikeDiffPooled": -0.15058430540594256,
+              "normalizedMSE": 0.6614287303943952,
+              "predActualRatio": 1.0946309204148923
+            }
+          }
+        },
+        "159529": {
+          "n": 296,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.3368967959254623,
+              "predActualRatio": 0.8284478324382584
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.21626057068897078,
+              "qlikeDiffPooled": -0.21626057068897078,
+              "normalizedMSE": 1.0897711913334318,
+              "predActualRatio": 0.9000014572319038
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.410278212218768,
+              "qlikeDiffPooled": -0.410278212218768,
+              "normalizedMSE": 1.207198916511934,
+              "predActualRatio": 1.2221018052341481
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.3827910756165628,
+              "qlikeDiffPooled": -0.3827910756165628,
+              "normalizedMSE": 1.4066414043197268,
+              "predActualRatio": 1.5408977649027558
+            }
+          }
+        },
+        "159934": {
+          "n": 1405,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 3.69467649957368,
+              "predActualRatio": 0.9883245545630702
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.10868627321298874,
+              "qlikeDiffPooled": -0.10868627321298874,
+              "normalizedMSE": 3.1220993525524214,
+              "predActualRatio": 0.9862472025334442
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.13770611977330363,
+              "qlikeDiffPooled": -0.13770611977330363,
+              "normalizedMSE": 4.593686463334913,
+              "predActualRatio": 1.0177207073629033
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.06225775228559505,
+              "qlikeDiffPooled": -0.06225775228559505,
+              "normalizedMSE": 2.8153311975760746,
+              "predActualRatio": 0.7925926909864495
+            }
+          }
+        },
+        "159957": {
+          "n": 1405,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 4.784763621755819,
+              "predActualRatio": 0.9789228507621984
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.09566238171838432,
+              "qlikeDiffPooled": -0.09566238171838432,
+              "normalizedMSE": 3.8707152917057064,
+              "predActualRatio": 0.9762017335332667
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.17866044323405234,
+              "qlikeDiffPooled": -0.17866044323405234,
+              "normalizedMSE": 3.6548510579568854,
+              "predActualRatio": 0.8856844794834756
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 175.62195438551916,
+              "qlikeDiffPooled": 175.62195438551916,
+              "normalizedMSE": 3.1730139898569507,
+              "predActualRatio": 0.9141996833599446
+            }
+          }
+        },
+        "159981": {
+          "n": 1326,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.235370357887687,
+              "predActualRatio": 0.9925341504658084
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.026039831490615468,
+              "qlikeDiffPooled": -0.026039831490615468,
+              "normalizedMSE": 1.842035493009512,
+              "predActualRatio": 0.9879166208391205
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": 0.034031128334585256,
+              "qlikeDiffPooled": 0.034031128334585256,
+              "normalizedMSE": 1.878555626383904,
+              "predActualRatio": 0.9047395151311041
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 0.09458030487420051,
+              "qlikeDiffPooled": 0.09458030487420051,
+              "normalizedMSE": 1.7127494938601673,
+              "predActualRatio": 0.9433055534562289
+            }
+          }
+        },
+        "159985": {
+          "n": 1347,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.5924757886412086,
+              "predActualRatio": 1.0049410456335361
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.051783802781029356,
+              "qlikeDiffPooled": -0.051783802781029356,
+              "normalizedMSE": 0.5138011570126182,
+              "predActualRatio": 1.0043855850462877
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.13186617892890193,
+              "qlikeDiffPooled": -0.13186617892890193,
+              "normalizedMSE": 0.4494782478021982,
+              "predActualRatio": 1.0854020862321725
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.14370582317329042,
+              "qlikeDiffPooled": -0.14370582317329042,
+              "normalizedMSE": 0.4393942666211372,
+              "predActualRatio": 1.0221961796624368
+            }
+          }
+        },
+        "161226": {
+          "n": 1356,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.8807246040421357,
+              "predActualRatio": 0.9442441297482534
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.05379335977277169,
+              "qlikeDiffPooled": -0.05379335977277169,
+              "normalizedMSE": 2.2978228649677446,
+              "predActualRatio": 1.02892745608972
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": 0.013071072096140642,
+              "qlikeDiffPooled": 0.013071072096140642,
+              "normalizedMSE": 2.001420193041701,
+              "predActualRatio": 0.898677113500553
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 0.034658129381241694,
+              "qlikeDiffPooled": 0.034658129381241694,
+              "normalizedMSE": 3.8572490389199396,
+              "predActualRatio": 1.0790897656078287
+            }
+          }
+        },
+        "164824": {
+          "n": 1405,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.6808089248513292,
+              "predActualRatio": 0.9986269060282176
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.02470397228808243,
+              "qlikeDiffPooled": -0.02470397228808243,
+              "normalizedMSE": 1.3813075984046053,
+              "predActualRatio": 0.9997211755885678
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.05757445573979455,
+              "qlikeDiffPooled": -0.05757445573979455,
+              "normalizedMSE": 1.1240572643573021,
+              "predActualRatio": 1.1011657931635233
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.03617570071051616,
+              "qlikeDiffPooled": -0.03617570071051616,
+              "normalizedMSE": 1.0912496210720235,
+              "predActualRatio": 1.1485936258711604
+            }
+          }
+        },
+        "501018": {
+          "n": 1331,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 2.7771855763061426,
+              "predActualRatio": 1.042286442822128
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.17965278007331298,
+              "qlikeDiffPooled": -0.17965278007331298,
+              "normalizedMSE": 2.217982534250769,
+              "predActualRatio": 1.078886041088164
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.3028156996291977,
+              "qlikeDiffPooled": -0.3028156996291977,
+              "normalizedMSE": 1.9726864425090853,
+              "predActualRatio": 1.119550098103682
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": 233.13767544045504,
+              "qlikeDiffPooled": 233.13767544045504,
+              "normalizedMSE": 2.087975414289838,
+              "predActualRatio": 0.8703086508898891
+            }
+          }
+        },
+        "511380": {
+          "n": 1265,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.8236872748503725,
+              "predActualRatio": 0.9682109417907477
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.04351788104968793,
+              "qlikeDiffPooled": -0.04351788104968793,
+              "normalizedMSE": 0.6887865670120715,
+              "predActualRatio": 0.967300322715717
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.06650135170875016,
+              "qlikeDiffPooled": -0.06650135170875016,
+              "normalizedMSE": 0.5777006505830894,
+              "predActualRatio": 0.8774196289568985
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.06289489692044244,
+              "qlikeDiffPooled": -0.06289489692044244,
+              "normalizedMSE": 0.5947437508384653,
+              "predActualRatio": 0.8863024400267278
+            }
+          }
+        },
+        "512800": {
+          "n": 1405,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.974969755136785,
+              "predActualRatio": 1.006850809938925
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.053526612024696406,
+              "qlikeDiffPooled": -0.053526612024696406,
+              "normalizedMSE": 0.8157075711365901,
+              "predActualRatio": 1.00889476145043
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.10132752511104436,
+              "qlikeDiffPooled": -0.10132752511104436,
+              "normalizedMSE": 0.6468294690354093,
+              "predActualRatio": 1.1446830424245107
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.09492216703676636,
+              "qlikeDiffPooled": -0.09492216703676636,
+              "normalizedMSE": 0.6168510561504057,
+              "predActualRatio": 1.127577797732469
+            }
+          }
+        },
+        "513100": {
+          "n": 1362,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.3284172419791846,
+              "predActualRatio": 1.0154759887505633
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.05398783647403642,
+              "qlikeDiffPooled": -0.05398783647403642,
+              "normalizedMSE": 1.102231322470747,
+              "predActualRatio": 1.0230076028171782
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.09284270339216573,
+              "qlikeDiffPooled": -0.09284270339216573,
+              "normalizedMSE": 0.9399132011056051,
+              "predActualRatio": 1.1311708839956527
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.07616861669017949,
+              "qlikeDiffPooled": -0.07616861669017949,
+              "normalizedMSE": 0.874351909691967,
+              "predActualRatio": 1.0943937545069296
+            }
+          }
+        },
+        "513290": {
+          "n": 699,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 0.873985730094185,
+              "predActualRatio": 0.9536908000114206
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.0946472383928472,
+              "qlikeDiffPooled": -0.0946472383928472,
+              "normalizedMSE": 0.7076243447902579,
+              "predActualRatio": 0.9446950356077543
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.13543060818765182,
+              "qlikeDiffPooled": -0.13543060818765182,
+              "normalizedMSE": 0.6045700589599987,
+              "predActualRatio": 0.7687937999842525
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.12670721836376694,
+              "qlikeDiffPooled": -0.12670721836376694,
+              "normalizedMSE": 0.5984198196052433,
+              "predActualRatio": 0.6829778639370337
+            }
+          }
+        },
+        "513530": {
+          "n": 781,
+          "assets": 1,
+          "metrics": {
+            "RV20": {
+              "qlikeDiffAssetEqual": 0,
+              "qlikeDiffPooled": 0,
+              "normalizedMSE": 1.5753215180640772,
+              "predActualRatio": 1.0119275338503846
+            },
+            "EWMA": {
+              "qlikeDiffAssetEqual": -0.1156663360985558,
+              "qlikeDiffPooled": -0.1156663360985558,
+              "normalizedMSE": 1.2393287272778002,
+              "predActualRatio": 1.0174199908504578
+            },
+            "GARCH": {
+              "qlikeDiffAssetEqual": -0.20490408351947886,
+              "qlikeDiffPooled": -0.20490408351947886,
+              "normalizedMSE": 1.066819569511999,
+              "predActualRatio": 1.226059615203444
+            },
+            "HAR_daily": {
+              "qlikeDiffAssetEqual": -0.21671800567634616,
+              "qlikeDiffPooled": -0.21671800567634616,
+              "normalizedMSE": 0.996587154060124,
+              "predActualRatio": 1.2512386961641706
+            }
+          }
+        }
+      },
+      "bootstrapDateEqual": {
+        "20": {
+          "RV20": {
+            "meanDateEqual": 0,
+            "ci95": [
+              0,
+              0
+            ]
+          },
+          "EWMA": {
+            "meanDateEqual": -0.07147651552562759,
+            "ci95": [
+              -0.09551162422557614,
+              -0.05243214840744953
+            ]
+          },
+          "GARCH": {
+            "meanDateEqual": -0.10980355681164548,
+            "ci95": [
+              -0.15824848441084158,
+              -0.06651130353586886
+            ]
+          },
+          "HAR_daily": {
+            "meanDateEqual": 30.353844075554687,
+            "ci95": [
+              -0.08576718023477167,
+              78.79461516041137
+            ]
+          }
+        },
+        "40": {
+          "RV20": {
+            "meanDateEqual": 0,
+            "ci95": [
+              0,
+              0
+            ]
+          },
+          "EWMA": {
+            "meanDateEqual": -0.07147651552562759,
+            "ci95": [
+              -0.09463956760373311,
+              -0.05098090714268598
+            ]
+          },
+          "GARCH": {
+            "meanDateEqual": -0.10980355681164548,
+            "ci95": [
+              -0.17137855752326417,
+              -0.06208908518625656
+            ]
+          },
+          "HAR_daily": {
+            "meanDateEqual": 30.353844075554687,
+            "ci95": [
+              -0.09386352938831233,
+              76.50926396950102
+            ]
+          }
+        }
+      }
+    }
+  },
+  "caseOil": [
+    {
+      "d": "20261022",
+      "realizedAnnualVol": 0.26327713755803306,
+      "predAnnualVol": [
+        0.3054648121390269,
+        0.3363263087953975,
+        0.25953772630614624,
+        0.2787232331999509
+      ],
+      "loss5": 0
+    },
+    {
+      "d": "20261023",
+      "realizedAnnualVol": 0.24607378528353596,
+      "predAnnualVol": [
+        0.29283608035273306,
+        0.3325708703424257,
+        0.2704419229739009,
+        0.28639930524140333
+      ],
+      "loss5": 0.010132158590308471
+    },
+    {
+      "d": "20261026",
+      "realizedAnnualVol": 0.2944735737892051,
+      "predAnnualVol": [
+        0.294321506805898,
+        0.3259164846222535,
+        0.2628779777005289,
+        0.2829548710784872
+      ],
+      "loss5": 0.0149779735682819
+    },
+    {
+      "d": "20261027",
+      "realizedAnnualVol": 0.27908338593062154,
+      "predAnnualVol": [
+        0.2986091193849041,
+        0.3210668472891628,
+        0.2648459873221156,
+        0.2785080495204284
+      ],
+      "loss5": 0.07359307359307354
+    },
+    {
+      "d": "20261028",
+      "realizedAnnualVol": 0.30317600872377126,
+      "predAnnualVol": [
+        0.29872994569175276,
+        0.31164313648816105,
+        0.2417505569251811,
+        0.2682470981539897
+      ],
+      "loss5": 0.08547008547008539
+    },
+    {
+      "d": "20261029",
+      "realizedAnnualVol": 0.6733941982752625,
+      "predAnnualVol": [
+        0.29428061147501755,
+        0.3195326273716858,
+        0.30578479509678985,
+        0.3138430103380685
+      ],
+      "loss5": 0.13663793103448263
+    },
+    {
+      "d": "20261030",
+      "realizedAnnualVol": 0.6980423445907755,
+      "predAnnualVol": [
+        0.2670315840143321,
+        0.3124439020405296,
+        0.2861118418470912,
+        0.2874574406713485
+      ],
+      "loss5": 0.11839788732394352
+    },
+    {
+      "d": "20261102",
+      "realizedAnnualVol": 0.6929414530715764,
+      "predAnnualVol": [
+        0.28058793409537747,
+        0.31916611339571604,
+        0.328413889496846,
+        0.31977071983484984
+      ],
+      "loss5": 0.0688052068805205
+    },
+    {
+      "d": "20261103",
+      "realizedAnnualVol": 0.7632843704555615,
+      "predAnnualVol": [
+        0.28067427370069914,
+        0.31039088490643574,
+        0.29692594163127317,
+        0.2844964850356853
+      ],
+      "loss5": 0.12368781378366045
+    },
+    {
+      "d": "20261104",
+      "realizedAnnualVol": 0.7564153692845742,
+      "predAnnualVol": [
+        0.268639490319295,
+        0.3082092754179231,
+        0.29885638749121135,
+        0.3022986835838021
+      ],
+      "loss5": 0.04143784323514732
+    },
+    {
+      "d": "20261105",
+      "realizedAnnualVol": 0.42092076508553433,
+      "predAnnualVol": [
+        0.38389498614212286,
+        0.4566875718848058,
+        0.7521922373032627,
+        0.626574731734013
+      ],
+      "loss5": 0.07825252040326469
+    },
+    {
+      "d": "20261106",
+      "realizedAnnualVol": 0.4527099715786124,
+      "predAnnualVol": [
+        0.3964669383414459,
+        0.45589131879326333,
+        0.6913771610816964,
+        0.4921420981793833
+      ],
+      "loss5": 0.06341463414634141
+    }
+  ],
+  "riskGroups": {
+    "RV20": {
+      "lowN": 3241,
+      "highN": 3241,
+      "lowDeep5": 0.030854674483184203,
+      "highDeep5": 0.15766738660907129,
+      "lowMAE": 0.014200514874898878,
+      "highMAE": 0.026998959345159536
+    },
+    "EWMA": {
+      "lowN": 3241,
+      "highN": 3241,
+      "lowDeep5": 0.030854674483184203,
+      "highDeep5": 0.1570502931194076,
+      "lowMAE": 0.014209270266841222,
+      "highMAE": 0.027355283156098118
+    },
+    "GARCH": {
+      "lowN": 3241,
+      "highN": 3241,
+      "lowDeep5": 0.03270595495217526,
+      "highDeep5": 0.1622955877815489,
+      "lowMAE": 0.014232593696370218,
+      "highMAE": 0.027793094968097395
+    },
+    "HAR_daily": {
+      "lowN": 3241,
+      "highN": 3241,
+      "lowDeep5": 0.0367170626349892,
+      "highDeep5": 0.148410984264116,
+      "lowMAE": 0.014412313919889076,
+      "highMAE": 0.026779837308282026
+    }
+  }
+}
