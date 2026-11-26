@@ -1,0 +1,30 @@
+name: Research IV1.2 Oil Long History
+on:
+  push:
+    branches: [research/top1-downside-20261120]
+    paths: ['.github/workflows/research-iv12-oil-long.yml', 'research/top1_downside/code/iv12_oil_inception_long.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  iv12:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==2.5.5 scipy==1.18.1 scikit-learn
+      - run: python research/top1_downside/code/iv12_oil_inception_long.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: iv12-oil-long-history
+          path: |
+            iv12_oil_long_results.json
+            iv12_ovx.csv
+          if-no-files-found: error
+          retention-days: 30
