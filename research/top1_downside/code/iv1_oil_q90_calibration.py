@@ -10,20 +10,49 @@ OUT=pathlib.Path("iv1_oil_results.json")
 START=dt.date(2019,1,1); END=dt.date(2026,11,25)
 SOURCES={"CBOE":"https://cdn.cboe.com/api/global/us_indices/daily_prices/OVX_History.csv","FRED":"https://fred.stlouisfed.org/graph/fredgraph.csv?id=OVXCLS&cosd=2019-01-01&coed=2026-11-25"}
 def download(name,url):
-    req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 research historical data"})
-    with urllib.request.urlopen(req,timeout=30) as f: data=f.read().decode("utf-8-sig")
-    out={}
-    for row in csv.DictReader(io.StringIO(data)):
-        r={k.strip().upper():v for k,v in row.items() if k}
-        date=r.get("DATE") or r.get("OBSERVATION_DATE")
-        val=r.get("CLOSE") or r.get("OVXCLS")
+    import re
+    from concurrent.futures import ThreadPoolExecutor
+    def get(u):
+        req=urllib.request.Request(u,headers={"User-Agent":"Mozilla/5.0","Accept":"text/csv,text/html,*/*"})
+        with urllib.request.urlopen(req,timeout=50) as f: return f.read().decode("utf-8-sig")
+    def parse(data):
+        out={}
+        # Cboe OVX may use a single value column rather than CLOSE.
+        for row in csv.DictReader(io.StringIO(data)):
+            r={k.strip().upper():v for k,v in row.items() if k}
+            date=r.get("DATE") or r.get("OBSERVATION_DATE") or r.get("TRADE DATE")
+            val=next((r[k] for k in ("CLOSE","OVX","OVXCLS","VALUE","INDEX VALUE") if r.get(k)),None)
+            if not val and len(r)==2: val=list(r.values())[-1]
+            if not date or not val: continue
+            try:
+                d=dt.date.fromisoformat(date.strip()[:10]) if "-" in date else dt.datetime.strptime(date.strip().split()[0],"%m/%d/%Y").date()
+                v=float(val)
+                if START<=d<=END and math.isfinite(v) and v>0: out[d]=v
+            except (ValueError,TypeError): continue
+        # FRED's public HTML table is plain text in <pre> on some versions.
+        if not out:
+            plain=re.sub(r"<[^>]+>"," ",data)
+            for d,v in re.findall(r"(\d{4}-\d{2}-\d{2})\s+([0-9]+\.[0-9]+)",plain):
+                day=dt.date.fromisoformat(d); val=float(v)
+                if START<=day<=END and val>0: out[day]=val
+        return out
+    urls=[url] if name=="CBOE" else ["https://fred.stlouisfed.org/data/OVXCLS.txt"]+[f"https://fred.stlouisfed.org/graph/fredgraph.csv?id=OVXCLS&cosd={y}-01-01&coed={y}-12-31" for y in range(2019,2027)]
+    def one(u):
         try:
-            d=dt.date.fromisoformat(date) if "-" in date else dt.datetime.strptime(date,"%m/%d/%Y").date()
-            v=float(val)
-            if START<=d<=END and math.isfinite(v) and v>0: out[d]=v
-        except (ValueError,TypeError): continue
-    if len(out)<1400 or min(out)>dt.date(2020,1,1) or max(out)<dt.date(2026,11,20):
+            data=get(u); result=parse(data)
+            print("FEED",name,u,"rows",len(result),"header",repr(data.splitlines()[0][:180]) if data else "empty",flush=True)
+            return result
+        except Exception as e:
+            print("FEED_ERROR",name,u,str(e),flush=True);return {}
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        out={}
+        for part in pool.map(one,urls): out.update(part)
+    if len(out)<1400 or min(out)>dt.date(2020,1,1) or max(out)<dt.date(2026,11,4):
         raise ValueError(f"incomplete series {name}: {len(out)} {min(out,default=None)} {max(out,default=None)}")
+    # Coverage gate relative to expected US weekdays, excluding holidays roughly.
+    for year in range(2019,2027):
+        count=sum(d.year==year for d in out)
+        if count<(210 if year==2026 else 240): raise ValueError(f"insufficient year {year}: {count}")
     return out
 def fit(x,y,penalty=.05):
     # quantile regression in log ratio, fixed L1 on standardized coefficients only.
