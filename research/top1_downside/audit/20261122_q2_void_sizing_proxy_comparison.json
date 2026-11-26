@@ -1,0 +1,4283 @@
+{
+  "metadata": {
+    "evaluation": "2026Q2 same-path Void override audit",
+    "scope": "simplified OLS Top1+historical State Map; no PIT premiums V1, minute fills; nonoriginal Q90 estimator",
+    "model": "Own-ETF mature historical 120 daily L5 90% percentile versus vol20-scaled percentile of (L5/vol20), 10 global-session lag; Q90 sizing E=clip(1-1.1*Dref/Dvolscaled,0,1); NOT original learned Q90 or M1."
+  },
+  "summary": {
+    "freeze": {
+      "totalReturn": 0.20914722802068764,
+      "mdd": -0.1017543859649126,
+      "voidTrades": 0,
+      "voidAdds": 0,
+      "voidCuts": 0,
+      "turnover": 20.792429539466923,
+      "fees": 0.01247545772368015,
+      "episode159509": {
+        "n": 22,
+        "return": 0.11740890688259031,
+        "maxDD": -0.1017543859649126,
+        "startNAV": 1.0610983758704904,
+        "endNAV": 1.1856807762763366
+      },
+      "episode159957": {
+        "n": 5,
+        "return": 0.047445255474452885,
+        "maxDD": -0.03157894736842104,
+        "startNAV": 1.103010604279241,
+        "endNAV": 1.1553432241903
+      },
+      "JuneCrash": {
+        "n": 7,
+        "return": -0.08896797153024927,
+        "maxDD": -0.1017543859649126,
+        "startNAV": 1.2071605004842414,
+        "endNAV": 1.099761879444718
+      },
+      "earlyApril": {
+        "n": 29,
+        "return": 0.06109837587049016,
+        "maxDD": -0.06135577120086633,
+        "startNAV": 1,
+        "endNAV": 1.0610983758704902
+      }
+    },
+    "downOnly": {
+      "totalReturn": 0.16436829856490243,
+      "mdd": -0.1000040726595246,
+      "voidTrades": 11,
+      "voidAdds": 0,
+      "voidCuts": 11,
+      "turnover": 20.57898087073457,
+      "fees": 0.012347388522440739,
+      "episode159509": {
+        "n": 22,
+        "return": 0.09668188017121992,
+        "maxDD": -0.08816264151575681,
+        "startNAV": 1.0610983758704902,
+        "endNAV": 1.1636873618962769
+      },
+      "episode159957": {
+        "n": 5,
+        "return": 0.02728154048430076,
+        "maxDD": -0.018794067181626573,
+        "startNAV": 1.082724768796183,
+        "endNAV": 1.1122631684094513
+      },
+      "JuneCrash": {
+        "n": 7,
+        "return": -0.0767904752502454,
+        "maxDD": -0.08816264151575681,
+        "startNAV": 1.1882139117987882,
+        "endNAV": 1.096970400812806
+      },
+      "earlyApril": {
+        "n": 29,
+        "return": 0.06109837587049016,
+        "maxDD": -0.06135577120086633,
+        "startNAV": 1,
+        "endNAV": 1.0610983758704902
+      }
+    },
+    "twoWay": {
+      "totalReturn": 0.16263355528193002,
+      "mdd": -0.10658690929154513,
+      "voidTrades": 26,
+      "voidAdds": 9,
+      "voidCuts": 17,
+      "turnover": 21.09624093327778,
+      "fees": 0.012657744559966665,
+      "episode159509": {
+        "n": 22,
+        "return": 0.09498463275064672,
+        "maxDD": -0.09485877251696873,
+        "startNAV": 1.0610983758704902,
+        "endNAV": 1.1618864154148565
+      },
+      "episode159957": {
+        "n": 5,
+        "return": 0.027345720049170907,
+        "maxDD": -0.018794067181626795,
+        "startNAV": 1.0810452853110326,
+        "endNAV": 1.1106072470436241
+      },
+      "JuneCrash": {
+        "n": 7,
+        "return": -0.08335511207836255,
+        "maxDD": -0.09485877251696873,
+        "startNAV": 1.1948318787339658,
+        "endNAV": 1.0952365335672956
+      },
+      "earlyApril": {
+        "n": 29,
+        "return": 0.06109837587049016,
+        "maxDD": -0.06135577120086633,
+        "startNAV": 1,
+        "endNAV": 1.0610983758704902
+      }
+    },
+    "fixed20": {
+      "totalReturn": 0.1729969038832022,
+      "mdd": -0.09376988052731006,
+      "voidTrades": 2,
+      "voidAdds": 0,
+      "voidCuts": 2,
+      "turnover": 20.577152479247736,
+      "fees": 0.012346291487548641,
+      "episode159509": {
+        "n": 22,
+        "return": 0.09379585425101178,
+        "maxDD": -0.083633741888969,
+        "startNAV": 1.0610983758704902,
+        "endNAV": 1.160625004479624
+      },
+      "episode159957": {
+        "n": 5,
+        "return": 0.03783164963503638,
+        "maxDD": -0.02545968882602545,
+        "startNAV": 1.0798203979921852,
+        "endNAV": 1.1206717849577912
+      },
+      "JuneCrash": {
+        "n": 7,
+        "return": -0.07293946024799414,
+        "maxDD": -0.083633741888969,
+        "startNAV": 1.177806721792424,
+        "endNAV": 1.0918981352284252
+      },
+      "earlyApril": {
+        "n": 29,
+        "return": 0.06109837587049016,
+        "maxDD": -0.06135577120086633,
+        "startNAV": 1,
+        "endNAV": 1.0610983758704902
+      }
+    },
+    "fixed50": {
+      "totalReturn": 0.11965117823729554,
+      "mdd": -0.08576746713557393,
+      "voidTrades": 2,
+      "voidAdds": 0,
+      "voidCuts": 2,
+      "turnover": 20.256164574281605,
+      "fees": 0.012153698744568958,
+      "episode159509": {
+        "n": 22,
+        "return": 0.05838684210526379,
+        "maxDD": -0.0545112781954884,
+        "startNAV": 1.0610983758704902,
+        "endNAV": 1.1230525592005924
+      },
+      "episode159957": {
+        "n": 5,
+        "return": 0.02341551094890515,
+        "maxDD": -0.01610017889087656,
+        "startNAV": 1.0450454658371313,
+        "endNAV": 1.0695157393845443
+      },
+      "JuneCrash": {
+        "n": 7,
+        "return": -0.04734848484848464,
+        "maxDD": -0.0545112781954884,
+        "startNAV": 1.133789199345913,
+        "endNAV": 1.0801059986193076
+      },
+      "earlyApril": {
+        "n": 29,
+        "return": 0.06109837587049016,
+        "maxDD": -0.06135577120086633,
+        "startNAV": 1,
+        "endNAV": 1.0610983758704902
+      }
+    }
+  },
+  "daily": [
+    {
+      "d": "20260401",
+      "asset": "512800",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0,
+          "ret": 0.005646250000000075,
+          "nav": 1.00564625,
+          "fee": 0.0006,
+          "turn": 1,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0,
+          "ret": 0.005646250000000075,
+          "nav": 1.00564625,
+          "fee": 0.0006,
+          "turn": 1,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0,
+          "ret": 0.005646250000000075,
+          "nav": 1.00564625,
+          "fee": 0.0006,
+          "turn": 1,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0,
+          "ret": 0.005646250000000075,
+          "nav": 1.00564625,
+          "fee": 0.0006,
+          "turn": 1,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0,
+          "ret": 0.005646250000000075,
+          "nav": 1.00564625,
+          "fee": 0.0006,
+          "turn": 1,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260402",
+      "asset": "512800",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012422360248447228,
+          "nav": 0.9931537500000001,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012422360248447228,
+          "nav": 0.9931537500000001,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012422360248447228,
+          "nav": 0.9931537500000001,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012422360248447228,
+          "nav": 0.9931537500000001,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012422360248447228,
+          "nav": 0.9931537500000001,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260403",
+      "asset": "512800",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0062893081761006275,
+          "nav": 0.9869075,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0062893081761006275,
+          "nav": 0.9869075,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0062893081761006275,
+          "nav": 0.9869075,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0062893081761006275,
+          "nav": 0.9869075,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0062893081761006275,
+          "nav": 0.9869075,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260407",
+      "asset": "501018",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "501018",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01594678111587977,
+          "nav": 1.0026454978841202,
+          "fee": 0.001184289,
+          "turn": 1.973815,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "501018",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01594678111587977,
+          "nav": 1.0026454978841202,
+          "fee": 0.001184289,
+          "turn": 1.973815,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "501018",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01594678111587977,
+          "nav": 1.0026454978841202,
+          "fee": 0.001184289,
+          "turn": 1.973815,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "501018",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01594678111587977,
+          "nav": 1.0026454978841202,
+          "fee": 0.001184289,
+          "turn": 1.973815,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "501018",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01594678111587977,
+          "nav": 1.0026454978841202,
+          "fee": 0.001184289,
+          "turn": 1.973815,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260408",
+      "asset": "513290",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00559455782312912,
+          "nav": 1.008254856098133,
+          "fee": 0.001203174597460944,
+          "turn": 2.0052909957682403,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00559455782312912,
+          "nav": 1.008254856098133,
+          "fee": 0.001203174597460944,
+          "turn": 2.0052909957682403,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00559455782312912,
+          "nav": 1.008254856098133,
+          "fee": 0.001203174597460944,
+          "turn": 2.0052909957682403,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00559455782312912,
+          "nav": 1.008254856098133,
+          "fee": 0.001203174597460944,
+          "turn": 2.0052909957682403,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00559455782312912,
+          "nav": 1.008254856098133,
+          "fee": 0.001203174597460944,
+          "turn": 2.0052909957682403,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260409",
+      "asset": "513290",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.020270270270270396,
+          "nav": 0.9878172576637113,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.020270270270270396,
+          "nav": 0.9878172576637113,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.020270270270270396,
+          "nav": 0.9878172576637113,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.020270270270270396,
+          "nav": 0.9878172576637113,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.020270270270270396,
+          "nav": 0.9878172576637113,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260410",
+      "asset": "513290",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01379310344827589,
+          "nav": 1.0014423232866592,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01379310344827589,
+          "nav": 1.0014423232866592,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01379310344827589,
+          "nav": 1.0014423232866592,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01379310344827589,
+          "nav": 1.0014423232866592,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513290",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01379310344827589,
+          "nav": 1.0014423232866592,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260413",
+      "asset": "513100",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513100",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01078124318429663,
+          "nav": 1.0122391165090596,
+          "fee": 0.001201730787943991,
+          "turn": 2.0028846465733183,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513100",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01078124318429663,
+          "nav": 1.0122391165090596,
+          "fee": 0.001201730787943991,
+          "turn": 2.0028846465733183,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513100",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01078124318429663,
+          "nav": 1.0122391165090596,
+          "fee": 0.001201730787943991,
+          "turn": 2.0028846465733183,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513100",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01078124318429663,
+          "nav": 1.0122391165090596,
+          "fee": 0.001201730787943991,
+          "turn": 2.0028846465733183,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513100",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01078124318429663,
+          "nav": 1.0122391165090596,
+          "fee": 0.001201730787943991,
+          "turn": 2.0028846465733183,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260414",
+      "asset": "159957",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026593220338983037,
+          "nav": 0.9853204186479967,
+          "fee": 0.0012146869398108715,
+          "turn": 2.0244782330181192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026593220338983037,
+          "nav": 0.9853204186479967,
+          "fee": 0.0012146869398108715,
+          "turn": 2.0244782330181192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026593220338983037,
+          "nav": 0.9853204186479967,
+          "fee": 0.0012146869398108715,
+          "turn": 2.0244782330181192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026593220338983037,
+          "nav": 0.9853204186479967,
+          "fee": 0.0012146869398108715,
+          "turn": 2.0244782330181192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026593220338983037,
+          "nav": 0.9853204186479967,
+          "fee": 0.0012146869398108715,
+          "turn": 2.0244782330181192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260415",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.00554260869565204,
+          "nav": 0.9798591731275947,
+          "fee": 0.001182384502377596,
+          "turn": 1.9706408372959934,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.00554260869565204,
+          "nav": 0.9798591731275947,
+          "fee": 0.001182384502377596,
+          "turn": 1.9706408372959934,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.00554260869565204,
+          "nav": 0.9798591731275947,
+          "fee": 0.001182384502377596,
+          "turn": 1.9706408372959934,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.00554260869565204,
+          "nav": 0.9798591731275947,
+          "fee": 0.001182384502377596,
+          "turn": 1.9706408372959934,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.00554260869565204,
+          "nav": 0.9798591731275947,
+          "fee": 0.001182384502377596,
+          "turn": 1.9706408372959934,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260416",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260417",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 0.9798591731275947,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260420",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.004366812227074246,
+          "nav": 0.9755803121095703,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.004366812227074246,
+          "nav": 0.9755803121095703,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.004366812227074246,
+          "nav": 0.9755803121095703,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.004366812227074246,
+          "nav": 0.9755803121095703,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.004366812227074246,
+          "nav": 0.9755803121095703,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260421",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.013157894736842035,
+          "nav": 0.9884168951636436,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.013157894736842035,
+          "nav": 0.9884168951636436,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.013157894736842035,
+          "nav": 0.9884168951636436,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.013157894736842035,
+          "nav": 0.9884168951636436,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.013157894736842035,
+          "nav": 0.9884168951636436,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260422",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0043290043290042934,
+          "nav": 0.9841380341456192,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0043290043290042934,
+          "nav": 0.9841380341456192,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0043290043290042934,
+          "nav": 0.9841380341456192,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0043290043290042934,
+          "nav": 0.9841380341456192,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0043290043290042934,
+          "nav": 0.9841380341456192,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260423",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0304347826086957,
+          "nav": 1.0140900612717902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0304347826086957,
+          "nav": 1.0140900612717902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0304347826086957,
+          "nav": 1.0140900612717902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0304347826086957,
+          "nav": 1.0140900612717902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0304347826086957,
+          "nav": 1.0140900612717902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260424",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00421940928270037,
+          "nav": 1.0183689222898147,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00421940928270037,
+          "nav": 1.0183689222898147,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00421940928270037,
+          "nav": 1.0183689222898147,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00421940928270037,
+          "nav": 1.0183689222898147,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.00421940928270037,
+          "nav": 1.0183689222898147,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260427",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012605042016806567,
+          "nav": 1.0055323392357416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012605042016806567,
+          "nav": 1.0055323392357416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012605042016806567,
+          "nav": 1.0055323392357416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012605042016806567,
+          "nav": 1.0055323392357416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.012605042016806567,
+          "nav": 1.0055323392357416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260428",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.017021276595744705,
+          "nav": 1.0226477833078393,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.017021276595744705,
+          "nav": 1.0226477833078393,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.017021276595744705,
+          "nav": 1.0226477833078393,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.017021276595744705,
+          "nav": 1.0226477833078393,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.017021276595744705,
+          "nav": 1.0226477833078393,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260429",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.03765690376569042,
+          "nav": 1.0611575324700593,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.03765690376569042,
+          "nav": 1.0611575324700593,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.03765690376569042,
+          "nav": 1.0611575324700593,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.03765690376569042,
+          "nav": 1.0611575324700593,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.03765690376569042,
+          "nav": 1.0611575324700593,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260430",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.05645161290322598,
+          "nav": 1.1210615867224014,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.05645161290322598,
+          "nav": 1.1210615867224014,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.05645161290322598,
+          "nav": 1.1210615867224014,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.05645161290322598,
+          "nav": 1.1210615867224014,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.05645161290322598,
+          "nav": 1.1210615867224014,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260506",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 0.8279470553147215,
+          "priorW": 1,
+          "ret": -0.028541225140461424,
+          "nav": 1.0890651155794344,
+          "fee": 0.00011572916830148397,
+          "turn": 0.19288194716913998,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8279470553147215,
+          "priorW": 1,
+          "ret": -0.028541225140461424,
+          "nav": 1.0890651155794344,
+          "fee": 0.00011572916830148397,
+          "turn": 0.19288194716913998,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8279470553147215,
+          "priorW": 1,
+          "ret": -0.028541225140461424,
+          "nav": 1.0890651155794344,
+          "fee": 0.00011572916830148397,
+          "turn": 0.19288194716913998,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8279470553147215,
+          "priorW": 1,
+          "ret": -0.028541225140461424,
+          "nav": 1.0890651155794344,
+          "fee": 0.00011572916830148397,
+          "turn": 0.19288194716913998,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.8279470553147215,
+          "priorW": 1,
+          "ret": -0.028541225140461424,
+          "nav": 1.0890651155794344,
+          "fee": 0.00011572916830148397,
+          "turn": 0.19288194716913998,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260507",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 0.9638283303325207,
+          "priorW": 0.8229104643368033,
+          "ret": 0.03800820967382634,
+          "nav": 1.1304585308408275,
+          "fee": 0.0000920812392106999,
+          "turn": 0.15346873201783318,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.9638283303325207,
+          "priorW": 0.8229104643368033,
+          "ret": 0.03800820967382634,
+          "nav": 1.1304585308408275,
+          "fee": 0.0000920812392106999,
+          "turn": 0.15346873201783318,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9638283303325207,
+          "priorW": 0.8229104643368033,
+          "ret": 0.03800820967382634,
+          "nav": 1.1304585308408275,
+          "fee": 0.0000920812392106999,
+          "turn": 0.15346873201783318,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.9638283303325207,
+          "priorW": 0.8229104643368033,
+          "ret": 0.03800820967382634,
+          "nav": 1.1304585308408275,
+          "fee": 0.0000920812392106999,
+          "turn": 0.15346873201783318,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.9638283303325207,
+          "priorW": 0.8229104643368033,
+          "ret": 0.03800820967382634,
+          "nav": 1.1304585308408275,
+          "fee": 0.0000920812392106999,
+          "turn": 0.15346873201783318,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260508",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 0.985008923495948,
+          "priorW": 0.9651557560049114,
+          "ret": -0.022483330687589786,
+          "nav": 1.1050420578633262,
+          "fee": 0.000013465909532672526,
+          "turn": 0.02244318255445421,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.985008923495948,
+          "priorW": 0.9651557560049114,
+          "ret": -0.022483330687589786,
+          "nav": 1.1050420578633262,
+          "fee": 0.000013465909532672526,
+          "turn": 0.02244318255445421,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.985008923495948,
+          "priorW": 0.9651557560049114,
+          "ret": -0.022483330687589786,
+          "nav": 1.1050420578633262,
+          "fee": 0.000013465909532672526,
+          "turn": 0.02244318255445421,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.985008923495948,
+          "priorW": 0.9651557560049114,
+          "ret": -0.022483330687589786,
+          "nav": 1.1050420578633262,
+          "fee": 0.000013465909532672526,
+          "turn": 0.02244318255445421,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.985008923495948,
+          "priorW": 0.9651557560049114,
+          "ret": -0.022483330687589786,
+          "nav": 1.1050420578633262,
+          "fee": 0.000013465909532672526,
+          "turn": 0.02244318255445421,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260511",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9846643045561719,
+          "ret": -0.007791230978221431,
+          "nav": 1.0964324199498638,
+          "fee": 0.000010167953071207813,
+          "turn": 0.016946588452013023,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9846643045561719,
+          "ret": -0.007791230978221431,
+          "nav": 1.0964324199498638,
+          "fee": 0.000010167953071207813,
+          "turn": 0.016946588452013023,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9846643045561719,
+          "ret": -0.007791230978221431,
+          "nav": 1.0964324199498638,
+          "fee": 0.000010167953071207813,
+          "turn": 0.016946588452013023,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9846643045561719,
+          "ret": -0.007791230978221431,
+          "nav": 1.0964324199498638,
+          "fee": 0.000010167953071207813,
+          "turn": 0.016946588452013023,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9846643045561719,
+          "ret": -0.007791230978221431,
+          "nav": 1.0964324199498638,
+          "fee": 0.000010167953071207813,
+          "turn": 0.016946588452013023,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260512",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 0.9436053856008241,
+          "priorW": 1,
+          "ret": 0.018467603565550883,
+          "nav": 1.1166808992179156,
+          "fee": 0.000037099730122696736,
+          "turn": 0.0618328835378279,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.9436053856008241,
+          "priorW": 1,
+          "ret": 0.018467603565550883,
+          "nav": 1.1166808992179156,
+          "fee": 0.000037099730122696736,
+          "turn": 0.0618328835378279,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9436053856008241,
+          "priorW": 1,
+          "ret": 0.018467603565550883,
+          "nav": 1.1166808992179156,
+          "fee": 0.000037099730122696736,
+          "turn": 0.0618328835378279,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.9436053856008241,
+          "priorW": 1,
+          "ret": 0.018467603565550883,
+          "nav": 1.1166808992179156,
+          "fee": 0.000037099730122696736,
+          "turn": 0.0618328835378279,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.9436053856008241,
+          "priorW": 1,
+          "ret": 0.018467603565550883,
+          "nav": 1.1166808992179156,
+          "fee": 0.000037099730122696736,
+          "turn": 0.0618328835378279,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260513",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 0.9233169585118135,
+          "priorW": 0.9446298478319478,
+          "ret": -0.0035639613927480607,
+          "nav": 1.1127010916050837,
+          "fee": 0.000014279817846563691,
+          "turn": 0.023799696410939486,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.9233169585118135,
+          "priorW": 0.9446298478319478,
+          "ret": -0.0035639613927480607,
+          "nav": 1.1127010916050837,
+          "fee": 0.000014279817846563691,
+          "turn": 0.023799696410939486,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9233169585118135,
+          "priorW": 0.9446298478319478,
+          "ret": -0.0035639613927480607,
+          "nav": 1.1127010916050837,
+          "fee": 0.000014279817846563691,
+          "turn": 0.023799696410939486,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.9233169585118135,
+          "priorW": 0.9446298478319478,
+          "ret": -0.0035639613927480607,
+          "nav": 1.1127010916050837,
+          "fee": 0.000014279817846563691,
+          "turn": 0.023799696410939486,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.9233169585118135,
+          "priorW": 0.9446298478319478,
+          "ret": -0.0035639613927480607,
+          "nav": 1.1127010916050837,
+          "fee": 0.000014279817846563691,
+          "turn": 0.023799696410939486,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260514",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9230436697240881,
+          "ret": -0.023211127300910794,
+          "nav": 1.0868740449199756,
+          "fee": 0.00005137763562235706,
+          "turn": 0.08562939270392844,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9230436697240881,
+          "ret": -0.023211127300910794,
+          "nav": 1.0868740449199756,
+          "fee": 0.00005137763562235706,
+          "turn": 0.08562939270392844,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9230436697240881,
+          "ret": -0.023211127300910794,
+          "nav": 1.0868740449199756,
+          "fee": 0.00005137763562235706,
+          "turn": 0.08562939270392844,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9230436697240881,
+          "ret": -0.023211127300910794,
+          "nav": 1.0868740449199756,
+          "fee": 0.00005137763562235706,
+          "turn": 0.08562939270392844,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.9230436697240881,
+          "ret": -0.023211127300910794,
+          "nav": 1.0868740449199756,
+          "fee": 0.00005137763562235706,
+          "turn": 0.08562939270392844,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260515",
+      "asset": "159509",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.02371541501976271,
+          "nav": 1.0610983758704902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.02371541501976271,
+          "nav": 1.0610983758704902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.02371541501976271,
+          "nav": 1.0610983758704902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.02371541501976271,
+          "nav": 1.0610983758704902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.02371541501976271,
+          "nav": 1.0610983758704902,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260518",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.008097165991902688,
+          "nav": 1.069690265553652,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8740156364012881,
+          "priorW": 1,
+          "ret": 0.007000924110739826,
+          "nav": 1.0685270450739888,
+          "fee": 0.00008020908215980231,
+          "turn": 0.13368180359967052,
+          "proxyQ90": 0.07434524080270882,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.1259843635987119
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8740156364012881,
+          "priorW": 1,
+          "ret": 0.007000924110739826,
+          "nav": 1.0685270450739888,
+          "fee": 0.00008020908215980231,
+          "turn": 0.13368180359967052,
+          "proxyQ90": 0.07434524080270882,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.1259843635987119
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8,
+          "priorW": 1,
+          "ret": 0.0063569554655869,
+          "nav": 1.0678437309905056,
+          "fee": 0.0001273318051044588,
+          "turn": 0.212219675174098,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5,
+          "priorW": 1,
+          "ret": 0.0037473684210527214,
+          "nav": 1.0650747024158576,
+          "fee": 0.000318329512761147,
+          "turn": 0.5305491879352451,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260519",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.04016064257028096,
+          "nav": 1.112649713969461,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8749009684633262,
+          "priorW": 0.8749009684633262,
+          "ret": 0.035136585078848315,
+          "nav": 1.1060714365022815,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.06938971131465319,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.07998917267717798
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.920010827322822,
+          "priorW": 0.8749009684633262,
+          "ret": 0.03692016004402854,
+          "nav": 1.1079772345894934,
+          "fee": 0.000028920662514505066,
+          "turn": 0.04820110419084178,
+          "proxyQ90": 0.06938971131465319,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.07998917267717798
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8012872083668544,
+          "priorW": 0.8012872083668544,
+          "ret": 0.03218020917135944,
+          "nav": 1.102207165616105,
+          "fee": 6.661338147750939e-20,
+          "turn": 1.1102230246251565e-16,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.502016129032258,
+          "priorW": 0.502016129032258,
+          "ret": 0.020161290322580516,
+          "nav": 1.0865479827064997,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260520",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0038610038610038533,
+          "nav": 1.116945658811042,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8791473189722641,
+          "priorW": 0.8791473189722641,
+          "ret": 0.003394391192943269,
+          "nav": 1.109825875645111,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.0664919401253305,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.039894375258785475
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9601056247412145,
+          "priorW": 0.9228609773643444,
+          "ret": 0.0036845418967628163,
+          "nav": 1.1120596231309978,
+          "fee": 0.00002475973284233128,
+          "turn": 0.04126622140388547,
+          "proxyQ90": 0.0664919401253305,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.039894375258785475
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8074824629773967,
+          "priorW": 0.8074824629773967,
+          "ret": 0.003117692907248726,
+          "nav": 1.1056435090786652,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5118577075098814,
+          "priorW": 0.5118577075098814,
+          "ret": 0.0019762845849802257,
+          "nav": 1.088695310735564,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260521",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.04615384615384621,
+          "nav": 1.1684969969100132,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8795561525074369,
+          "priorW": 0.8795561525074369,
+          "ret": 0.04059489934649729,
+          "nav": 1.1548791453590623,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.06707676907785969,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.048265344441618785
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9517346555583812,
+          "priorW": 0.9602529658649207,
+          "ret": 0.043920879379464095,
+          "nav": 1.1609022597013066,
+          "fee": 0.00000568372136952191,
+          "turn": 0.009472868949203184,
+          "proxyQ90": 0.06707676907785969,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.048265344441618785
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.808080808080808,
+          "priorW": 0.808080808080808,
+          "ret": 0.037296037296037365,
+          "nav": 1.1468796306293847,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5128205128205128,
+          "priorW": 0.5128205128205128,
+          "ret": 0.023668639053254337,
+          "nav": 1.1144632470843345,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260522",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.011029411764706065,
+          "nav": 1.1556091623852702,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8842548165782833,
+          "priorW": 0.8842548165782833,
+          "ret": -0.0097528104769663,
+          "nav": 1.1436158279305746,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.06957350413519656,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.08241957182101756
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9175804281789824,
+          "priorW": 0.9537655595251621,
+          "ret": -0.010141863724226874,
+          "nav": 1.149128547186269,
+          "fee": 0.000025204440448421114,
+          "turn": 0.04200740074736853,
+          "proxyQ90": 0.06957350413519656,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.08241957182101756
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8149812734082396,
+          "priorW": 0.8149812734082396,
+          "ret": -0.008988764044943975,
+          "nav": 1.1365706002417046,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5240847784200385,
+          "priorW": 0.5240847784200385,
+          "ret": -0.005780346820809301,
+          "nav": 1.1080212629971418,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260525",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.01115241635687747,
+          "nav": 1.1684969969100132,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8831148579402007,
+          "priorW": 0.8831148579402007,
+          "ret": 0.009848864586693873,
+          "nav": 1.1548791453590626,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.07069111175957614,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.09692627368195406
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9030737263180459,
+          "priorW": 0.916737783544129,
+          "ret": 0.010063173192364161,
+          "nav": 1.160692426776894,
+          "fee": 0.000009421054937327387,
+          "turn": 0.01570175822887898,
+          "proxyQ90": 0.07069111175957614,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.09692627368195406
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8133030990173846,
+          "priorW": 0.8133030990173846,
+          "ret": 0.009070294784580435,
+          "nav": 1.1468796306293845,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5213178294573643,
+          "priorW": 0.5213178294573643,
+          "ret": 0.005813953488372103,
+          "nav": 1.1144632470843345,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260526",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.011029411764706065,
+          "nav": 1.1556091623852702,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8725611505536919,
+          "priorW": 0.8842548165782833,
+          "ret": -0.009630784896200839,
+          "nav": 1.1437567527290011,
+          "fee": 0.00000810286261475661,
+          "turn": 0.013504771024594353,
+          "proxyQ90": 0.07316310802260224,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.12743884944630812
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8725611505536919,
+          "priorW": 0.9040401812374514,
+          "ret": -0.009642541868331134,
+          "nav": 1.149500401455443,
+          "fee": 0.00002192248351015031,
+          "turn": 0.03653747251691719,
+          "proxyQ90": 0.07316310802260224,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.12743884944630812
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8149812734082397,
+          "priorW": 0.8149812734082397,
+          "ret": -0.008988764044943753,
+          "nav": 1.1365706002417046,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5240847784200384,
+          "priorW": 0.5240847784200384,
+          "ret": -0.005780346820809301,
+          "nav": 1.1080212629971418,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260527",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.014869888475836479,
+          "nav": 1.1727929417515939,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8713227820833009,
+          "priorW": 0.8713227820833009,
+          "ret": 0.012956472596034274,
+          "nav": 1.1585758057522635,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.0730533181251126,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.11052769920317151
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8894723007968285,
+          "priorW": 0.871322782083301,
+          "ret": 0.013215320172791811,
+          "nav": 1.1646914172994294,
+          "fee": 0.000012517727428453806,
+          "turn": 0.02086287904742301,
+          "proxyQ90": 0.0730533181251126,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.11052769920317151
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8133030990173846,
+          "priorW": 0.8133030990173846,
+          "ret": 0.012093726379440728,
+          "nav": 1.1503159740919444,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5213178294573642,
+          "priorW": 0.5213178294573642,
+          "ret": 0.007751937984496138,
+          "nav": 1.1166105751133988,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260528",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0146520146520146,
+          "nav": 1.1899767211179175,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8729686601568167,
+          "priorW": 0.8729686601568167,
+          "ret": 0.012790749599367324,
+          "nav": 1.1733948587755259,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.07233754820925231,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.11748065431224386
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8825193456877561,
+          "priorW": 0.8909150963394479,
+          "ret": 0.012925583795621254,
+          "nav": 1.179745733809774,
+          "fee": 0.00000586707523548684,
+          "turn": 0.0097784587258114,
+          "proxyQ90": 0.07233754820925231,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.11748065431224386
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8155339805825242,
+          "priorW": 0.8155339805825242,
+          "ret": 0.011949215832711024,
+          "nav": 1.1640613479421842,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5249999999999998,
+          "priorW": 0.5249999999999998,
+          "ret": 0.007692307692307887,
+          "nav": 1.1251998872296558,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260529",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.014440433212996595,
+          "nav": 1.2071605004842414,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8745729659424383,
+          "priorW": 0.8745729659424383,
+          "ret": 0.012629212504583931,
+          "nav": 1.1882139117987882,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.07193524249608711,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.11439008897441338
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8856099110255866,
+          "priorW": 0.8840190588640716,
+          "ret": 0.01278762405478151,
+          "nav": 1.1948318787339658,
+          "fee": 0.0000011260806304016045,
+          "turn": 0.0018768010506693411,
+          "proxyQ90": 0.07193524249608711,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.11439008897441338
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8177121771217711,
+          "priorW": 0.8177121771217711,
+          "ret": 0.011808118081180874,
+          "nav": 1.177806721792424,
+          "fee": 6.661338147750939e-20,
+          "turn": 1.1102230246251565e-16,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.528625954198473,
+          "priorW": 0.528625954198473,
+          "ret": 0.007633587786259666,
+          "nav": 1.1337891993459128,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260601",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.014234875444840034,
+          "nav": 1.2243442798505653,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8761372548720602,
+          "priorW": 0.8761372548720602,
+          "ret": 0.012471704695687702,
+          "nav": 1.2030329648220506,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.07133341462489626,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.10691834897345132
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8930816510265487,
+          "priorW": 0.8870543270169404,
+          "ret": 0.01270924369514681,
+          "nav": 1.2100172882555258,
+          "fee": 0.000004320983322083149,
+          "turn": 0.0072016388701385825,
+          "proxyQ90": 0.07133341462489626,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.10691834897345132
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8198395331874543,
+          "priorW": 0.8198395331874543,
+          "ret": 0.011670313639678964,
+          "nav": 1.1915520956426637,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5321969696969694,
+          "priorW": 0.5321969696969694,
+          "ret": 0.007575757575757569,
+          "nav": 1.1423785114621698,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260602",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.024561403508772006,
+          "nav": 1.1942726659594987,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8776630057378557,
+          "priorW": 0.8776630057378557,
+          "ret": -0.021556635228649035,
+          "nav": 1.1770996220313414,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.0713986269925957,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.10773405049973439
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8922659495002656,
+          "priorW": 0.8944238309463705,
+          "ret": -0.021916570377304434,
+          "nav": 1.1834978591997185,
+          "fee": 0.0000015666443134756402,
+          "turn": 0.0026110738557927338,
+          "proxyQ90": 0.0713986269925957,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.10773405049973439
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8219178082191779,
+          "priorW": 0.8219178082191779,
+          "ret": -0.020187454938716543,
+          "nav": 1.1674976914047441,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5357142857142854,
+          "priorW": 0.5357142857142854,
+          "ret": -0.013157894736842035,
+          "nav": 1.1273472152587203,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260603",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.010791366906474975,
+          "nav": 1.2071605004842416,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8749677307171143,
+          "priorW": 0.8749677307171143,
+          "ret": 0.009442097813494144,
+          "nav": 1.1882139117987884,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.05984364594953322,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 0.889852023098982,
+          "ret": 0.010724564931994474,
+          "nav": 1.1961903588375824,
+          "fee": 0.00007821593691452091,
+          "turn": 0.13035989485753485,
+          "proxyQ90": 0.05984364594953322,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8182487122884472,
+          "priorW": 0.8182487122884472,
+          "ret": 0.008830022075055233,
+          "nav": 1.177806721792424,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5295238095238092,
+          "priorW": 0.5295238095238092,
+          "ret": 0.005714285714285783,
+          "nav": 1.133789199345913,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260604",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.06761565836298944,
+          "nav": 1.1255375484942038,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8761372548720602,
+          "priorW": 0.8761372548720602,
+          "ret": -0.059240597304516474,
+          "nav": 1.1178234099382922,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.0634092852319414,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.06761565836298933,
+          "nav": 1.1153091601973188,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.0634092852319414,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8198395331874543,
+          "priorW": 0.8198395331874543,
+          "ret": -0.05543398978847536,
+          "nav": 1.112516196003785,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5321969696969694,
+          "priorW": 0.5321969696969694,
+          "ret": -0.035984848484848286,
+          "nav": 1.0929899667936929,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260605",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.022900763358778553,
+          "nav": 1.1513132175436893,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8683374890827072,
+          "priorW": 0.8683374890827072,
+          "ret": 0.019885591353039134,
+          "nav": 1.1400519894731858,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.07065257221831801,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.09831218161868172
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.9016878183813183,
+          "priorW": 1,
+          "ret": 0.02058913399431228,
+          "nav": 1.1382724099417054,
+          "fee": 0.00006578908603097888,
+          "turn": 0.10964847671829814,
+          "proxyQ90": 0.07065257221831801,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.09831218161868172
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.809266409266409,
+          "priorW": 0.809266409266409,
+          "ret": 0.018532818532818407,
+          "nav": 1.1331342567791447,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5147347740667974,
+          "priorW": 0.5147347740667974,
+          "ret": 0.011787819253438192,
+          "nav": 1.1058739349680784,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260608",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.014925373134328512,
+          "nav": 1.1341294381773654,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8639238037044848,
+          "priorW": 0.870904626917396,
+          "ret": -0.012898519615791693,
+          "nav": 1.1253470065239435,
+          "fee": 0.0000047751008352240106,
+          "turn": 0.007958501392040018,
+          "proxyQ90": 0.07374095196056812,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.13607619629551515
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8639238037044848,
+          "priorW": 0.9036768282424249,
+          "ret": -0.012917929390155236,
+          "nav": 1.1235682873233166,
+          "fee": 0.00002714986262596366,
+          "turn": 0.04524977104327277,
+          "proxyQ90": 0.07374095196056812,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.13607619629551515
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.812736921910538,
+          "priorW": 0.812736921910538,
+          "ret": -0.012130401819560266,
+          "nav": 1.119388882928905,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5203883495145627,
+          "priorW": 0.5203883495145627,
+          "ret": -0.007766990291262266,
+          "nav": 1.0972846228518214,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260609",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.030303030303030387,
+          "nav": 1.099761879444718,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.8315328942989876,
+          "priorW": 0.8621462645479686,
+          "ret": -0.025215871679251434,
+          "nav": 1.096970400812806,
+          "fee": 0.00002067039874157994,
+          "turn": 0.034450664569299905,
+          "proxyQ90": 0.07661340175877306,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.16846710570101242
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.8315328942989876,
+          "priorW": 0.8621462645479685,
+          "ret": -0.025215871679251434,
+          "nav": 1.0952365335672956,
+          "fee": 0.000020637727187905194,
+          "turn": 0.034396211979841995,
+          "proxyQ90": 0.07661340175877306,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.16846710570101242
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.810437452033768,
+          "priorW": 0.810437452033768,
+          "ret": -0.02455871066769011,
+          "nav": 1.0918981352284252,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5166340508806259,
+          "priorW": 0.5166340508806259,
+          "ret": -0.015655577299412915,
+          "nav": 1.0801059986193076,
+          "fee": 6.661338147750939e-20,
+          "turn": 1.1102230246251565e-16,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260610",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0546875,
+          "nav": 1.159905107226851,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.7820124652505687,
+          "priorW": 0.8271781347284606,
+          "ret": 0.04273804835038009,
+          "nav": 1.1438527748416796,
+          "fee": 0.000029727241530085098,
+          "turn": 0.04954540255014184,
+          "proxyQ90": 0.08146489542996115,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.21798753474943133
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.7820124652505687,
+          "priorW": 0.8271781347284605,
+          "ret": 0.04273804835038009,
+          "nav": 1.1420448054939973,
+          "fee": 0.000029680254765127455,
+          "turn": 0.04946709127521243,
+          "proxyQ90": 0.08146489542996115,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.21798753474943133
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8056648308418567,
+          "priorW": 0.8056648308418567,
+          "ret": 0.04405979543666394,
+          "nav": 1.1400069437042644,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.508946322067594,
+          "priorW": 0.508946322067594,
+          "ret": 0.027833001988071704,
+          "nav": 1.110168591026207,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260611",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.014814814814814836,
+          "nav": 1.1770888865931748,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.782021599376034,
+          "priorW": 0.7909526484024313,
+          "ret": 0.01158008446409653,
+          "nav": 1.1570986865888375,
+          "fee": 0.000006129483126654933,
+          "turn": 0.010215805211091555,
+          "proxyQ90": 0.08146394390819184,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.217978400623966
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.782021599376034,
+          "priorW": 0.7909526484024313,
+          "ret": 0.011580084464096752,
+          "nav": 1.1552697808034007,
+          "fee": 0.0000061197948889256,
+          "turn": 0.010199658148209334,
+          "proxyQ90": 0.08146394390819184,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.217978400623966
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8138658628485305,
+          "priorW": 0.8138658628485305,
+          "ret": 0.012057272042200529,
+          "nav": 1.1537523175545044,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.522243713733075,
+          "priorW": 0.522243713733075,
+          "ret": 0.007736943907156846,
+          "nav": 1.118757903142464,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260612",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.007299270072992581,
+          "nav": 1.1856807762763366,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.7845180664326998,
+          "priorW": 0.7845180664326998,
+          "ret": 0.005726409244034114,
+          "nav": 1.1637247072039796,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.08058480307307059,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.20944692699940548
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.7905530730005945,
+          "priorW": 0.7845180664326997,
+          "ret": 0.005766818488065262,
+          "nav": 1.1619320119340408,
+          "fee": 0.000004183236428903347,
+          "turn": 0.006972060714838912,
+          "proxyQ90": 0.08058480307307059,
+          "baselineQ90": 0.05791505791505791,
+          "candidateE": 0.20944692699940548
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8160833953834697,
+          "priorW": 0.8160833953834697,
+          "ret": 0.005956813104988523,
+          "nav": 1.160625004479624,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5259117082533584,
+          "priorW": 0.5259117082533584,
+          "ret": 0.0038387715930903177,
+          "nav": 1.1230525592005924,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260615",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 1.1856807762763366,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.7322596659760215,
+          "priorW": 0.7857449783691475,
+          "ret": -0.000032091187435967505,
+          "nav": 1.1636873618962769,
+          "fee": 0.00003734530770264228,
+          "turn": 0.062242179504403805,
+          "proxyQ90": 0.08718121273168189,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.26774033402397845
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.7322596659760215,
+          "priorW": 0.7917547440010889,
+          "ret": -0.000035697046815053035,
+          "nav": 1.161890534392615,
+          "fee": 0.00004147754142590352,
+          "turn": 0.0691292357098392,
+          "proxyQ90": 0.08718121273168189,
+          "baselineQ90": 0.05803571428571441,
+          "candidateE": 0.26774033402397845
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8171724648408586,
+          "priorW": 0.8171724648408586,
+          "ret": 0,
+          "nav": 1.160625004479624,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5277246653919688,
+          "priorW": 0.5277246653919688,
+          "ret": 0,
+          "nav": 1.1230525592005924,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260616",
+      "asset": "159509",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159509",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0,
+          "nav": 1.1856807762763366,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159509",
+          "weight": 0.7322596659760215,
+          "priorW": 0.7322596659760215,
+          "ret": 0,
+          "nav": 1.1636873618962769,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.08802724236397813,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.26183189193966216
+        },
+        "twoWay": {
+          "asset": "159509",
+          "weight": 0.7381681080603378,
+          "priorW": 0.7322596659760215,
+          "ret": -0.000003545065250576407,
+          "nav": 1.1618864154148565,
+          "fee": 0.000004118977758464459,
+          "turn": 0.006864962930774099,
+          "proxyQ90": 0.08802724236397813,
+          "baselineQ90": 0.05907172995780596,
+          "candidateE": 0.26183189193966216
+        },
+        "fixed20": {
+          "asset": "159509",
+          "weight": 0.8171724648408586,
+          "priorW": 0.8171724648408586,
+          "ret": 0,
+          "nav": 1.160625004479624,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159509",
+          "weight": 0.5277246653919688,
+          "priorW": 0.5277246653919688,
+          "ret": 0,
+          "nav": 1.1230525592005924,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260617",
+      "asset": "512800",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.026647133757961905,
+          "nav": 1.154085782036657,
+          "fee": 0.0014228169315316037,
+          "turn": 2.3713615525526732,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0.7322596659760215,
+          "ret": -0.02649058240341773,
+          "nav": 1.1328606059441477,
+          "fee": 0.0012094852084913773,
+          "turn": 2.0158086808189624,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0.7381681080603378,
+          "ret": -0.02649403714853471,
+          "nav": 1.1311033535624775,
+          "fee": 0.001211732347477589,
+          "turn": 2.0195539124626487,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0.8171724648408586,
+          "ret": -0.026540232052690405,
+          "nav": 1.12982174753458,
+          "fee": 0.0012654334800877023,
+          "turn": 2.109055800146171,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "512800",
+          "weight": 1,
+          "priorW": 0.5277246653919688,
+          "ret": -0.026370988052757838,
+          "nav": 1.0934365535792945,
+          "fee": 0.0010294290571333914,
+          "turn": 1.7157150952223192,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260618",
+      "asset": "164824",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "164824",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0012000000000000899,
+          "nav": 1.152700879098213,
+          "fee": 0.0013849029384439882,
+          "turn": 2.308171564073314,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "164824",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0011999999999999789,
+          "nav": 1.1315011732170148,
+          "fee": 0.0013594327271329771,
+          "turn": 2.2657212118882954,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "164824",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0012000000000000899,
+          "nav": 1.1297460295382025,
+          "fee": 0.001357324024274973,
+          "turn": 2.262206707124955,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "164824",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0011999999999999789,
+          "nav": 1.1284659614375385,
+          "fee": 0.0013557860970414958,
+          "turn": 2.25964349506916,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "164824",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.0012000000000000899,
+          "nav": 1.0921244297149992,
+          "fee": 0.0013121238642951534,
+          "turn": 2.186873107158589,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260622",
+      "asset": "159957",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.04310769230769218,
+          "nav": 1.103010604279241,
+          "fee": 0.0013832410549178553,
+          "turn": 2.305401758196426,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.04310769230769229,
+          "nav": 1.082724768796183,
+          "fee": 0.0013578014078604176,
+          "turn": 2.2630023464340296,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.04310769230769229,
+          "nav": 1.0810452853110326,
+          "fee": 0.0013556952354458428,
+          "turn": 2.259492059076405,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.04310769230769207,
+          "nav": 1.0798203979921852,
+          "fee": 0.0013541591537250461,
+          "turn": 2.256931922875077,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.04310769230769207,
+          "nav": 1.0450454658371313,
+          "fee": 0.001310549315657999,
+          "turn": 2.1842488594299985,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260623",
+      "asset": "159957",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.025547445255474477,
+          "nav": 1.1311897073082726,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 0.6183171882307217,
+          "priorW": 1,
+          "ret": 0.015563797295546244,
+          "nav": 1.099576077624594,
+          "fee": 0.00024795446047582126,
+          "turn": 0.41325743412636884,
+          "proxyQ90": 0.08198258952606734,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.3816828117692783
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 0.6183171882307217,
+          "priorW": 1,
+          "ret": 0.015563797295546467,
+          "nav": 1.0978704549989198,
+          "fee": 0.00024756984248846197,
+          "turn": 0.4126164041474366,
+          "proxyQ90": 0.08198258952606734,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.3816828117692783
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 0.8,
+          "priorW": 1,
+          "ret": 0.02031550364963497,
+          "nav": 1.1017574932285457,
+          "fee": 0.00012957844775906218,
+          "turn": 0.215964079598437,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 0.5,
+          "priorW": 1,
+          "ret": 0.012469890510948822,
+          "nav": 1.0580770683750838,
+          "fee": 0.00031351363975113934,
+          "turn": 0.5225227329185657,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260624",
+      "asset": "159957",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.014234875444839812,
+          "nav": 1.1472920518962908,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 0.6177892236274667,
+          "priorW": 0.624252652837577,
+          "ret": 0.008790240487745571,
+          "nav": 1.1092416157814862,
+          "fee": 0.000004264219283314396,
+          "turn": 0.007107032138857328,
+          "proxyQ90": 0.08205265210355743,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.3822107763725333
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 0.6177892236274667,
+          "priorW": 0.6242526528375769,
+          "ret": 0.008790240487745127,
+          "nav": 1.1075210003227505,
+          "fee": 0.0000042576047806542005,
+          "turn": 0.007096007967757001,
+          "proxyQ90": 0.08205265210355743,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.3822107763725333
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 0.804005722460658,
+          "priorW": 0.804005722460658,
+          "ret": 0.011444921316166035,
+          "nav": 1.1143670210480427,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 0.5063063063063064,
+          "priorW": 0.5063063063063064,
+          "ret": 0.007207207207207134,
+          "nav": 1.0657028490480573,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260625",
+      "asset": "159957",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": -0.03157894736842104,
+          "nav": 1.11106177657325,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 0.5946519908368769,
+          "priorW": 0.6211211421391636,
+          "ret": -0.018794067181626573,
+          "nav": 1.0883944543338329,
+          "fee": 0.00001761641049534781,
+          "turn": 0.02936068415891302,
+          "proxyQ90": 0.08524522749565103,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.4053480091631231
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 0.5946519908368769,
+          "priorW": 0.6211211421391636,
+          "ret": -0.018794067181626795,
+          "nav": 1.0867061762376222,
+          "fee": 0.00001758908455680168,
+          "turn": 0.029315140928002803,
+          "proxyQ90": 0.08524522749565103,
+          "baselineQ90": 0.04608294930875578,
+          "candidateE": 0.4053480091631231
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 0.8062234794908062,
+          "priorW": 0.8062234794908062,
+          "ret": -0.02545968882602545,
+          "nav": 1.0859955834541746,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 0.5098389982110912,
+          "priorW": 0.5098389982110912,
+          "ret": -0.01610017889087656,
+          "nav": 1.0485448425338668,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260626",
+      "asset": "159957",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.0036231884057971175,
+          "nav": 1.1150873627202547,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 0.5508040457481074,
+          "priorW": 0.5868944957679101,
+          "ret": 0.001973969347700555,
+          "nav": 1.090542911624895,
+          "fee": 0.000023568387393579335,
+          "turn": 0.03928064565596556,
+          "proxyQ90": 0.09077638478869485,
+          "baselineQ90": 0.045454545454545525,
+          "candidateE": 0.4491959542518926
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 0.5508040457481074,
+          "priorW": 0.58689449576791,
+          "ret": 0.001973969347700333,
+          "nav": 1.088851300919472,
+          "fee": 0.000023531828963828793,
+          "turn": 0.039219714939714656,
+          "proxyQ90": 0.09077638478869485,
+          "baselineQ90": 0.045454545454545525,
+          "candidateE": 0.4491959542518926
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 0.8011611030478955,
+          "priorW": 0.8011611030478955,
+          "ret": 0.002902757619738683,
+          "nav": 1.0891479654090488,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 0.5018181818181817,
+          "priorW": 0.5018181818181817,
+          "ret": 0.001818181818181941,
+          "nav": 1.0504512877021104,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260629",
+      "asset": "159957",
+      "void": true,
+      "modes": {
+        "freeze": {
+          "asset": "159957",
+          "weight": 1,
+          "priorW": 1,
+          "ret": 0.036101083032491044,
+          "nav": 1.1553432241903,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "159957",
+          "weight": 0.5516987057719296,
+          "priorW": 0.5516987057719296,
+          "ret": 0.01991692078599039,
+          "nav": 1.1122631684094513,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": 0.08911991630975354,
+          "baselineQ90": 0.04484304932735428,
+          "candidateE": 0.446505828297202
+        },
+        "twoWay": {
+          "asset": "159957",
+          "weight": 0.553494171702798,
+          "priorW": 0.5516987057719296,
+          "ret": 0.019980640245165215,
+          "nav": 1.1106072470436241,
+          "fee": 0.0000011729972487495964,
+          "turn": 0.001954995414582661,
+          "proxyQ90": 0.08911991630975354,
+          "baselineQ90": 0.04484304932735428,
+          "candidateE": 0.446505828297202
+        },
+        "fixed20": {
+          "asset": "159957",
+          "weight": 0.8017366136034733,
+          "priorW": 0.8017366136034733,
+          "ret": 0.02894356005788712,
+          "nav": 1.1206717849577912,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "159957",
+          "weight": 0.5027223230490018,
+          "priorW": 0.5027223230490018,
+          "ret": 0.01814882032667864,
+          "nav": 1.0695157393845443,
+          "fee": 0,
+          "turn": 0,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260630",
+      "asset": "513290",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513290",
+          "weight": 0.9337387318561354,
+          "priorW": 1,
+          "ret": -0.023770070337426397,
+          "nav": 1.1278806344874277,
+          "fee": 0.0013404791647225976,
+          "turn": 2.2341319412043297,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513290",
+          "weight": 0.9337387318561354,
+          "priorW": 0.5604531260422753,
+          "ret": -0.023512311986734202,
+          "nav": 1.0861112897824547,
+          "fee": 0.0009971607420466144,
+          "turn": 1.6619345700776909,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513290",
+          "weight": 0.9337387318561354,
+          "priorW": 0.562241350798308,
+          "ret": -0.02351336063453746,
+          "nav": 1.0844931383205565,
+          "fee": 0.0009968677927373667,
+          "turn": 1.6614463212289448,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513290",
+          "weight": 0.9337387318561354,
+          "priorW": 0.8073136427566807,
+          "ret": -0.023657075522569238,
+          "nav": 1.0941599679050322,
+          "fee": 0.001170688963417407,
+          "turn": 1.9511482723623454,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513290",
+          "weight": 0.9337387318561354,
+          "priorW": 0.5115864527629234,
+          "ret": -0.023483655673029236,
+          "nav": 1.0443996000239524,
+          "fee": 0.0009274788200873733,
+          "turn": 1.5457980334789556,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    },
+    {
+      "d": "20260701",
+      "asset": "513290",
+      "void": false,
+      "modes": {
+        "freeze": {
+          "asset": "513290",
+          "weight": 0.9670044007755867,
+          "priorW": 0.9322040976777247,
+          "ret": 0.07205247705152074,
+          "nav": 1.2091472280206876,
+          "fee": 0.000023550352763022796,
+          "turn": 0.03925058793837133,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "downOnly": {
+          "asset": "513290",
+          "weight": 0.9670044007755867,
+          "priorW": 0.9322040976777246,
+          "ret": 0.07205247705152051,
+          "nav": 1.1643682985649024,
+          "fee": 0.000022678201249463646,
+          "turn": 0.03779700208243941,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "twoWay": {
+          "asset": "513290",
+          "weight": 0.9670044007755867,
+          "priorW": 0.9322040976777246,
+          "ret": 0.07205247705152074,
+          "nav": 1.16263355528193,
+          "fee": 0.00002264441395266421,
+          "turn": 0.03774068992110702,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed20": {
+          "asset": "513290",
+          "weight": 0.9670044007755867,
+          "priorW": 0.9322040976777246,
+          "ret": 0.07205247705152074,
+          "nav": 1.1729969038832022,
+          "fee": 0.000022846259112385334,
+          "turn": 0.03807709852064223,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        },
+        "fixed50": {
+          "asset": "513290",
+          "weight": 0.9670044007755867,
+          "priorW": 0.9322040976777246,
+          "ret": 0.07205247705152074,
+          "nav": 1.1196511782372955,
+          "fee": 0.000021807253581671635,
+          "turn": 0.036345422636119395,
+          "proxyQ90": null,
+          "baselineQ90": null,
+          "candidateE": null
+        }
+      }
+    }
+  ]
+}

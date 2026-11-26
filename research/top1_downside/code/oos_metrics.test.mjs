@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {quantileDiagnostics,binaryDiagnostics} from './oos_metrics.mjs';
+const q=quantileDiagnostics([{y:0.02,q:0.04},{y:0.06,q:0.04}],0.9);
+assert.equal(q.n,2);
+assert.ok(Math.abs(q.pinball-0.01)<1e-12);
+assert.equal(q.coverage,0.5);
+assert.equal(q.exceedance,0.5);
+assert.ok(Math.abs(q.coverageError+0.4)<1e-12);
+const b=binaryDiagnostics([{y:1,p:0.8},{y:0,p:0.2}]);
+assert.ok(Math.abs(b.brier-0.04)<1e-12);
+assert.ok(Math.abs(b.logloss+Math.log(0.8))<1e-12);
+assert.equal(b.prevalence,0.5);
+assert.throws(()=>quantileDiagnostics([{y:-1,q:0.1}]),/invalid observation/);
+assert.throws(()=>binaryDiagnostics([{y:2,p:0.5}]),/invalid observation/);
+console.log('OOS metrics tests passed');

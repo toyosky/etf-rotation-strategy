@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { forwardExcursion } from './calendar_forward_excursion.mjs';
+const calendar=['2026-01-29','2026-01-30','2026-02-02','2026-02-03'];
+const bars=[{date:'2026-02-02',low:90,high:105},{date:'2026-02-03',low:95,high:110}];
+const base={calendar,bars,decisionDate:'2026-01-30',horizon:2,entryPrice:100,executionDate:'2026-02-02'};
+const ok=forwardExcursion(base);
+assert.equal(ok.status,'price_proxy_only');
+assert.equal(ok.loss,0.1);
+assert.equal(ok.favorable,0.1);
+assert.equal(ok.troughDate,'2026-02-02');
+assert.equal(forwardExcursion({...base,decisionDate:'2026-01-29',executionDate:'2026-01-30'}).status,'missing_market_sessions');
+assert.equal(forwardExcursion({...base,horizon:3}).status,'right_censored');
+assert.equal(forwardExcursion({...base,executionDate:'2026-02-03'}).status,'execution_date_mismatch');
+assert.equal(forwardExcursion({...base,bars:[{date:'2026-02-02',low:0,high:105},bars[1]]}).status,'invalid_ohlc');
+console.log('calendar label tests passed (5 cases)');
