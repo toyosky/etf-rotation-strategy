@@ -1,6 +1,6 @@
 {
   "version": "category-audit-scope-v1",
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "source_ols": "data/fundamental-audit-trigger.json:next_strategy_target.model_target",
   "source_rebuild": "data/full-market-rebuild-latest.json:qualified_candidates",
   "data_quality_gate": "PASS",
@@ -26,7 +26,7 @@
       "category_first_qualified_date": null,
       "category_onset_symbols": [],
       "qualification_cohorts": [],
-      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-26",
+      "date_provenance": "inferred_from_currently_qualified_members_as_of_2026-11-27",
       "ols_top1": "164824",
       "new_today_count": 0,
       "needs_review": false,
