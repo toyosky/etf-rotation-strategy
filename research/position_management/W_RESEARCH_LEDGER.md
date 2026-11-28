@@ -365,3 +365,7 @@ Supersedes the outdated pending-status statements above, but does not replace or
 - W1–W6 first round reported complete (some results summary-only), W7a exact Q10 reproduction reported complete, W8d.1 fixed control reported complete. W7b and W8d.2 dynamic replay remain blocked/incomplete; W7c/d, W8b, W8c (partial), W8e/f/g and remaining W8a items pending. P-All and PIT Premium10 not established.
 - Next: finish W7b/W8d.2 with original frozen models and common daily paths; if blocked, advance W8b/e or remaining W8a independently and return. Do not repeat fixed controls or structural audit without a specific discrepancy. Freeze model rules and evaluation before new sample results; 2013–14 warmup, 2015–20 historical backward validation, 2021–25 original sample, 2026 separate stress only. No re-optimization or production changes. Maintain exact evidence links and statuses after each completed run.
 - End condition: W7b/c/d, W8a–g and material branches completed or explicitly non-verifiable; final report and task stop only then.
+
+
+## W8a PIT premium audit — 2026-11-28
+See [w8a_premium_pit_20261128.md](w8a_premium_pit_20261128.md). Actual read-only query: 35,744 backfilled rows, zero PIT-safe; all 28,999 pre-2026 rows lack first_seen_at. Exact Premium10 unavailable from this table alone; continue daily proxy with explicit caveat. W7b/W8d.2 remain pending, no dynamic replay this run. Advance W8e/W8b independently if original specifications unavailable; do not repeat PIT count absent new data.
